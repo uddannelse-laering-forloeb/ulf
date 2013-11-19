@@ -1,15 +1,6 @@
 api = 2
 core = 7.x
 
-; Core
-projects[drupal][type] = "core"
-
-; Install profile.
-projects[ulf][type] = "profile"
-projects[ulf][download][type] = "git"
-projects[ulf][download][url] = "git@github.com:uddannelse-laering-forloeb/ulf.git"
-projects[ulf][branch] = "master"
-
 ; Modules
 projects[apachesolr][subdir] = "contrib"
 projects[apachesolr][version] = "1.6"
