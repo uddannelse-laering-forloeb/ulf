@@ -16,4 +16,4 @@ projects[drupal][patch][] = http://drupal.org/files/issues/autocomplete-1232416-
 projects[ding2][type] = "profile"
 projects[ding2][download][type] = "git"
 projects[ding2][download][url] = "git@github.com:uddannelse-laering-forloeb/ulf.git"
-projects[ding2][download][branch] = "development"
+projects[ding2][download][branch] = "master"
