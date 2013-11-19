@@ -13,7 +13,7 @@ projects[drupal][patch][] = http://drupal.org/files/ssl-socket-transports-187997
 projects[drupal][patch][] = http://drupal.org/files/issues/autocomplete-1232416-17-7x.patch
 
 ; Get the profile, which will contain the next makefile.
-projects[ding2][type] = "profile"
-projects[ding2][download][type] = "git"
-projects[ding2][download][url] = "git@github.com:uddannelse-laering-forloeb/ulf.git"
-projects[ding2][download][branch] = "master"
+projects[ulf][type] = "profile"
+projects[ulf][download][type] = "git"
+projects[ulf][download][url] = "git@github.com:uddannelse-laering-forloeb/ulf.git"
+projects[ulf][download][branch] = "master"
