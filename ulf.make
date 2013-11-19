@@ -5,10 +5,10 @@ core = 7.x
 projects[drupal][type] = "core"
 
 ; Install profile.
-projects[loopdk][type] = "profile"
-projects[loopdk][download][type] = "git"
-projects[loopdk][download][url] = "git@github.com:loopdk/profile.git"
-projects[loopdk][branch] = "master"
+projects[ulf][type] = "profile"
+projects[ulf][download][type] = "git"
+projects[ulf][download][url] = "git@github.com:uddannelse-laering-forloeb/ulf.git"
+projects[ulf][branch] = "master"
 
 ; Modules
 projects[apachesolr][subdir] = "contrib"
@@ -56,29 +56,8 @@ projects[libraries][version] = "2.1"
 projects[link][subdir] = "contrib"
 projects[link][version] = "1.1"
 
-projects[memcache][subdir] = "contrib"
-projects[memcache][version] = "1.0"
-
-projects[menu_block][subdir] = "contrib"
-projects[menu_block][version] = "2.3"
-
-projects[messaging][subdir] = "contrib"
-projects[messaging][version] = "1.0-alpha2"
-
-projects[metatag][subdir] = "contrib"
-projects[metatag][version] = "1.0-beta7"
-
 projects[module_filter][subdir] = "contrib"
 projects[module_filter][version] = "1.8"
-
-projects[notifications][subdir] = "contrib"
-projects[notifications][version] = "1.0-alpha2"
-
-projects[og][subdir] = "contrib"
-projects[og][version] = "2.3"
-
-projects[page_title][subdir] = "contrib"
-projects[page_title][version] = "2.7"
 
 projects[panels][subdir] = "contrib"
 projects[panels][version] = "3.3"
@@ -103,9 +82,6 @@ projects[rules][version] = "2.6"
 
 projects[views][subdir] = "contrib"
 projects[views][version] = "3.7"
-
-projects[views_bulk_operations][subdir] = "contrib"
-projects[views_bulk_operations][version] = "3.1"
 
 projects[wysiwyg][subdir] = "contrib"
 projects[wysiwyg][version] = "2.2"
