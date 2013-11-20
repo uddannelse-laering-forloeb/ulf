@@ -36,4 +36,9 @@ function ulf_preprocess_field(&$variables) {
 function ulf_preprocess_block(&$variables) {
 }
 
+/**
+ * Override or insert variables into the panel pane template.
+ */
+function ulf_preprocess_panels_pane(&$variables) {
+}
 
