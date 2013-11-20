@@ -11,6 +11,9 @@ projects[ctools][version] = "1.3"
 projects[diff][subdir] = "contrib"
 projects[diff][version] = "3.2"
 
+projects[elements][subdir] = "contrib"
+projects[elements][version] = "1.4"
+
 projects[entity][subdir] = "contrib"
 projects[entity][version] = "1.2"
 

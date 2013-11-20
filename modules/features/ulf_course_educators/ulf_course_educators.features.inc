@@ -19,7 +19,7 @@ function ulf_course_educators_ctools_plugin_api($module = NULL, $api = NULL) {
 function ulf_course_educators_node_info() {
   $items = array(
     'course_educators' => array(
-      'name' => t('course_educators'),
+      'name' => t('Kursus til undervisere'),
       'base' => 'node_content',
       'description' => t('Kursusforløb målrettet lærere og pædagoger'),
       'has_title' => '1',
