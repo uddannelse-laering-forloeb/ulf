@@ -1,5 +1,5 @@
 name = Ulf structures
-description = Panels configuration that is not related to specific content types, includes panels_page permissions
+description = Panels configuration that is not related to specific content types, includes panels_page permissions and frontpage
 core = 7.x
 package = Base
 dependencies[] = ctools
@@ -9,6 +9,7 @@ features[ctools][] = page_manager:pages_default:1
 features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:2
 features[page_manager_handlers][] = node_view_panel_context
+features[page_manager_pages][] = front
 features[variable][] = page_manager_node_view_disabled
 features[variable][] = panels_page_allowed_layouts
 features[variable][] = panels_page_allowed_types
