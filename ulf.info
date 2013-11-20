@@ -12,6 +12,7 @@ dependencies[] = ctools
 dependencies[] = ctools_custom_content
 dependencies[] = entity
 dependencies[] = diff
+dependencies[] = elements
 dependencies[] = facetapi
 dependencies[] = features
 dependencies[] = field_group
