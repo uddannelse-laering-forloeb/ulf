@@ -14,7 +14,7 @@ function ulf_base_user_default_permissions() {
   $permissions['access administration pages'] = array(
     'name' => 'access administration pages',
     'roles' => array(
-      'course editor' => 'course editor',
+      'editor' => 'editor',
     ),
     'module' => 'system',
   );
@@ -32,7 +32,8 @@ function ulf_base_user_default_permissions() {
   $permissions['access toolbar'] = array(
     'name' => 'access toolbar',
     'roles' => array(
-      'course editor' => 'course editor',
+      'course provider' => 'course provider',
+      'editor' => 'editor',
     ),
     'module' => 'toolbar',
   );
@@ -41,7 +42,7 @@ function ulf_base_user_default_permissions() {
   $permissions['view the administration theme'] = array(
     'name' => 'view the administration theme',
     'roles' => array(
-      'course editor' => 'course editor',
+      'editor' => 'editor',
     ),
     'module' => 'system',
   );

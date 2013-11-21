@@ -16,7 +16,6 @@ features[user_permission][] = access administration pages
 features[user_permission][] = access content
 features[user_permission][] = access toolbar
 features[user_permission][] = view the administration theme
-features[user_role][] = course editor
 features[user_role][] = editor
 features[variable][] = configurable_timezones
 features[variable][] = date_default_timezone
