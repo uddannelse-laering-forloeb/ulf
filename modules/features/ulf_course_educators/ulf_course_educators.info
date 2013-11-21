@@ -18,6 +18,7 @@ features[variable][] = additional_settings__active_tab_course_educators
 features[variable][] = diff_enable_revisions_page_node_course_educators
 features[variable][] = diff_show_preview_changes_node_course_educators
 features[variable][] = diff_view_mode_preview_node_course_educators
+features[variable][] = field_bundle_settings_node__course_educators
 features[variable][] = language_content_type_course_educators
 features[variable][] = menu_options_course_educators
 features[variable][] = menu_parent_course_educators

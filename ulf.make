@@ -17,6 +17,9 @@ projects[elements][version] = "1.4"
 projects[entity][subdir] = "contrib"
 projects[entity][version] = "1.2"
 
+projects[entity_view_mode][subdir] = "contrib"
+projects[entity_view_mode][version] = "1.0-rc1"
+
 projects[facetapi][subdir] = "contrib"
 projects[facetapi][version] = "1.3"
 

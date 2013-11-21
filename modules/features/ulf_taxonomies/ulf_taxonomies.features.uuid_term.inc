@@ -155,6 +155,14 @@ function ulf_taxonomies_uuid_features_default_terms() {
     'vocabulary_machine_name' => 'topic',
   );
   $terms[] = array(
+    'name' => 'Forløb',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 0,
+    'uuid' => '6ddf328e-e644-47ba-b94c-40b1c1c7bf02',
+    'vocabulary_machine_name' => 'offer_type',
+  );
+  $terms[] = array(
     'name' => 'Tværfaglige tilbud',
     'description' => '',
     'format' => 'plain_text',
@@ -233,6 +241,14 @@ function ulf_taxonomies_uuid_features_default_terms() {
     'weight' => 14,
     'uuid' => 'bd6809f5-5e83-4bcd-87b4-e2ee84a615e8',
     'vocabulary_machine_name' => 'target_group_sub',
+  );
+  $terms[] = array(
+    'name' => 'Besøg',
+    'description' => '',
+    'format' => 'plain_text',
+    'weight' => 0,
+    'uuid' => 'c5453384-2d8f-4b75-b6b0-21b00fe009a4',
+    'vocabulary_machine_name' => 'offer_type',
   );
   $terms[] = array(
     'name' => '6 år',

@@ -21,6 +21,7 @@ features[user_role][] = editor
 features[variable][] = configurable_timezones
 features[variable][] = date_default_timezone
 features[variable][] = date_first_day
+features[variable][] = entity_view_modes
 features[variable][] = pathauto_blog_pattern
 features[variable][] = pathauto_forum_pattern
 features[variable][] = pathauto_node_pattern
