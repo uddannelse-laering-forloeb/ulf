@@ -1,0 +1,11 @@
+name = Ulf taxonomies
+description = Holds taxonomies and tags
+core = 7.x
+package = Content
+dependencies[] = features
+dependencies[] = taxonomy
+features[features_api][] = api:2
+features[taxonomy][] = educational_goals
+features[taxonomy][] = target_group
+features[taxonomy][] = target_group_sub
+features[taxonomy][] = topic
