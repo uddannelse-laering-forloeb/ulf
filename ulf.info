@@ -8,6 +8,7 @@ exclusive = TRUE
 
 dependencies[] = apachesolr
 dependencies[] = apachesolr_search
+dependencies[] = bulk_export
 dependencies[] = ctools
 dependencies[] = ctools_custom_content
 dependencies[] = entity
@@ -48,6 +49,7 @@ dependencies[] = ulf_base
 dependencies[] = ulf_course
 dependencies[] = ulf_course_educators
 dependencies[] = ulf_field_collections
+dependencies[] = ulf_panel_pages
 dependencies[] = ulf_structures
 dependencies[] = ulf_taxonomies
 dependencies[] = uuid

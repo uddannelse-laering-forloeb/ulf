@@ -33,6 +33,7 @@ if (!function_exists("system_form_install_configure_form_alter")) {
  * else the task specifying a form may not be available on form submit.
  */
 function ulf_install_tasks(&$install_state) {
+  /*
   $ret = array(
     // Update translations.
     'ulf_import_translation' => array(
@@ -43,6 +44,7 @@ function ulf_install_tasks(&$install_state) {
     ),
   );
   return $ret;
+  */
 }
 
 /**
@@ -57,6 +59,7 @@ function ulf_install_tasks(&$install_state) {
  *   List of batches.
  */
 function ulf_import_translation(&$install_state) {
+/*
   // Enable danish language.
   include_once DRUPAL_ROOT . '/includes/locale.inc';
   locale_add_language('da', NULL, NULL, NULL, '', NULL, TRUE, TRUE);
@@ -72,4 +75,5 @@ function ulf_import_translation(&$install_state) {
   $updates = _l10n_update_prepare_updates($updates, NULL, array());
   $batch = l10n_update_batch_multiple($updates, LOCALE_IMPORT_KEEP);
   return $batch;
+*/
 }
