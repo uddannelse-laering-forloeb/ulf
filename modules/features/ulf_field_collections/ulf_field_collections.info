@@ -1,0 +1,15 @@
+name = Ulf field collections
+description = Holds field collections related to ULF
+core = 7.x
+package = Base
+dependencies[] = ctools
+dependencies[] = features
+dependencies[] = list
+dependencies[] = number
+dependencies[] = strongarm
+features[ctools][] = strongarm:strongarm:1
+features[features_api][] = api:2
+features[field_base][] = field_free
+features[field_base][] = field_price
+features[field_base][] = field_unit_price
+features[variable][] = field_bundle_settings_field_collection_item__field_collection_price
