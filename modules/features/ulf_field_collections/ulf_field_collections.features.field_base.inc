@@ -27,8 +27,8 @@ function ulf_field_collections_field_default_field_bases() {
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
-        0 => 'Not free',
-        1 => 'Free',
+        0 => 'Ikke gratis',
+        1 => 'Gratis',
       ),
       'allowed_values_function' => '',
     ),
