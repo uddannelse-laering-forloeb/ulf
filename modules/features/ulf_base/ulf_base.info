@@ -40,4 +40,5 @@ features[variable][] = pathauto_node_pattern
 features[variable][] = pathauto_punctuation_hyphen
 features[variable][] = pathauto_taxonomy_term_pattern
 features[variable][] = pathauto_user_pattern
+features[variable][] = site_frontpage
 features[variable][] = user_default_timezone
