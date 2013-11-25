@@ -89,6 +89,12 @@ projects[rules][version] = "2.6"
 projects[views][subdir] = "contrib"
 projects[views][version] = "3.7"
 
+projects[workbench][subdir] = "contrib"
+projects[workbench][version] = "1.2"
+
+projects[workbench_moderation][subdir] = "contrib"
+projects[workbench_moderation][version] = "1.3"
+
 projects[wysiwyg][subdir] = "contrib"
 projects[wysiwyg][version] = "2.2"
 

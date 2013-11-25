@@ -80,7 +80,7 @@
  * @ingroup themeable
  */
 ?>
-<div class="node-tpl <?php print $classes; ?>">
+<div class="node-tpl <?php print $classes; ?>"<?php print $attributes; ?>>
 
   <?php print $user_picture; ?>
 
