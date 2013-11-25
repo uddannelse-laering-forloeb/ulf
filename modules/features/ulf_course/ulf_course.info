@@ -67,6 +67,7 @@ features[variable][] = node_options_course
 features[variable][] = node_preview_course
 features[variable][] = node_submitted_course
 features[variable][] = save_continue_course
+features[variable][] = workbench_moderation_default_state_course
 features_exclude[taxonomy][topic] = topic
 features_exclude[taxonomy][target_group] = target_group
 features_exclude[taxonomy][target_group_sub] = target_group_sub
