@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Ulf test content feature.
+ */
+
+include_once 'ulf_test_content.features.inc';

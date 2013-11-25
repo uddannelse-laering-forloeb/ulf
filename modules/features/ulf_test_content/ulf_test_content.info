@@ -1,0 +1,15 @@
+name = Ulf test content
+description = Holds a few content elements used for testing.
+core = 7.x
+package = Features
+dependencies[] = ctools
+dependencies[] = features
+dependencies[] = strongarm
+dependencies[] = ulf_course
+dependencies[] = uuid_features
+__drupal_alter_by_ref[][node][course] = course
+features[ctools][] = strongarm:strongarm:1
+features[features_api][] = api:2
+features[uuid_node][] = 03aaef3b-0f2e-4147-b419-1ae067ebf3ac
+features[uuid_node][] = 338b8a2d-e47f-4740-a906-3fac4551b853
+features[uuid_node][] = bd121746-22e5-4bc3-b013-4806683496f9
