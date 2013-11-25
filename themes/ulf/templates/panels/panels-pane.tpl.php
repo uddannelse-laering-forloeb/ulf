@@ -20,7 +20,7 @@
 <?php if ($pane_prefix): ?>
   <?php print $pane_prefix; ?>
 <?php endif; ?>
-<div class="pane-<?php print $pane->pid; ?>">
+<div class="pane-content-wrapper pane-<?php print $pane->pid; ?>">
   <?php if ($admin_links): ?>
     <?php print $admin_links; ?>
   <?php endif; ?>

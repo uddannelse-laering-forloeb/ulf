@@ -6,3 +6,5 @@ regions[header] = Header
 regions[content] = Content
 regions[footer] = Footer
 
+; Disable stylesheet files.
+stylesheets[all][] = system.theme.css
