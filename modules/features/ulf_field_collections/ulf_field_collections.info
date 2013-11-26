@@ -1,7 +1,7 @@
 name = Ulf field collections
 description = Holds field collections related to ULF
 core = 7.x
-package = Base
+package = Ulf base
 dependencies[] = ctools
 dependencies[] = features
 dependencies[] = list

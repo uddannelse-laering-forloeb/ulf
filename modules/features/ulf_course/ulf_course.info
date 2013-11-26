@@ -1,7 +1,7 @@
 name = Ulf course
 description = Contains ulf_course content type, configuration, fields and permissions
 core = 7.x
-package = Content
+package = Ulf content
 dependencies[] = ctools
 dependencies[] = features
 dependencies[] = field_collection

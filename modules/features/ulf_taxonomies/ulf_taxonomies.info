@@ -1,7 +1,7 @@
 name = Ulf taxonomies
 description = Holds taxonomies and their terms
 core = 7.x
-package = Content
+package = Ulf content
 dependencies[] = features
 dependencies[] = taxonomy
 dependencies[] = uuid

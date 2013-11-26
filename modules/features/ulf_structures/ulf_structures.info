@@ -1,7 +1,7 @@
 name = Ulf structures
 description = Panels configuration that is not related to specific content types, includes panels_page permissions and frontpage
 core = 7.x
-package = Base
+package = Ulf base
 dependencies[] = ctools
 dependencies[] = strongarm
 features[ctools][] = page_manager:pages_default:1

@@ -1,7 +1,7 @@
 name = Ulf workflow
 description = Holds settings related to ulf workflows, rules and views as well.
 core = 7.x
-package = base
+package = Ulf base
 dependencies[] = features
 dependencies[] = views
 dependencies[] = views_content
