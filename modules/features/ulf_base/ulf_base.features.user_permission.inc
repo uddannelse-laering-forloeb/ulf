@@ -29,6 +29,13 @@ function ulf_base_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'access content overview'.
+  $permissions['access content overview'] = array(
+    'name' => 'access content overview',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
   // Exported permission: 'access site reports'.
   $permissions['access site reports'] = array(
     'name' => 'access site reports',
@@ -57,6 +64,13 @@ function ulf_base_user_default_permissions() {
     'module' => 'user',
   );
 
+  // Exported permission: 'administer content types'.
+  $permissions['administer content types'] = array(
+    'name' => 'administer content types',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
   // Exported permission: 'administer custom content'.
   $permissions['administer custom content'] = array(
     'name' => 'administer custom content',
@@ -64,6 +78,13 @@ function ulf_base_user_default_permissions() {
       'editor' => 'editor',
     ),
     'module' => 'ctools_custom_content',
+  );
+
+  // Exported permission: 'administer nodes'.
+  $permissions['administer nodes'] = array(
+    'name' => 'administer nodes',
+    'roles' => array(),
+    'module' => 'node',
   );
 
   // Exported permission: 'administer users'.
@@ -84,6 +105,13 @@ function ulf_base_user_default_permissions() {
     'module' => 'system',
   );
 
+  // Exported permission: 'bypass node access'.
+  $permissions['bypass node access'] = array(
+    'name' => 'bypass node access',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
   // Exported permission: 'change own username'.
   $permissions['change own username'] = array(
     'name' => 'change own username',
@@ -92,6 +120,22 @@ function ulf_base_user_default_permissions() {
       'editor' => 'editor',
     ),
     'module' => 'user',
+  );
+
+  // Exported permission: 'delete revisions'.
+  $permissions['delete revisions'] = array(
+    'name' => 'delete revisions',
+    'roles' => array(),
+    'module' => 'node',
+  );
+
+  // Exported permission: 'revert revisions'.
+  $permissions['revert revisions'] = array(
+    'name' => 'revert revisions',
+    'roles' => array(
+      'editor' => 'editor',
+    ),
+    'module' => 'node',
   );
 
   // Exported permission: 'use panels dashboard'.
@@ -112,6 +156,16 @@ function ulf_base_user_default_permissions() {
     'module' => 'panels',
   );
 
+  // Exported permission: 'view own unpublished content'.
+  $permissions['view own unpublished content'] = array(
+    'name' => 'view own unpublished content',
+    'roles' => array(
+      'course provider' => 'course provider',
+      'editor' => 'editor',
+    ),
+    'module' => 'node',
+  );
+
   // Exported permission: 'view pane admin links'.
   $permissions['view pane admin links'] = array(
     'name' => 'view pane admin links',
@@ -119,6 +173,15 @@ function ulf_base_user_default_permissions() {
       'editor' => 'editor',
     ),
     'module' => 'panels',
+  );
+
+  // Exported permission: 'view revisions'.
+  $permissions['view revisions'] = array(
+    'name' => 'view revisions',
+    'roles' => array(
+      'editor' => 'editor',
+    ),
+    'module' => 'node',
   );
 
   // Exported permission: 'view the administration theme'.
