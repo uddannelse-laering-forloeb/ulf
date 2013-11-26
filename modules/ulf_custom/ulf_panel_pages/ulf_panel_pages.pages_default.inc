@@ -20,7 +20,7 @@ function ulf_panel_pages_default_page_manager_handlers() {
   $handler->handler = 'panel_context';
   $handler->weight = 0;
   $handler->conf = array(
-    'title' => 'Node base ',
+    'title' => 'Node base',
     'no_blocks' => 0,
     'pipeline' => 'standard',
     'body_classes_to_remove' => '',
