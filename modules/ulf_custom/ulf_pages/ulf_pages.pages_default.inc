@@ -8,7 +8,7 @@
 /**
  * Implements hook_default_page_manager_handlers().
  */
-function ulf_panel_pages_default_page_manager_handlers() {
+function ulf_pages_default_page_manager_handlers() {
   $handlers = array();
 
   $handler = new stdClass();
@@ -20,7 +20,7 @@ function ulf_panel_pages_default_page_manager_handlers() {
   $handler->handler = 'panel_context';
   $handler->weight = 0;
   $handler->conf = array(
-    'title' => 'Node base',
+    'title' => 'Base node',
     'no_blocks' => 0,
     'pipeline' => 'standard',
     'body_classes_to_remove' => '',
@@ -107,7 +107,7 @@ function ulf_panel_pages_default_page_manager_handlers() {
     $pane->pid = 'new-2';
     $pane->panel = 'middle';
     $pane->type = 'block';
-    $pane->subtype = 'node-recent';
+    $pane->subtype = 'user-new';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
@@ -204,7 +204,7 @@ function ulf_panel_pages_default_page_manager_handlers() {
 /**
  * Implements hook_default_page_manager_pages()
  */
-function ulf_panel_pages_default_page_manager_pages() {
+function ulf_pages_default_page_manager_pages() {
   $page = new stdClass();
   $page->disabled = FALSE; /* Edit this to true to make a default page disabled initially */
   $page->api_version = 1;
@@ -256,7 +256,7 @@ function ulf_panel_pages_default_page_manager_pages() {
     $pane->pid = 'new-4';
     $pane->panel = 'middle';
     $pane->type = 'block';
-    $pane->subtype = 'node-recent';
+    $pane->subtype = 'user-new';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
