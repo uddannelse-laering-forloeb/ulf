@@ -1,5 +1,6 @@
 # Ignore paths.
 modules/contrib
 libraries
+ulftheme
 
 # Ignore files.
