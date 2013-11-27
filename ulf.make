@@ -103,3 +103,9 @@ libraries[ckeditor][download][type] = "get"
 libraries[ckeditor][download][url] = "http://download.cksource.com/CKEditor/CKEditor/CKEditor%203.6.2/ckeditor_3.6.2.zip"
 libraries[ckeditor][directory_name] = "ckeditor"
 libraries[ckeditor][destination] = "libraries"
+
+; Base theme
+projects[ulftheme][type] = "theme"
+projects[ulftheme][download][type] = "git"
+projects[ulftheme][download][url] = "https://github.com/aakb/frontend-boilerplate.git"
+projects[ulftheme][download][branch] = "development"
