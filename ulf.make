@@ -105,7 +105,7 @@ libraries[ckeditor][directory_name] = "ckeditor"
 libraries[ckeditor][destination] = "libraries"
 
 ; Base theme
-projects[ulf][type] = "theme"
-projects[ulf][download][type] = "git"
-projects[ulf][download][url] = "git@github.com:uddannelse-laering-forloeb/ulftheme.git"
-projects[ulf][download][branch] = "development"
+projects[ulftheme][type] = "theme"
+projects[ulftheme][download][type] = "git"
+projects[ulftheme][download][url] = "git@github.com:uddannelse-laering-forloeb/ulftheme.git"
+projects[ulftheme][download][branch] = "development"
