@@ -17,3 +17,9 @@ projects[ulf][type] = "profile"
 projects[ulf][download][type] = "git"
 projects[ulf][download][url] = "git@github.com:uddannelse-laering-forloeb/ulf.git"
 projects[ulf][download][branch] = "development"
+
+; Get the ITK boilerplate, which will contain basic sass settings.
+projects[ulf][type] = "profile"
+projects[ulf][download][type] = "git"
+projects[ulf][download][url] = "git@github.com:aakb/frontend-boilerplate"
+projects[ulf][download][branch] = "development"
