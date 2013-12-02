@@ -305,7 +305,7 @@ Her må I gerne henvise til om tilbuddet evt. er målrettet fagenes fælles mål
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 9,
+      'weight' => 10,
     ),
   );
 
@@ -379,7 +379,56 @@ Her må I gerne henvise til om tilbuddet evt. er målrettet fagenes fælles mål
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 10,
+      'weight' => 11,
+    ),
+  );
+
+  // Exported field_instance: 'node-course-field_offer_type'
+  $field_instances['node-course-field_offer_type'] = array(
+    'bundle' => 'course',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 17,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'node_display' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_offer_type',
+    'label' => 'Tilbudstype',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 4,
     ),
   );
 
@@ -486,7 +535,7 @@ Her må I gerne henvise til om tilbuddet evt. er målrettet fagenes fælles mål
         'rows' => 4,
       ),
       'type' => 'text_textarea',
-      'weight' => 8,
+      'weight' => 9,
     ),
   );
 
@@ -538,7 +587,7 @@ Her må I gerne henvise til om tilbuddet evt. er målrettet fagenes fælles mål
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 5,
+      'weight' => 6,
     ),
   );
 
@@ -593,7 +642,7 @@ Her må I gerne henvise til om tilbuddet evt. er målrettet fagenes fælles mål
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 6,
+      'weight' => 7,
     ),
   );
 
@@ -751,61 +800,7 @@ Her må I gerne henvise til om tilbuddet evt. er målrettet fagenes fælles mål
         'rows' => 3,
       ),
       'type' => 'text_textarea',
-      'weight' => 7,
-    ),
-  );
-
-  // Exported field_instance: 'node-course-field_tilbudstype'
-  $field_instances['node-course-field_tilbudstype'] = array(
-    'bundle' => 'course',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Vælg besøg, hvis gruppen går rundt på egen hånd.
-Vælg forløb, hvis det er et specifikt, tilrettelagt forløb med en formidler tilknyttet.
-',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 8,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 8,
-      ),
-      'node_display' => array(
-        'label' => 'above',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 5,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 1,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_tilbudstype',
-    'label' => 'Tilbudstype',
-    'required' => 1,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_select',
-      'weight' => 4,
+      'weight' => 8,
     ),
   );
 
@@ -833,9 +828,6 @@ Her må I gerne henvise til om tilbuddet evt. er målrettet fagenes fælles mål
   t('Tilbudstype');
   t('Upload et billede/illustration');
   t('Varighed');
-  t('Vælg besøg, hvis gruppen går rundt på egen hånd.
-Vælg forløb, hvis det er et specifikt, tilrettelagt forløb med en formidler tilknyttet.
-');
   t('Vælg enhed');
 
   return $field_instances;
