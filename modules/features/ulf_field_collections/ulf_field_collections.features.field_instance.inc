@@ -22,13 +22,13 @@ function ulf_field_collections_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'number',
         'settings' => array(
-          'decimal_separator' => '.',
-          'prefix_suffix' => TRUE,
+          'decimal_separator' => ',',
+          'prefix_suffix' => 1,
           'scale' => 2,
-          'thousand_separator' => ' ',
+          'thousand_separator' => '',
         ),
         'type' => 'number_decimal',
         'weight' => 0,
@@ -66,7 +66,7 @@ function ulf_field_collections_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',

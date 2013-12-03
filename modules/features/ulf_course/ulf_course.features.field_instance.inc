@@ -534,7 +534,7 @@ Her må I gerne henvise til om tilbuddet evt. er målrettet fagenes fælles mål
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 15,
+        'weight' => 4,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -690,9 +690,8 @@ Her må I gerne henvise til om tilbuddet evt. er målrettet fagenes fælles mål
       ),
       'node_display' => array(
         'label' => 'above',
-        'module' => 'taxonomy',
         'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
+        'type' => 'hidden',
         'weight' => 3,
       ),
       'teaser' => array(

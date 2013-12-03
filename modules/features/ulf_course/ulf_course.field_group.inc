@@ -74,8 +74,8 @@ function ulf_course_field_group_info() {
       'label' => 'Varighed',
       'instance_settings' => array(
         'classes' => 'module--field field-group--duration',
-        'description' => '',
-        'show_label' => '1',
+        'description' => 'Description',
+        'show_label' => '0',
         'label_element' => 'h3',
         'effect' => 'none',
         'speed' => 'fast',
@@ -313,7 +313,7 @@ function ulf_course_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Delta',
-    'weight' => '6',
+    'weight' => '2',
     'children' => array(
       0 => 'field_full_description',
     ),
@@ -418,16 +418,15 @@ function ulf_course_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Gamma',
-    'weight' => '3',
+    'weight' => '1',
     'children' => array(
       0 => 'field_collection_price',
       1 => 'field_count',
       2 => 'field_price_info',
       3 => 'field_subject',
-      4 => 'field_target_group',
-      5 => 'field_target_group_sub',
-      6 => 'field_offer_type',
-      7 => 'group_duration',
+      4 => 'field_target_group_sub',
+      5 => 'field_offer_type',
+      6 => 'group_duration',
     ),
     'format_type' => 'div',
     'format_settings' => array(
