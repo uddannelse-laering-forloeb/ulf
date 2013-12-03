@@ -346,7 +346,7 @@ Her må I gerne henvise til om tilbuddet evt. er målrettet fagenes fælles mål
           'image_style' => '',
         ),
         'type' => 'image',
-        'weight' => 2,
+        'weight' => 4,
       ),
       'full' => array(
         'label' => 'above',
@@ -494,7 +494,7 @@ Her må I gerne henvise til om tilbuddet evt. er målrettet fagenes fælles mål
     ),
     'entity_type' => 'node',
     'field_name' => 'field_price_info',
-    'label' => 'Evt. yderligere oplysninger til varighed og pris.',
+    'label' => 'Evt. yderligere oplysninger til varighed og pris',
     'required' => 0,
     'settings' => array(
       'text_processing' => 0,
@@ -522,7 +522,7 @@ Her må I gerne henvise til om tilbuddet evt. er målrettet fagenes fælles mål
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 14,
+        'weight' => 8,
       ),
       'full' => array(
         'label' => 'above',
@@ -534,7 +534,7 @@ Her må I gerne henvise til om tilbuddet evt. er målrettet fagenes fælles mål
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 4,
+        'weight' => 6,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -626,7 +626,7 @@ Her må I gerne henvise til om tilbuddet evt. er målrettet fagenes fælles mål
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
-        'weight' => 1,
+        'weight' => 3,
       ),
       'full' => array(
         'label' => 'above',
@@ -680,7 +680,7 @@ Her må I gerne henvise til om tilbuddet evt. er målrettet fagenes fælles mål
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 15,
+        'weight' => 9,
       ),
       'full' => array(
         'label' => 'above',
@@ -692,7 +692,7 @@ Her må I gerne henvise til om tilbuddet evt. er målrettet fagenes fælles mål
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 3,
+        'weight' => 5,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -780,7 +780,7 @@ Her må I gerne henvise til om tilbuddet evt. er målrettet fagenes fælles mål
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 3,
+        'weight' => 5,
       ),
       'full' => array(
         'label' => 'above',
@@ -837,7 +837,7 @@ Her må I gerne henvise til om tilbuddet evt. er målrettet fagenes fælles mål
   t('Beskrivelse');
   t('Emneområde');
   t('Emneord');
-  t('Evt. yderligere oplysninger til varighed og pris.');
+  t('Evt. yderligere oplysninger til varighed og pris');
   t('Kort beskrivelse');
   t('Lav en mere uddybende, men stadig kort beskrivelse af, hvad førskolebørn kan opleve/lave hos jer.');
   t('Manchet');

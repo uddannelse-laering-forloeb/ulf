@@ -1,0 +1,10 @@
+name = Ulf course providers
+description = Holds configuration related to the course provider entity
+core = 7.x
+package = Ulf content
+dependencies[] = eva
+dependencies[] = views
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:2
+features[views_view][] = ulf_author_pane
+features_exclude[dependencies][ctools] = ctools

@@ -152,6 +152,68 @@ function ulf_course_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_layout_alfa|node|course|default';
+  $field_group->group_name = 'group_layout_alfa';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'course';
+  $field_group->mode = 'default';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Alfa',
+    'weight' => '0',
+    'children' => array(
+      0 => 'ulf_author_pane_entity_view_1',
+    ),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'label' => 'Alfa',
+      'instance_settings' => array(
+        'classes' => 'layout-element-alfa',
+        'description' => '',
+        'show_label' => '0',
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_layout_alfa|node|course|default'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_layout_alfa|node|course|node_display';
+  $field_group->group_name = 'group_layout_alfa';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'course';
+  $field_group->mode = 'node_display';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Alfa',
+    'weight' => '0',
+    'children' => array(
+      0 => 'ulf_author_pane_entity_view_1',
+    ),
+    'format_type' => 'div',
+    'format_settings' => array(
+      'label' => 'Alfa',
+      'instance_settings' => array(
+        'classes' => 'layout-element-alfa',
+        'description' => '',
+        'show_label' => '0',
+        'label_element' => 'h3',
+        'effect' => 'none',
+        'speed' => 'fast',
+      ),
+      'formatter' => 'open',
+    ),
+  );
+  $export['group_layout_alfa|node|course|node_display'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_layout_beta|node|course|default';
   $field_group->group_name = 'group_layout_beta';
   $field_group->entity_type = 'node';
@@ -160,7 +222,7 @@ function ulf_course_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Beta',
-    'weight' => '0',
+    'weight' => '2',
     'children' => array(),
     'format_type' => 'div',
     'format_settings' => array(
@@ -218,7 +280,7 @@ function ulf_course_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Beta',
-    'weight' => '0',
+    'weight' => '1',
     'children' => array(
       0 => 'field_image',
       1 => 'field_tags',
@@ -251,7 +313,7 @@ function ulf_course_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Delta',
-    'weight' => '13',
+    'weight' => '7',
     'children' => array(
       0 => 'field_full_description',
     ),
@@ -313,7 +375,7 @@ function ulf_course_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Delta',
-    'weight' => '2',
+    'weight' => '3',
     'children' => array(
       0 => 'field_full_description',
     ),
@@ -344,7 +406,7 @@ function ulf_course_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Gamma',
-    'weight' => '12',
+    'weight' => '6',
     'children' => array(
       0 => 'field_collection_price',
       1 => 'field_count',
@@ -418,7 +480,7 @@ function ulf_course_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Gamma',
-    'weight' => '1',
+    'weight' => '2',
     'children' => array(
       0 => 'field_collection_price',
       1 => 'field_count',

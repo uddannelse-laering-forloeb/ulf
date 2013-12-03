@@ -6,10 +6,13 @@ projects[apachesolr][subdir] = "contrib"
 projects[apachesolr][version] = "1.6"
 
 projects[ctools][subdir] = "contrib"
-projects[ctools][version] = "1.3"
+projects[ctools][version] = "1.x-dev"
 
 projects[diff][subdir] = "contrib"
 projects[diff][version] = "3.2"
+
+projects[eva][subdir] = "contrib"
+projects[eva][version] = "1.2"
 
 projects[elements][subdir] = "contrib"
 projects[elements][version] = "1.4"
