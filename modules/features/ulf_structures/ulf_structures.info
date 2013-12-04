@@ -11,7 +11,6 @@ features[ctools][] = page_manager:pages_default:1
 features[ctools][] = panels:layouts:1
 features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:2
-features[panels_layout][] = content_layout_2_split
 features[user_permission][] = administer advanced pane settings
 features[user_permission][] = administer page manager
 features[user_permission][] = administer pane access

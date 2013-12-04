@@ -91,6 +91,10 @@ function ulf_course_strongarm() {
             'weight' => '4',
             'visible' => TRUE,
           ),
+          'teaser' => array(
+            'weight' => '4',
+            'visible' => FALSE,
+          ),
         ),
       ),
     ),
