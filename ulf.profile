@@ -42,13 +42,13 @@ function ulf_install_tasks(&$install_state) {
       'display' => TRUE,
       'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
       'type' => 'batch',
-    ),
+    ),*/
     'ulf_setup_filter_and_wysiwyg' => array(
       'display_name' => st('Setup filter and WYSIWYG'),
       'display' => TRUE,
       'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
       'type' => 'batch'
-    ),*/
+    ),
     'ulf_setup_apache_solr' => array(
       'display_name' => st('Setup Apache Solr'),
       'display' => TRUE,
