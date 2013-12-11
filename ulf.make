@@ -2,8 +2,8 @@ api = 2
 core = 7.x
 
 ; Modules
-projects[apachesolr][subdir] = "contrib"
-projects[apachesolr][version] = "1.6"
+;projects[apachesolr][subdir] = "contrib"
+;projects[apachesolr][version] = "1.6"
 
 projects[ctools][subdir] = "contrib"
 projects[ctools][version] = "1.x-dev"
