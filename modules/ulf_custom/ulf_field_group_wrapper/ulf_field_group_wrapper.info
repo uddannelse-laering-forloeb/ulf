@@ -1,0 +1,4 @@
+name = ulf_field_group_wrapper module
+description = Adds wrapper to certain fieldgroups
+package = Ulf base
+core = 7.x
