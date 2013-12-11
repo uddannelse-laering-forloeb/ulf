@@ -61,13 +61,8 @@ function ulf_course_providers_views_default_views() {
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
 
-  /* Display: EVA Field */
-  $handler = $view->new_display('entity_view', 'EVA Field', 'entity_view_1');
-  $handler->display->display_options['entity_type'] = 'node';
-  $handler->display->display_options['bundles'] = array(
-    0 => 'course_educators',
-    1 => 'course',
-  );
+  /* Display: Ulf author pane */
+  $handler = $view->new_display('panel_pane', 'Ulf author pane', 'panel_pane_1');
   $translatables['ulf_author_pane'] = array(
     t('Master'),
     t('more'),
@@ -84,7 +79,8 @@ function ulf_course_providers_views_default_views() {
     t('next ›'),
     t('last »'),
     t('All'),
-    t('EVA Field'),
+    t('Ulf author pane'),
+    t('View panes'),
   );
   $export['ulf_author_pane'] = $view;
 

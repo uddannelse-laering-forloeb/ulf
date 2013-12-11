@@ -42,7 +42,7 @@ function ulf_structures_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'panels_page_allowed_layouts';
-  $strongarm->value = 'O:22:"panels_allowed_layouts":4:{s:9:"allow_new";b:1;s:11:"module_name";s:11:"panels_page";s:23:"allowed_layout_settings";a:10:{s:8:"flexible";b:0;s:14:"twocol_stacked";b:0;s:13:"twocol_bricks";b:0;s:6:"twocol";b:1;s:25:"threecol_33_34_33_stacked";b:0;s:17:"threecol_33_34_33";b:0;s:25:"threecol_25_50_25_stacked";b:0;s:17:"threecol_25_50_25";b:0;s:6:"onecol";b:1;s:31:"flexible:content_layout_2_split";b:1;}s:10:"form_state";N;}';
+  $strongarm->value = 'O:22:"panels_allowed_layouts":4:{s:9:"allow_new";b:1;s:11:"module_name";s:11:"panels_page";s:23:"allowed_layout_settings";a:12:{s:8:"flexible";b:0;s:14:"twocol_stacked";b:0;s:13:"twocol_bricks";b:0;s:6:"twocol";b:1;s:25:"threecol_33_34_33_stacked";b:0;s:17:"threecol_33_34_33";b:0;s:25:"threecol_25_50_25_stacked";b:0;s:17:"threecol_25_50_25";b:0;s:6:"onecol";b:1;s:31:"flexible:content_layout_2_split";b:0;s:21:"flexible:node_display";b:1;s:13:"four_elements";b:1;}s:10:"form_state";N;}';
   $export['panels_page_allowed_layouts'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -52,6 +52,8 @@ function ulf_structures_strongarm() {
   $strongarm->value = array(
     'search_form-search_form' => 'search_form-search_form',
     'search_result-search_result' => 'search_result-search_result',
+    'node_author-node_author' => 'node_author-node_author',
+    'node_title-node_title' => 'node_title-node_title',
     'node-node' => 'node-node',
     'views_view-views_view' => 'views_view-views_view',
     'vocabulary_terms-vocabulary_terms' => 0,
@@ -81,13 +83,11 @@ function ulf_structures_strongarm() {
     'node_form_publishing-node_form_publishing' => 0,
     'node_form_title-node_form_title' => 0,
     'node_attachments-node_attachments' => 0,
-    'node_author-node_author' => 0,
     'node_body-node_body' => 0,
     'node_content-node_content' => 0,
     'node_created-node_created' => 0,
     'node_links-node_links' => 0,
     'node_terms-node_terms' => 0,
-    'node_title-node_title' => 0,
     'node_type_desc-node_type_desc' => 0,
     'node_updated-node_updated' => 0,
     'form-form' => 0,
@@ -104,6 +104,7 @@ function ulf_structures_strongarm() {
     'token-node:content-type' => 0,
     'token-node:diff' => 0,
     'token-node:diff-markdown' => 0,
+    'token-node:menu-link' => 0,
     'token-node:nid' => 0,
     'token-node:vid' => 0,
     'token-node:title' => 0,
@@ -117,7 +118,6 @@ function ulf_structures_strongarm() {
     'token-node:author' => 0,
     'token-node:uuid' => 0,
     'token-node:vuuid' => 0,
-    'token-node:menu-link' => 0,
     'token-node:original' => 0,
     'token-node:is-new' => 0,
     'token-node:status' => 0,
@@ -265,6 +265,11 @@ function ulf_structures_strongarm() {
     'token-flag-action:entity-type' => 0,
     'token-flag-action:entity-id' => 0,
     'token-flag-action:count' => 0,
+    'token-menu:name' => 0,
+    'token-menu:machine-name' => 0,
+    'token-menu:description' => 0,
+    'token-menu:menu-link-count' => 0,
+    'token-menu:edit-url' => 0,
     'token-site:name' => 0,
     'token-site:slogan' => 0,
     'token-site:mail' => 0,
@@ -302,11 +307,6 @@ function ulf_structures_strongarm() {
     'token-rules_decimal:value' => 0,
     'token-rules_date:value' => 0,
     'token-rules_duration:value' => 0,
-    'token-menu:name' => 0,
-    'token-menu:machine-name' => 0,
-    'token-menu:description' => 0,
-    'token-menu:menu-link-count' => 0,
-    'token-menu:edit-url' => 0,
     'token-rules_config:id' => 0,
     'token-rules_config:label' => 0,
     'token-rules_config:plugin' => 0,
@@ -409,9 +409,9 @@ function ulf_structures_strongarm() {
     'block-system-user-menu' => 0,
     'block-system-main-menu' => 0,
     'block-user-online' => 0,
+    'entity_view-field_collection_item' => 'entity_view-field_collection_item',
     'entity_view-node' => 'entity_view-node',
     'entity_view-user' => 'entity_view-user',
-    'entity_view-field_collection_item' => 0,
     'entity_view-taxonomy_term' => 0,
     'entity_view-rules_config' => 0,
     'flag_link-field_collection_item' => 0,
@@ -428,10 +428,10 @@ function ulf_structures_strongarm() {
     'views-workbench_edited' => 0,
     'views-workbench_moderation' => 0,
     'views-workbench_recent_content' => 0,
+    'views_panes-private_user_content-panel_pane_1' => 'views_panes-private_user_content-panel_pane_1',
     'views_panes-ulf_frontpage_newest_courses-panel_pane_1' => 'views_panes-ulf_frontpage_newest_courses-panel_pane_1',
     'views_panes-ulf_frontpage_promoted_courses-panel_pane_1' => 'views_panes-ulf_frontpage_promoted_courses-panel_pane_1',
     'views_panes-ulf_taxonomy_term-panel_pane_1' => 'views_panes-ulf_taxonomy_term-panel_pane_1',
-    'views_panes-private_user_content-panel_pane_1' => 'views_panes-private_user_content-panel_pane_1',
   );
   $export['panels_page_allowed_types'] = $strongarm;
 

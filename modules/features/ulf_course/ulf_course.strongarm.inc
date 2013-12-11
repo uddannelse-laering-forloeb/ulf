@@ -75,10 +75,10 @@ function ulf_course_strongarm() {
           'weight' => '1',
         ),
         'path' => array(
-          'weight' => '2',
+          'weight' => '8',
         ),
         'redirect' => array(
-          'weight' => '3',
+          'weight' => '9',
         ),
       ),
       'display' => array(
@@ -88,8 +88,8 @@ function ulf_course_strongarm() {
             'visible' => TRUE,
           ),
           'node_display' => array(
-            'weight' => '4',
-            'visible' => TRUE,
+            'weight' => '10',
+            'visible' => FALSE,
           ),
           'teaser' => array(
             'weight' => '4',

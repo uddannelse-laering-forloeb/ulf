@@ -1,0 +1,26 @@
+<?php
+/**
+ * Implements hook_field_group_build_pre_render_alter().
+ *
+ * We want inner-wrappers on our the field groups controlling the layout.
+ * Fieldgroups don't provide any theming functions to handle this.
+ *
+ * @param $element
+ */
+function ulf_field_group_wrapper_field_group_build_pre_render_alter(& $element) {
+  // The group names we want to add the inner div to.
+  $add_inner_wrapper = array(
+    'group_layout_alfa',
+    'group_layout_beta',
+    'group_layout_gamma',
+    'group_layout_delta',
+  );
+
+  // Search for any of the field groups in the array.
+  foreach($element as $key => $value) {
+    if(in_array($key, $add_inner_wrapper)){
+      $element[$key]['#prefix'] = $element[$key]['#prefix'] . '<div class="group-content--inner">' ;
+      $element[$key]['#suffix'] = '</div>' . $element[$key]['#suffix'] ;
+    }
+  }
+}
