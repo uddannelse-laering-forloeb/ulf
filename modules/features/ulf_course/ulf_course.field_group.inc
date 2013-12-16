@@ -30,12 +30,13 @@ function ulf_course_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'label' => 'Aktiviteter, baggrundsviden og efterbehandling',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-course-sub field-group-fieldset',
         'required_fields' => 1,
+        'classes' => 'form-layout--epsilon',
+        'description' => '',
       ),
+      'formatter' => 'collapsible',
     ),
   );
   $export['group_course_sub|node|course|form'] = $field_group;
@@ -68,7 +69,7 @@ function ulf_course_field_group_info() {
       'instance_settings' => array(
         'required_fields' => 0,
         'id' => '',
-        'classes' => 'group-course field-group-div',
+        'classes' => 'form-layout--alfa',
         'description' => '',
         'show_label' => '0',
         'label_element' => 'h3',
@@ -127,12 +128,13 @@ function ulf_course_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'label' => 'Faciliteter',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-facilities field-group-fieldset',
         'required_fields' => 1,
+        'classes' => 'form-layout--delta',
+        'description' => '',
       ),
+      'formatter' => 'collapsible',
     ),
   );
   $export['group_facilities|node|course|form'] = $field_group;
@@ -156,12 +158,13 @@ function ulf_course_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'label' => 'Periode',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-period field-group-fieldset',
         'required_fields' => 1,
+        'classes' => 'form-layout--gamma',
+        'description' => '',
       ),
+      'formatter' => 'collapsible',
     ),
   );
   $export['group_period|node|course|form'] = $field_group;
@@ -190,12 +193,13 @@ function ulf_course_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'label' => 'Praktisk information',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-practical-information field-group-fieldset',
         'required_fields' => 1,
+        'classes' => 'form-layout--beta',
+        'description' => '',
       ),
+      'formatter' => 'collapsible',
     ),
   );
   $export['group_practical_information|node|course|form'] = $field_group;

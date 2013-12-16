@@ -77,7 +77,7 @@ function ulf_base_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_node_pattern';
-  $strongarm->value = 'content/[node:title]';
+  $strongarm->value = '[node:field_target_group]/[node:title]';
   $export['pathauto_node_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -91,14 +91,14 @@ function ulf_base_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_taxonomy_term_pattern';
-  $strongarm->value = '[term:vocabulary]/[term:name]';
+  $strongarm->value = 'forloeb/[term:name]';
   $export['pathauto_taxonomy_term_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_user_pattern';
-  $strongarm->value = 'users/[user:name]';
+  $strongarm->value = 'udbyder/[user:name]';
   $export['pathauto_user_pattern'] = $strongarm;
 
   $strongarm = new stdClass();
