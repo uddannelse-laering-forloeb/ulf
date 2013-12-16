@@ -908,7 +908,8 @@ function ulf_pages_default_page_manager_handlers() {
           'name' => 'role',
           'settings' => array(
             'rids' => array(
-              0 => 3,
+              0 => 2,
+              1 => 3,
             ),
           ),
           'context' => 'argument_entity_id:user_1',
