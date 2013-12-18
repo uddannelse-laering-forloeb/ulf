@@ -15,62 +15,18 @@ function ulf_forms_form_alter(&$form, &$form_state, $form_id) {
   // Search block.
   case 'search_block_form':
     $form['search_block_form']['#placeholder'] = t('Search...');
-    $form['actions']['submit']['#attributes']['class'][] = 'search--submit';
+    $form['search_block_form']['#title'] = FALSE;
+    $form['actions']['submit']['#attributes']['class'][] = 'header-search-module--submit';
     break;
 
-    case 'course_node_form':
-      $form['#prefix'] = '<div class="node--form">';
-      $form['#suffix'] = '</div>';
-      break;
-/*
-    // User login block.
-    case 'user_login_block':
-      $form['name']['#placeholder'] = t('Enter username or email');
-      break;
+  case 'course_node_form':
+    $form['#prefix'] = '<div class="node--form is-default-form">';
+    $form['#suffix'] = '</div>';
+    break;
 
-
-
-    case 'anbefaling_node_form':
-      global $user;
-      // If user is only either anonymous or registered. (has one role).
-      if (count($user->roles) < 2) {
-        $form['nodespotbox']['#access'] = FALSE;
-      }
-      break;
-
-    case 'blog_node_form':
-      global $user;
-      // If user is only either anonymous or registered. (has one role).
-      if (count($user->roles) < 2) {
-        $form['nodespotbox']['#access'] = FALSE;
-      }
-      break;
-
-    case 'group_readbook_posts_node_form':
-      global $user;
-      // If user is only either anonymous or registered. (has one role).
-      if (count($user->roles) < 2) {
-        $form['nodespotbox']['#access'] = FALSE;
-      }
-      break;
-
-    case 'event_node_form':
-      global $user;
-      // If user is only either anonymous or registered. (has one role).
-      if (count($user->roles) < 2) {
-        $form['nodespotbox']['#access'] = FALSE;
-      }
-      break;
-
-    case 'group_read_books_node_form':
-      global $user;
-      // If user is only either anonymous or registered. (has one role).
-      if (count($user->roles) < 2) {
-        $form['nodespotbox']['#access'] = FALSE;
-      }
-      // Hide language selection.
-      $form['og_language']['#access'] = FALSE;
-      break;
-*/
+  case 'apachesolr_search_custom_page_search_form':
+    $form['#prefix'] = '<div class="layout-element-alpha"><div class="layout-element-inner">';
+    $form['#suffix'] = '</div></div>';
+    break;
   }
 }
