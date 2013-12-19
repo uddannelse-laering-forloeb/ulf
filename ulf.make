@@ -55,6 +55,7 @@ projects[jquery_update][version] = "2.3"
 
 projects[l10n_update][subdir] = "contrib"
 projects[l10n_update][version] = "1.x-dev"
+projects[l10n_update][patch][] = "https://drupal.org/files/issues/l10n_update-1490664-fix_pdo_exception-27.patch"
 
 projects[libraries][subdir] = "contrib"
 projects[libraries][version] = "2.1"
