@@ -90,7 +90,7 @@ function ulf_frontpage_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Newest courses';
+  $handler->display->display_options['title'] = 'Promoted courses';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -144,14 +144,13 @@ function ulf_frontpage_views_default_views() {
   $handler = $view->new_display('panel_pane', 'Promoted courses', 'panel_pane_1');
   $translatables['ulf_frontpage_promoted_courses'] = array(
     t('Master'),
-    t('Newest courses'),
+    t('Promoted courses'),
     t('more'),
     t('Apply'),
     t('Reset'),
     t('Sort by'),
     t('Asc'),
     t('Desc'),
-    t('Promoted courses'),
     t('View panes'),
   );
   $export['ulf_frontpage_promoted_courses'] = $view;
