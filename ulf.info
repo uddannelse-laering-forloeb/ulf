@@ -6,8 +6,8 @@ core = 7.x
 php_memory_limit = 128M
 exclusive = TRUE
 
-dependencies[] = apachesolr
-dependencies[] = apachesolr_search
+;dependencies[] = apachesolr
+;dependencies[] = apachesolr_search
 dependencies[] = bulk_export
 dependencies[] = contextual
 dependencies[] = ctools
