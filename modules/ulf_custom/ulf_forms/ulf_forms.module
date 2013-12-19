@@ -11,7 +11,6 @@
  */
 function ulf_forms_form_alter(&$form, &$form_state, $form_id) {
   switch ($form_id) {
-
   // Search block.
   case 'search_block_form':
     $form['search_block_form']['#placeholder'] = t('Search...');
@@ -25,8 +24,9 @@ function ulf_forms_form_alter(&$form, &$form_state, $form_id) {
     break;
 
   case 'apachesolr_search_custom_page_search_form':
-    $form['#prefix'] = '<div class="layout-element-alpha"><div class="layout-element-inner">';
-    $form['#suffix'] = '</div></div>';
+    $form['#prefix'] = '<div class="layout-element-search"><div class="layout-element-inner"><div class="search-module--form">';
+    $form['#suffix'] = '</div></div></div>';
+    $form['basic']['submit']['#attributes']['class'][] = 'search-module--submit';
     break;
   }
 }
