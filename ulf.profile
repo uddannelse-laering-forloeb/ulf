@@ -169,14 +169,3 @@ function ulf_setup_filter_and_wysiwyg() {
     ))
     ->execute();
 }
-
-/**
- * Setup Apache Solr.
-
-function ulf_setup_apache_solr() {
-  db_query("UPDATE apachesolr_environment SET name='Ulf', url='http://localhost:8983/solr/ulf_stg'");
-
-  variable_set('search_default_module', 'apachesolr_search');
-}
-
-*/
