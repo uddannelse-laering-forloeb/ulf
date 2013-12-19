@@ -23,6 +23,11 @@ function ulf_forms_form_alter(&$form, &$form_state, $form_id) {
     $form['#suffix'] = '</div>';
     break;
 
+    case 'course_educators_node_form':
+      $form['#prefix'] = '<div class="node--form is-default-form">';
+      $form['#suffix'] = '</div>';
+      break;
+
   case 'apachesolr_search_custom_page_search_form':
     $form['#prefix'] = '<div class="layout-element-search"><div class="layout-element-inner"><div class="search-module--form">';
     $form['#suffix'] = '</div></div></div>';

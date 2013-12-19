@@ -49,7 +49,17 @@ function ulf_course_educators_strongarm() {
       ),
     ),
     'extra_fields' => array(
-      'form' => array(),
+      'form' => array(
+        'title' => array(
+          'weight' => '1',
+        ),
+        'path' => array(
+          'weight' => '4',
+        ),
+        'redirect' => array(
+          'weight' => '5',
+        ),
+      ),
       'display' => array(),
     ),
   );
