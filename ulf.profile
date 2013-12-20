@@ -49,12 +49,6 @@ function ulf_install_tasks(&$install_state) {
       'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
       'type' => 'batch'
     ),
-    'ulf_setup_apache_solr' => array(
-      'display_name' => st('Setup Apache Solr'),
-      'display' => TRUE,
-      'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
-      'type' => 'batch'
-    ),
   );
   return $ret;
 }
@@ -168,13 +162,4 @@ function ulf_setup_filter_and_wysiwyg() {
       'settings' => serialize($settings),
     ))
     ->execute();
-}
-
-/**
- * Setup Apache Solr.
- */
-function ulf_setup_apache_solr() {
-  //db_query("UPDATE apachesolr_environment SET name='Ulf', url='http://localhost:8983/solr/ulf_stg'");
-
-  //variable_set('search_default_module', 'apachesolr_search');
 }
