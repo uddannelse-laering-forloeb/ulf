@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Ulf solr setup feature.
+ */
+
+include_once 'ulf_solr_setup.features.inc';
