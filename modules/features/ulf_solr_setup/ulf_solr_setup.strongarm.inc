@@ -39,24 +39,6 @@ function ulf_solr_setup_strongarm() {
       'mlt_custom_filters' => '',
       'delta' => 'mlt-001',
     ),
-    'mlt-002' => array(
-      'name' => 'Apache solr search block',
-      'mlt_env_id' => 'solr',
-      'num_results' => '5',
-      'mlt_fl' => array(
-        'label' => 'label',
-        'taxonomy_names' => 'taxonomy_names',
-        'tos_name' => 'tos_name',
-      ),
-      'mlt_mintf' => '1',
-      'mlt_mindf' => '1',
-      'mlt_minwl' => '3',
-      'mlt_maxwl' => '15',
-      'mlt_maxqt' => '20',
-      'mlt_type_filters' => array(),
-      'mlt_custom_filters' => '',
-      'delta' => 'mlt-002',
-    ),
   );
   $export['apachesolr_search_mlt_blocks'] = $strongarm;
 
@@ -79,9 +61,9 @@ function ulf_solr_setup_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'search_active_modules';
   $strongarm->value = array(
-    'apachesolr_search' => 'apachesolr_search',
-    'node' => 0,
-    'user' => 0,
+    '0' => 'node',
+    '1' => 'user',
+    '2' => 'apachesolr_search',
   );
   $export['search_active_modules'] = $strongarm;
 

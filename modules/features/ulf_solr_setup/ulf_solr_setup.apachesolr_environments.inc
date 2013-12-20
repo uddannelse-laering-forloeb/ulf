@@ -17,15 +17,6 @@ function ulf_solr_setup_apachesolr_environments() {
   $environment->url = 'http://localhost:8983/solr/ulf_stg';
   $environment->service_class = '';
   $environment->conf = array(
-    'apachesolr_index_last' => array(
-      'node' => array(
-        'last_changed' => '1387443408',
-        'last_entity_id' => '2',
-      ),
-    ),
-    'apachesolr_index_updated' => 1387460635,
-    'apachesolr_last_optimize' => 1387460635,
-    'apachesolr_search_facet_pages' => '',
   );
   $environment->index_bundles = array(
     'node' => array(
