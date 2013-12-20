@@ -4,6 +4,6 @@
  */
 
 function ulf_solr_setup_install() {
-  db_query("UPDATE apachesolr_environment SET name = 'Ulf', url=http://localhost:8983/solr/ulf_stg");
+  db_query("UPDATE apachesolr_environment SET name='Ulf', url='http://localhost:8983/solr/ulf_stg'");
 }
 
