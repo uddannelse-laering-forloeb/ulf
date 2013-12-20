@@ -7,6 +7,9 @@
 function ulf_install_tasks_alter(&$tasks, $install_state) {
   // Callback for languageg selection.
   $tasks['install_select_locale']['function'] = 'ulf_locale_selection';
+  if ($install_state == 'install_finished') {
+    print_r ($tasks);
+  }
 }
 
 // Set default language to english.
