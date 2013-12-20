@@ -6,8 +6,6 @@ core = 7.x
 php_memory_limit = 128M
 exclusive = TRUE
 
-;dependencies[] = apachesolr
-;dependencies[] = apachesolr_search
 dependencies[] = bulk_export
 dependencies[] = contextual
 dependencies[] = ctools
@@ -57,7 +55,7 @@ dependencies[] = ulf_field_collections
 dependencies[] = ulf_forms
 dependencies[] = ulf_frontpage
 dependencies[] = ulf_pages
-;dependencies[] = ulf_solr_setup
+dependencies[] = ulf_solr_setup
 dependencies[] = ulf_structures
 dependencies[] = ulf_static_page
 dependencies[] = ulf_taxonomies
