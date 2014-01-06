@@ -240,7 +240,7 @@ function ulf_pages_default_page_manager_handlers() {
     $pane->pid = 'new-7';
     $pane->panel = 'beta';
     $pane->type = 'views_panes';
-    $pane->subtype = 'ulf_practical_info-panel_pane_1';
+    $pane->subtype = 'ulf_useful_info-panel_pane_1';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
@@ -262,6 +262,30 @@ function ulf_pages_default_page_manager_handlers() {
     $display->panels['beta'][0] = 'new-7';
     $pane = new stdClass();
     $pane->pid = 'new-8';
+    $pane->panel = 'beta';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'ulf_practical_info-panel_pane_1';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_title' => 1,
+      'override_title_text' => '%title',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => 'block-inline-module',
+    );
+    $pane->extras = array();
+    $pane->position = 1;
+    $pane->locks = array();
+    $display->content['new-8'] = $pane;
+    $display->panels['beta'][1] = 'new-8';
+    $pane = new stdClass();
+    $pane->pid = 'new-9';
     $pane->panel = 'gamma';
     $pane->type = 'entity_field';
     $pane->subtype = 'node:field_educational_goals';
@@ -286,36 +310,8 @@ function ulf_pages_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-8'] = $pane;
-    $display->panels['gamma'][0] = 'new-8';
-    $pane = new stdClass();
-    $pane->pid = 'new-9';
-    $pane->panel = 'gamma';
-    $pane->type = 'entity_field';
-    $pane->subtype = 'node:field_facilities';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'label' => 'title',
-      'formatter' => 'list_default',
-      'delta_limit' => '0',
-      'delta_offset' => '0',
-      'delta_reversed' => 0,
-      'formatter_settings' => array(),
-      'context' => 'argument_entity_id:node_1',
-      'override_title' => 0,
-      'override_title_text' => '',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 1;
-    $pane->locks = array();
     $display->content['new-9'] = $pane;
-    $display->panels['gamma'][1] = 'new-9';
+    $display->panels['gamma'][0] = 'new-9';
     $pane = new stdClass();
     $pane->pid = 'new-10';
     $pane->panel = 'gamma';
@@ -340,10 +336,10 @@ function ulf_pages_default_page_manager_handlers() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 2;
+    $pane->position = 1;
     $pane->locks = array();
     $display->content['new-10'] = $pane;
-    $display->panels['gamma'][2] = 'new-10';
+    $display->panels['gamma'][1] = 'new-10';
     $pane = new stdClass();
     $pane->pid = 'new-11';
     $pane->panel = 'gamma';
@@ -374,10 +370,10 @@ function ulf_pages_default_page_manager_handlers() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 3;
+    $pane->position = 2;
     $pane->locks = array();
     $display->content['new-11'] = $pane;
-    $display->panels['gamma'][3] = 'new-11';
+    $display->panels['gamma'][2] = 'new-11';
     $pane = new stdClass();
     $pane->pid = 'new-12';
     $pane->panel = 'gamma';
@@ -408,10 +404,10 @@ function ulf_pages_default_page_manager_handlers() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 4;
+    $pane->position = 3;
     $pane->locks = array();
     $display->content['new-12'] = $pane;
-    $display->panels['gamma'][4] = 'new-12';
+    $display->panels['gamma'][3] = 'new-12';
     $pane = new stdClass();
     $pane->pid = 'new-13';
     $pane->panel = 'gamma';
@@ -436,10 +432,10 @@ function ulf_pages_default_page_manager_handlers() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 5;
+    $pane->position = 4;
     $pane->locks = array();
     $display->content['new-13'] = $pane;
-    $display->panels['gamma'][5] = 'new-13';
+    $display->panels['gamma'][4] = 'new-13';
     $pane = new stdClass();
     $pane->pid = 'new-14';
     $pane->panel = 'gamma';
@@ -464,10 +460,10 @@ function ulf_pages_default_page_manager_handlers() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 6;
+    $pane->position = 5;
     $pane->locks = array();
     $display->content['new-14'] = $pane;
-    $display->panels['gamma'][6] = 'new-14';
+    $display->panels['gamma'][5] = 'new-14';
     $pane = new stdClass();
     $pane->pid = 'new-15';
     $pane->panel = 'gamma';
@@ -492,10 +488,10 @@ function ulf_pages_default_page_manager_handlers() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 7;
+    $pane->position = 6;
     $pane->locks = array();
     $display->content['new-15'] = $pane;
-    $display->panels['gamma'][7] = 'new-15';
+    $display->panels['gamma'][6] = 'new-15';
     $pane = new stdClass();
     $pane->pid = 'new-16';
     $pane->panel = 'gamma';
@@ -520,10 +516,10 @@ function ulf_pages_default_page_manager_handlers() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 8;
+    $pane->position = 7;
     $pane->locks = array();
     $display->content['new-16'] = $pane;
-    $display->panels['gamma'][8] = 'new-16';
+    $display->panels['gamma'][7] = 'new-16';
   $display->hide_title = PANELS_TITLE_NONE;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;

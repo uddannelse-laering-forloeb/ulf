@@ -104,6 +104,7 @@ features[variable][] = node_submitted_course
 features[variable][] = save_continue_course
 features[variable][] = workbench_moderation_default_state_course
 features[views_view][] = ulf_practical_info
+features[views_view][] = ulf_useful_info
 features_exclude[taxonomy][topic] = topic
 features_exclude[taxonomy][target_group] = target_group
 features_exclude[taxonomy][target_group_sub] = target_group_sub
