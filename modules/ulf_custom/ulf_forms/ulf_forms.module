@@ -19,14 +19,20 @@ function ulf_forms_form_alter(&$form, &$form_state, $form_id) {
     break;
 
   case 'course_node_form':
+    $form['#attached']['js'] = array(
+      drupal_get_path('module', 'ulf_forms') . '/js/node-form-logics.js',
+    );
     $form['#prefix'] = '<div class="node--form is-default-form">';
     $form['#suffix'] = '</div>';
     break;
 
-    case 'course_educators_node_form':
-      $form['#prefix'] = '<div class="node--form is-default-form">';
-      $form['#suffix'] = '</div>';
-      break;
+  case 'course_educators_node_form':
+    $form['#attached']['js'] = array(
+      drupal_get_path('module', 'ulf_forms') . '/js/node-form-logics.js',
+    );
+    $form['#prefix'] = '<div class="node--form is-default-form">';
+    $form['#suffix'] = '</div>';
+    break;
 
   case 'apachesolr_search_custom_page_search_form':
     $form['#prefix'] = '<div class="search-module"><div class="layout-element-inner"><div class="search-module--form">';

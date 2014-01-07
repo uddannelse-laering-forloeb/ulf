@@ -401,7 +401,7 @@ function ulf_course_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_educational_goals',
     'label' => 'Fag/læringsmål',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
@@ -1193,7 +1193,18 @@ Her må I gerne henvise til om tilbuddet evt. er målrettet fagenes fælles mål
     'bundle' => 'course',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => '<p class="is-preschool">
+Lav en mere uddybende, men stadig kort beskrivelse af, hvad førskolebørn kan opleve/lave hos jer.
+</p>
+<p class="is-school">
+"Skriv jeres pædagogiske overvejelser med dette undervisningstilbud. Følgende formuleringer kan evt. være brugbare:
+
+At eleverne stifter bekendtskab med...
+At eleverne får en forståelse for/indtryk af...
+At eleverne prøver kræfter med...
+At give eleverne læring om...
+At opnå kendskab til..."
+</p>',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1223,8 +1234,8 @@ Her må I gerne henvise til om tilbuddet evt. er målrettet fagenes fælles mål
     ),
     'entity_type' => 'node',
     'field_name' => 'field_purpose',
-    'label' => 'Formål',
-    'required' => 1,
+    'label' => 'Formål / Kort beskrivelse',
+    'required' => 0,
     'settings' => array(
       'text_processing' => 0,
       'user_register_form' => FALSE,
@@ -1498,6 +1509,18 @@ Her må I gerne henvise til om tilbuddet evt. er målrettet fagenes fælles mål
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('<p class="is-preschool">
+Lav en mere uddybende, men stadig kort beskrivelse af, hvad førskolebørn kan opleve/lave hos jer.
+</p>
+<p class="is-school">
+"Skriv jeres pædagogiske overvejelser med dette undervisningstilbud. Følgende formuleringer kan evt. være brugbare:
+
+At eleverne stifter bekendtskab med...
+At eleverne får en forståelse for/indtryk af...
+At eleverne prøver kræfter med...
+At give eleverne læring om...
+At opnå kendskab til..."
+</p>');
   t('Aktiviteter');
   t('Angiv antal.');
   t('Angiv en manchet ');
@@ -1516,7 +1539,7 @@ Her må I gerne henvise til om tilbuddet evt. er målrettet fagenes fælles mål
   t('Evt. yderligere oplysninger til periode');
   t('Evt. yderligere oplysninger til varighed og pris');
   t('Fag/læringsmål');
-  t('Formål');
+  t('Formål / Kort beskrivelse');
   t('Gratis');
   t('Hele året');
   t('Hvilke faciliteter kan I tilbyde?');
