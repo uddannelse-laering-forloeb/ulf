@@ -71,7 +71,6 @@ function ulf_course_views_default_views() {
   $handler->display->display_options['fields']['field_collection_price']['field'] = 'field_collection_price';
   $handler->display->display_options['fields']['field_collection_price']['label'] = 'excluded';
   $handler->display->display_options['fields']['field_collection_price']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_collection_price']['alter']['strip_tags'] = TRUE;
   $handler->display->display_options['fields']['field_collection_price']['alter']['preserve_tags'] = '"<span>"';
   $handler->display->display_options['fields']['field_collection_price']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_collection_price']['type'] = 'field_collection_fields';
@@ -237,6 +236,7 @@ function ulf_course_views_default_views() {
   $handler->display->display_options['fields']['field_facilities']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_facilities']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_facilities']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['field_facilities']['empty_zero'] = TRUE;
   $handler->display->display_options['fields']['field_facilities']['group_column'] = 'entity_id';
   $handler->display->display_options['fields']['field_facilities']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_facilities']['field_api_classes'] = TRUE;
@@ -247,6 +247,7 @@ function ulf_course_views_default_views() {
   $handler->display->display_options['fields']['field_free']['label'] = '';
   $handler->display->display_options['fields']['field_free']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_free']['alter']['text'] = '<li class="block--list-item">Gratis</li>';
+  $handler->display->display_options['fields']['field_free']['alter']['trim_whitespace'] = TRUE;
   $handler->display->display_options['fields']['field_free']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_free']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['field_free']['hide_empty'] = TRUE;
