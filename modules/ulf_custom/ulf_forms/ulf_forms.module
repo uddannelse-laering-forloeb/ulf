@@ -18,6 +18,7 @@ function ulf_forms_form_alter(&$form, &$form_state, $form_id) {
     $form['actions']['submit']['#attributes']['class'][] = 'header-search-module--submit';
     break;
 
+  // Course node form
   case 'course_node_form':
     $form['#attached']['js'] = array(
       drupal_get_path('module', 'ulf_forms') . '/js/node-form-logics.js',
@@ -26,6 +27,7 @@ function ulf_forms_form_alter(&$form, &$form_state, $form_id) {
     $form['#suffix'] = '</div>';
     break;
 
+  // Course educators node form
   case 'course_educators_node_form':
     $form['#attached']['js'] = array(
       drupal_get_path('module', 'ulf_forms') . '/js/node-form-logics.js',
@@ -34,7 +36,10 @@ function ulf_forms_form_alter(&$form, &$form_state, $form_id) {
     $form['#suffix'] = '</div>';
     break;
 
+  //Search page form
   case 'apachesolr_search_custom_page_search_form':
+    $form['basic']['keys']['#placeholder'] = t('E.g. movie, music etc.');
+    $form['basic']['keys']['#title'] = FALSE;
     $form['#prefix'] = '<div class="search-module"><div class="layout-element-inner"><div class="search-module--form">';
     $form['#suffix'] = '</div></div></div>';
     $form['basic']['submit']['#attributes']['class'][] = 'search-module--submit';
