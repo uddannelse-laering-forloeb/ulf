@@ -102,6 +102,36 @@ function ulf_course_views_default_views() {
   $handler->display->display_options['fields']['field_duration_unit']['field'] = 'field_duration_unit';
   $handler->display->display_options['fields']['field_duration_unit']['label'] = 'excluded';
   $handler->display->display_options['fields']['field_duration_unit']['exclude'] = TRUE;
+  /* Field: Content: Tidspunkt */
+  $handler->display->display_options['fields']['field_period']['id'] = 'field_period';
+  $handler->display->display_options['fields']['field_period']['table'] = 'field_data_field_period';
+  $handler->display->display_options['fields']['field_period']['field'] = 'field_period';
+  $handler->display->display_options['fields']['field_period']['label'] = 'excluded start';
+  $handler->display->display_options['fields']['field_period']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_period']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_period']['alter']['text'] = '[field_period]';
+  $handler->display->display_options['fields']['field_period']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_period']['settings'] = array(
+    'format_type' => 'short',
+    'fromto' => 'value',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+  );
+  /* Field: Content: Tidspunkt */
+  $handler->display->display_options['fields']['field_period_1']['id'] = 'field_period_1';
+  $handler->display->display_options['fields']['field_period_1']['table'] = 'field_data_field_period';
+  $handler->display->display_options['fields']['field_period_1']['field'] = 'field_period';
+  $handler->display->display_options['fields']['field_period_1']['label'] = 'excluded end';
+  $handler->display->display_options['fields']['field_period_1']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_period_1']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_period_1']['settings'] = array(
+    'format_type' => 'short',
+    'fromto' => 'value2',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+  );
   /* Field: Global: Custom text */
   $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
@@ -118,6 +148,9 @@ function ulf_course_views_default_views() {
 <div class="block-inline-module--field-wrapper">
 <div class="block-inline-module--field-label">Varighed</div><div class="block-inline-module--field-text">[field_duration] [field_duration_unit]</div>
 <div class="block-inline-module--field-label">Pris</div><div class="block-inline-module--field-text">[field_collection_price]</div>
+</div>
+<div class="block-inline-module--field-wrapper">
+<div class="block-inline-module--field-label">Tidspunkt</div><div class="block-inline-module--field-text">[field_period] til [field_period_1]</div>
 </div>
 <div class="block-module--field-wrapper">
 <div class="block-module--field-label">Yderligere information</div><div class="block-inline-module--field-text">[field_price_info]</div>
@@ -174,6 +207,9 @@ function ulf_course_views_default_views() {
     t('next ›'),
     t('last »'),
     t('excluded'),
+    t('excluded start'),
+    t('[field_period]'),
+    t('excluded end'),
     t('<div class="block-inline-module--field-wrapper">
 <div class="block-inline-module--field-label">Emneområde</div><div class="block-inline-module--field-text">[field_subject]</div>
 <div class="block-inline-module--field-label">Tilbudstype</div><div class="block-inline-module--field-text">[field_offer_type]</div>
@@ -185,6 +221,9 @@ function ulf_course_views_default_views() {
 <div class="block-inline-module--field-wrapper">
 <div class="block-inline-module--field-label">Varighed</div><div class="block-inline-module--field-text">[field_duration] [field_duration_unit]</div>
 <div class="block-inline-module--field-label">Pris</div><div class="block-inline-module--field-text">[field_collection_price]</div>
+</div>
+<div class="block-inline-module--field-wrapper">
+<div class="block-inline-module--field-label">Tidspunkt</div><div class="block-inline-module--field-text">[field_period] til [field_period_1]</div>
 </div>
 <div class="block-module--field-wrapper">
 <div class="block-module--field-label">Yderligere information</div><div class="block-inline-module--field-text">[field_price_info]</div>
@@ -253,6 +292,19 @@ function ulf_course_views_default_views() {
   $handler->display->display_options['fields']['field_free']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['field_free']['empty_zero'] = TRUE;
   $handler->display->display_options['fields']['field_free']['type'] = 'list_key';
+  /* Field: Content: Hele året */
+  $handler->display->display_options['fields']['field_period_full_year']['id'] = 'field_period_full_year';
+  $handler->display->display_options['fields']['field_period_full_year']['table'] = 'field_data_field_period_full_year';
+  $handler->display->display_options['fields']['field_period_full_year']['field'] = 'field_period_full_year';
+  $handler->display->display_options['fields']['field_period_full_year']['label'] = '';
+  $handler->display->display_options['fields']['field_period_full_year']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_period_full_year']['alter']['text'] = '<li class="block--list-item">Hele året</li>';
+  $handler->display->display_options['fields']['field_period_full_year']['alter']['trim_whitespace'] = TRUE;
+  $handler->display->display_options['fields']['field_period_full_year']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_period_full_year']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_period_full_year']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['field_period_full_year']['empty_zero'] = TRUE;
+  $handler->display->display_options['fields']['field_period_full_year']['type'] = 'list_key';
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
@@ -303,6 +355,7 @@ function ulf_course_views_default_views() {
     t('next ›'),
     t('last »'),
     t('<li class="block--list-item">Gratis</li>'),
+    t('<li class="block--list-item">Hele året</li>'),
     t('All'),
     t('Ulf useful information'),
     t('View panes'),
