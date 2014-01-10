@@ -61,7 +61,8 @@ function ulf_course_field_group_info() {
       4 => 'field_teaser',
       5 => 'field_purpose',
       6 => 'field_educational_goals',
-      7 => 'title',
+      7 => 'field_subjects',
+      8 => 'title',
     ),
     'format_type' => 'div',
     'format_settings' => array(

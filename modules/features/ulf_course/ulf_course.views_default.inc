@@ -298,7 +298,7 @@ function ulf_course_views_default_views() {
   $handler->display->display_options['fields']['field_period_full_year']['field'] = 'field_period_full_year';
   $handler->display->display_options['fields']['field_period_full_year']['label'] = '';
   $handler->display->display_options['fields']['field_period_full_year']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_period_full_year']['alter']['text'] = '<li class="block--list-item">Hele året</li>';
+  $handler->display->display_options['fields']['field_period_full_year']['alter']['text'] = '<li class="block--list-item">Tilgængeligt hele året</li>';
   $handler->display->display_options['fields']['field_period_full_year']['alter']['trim_whitespace'] = TRUE;
   $handler->display->display_options['fields']['field_period_full_year']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_period_full_year']['element_default_classes'] = FALSE;
@@ -355,7 +355,7 @@ function ulf_course_views_default_views() {
     t('next ›'),
     t('last »'),
     t('<li class="block--list-item">Gratis</li>'),
-    t('<li class="block--list-item">Hele året</li>'),
+    t('<li class="block--list-item">Tilgængeligt hele året</li>'),
     t('All'),
     t('Ulf useful information'),
     t('View panes'),
