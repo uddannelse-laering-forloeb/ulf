@@ -34,7 +34,7 @@ function ulf_taxonomies_taxonomy_default_vocabularies() {
       'weight' => 0,
     ),
     'educational_goals' => array(
-      'name' => 'Læringsmål',
+      'name' => 'Fag / Læringsmål',
       'machine_name' => 'educational_goals',
       'description' => '',
       'hierarchy' => 0,

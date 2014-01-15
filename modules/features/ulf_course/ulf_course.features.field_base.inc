@@ -145,36 +145,6 @@ function ulf_course_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_educational_goals'
-  $field_bases['field_educational_goals'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_educational_goals',
-    'foreign keys' => array(),
-    'indexes' => array(
-      'value' => array(
-        0 => 'value',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'list',
-    'settings' => array(
-      'allowed_values' => array(
-        'personal_growth' => 'Alsidig personlig udvikling',
-        'social_skills' => 'Sociale kompetencer',
-        'verbal_development' => 'Sproglig udvikling',
-        'body' => 'Krop og bevægelse',
-        'nature' => 'Natur og naturfænomener',
-        'culture' => 'Kulturelle udtryksformer og værdier',
-      ),
-      'allowed_values_function' => '',
-    ),
-    'translatable' => 0,
-    'type' => 'list_text',
-  );
-
   // Exported field_base: 'field_educational_material'
   $field_bases['field_educational_material'] = array(
     'active' => 1,
@@ -609,6 +579,40 @@ function ulf_course_field_default_field_bases() {
       'allowed_values' => array(
         0 => array(
           'vocabulary' => 'topic',
+          'parent' => 0,
+        ),
+      ),
+    ),
+    'translatable' => 0,
+    'type' => 'taxonomy_term_reference',
+  );
+
+  // Exported field_base: 'field_subjects'
+  $field_bases['field_subjects'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_subjects',
+    'foreign keys' => array(
+      'tid' => array(
+        'columns' => array(
+          'tid' => 'tid',
+        ),
+        'table' => 'taxonomy_term_data',
+      ),
+    ),
+    'indexes' => array(
+      'tid' => array(
+        0 => 'tid',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'taxonomy',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => array(
+          'vocabulary' => 'educational_goals',
           'parent' => 0,
         ),
       ),

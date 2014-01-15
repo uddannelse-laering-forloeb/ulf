@@ -7,6 +7,6 @@ dependencies[] = views
 dependencies[] = views_content
 features[ctools][] = views:views_default:3.0
 features[features_api][] = api:2
-features[views_view][] = ulf_frontpage_newest_courses
+features[views_view][] = frontpage_target_groups
 features[views_view][] = ulf_frontpage_promoted_courses
 features_exclude[dependencies][ctools] = ctools
