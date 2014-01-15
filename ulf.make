@@ -9,7 +9,7 @@ projects[ctools][subdir] = "contrib"
 projects[ctools][version] = "1.x-dev"
 
 projects[date][subdir] = "contrib"
-projects[date][version] = "2.6"
+projects[date][version] = "2.7"
 
 projects[diff][subdir] = "contrib"
 projects[diff][version] = "3.2"
@@ -21,7 +21,7 @@ projects[elements][subdir] = "contrib"
 projects[elements][version] = "1.4"
 
 projects[entity][subdir] = "contrib"
-projects[entity][version] = "1.2"
+projects[entity][version] = "1.3"
 
 projects[entity_view_mode][subdir] = "contrib"
 projects[entity_view_mode][version] = "1.0-rc1"
@@ -61,7 +61,7 @@ projects[libraries][subdir] = "contrib"
 projects[libraries][version] = "2.1"
 
 projects[link][subdir] = "contrib"
-projects[link][version] = "1.1"
+projects[link][version] = "1.2"
 
 projects[module_filter][subdir] = "contrib"
 projects[module_filter][version] = "1.8"
