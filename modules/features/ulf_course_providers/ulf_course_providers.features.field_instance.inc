@@ -50,7 +50,7 @@ function ulf_course_providers_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 18,
+      'weight' => 19,
     ),
   );
 
@@ -84,7 +84,7 @@ function ulf_course_providers_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 6,
+      'weight' => 7,
     ),
   );
 
@@ -118,7 +118,7 @@ function ulf_course_providers_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 8,
+      'weight' => 9,
     ),
   );
 
@@ -155,7 +155,7 @@ function ulf_course_providers_field_default_field_instances() {
       'module' => 'field_collection',
       'settings' => array(),
       'type' => 'field_collection_embed',
-      'weight' => 14,
+      'weight' => 15,
     ),
   );
 
@@ -189,7 +189,7 @@ function ulf_course_providers_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 11,
+      'weight' => 12,
     ),
   );
 
@@ -223,7 +223,7 @@ function ulf_course_providers_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 12,
+      'weight' => 13,
     ),
   );
 
@@ -257,7 +257,7 @@ function ulf_course_providers_field_default_field_instances() {
         'rows' => 3,
       ),
       'type' => 'text_textarea',
-      'weight' => 13,
+      'weight' => 14,
     ),
   );
 
@@ -305,7 +305,7 @@ function ulf_course_providers_field_default_field_instances() {
       'module' => 'html5_tools',
       'settings' => array(),
       'type' => 'urlwidget',
-      'weight' => 10,
+      'weight' => 11,
     ),
   );
 
@@ -349,7 +349,41 @@ function ulf_course_providers_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 19,
+      'weight' => 20,
+    ),
+  );
+
+  // Exported field_instance: 'user-user-field_profile_name'
+  $field_instances['user-user-field_profile_name'] = array(
+    'bundle' => 'user',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 16,
+      ),
+    ),
+    'entity_type' => 'user',
+    'field_name' => 'field_profile_name',
+    'label' => 'Navn',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => 0,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 6,
     ),
   );
 
@@ -383,7 +417,7 @@ function ulf_course_providers_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 17,
+      'weight' => 18,
     ),
   );
 
@@ -415,7 +449,7 @@ function ulf_course_providers_field_default_field_instances() {
       'module' => 'html5_tools',
       'settings' => array(),
       'type' => 'emailwidget',
-      'weight' => 15,
+      'weight' => 16,
     ),
   );
 
@@ -447,7 +481,7 @@ function ulf_course_providers_field_default_field_instances() {
       'module' => 'html5_tools',
       'settings' => array(),
       'type' => 'telwidget',
-      'weight' => 16,
+      'weight' => 17,
     ),
   );
 
@@ -479,7 +513,7 @@ function ulf_course_providers_field_default_field_instances() {
       'module' => 'html5_tools',
       'settings' => array(),
       'type' => 'telwidget',
-      'weight' => 9,
+      'weight' => 10,
     ),
   );
 
@@ -519,7 +553,7 @@ function ulf_course_providers_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 7,
+      'weight' => 8,
     ),
   );
 
@@ -533,6 +567,7 @@ function ulf_course_providers_field_default_field_instances() {
   t('Kort præsentation af forløbsudbyder');
   t('Logo');
   t('Mailadresse');
+  t('Navn');
   t('Postnr.');
   t('Pædagogisk profil');
   t('Telefonnr.');
