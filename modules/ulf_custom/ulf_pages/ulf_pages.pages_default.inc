@@ -1033,7 +1033,7 @@ function ulf_pages_default_page_manager_handlers() {
   $handler->conf = array(
     'title' => 'Panel',
     'no_blocks' => 0,
-    'pipeline' => 'ipe',
+    'pipeline' => 'standard',
     'body_classes_to_remove' => '',
     'body_classes_to_add' => '',
     'css_id' => '',
@@ -2111,7 +2111,7 @@ function ulf_pages_default_page_manager_pages() {
   $handler->conf = array(
     'title' => 'Panel',
     'no_blocks' => 0,
-    'pipeline' => 'ipe',
+    'pipeline' => 'standard',
     'body_classes_to_remove' => '',
     'body_classes_to_add' => '',
     'css_id' => '',
