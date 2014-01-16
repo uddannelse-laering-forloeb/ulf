@@ -56,19 +56,12 @@ function ulf_news_views_default_views() {
   $handler->display->display_options['fields']['title']['element_wrapper_type'] = 'h3';
   $handler->display->display_options['fields']['title']['element_wrapper_class'] = 'block-module--content-label';
   $handler->display->display_options['fields']['title']['element_default_classes'] = FALSE;
-  /* Field: Content: Indhold */
-  $handler->display->display_options['fields']['field_content']['id'] = 'field_content';
-  $handler->display->display_options['fields']['field_content']['table'] = 'field_data_field_content';
-  $handler->display->display_options['fields']['field_content']['field'] = 'field_content';
-  $handler->display->display_options['fields']['field_content']['label'] = '';
-  $handler->display->display_options['fields']['field_content']['alter']['max_length'] = '200';
-  $handler->display->display_options['fields']['field_content']['alter']['ellipsis'] = FALSE;
-  $handler->display->display_options['fields']['field_content']['alter']['trim'] = TRUE;
-  $handler->display->display_options['fields']['field_content']['element_type'] = '0';
-  $handler->display->display_options['fields']['field_content']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_content']['element_wrapper_type'] = 'div';
-  $handler->display->display_options['fields']['field_content']['element_wrapper_class'] = 'block-module--content-element';
-  $handler->display->display_options['fields']['field_content']['element_default_classes'] = FALSE;
+  /* Field: Content: Manchet */
+  $handler->display->display_options['fields']['field_teaser']['id'] = 'field_teaser';
+  $handler->display->display_options['fields']['field_teaser']['table'] = 'field_data_field_teaser';
+  $handler->display->display_options['fields']['field_teaser']['field'] = 'field_teaser';
+  $handler->display->display_options['fields']['field_teaser']['label'] = '';
+  $handler->display->display_options['fields']['field_teaser']['element_label_colon'] = FALSE;
   /* Field: Content: Link */
   $handler->display->display_options['fields']['view_node']['id'] = 'view_node';
   $handler->display->display_options['fields']['view_node']['table'] = 'views_entity_node';
