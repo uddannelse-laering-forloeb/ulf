@@ -19,10 +19,10 @@ function ulf_base_ctools_plugin_api($module = NULL, $api = NULL) {
 function ulf_base_image_default_styles() {
   $styles = array();
 
-  // Exported image style: node_display.
-  $styles['node_display'] = array(
-    'name' => 'node_display',
-    'label' => 'Node display',
+  // Exported image style: panorama.
+  $styles['panorama'] = array(
+    'name' => 'panorama',
+    'label' => 'Panorama',
     'effects' => array(
       1 => array(
         'label' => 'Scale and crop',
@@ -34,8 +34,8 @@ function ulf_base_image_default_styles() {
         'module' => 'image',
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => 770,
-          'height' => 224,
+          'width' => 1000,
+          'height' => 320,
         ),
         'weight' => 1,
       ),

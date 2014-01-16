@@ -11,6 +11,173 @@ function ulf_course_views_default_views() {
   $export = array();
 
   $view = new view();
+  $view->name = 'ulf_node_contact';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'node';
+  $view->human_name = 'Ulf Node Contact';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['row_plugin'] = 'fields';
+  /* Relationship: Content: Author */
+  $handler->display->display_options['relationships']['uid']['id'] = 'uid';
+  $handler->display->display_options['relationships']['uid']['table'] = 'node';
+  $handler->display->display_options['relationships']['uid']['field'] = 'uid';
+  $handler->display->display_options['relationships']['uid']['required'] = TRUE;
+  /* Field: User: Navn */
+  $handler->display->display_options['fields']['field_profile_name']['id'] = 'field_profile_name';
+  $handler->display->display_options['fields']['field_profile_name']['table'] = 'field_data_field_profile_name';
+  $handler->display->display_options['fields']['field_profile_name']['field'] = 'field_profile_name';
+  $handler->display->display_options['fields']['field_profile_name']['relationship'] = 'uid';
+  $handler->display->display_options['fields']['field_profile_name']['label'] = '';
+  $handler->display->display_options['fields']['field_profile_name']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_profile_name']['element_label_colon'] = FALSE;
+  /* Field: User: Address */
+  $handler->display->display_options['fields']['field_profile_address']['id'] = 'field_profile_address';
+  $handler->display->display_options['fields']['field_profile_address']['table'] = 'field_data_field_profile_address';
+  $handler->display->display_options['fields']['field_profile_address']['field'] = 'field_profile_address';
+  $handler->display->display_options['fields']['field_profile_address']['relationship'] = 'uid';
+  $handler->display->display_options['fields']['field_profile_address']['label'] = 'Adresse';
+  $handler->display->display_options['fields']['field_profile_address']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_profile_address']['element_label_colon'] = FALSE;
+  /* Field: User: Postnr. */
+  $handler->display->display_options['fields']['field_profile_postal_code']['id'] = 'field_profile_postal_code';
+  $handler->display->display_options['fields']['field_profile_postal_code']['table'] = 'field_data_field_profile_postal_code';
+  $handler->display->display_options['fields']['field_profile_postal_code']['field'] = 'field_profile_postal_code';
+  $handler->display->display_options['fields']['field_profile_postal_code']['relationship'] = 'uid';
+  $handler->display->display_options['fields']['field_profile_postal_code']['label'] = '';
+  $handler->display->display_options['fields']['field_profile_postal_code']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_profile_postal_code']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_profile_postal_code']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: User: By */
+  $handler->display->display_options['fields']['field_profile_city']['id'] = 'field_profile_city';
+  $handler->display->display_options['fields']['field_profile_city']['table'] = 'field_data_field_profile_city';
+  $handler->display->display_options['fields']['field_profile_city']['field'] = 'field_profile_city';
+  $handler->display->display_options['fields']['field_profile_city']['relationship'] = 'uid';
+  $handler->display->display_options['fields']['field_profile_city']['label'] = '';
+  $handler->display->display_options['fields']['field_profile_city']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_profile_city']['element_label_colon'] = FALSE;
+  /* Field: User: Hjemmeside */
+  $handler->display->display_options['fields']['field_profile_home_page']['id'] = 'field_profile_home_page';
+  $handler->display->display_options['fields']['field_profile_home_page']['table'] = 'field_data_field_profile_home_page';
+  $handler->display->display_options['fields']['field_profile_home_page']['field'] = 'field_profile_home_page';
+  $handler->display->display_options['fields']['field_profile_home_page']['relationship'] = 'uid';
+  $handler->display->display_options['fields']['field_profile_home_page']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_profile_home_page']['click_sort_column'] = 'url';
+  /* Field: User: Telefonnr. */
+  $handler->display->display_options['fields']['field_profile_phone']['id'] = 'field_profile_phone';
+  $handler->display->display_options['fields']['field_profile_phone']['table'] = 'field_data_field_profile_phone';
+  $handler->display->display_options['fields']['field_profile_phone']['field'] = 'field_profile_phone';
+  $handler->display->display_options['fields']['field_profile_phone']['relationship'] = 'uid';
+  $handler->display->display_options['fields']['field_profile_phone']['label'] = 'Telefon';
+  $handler->display->display_options['fields']['field_profile_phone']['exclude'] = TRUE;
+  /* Field: User: Uid */
+  $handler->display->display_options['fields']['uid']['id'] = 'uid';
+  $handler->display->display_options['fields']['uid']['table'] = 'users';
+  $handler->display->display_options['fields']['uid']['field'] = 'uid';
+  $handler->display->display_options['fields']['uid']['relationship'] = 'uid';
+  $handler->display->display_options['fields']['uid']['label'] = '';
+  $handler->display->display_options['fields']['uid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['uid']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['uid']['link_to_user'] = FALSE;
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="">
+  <h3><a href="/user/[uid]">[field_profile_name]</a></h3>
+  <div class="block-module--field-wrapper">
+    <div class="block-module--field-label">Adresse</div>
+    <div class="block-module--field-text--no-space">[field_profile_address]</div> 
+    <div class="block-module--field-text--no-space">[field_profile_postal_code] [field_profile_city]</div>
+  </div>
+  <div class="block-module--field-wrapper">
+    <div class="block-module--field-label">Kontaktinformation</div>
+    <div class="block-module--field-text--no-space">Telefon: [field_profile_phone]</div> 
+    <div class="block-module--field-text--no-space">Hjemmeside: [field_profile_home_page]</div>
+  </div>
+</div>
+';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
+  /* Sort criterion: Content: Post date */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'node';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Contextual filter: Content: Nid */
+  $handler->display->display_options['arguments']['nid']['id'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['table'] = 'node';
+  $handler->display->display_options['arguments']['nid']['field'] = 'nid';
+  $handler->display->display_options['arguments']['nid']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'node';
+  $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+
+  /* Display: Content pane */
+  $handler = $view->new_display('panel_pane', 'Content pane', 'panel_pane_1');
+  $translatables['ulf_node_contact'] = array(
+    t('Master'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('« first'),
+    t('‹ previous'),
+    t('next ›'),
+    t('last »'),
+    t('author'),
+    t('Adresse'),
+    t('Hjemmeside'),
+    t('Telefon'),
+    t('<div class="">
+  <h3><a href="/user/[uid]">[field_profile_name]</a></h3>
+  <div class="block-module--field-wrapper">
+    <div class="block-module--field-label">Adresse</div>
+    <div class="block-module--field-text--no-space">[field_profile_address]</div> 
+    <div class="block-module--field-text--no-space">[field_profile_postal_code] [field_profile_city]</div>
+  </div>
+  <div class="block-module--field-wrapper">
+    <div class="block-module--field-label">Kontaktinformation</div>
+    <div class="block-module--field-text--no-space">Telefon: [field_profile_phone]</div> 
+    <div class="block-module--field-text--no-space">Hjemmeside: [field_profile_home_page]</div>
+  </div>
+</div>
+'),
+    t('All'),
+    t('Content pane'),
+    t('View panes'),
+  );
+  $export['ulf_node_contact'] = $view;
+
+  $view = new view();
   $view->name = 'ulf_practical_info';
   $view->description = '';
   $view->tag = 'default';
