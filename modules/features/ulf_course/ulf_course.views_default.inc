@@ -99,16 +99,18 @@ function ulf_course_views_default_views() {
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = '';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<h3><a href="/user/[uid]">[field_profile_name]</a></h3>
-<div class="block-module--field-wrapper">
-  <div class="block-module--field-label">Adresse</div>
-  <div class="block-inline-module--field-text">[field_profile_address]</div> 
-  <div class="block-inline-module--field-text">[field_profile_postal_code] [field_profile_city]</div>
-</div>
-<div class="block-module--field-wrapper">
-  <div class="block-module--field-label">Kontaktinformation</div>
-  <div class="block-inline-module--field-text">Telefon: [field_profile_phone]</div> 
-  <div class="block-inline-module--field-text">Hjemmeside: [field_profile_home_page]  </div>
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="">
+  <h3><a href="/user/[uid]">[field_profile_name]</a></h3>
+  <div class="block-module--field-wrapper">
+    <div class="block-module--field-label">Adresse</div>
+    <div class="block-module--field-text--no-space">[field_profile_address]</div> 
+    <div class="block-module--field-text--no-space">[field_profile_postal_code] [field_profile_city]</div>
+  </div>
+  <div class="block-module--field-wrapper">
+    <div class="block-module--field-label">Kontaktinformation</div>
+    <div class="block-module--field-text--no-space">Telefon: [field_profile_phone]</div> 
+    <div class="block-module--field-text--no-space">Hjemmeside: [field_profile_home_page]</div>
+  </div>
 </div>
 ';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
@@ -155,16 +157,18 @@ function ulf_course_views_default_views() {
     t('Adresse'),
     t('Hjemmeside'),
     t('Telefon'),
-    t('<h3><a href="/user/[uid]">[field_profile_name]</a></h3>
-<div class="block-module--field-wrapper">
-  <div class="block-module--field-label">Adresse</div>
-  <div class="block-inline-module--field-text">[field_profile_address]</div> 
-  <div class="block-inline-module--field-text">[field_profile_postal_code] [field_profile_city]</div>
-</div>
-<div class="block-module--field-wrapper">
-  <div class="block-module--field-label">Kontaktinformation</div>
-  <div class="block-inline-module--field-text">Telefon: [field_profile_phone]</div> 
-  <div class="block-inline-module--field-text">Hjemmeside: [field_profile_home_page]  </div>
+    t('<div class="">
+  <h3><a href="/user/[uid]">[field_profile_name]</a></h3>
+  <div class="block-module--field-wrapper">
+    <div class="block-module--field-label">Adresse</div>
+    <div class="block-module--field-text--no-space">[field_profile_address]</div> 
+    <div class="block-module--field-text--no-space">[field_profile_postal_code] [field_profile_city]</div>
+  </div>
+  <div class="block-module--field-wrapper">
+    <div class="block-module--field-label">Kontaktinformation</div>
+    <div class="block-module--field-text--no-space">Telefon: [field_profile_phone]</div> 
+    <div class="block-module--field-text--no-space">Hjemmeside: [field_profile_home_page]</div>
+  </div>
 </div>
 '),
     t('All'),
