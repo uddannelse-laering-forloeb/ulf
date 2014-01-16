@@ -105,47 +105,93 @@ function ulf_course_providers_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Field: User: Name */
-  $handler->display->display_options['fields']['name']['id'] = 'name';
-  $handler->display->display_options['fields']['name']['table'] = 'users';
-  $handler->display->display_options['fields']['name']['field'] = 'name';
-  $handler->display->display_options['fields']['name']['label'] = '';
-  $handler->display->display_options['fields']['name']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['name']['alter']['ellipsis'] = FALSE;
+  /* Field: User: Navn */
+  $handler->display->display_options['fields']['field_profile_name']['id'] = 'field_profile_name';
+  $handler->display->display_options['fields']['field_profile_name']['table'] = 'field_data_field_profile_name';
+  $handler->display->display_options['fields']['field_profile_name']['field'] = 'field_profile_name';
+  $handler->display->display_options['fields']['field_profile_name']['label'] = '';
+  $handler->display->display_options['fields']['field_profile_name']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_profile_name']['element_label_colon'] = FALSE;
   /* Field: User: Address */
   $handler->display->display_options['fields']['field_profile_address']['id'] = 'field_profile_address';
   $handler->display->display_options['fields']['field_profile_address']['table'] = 'field_data_field_profile_address';
   $handler->display->display_options['fields']['field_profile_address']['field'] = 'field_profile_address';
+  $handler->display->display_options['fields']['field_profile_address']['exclude'] = TRUE;
   /* Field: User: By */
   $handler->display->display_options['fields']['field_profile_city']['id'] = 'field_profile_city';
   $handler->display->display_options['fields']['field_profile_city']['table'] = 'field_data_field_profile_city';
   $handler->display->display_options['fields']['field_profile_city']['field'] = 'field_profile_city';
+  $handler->display->display_options['fields']['field_profile_city']['exclude'] = TRUE;
   /* Field: User: Hjemmeside */
   $handler->display->display_options['fields']['field_profile_home_page']['id'] = 'field_profile_home_page';
   $handler->display->display_options['fields']['field_profile_home_page']['table'] = 'field_data_field_profile_home_page';
   $handler->display->display_options['fields']['field_profile_home_page']['field'] = 'field_profile_home_page';
+  $handler->display->display_options['fields']['field_profile_home_page']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_profile_home_page']['click_sort_column'] = 'url';
   /* Field: User: Postnr. */
   $handler->display->display_options['fields']['field_profile_postal_code']['id'] = 'field_profile_postal_code';
   $handler->display->display_options['fields']['field_profile_postal_code']['table'] = 'field_data_field_profile_postal_code';
   $handler->display->display_options['fields']['field_profile_postal_code']['field'] = 'field_profile_postal_code';
+  $handler->display->display_options['fields']['field_profile_postal_code']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_profile_postal_code']['settings'] = array(
-    'thousand_separator' => ' ',
+    'thousand_separator' => '',
     'prefix_suffix' => 1,
   );
   /* Field: User: Telefonnr. */
   $handler->display->display_options['fields']['field_profile_phone']['id'] = 'field_profile_phone';
   $handler->display->display_options['fields']['field_profile_phone']['table'] = 'field_data_field_profile_phone';
   $handler->display->display_options['fields']['field_profile_phone']['field'] = 'field_profile_phone';
+  $handler->display->display_options['fields']['field_profile_phone']['exclude'] = TRUE;
   /* Field: User: Træffetid */
   $handler->display->display_options['fields']['field_profile_order_availa']['id'] = 'field_profile_order_availa';
   $handler->display->display_options['fields']['field_profile_order_availa']['table'] = 'field_data_field_profile_order_availa';
   $handler->display->display_options['fields']['field_profile_order_availa']['field'] = 'field_profile_order_availa';
+  $handler->display->display_options['fields']['field_profile_order_availa']['exclude'] = TRUE;
+  /* Field: User: Uid */
+  $handler->display->display_options['fields']['uid']['id'] = 'uid';
+  $handler->display->display_options['fields']['uid']['table'] = 'users';
+  $handler->display->display_options['fields']['uid']['field'] = 'uid';
+  $handler->display->display_options['fields']['uid']['label'] = '';
+  $handler->display->display_options['fields']['uid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['uid']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['uid']['link_to_user'] = FALSE;
+  /* Field: Global: Custom text */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<h3><a href="/user/[uid]">[field_profile_name]</a></h3>
+<div class="block-module--field-wrapper">
+  <div class="block-module--field-label">Adresse</div>
+  <div class="block-inline-module--field-text">[field_profile_address]</div> 
+  <div class="block-inline-module--field-text">[field_profile_postal_code] [field_profile_city]</div>
+</div>
+<div class="block-module--field-wrapper">
+  <div class="block-module--field-label">Kontaktinformation</div>
+  <div class="block-inline-module--field-text">Telefon: [field_profile_phone]</div> 
+  <div class="block-inline-module--field-text">Hjemmeside: [field_profile_home_page]</div>
+</div>
+<div class="block-module--field-wrapper">
+  <div class="block-module--field-label">Træffetid</div>
+  <div class="block-inline-module--field-text">[field_profile_order_availa]</div> 
+</div>
+';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   /* Sort criterion: User: Created date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'users';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Contextual filter: User: Uid */
+  $handler->display->display_options['arguments']['uid']['id'] = 'uid';
+  $handler->display->display_options['arguments']['uid']['table'] = 'users';
+  $handler->display->display_options['arguments']['uid']['field'] = 'uid';
+  $handler->display->display_options['arguments']['uid']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['uid']['default_argument_type'] = 'user';
+  $handler->display->display_options['arguments']['uid']['default_argument_options']['user'] = FALSE;
+  $handler->display->display_options['arguments']['uid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['uid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['uid']['summary_options']['items_per_page'] = '25';
   /* Filter criterion: User: Active */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'users';
@@ -153,6 +199,9 @@ function ulf_course_providers_views_default_views() {
   $handler->display->display_options['filters']['status']['value'] = '1';
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+
+  /* Display: Content pane */
+  $handler = $view->new_display('panel_pane', 'Content pane', 'panel_pane_1');
   $translatables['ulf_user_contact'] = array(
     t('Master'),
     t('more'),
@@ -174,6 +223,25 @@ function ulf_course_providers_views_default_views() {
     t('Postnr.'),
     t('Telefonnr.'),
     t('Træffetid'),
+    t('<h3><a href="/user/[uid]">[field_profile_name]</a></h3>
+<div class="block-module--field-wrapper">
+  <div class="block-module--field-label">Adresse</div>
+  <div class="block-inline-module--field-text">[field_profile_address]</div> 
+  <div class="block-inline-module--field-text">[field_profile_postal_code] [field_profile_city]</div>
+</div>
+<div class="block-module--field-wrapper">
+  <div class="block-module--field-label">Kontaktinformation</div>
+  <div class="block-inline-module--field-text">Telefon: [field_profile_phone]</div> 
+  <div class="block-inline-module--field-text">Hjemmeside: [field_profile_home_page]</div>
+</div>
+<div class="block-module--field-wrapper">
+  <div class="block-module--field-label">Træffetid</div>
+  <div class="block-inline-module--field-text">[field_profile_order_availa]</div> 
+</div>
+'),
+    t('All'),
+    t('Content pane'),
+    t('View panes'),
   );
   $export['ulf_user_contact'] = $view;
 
