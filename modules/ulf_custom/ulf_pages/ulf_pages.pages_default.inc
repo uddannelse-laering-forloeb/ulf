@@ -429,12 +429,18 @@ function ulf_pages_default_page_manager_handlers() {
     $pane->subtype = 'ulf_node_contact-panel_pane_1';
     $pane->shown = TRUE;
     $pane->access = array();
-    $pane->configuration = array();
+    $pane->configuration = array(
+      'override_title' => 1,
+      'override_title_text' => 'Kontakt',
+    );
     $pane->cache = array();
     $pane->style = array(
       'settings' => NULL,
     );
-    $pane->css = array();
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => 'block-module',
+    );
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
