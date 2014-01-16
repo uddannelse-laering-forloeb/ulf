@@ -46,7 +46,7 @@ function ulf_pages_default_page_manager_handlers() {
     ),
   );
   $display = new panels_display();
-  $display->layout = 'node_display';
+  $display->layout = 'node_course_display';
   $display->layout_settings = array();
   $display->panel_settings = array(
     'style_settings' => array(
@@ -342,12 +342,12 @@ function ulf_pages_default_page_manager_handlers() {
     $pane->pid = 'new-11';
     $pane->panel = 'delta';
     $pane->type = 'entity_field';
-    $pane->subtype = 'node:field_material_suggestions';
+    $pane->subtype = 'node:field_educational_goals';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
       'label' => 'title',
-      'formatter' => 'text_default',
+      'formatter' => 'list_default',
       'delta_limit' => 0,
       'delta_offset' => '0',
       'delta_reversed' => FALSE,
@@ -370,7 +370,7 @@ function ulf_pages_default_page_manager_handlers() {
     $pane->pid = 'new-12';
     $pane->panel = 'delta';
     $pane->type = 'entity_field';
-    $pane->subtype = 'node:field_facilities_info';
+    $pane->subtype = 'node:field_material_suggestions';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
@@ -398,15 +398,15 @@ function ulf_pages_default_page_manager_handlers() {
     $pane->pid = 'new-13';
     $pane->panel = 'delta';
     $pane->type = 'entity_field';
-    $pane->subtype = 'node:field_subjects';
+    $pane->subtype = 'node:field_facilities_info';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
       'label' => 'title',
-      'formatter' => 'taxonomy_term_reference_link',
-      'delta_limit' => '0',
+      'formatter' => 'text_default',
+      'delta_limit' => 0,
       'delta_offset' => '0',
-      'delta_reversed' => 0,
+      'delta_reversed' => FALSE,
       'formatter_settings' => array(),
       'context' => 'argument_entity_id:node_1',
       'override_title' => 0,
@@ -443,7 +443,7 @@ function ulf_pages_default_page_manager_handlers() {
         'view_mode' => 'full',
       ),
       'context' => 'argument_entity_id:node_1',
-      'override_title' => 1,
+      'override_title' => 0,
       'override_title_text' => '',
     );
     $pane->cache = array();
@@ -477,7 +477,7 @@ function ulf_pages_default_page_manager_handlers() {
         'view_mode' => 'full',
       ),
       'context' => 'argument_entity_id:node_1',
-      'override_title' => 1,
+      'override_title' => 0,
       'override_title_text' => '',
     );
     $pane->cache = array();
