@@ -129,19 +129,35 @@ function ulf_course_providers_views_default_views() {
   $handler->display->display_options['fields']['field_image']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_image']['settings'] = array(
-    'image_style' => 'thumbnail',
+    'image_style' => 'ulf_list_display',
     'image_link' => '',
   );
+  $handler->display->display_options['fields']['field_image']['delta_limit'] = '1';
   $handler->display->display_options['fields']['field_image']['delta_offset'] = '0';
+  $handler->display->display_options['fields']['field_image']['separator'] = '';
+  /* Field: Content: Edit link */
+  $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
+  $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node']['label'] = '';
+  $handler->display->display_options['fields']['edit_node']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['edit_node']['element_type'] = '0';
+  $handler->display->display_options['fields']['edit_node']['element_label_type'] = '0';
+  $handler->display->display_options['fields']['edit_node']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['edit_node']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['edit_node']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['edit_node']['text'] = 'Redigér dette forløb';
   /* Field: Global: Custom text */
   $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = '';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<h3>[title]</h3>
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<h3 class="search-module--result-header">[title]</h3>
+<div class="search-module--edit-link">[edit_node]</div>
 <div class="search-module--result-image">[field_image]</div>
-<div class="search-module--result-content">[field_full_description]</div>
-[title]
+<div class="search-module--result-content">[field_full_description] <div class="search-module--node-link">[title]</div> </div>
+
+
 ';
   $handler->display->display_options['fields']['nothing']['element_type'] = 'div';
   $handler->display->display_options['fields']['nothing']['element_class'] = 'search-module--result';
@@ -170,9 +186,25 @@ function ulf_course_providers_views_default_views() {
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'course' => 'course',
+  );
 
   /* Display: Content pane */
   $handler = $view->new_display('panel_pane', 'Content pane', 'panel_pane_1');
+  $handler->display->display_options['allow']['use_pager'] = 0;
+  $handler->display->display_options['allow']['items_per_page'] = 0;
+  $handler->display->display_options['allow']['offset'] = 0;
+  $handler->display->display_options['allow']['link_to_view'] = 'link_to_view';
+  $handler->display->display_options['allow']['more_link'] = 0;
+  $handler->display->display_options['allow']['path_override'] = 0;
+  $handler->display->display_options['allow']['title_override'] = 'title_override';
+  $handler->display->display_options['allow']['exposed_form'] = 0;
+  $handler->display->display_options['allow']['fields_override'] = 0;
   $translatables['ulf_course_by_user'] = array(
     t('Master'),
     t('more'),
@@ -188,10 +220,13 @@ function ulf_course_providers_views_default_views() {
     t('‹ previous'),
     t('next ›'),
     t('last »'),
-    t('<h3>[title]</h3>
+    t('Redigér dette forløb'),
+    t('<h3 class="search-module--result-header">[title]</h3>
+<div class="search-module--edit-link">[edit_node]</div>
 <div class="search-module--result-image">[field_image]</div>
-<div class="search-module--result-content">[field_full_description]</div>
-[title]
+<div class="search-module--result-content">[field_full_description] <div class="search-module--node-link">[title]</div> </div>
+
+
 '),
     t('All'),
     t('Content pane'),
@@ -211,6 +246,7 @@ function ulf_course_providers_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['css_class'] = 'block-module--content';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['access']['perm'] = 'access user profiles';
@@ -278,17 +314,17 @@ function ulf_course_providers_views_default_views() {
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '<h3><a href="/user/[uid]">[field_profile_name]</a></h3>
 <div class="block-module--field-wrapper">
   <div class="block-module--field-label">Adresse</div>
-  <div class="block-inline-module--field-text">[field_profile_address]</div> 
-  <div class="block-inline-module--field-text">[field_profile_postal_code] [field_profile_city]</div>
+  <div class="block-module--field-text--no-space">[field_profile_address]</div> 
+  <div class="block-module--field-text">[field_profile_postal_code] [field_profile_city]</div>
 </div>
 <div class="block-module--field-wrapper">
   <div class="block-module--field-label">Kontaktinformation</div>
-  <div class="block-inline-module--field-text">Telefon: [field_profile_phone]</div> 
-  <div class="block-inline-module--field-text">Hjemmeside: [field_profile_home_page]</div>
+  <div class="block-module--field-text--no-space">Telefon: [field_profile_phone]</div> 
+  <div class="block-module--field-text">Hjemmeside: [field_profile_home_page]</div>
 </div>
 <div class="block-module--field-wrapper">
   <div class="block-module--field-label">Træffetid</div>
-  <div class="block-inline-module--field-text">[field_profile_order_availa]</div> 
+  <div class="block-module--field-text">[field_profile_order_availa]</div> 
 </div>
 ';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
@@ -350,17 +386,17 @@ function ulf_course_providers_views_default_views() {
     t('<h3><a href="/user/[uid]">[field_profile_name]</a></h3>
 <div class="block-module--field-wrapper">
   <div class="block-module--field-label">Adresse</div>
-  <div class="block-inline-module--field-text">[field_profile_address]</div> 
-  <div class="block-inline-module--field-text">[field_profile_postal_code] [field_profile_city]</div>
+  <div class="block-module--field-text--no-space">[field_profile_address]</div> 
+  <div class="block-module--field-text">[field_profile_postal_code] [field_profile_city]</div>
 </div>
 <div class="block-module--field-wrapper">
   <div class="block-module--field-label">Kontaktinformation</div>
-  <div class="block-inline-module--field-text">Telefon: [field_profile_phone]</div> 
-  <div class="block-inline-module--field-text">Hjemmeside: [field_profile_home_page]</div>
+  <div class="block-module--field-text--no-space">Telefon: [field_profile_phone]</div> 
+  <div class="block-module--field-text">Hjemmeside: [field_profile_home_page]</div>
 </div>
 <div class="block-module--field-wrapper">
   <div class="block-module--field-label">Træffetid</div>
-  <div class="block-inline-module--field-text">[field_profile_order_availa]</div> 
+  <div class="block-module--field-text">[field_profile_order_availa]</div> 
 </div>
 '),
     t('All'),

@@ -99,21 +99,25 @@ function ulf_course_views_default_views() {
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = '';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="">
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = '<div class="block-module--content">
   <h3><a href="/user/[uid]">[field_profile_name]</a></h3>
   <div class="block-module--field-wrapper">
     <div class="block-module--field-label">Adresse</div>
     <div class="block-module--field-text--no-space">[field_profile_address]</div> 
-    <div class="block-module--field-text--no-space">[field_profile_postal_code] [field_profile_city]</div>
+    <div class="block-module--field-text">[field_profile_postal_code] [field_profile_city]</div>
   </div>
   <div class="block-module--field-wrapper">
     <div class="block-module--field-label">Kontaktinformation</div>
     <div class="block-module--field-text--no-space">Telefon: [field_profile_phone]</div> 
-    <div class="block-module--field-text--no-space">Hjemmeside: [field_profile_home_page]</div>
+    <div class="block-module--field-text">Hjemmeside: [field_profile_home_page]</div>
   </div>
 </div>
 ';
+  $handler->display->display_options['fields']['nothing']['element_type'] = '0';
+  $handler->display->display_options['fields']['nothing']['element_label_type'] = '0';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['nothing']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['nothing']['element_default_classes'] = FALSE;
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
@@ -138,6 +142,15 @@ function ulf_course_views_default_views() {
 
   /* Display: Content pane */
   $handler = $view->new_display('panel_pane', 'Content pane', 'panel_pane_1');
+  $handler->display->display_options['allow']['use_pager'] = 0;
+  $handler->display->display_options['allow']['items_per_page'] = 0;
+  $handler->display->display_options['allow']['offset'] = 0;
+  $handler->display->display_options['allow']['link_to_view'] = 0;
+  $handler->display->display_options['allow']['more_link'] = 0;
+  $handler->display->display_options['allow']['path_override'] = 0;
+  $handler->display->display_options['allow']['title_override'] = 'title_override';
+  $handler->display->display_options['allow']['exposed_form'] = 0;
+  $handler->display->display_options['allow']['fields_override'] = 0;
   $translatables['ulf_node_contact'] = array(
     t('Master'),
     t('more'),
@@ -157,17 +170,17 @@ function ulf_course_views_default_views() {
     t('Adresse'),
     t('Hjemmeside'),
     t('Telefon'),
-    t('<div class="">
+    t('<div class="block-module--content">
   <h3><a href="/user/[uid]">[field_profile_name]</a></h3>
   <div class="block-module--field-wrapper">
     <div class="block-module--field-label">Adresse</div>
     <div class="block-module--field-text--no-space">[field_profile_address]</div> 
-    <div class="block-module--field-text--no-space">[field_profile_postal_code] [field_profile_city]</div>
+    <div class="block-module--field-text">[field_profile_postal_code] [field_profile_city]</div>
   </div>
   <div class="block-module--field-wrapper">
     <div class="block-module--field-label">Kontaktinformation</div>
     <div class="block-module--field-text--no-space">Telefon: [field_profile_phone]</div> 
-    <div class="block-module--field-text--no-space">Hjemmeside: [field_profile_home_page]</div>
+    <div class="block-module--field-text">Hjemmeside: [field_profile_home_page]</div>
   </div>
 </div>
 '),

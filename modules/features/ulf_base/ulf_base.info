@@ -17,7 +17,6 @@ features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:2
 features[image][] = panorama
 features[menu_custom][] = main-menu
-features[menu_custom][] = menu-static-pages
 features[menu_links][] = main-menu_dagtilbud:taxonomy/term/3
 features[menu_links][] = main-menu_forside:<front>
 features[menu_links][] = main-menu_grundskole:taxonomy/term/34
