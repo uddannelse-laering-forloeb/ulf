@@ -22,7 +22,7 @@ function ulf_solr_setup_apachesolr_environments() {
   $environment->index_bundles = array(
     'node' => array(
       0 => 'course',
-      1 => 'course_educators',
+      1 => 'news',
       2 => 'static_page',
     ),
   );

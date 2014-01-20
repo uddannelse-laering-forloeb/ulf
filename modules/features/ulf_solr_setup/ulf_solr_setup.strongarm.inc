@@ -61,9 +61,9 @@ function ulf_solr_setup_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'search_active_modules';
   $strongarm->value = array(
-    '0' => 'node',
-    '1' => 'user',
-    '2' => 'apachesolr_search',
+    0 => 'node',
+    1 => 'user',
+    2 => 'apachesolr_search',
   );
   $export['search_active_modules'] = $strongarm;
 
