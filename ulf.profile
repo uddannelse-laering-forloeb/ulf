@@ -6,7 +6,7 @@
  */
 function ulf_install_tasks_alter(&$tasks, $install_state) {
   print_r($install_state);
-  echo '---;
+  echo '---';
   // Callback for language selection.
   $tasks['install_select_locale']['function'] = 'ulf_locale_selection';
 
@@ -44,7 +44,7 @@ if (!function_exists("system_form_install_configure_form_alter")) {
 function ulf_install_tasks(&$install_state) {
   $ret = array(
     // Update translations.
-    'ulf_import_translation' => array(
+    /*'ulf_import_translation' => array(
       'display_name' => st('Set up translations'),
       'display' => TRUE,
       'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
@@ -55,7 +55,7 @@ function ulf_install_tasks(&$install_state) {
       'display' => TRUE,
       'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
       'type' => 'batch'
-    ),
+    ),*/
   );
   return $ret;
 }
