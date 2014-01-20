@@ -5,18 +5,11 @@
  *
  */
 function ulf_install_tasks_alter(&$tasks, $install_state) {
-  print_r($tasks);
-
-  echo '---------------------------';
-
-  print_r($install_state);
-  echo '---';
   // Callback for language selection.
   $tasks['install_select_locale']['function'] = 'ulf_locale_selection';
 
   // Enable custom solr module.
-  if ($install_state == 'install_finished') {
-    print_r($install_state);
+  if ($install_state['active_task'] == 'install_finished') {
     module_enable(array('ulf_solr_setup'));
   }
 }
