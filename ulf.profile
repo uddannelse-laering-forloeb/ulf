@@ -5,6 +5,10 @@
  *
  */
 function ulf_install_tasks_alter(&$tasks, $install_state) {
+  print_r($tasks);
+
+  echo '---------------------------';
+
   print_r($install_state);
   echo '---';
   // Callback for language selection.
