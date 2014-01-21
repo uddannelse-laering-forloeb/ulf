@@ -36,6 +36,13 @@ function ulf_base_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'access contextual links'.
+  $permissions['access contextual links'] = array(
+    'name' => 'access contextual links',
+    'roles' => array(),
+    'module' => 'contextual',
+  );
+
   // Exported permission: 'access site reports'.
   $permissions['access site reports'] = array(
     'name' => 'access site reports',
@@ -89,6 +96,13 @@ function ulf_base_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'administer shortcuts'.
+  $permissions['administer shortcuts'] = array(
+    'name' => 'administer shortcuts',
+    'roles' => array(),
+    'module' => 'shortcut',
+  );
+
   // Exported permission: 'administer users'.
   $permissions['administer users'] = array(
     'name' => 'administer users',
@@ -124,6 +138,13 @@ function ulf_base_user_default_permissions() {
     'module' => 'user',
   );
 
+  // Exported permission: 'customize shortcut links'.
+  $permissions['customize shortcut links'] = array(
+    'name' => 'customize shortcut links',
+    'roles' => array(),
+    'module' => 'shortcut',
+  );
+
   // Exported permission: 'delete revisions'.
   $permissions['delete revisions'] = array(
     'name' => 'delete revisions',
@@ -138,6 +159,16 @@ function ulf_base_user_default_permissions() {
       'editor' => 'editor',
     ),
     'module' => 'node',
+  );
+
+  // Exported permission: 'switch shortcut sets'.
+  $permissions['switch shortcut sets'] = array(
+    'name' => 'switch shortcut sets',
+    'roles' => array(
+      'course provider' => 'course provider',
+      'editor' => 'editor',
+    ),
+    'module' => 'shortcut',
   );
 
   // Exported permission: 'use panels dashboard'.
