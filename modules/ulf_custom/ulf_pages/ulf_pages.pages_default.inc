@@ -1545,7 +1545,7 @@ function ulf_pages_default_page_manager_handlers() {
   $handler->conf = array(
     'title' => 'Dagtilbud',
     'no_blocks' => 0,
-    'pipeline' => 'ipe',
+    'pipeline' => 'standard',
     'body_classes_to_remove' => '',
     'body_classes_to_add' => '',
     'css_id' => '',
@@ -1608,7 +1608,7 @@ function ulf_pages_default_page_manager_handlers() {
   $handler->conf = array(
     'title' => 'Grundskole',
     'no_blocks' => 0,
-    'pipeline' => 'ipe',
+    'pipeline' => 'standard',
     'body_classes_to_remove' => '',
     'body_classes_to_add' => '',
     'css_id' => '',
@@ -1671,7 +1671,7 @@ function ulf_pages_default_page_manager_handlers() {
   $handler->conf = array(
     'title' => 'Ungdomsuddannelse',
     'no_blocks' => 0,
-    'pipeline' => 'ipe',
+    'pipeline' => 'standard',
     'body_classes_to_remove' => '',
     'body_classes_to_add' => '',
     'css_id' => '',
@@ -1780,7 +1780,7 @@ function ulf_pages_default_page_manager_handlers() {
   $handler->conf = array(
     'title' => 'Course provider',
     'no_blocks' => 0,
-    'pipeline' => 'ipe',
+    'pipeline' => 'standard',
     'body_classes_to_remove' => '',
     'body_classes_to_add' => '',
     'css_id' => '',
@@ -1936,6 +1936,54 @@ function ulf_pages_default_page_manager_handlers() {
     $pane->locks = array();
     $display->content['new-49'] = $pane;
     $display->panels['alpha'][3] = 'new-49';
+    $pane = new stdClass();
+    $pane->pid = 'new-50';
+    $pane->panel = 'beta';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'ulf_user_contact-panel_pane_1';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_title' => 1,
+      'override_title_text' => 'Kontakt',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => 'block-module',
+    );
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $display->content['new-50'] = $pane;
+    $display->panels['beta'][0] = 'new-50';
+    $pane = new stdClass();
+    $pane->pid = 'new-51';
+    $pane->panel = 'gamma';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'ulf_course_by_user-panel_pane_1';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_title' => 1,
+      'override_title_text' => 'Forløb',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => 'page-content',
+    );
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $display->content['new-51'] = $pane;
+    $display->panels['gamma'][0] = 'new-51';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
@@ -2002,7 +2050,7 @@ function ulf_pages_default_page_manager_pages() {
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-50';
+    $pane->pid = 'new-52';
     $pane->panel = 'beta';
     $pane->type = 'views_panes';
     $pane->subtype = 'ulf_frontpage_promoted_courses-panel_pane_1';
@@ -2020,10 +2068,10 @@ function ulf_pages_default_page_manager_pages() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-50'] = $pane;
-    $display->panels['beta'][0] = 'new-50';
+    $display->content['new-52'] = $pane;
+    $display->panels['beta'][0] = 'new-52';
     $pane = new stdClass();
-    $pane->pid = 'new-51';
+    $pane->pid = 'new-53';
     $pane->panel = 'beta';
     $pane->type = 'views_panes';
     $pane->subtype = 'frontpage_target_groups-panel_pane_1';
@@ -2041,10 +2089,10 @@ function ulf_pages_default_page_manager_pages() {
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-51'] = $pane;
-    $display->panels['beta'][1] = 'new-51';
+    $display->content['new-53'] = $pane;
+    $display->panels['beta'][1] = 'new-53';
     $pane = new stdClass();
-    $pane->pid = 'new-52';
+    $pane->pid = 'new-54';
     $pane->panel = 'beta';
     $pane->type = 'views_panes';
     $pane->subtype = 'frontpage_target_groups-panel_pane_2';
@@ -2062,10 +2110,10 @@ function ulf_pages_default_page_manager_pages() {
     $pane->extras = array();
     $pane->position = 2;
     $pane->locks = array();
-    $display->content['new-52'] = $pane;
-    $display->panels['beta'][2] = 'new-52';
+    $display->content['new-54'] = $pane;
+    $display->panels['beta'][2] = 'new-54';
     $pane = new stdClass();
-    $pane->pid = 'new-53';
+    $pane->pid = 'new-55';
     $pane->panel = 'beta';
     $pane->type = 'views_panes';
     $pane->subtype = 'frontpage_target_groups-panel_pane_3';
@@ -2083,10 +2131,10 @@ function ulf_pages_default_page_manager_pages() {
     $pane->extras = array();
     $pane->position = 3;
     $pane->locks = array();
-    $display->content['new-53'] = $pane;
-    $display->panels['beta'][3] = 'new-53';
+    $display->content['new-55'] = $pane;
+    $display->panels['beta'][3] = 'new-55';
     $pane = new stdClass();
-    $pane->pid = 'new-54';
+    $pane->pid = 'new-56';
     $pane->panel = 'gamma';
     $pane->type = 'views_panes';
     $pane->subtype = 'frontpage_news-panel_pane_1';
@@ -2104,8 +2152,8 @@ function ulf_pages_default_page_manager_pages() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-54'] = $pane;
-    $display->panels['gamma'][0] = 'new-54';
+    $display->content['new-56'] = $pane;
+    $display->panels['gamma'][0] = 'new-56';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
