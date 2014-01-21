@@ -36,13 +36,12 @@ function ulf_forms_form_alter(&$form, &$form_state, $form_id) {
     $form['#suffix'] = '</div>';
     break;
 
-  //Search page form
-  case 'apachesolr_search_custom_page_search_form':
-    $form['basic']['keys']['#placeholder'] = t('E.g. movie, music etc.');
-    $form['basic']['keys']['#title'] = '<h1 class="page-title">' . t('Search result') . ': ' .  $form_state['build_info']['args']['1'] . '</h1>';
-    $form['#prefix'] = '<div class="search-module--form">';
-    $form['#suffix'] = '</div>';
-    $form['basic']['submit']['#attributes']['class'][] = 'search-module--submit';
-    break;
+    //Search page form
+    case 'apachesolr_search_custom_page_search_form':
+      $form['basic']['keys']['#title'] = '<h1 class="page-title">' . t('Search result') . ': ' .  $form_state['build_info']['args']['1'] . '</h1>';
+      $form['#prefix'] = '<div class="search-module--form">';
+      $form['#suffix'] = '</div>';
+      $form['basic']['submit']['#attributes']['class'][] = 'search-module--submit';
+      break;
   }
 }
