@@ -58,7 +58,6 @@ function ulf_workflow_user_default_permissions() {
   $permissions['moderate content from needs_review to draft'] = array(
     'name' => 'moderate content from needs_review to draft',
     'roles' => array(
-      'course provider' => 'course provider',
       'editor' => 'editor',
     ),
     'module' => 'workbench_moderation',
