@@ -10,17 +10,17 @@
 function ulf_base_menu_default_menu_links() {
   $menu_links = array();
 
-  // Exported menu link: main-menu_dagtilbud:taxonomy/term/3
-  $menu_links['main-menu_dagtilbud:taxonomy/term/3'] = array(
+  // Exported menu link: main-menu_dagtilbud:search/site/dagtilbud
+  $menu_links['main-menu_dagtilbud:search/site/dagtilbud'] = array(
     'menu_name' => 'main-menu',
-    'link_path' => 'taxonomy/term/3',
-    'router_path' => 'taxonomy/term/%',
+    'link_path' => 'search/site/dagtilbud',
+    'router_path' => 'search/site/%',
     'link_title' => 'Dagtilbud',
     'options' => array(
       'attributes' => array(
         'title' => '',
       ),
-      'identifier' => 'main-menu_dagtilbud:taxonomy/term/3',
+      'identifier' => 'main-menu_dagtilbud:search/site/dagtilbud',
     ),
     'module' => 'menu',
     'hidden' => 0,
@@ -50,17 +50,17 @@ function ulf_base_menu_default_menu_links() {
     'weight' => -50,
     'customized' => 1,
   );
-  // Exported menu link: main-menu_grundskole:taxonomy/term/34
-  $menu_links['main-menu_grundskole:taxonomy/term/34'] = array(
+  // Exported menu link: main-menu_grundskole:search/site/grundskole
+  $menu_links['main-menu_grundskole:search/site/grundskole'] = array(
     'menu_name' => 'main-menu',
-    'link_path' => 'taxonomy/term/34',
-    'router_path' => 'taxonomy/term/%',
+    'link_path' => 'search/site/grundskole',
+    'router_path' => 'search/site/%',
     'link_title' => 'Grundskole',
     'options' => array(
       'attributes' => array(
         'title' => '',
       ),
-      'identifier' => 'main-menu_grundskole:taxonomy/term/34',
+      'identifier' => 'main-menu_grundskole:search/site/grundskole',
     ),
     'module' => 'menu',
     'hidden' => 0,
@@ -70,17 +70,17 @@ function ulf_base_menu_default_menu_links() {
     'weight' => -48,
     'customized' => 1,
   );
-  // Exported menu link: main-menu_ungdomsuddannelse:taxonomy/term/40
-  $menu_links['main-menu_ungdomsuddannelse:taxonomy/term/40'] = array(
+  // Exported menu link: main-menu_ungdomsuddannelse:search/site/ungdomsuddannelse
+  $menu_links['main-menu_ungdomsuddannelse:search/site/ungdomsuddannelse'] = array(
     'menu_name' => 'main-menu',
-    'link_path' => 'taxonomy/term/40',
-    'router_path' => 'taxonomy/term/%',
+    'link_path' => 'search/site/ungdomsuddannelse',
+    'router_path' => 'search/site/%',
     'link_title' => 'Ungdomsuddannelse',
     'options' => array(
       'attributes' => array(
         'title' => '',
       ),
-      'identifier' => 'main-menu_ungdomsuddannelse:taxonomy/term/40',
+      'identifier' => 'main-menu_ungdomsuddannelse:search/site/ungdomsuddannelse',
     ),
     'module' => 'menu',
     'hidden' => 0,

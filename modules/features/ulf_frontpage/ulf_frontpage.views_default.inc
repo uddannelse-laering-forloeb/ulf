@@ -257,7 +257,13 @@ function ulf_frontpage_views_default_views() {
   $handler->display->display_options['fields']['field_target_group']['label'] = '';
   $handler->display->display_options['fields']['field_target_group']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_target_group']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_target_group']['alter']['text'] = '<a href="/taxonomy/term/[field_target_group-tid]" class="teaser-module--label">[field_target_group]</a>';
+  $handler->display->display_options['fields']['field_target_group']['alter']['text'] = '[field_target_group]:';
+  $handler->display->display_options['fields']['field_target_group']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_target_group']['alter']['path'] = 'search/site/[field_target_group]';
+  $handler->display->display_options['fields']['field_target_group']['alter']['replace_spaces'] = TRUE;
+  $handler->display->display_options['fields']['field_target_group']['alter']['path_case'] = 'lower';
+  $handler->display->display_options['fields']['field_target_group']['alter']['trim_whitespace'] = TRUE;
+  $handler->display->display_options['fields']['field_target_group']['alter']['link_class'] = 'teaser-module--label';
   $handler->display->display_options['fields']['field_target_group']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_target_group']['type'] = 'taxonomy_term_reference_plain';
   /* Field: Field: Upload et billede/illustration */
@@ -354,7 +360,7 @@ function ulf_frontpage_views_default_views() {
     t('Asc'),
     t('Desc'),
     t('<a href="/node/[nid]" class="teaser-module--title">[title] </a>'),
-    t('<a href="/taxonomy/term/[field_target_group-tid]" class="teaser-module--label">[field_target_group]</a>'),
+    t('[field_target_group]:'),
     t('<div class="teaser-module--inner">
 <div class="teaser-module--field">
 <div class="teaser-module--image-cut">
