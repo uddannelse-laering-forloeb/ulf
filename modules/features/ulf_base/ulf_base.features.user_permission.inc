@@ -190,6 +190,7 @@ function ulf_base_user_default_permissions() {
   $permissions['view the administration theme'] = array(
     'name' => 'view the administration theme',
     'roles' => array(
+      'course provider' => 'course provider',
       'editor' => 'editor',
     ),
     'module' => 'system',
