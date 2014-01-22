@@ -16,9 +16,6 @@ function ulf_solr_setup_apachesolr_environments() {
   $environment->name = 'Ulf';
   $environment->url = 'http://localhost:8983/solr/ulf_stg';
   $environment->service_class = '';
-  $environment->conf = array(
-    'apachesolr_index_last' => array(),
-  );
   $environment->index_bundles = array(
     'node' => array(
       0 => 'course',
