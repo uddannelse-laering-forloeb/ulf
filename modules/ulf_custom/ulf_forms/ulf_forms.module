@@ -18,7 +18,7 @@ function ulf_forms_form_alter(&$form, &$form_state, $form_id) {
     $form['actions']['submit']['#attributes']['class'][] = 'header-search-module--submit';
     break;
 
-  // Course node form
+  // Course node form.
   case 'course_node_form':
     $form['#attached']['js'] = array(
       drupal_get_path('module', 'ulf_forms') . '/js/node-form-logics.js',
@@ -27,7 +27,7 @@ function ulf_forms_form_alter(&$form, &$form_state, $form_id) {
     $form['#suffix'] = '</div>';
     break;
 
-  // Course educators node form
+  // Course educators node form.
   case 'course_educators_node_form':
     $form['#attached']['js'] = array(
       drupal_get_path('module', 'ulf_forms') . '/js/node-form-logics.js',
@@ -36,12 +36,31 @@ function ulf_forms_form_alter(&$form, &$form_state, $form_id) {
     $form['#suffix'] = '</div>';
     break;
 
-  //Search page form
+  // Search page form.
   case 'apachesolr_search_custom_page_search_form':
     $form['basic']['keys']['#title'] = '<h1 class="page-title">' . t('Search result') . ': ' .  $form_state['build_info']['args']['1'] . '</h1>';
     $form['#prefix'] = '<div class="search-module--form">';
     $form['#suffix'] = '</div>';
     $form['basic']['submit']['#attributes']['class'][] = 'search-module--submit';
+    break;
+
+  // User anonymous forms (Login, request pass and create account)
+  case 'user_pass':
+    $form['#prefix'] = '<div class="form-module--user-login">';
+    $form['#suffix'] = '</div>';
+    $form['actions']['submit']['#attributes']['class'][] = 'form-module--user-submit';
+    break;
+
+  case 'user_register_form':
+    $form['#prefix'] = '<div class="form-module--user-login">';
+    $form['#suffix'] = '</div>';
+    $form['actions']['submit']['#attributes']['class'][] = 'form-module--user-submit';
+    break;
+
+  case 'user_login':
+    $form['#prefix'] = '<div class="form-module--user-login">';
+    $form['#suffix'] = '</div>';
+    $form['actions']['submit']['#attributes']['class'][] = 'form-module--user-submit';
     break;
   }
 }
