@@ -89,6 +89,13 @@ function ulf_base_user_default_permissions() {
     'module' => 'ctools_custom_content',
   );
 
+  // Exported permission: 'administer languages'.
+  $permissions['administer languages'] = array(
+    'name' => 'administer languages',
+    'roles' => array(),
+    'module' => 'locale',
+  );
+
   // Exported permission: 'administer nodes'.
   $permissions['administer nodes'] = array(
     'name' => 'administer nodes',
@@ -173,6 +180,15 @@ function ulf_base_user_default_permissions() {
       'editor' => 'editor',
     ),
     'module' => 'shortcut',
+  );
+
+  // Exported permission: 'translate interface'.
+  $permissions['translate interface'] = array(
+    'name' => 'translate interface',
+    'roles' => array(
+      'editor' => 'editor',
+    ),
+    'module' => 'locale',
   );
 
   // Exported permission: 'use panels dashboard'.
