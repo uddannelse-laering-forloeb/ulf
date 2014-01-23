@@ -171,7 +171,7 @@ function ulf_course_field_default_field_instances() {
       'module' => 'field_collection',
       'settings' => array(),
       'type' => 'field_collection_embed',
-      'weight' => 24,
+      'weight' => 25,
     ),
   );
 
@@ -362,6 +362,55 @@ function ulf_course_field_default_field_instances() {
       'settings' => array(),
       'type' => 'options_select',
       'weight' => 23,
+    ),
+  );
+
+  // Exported field_instance: 'node-course-field_educational_goals'
+  $field_instances['node-course-field_educational_goals'] = array(
+    'bundle' => 'course',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 35,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'node_display' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_educational_goals',
+    'label' => 'Læringsmål',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 21,
     ),
   );
 
@@ -572,7 +621,7 @@ function ulf_course_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 25,
+      'weight' => 9,
     ),
   );
 
@@ -627,7 +676,7 @@ function ulf_course_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 6,
+      'weight' => 5,
     ),
   );
 
@@ -635,7 +684,8 @@ function ulf_course_field_default_field_instances() {
   $field_instances['node-course-field_image'] = array(
     'bundle' => 'course',
     'deleted' => 0,
-    'description' => 'OBS! Det er jeres ansvar at sikre, at der er styr på rettigheder og tilladelser, når I sender billeder til os.',
+    'description' => '<p>OBS! Det er jeres ansvar at sikre, at der er styr på rettigheder og tilladelser, når I sender billeder til os.</p>
+<p>Hvis flere billeder er uploadet vil det øverste billede blive anvendt. Rækkefølgen på billeder kan styres ved at trække i krydset i venstre side.</p>',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -681,7 +731,7 @@ function ulf_course_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_image',
     'label' => 'Upload et billede/illustration',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'alt_field' => 1,
       'default_image' => 22,
@@ -925,7 +975,7 @@ function ulf_course_field_default_field_instances() {
         'year_range' => '-0:+5',
       ),
       'type' => 'date_popup',
-      'weight' => 15,
+      'weight' => 16,
     ),
   );
 
@@ -980,7 +1030,7 @@ function ulf_course_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 16,
+      'weight' => 8,
     ),
   );
 
@@ -1032,7 +1082,7 @@ function ulf_course_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 18,
+      'weight' => 17,
     ),
   );
 
@@ -1253,8 +1303,8 @@ At opnå kendskab til...
     ),
   );
 
-  // Exported field_instance: 'node-course-field_subjects'
-  $field_instances['node-course-field_subjects'] = array(
+  // Exported field_instance: 'node-course-field_subjects_primary_school'
+  $field_instances['node-course-field_subjects_primary_school'] = array(
     'bundle' => 'course',
     'default_value' => NULL,
     'deleted' => 0,
@@ -1265,7 +1315,7 @@ At opnå kendskab til...
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
-        'weight' => 32,
+        'weight' => 33,
       ),
       'full' => array(
         'label' => 'above',
@@ -1287,8 +1337,8 @@ At opnå kendskab til...
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_subjects',
-    'label' => 'Fag/læringsmål',
+    'field_name' => 'field_subjects_primary_school',
+    'label' => 'Fag',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -1298,7 +1348,56 @@ At opnå kendskab til...
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 9,
+      'weight' => 22,
+    ),
+  );
+
+  // Exported field_instance: 'node-course-field_subjects_youth'
+  $field_instances['node-course-field_subjects_youth'] = array(
+    'bundle' => 'course',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 34,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'node_display' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_subjects_youth',
+    'label' => 'Fag',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 23,
     ),
   );
 
@@ -1352,7 +1451,7 @@ At opnå kendskab til...
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 7,
+      'weight' => 27,
     ),
   );
 
@@ -1470,6 +1569,8 @@ At opnå kendskab til...
 </p>');
   t('<p>Beskriv undervisningstilbuddets indhold og forløb så kort og præcist som muligt.</p>
 <p>Her må I gerne henvise til om tilbuddet evt. er målrettet fagenes fælles mål, trinmål, læringsmål, læseplaner m.m. Skriv også gerne om dets form - f.eks. om det er en omvisning, om den er dialogbaseret, om der er værksted, om det er bygget op omkring rollespil osv.</p>');
+  t('<p>OBS! Det er jeres ansvar at sikre, at der er styr på rettigheder og tilladelser, når I sender billeder til os.</p>
+<p>Hvis flere billeder er uploadet vil det øverste billede blive anvendt. Rækkefølgen på billeder kan styres ved at trække i krydset i venstre side.</p>');
   t('<p>Vælg besøg, hvis gruppen går rundt på egen hånd</p>
 <p>Vælg forløb, hvis det er et specifikt, tilrettelagt forløb med en formidler tilknyttet</p>
 ');
@@ -1493,14 +1594,14 @@ At opnå kendskab til...
   t('Evt. yderligere oplysninger til faciliteter');
   t('Evt. yderligere oplysninger til periode');
   t('Evt. yderligere oplysninger til varighed og pris');
-  t('Fag/læringsmål');
+  t('Fag');
   t('Formål / Kort beskrivelse');
   t('Gratis');
   t('Hele året');
   t('Hvilke faciliteter kan I tilbyde?');
   t('Inspirationsmateriale');
+  t('Læringsmål');
   t('Målgruppe');
-  t('OBS! Det er jeres ansvar at sikre, at der er styr på rettigheder og tilladelser, når I sender billeder til os.');
   t('Overordnet målgruppe');
   t('Pris');
   t('Sæt kryds i alle de aldre, som besøget/forløbet er relevant for.');

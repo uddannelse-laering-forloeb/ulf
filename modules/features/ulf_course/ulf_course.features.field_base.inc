@@ -145,6 +145,40 @@ function ulf_course_field_default_field_bases() {
     'type' => 'list_text',
   );
 
+  // Exported field_base: 'field_educational_goals'
+  $field_bases['field_educational_goals'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_educational_goals',
+    'foreign keys' => array(
+      'tid' => array(
+        'columns' => array(
+          'tid' => 'tid',
+        ),
+        'table' => 'taxonomy_term_data',
+      ),
+    ),
+    'indexes' => array(
+      'tid' => array(
+        0 => 'tid',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'taxonomy',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => array(
+          'vocabulary' => 'educational_goals',
+          'parent' => 0,
+        ),
+      ),
+    ),
+    'translatable' => 0,
+    'type' => 'taxonomy_term_reference',
+  );
+
   // Exported field_base: 'field_educational_material'
   $field_bases['field_educational_material'] = array(
     'active' => 1,
@@ -587,13 +621,13 @@ function ulf_course_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_subjects'
-  $field_bases['field_subjects'] = array(
+  // Exported field_base: 'field_subjects_primary_school'
+  $field_bases['field_subjects_primary_school'] = array(
     'active' => 1,
-    'cardinality' => -1,
+    'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_subjects',
+    'field_name' => 'field_subjects_primary_school',
     'foreign keys' => array(
       'tid' => array(
         'columns' => array(
@@ -612,7 +646,41 @@ function ulf_course_field_default_field_bases() {
     'settings' => array(
       'allowed_values' => array(
         0 => array(
-          'vocabulary' => 'educational_goals',
+          'vocabulary' => 'subjects_primary_school',
+          'parent' => 0,
+        ),
+      ),
+    ),
+    'translatable' => 0,
+    'type' => 'taxonomy_term_reference',
+  );
+
+  // Exported field_base: 'field_subjects_youth'
+  $field_bases['field_subjects_youth'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_subjects_youth',
+    'foreign keys' => array(
+      'tid' => array(
+        'columns' => array(
+          'tid' => 'tid',
+        ),
+        'table' => 'taxonomy_term_data',
+      ),
+    ),
+    'indexes' => array(
+      'tid' => array(
+        0 => 'tid',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'taxonomy',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => array(
+          'vocabulary' => 'subjects_youth',
           'parent' => 0,
         ),
       ),

@@ -21,7 +21,7 @@ function ulf_course_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Aktiviteter, baggrundsviden og efterbehandling',
-    'weight' => '7',
+    'weight' => '6',
     'children' => array(
       0 => 'field_activities',
       1 => 'field_background_knowledge',
@@ -36,7 +36,7 @@ function ulf_course_field_group_info() {
         'classes' => 'form-layout--epsilon',
         'description' => '',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'collapsed',
     ),
   );
   $export['group_course_sub|node|course|form'] = $field_group;
@@ -55,10 +55,10 @@ function ulf_course_field_group_info() {
     'weight' => '0',
     'children' => array(
       0 => 'field_full_description',
-      1 => 'field_image',
-      2 => 'field_tags',
-      3 => 'field_target_group',
-      4 => 'field_purpose',
+      1 => 'field_target_group',
+      2 => 'field_purpose',
+      3 => 'field_free',
+      4 => 'field_period_full_year',
       5 => 'field_subjects',
       6 => 'title',
     ),
@@ -91,7 +91,7 @@ function ulf_course_field_group_info() {
   $field_group->parent_name = 'group_practical_information';
   $field_group->data = array(
     'label' => 'Varighed',
-    'weight' => '21',
+    'weight' => '24',
     'children' => array(
       0 => 'field_duration',
       1 => 'field_duration_unit',
@@ -120,7 +120,7 @@ function ulf_course_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Faciliteter',
-    'weight' => '3',
+    'weight' => '4',
     'children' => array(
       0 => 'field_facilities',
       1 => 'field_facilities_info',
@@ -133,7 +133,7 @@ function ulf_course_field_group_info() {
         'classes' => 'form-layout--delta',
         'description' => '',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'collapsed',
     ),
   );
   $export['group_facilities|node|course|form'] = $field_group;
@@ -149,7 +149,7 @@ function ulf_course_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Materialer',
-    'weight' => '4',
+    'weight' => '5',
     'children' => array(
       0 => 'field_educational_material',
       1 => 'field_inspirational_material',
@@ -170,6 +170,34 @@ function ulf_course_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_media|node|course|form';
+  $field_group->group_name = 'group_media';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'course';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Billeder/medier',
+    'weight' => '3',
+    'children' => array(
+      0 => 'field_image',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Billeder/medier',
+      'instance_settings' => array(
+        'required_fields' => 0,
+        'classes' => 'group-media field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'collapsed',
+    ),
+  );
+  $export['group_media|node|course|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_period|node|course|form';
   $field_group->group_name = 'group_period';
   $field_group->entity_type = 'node';
@@ -182,7 +210,6 @@ function ulf_course_field_group_info() {
     'children' => array(
       0 => 'field_period',
       1 => 'field_period_info',
-      2 => 'field_period_full_year',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -192,7 +219,7 @@ function ulf_course_field_group_info() {
         'classes' => 'form-layout--gamma',
         'description' => '',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'collapsed',
     ),
   );
   $export['group_period|node|course|form'] = $field_group;
@@ -215,9 +242,12 @@ function ulf_course_field_group_info() {
       2 => 'field_offer_type',
       3 => 'field_price_info',
       4 => 'field_subject',
-      5 => 'field_target_group_sub',
-      6 => 'field_free',
-      7 => 'group_duration',
+      5 => 'field_tags',
+      6 => 'field_target_group_sub',
+      7 => 'field_subjects_primary_school',
+      8 => 'field_subjects_youth',
+      9 => 'field_educational_goals',
+      10 => 'group_duration',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -227,7 +257,7 @@ function ulf_course_field_group_info() {
         'classes' => 'form-layout--beta',
         'description' => '',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'collapsed',
     ),
   );
   $export['group_practical_information|node|course|form'] = $field_group;
