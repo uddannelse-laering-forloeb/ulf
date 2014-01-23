@@ -73,6 +73,8 @@
     $( ".field-name-field-inspirational-material" ).show();
     $( ".field-name-field-material-suggestions" ).show();
     $( ".field-name-field-educational-goals" ).show();
+    $( ".field-name-field-subjects-primary-school" ).hide();
+    $( ".field-name-field-subjects-youth" ).hide();
 
     // We act on our own classes as well. This is useful for changing help texts (See purpose field for example).
     $( ".is-preschool" ).show();
@@ -94,6 +96,8 @@
     $( ".field-name-field-inspirational-material" ).hide();
     $( ".field-name-field-material-suggestions" ).hide();
     $( ".field-name-field-educational-goals" ).hide();
+    $( ".field-name-field-subjects-primary-school" ).show();
+    $( ".field-name-field-subjects-youth" ).hide();
 
     // We act on our own classes as well. This is useful for changing help texts (See purpose field for example).
     $( ".is-preschool" ).hide();
@@ -115,6 +119,8 @@
     $( ".field-name-field-inspirational-material" ).hide();
     $( ".field-name-field-material-suggestions" ).hide();
     $( ".field-name-field-educational-goals" ).hide();
+    $( ".field-name-field-subjects-primary-school" ).hide();
+    $( ".field-name-field-youth" ).show();
 
     // We act on our own classes as well. This is useful for changing help texts (See purpose field for example).
     $( ".is-preschool" ).hide();
