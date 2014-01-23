@@ -50,7 +50,6 @@ features[field_base][] = field_subjects
 features[field_base][] = field_tags
 features[field_base][] = field_target_group
 features[field_base][] = field_target_group_sub
-features[field_base][] = field_teaser
 features[field_group][] = group_course_sub|node|course|form
 features[field_group][] = group_course|node|course|form
 features[field_group][] = group_duration|node|course|form
