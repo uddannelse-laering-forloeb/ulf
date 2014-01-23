@@ -132,6 +132,8 @@
 
     // When the Target Group selector is changed, change the subgroup options.
     $('.field-name-field-target-group .form-select').change(changeSelection);
+
+    changeSelection();
   });
 
 })(jQuery);
