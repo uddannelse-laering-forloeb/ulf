@@ -15,7 +15,7 @@ function ulf_course_field_default_field_instances() {
     'bundle' => 'course',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Eksempeltekst (bør skiftes, så målgruppen afspejles): Øvelse med håndtering af oldsager, som skal beskrives, tegnes og berøres i grupper. Gåtur til Galgebakken, hvor vi hører om stedets historie (hængninger). På hjemturen samler vi en stok, som skal snittes til en ”Himmelbjergstok” i snitteværksted på Gl. Rye Mølle.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -67,7 +67,7 @@ function ulf_course_field_default_field_instances() {
     'bundle' => 'course',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Eksempeltekst (bør skiftes, så målgruppen afspejles): Skovene omkring Gl. Rye gemmer på mange spor af tidligere tiders udnyttelse af skoven - skoven gav og giver stadig menneskene såvel materialer som oplevelser. Vi hører om fortidens brug af skoven fra bondestenalderens svedjebrug til middelalderens munke.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -119,7 +119,7 @@ function ulf_course_field_default_field_instances() {
     'bundle' => 'course',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Angiv beløbet efterfulgt af afregningsenhed eller vælg \'gratis\'',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -184,7 +184,7 @@ function ulf_course_field_default_field_instances() {
       ),
     ),
     'deleted' => 0,
-    'description' => 'Angiv max. antal deltagere.',
+    'description' => 'Angiv max. antal deltagere',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -252,7 +252,7 @@ function ulf_course_field_default_field_instances() {
       ),
     ),
     'deleted' => 0,
-    'description' => 'Angiv antal.',
+    'description' => 'Angiv antal',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -320,7 +320,7 @@ function ulf_course_field_default_field_instances() {
       ),
     ),
     'deleted' => 0,
-    'description' => 'Angiv enhed.',
+    'description' => 'Angiv enhed',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -370,7 +370,7 @@ function ulf_course_field_default_field_instances() {
     'bundle' => 'course',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Er der undervisningsmateriale tilknyttet besøget/forløbet? Her kan du uploade materialet',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -581,8 +581,8 @@ function ulf_course_field_default_field_instances() {
     'bundle' => 'course',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Beskriv undervisningstilbuddets indhold og forløb så kort og præcist som muligt.
-Her må I gerne henvise til om tilbuddet evt. er målrettet fagenes fælles mål, trinmål, læringsmål, læseplaner m.m. Skriv også gerne om dets form - f.eks. om det er en omvisning, om den er dialogbaseret, om der er værksted, om det er bygget op omkring rollespil osv.',
+    'description' => '<p>Beskriv undervisningstilbuddets indhold og forløb så kort og præcist som muligt.</p>
+<p>Her må I gerne henvise til om tilbuddet evt. er målrettet fagenes fælles mål, trinmål, læringsmål, læseplaner m.m. Skriv også gerne om dets form - f.eks. om det er en omvisning, om den er dialogbaseret, om der er værksted, om det er bygget op omkring rollespil osv.</p>',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -710,7 +710,7 @@ Her må I gerne henvise til om tilbuddet evt. er målrettet fagenes fælles mål
     'bundle' => 'course',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Er der inspirationsmateriale tilknyttet besøget/forløbet? Her kan du uploade materialet.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -817,7 +817,9 @@ Her må I gerne henvise til om tilbuddet evt. er målrettet fagenes fælles mål
     'bundle' => 'course',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => '<p>Vælg besøg, hvis gruppen går rundt på egen hånd</p>
+<p>Vælg forløb, hvis det er et specifikt, tilrettelagt forløb med en formidler tilknyttet</p>
+',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1039,7 +1041,7 @@ Her må I gerne henvise til om tilbuddet evt. er målrettet fagenes fælles mål
     'bundle' => 'course',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Eksempeltekst (bør skiftes, så målgruppen afspejles): Spørg i familien om nogen har gamle ”Himmelbjerg-souvenirs” og lav en lille udstilling i klassen med dem.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1148,13 +1150,13 @@ Her må I gerne henvise til om tilbuddet evt. er målrettet fagenes fælles mål
 Lav en mere uddybende, men stadig kort beskrivelse af, hvad førskolebørn kan opleve/lave hos jer.
 </p>
 <p class="is-school">
-"Skriv jeres pædagogiske overvejelser med dette undervisningstilbud. Følgende formuleringer kan evt. være brugbare:
-
-At eleverne stifter bekendtskab med...
-At eleverne får en forståelse for/indtryk af...
-At eleverne prøver kræfter med...
-At give eleverne læring om...
-At opnå kendskab til..."
+<p>"Skriv jeres pædagogiske overvejelser med dette undervisningstilbud. Følgende formuleringer kan evt. være brugbare:</p>
+<br>
+<p>At eleverne stifter bekendtskab med...</p>
+<p>At eleverne får en forståelse for/indtryk af...</p>
+<p>At eleverne prøver kræfter med...</p>
+<p>At give eleverne læring om...</p>
+<p>At opnå kendskab til..."</p>
 </p>',
     'display' => array(
       'default' => array(
@@ -1513,27 +1515,36 @@ At opnå kendskab til..."
 Lav en mere uddybende, men stadig kort beskrivelse af, hvad førskolebørn kan opleve/lave hos jer.
 </p>
 <p class="is-school">
-"Skriv jeres pædagogiske overvejelser med dette undervisningstilbud. Følgende formuleringer kan evt. være brugbare:
-
-At eleverne stifter bekendtskab med...
-At eleverne får en forståelse for/indtryk af...
-At eleverne prøver kræfter med...
-At give eleverne læring om...
-At opnå kendskab til..."
+<p>"Skriv jeres pædagogiske overvejelser med dette undervisningstilbud. Følgende formuleringer kan evt. være brugbare:</p>
+<br>
+<p>At eleverne stifter bekendtskab med...</p>
+<p>At eleverne får en forståelse for/indtryk af...</p>
+<p>At eleverne prøver kræfter med...</p>
+<p>At give eleverne læring om...</p>
+<p>At opnå kendskab til..."</p>
 </p>');
+  t('<p>Beskriv undervisningstilbuddets indhold og forløb så kort og præcist som muligt.</p>
+<p>Her må I gerne henvise til om tilbuddet evt. er målrettet fagenes fælles mål, trinmål, læringsmål, læseplaner m.m. Skriv også gerne om dets form - f.eks. om det er en omvisning, om den er dialogbaseret, om der er værksted, om det er bygget op omkring rollespil osv.</p>');
+  t('<p>Vælg besøg, hvis gruppen går rundt på egen hånd</p>
+<p>Vælg forløb, hvis det er et specifikt, tilrettelagt forløb med en formidler tilknyttet</p>
+');
   t('Aktiviteter');
-  t('Angiv antal.');
+  t('Angiv antal');
+  t('Angiv beløbet efterfulgt af afregningsenhed eller vælg \'gratis\'');
   t('Angiv en manchet ');
-  t('Angiv enhed.');
-  t('Angiv max. antal deltagere.');
+  t('Angiv enhed');
+  t('Angiv max. antal deltagere');
   t('Antal');
   t('Baggrundsviden');
-  t('Beskriv undervisningstilbuddets indhold og forløb så kort og præcist som muligt.
-Her må I gerne henvise til om tilbuddet evt. er målrettet fagenes fælles mål, trinmål, læringsmål, læseplaner m.m. Skriv også gerne om dets form - f.eks. om det er en omvisning, om den er dialogbaseret, om der er værksted, om det er bygget op omkring rollespil osv.');
   t('Beskrivelse');
   t('Efterbehandling');
+  t('Eksempeltekst (bør skiftes, så målgruppen afspejles): Skovene omkring Gl. Rye gemmer på mange spor af tidligere tiders udnyttelse af skoven - skoven gav og giver stadig menneskene såvel materialer som oplevelser. Vi hører om fortidens brug af skoven fra bondestenalderens svedjebrug til middelalderens munke.');
+  t('Eksempeltekst (bør skiftes, så målgruppen afspejles): Spørg i familien om nogen har gamle ”Himmelbjerg-souvenirs” og lav en lille udstilling i klassen med dem.');
+  t('Eksempeltekst (bør skiftes, så målgruppen afspejles): Øvelse med håndtering af oldsager, som skal beskrives, tegnes og berøres i grupper. Gåtur til Galgebakken, hvor vi hører om stedets historie (hængninger). På hjemturen samler vi en stok, som skal snittes til en ”Himmelbjergstok” i snitteværksted på Gl. Rye Mølle.');
   t('Emneområde');
   t('Emneord');
+  t('Er der inspirationsmateriale tilknyttet besøget/forløbet? Her kan du uploade materialet.');
+  t('Er der undervisningsmateriale tilknyttet besøget/forløbet? Her kan du uploade materialet');
   t('Evt. forslag til forberedelse og/eller efterbehandling i daginstitutionen');
   t('Evt. yderligere oplysninger til faciliteter');
   t('Evt. yderligere oplysninger til periode');
