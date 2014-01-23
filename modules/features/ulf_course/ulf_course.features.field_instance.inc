@@ -1151,7 +1151,6 @@ Lav en mere uddybende, men stadig kort beskrivelse af, hvad førskolebørn kan o
 </p>
 <p class="is-school">
 <p>"Skriv jeres pædagogiske overvejelser med dette undervisningstilbud. Følgende formuleringer kan evt. være brugbare:</p>
-<br>
 <p>At eleverne stifter bekendtskab med...</p>
 <p>At eleverne får en forståelse for/indtryk af...</p>
 <p>At eleverne prøver kræfter med...</p>
@@ -1188,7 +1187,7 @@ Lav en mere uddybende, men stadig kort beskrivelse af, hvad førskolebørn kan o
     'entity_type' => 'node',
     'field_name' => 'field_purpose',
     'label' => 'Formål / Kort beskrivelse',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'text_processing' => 0,
       'user_register_form' => FALSE,
@@ -1463,7 +1462,6 @@ Lav en mere uddybende, men stadig kort beskrivelse af, hvad førskolebørn kan o
 </p>
 <p class="is-school">
 <p>"Skriv jeres pædagogiske overvejelser med dette undervisningstilbud. Følgende formuleringer kan evt. være brugbare:</p>
-<br>
 <p>At eleverne stifter bekendtskab med...</p>
 <p>At eleverne får en forståelse for/indtryk af...</p>
 <p>At eleverne prøver kræfter med...</p>
