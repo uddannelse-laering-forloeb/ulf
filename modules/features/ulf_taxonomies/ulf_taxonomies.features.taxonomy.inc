@@ -33,14 +33,6 @@ function ulf_taxonomies_taxonomy_default_vocabularies() {
       'module' => 'taxonomy',
       'weight' => 0,
     ),
-    'educational_goals' => array(
-      'name' => 'Fag / Læringsmål',
-      'machine_name' => 'educational_goals',
-      'description' => '',
-      'hierarchy' => 0,
-      'module' => 'taxonomy',
-      'weight' => 0,
-    ),
     'offer_type' => array(
       'name' => 'Tilbudstype',
       'machine_name' => 'offer_type',
