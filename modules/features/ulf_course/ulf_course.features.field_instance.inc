@@ -684,7 +684,7 @@ function ulf_course_field_default_field_instances() {
     'required' => 1,
     'settings' => array(
       'alt_field' => 1,
-      'default_image' => 0,
+      'default_image' => 22,
       'file_directory' => 'provider_images',
       'file_extensions' => 'png gif jpg jpeg',
       'max_filesize' => '',
@@ -1150,12 +1150,12 @@ function ulf_course_field_default_field_instances() {
 Lav en mere uddybende, men stadig kort beskrivelse af, hvad førskolebørn kan opleve/lave hos jer.
 </p>
 <p class="is-school">
-<p>"Skriv jeres pædagogiske overvejelser med dette undervisningstilbud. Følgende formuleringer kan evt. være brugbare:</p>
-<p>At eleverne stifter bekendtskab med...</p>
-<p>At eleverne får en forståelse for/indtryk af...</p>
-<p>At eleverne prøver kræfter med...</p>
-<p>At give eleverne læring om...</p>
-<p>At opnå kendskab til..."</p>
+Skriv jeres pædagogiske overvejelser med dette undervisningstilbud. Følgende formuleringer kan evt. være brugbare:<br>
+At eleverne stifter bekendtskab med...<br>
+At eleverne får en forståelse for/indtryk af..<br>.
+At eleverne prøver kræfter med...<br>
+At give eleverne læring om...<br>
+At opnå kendskab til...
 </p>',
     'display' => array(
       'default' => array(
@@ -1461,12 +1461,12 @@ Lav en mere uddybende, men stadig kort beskrivelse af, hvad førskolebørn kan o
 Lav en mere uddybende, men stadig kort beskrivelse af, hvad førskolebørn kan opleve/lave hos jer.
 </p>
 <p class="is-school">
-<p>"Skriv jeres pædagogiske overvejelser med dette undervisningstilbud. Følgende formuleringer kan evt. være brugbare:</p>
-<p>At eleverne stifter bekendtskab med...</p>
-<p>At eleverne får en forståelse for/indtryk af...</p>
-<p>At eleverne prøver kræfter med...</p>
-<p>At give eleverne læring om...</p>
-<p>At opnå kendskab til..."</p>
+Skriv jeres pædagogiske overvejelser med dette undervisningstilbud. Følgende formuleringer kan evt. være brugbare:<br>
+At eleverne stifter bekendtskab med...<br>
+At eleverne får en forståelse for/indtryk af..<br>.
+At eleverne prøver kræfter med...<br>
+At give eleverne læring om...<br>
+At opnå kendskab til...
 </p>');
   t('<p>Beskriv undervisningstilbuddets indhold og forløb så kort og præcist som muligt.</p>
 <p>Her må I gerne henvise til om tilbuddet evt. er målrettet fagenes fælles mål, trinmål, læringsmål, læseplaner m.m. Skriv også gerne om dets form - f.eks. om det er en omvisning, om den er dialogbaseret, om der er værksted, om det er bygget op omkring rollespil osv.</p>');

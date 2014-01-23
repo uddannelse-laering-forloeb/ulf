@@ -120,7 +120,7 @@ function ulf_course_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Faciliteter',
-    'weight' => '4',
+    'weight' => '3',
     'children' => array(
       0 => 'field_facilities',
       1 => 'field_facilities_info',
@@ -137,6 +137,35 @@ function ulf_course_field_group_info() {
     ),
   );
   $export['group_facilities|node|course|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_materials|node|course|form';
+  $field_group->group_name = 'group_materials';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'course';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Materialer',
+    'weight' => '4',
+    'children' => array(
+      0 => 'field_educational_material',
+      1 => 'field_inspirational_material',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Materialer',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'classes' => 'group-materials field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'collapsed',
+    ),
+  );
+  $export['group_materials|node|course|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
