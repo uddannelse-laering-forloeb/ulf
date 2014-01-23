@@ -1456,59 +1456,6 @@ Lav en mere uddybende, men stadig kort beskrivelse af, hvad førskolebørn kan o
     ),
   );
 
-  // Exported field_instance: 'node-course-field_teaser'
-  $field_instances['node-course-field_teaser'] = array(
-    'bundle' => 'course',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Angiv en manchet ',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 15,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 6,
-      ),
-      'node_display' => array(
-        'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 3,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 19,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_teaser',
-    'label' => 'Manchet',
-    'required' => 1,
-    'settings' => array(
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'rows' => 3,
-      ),
-      'type' => 'text_textarea',
-      'weight' => 5,
-    ),
-  );
-
   // Translatables
   // Included for use with string extractors like potx.
   t('<p class="is-preschool">
@@ -1531,7 +1478,6 @@ Lav en mere uddybende, men stadig kort beskrivelse af, hvad førskolebørn kan o
   t('Aktiviteter');
   t('Angiv antal');
   t('Angiv beløbet efterfulgt af afregningsenhed eller vælg \'gratis\'');
-  t('Angiv en manchet ');
   t('Angiv enhed');
   t('Angiv max. antal deltagere');
   t('Antal');
@@ -1555,7 +1501,6 @@ Lav en mere uddybende, men stadig kort beskrivelse af, hvad førskolebørn kan o
   t('Hele året');
   t('Hvilke faciliteter kan I tilbyde?');
   t('Inspirationsmateriale');
-  t('Manchet');
   t('Målgruppe');
   t('OBS! Det er jeres ansvar at sikre, at der er styr på rettigheder og tilladelser, når I sender billeder til os.');
   t('Overordnet målgruppe');

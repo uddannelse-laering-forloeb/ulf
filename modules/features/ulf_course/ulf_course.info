@@ -83,7 +83,6 @@ features[field_instance][] = node-course-field_subjects
 features[field_instance][] = node-course-field_tags
 features[field_instance][] = node-course-field_target_group
 features[field_instance][] = node-course-field_target_group_sub
-features[field_instance][] = node-course-field_teaser
 features[node][] = course
 features[user_permission][] = create course content
 features[user_permission][] = delete any course content
