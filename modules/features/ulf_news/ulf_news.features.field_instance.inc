@@ -59,7 +59,7 @@ function ulf_news_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 1,
+      'weight' => 2,
     ),
   );
 
@@ -125,7 +125,7 @@ function ulf_news_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 2,
+      'weight' => 3,
     ),
   );
 
@@ -178,7 +178,7 @@ function ulf_news_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 6,
+      'weight' => 1,
     ),
   );
 
