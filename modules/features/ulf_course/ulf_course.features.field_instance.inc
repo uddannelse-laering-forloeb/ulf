@@ -48,7 +48,7 @@ function ulf_course_field_default_field_instances() {
     'label' => 'Aktiviteter',
     'required' => 0,
     'settings' => array(
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -100,7 +100,7 @@ function ulf_course_field_default_field_instances() {
     'label' => 'Baggrundsviden',
     'required' => 0,
     'settings' => array(
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -556,7 +556,7 @@ function ulf_course_field_default_field_instances() {
     'label' => 'Evt. yderligere oplysninger til faciliteter',
     'required' => 0,
     'settings' => array(
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -666,7 +666,7 @@ function ulf_course_field_default_field_instances() {
     'label' => 'Beskrivelse',
     'required' => 1,
     'settings' => array(
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -848,7 +848,7 @@ function ulf_course_field_default_field_instances() {
     'label' => 'Evt. forslag til forberedelse og/eller efterbehandling i daginstitutionen',
     'required' => 0,
     'settings' => array(
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1072,7 +1072,7 @@ function ulf_course_field_default_field_instances() {
     'label' => 'Evt. yderligere oplysninger til periode',
     'required' => 0,
     'settings' => array(
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1124,7 +1124,7 @@ function ulf_course_field_default_field_instances() {
     'label' => 'Efterbehandling',
     'required' => 0,
     'settings' => array(
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1177,7 +1177,7 @@ function ulf_course_field_default_field_instances() {
     'label' => 'Evt. yderligere oplysninger til varighed og pris',
     'required' => 0,
     'settings' => array(
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1239,7 +1239,7 @@ At opnå kendskab til...
     'label' => 'Formål / Kort beskrivelse',
     'required' => 1,
     'settings' => array(
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(

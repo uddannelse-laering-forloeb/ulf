@@ -11,6 +11,7 @@ dependencies[] = block
 dependencies[] = contextual
 dependencies[] = ctools
 dependencies[] = ctools_custom_content
+dependencies[] = ckeditor_link
 dependencies[] = date
 dependencies[] = date_api
 dependencies[] = date_popup

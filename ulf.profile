@@ -107,7 +107,7 @@ function ulf_setup_filter_and_wysiwyg() {
       'weight' => -48,
       'status' => 1,
       'settings' => array(
-        'allowed_html' => '<a> <em> <strong> <cite> <blockquote> <code> <ul> <ol> <li> <dl> <dt> <dd>',
+        'allowed_html' => '<a> <em> <u> <strong> <blockquote> <ul> <ol> <li>',
         'filter_html_help' => 1,
         'filter_html_nofollow' => 0,
       ),
@@ -131,7 +131,7 @@ function ulf_setup_filter_and_wysiwyg() {
     'user_choose' => 0,
     'show_toggle' => 1,
     'theme' => 'advanced',
-    'language' => 'en',
+    'language' => 'da',
     'buttons' => array(
       'default' => array(
         'Bold' => 1,
@@ -140,8 +140,13 @@ function ulf_setup_filter_and_wysiwyg() {
         'BulletedList' => 1,
         'NumberedList' => 1,
         'Link' => 1,
-        'PasteText' => 1,
+        'Blockquote' => 1,
+        'Source' => 1,
+        'ShowBlocks' => 1,
       ),
+      'drupal_path' => array(
+        'Link' => 1,
+      )
     ),
     'toolbar_loc' => 'top',
     'toolbar_align' => 'left',
@@ -152,7 +157,7 @@ function ulf_setup_filter_and_wysiwyg() {
     'convert_fonts_to_spans' => 1,
     'remove_linebreaks' => 1,
     'apply_source_formatting' => 0,
-    'paste_auto_cleanup_on_paste' => 0,
+    'paste_auto_cleanup_on_paste' => 1,
     'block_formats' => 'p,address,pre,h2,h3,h4,h5,h6,div',
     'css_setting' => 'theme',
     'css_path' => '',

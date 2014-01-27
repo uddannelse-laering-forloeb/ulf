@@ -8,6 +8,9 @@ projects[apachesolr][version] = "1.6"
 projects[ctools][subdir] = "contrib"
 projects[ctools][version] = "1.x-dev"
 
+projects[ckeditor_link][subdir] = "contrib"
+projects[ckeditor_link][version] = "2.3"
+
 projects[date][subdir] = "contrib"
 projects[date][version] = "2.7"
 
