@@ -984,7 +984,7 @@ function ulf_course_field_default_field_instances() {
     'bundle' => 'course',
     'default_value' => array(
       0 => array(
-        'value' => 0,
+        'value' => 1,
       ),
     ),
     'deleted' => 0,
@@ -1202,7 +1202,7 @@ Lav en mere uddybende, men stadig kort beskrivelse af, hvad førskolebørn kan o
 <p class="is-school">
 Skriv jeres pædagogiske overvejelser med dette undervisningstilbud. Følgende formuleringer kan evt. være brugbare:<br>
 At eleverne stifter bekendtskab med...<br>
-At eleverne får en forståelse for/indtryk af..<br>.
+At eleverne får en forståelse for/indtryk af...<br>
 At eleverne prøver kræfter med...<br>
 At give eleverne læring om...<br>
 At opnå kendskab til...
@@ -1239,7 +1239,7 @@ At opnå kendskab til...
     'label' => 'Formål / Kort beskrivelse',
     'required' => 1,
     'settings' => array(
-      'text_processing' => 1,
+      'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1562,7 +1562,7 @@ Lav en mere uddybende, men stadig kort beskrivelse af, hvad førskolebørn kan o
 <p class="is-school">
 Skriv jeres pædagogiske overvejelser med dette undervisningstilbud. Følgende formuleringer kan evt. være brugbare:<br>
 At eleverne stifter bekendtskab med...<br>
-At eleverne får en forståelse for/indtryk af..<br>.
+At eleverne får en forståelse for/indtryk af...<br>
 At eleverne prøver kræfter med...<br>
 At give eleverne læring om...<br>
 At opnå kendskab til...

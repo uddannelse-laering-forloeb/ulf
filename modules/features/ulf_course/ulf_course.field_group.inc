@@ -59,8 +59,7 @@ function ulf_course_field_group_info() {
       2 => 'field_purpose',
       3 => 'field_free',
       4 => 'field_period_full_year',
-      5 => 'field_subjects',
-      6 => 'title',
+      5 => 'title',
     ),
     'format_type' => 'div',
     'format_settings' => array(

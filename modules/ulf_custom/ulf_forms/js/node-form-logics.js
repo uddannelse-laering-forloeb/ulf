@@ -139,7 +139,39 @@
     // When the Target Group selector is changed, change the subgroup options.
     $('.field-name-field-target-group .form-select').change(changeSelection);
 
+    // Hide help text for preschool as default.
+    $( ".is-preschool" ).hide();
+
+    // Run a check when opening the node form. Used when editing existing nodes.
     changeSelection();
+
+    // Hide group period as default. This is related to the full year checkbox being checked.
+    if($( ".field-name-field-period-full-year .form-checkbox" ).is(":checked")) {
+      $( "#node_course_form_group_period" ).hide();
+    }
+
+    // Hide field collection price if "Free" is checked. This is unchecked as default.
+    if($( ".field-name-field-free .form-checkbox" ).is(":checked")) {
+      $( ".field-name-field-collection-price" ).hide();
+    }
+
+    // When "Full year" is unchecked show field group for duration.
+    $( ".field-name-field-period-full-year .form-checkbox" ).click(function() {
+      if($(this).is(":checked")) {
+        $( "#node_course_form_group_period" ).hide();
+      } else {
+        $( "#node_course_form_group_period" ).show();
+      }
+    });
+
+    // When "Free" is unchecked show field collection "Price".
+    $( ".field-name-field-free .form-checkbox" ).click(function() {
+      if($(this).is(":checked")) {
+        $( ".field-name-field-collection-price" ).hide();
+      } else {
+        $( ".field-name-field-collection-price" ).show();
+      }
+    });
   });
 
 })(jQuery);
