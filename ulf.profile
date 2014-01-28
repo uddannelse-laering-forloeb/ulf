@@ -107,7 +107,7 @@ function ulf_setup_filter_and_wysiwyg() {
       'weight' => -48,
       'status' => 1,
       'settings' => array(
-        'allowed_html' => '<a> <em> <u> <strong> <blockquote> <ul> <ol> <li>',
+        'allowed_html' => '<a> <em> <u> <strong> <blockquote> <ul> <ol> <li> <p>',
         'filter_html_help' => 1,
         'filter_html_nofollow' => 0,
       ),
