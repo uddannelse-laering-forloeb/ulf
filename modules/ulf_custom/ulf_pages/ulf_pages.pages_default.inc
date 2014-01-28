@@ -238,10 +238,13 @@ function ulf_pages_default_page_manager_handlers() {
     $pane->pid = 'new-7';
     $pane->panel = 'beta';
     $pane->type = 'views_panes';
-    $pane->subtype = 'ulf_useful_info-panel_pane_1';
+    $pane->subtype = 'ulf_useful_info_moderation-panel_pane_1';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
+      'arguments' => array(
+        'vid' => '%node:vid',
+      ),
       'override_title' => 1,
       'override_title_text' => 'Nyttigt',
     );
@@ -262,12 +265,15 @@ function ulf_pages_default_page_manager_handlers() {
     $pane->pid = 'new-8';
     $pane->panel = 'beta';
     $pane->type = 'views_panes';
-    $pane->subtype = 'ulf_practical_info-panel_pane_1';
+    $pane->subtype = 'ulf_practical_info_moderation-panel_pane_1';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
       'override_title' => 1,
       'override_title_text' => 'Praktisk information',
+      'arguments' => array(
+        'vid' => '%node:vid',
+      ),
     );
     $pane->cache = array();
     $pane->style = array(
@@ -571,7 +577,7 @@ function ulf_pages_default_page_manager_handlers() {
     $display->content['new-18'] = $pane;
     $display->panels['gamma'][1] = 'new-18';
   $display->hide_title = PANELS_TITLE_NONE;
-  $display->title_pane = 'new-7';
+  $display->title_pane = '0';
   $handler->conf['display'] = $display;
   $handlers['node_view_panel_context'] = $handler;
 
@@ -1128,6 +1134,7 @@ function ulf_pages_default_page_manager_handlers() {
           'settings' => array(
             'type' => array(
               'news' => 'news',
+              'static_page' => 'static_page',
             ),
           ),
           'context' => 'argument_entity_id:node_1',
