@@ -17,9 +17,6 @@ projects[date][version] = "2.7"
 projects[diff][subdir] = "contrib"
 projects[diff][version] = "3.2"
 
-projects[eva][subdir] = "contrib"
-projects[eva][version] = "1.2"
-
 projects[elements][subdir] = "contrib"
 projects[elements][version] = "1.4"
 
