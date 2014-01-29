@@ -7,6 +7,11 @@
 function ulf_install_tasks_alter(&$tasks, $install_state) {
   // Callback for language selection.
   $tasks['install_select_locale']['function'] = 'ulf_locale_selection';
+
+  // Enable custom wysiwyg module.
+  if ($install_state['active_task'] == 'install_finished') {
+    module_enable(array('ulf_wysiwyg'));
+  }
 }
 
 // Set default language to english.
