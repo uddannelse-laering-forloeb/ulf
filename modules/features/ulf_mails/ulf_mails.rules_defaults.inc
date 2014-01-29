@@ -32,7 +32,7 @@ function ulf_mails_default_rules_configuration() {
           "from_name" : "[site:name]",
           "from_mail" : "[site:mail]",
           "subject" : "Your content on [site:name] has been published",
-          "body" : "\u003Cp\u003EThe content u003Ca href=\u0022[node:url]\u0022\u003E[node:title]\u003C\/a\u003E has been published by a site editor.\u003C\/p\u003E\r\n\r\n\u003Cp\u003ESincerely \u003Ca href=\u0022[site:url]\u0022\u003E[site:name]\u003C\/a\u003E\u003C\/p\u003E ",
+          "body" : "\u003Cp\u003EDear [entity-user:name]\u003C\/p\u003E\r\n\r\n\u003Cp\u003EThe content \u003Ca href=\u0022[node:url]\u0022\u003E[node:title]\u003C\/a\u003E has been published by a site editor.\u003C\/p\u003E\r\n\r\n\u003Cp\u003ESincerely \u003Ca href=\u0022[site:url]\u0022\u003E[site:name]\u003C\/a\u003E\u003C\/p\u003E ",
           "language" : [ "node:language" ]
           }
         }
