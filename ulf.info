@@ -22,6 +22,7 @@ dependencies[] = entity_view_mode
 dependencies[] = facetapi
 dependencies[] = features
 dependencies[] = field_group
+dependencies[] = filter
 dependencies[] = field_collection
 dependencies[] = field_ui
 dependencies[] = flag
