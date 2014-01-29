@@ -113,13 +113,13 @@ function ulf_course_providers_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  /* Field: Content: Beskrivelse */
-  $handler->display->display_options['fields']['field_full_description']['id'] = 'field_full_description';
-  $handler->display->display_options['fields']['field_full_description']['table'] = 'field_data_field_full_description';
-  $handler->display->display_options['fields']['field_full_description']['field'] = 'field_full_description';
-  $handler->display->display_options['fields']['field_full_description']['label'] = '';
-  $handler->display->display_options['fields']['field_full_description']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_full_description']['element_label_colon'] = FALSE;
+  /* Field: Content: Formål / Kort beskrivelse */
+  $handler->display->display_options['fields']['field_purpose']['id'] = 'field_purpose';
+  $handler->display->display_options['fields']['field_purpose']['table'] = 'field_data_field_purpose';
+  $handler->display->display_options['fields']['field_purpose']['field'] = 'field_purpose';
+  $handler->display->display_options['fields']['field_purpose']['label'] = '';
+  $handler->display->display_options['fields']['field_purpose']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_purpose']['element_label_colon'] = FALSE;
   /* Field: Field: Upload et billede/illustration */
   $handler->display->display_options['fields']['field_image']['id'] = 'field_image';
   $handler->display->display_options['fields']['field_image']['table'] = 'field_data_field_image';
@@ -147,15 +147,25 @@ function ulf_course_providers_views_default_views() {
   $handler->display->display_options['fields']['edit_node']['element_wrapper_type'] = '0';
   $handler->display->display_options['fields']['edit_node']['element_default_classes'] = FALSE;
   $handler->display->display_options['fields']['edit_node']['text'] = 'Redigér dette forløb';
+  /* Field: Workbench Moderation: State */
+  $handler->display->display_options['fields']['state']['id'] = 'state';
+  $handler->display->display_options['fields']['state']['table'] = 'workbench_moderation_node_history';
+  $handler->display->display_options['fields']['state']['field'] = 'state';
+  $handler->display->display_options['fields']['state']['label'] = '';
+  $handler->display->display_options['fields']['state']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['state']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['state']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['state']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['state']['machine_name'] = 1;
   /* Field: Global: Custom text */
   $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['label'] = '';
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '<h3 class="search-module--result-header">[title]</h3>
-<div class="search-module--edit-link">[edit_node]</div>
+<div class="search-module--edit-link">[edit_node] <span class="is-moderation-[state]">(Ikke publiseret)</span></div>
 <div class="search-module--result-image">[field_image]</div>
-<div class="search-module--result-content">[field_full_description] <div class="search-module--node-link">[title]</div> </div>
+<div class="search-module--result-content">[field_purpose]<div class="search-module--node-link">[title]</div> </div>
 
 
 ';
@@ -179,13 +189,6 @@ function ulf_course_providers_views_default_views() {
   $handler->display->display_options['arguments']['uid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['uid']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['uid']['summary_options']['items_per_page'] = '25';
-  /* Filter criterion: Content: Published */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'node';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = 1;
-  $handler->display->display_options['filters']['status']['group'] = 1;
-  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
   /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
@@ -193,6 +196,10 @@ function ulf_course_providers_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'course' => 'course',
   );
+  /* Filter criterion: Content: Published or admin */
+  $handler->display->display_options['filters']['status_extra']['id'] = 'status_extra';
+  $handler->display->display_options['filters']['status_extra']['table'] = 'node';
+  $handler->display->display_options['filters']['status_extra']['field'] = 'status_extra';
 
   /* Display: Content pane */
   $handler = $view->new_display('panel_pane', 'Content pane', 'panel_pane_1');
@@ -222,9 +229,9 @@ function ulf_course_providers_views_default_views() {
     t('last »'),
     t('Redigér dette forløb'),
     t('<h3 class="search-module--result-header">[title]</h3>
-<div class="search-module--edit-link">[edit_node]</div>
+<div class="search-module--edit-link">[edit_node] <span class="is-moderation-[state]">(Ikke publiseret)</span></div>
 <div class="search-module--result-image">[field_image]</div>
-<div class="search-module--result-content">[field_full_description] <div class="search-module--node-link">[title]</div> </div>
+<div class="search-module--result-content">[field_purpose]<div class="search-module--node-link">[title]</div> </div>
 
 
 '),
