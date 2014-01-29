@@ -45,7 +45,6 @@ function ulf_forms_form_alter(&$form, &$form_state, $form_id) {
       drupal_set_message($latest_log_message);
     }
 
-    $form['options']['log']['#default_value'] = 'Testing';
     $form['#prefix'] = '<div class="node--form is-default-form">';
     $form['#suffix'] = '</div>';
     break;
