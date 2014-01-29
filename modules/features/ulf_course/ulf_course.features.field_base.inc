@@ -148,7 +148,7 @@ function ulf_course_field_default_field_bases() {
   // Exported field_base: 'field_educational_goals'
   $field_bases['field_educational_goals'] = array(
     'active' => 1,
-    'cardinality' => 1,
+    'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_educational_goals',
@@ -624,7 +624,7 @@ function ulf_course_field_default_field_bases() {
   // Exported field_base: 'field_subjects_primary_school'
   $field_bases['field_subjects_primary_school'] = array(
     'active' => 1,
-    'cardinality' => 1,
+    'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_subjects_primary_school',
@@ -658,7 +658,7 @@ function ulf_course_field_default_field_bases() {
   // Exported field_base: 'field_subjects_youth'
   $field_bases['field_subjects_youth'] = array(
     'active' => 1,
-    'cardinality' => 1,
+    'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_subjects_youth',
