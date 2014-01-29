@@ -62,7 +62,7 @@ function ulf_mails_default_rules_configuration() {
           }
         },
         { "mimemail" : {
-            "key" : "publishing_mail",
+            "key" : "moderation_mail",
             "to" : "[entity-user:mail]",
             "from_name" : "[site:name]",
             "from_mail" : "[site:mail]",
