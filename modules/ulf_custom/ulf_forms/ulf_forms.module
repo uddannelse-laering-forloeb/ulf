@@ -25,7 +25,7 @@ function ulf_forms_form_alter(&$form, &$form_state, $form_id) {
     );
 
     // User messages.
-    $message = '<p>' . t('Required fields are marked with a star and can be found in the "Practical information" tab.') . '</p>';
+    $message = '<p>' . t('Required fields are marked with a star and can be found in the "Practical information" field group.') . '</p>';
     $message2 = '<p>' . t('You will need to add an image to your course, before the content can be published.') . '</p>';
     drupal_set_message($message);
     drupal_set_message($message2);

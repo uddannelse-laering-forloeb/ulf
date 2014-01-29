@@ -1,5 +1,5 @@
 name = Ulf workflow
-description = Holds settings related to ulf workflows, rules and views as well.
+description = Holds settings related to ulf workflows, rules and views.
 core = 7.x
 package = Ulf base
 dependencies[] = features
@@ -21,5 +21,4 @@ features[user_permission][] = use workbench_moderation needs review tab
 features[user_permission][] = view all unpublished content
 features[user_permission][] = view moderation history
 features[user_permission][] = view moderation messages
-features[views_view][] = private_user_content
 features_exclude[dependencies][ctools] = ctools
