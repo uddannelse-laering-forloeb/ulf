@@ -63,6 +63,12 @@ projects[libraries][version] = "2.1"
 projects[link][subdir] = "contrib"
 projects[link][version] = "1.2"
 
+projects[mailsystem][subdir] = "contrib"
+projects[mailsystem][version] = "2.34"
+
+projects[mimemail][subdir] = "contrib"
+projects[mimemail][version] = "1.0-beta1"
+
 projects[module_filter][subdir] = "contrib"
 projects[module_filter][version] = "1.8"
 
