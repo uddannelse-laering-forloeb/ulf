@@ -29,8 +29,10 @@ function ulf_mails_default_rules_configuration() {
       { "mimemail" : {
           "key" : "publishing_mail",
           "to" : "[entity-user:mail]",
-          "subject" : "Your content has been published.",
-          "body" : "The content [node:title] has been published by a site administrator.",
+          "from_name" : "[site:name]",
+          "from_mail" : "[site:mail]",
+          "subject" : "Your content on [site:name] has been published",
+          "body" : "\u003Cp\u003EThe content \u0022\u003Ca href=\u0022\/[node:url]\u0022\u003E[node:title]\u003C\/a\u003E\u0022 has been published by a site editor.\u003C\/p\u003E\r\n\r\n\u003Cp\u003ESincerely \u003Ca href=\u0022[site:url]\u0022\u003E[site:name]\u003C\/a\u003E\u003C\/p\u003E ",
           "language" : [ "node:language" ]
           }
         }
