@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @file
+ * @file ulf_moderations.module.
  *
  * Change moderation tabs.
  */
@@ -19,7 +19,7 @@ function ulf_moderations_menu_local_tasks_alter(&$data, $router_item, $root_path
     'node/%/revisions/view',
   );
 
-  // Change tab on selected paths
+  // Change tab on selected paths.
   if (in_array($root_path, $selected_paths)) {
     // Foreach tab.
     foreach($data['tabs']['0']['output'] as $key => $value) {
