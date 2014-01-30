@@ -485,5 +485,12 @@ Your account on [site:name] has been canceled.
   $strongarm->value = 0;
   $export['user_signatures'] = $strongarm;
 
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'workbench_moderation_nodedraft_disabled';
+  $strongarm->value = FALSE;
+  $export['workbench_moderation_nodedraft_disabled'] = $strongarm;
+
   return $export;
 }
