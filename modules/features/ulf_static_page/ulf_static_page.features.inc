@@ -23,7 +23,7 @@ function ulf_static_page_node_info() {
       'base' => 'node_content',
       'description' => t('Used for static content such as guides and information.'),
       'has_title' => '1',
-      'title_label' => t('Title'),
+      'title_label' => t('Titel'),
       'help' => '',
     ),
   );

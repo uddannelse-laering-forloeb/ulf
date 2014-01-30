@@ -49,7 +49,7 @@ function ulf_news_field_default_field_instances() {
     'label' => 'Indhold',
     'required' => 1,
     'settings' => array(
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
