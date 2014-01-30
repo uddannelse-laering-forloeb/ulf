@@ -105,6 +105,15 @@ function ulf_base_user_default_permissions() {
     'module' => 'node',
   );
 
+  // Exported permission: 'administer permissions'.
+  $permissions['administer permissions'] = array(
+    'name' => 'administer permissions',
+    'roles' => array(
+      'editor' => 'editor',
+    ),
+    'module' => 'user',
+  );
+
   // Exported permission: 'administer shortcuts'.
   $permissions['administer shortcuts'] = array(
     'name' => 'administer shortcuts',
@@ -135,6 +144,13 @@ function ulf_base_user_default_permissions() {
     'name' => 'bypass node access',
     'roles' => array(),
     'module' => 'node',
+  );
+
+  // Exported permission: 'cancel account'.
+  $permissions['cancel account'] = array(
+    'name' => 'cancel account',
+    'roles' => array(),
+    'module' => 'user',
   );
 
   // Exported permission: 'change own username'.
@@ -170,6 +186,13 @@ function ulf_base_user_default_permissions() {
       'editor' => 'editor',
     ),
     'module' => 'node',
+  );
+
+  // Exported permission: 'select account cancellation method'.
+  $permissions['select account cancellation method'] = array(
+    'name' => 'select account cancellation method',
+    'roles' => array(),
+    'module' => 'user',
   );
 
   // Exported permission: 'switch shortcut sets'.
