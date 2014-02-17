@@ -50,8 +50,11 @@ projects[google_analytics][version] = "1.4"
 projects[html5_tools][subdir] = "contrib"
 projects[html5_tools][version] = "1.2"
 
+projects[jquery_update][type] = "module"
 projects[jquery_update][subdir] = "contrib"
-projects[jquery_update][version] = "2.3"
+projects[jquery_update][download][type] = "git"
+projects[jquery_update][download][url] = "http://git.drupal.org/project/jquery_update.git"
+projects[jquery_update][download][revision] = "65eecb0"
 
 projects[l10n_update][subdir] = "contrib"
 projects[l10n_update][version] = "1.x-dev"
@@ -74,6 +77,7 @@ projects[module_filter][version] = "1.8"
 
 projects[panels][subdir] = "contrib"
 projects[panels][version] = "3.3"
+projects[panels][patch][] = "https://drupal.org/files/panels.code_.2114599-1.patch"
 
 projects[pathauto][subdir] = "contrib"
 projects[pathauto][version] = "1.2"
