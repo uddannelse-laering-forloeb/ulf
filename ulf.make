@@ -2,9 +2,6 @@ api = 2
 core = 7.x
 
 ; Modules
-projects[apachesolr][subdir] = "contrib"
-projects[apachesolr][version] = "1.6"
-
 projects[ctools][subdir] = "contrib"
 projects[ctools][version] = "1.x-dev"
 
@@ -80,6 +77,18 @@ projects[pathauto][version] = "1.2"
 
 projects[redirect][subdir] = "contrib"
 projects[redirect][version] = "1.0-rc1"
+
+projects[search_api][subdir] = "contrib"
+projects[search_api][version] = "1.11"
+
+projects[search_api_page][subdir] = "contrib"
+projects[search_api_page][version] = "1.0"
+
+projects[search_api_solr][subdir] = "contrib"
+projects[search_api_solr][version] = "1.4"
+
+projects[search_api_spellcheck][subdir] = "contrib"
+projects[search_api_spellcheck][version] = "1.0"
 
 projects[strongarm][subdir] = "contrib"
 projects[strongarm][version] = "2.0"
