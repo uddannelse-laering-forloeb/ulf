@@ -118,10 +118,9 @@ libraries[ckeditor][directory_name] = "ckeditor"
 libraries[ckeditor][destination] = "libraries"
 
 ; Base theme
-projects[respondjs][type] = "theme"
 projects[respondjs][download][type] = "git"
 projects[respondjs][download][url] = "git@github.com:scottjehl/Respond.git"
-projects[respondjs][download][branch] = "libraries"
+projects[respondjs][destination] = "libraries"
 
 ; Base theme
 projects[ulftheme][type] = "theme"
