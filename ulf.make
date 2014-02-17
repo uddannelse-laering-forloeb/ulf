@@ -121,6 +121,7 @@ libraries[ckeditor][destination] = "libraries"
 projects[respondjs][download][type] = "git"
 projects[respondjs][download][url] = "git@github.com:scottjehl/Respond.git"
 projects[respondjs][destination] = "libraries"
+projects[respondjs][type] = "library"
 
 ; Base theme
 projects[ulftheme][type] = "theme"
