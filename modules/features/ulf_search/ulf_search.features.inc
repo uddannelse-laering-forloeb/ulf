@@ -60,7 +60,11 @@ function ulf_search_default_search_api_index() {
         "field_target_group" : { "type" : "integer", "entity_type" : "taxonomy_term" },
         "field_target_group_sub" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_teaser" : { "type" : "text" },
-        "search_api_language" : { "type" : "string" }
+        "search_api_language" : { "type" : "string" },
+        "author:name" : { "type" : "text" },
+        "field_full_description:value" : { "type" : "text" },
+        "field_full_description:format" : { "type" : "text" },
+        "field_target_group:name" : { "type" : "text" }
       },
       "data_alter_callbacks" : {
         "search_api_alter_bundle_filter" : {
@@ -201,14 +205,17 @@ function ulf_search_default_search_api_page() {
       "fields" : {
         "title" : "title",
         "field_purpose" : "field_purpose",
-        "field_teaser" : "field_teaser"
+        "field_teaser" : "field_teaser",
+        "author:name" : "author:name",
+        "field_full_description:value" : "field_full_description:value",
+        "field_full_description:format" : "field_full_description:format",
+        "field_target_group:name" : "field_target_group:name"
       },
       "per_page" : "10",
       "result_page_search_form" : 1,
       "get_per_page" : 0,
       "view_mode" : "search_api_page_result",
-      "language_filter" : [],
-      "search_api_spellcheck" : 1
+      "language_filter" : []
     },
     "enabled" : "1"
   }');
