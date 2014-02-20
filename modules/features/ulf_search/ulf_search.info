@@ -7,7 +7,6 @@ project = ulf_search
 dependencies[] = ctools
 dependencies[] = entity
 dependencies[] = facetapi
-dependencies[] = features_extra
 dependencies[] = fe_block
 dependencies[] = jquery_update
 dependencies[] = search_api
