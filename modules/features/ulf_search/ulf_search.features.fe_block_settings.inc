@@ -40,6 +40,7 @@ function ulf_search_default_fe_block_settings() {
 
   $export['facetapi-9SgU1vbDcyCmChkeI9UXreVqZcNrOn00'] = array(
     'cache' => -1,
+    'custom' => 0,
     'delta' => '9SgU1vbDcyCmChkeI9UXreVqZcNrOn00',
     'module' => 'facetapi',
     'node_types' => array(),
@@ -59,6 +60,8 @@ function ulf_search_default_fe_block_settings() {
         'weight' => 0,
       ),
     ),
+    'title' => '',
+    'visibility' => 0,
   );
 
   $export['facetapi-BOiTNRybGi0EqoVhsAPq2yw0QL1EVZo1'] = array(
