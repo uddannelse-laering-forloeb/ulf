@@ -257,7 +257,7 @@ function ulf_frontpage_views_default_views() {
   $handler->display->display_options['fields']['field_target_group']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_target_group']['alter']['text'] = '[field_target_group]:';
   $handler->display->display_options['fields']['field_target_group']['alter']['make_link'] = TRUE;
-  $handler->display->display_options['fields']['field_target_group']['alter']['path'] = 'search/site/[field_target_group]';
+  $handler->display->display_options['fields']['field_target_group']['alter']['path'] = 'search/[field_target_group]';
   $handler->display->display_options['fields']['field_target_group']['alter']['replace_spaces'] = TRUE;
   $handler->display->display_options['fields']['field_target_group']['alter']['path_case'] = 'lower';
   $handler->display->display_options['fields']['field_target_group']['alter']['trim_whitespace'] = TRUE;
