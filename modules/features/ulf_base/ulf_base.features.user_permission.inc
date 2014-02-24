@@ -96,6 +96,15 @@ function ulf_base_user_default_permissions() {
     'module' => 'locale',
   );
 
+  // Exported permission: 'administer menu'.
+  $permissions['administer menu'] = array(
+    'name' => 'administer menu',
+    'roles' => array(
+      'editor' => 'editor',
+    ),
+    'module' => 'menu',
+  );
+
   // Exported permission: 'administer nodes'.
   $permissions['administer nodes'] = array(
     'name' => 'administer nodes',
