@@ -37,15 +37,21 @@
       // Preschool id.
       case 'Dagtilbud':
         selectionPreschool();
+        // Show practical information group.
+        $('#node_course_form_group_practical_information').show();
         break;
 
       // School id.
       case 'Grundskole':
         selectionPrimarySchool();
+        // Show practical information group.
+        $('#node_course_form_group_practical_information').show();
         break;
 
       // Youth education id.
       case 'Ungdomsuddannelse':
+        // Show practical information group.
+        $('#node_course_form_group_practical_information').show();
         selectionYouth();
         break;
 
@@ -132,6 +138,13 @@
     // Hide filter selection.
     $('.filter-wrapper').hide();
 
+    // We add border width in cs to reach seven theme.
+    $('#node_course_form_group_practical_information').css('border-width', '2px');
+
+    // Hide practical information until target group has been selected.
+    $('#node_course_form_group_practical_information').hide();
+
+
     // Fill the subgroup array.
     $(".field-name-field-target-group-sub .option").each(function() {
       var val   = $(this).siblings("input").val();
@@ -151,19 +164,23 @@
     // Hide group period as default. This is related to the full year checkbox being checked.
     if($( ".field-name-field-period-full-year .form-checkbox" ).is(":checked")) {
       $( "#node_course_form_group_period" ).hide();
+      $( ".field-name-field-period" ).hide();
     }
 
     // Hide field collection price if "Free" is checked. This is unchecked as default.
     if($( ".field-name-field-free .form-checkbox" ).is(":checked")) {
       $( ".field-name-field-collection-price" ).hide();
+      $( ".field-name-field-price" ).hide();
     }
 
     // When "Full year" is unchecked show field group for duration.
     $( ".field-name-field-period-full-year .form-checkbox" ).click(function() {
       if($(this).is(":checked")) {
         $( "#node_course_form_group_period" ).hide();
+        $( ".field-name-field-period" ).hide();
       } else {
         $( "#node_course_form_group_period" ).show();
+        $( ".field-name-field-period" ).show();
       }
     });
 
@@ -171,8 +188,10 @@
     $( ".field-name-field-free .form-checkbox" ).click(function() {
       if($(this).is(":checked")) {
         $( ".field-name-field-collection-price" ).hide();
+        $( ".field-name-field-price" ).hide();
       } else {
         $( ".field-name-field-collection-price" ).show();
+        $( ".field-name-field-price" ).show();
       }
     });
   });

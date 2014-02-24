@@ -95,13 +95,13 @@ function ulf_course_educators_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_relevancy_educators'
-  $field_bases['field_relevancy_educators'] = array(
+  // Exported field_base: 'field_relevance_educators'
+  $field_bases['field_relevance_educators'] = array(
     'active' => 1,
-    'cardinality' => 1,
+    'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_relevancy_educators',
+    'field_name' => 'field_relevance_educators',
     'foreign keys' => array(
       'tid' => array(
         'columns' => array(
@@ -129,13 +129,13 @@ function ulf_course_educators_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_relevancy_prim_school'
-  $field_bases['field_relevancy_prim_school'] = array(
+  // Exported field_base: 'field_relevance_primary_school'
+  $field_bases['field_relevance_primary_school'] = array(
     'active' => 1,
-    'cardinality' => 1,
+    'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_relevancy_prim_school',
+    'field_name' => 'field_relevance_primary_school',
     'foreign keys' => array(
       'tid' => array(
         'columns' => array(
@@ -154,7 +154,7 @@ function ulf_course_educators_field_default_field_bases() {
     'settings' => array(
       'allowed_values' => array(
         0 => array(
-          'vocabulary' => 'course_relevancy_primary_school',
+          'vocabulary' => 'subjects_primary_school',
           'parent' => 0,
         ),
       ),
@@ -163,13 +163,13 @@ function ulf_course_educators_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_relevancy_upper_school'
-  $field_bases['field_relevancy_upper_school'] = array(
+  // Exported field_base: 'field_relevance_upper_school'
+  $field_bases['field_relevance_upper_school'] = array(
     'active' => 1,
-    'cardinality' => 1,
+    'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_relevancy_upper_school',
+    'field_name' => 'field_relevance_upper_school',
     'foreign keys' => array(
       'tid' => array(
         'columns' => array(
@@ -188,7 +188,7 @@ function ulf_course_educators_field_default_field_bases() {
     'settings' => array(
       'allowed_values' => array(
         0 => array(
-          'vocabulary' => 'course_relevancy_upper_school',
+          'vocabulary' => 'subjects_youth',
           'parent' => 0,
         ),
       ),

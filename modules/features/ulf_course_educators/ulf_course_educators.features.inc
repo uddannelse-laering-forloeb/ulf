@@ -26,7 +26,7 @@ function ulf_course_educators_node_info() {
       'base' => 'node_content',
       'description' => t('Kursusforløb målrettet lærere og pædagoger'),
       'has_title' => '1',
-      'title_label' => t('Title'),
+      'title_label' => t('Titel'),
       'help' => '',
     ),
   );

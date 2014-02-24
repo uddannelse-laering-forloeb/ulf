@@ -15,7 +15,7 @@ function ulf_course_educators_field_default_field_instances() {
     'bundle' => 'course_educators',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Angiv oplysninger om, hvordan man tilmelder sig, om kurset er med forplejning osv.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -42,7 +42,7 @@ function ulf_course_educators_field_default_field_instances() {
     'label' => 'Forplejning',
     'required' => 0,
     'settings' => array(
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -61,7 +61,7 @@ function ulf_course_educators_field_default_field_instances() {
     'bundle' => 'course_educators',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Angiv mailadresse på kursets kontaktperson.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -86,7 +86,7 @@ function ulf_course_educators_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_course_contact_mail',
     'label' => 'Email',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'text_processing' => 0,
       'user_register_form' => FALSE,
@@ -96,7 +96,7 @@ function ulf_course_educators_field_default_field_instances() {
       'module' => 'html5_tools',
       'settings' => array(),
       'type' => 'emailwidget',
-      'weight' => 10,
+      'weight' => 43,
     ),
   );
 
@@ -105,7 +105,7 @@ function ulf_course_educators_field_default_field_instances() {
     'bundle' => 'course_educators',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Angiv navn på kursets kontaktperson.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -130,7 +130,7 @@ function ulf_course_educators_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_course_contact_name',
     'label' => 'Navn',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'text_processing' => 0,
       'user_register_form' => FALSE,
@@ -142,7 +142,7 @@ function ulf_course_educators_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 9,
+      'weight' => 42,
     ),
   );
 
@@ -151,7 +151,7 @@ function ulf_course_educators_field_default_field_instances() {
     'bundle' => 'course_educators',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Her kan du uploade materiale til kurset.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -191,7 +191,7 @@ function ulf_course_educators_field_default_field_instances() {
       'module' => 'field_collection',
       'settings' => array(),
       'type' => 'field_collection_embed',
-      'weight' => 3,
+      'weight' => 5,
     ),
   );
 
@@ -240,7 +240,7 @@ function ulf_course_educators_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 8,
+      'weight' => 39,
     ),
   );
 
@@ -249,7 +249,7 @@ function ulf_course_educators_field_default_field_instances() {
     'bundle' => 'course_educators',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Skriv en beskrivelse af kursets indhold',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -274,9 +274,9 @@ function ulf_course_educators_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_full_description',
     'label' => 'Beskrivelse',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -286,7 +286,7 @@ function ulf_course_educators_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 4,
+      'weight' => 3,
     ),
   );
 
@@ -294,7 +294,8 @@ function ulf_course_educators_field_default_field_instances() {
   $field_instances['node-course_educators-field_image'] = array(
     'bundle' => 'course_educators',
     'deleted' => 0,
-    'description' => '',
+    'description' => '<p>OBS! Det er jeres ansvar at sikre, at der er styr på rettigheder og tilladelser, når I sender billeder til os.</p>
+<p>Hvis flere billeder er uploadet vil det øverste billede blive anvendt. Rækkefølgen på billeder kan styres ved at trække i krydset i venstre side.</p>',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -328,14 +329,14 @@ function ulf_course_educators_field_default_field_instances() {
     'label' => 'Upload et billede/illustration',
     'required' => 0,
     'settings' => array(
-      'alt_field' => 0,
+      'alt_field' => 1,
       'default_image' => 0,
-      'file_directory' => '',
+      'file_directory' => 'provider_images',
       'file_extensions' => 'png gif jpg jpeg',
       'max_filesize' => '',
       'max_resolution' => '',
       'min_resolution' => '',
-      'title_field' => 0,
+      'title_field' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -354,7 +355,7 @@ function ulf_course_educators_field_default_field_instances() {
   $field_instances['node-course_educators-field_period'] = array(
     'bundle' => 'course_educators',
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Angiv tidspunkt/periode for kursets afvikling.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -385,7 +386,7 @@ function ulf_course_educators_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_period',
     'label' => 'Tidspunkt',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'default_value' => 'now',
       'default_value2' => 'same',
@@ -405,7 +406,7 @@ function ulf_course_educators_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_popup',
-      'weight' => 5,
+      'weight' => 40,
     ),
   );
 
@@ -456,9 +457,13 @@ function ulf_course_educators_field_default_field_instances() {
   // Exported field_instance: 'node-course_educators-field_price'
   $field_instances['node-course_educators-field_price'] = array(
     'bundle' => 'course_educators',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Angiv kursets pris eller vælg gratis.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -488,7 +493,7 @@ function ulf_course_educators_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_price',
     'label' => 'Pris',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'max' => '',
       'min' => '',
@@ -501,23 +506,23 @@ function ulf_course_educators_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 7,
+      'weight' => 41,
     ),
   );
 
-  // Exported field_instance: 'node-course_educators-field_relevancy_educators'
-  $field_instances['node-course_educators-field_relevancy_educators'] = array(
+  // Exported field_instance: 'node-course_educators-field_relevance_educators'
+  $field_instances['node-course_educators-field_relevance_educators'] = array(
     'bundle' => 'course_educators',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Vuggestue, børnehave, SFO, klub, ungdomsskole, indskoling, mellemtrin, udskoling, ungdomsuddannelse.',
     'display' => array(
       'default' => array(
         'label' => 'above',
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
-        'weight' => 6,
+        'weight' => 17,
       ),
       'node_display' => array(
         'label' => 'above',
@@ -529,11 +534,11 @@ function ulf_course_educators_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 8,
+        'weight' => 0,
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_relevancy_educators',
+    'field_name' => 'field_relevance_educators',
     'label' => 'Kurset er relevant for lærere og pædagoger, der arbejder med målgruppen',
     'required' => 0,
     'settings' => array(
@@ -543,24 +548,24 @@ function ulf_course_educators_field_default_field_instances() {
       'active' => 1,
       'module' => 'options',
       'settings' => array(),
-      'type' => 'options_buttons',
+      'type' => 'options_select',
       'weight' => 6,
     ),
   );
 
-  // Exported field_instance: 'node-course_educators-field_relevancy_prim_school'
-  $field_instances['node-course_educators-field_relevancy_prim_school'] = array(
+  // Exported field_instance: 'node-course_educators-field_relevance_primary_school'
+  $field_instances['node-course_educators-field_relevance_primary_school'] = array(
     'bundle' => 'course_educators',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Vælg omfattede fag for grundskoler.',
     'display' => array(
       'default' => array(
         'label' => 'above',
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
-        'weight' => 4,
+        'weight' => 16,
       ),
       'node_display' => array(
         'label' => 'above',
@@ -572,11 +577,11 @@ function ulf_course_educators_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 12,
+        'weight' => 0,
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_relevancy_prim_school',
+    'field_name' => 'field_relevance_primary_school',
     'label' => 'Kurset er relevant for lærere, der underviser fagene',
     'required' => 0,
     'settings' => array(
@@ -586,24 +591,24 @@ function ulf_course_educators_field_default_field_instances() {
       'active' => 1,
       'module' => 'options',
       'settings' => array(),
-      'type' => 'options_buttons',
+      'type' => 'options_select',
       'weight' => 4,
     ),
   );
 
-  // Exported field_instance: 'node-course_educators-field_relevancy_upper_school'
-  $field_instances['node-course_educators-field_relevancy_upper_school'] = array(
+  // Exported field_instance: 'node-course_educators-field_relevance_upper_school'
+  $field_instances['node-course_educators-field_relevance_upper_school'] = array(
     'bundle' => 'course_educators',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Vælg omfattede fag for ungdomsuddannelser.',
     'display' => array(
       'default' => array(
         'label' => 'above',
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
-        'weight' => 5,
+        'weight' => 15,
       ),
       'node_display' => array(
         'label' => 'above',
@@ -615,11 +620,11 @@ function ulf_course_educators_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 13,
+        'weight' => 0,
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_relevancy_upper_school',
+    'field_name' => 'field_relevance_upper_school',
     'label' => 'Kurset er relevant for undervisere i fagene',
     'required' => 0,
     'settings' => array(
@@ -629,7 +634,7 @@ function ulf_course_educators_field_default_field_instances() {
       'active' => 1,
       'module' => 'options',
       'settings' => array(),
-      'type' => 'options_buttons',
+      'type' => 'options_select',
       'weight' => 5,
     ),
   );
@@ -639,7 +644,7 @@ function ulf_course_educators_field_default_field_instances() {
     'bundle' => 'course_educators',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Angiv kursets emneområde, vælg gerne flere.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -665,7 +670,7 @@ function ulf_course_educators_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_subject',
     'label' => 'Emneområde',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
@@ -674,26 +679,39 @@ function ulf_course_educators_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 3,
+      'weight' => 2,
     ),
   );
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('<p>OBS! Det er jeres ansvar at sikre, at der er styr på rettigheder og tilladelser, når I sender billeder til os.</p>
+<p>Hvis flere billeder er uploadet vil det øverste billede blive anvendt. Rækkefølgen på billeder kan styres ved at trække i krydset i venstre side.</p>');
+  t('Angiv kursets emneområde, vælg gerne flere.');
+  t('Angiv kursets pris eller vælg gratis.');
+  t('Angiv mailadresse på kursets kontaktperson.');
+  t('Angiv navn på kursets kontaktperson.');
+  t('Angiv oplysninger om, hvordan man tilmelder sig, om kurset er med forplejning osv.');
+  t('Angiv tidspunkt/periode for kursets afvikling.');
   t('Beskrivelse');
   t('Email');
   t('Emneområde');
   t('Forplejning');
   t('Gratis');
   t('Hele året');
+  t('Her kan du uploade materiale til kurset.');
   t('Kurset er relevant for lærere og pædagoger, der arbejder med målgruppen');
   t('Kurset er relevant for lærere, der underviser fagene');
   t('Kurset er relevant for undervisere i fagene');
   t('Navn');
   t('Pris');
+  t('Skriv en beskrivelse af kursets indhold');
   t('Tidspunkt');
   t('Undervisningsmateriale');
   t('Upload et billede/illustration');
+  t('Vuggestue, børnehave, SFO, klub, ungdomsskole, indskoling, mellemtrin, udskoling, ungdomsuddannelse.');
+  t('Vælg omfattede fag for grundskoler.');
+  t('Vælg omfattede fag for ungdomsuddannelser.');
 
   return $field_instances;
 }

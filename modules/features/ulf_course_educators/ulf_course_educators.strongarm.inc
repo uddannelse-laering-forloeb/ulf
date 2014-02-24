@@ -54,10 +54,10 @@ function ulf_course_educators_strongarm() {
           'weight' => '1',
         ),
         'path' => array(
-          'weight' => '4',
+          'weight' => '6',
         ),
         'redirect' => array(
-          'weight' => '5',
+          'weight' => '7',
         ),
       ),
       'display' => array(),
