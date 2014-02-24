@@ -17,22 +17,6 @@ function ulf_taxonomies_taxonomy_default_vocabularies() {
       'module' => 'taxonomy',
       'weight' => 0,
     ),
-    'course_relevancy_primary_school' => array(
-      'name' => 'Kursus relevans (skole)',
-      'machine_name' => 'course_relevancy_primary_school',
-      'description' => '',
-      'hierarchy' => 0,
-      'module' => 'taxonomy',
-      'weight' => 0,
-    ),
-    'course_relevancy_upper_school' => array(
-      'name' => 'Kursus relevans (ungdomsuddannelser)',
-      'machine_name' => 'course_relevancy_upper_school',
-      'description' => '',
-      'hierarchy' => 0,
-      'module' => 'taxonomy',
-      'weight' => 0,
-    ),
     'educational_goals' => array(
       'name' => 'Læringsmål',
       'machine_name' => 'educational_goals',

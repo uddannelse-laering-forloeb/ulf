@@ -1,13 +1,13 @@
 <?php
 /**
  * @file
- * ulf_taxonomies.features.uuid_term.inc
+ * ulf_taxonomy_terms.features.uuid_term.inc
  */
 
 /**
  * Implements hook_uuid_features_default_terms().
  */
-function ulf_taxonomies_uuid_features_default_terms() {
+function ulf_taxonomy_terms_uuid_features_default_terms() {
   $terms = array();
 
   $terms[] = array(

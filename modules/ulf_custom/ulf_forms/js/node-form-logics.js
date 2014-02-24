@@ -129,6 +129,9 @@
 
   // Called when the document has finished loading.
   $(document).ready(function() {
+    // Hide filter selection.
+    $('.filter-wrapper').hide();
+
     // Fill the subgroup array.
     $(".field-name-field-target-group-sub .option").each(function() {
       var val   = $(this).siblings("input").val();

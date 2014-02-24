@@ -111,20 +111,6 @@ function ulf_base_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'pathauto_taxonomy_term_course_relevancy_primary_school_pattern';
-  $strongarm->value = '';
-  $export['pathauto_taxonomy_term_course_relevancy_primary_school_pattern'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'pathauto_taxonomy_term_course_relevancy_upper_school_pattern';
-  $strongarm->value = '';
-  $export['pathauto_taxonomy_term_course_relevancy_upper_school_pattern'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'pathauto_taxonomy_term_educational_goals_pattern';
   $strongarm->value = '';
   $export['pathauto_taxonomy_term_educational_goals_pattern'] = $strongarm;
