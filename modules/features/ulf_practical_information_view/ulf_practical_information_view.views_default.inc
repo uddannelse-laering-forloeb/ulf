@@ -25,28 +25,15 @@ function ulf_practical_information_view_views_default_views() {
   $handler->display->display_options['title'] = 'Practical information';
   $handler->display->display_options['css_class'] = 'block-inline-module--content';
   $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['use_more_text'] = 'mere';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Udfør';
-  $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Gendan';
-  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Sortér efter';
-  $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'Stigende';
-  $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Faldende';
   $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Antal elementer';
-  $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all_label'] = '- Alle -';
-  $handler->display->display_options['pager']['options']['expose']['offset_label'] = 'Forskydning';
-  $handler->display->display_options['pager']['options']['tags']['first'] = '« første';
-  $handler->display->display_options['pager']['options']['tags']['previous'] = '‹ forrige';
-  $handler->display->display_options['pager']['options']['tags']['next'] = 'næste ›';
-  $handler->display->display_options['pager']['options']['tags']['last'] = 'sidste »';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
-  /* Felt: Indhold: Antal */
+  /* Field: Content: Antal */
   $handler->display->display_options['fields']['field_count']['id'] = 'field_count';
   $handler->display->display_options['fields']['field_count']['table'] = 'field_data_field_count';
   $handler->display->display_options['fields']['field_count']['field'] = 'field_count';
@@ -57,7 +44,7 @@ function ulf_practical_information_view_views_default_views() {
     'thousand_separator' => '',
     'prefix_suffix' => 1,
   );
-  /* Felt: Indhold: Emneområde */
+  /* Field: Content: Emneområde */
   $handler->display->display_options['fields']['field_subject']['id'] = 'field_subject';
   $handler->display->display_options['fields']['field_subject']['table'] = 'field_data_field_subject';
   $handler->display->display_options['fields']['field_subject']['field'] = 'field_subject';
@@ -65,13 +52,13 @@ function ulf_practical_information_view_views_default_views() {
   $handler->display->display_options['fields']['field_subject']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_subject']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_subject']['delta_offset'] = '0';
-  /* Felt: Indhold: Evt. yderligere oplysninger til varighed og pris */
+  /* Field: Content: Evt. yderligere oplysninger til varighed og pris */
   $handler->display->display_options['fields']['field_price_info']['id'] = 'field_price_info';
   $handler->display->display_options['fields']['field_price_info']['table'] = 'field_data_field_price_info';
   $handler->display->display_options['fields']['field_price_info']['field'] = 'field_price_info';
   $handler->display->display_options['fields']['field_price_info']['label'] = 'excluded';
   $handler->display->display_options['fields']['field_price_info']['exclude'] = TRUE;
-  /* Felt: Indhold: Hele året */
+  /* Field: Content: Hele året */
   $handler->display->display_options['fields']['field_period_full_year']['id'] = 'field_period_full_year';
   $handler->display->display_options['fields']['field_period_full_year']['table'] = 'field_data_field_period_full_year';
   $handler->display->display_options['fields']['field_period_full_year']['field'] = 'field_period_full_year';
@@ -82,14 +69,14 @@ function ulf_practical_information_view_views_default_views() {
   $handler->display->display_options['fields']['field_period_full_year']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['field_period_full_year']['empty_zero'] = TRUE;
   $handler->display->display_options['fields']['field_period_full_year']['type'] = 'list_key';
-  /* Felt: Indhold: Målgruppe */
+  /* Field: Content: Målgruppe */
   $handler->display->display_options['fields']['field_target_group_sub']['id'] = 'field_target_group_sub';
   $handler->display->display_options['fields']['field_target_group_sub']['table'] = 'field_data_field_target_group_sub';
   $handler->display->display_options['fields']['field_target_group_sub']['field'] = 'field_target_group_sub';
   $handler->display->display_options['fields']['field_target_group_sub']['label'] = 'excluded';
   $handler->display->display_options['fields']['field_target_group_sub']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_target_group_sub']['delta_offset'] = '0';
-  /* Felt: Indhold: Gratis */
+  /* Field: Content: Gratis */
   $handler->display->display_options['fields']['field_free']['id'] = 'field_free';
   $handler->display->display_options['fields']['field_free']['table'] = 'field_data_field_free';
   $handler->display->display_options['fields']['field_free']['field'] = 'field_free';
@@ -100,7 +87,7 @@ function ulf_practical_information_view_views_default_views() {
   $handler->display->display_options['fields']['field_free']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['field_free']['empty_zero'] = TRUE;
   $handler->display->display_options['fields']['field_free']['type'] = 'list_key';
-  /* Felt: Indhold: Pris */
+  /* Field: Content: Pris */
   $handler->display->display_options['fields']['field_collection_price']['id'] = 'field_collection_price';
   $handler->display->display_options['fields']['field_collection_price']['table'] = 'field_data_field_collection_price';
   $handler->display->display_options['fields']['field_collection_price']['field'] = 'field_collection_price';
@@ -115,13 +102,13 @@ function ulf_practical_information_view_views_default_views() {
   $handler->display->display_options['fields']['field_collection_price']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_collection_price']['separator'] = '';
   $handler->display->display_options['fields']['field_collection_price']['field_api_classes'] = TRUE;
-  /* Felt: Indhold: Tilbudstype */
+  /* Field: Content: Tilbudstype */
   $handler->display->display_options['fields']['field_offer_type']['id'] = 'field_offer_type';
   $handler->display->display_options['fields']['field_offer_type']['table'] = 'field_data_field_offer_type';
   $handler->display->display_options['fields']['field_offer_type']['field'] = 'field_offer_type';
   $handler->display->display_options['fields']['field_offer_type']['label'] = 'excluded';
   $handler->display->display_options['fields']['field_offer_type']['exclude'] = TRUE;
-  /* Felt: Indhold: Varighed */
+  /* Field: Content: Varighed */
   $handler->display->display_options['fields']['field_duration']['id'] = 'field_duration';
   $handler->display->display_options['fields']['field_duration']['table'] = 'field_data_field_duration';
   $handler->display->display_options['fields']['field_duration']['field'] = 'field_duration';
@@ -131,13 +118,13 @@ function ulf_practical_information_view_views_default_views() {
     'thousand_separator' => ' ',
     'prefix_suffix' => 1,
   );
-  /* Felt: Indhold: Vælg enhed */
+  /* Field: Content: Vælg enhed */
   $handler->display->display_options['fields']['field_duration_unit']['id'] = 'field_duration_unit';
   $handler->display->display_options['fields']['field_duration_unit']['table'] = 'field_data_field_duration_unit';
   $handler->display->display_options['fields']['field_duration_unit']['field'] = 'field_duration_unit';
   $handler->display->display_options['fields']['field_duration_unit']['label'] = 'excluded';
   $handler->display->display_options['fields']['field_duration_unit']['exclude'] = TRUE;
-  /* Felt: Indhold: Tidspunkt */
+  /* Field: Content: Tidspunkt */
   $handler->display->display_options['fields']['field_period']['id'] = 'field_period';
   $handler->display->display_options['fields']['field_period']['table'] = 'field_data_field_period';
   $handler->display->display_options['fields']['field_period']['field'] = 'field_period';
@@ -153,7 +140,7 @@ function ulf_practical_information_view_views_default_views() {
     'multiple_from' => '',
     'multiple_to' => '',
   );
-  /* Felt: Indhold: Tidspunkt */
+  /* Field: Content: Tidspunkt */
   $handler->display->display_options['fields']['field_period_1']['id'] = 'field_period_1';
   $handler->display->display_options['fields']['field_period_1']['table'] = 'field_data_field_period';
   $handler->display->display_options['fields']['field_period_1']['field'] = 'field_period';
@@ -167,7 +154,7 @@ function ulf_practical_information_view_views_default_views() {
     'multiple_from' => '',
     'multiple_to' => '',
   );
-  /* Felt: Global: Tilpasset tekst */
+  /* Field: Global: Custom text */
   $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
@@ -192,22 +179,21 @@ function ulf_practical_information_view_views_default_views() {
 </div>';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['nothing']['element_default_classes'] = FALSE;
-  /* Sorteringskriterie: Indhold: Oprettelsesdato */
+  /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Kontekstuelt filter: Indhold: Nid */
+  /* Contextual filter: Content: Nid */
   $handler->display->display_options['arguments']['nid']['id'] = 'nid';
   $handler->display->display_options['arguments']['nid']['table'] = 'node';
   $handler->display->display_options['arguments']['nid']['field'] = 'nid';
   $handler->display->display_options['arguments']['nid']['default_action'] = 'default';
-  $handler->display->display_options['arguments']['nid']['exception']['title'] = 'Alle';
   $handler->display->display_options['arguments']['nid']['default_argument_type'] = 'node';
   $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
-  /* Filterkriterie: Indhold: Udgivet */
+  /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
@@ -230,14 +216,14 @@ function ulf_practical_information_view_views_default_views() {
   /* Display: Ulf practical info education */
   $handler = $view->new_display('panel_pane', 'Ulf practical info education', 'panel_pane_2');
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Felt: Indhold: Emneområde */
+  /* Field: Content: Emneområde */
   $handler->display->display_options['fields']['field_subject']['id'] = 'field_subject';
   $handler->display->display_options['fields']['field_subject']['table'] = 'field_data_field_subject';
   $handler->display->display_options['fields']['field_subject']['field'] = 'field_subject';
   $handler->display->display_options['fields']['field_subject']['label'] = 'excluded';
   $handler->display->display_options['fields']['field_subject']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_subject']['delta_offset'] = '0';
-  /* Felt: Indhold: Tidspunkt */
+  /* Field: Content: Tidspunkt */
   $handler->display->display_options['fields']['field_period']['id'] = 'field_period';
   $handler->display->display_options['fields']['field_period']['table'] = 'field_data_field_period';
   $handler->display->display_options['fields']['field_period']['field'] = 'field_period';
@@ -253,7 +239,7 @@ function ulf_practical_information_view_views_default_views() {
     'multiple_from' => '',
     'multiple_to' => '',
   );
-  /* Felt: Indhold: Tidspunkt */
+  /* Field: Content: Tidspunkt */
   $handler->display->display_options['fields']['field_period_1']['id'] = 'field_period_1';
   $handler->display->display_options['fields']['field_period_1']['table'] = 'field_data_field_period';
   $handler->display->display_options['fields']['field_period_1']['field'] = 'field_period';
@@ -267,7 +253,7 @@ function ulf_practical_information_view_views_default_views() {
     'multiple_from' => '',
     'multiple_to' => '',
   );
-  /* Felt: Indhold: Gratis */
+  /* Field: Content: Gratis */
   $handler->display->display_options['fields']['field_free_1']['id'] = 'field_free_1';
   $handler->display->display_options['fields']['field_free_1']['table'] = 'field_data_field_free';
   $handler->display->display_options['fields']['field_free_1']['field'] = 'field_free';
@@ -278,7 +264,7 @@ function ulf_practical_information_view_views_default_views() {
   $handler->display->display_options['fields']['field_free_1']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['field_free_1']['empty_zero'] = TRUE;
   $handler->display->display_options['fields']['field_free_1']['type'] = 'list_key';
-  /* Felt: Felt: Pris */
+  /* Field: Field: Pris */
   $handler->display->display_options['fields']['field_price']['id'] = 'field_price';
   $handler->display->display_options['fields']['field_price']['table'] = 'field_data_field_price';
   $handler->display->display_options['fields']['field_price']['field'] = 'field_price';
@@ -294,13 +280,13 @@ function ulf_practical_information_view_views_default_views() {
     'scale' => '0',
     'prefix_suffix' => 1,
   );
-  /* Felt: Indhold: Email */
+  /* Field: Content: Email */
   $handler->display->display_options['fields']['field_course_contact_mail']['id'] = 'field_course_contact_mail';
   $handler->display->display_options['fields']['field_course_contact_mail']['table'] = 'field_data_field_course_contact_mail';
   $handler->display->display_options['fields']['field_course_contact_mail']['field'] = 'field_course_contact_mail';
   $handler->display->display_options['fields']['field_course_contact_mail']['label'] = 'excluded';
   $handler->display->display_options['fields']['field_course_contact_mail']['exclude'] = TRUE;
-  /* Felt: Indhold: Hele året */
+  /* Field: Content: Hele året */
   $handler->display->display_options['fields']['field_period_full_year']['id'] = 'field_period_full_year';
   $handler->display->display_options['fields']['field_period_full_year']['table'] = 'field_data_field_period_full_year';
   $handler->display->display_options['fields']['field_period_full_year']['field'] = 'field_period_full_year';
@@ -311,7 +297,7 @@ function ulf_practical_information_view_views_default_views() {
   $handler->display->display_options['fields']['field_period_full_year']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['field_period_full_year']['empty_zero'] = TRUE;
   $handler->display->display_options['fields']['field_period_full_year']['type'] = 'list_key';
-  /* Felt: Indhold: Navn */
+  /* Field: Content: Navn */
   $handler->display->display_options['fields']['field_course_contact_name']['id'] = 'field_course_contact_name';
   $handler->display->display_options['fields']['field_course_contact_name']['table'] = 'field_data_field_course_contact_name';
   $handler->display->display_options['fields']['field_course_contact_name']['field'] = 'field_course_contact_name';
@@ -320,7 +306,7 @@ function ulf_practical_information_view_views_default_views() {
   $handler->display->display_options['fields']['field_course_contact_name']['settings'] = array(
     'trim_length' => '600',
   );
-  /* Felt: Indhold: Hele året */
+  /* Field: Content: Hele året */
   $handler->display->display_options['fields']['field_period_full_year_1']['id'] = 'field_period_full_year_1';
   $handler->display->display_options['fields']['field_period_full_year_1']['table'] = 'field_data_field_period_full_year';
   $handler->display->display_options['fields']['field_period_full_year_1']['field'] = 'field_period_full_year';
@@ -331,7 +317,7 @@ function ulf_practical_information_view_views_default_views() {
   $handler->display->display_options['fields']['field_period_full_year_1']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['field_period_full_year_1']['empty_zero'] = TRUE;
   $handler->display->display_options['fields']['field_period_full_year_1']['type'] = 'list_key';
-  /* Felt: Indhold: Gratis */
+  /* Field: Content: Gratis */
   $handler->display->display_options['fields']['field_free']['id'] = 'field_free';
   $handler->display->display_options['fields']['field_free']['table'] = 'field_data_field_free';
   $handler->display->display_options['fields']['field_free']['field'] = 'field_free';
@@ -342,7 +328,7 @@ function ulf_practical_information_view_views_default_views() {
   $handler->display->display_options['fields']['field_free']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['field_free']['empty_zero'] = TRUE;
   $handler->display->display_options['fields']['field_free']['type'] = 'list_key';
-  /* Felt: Global: Tilpasset tekst */
+  /* Field: Global: Custom text */
   $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
@@ -376,19 +362,19 @@ function ulf_practical_information_view_views_default_views() {
   $translatables['ulf_practical_info'] = array(
     t('Master'),
     t('Practical information'),
-    t('mere'),
-    t('Udfør'),
-    t('Gendan'),
-    t('Sortér efter'),
-    t('Stigende'),
-    t('Faldende'),
-    t('Antal elementer'),
-    t('- Alle -'),
-    t('Forskydning'),
-    t('« første'),
-    t('‹ forrige'),
-    t('næste ›'),
-    t('sidste »'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('« first'),
+    t('‹ previous'),
+    t('next ›'),
+    t('last »'),
     t('excluded'),
     t('excluded - used as class'),
     t('is-time-full-year'),
@@ -415,7 +401,7 @@ function ulf_practical_information_view_views_default_views() {
 <div class="block-module--field-wrapper">
 <div class="block-module--field-label">Yderligere information</div><div class="block-inline-module--field-text">[field_price_info]</div>
 </div>'),
-    t('Alle'),
+    t('All'),
     t('Ulf practical information'),
     t('View panes'),
     t('Ulf practical info education'),

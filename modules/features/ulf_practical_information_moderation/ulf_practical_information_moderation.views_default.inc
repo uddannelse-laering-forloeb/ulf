@@ -25,31 +25,18 @@ function ulf_practical_information_moderation_views_default_views() {
   $handler->display->display_options['title'] = 'Practical information';
   $handler->display->display_options['css_class'] = 'block-inline-module--content';
   $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['use_more_text'] = 'mere';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Udfør';
-  $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Gendan';
-  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Sortér efter';
-  $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'Stigende';
-  $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Faldende';
   $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['expose']['items_per_page_label'] = 'Antal elementer';
-  $handler->display->display_options['pager']['options']['expose']['items_per_page_options_all_label'] = '- Alle -';
-  $handler->display->display_options['pager']['options']['expose']['offset_label'] = 'Forskydning';
-  $handler->display->display_options['pager']['options']['tags']['first'] = '« første';
-  $handler->display->display_options['pager']['options']['tags']['previous'] = '‹ forrige';
-  $handler->display->display_options['pager']['options']['tags']['next'] = 'næste ›';
-  $handler->display->display_options['pager']['options']['tags']['last'] = 'sidste »';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Forbindelse: Indholdsversion: Indhold */
+  /* Relationship: Content revision: Content */
   $handler->display->display_options['relationships']['vid']['id'] = 'vid';
   $handler->display->display_options['relationships']['vid']['table'] = 'node_revision';
   $handler->display->display_options['relationships']['vid']['field'] = 'vid';
-  /* Felt: Indhold (historiske data): Antal */
+  /* Field: Content (historical data): Antal */
   $handler->display->display_options['fields']['field_count-revision_id']['id'] = 'field_count-revision_id';
   $handler->display->display_options['fields']['field_count-revision_id']['table'] = 'field_revision_field_count';
   $handler->display->display_options['fields']['field_count-revision_id']['field'] = 'field_count-revision_id';
@@ -59,20 +46,20 @@ function ulf_practical_information_moderation_views_default_views() {
     'thousand_separator' => ' ',
     'prefix_suffix' => 1,
   );
-  /* Felt: Indhold (historiske data): Evt. yderligere oplysninger til varighed og pris */
+  /* Field: Content (historical data): Evt. yderligere oplysninger til varighed og pris */
   $handler->display->display_options['fields']['field_price_info-revision_id']['id'] = 'field_price_info-revision_id';
   $handler->display->display_options['fields']['field_price_info-revision_id']['table'] = 'field_revision_field_price_info';
   $handler->display->display_options['fields']['field_price_info-revision_id']['field'] = 'field_price_info-revision_id';
   $handler->display->display_options['fields']['field_price_info-revision_id']['label'] = 'excluded';
   $handler->display->display_options['fields']['field_price_info-revision_id']['exclude'] = TRUE;
-  /* Felt: Indhold (historiske data): Målgruppe */
+  /* Field: Content (historical data): Målgruppe */
   $handler->display->display_options['fields']['field_target_group_sub-revision_id']['id'] = 'field_target_group_sub-revision_id';
   $handler->display->display_options['fields']['field_target_group_sub-revision_id']['table'] = 'field_revision_field_target_group_sub';
   $handler->display->display_options['fields']['field_target_group_sub-revision_id']['field'] = 'field_target_group_sub-revision_id';
   $handler->display->display_options['fields']['field_target_group_sub-revision_id']['label'] = 'excluded';
   $handler->display->display_options['fields']['field_target_group_sub-revision_id']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_target_group_sub-revision_id']['delta_offset'] = '0';
-  /* Felt: Indhold (historiske data): Gratis */
+  /* Field: Content (historical data): Gratis */
   $handler->display->display_options['fields']['field_free-revision_id']['id'] = 'field_free-revision_id';
   $handler->display->display_options['fields']['field_free-revision_id']['table'] = 'field_revision_field_free';
   $handler->display->display_options['fields']['field_free-revision_id']['field'] = 'field_free-revision_id';
@@ -83,7 +70,7 @@ function ulf_practical_information_moderation_views_default_views() {
   $handler->display->display_options['fields']['field_free-revision_id']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['field_free-revision_id']['empty_zero'] = TRUE;
   $handler->display->display_options['fields']['field_free-revision_id']['type'] = 'list_key';
-  /* Felt: Indhold (historiske data): Pris */
+  /* Field: Content (historical data): Pris */
   $handler->display->display_options['fields']['field_collection_price-revision_id']['id'] = 'field_collection_price-revision_id';
   $handler->display->display_options['fields']['field_collection_price-revision_id']['table'] = 'field_revision_field_collection_price';
   $handler->display->display_options['fields']['field_collection_price-revision_id']['field'] = 'field_collection_price-revision_id';
@@ -94,7 +81,7 @@ function ulf_practical_information_moderation_views_default_views() {
     'view_mode' => 'full',
   );
   $handler->display->display_options['fields']['field_collection_price-revision_id']['delta_offset'] = '0';
-  /* Felt: Indhold (historiske data): Tidspunkt */
+  /* Field: Content (historical data): Tidspunkt */
   $handler->display->display_options['fields']['field_period-revision_id']['id'] = 'field_period-revision_id';
   $handler->display->display_options['fields']['field_period-revision_id']['table'] = 'field_revision_field_period';
   $handler->display->display_options['fields']['field_period-revision_id']['field'] = 'field_period-revision_id';
@@ -107,13 +94,13 @@ function ulf_practical_information_moderation_views_default_views() {
     'multiple_from' => '',
     'multiple_to' => '',
   );
-  /* Felt: Indhold (historiske data): Tilbudstype */
+  /* Field: Content (historical data): Tilbudstype */
   $handler->display->display_options['fields']['field_offer_type-revision_id']['id'] = 'field_offer_type-revision_id';
   $handler->display->display_options['fields']['field_offer_type-revision_id']['table'] = 'field_revision_field_offer_type';
   $handler->display->display_options['fields']['field_offer_type-revision_id']['field'] = 'field_offer_type-revision_id';
   $handler->display->display_options['fields']['field_offer_type-revision_id']['label'] = 'excluded';
   $handler->display->display_options['fields']['field_offer_type-revision_id']['exclude'] = TRUE;
-  /* Felt: Indhold (historiske data): Varighed */
+  /* Field: Content (historical data): Varighed */
   $handler->display->display_options['fields']['field_duration-revision_id']['id'] = 'field_duration-revision_id';
   $handler->display->display_options['fields']['field_duration-revision_id']['table'] = 'field_revision_field_duration';
   $handler->display->display_options['fields']['field_duration-revision_id']['field'] = 'field_duration-revision_id';
@@ -123,20 +110,20 @@ function ulf_practical_information_moderation_views_default_views() {
     'thousand_separator' => ' ',
     'prefix_suffix' => 1,
   );
-  /* Felt: Indhold (historiske data): Vælg enhed */
+  /* Field: Content (historical data): Vælg enhed */
   $handler->display->display_options['fields']['field_duration_unit-revision_id']['id'] = 'field_duration_unit-revision_id';
   $handler->display->display_options['fields']['field_duration_unit-revision_id']['table'] = 'field_revision_field_duration_unit';
   $handler->display->display_options['fields']['field_duration_unit-revision_id']['field'] = 'field_duration_unit-revision_id';
   $handler->display->display_options['fields']['field_duration_unit-revision_id']['label'] = 'excluded';
   $handler->display->display_options['fields']['field_duration_unit-revision_id']['exclude'] = TRUE;
-  /* Felt: Indhold (historiske data): Emneområde */
+  /* Field: Content (historical data): Emneområde */
   $handler->display->display_options['fields']['field_subject-revision_id']['id'] = 'field_subject-revision_id';
   $handler->display->display_options['fields']['field_subject-revision_id']['table'] = 'field_revision_field_subject';
   $handler->display->display_options['fields']['field_subject-revision_id']['field'] = 'field_subject-revision_id';
   $handler->display->display_options['fields']['field_subject-revision_id']['label'] = 'excluded';
   $handler->display->display_options['fields']['field_subject-revision_id']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_subject-revision_id']['delta_offset'] = '0';
-  /* Felt: Indhold (historiske data): Tidspunkt */
+  /* Field: Content (historical data): Tidspunkt */
   $handler->display->display_options['fields']['field_period-revision_id_1']['id'] = 'field_period-revision_id_1';
   $handler->display->display_options['fields']['field_period-revision_id_1']['table'] = 'field_revision_field_period';
   $handler->display->display_options['fields']['field_period-revision_id_1']['field'] = 'field_period-revision_id';
@@ -149,7 +136,7 @@ function ulf_practical_information_moderation_views_default_views() {
     'multiple_from' => '',
     'multiple_to' => '',
   );
-  /* Felt: Indhold (historiske data): Hele året */
+  /* Field: Content (historical data): Hele året */
   $handler->display->display_options['fields']['field_period_full_year-revision_id']['id'] = 'field_period_full_year-revision_id';
   $handler->display->display_options['fields']['field_period_full_year-revision_id']['table'] = 'field_revision_field_period_full_year';
   $handler->display->display_options['fields']['field_period_full_year-revision_id']['field'] = 'field_period_full_year-revision_id';
@@ -161,7 +148,7 @@ function ulf_practical_information_moderation_views_default_views() {
   $handler->display->display_options['fields']['field_period_full_year-revision_id']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['field_period_full_year-revision_id']['empty_zero'] = TRUE;
   $handler->display->display_options['fields']['field_period_full_year-revision_id']['type'] = 'list_key';
-  /* Felt: Global: Tilpasset tekst */
+  /* Field: Global: Custom text */
   $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
@@ -185,12 +172,11 @@ function ulf_practical_information_moderation_views_default_views() {
 <div class="block-module--field-label">Yderligere information</div><div class="block-module--field-text">[field_price_info-revision_id]</div>
 </div>';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
-  /* Kontekstuelt filter: Indholdsversion: Vid */
+  /* Contextual filter: Content revision: Vid */
   $handler->display->display_options['arguments']['vid']['id'] = 'vid';
   $handler->display->display_options['arguments']['vid']['table'] = 'node_revision';
   $handler->display->display_options['arguments']['vid']['field'] = 'vid';
   $handler->display->display_options['arguments']['vid']['default_action'] = 'default';
-  $handler->display->display_options['arguments']['vid']['exception']['title'] = 'Alle';
   $handler->display->display_options['arguments']['vid']['default_argument_type'] = 'node';
   $handler->display->display_options['arguments']['vid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['vid']['summary']['format'] = 'default_summary';
@@ -221,14 +207,14 @@ function ulf_practical_information_moderation_views_default_views() {
   /* Display: Ulf practical info educators */
   $handler = $view->new_display('panel_pane', 'Ulf practical info educators', 'panel_pane_2');
   $handler->display->display_options['defaults']['fields'] = FALSE;
-  /* Felt: Indhold (historiske data): Emneområde */
+  /* Field: Content (historical data): Emneområde */
   $handler->display->display_options['fields']['field_subject-revision_id']['id'] = 'field_subject-revision_id';
   $handler->display->display_options['fields']['field_subject-revision_id']['table'] = 'field_revision_field_subject';
   $handler->display->display_options['fields']['field_subject-revision_id']['field'] = 'field_subject-revision_id';
   $handler->display->display_options['fields']['field_subject-revision_id']['label'] = 'excluded';
   $handler->display->display_options['fields']['field_subject-revision_id']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_subject-revision_id']['delta_offset'] = '0';
-  /* Felt: Indhold (historiske data): Gratis */
+  /* Field: Content (historical data): Gratis */
   $handler->display->display_options['fields']['field_free-revision_id_2']['id'] = 'field_free-revision_id_2';
   $handler->display->display_options['fields']['field_free-revision_id_2']['table'] = 'field_revision_field_free';
   $handler->display->display_options['fields']['field_free-revision_id_2']['field'] = 'field_free-revision_id';
@@ -239,7 +225,7 @@ function ulf_practical_information_moderation_views_default_views() {
   $handler->display->display_options['fields']['field_free-revision_id_2']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['field_free-revision_id_2']['empty_zero'] = TRUE;
   $handler->display->display_options['fields']['field_free-revision_id_2']['type'] = 'list_key';
-  /* Felt: Felt (historiske data): Pris */
+  /* Field: Field (historical data): Pris */
   $handler->display->display_options['fields']['field_price-revision_id']['id'] = 'field_price-revision_id';
   $handler->display->display_options['fields']['field_price-revision_id']['table'] = 'field_revision_field_price';
   $handler->display->display_options['fields']['field_price-revision_id']['field'] = 'field_price-revision_id';
@@ -253,19 +239,19 @@ function ulf_practical_information_moderation_views_default_views() {
     'scale' => '0',
     'prefix_suffix' => 0,
   );
-  /* Felt: Indhold (historiske data): Navn */
+  /* Field: Content (historical data): Navn */
   $handler->display->display_options['fields']['field_course_contact_name-revision_id']['id'] = 'field_course_contact_name-revision_id';
   $handler->display->display_options['fields']['field_course_contact_name-revision_id']['table'] = 'field_revision_field_course_contact_name';
   $handler->display->display_options['fields']['field_course_contact_name-revision_id']['field'] = 'field_course_contact_name-revision_id';
   $handler->display->display_options['fields']['field_course_contact_name-revision_id']['label'] = 'excluded';
   $handler->display->display_options['fields']['field_course_contact_name-revision_id']['exclude'] = TRUE;
-  /* Felt: Indhold (historiske data): Email */
+  /* Field: Content (historical data): Email */
   $handler->display->display_options['fields']['field_course_contact_mail-revision_id']['id'] = 'field_course_contact_mail-revision_id';
   $handler->display->display_options['fields']['field_course_contact_mail-revision_id']['table'] = 'field_revision_field_course_contact_mail';
   $handler->display->display_options['fields']['field_course_contact_mail-revision_id']['field'] = 'field_course_contact_mail-revision_id';
   $handler->display->display_options['fields']['field_course_contact_mail-revision_id']['label'] = 'excluded';
   $handler->display->display_options['fields']['field_course_contact_mail-revision_id']['exclude'] = TRUE;
-  /* Felt: Indhold (historiske data): Hele året */
+  /* Field: Content (historical data): Hele året */
   $handler->display->display_options['fields']['field_period_full_year-revision_id']['id'] = 'field_period_full_year-revision_id';
   $handler->display->display_options['fields']['field_period_full_year-revision_id']['table'] = 'field_revision_field_period_full_year';
   $handler->display->display_options['fields']['field_period_full_year-revision_id']['field'] = 'field_period_full_year-revision_id';
@@ -277,7 +263,7 @@ function ulf_practical_information_moderation_views_default_views() {
   $handler->display->display_options['fields']['field_period_full_year-revision_id']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['field_period_full_year-revision_id']['empty_zero'] = TRUE;
   $handler->display->display_options['fields']['field_period_full_year-revision_id']['type'] = 'list_key';
-  /* Felt: Indhold (historiske data): Tidspunkt */
+  /* Field: Content (historical data): Tidspunkt */
   $handler->display->display_options['fields']['field_period-revision_id']['id'] = 'field_period-revision_id';
   $handler->display->display_options['fields']['field_period-revision_id']['table'] = 'field_revision_field_period';
   $handler->display->display_options['fields']['field_period-revision_id']['field'] = 'field_period-revision_id';
@@ -290,7 +276,7 @@ function ulf_practical_information_moderation_views_default_views() {
     'multiple_from' => '',
     'multiple_to' => '',
   );
-  /* Felt: Indhold (historiske data): Tidspunkt */
+  /* Field: Content (historical data): Tidspunkt */
   $handler->display->display_options['fields']['field_period-revision_id_1']['id'] = 'field_period-revision_id_1';
   $handler->display->display_options['fields']['field_period-revision_id_1']['table'] = 'field_revision_field_period';
   $handler->display->display_options['fields']['field_period-revision_id_1']['field'] = 'field_period-revision_id';
@@ -303,7 +289,7 @@ function ulf_practical_information_moderation_views_default_views() {
     'multiple_from' => '',
     'multiple_to' => '',
   );
-  /* Felt: Indhold (historiske data): Gratis */
+  /* Field: Content (historical data): Gratis */
   $handler->display->display_options['fields']['field_free-revision_id']['id'] = 'field_free-revision_id';
   $handler->display->display_options['fields']['field_free-revision_id']['table'] = 'field_revision_field_free';
   $handler->display->display_options['fields']['field_free-revision_id']['field'] = 'field_free-revision_id';
@@ -314,7 +300,7 @@ function ulf_practical_information_moderation_views_default_views() {
   $handler->display->display_options['fields']['field_free-revision_id']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['field_free-revision_id']['empty_zero'] = TRUE;
   $handler->display->display_options['fields']['field_free-revision_id']['type'] = 'list_key';
-  /* Felt: Indhold (historiske data): Hele året */
+  /* Field: Content (historical data): Hele året */
   $handler->display->display_options['fields']['field_period_full_year-revision_id_1']['id'] = 'field_period_full_year-revision_id_1';
   $handler->display->display_options['fields']['field_period_full_year-revision_id_1']['table'] = 'field_revision_field_period_full_year';
   $handler->display->display_options['fields']['field_period_full_year-revision_id_1']['field'] = 'field_period_full_year-revision_id';
@@ -324,7 +310,7 @@ function ulf_practical_information_moderation_views_default_views() {
   $handler->display->display_options['fields']['field_period_full_year-revision_id_1']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['field_period_full_year-revision_id_1']['empty_zero'] = TRUE;
   $handler->display->display_options['fields']['field_period_full_year-revision_id_1']['type'] = 'list_key';
-  /* Felt: Global: Tilpasset tekst */
+  /* Field: Global: Custom text */
   $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
@@ -369,20 +355,20 @@ function ulf_practical_information_moderation_views_default_views() {
   $translatables['ulf_practical_info_moderation'] = array(
     t('Master'),
     t('Practical information'),
-    t('mere'),
-    t('Udfør'),
-    t('Gendan'),
-    t('Sortér efter'),
-    t('Stigende'),
-    t('Faldende'),
-    t('Antal elementer'),
-    t('- Alle -'),
-    t('Forskydning'),
-    t('« første'),
-    t('‹ forrige'),
-    t('næste ›'),
-    t('sidste »'),
-    t('Hent indholdet fra en indholdsversion.'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Items per page'),
+    t('- All -'),
+    t('Offset'),
+    t('« first'),
+    t('‹ previous'),
+    t('next ›'),
+    t('last »'),
+    t('Get the actual content from a content revision.'),
     t('excluded'),
     t('excluded - class'),
     t('is-price-free'),
@@ -405,7 +391,7 @@ function ulf_practical_information_moderation_views_default_views() {
 <div class="block-module--field-wrapper">
 <div class="block-module--field-label">Yderligere information</div><div class="block-module--field-text">[field_price_info-revision_id]</div>
 </div>'),
-    t('Alle'),
+    t('All'),
     t('Ulf practical information'),
     t('View panes'),
     t('Ulf practical info educators'),
