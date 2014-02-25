@@ -89,7 +89,7 @@ function ulf_search_menu() {
  * Alter search form for Twitter Typeahead.
  */
 function ulf_search_form_search_api_page_search_form_default_alter(&$form, &$form_state) {
-  //Remove title
+  //Remove title 
   $form['search_block_form']['#title'] = FALSE;
 
   // Add class to submit.
@@ -106,6 +106,4 @@ function ulf_search_form_search_api_page_search_form_default_alter(&$form, &$for
   $form['keys_2']['#attributes']['id'][] = 'typeahead';
   $form['keys_2']['#attributes']['class'][] = 'typeahead';
   $form['keys_2']['#attributes']['class'][] = 'tt-query';
-
-
 }
