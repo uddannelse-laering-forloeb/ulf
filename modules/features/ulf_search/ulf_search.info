@@ -8,6 +8,7 @@ dependencies[] = ctools
 dependencies[] = entity
 dependencies[] = facetapi
 dependencies[] = fe_block
+dependencies[] = features
 dependencies[] = jquery_update
 dependencies[] = search_api
 dependencies[] = search_api_facetapi

@@ -62,6 +62,7 @@ function ulf_search_default_search_api_index() {
         "field_teaser" : { "type" : "text" },
         "search_api_language" : { "type" : "string" },
         "author:name" : { "type" : "text" },
+        "field_full_description:value" : { "type" : "text" },
         "field_target_group:name" : { "type" : "text" }
       },
       "data_alter_callbacks" : {
@@ -206,14 +207,13 @@ function ulf_search_default_search_api_page() {
         "field_teaser" : "field_teaser",
         "author:name" : "author:name",
         "field_full_description:value" : "field_full_description:value",
-        "field_full_description:format" : "field_full_description:format",
         "field_target_group:name" : "field_target_group:name"
       },
       "per_page" : "10",
       "result_page_search_form" : 1,
       "get_per_page" : 0,
       "view_mode" : "search_api_page_result",
-      "language_filter" : []
+      "language_filter" : { "default" : "default" }
     },
     "enabled" : "1"
   }');
