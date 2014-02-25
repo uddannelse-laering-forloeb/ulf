@@ -14,7 +14,7 @@ function ulf_course_educators_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'additional_settings__active_tab_course_educators';
-  $strongarm->value = 'edit-submission';
+  $strongarm->value = 'edit-menu';
   $export['additional_settings__active_tab_course_educators'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -46,6 +46,21 @@ function ulf_course_educators_strongarm() {
     'view_modes' => array(
       'node_display' => array(
         'custom_settings' => TRUE,
+      ),
+      'teaser' => array(
+        'custom_settings' => TRUE,
+      ),
+      'full' => array(
+        'custom_settings' => FALSE,
+      ),
+      'rss' => array(
+        'custom_settings' => FALSE,
+      ),
+      'diff_standard' => array(
+        'custom_settings' => FALSE,
+      ),
+      'token' => array(
+        'custom_settings' => FALSE,
       ),
     ),
     'extra_fields' => array(
@@ -90,7 +105,10 @@ function ulf_course_educators_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_course_educators';
-  $strongarm->value = array();
+  $strongarm->value = array(
+    0 => 'moderation',
+    1 => 'revision',
+  );
   $export['node_options_course_educators'] = $strongarm;
 
   $strongarm = new stdClass();

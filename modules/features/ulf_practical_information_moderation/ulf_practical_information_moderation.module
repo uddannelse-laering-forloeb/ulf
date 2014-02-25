@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Ulf practical information moderation feature.
+ */
+
+include_once 'ulf_practical_information_moderation.features.inc';

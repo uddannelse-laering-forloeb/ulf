@@ -25,7 +25,7 @@ function ulf_moderations_menu_local_tasks_alter(&$data, $router_item, $root_path
     foreach($data['tabs']['0']['output'] as $key => $value) {
 
       // Check that we have the right tab.
-      if ($value['#link']['title'] == 'Moderate') {
+      if ($value['#link']['path'] == 'node/%/moderation') {
 
         // Change title.
         $data['tabs']['0']['output'][$key]['#link']['title'] = t('Compare draft to published content');
@@ -39,7 +39,7 @@ function ulf_moderations_menu_local_tasks_alter(&$data, $router_item, $root_path
         if(!empty($router_item['map']['1']->workbench_moderation['published']->vid) && !empty($router_item['map']['1']->workbench_moderation['current'])) {
           $published_vid = $router_item['map']['1']->workbench_moderation['published']->vid;
           $draft_vid = $router_item['map']['1']->workbench_moderation['current']->vid;
-          $data['tabs']['0']['output'][$key]['#link']['href'] = $data['tabs']['0']['output'][$key]['#link']['tab_root_href'] . '/revisions/view/' . $published_vid . '/' . $draft_vid;
+          $data['tabs']['0']['output'][$key]['#link']['href'] = $data['tabs']['0']['output'][$key]['#link']['tab_root_href'] . '/revisions/view/' . $published_vid . '/' . $draft_vid . '/raw-plain';
         } else {
           unset($data['tabs']['0']['output'][$key]);
         }
