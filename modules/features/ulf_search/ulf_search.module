@@ -90,15 +90,8 @@ function ulf_search_menu() {
  */
 function ulf_search_form_search_api_page_search_form_alter(&$form, &$form_state) {
   // Fetch search page id
-  $results = db_select('search_api_page', 'n')
-    ->fields('n', array('id'))
-    ->condition('index_id', 'default')
-    ->execute();
-  if(!empty($results)) {
-    foreach ($results as $result) {
-      $default_page_id = $result->id;
-    }
-  }
+
+  $default_page_id = db_query("SELECT id FROM {search_api_page} WHERE index_id = 'default'")->fetchField();
 
   // Used for search block.
   switch ($form['#form_id'])  {
