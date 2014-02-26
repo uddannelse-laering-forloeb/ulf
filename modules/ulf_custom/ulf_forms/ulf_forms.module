@@ -11,15 +11,6 @@
  */
 function ulf_forms_form_alter(&$form, &$form_state, $form_id) {
   switch ($form_id) {
-
-  // Search block.
-  case 'search_api_page_search_form_default':
-    $form['search_block_form']['#placeholder'] = t('Eg. movie, music etc.');
-    $form['search_block_form']['#title'] = FALSE;
-    $form['submit_1']['#attributes']['class'][] = 'header-search-module--submit';
-    $form['keys_1']['#attributes']['class'][] = 'form-search';
-    break;
-
   // Course node form.
   case 'course_node_form':
     $form['#attached']['js'] = array(
