@@ -63,6 +63,7 @@ function ulf_search_default_search_api_index() {
         "search_api_language" : { "type" : "string" },
         "author:name" : { "type" : "text" },
         "field_full_description:value" : { "type" : "text" },
+        "field_subject:name" : { "type" : "list\\u003Ctext\\u003E" },
         "field_target_group:name" : { "type" : "text" }
       },
       "data_alter_callbacks" : {

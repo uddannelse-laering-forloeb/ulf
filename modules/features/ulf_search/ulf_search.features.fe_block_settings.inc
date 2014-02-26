@@ -12,58 +12,6 @@ function ulf_search_default_fe_block_settings() {
 
   $export['version'] = '2.0';
 
-  $export['facetapi-92SISZnd7Yj1J2PeHXxO1kL3SMs2UNnN'] = array(
-    'cache' => -1,
-    'custom' => 0,
-    'delta' => '92SISZnd7Yj1J2PeHXxO1kL3SMs2UNnN',
-    'module' => 'facetapi',
-    'node_types' => array(),
-    'pages' => '',
-    'roles' => array(),
-    'themes' => array(
-      'seven' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'seven',
-        'weight' => 0,
-      ),
-      'ulf' => array(
-        'region' => 'facets',
-        'status' => 1,
-        'theme' => 'ulf',
-        'weight' => -8,
-      ),
-    ),
-    'title' => '',
-    'visibility' => 0,
-  );
-
-  $export['facetapi-9SgU1vbDcyCmChkeI9UXreVqZcNrOn00'] = array(
-    'cache' => -1,
-    'custom' => 0,
-    'delta' => '9SgU1vbDcyCmChkeI9UXreVqZcNrOn00',
-    'module' => 'facetapi',
-    'node_types' => array(),
-    'pages' => '',
-    'roles' => array(),
-    'themes' => array(
-      'seven' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'seven',
-        'weight' => 0,
-      ),
-      'ulf' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'ulf',
-        'weight' => 0,
-      ),
-    ),
-    'title' => '',
-    'visibility' => 0,
-  );
-
   $export['facetapi-BOiTNRybGi0EqoVhsAPq2yw0QL1EVZo1'] = array(
     'cache' => -1,
     'custom' => 0,
@@ -83,215 +31,7 @@ function ulf_search_default_fe_block_settings() {
         'region' => 'facets',
         'status' => 1,
         'theme' => 'ulf',
-        'weight' => -6,
-      ),
-    ),
-    'title' => '',
-    'visibility' => 0,
-  );
-
-  $export['facetapi-EPDhVXDTO2ass7J8dUM6PGyo1bJM6bDR'] = array(
-    'cache' => -1,
-    'custom' => 0,
-    'delta' => 'EPDhVXDTO2ass7J8dUM6PGyo1bJM6bDR',
-    'module' => 'facetapi',
-    'node_types' => array(),
-    'pages' => '',
-    'roles' => array(),
-    'themes' => array(
-      'seven' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'seven',
-        'weight' => 0,
-      ),
-      'ulf' => array(
-        'region' => 'facets',
-        'status' => 1,
-        'theme' => 'ulf',
-        'weight' => -13,
-      ),
-    ),
-    'title' => '',
-    'visibility' => 0,
-  );
-
-  $export['facetapi-Fp1e9iIvE1huqf8Y3PBXn19keqxmYQCy'] = array(
-    'cache' => -1,
-    'custom' => 0,
-    'delta' => 'Fp1e9iIvE1huqf8Y3PBXn19keqxmYQCy',
-    'module' => 'facetapi',
-    'node_types' => array(),
-    'pages' => '',
-    'roles' => array(),
-    'themes' => array(
-      'seven' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'seven',
-        'weight' => 0,
-      ),
-      'ulf' => array(
-        'region' => 'facets',
-        'status' => 1,
-        'theme' => 'ulf',
-        'weight' => -10,
-      ),
-    ),
-    'title' => '',
-    'visibility' => 0,
-  );
-
-  $export['facetapi-Gn0lQmbjEvPs4JPPQHOogWsCb3Tt1r8U'] = array(
-    'cache' => -1,
-    'custom' => 0,
-    'delta' => 'Gn0lQmbjEvPs4JPPQHOogWsCb3Tt1r8U',
-    'module' => 'facetapi',
-    'node_types' => array(),
-    'pages' => '',
-    'roles' => array(),
-    'themes' => array(
-      'seven' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'seven',
-        'weight' => 0,
-      ),
-      'ulf' => array(
-        'region' => 'facets',
-        'status' => 1,
-        'theme' => 'ulf',
-        'weight' => -1,
-      ),
-    ),
-    'title' => '',
-    'visibility' => 0,
-  );
-
-  $export['facetapi-I6hNUYS3jXnK8SD4alsVPluA48gO7NPz'] = array(
-    'cache' => -1,
-    'custom' => 0,
-    'delta' => 'I6hNUYS3jXnK8SD4alsVPluA48gO7NPz',
-    'module' => 'facetapi',
-    'node_types' => array(),
-    'pages' => '',
-    'roles' => array(),
-    'themes' => array(
-      'seven' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'seven',
-        'weight' => 0,
-      ),
-      'ulf' => array(
-        'region' => 'facets',
-        'status' => 1,
-        'theme' => 'ulf',
-        'weight' => -5,
-      ),
-    ),
-    'title' => '',
-    'visibility' => 0,
-  );
-
-  $export['facetapi-JZV1EbSLtMsdx0hqmk1e5aiz3Hw1sH2p'] = array(
-    'cache' => -1,
-    'custom' => 0,
-    'delta' => 'JZV1EbSLtMsdx0hqmk1e5aiz3Hw1sH2p',
-    'module' => 'facetapi',
-    'node_types' => array(),
-    'pages' => '',
-    'roles' => array(),
-    'themes' => array(
-      'seven' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'seven',
-        'weight' => 0,
-      ),
-      'ulf' => array(
-        'region' => 'facets',
-        'status' => 1,
-        'theme' => 'ulf',
-        'weight' => -3,
-      ),
-    ),
-    'title' => '',
-    'visibility' => 0,
-  );
-
-  $export['facetapi-Px4eDQzQbAOQVD8FWUiBr1oLKW1qDPaC'] = array(
-    'cache' => -1,
-    'custom' => 0,
-    'delta' => 'Px4eDQzQbAOQVD8FWUiBr1oLKW1qDPaC',
-    'module' => 'facetapi',
-    'node_types' => array(),
-    'pages' => '',
-    'roles' => array(),
-    'themes' => array(
-      'seven' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'seven',
-        'weight' => 0,
-      ),
-      'ulf' => array(
-        'region' => 'facets',
-        'status' => 1,
-        'theme' => 'ulf',
-        'weight' => -11,
-      ),
-    ),
-    'title' => '',
-    'visibility' => 0,
-  );
-
-  $export['facetapi-U0TqlG0313vhigH1g5N3NkJkaIHQVFuS'] = array(
-    'cache' => -1,
-    'custom' => 0,
-    'delta' => 'U0TqlG0313vhigH1g5N3NkJkaIHQVFuS',
-    'module' => 'facetapi',
-    'node_types' => array(),
-    'pages' => '',
-    'roles' => array(),
-    'themes' => array(
-      'seven' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'seven',
-        'weight' => 0,
-      ),
-      'ulf' => array(
-        'region' => 'facets',
-        'status' => 1,
-        'theme' => 'ulf',
         'weight' => -15,
-      ),
-    ),
-    'title' => '',
-    'visibility' => 0,
-  );
-
-  $export['facetapi-Yn3rDYEywSY6LqphNkdDhXzXULsEjNkC'] = array(
-    'cache' => -1,
-    'custom' => 0,
-    'delta' => 'Yn3rDYEywSY6LqphNkdDhXzXULsEjNkC',
-    'module' => 'facetapi',
-    'node_types' => array(),
-    'pages' => '',
-    'roles' => array(),
-    'themes' => array(
-      'seven' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'seven',
-        'weight' => 0,
-      ),
-      'ulf' => array(
-        'region' => 'facets',
-        'status' => 1,
-        'theme' => 'ulf',
-        'weight' => -20,
       ),
     ),
     'title' => '',
@@ -317,33 +57,7 @@ function ulf_search_default_fe_block_settings() {
         'region' => 'facets',
         'status' => 1,
         'theme' => 'ulf',
-        'weight' => -14,
-      ),
-    ),
-    'title' => '',
-    'visibility' => 0,
-  );
-
-  $export['facetapi-jHiTLPKfFRWx0A3VS0o7UdExEMDvZA3G'] = array(
-    'cache' => -1,
-    'custom' => 0,
-    'delta' => 'jHiTLPKfFRWx0A3VS0o7UdExEMDvZA3G',
-    'module' => 'facetapi',
-    'node_types' => array(),
-    'pages' => '',
-    'roles' => array(),
-    'themes' => array(
-      'seven' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'seven',
-        'weight' => 0,
-      ),
-      'ulf' => array(
-        'region' => 'facets',
-        'status' => 1,
-        'theme' => 'ulf',
-        'weight' => -18,
+        'weight' => -12,
       ),
     ),
     'title' => '',
@@ -366,10 +80,10 @@ function ulf_search_default_fe_block_settings() {
         'weight' => 0,
       ),
       'ulf' => array(
-        'region' => 'facets',
-        'status' => 1,
+        'region' => '',
+        'status' => 0,
         'theme' => 'ulf',
-        'weight' => -17,
+        'weight' => -13,
       ),
     ),
     'title' => '',
@@ -392,10 +106,10 @@ function ulf_search_default_fe_block_settings() {
         'weight' => 0,
       ),
       'ulf' => array(
-        'region' => 'facets',
-        'status' => 1,
+        'region' => '',
+        'status' => 0,
         'theme' => 'ulf',
-        'weight' => -9,
+        'weight' => -11,
       ),
     ),
     'title' => '',
@@ -421,7 +135,7 @@ function ulf_search_default_fe_block_settings() {
         'region' => 'facets',
         'status' => 1,
         'theme' => 'ulf',
-        'weight' => -4,
+        'weight' => -10,
       ),
     ),
     'title' => '',
@@ -447,33 +161,7 @@ function ulf_search_default_fe_block_settings() {
         'region' => 'facets',
         'status' => 1,
         'theme' => 'ulf',
-        'weight' => -12,
-      ),
-    ),
-    'title' => '',
-    'visibility' => 0,
-  );
-
-  $export['facetapi-uZZx02jgrO5f1YGSr50SSh4eNs1ORcWY'] = array(
-    'cache' => -1,
-    'custom' => 0,
-    'delta' => 'uZZx02jgrO5f1YGSr50SSh4eNs1ORcWY',
-    'module' => 'facetapi',
-    'node_types' => array(),
-    'pages' => '',
-    'roles' => array(),
-    'themes' => array(
-      'seven' => array(
-        'region' => '',
-        'status' => 0,
-        'theme' => 'seven',
-        'weight' => 0,
-      ),
-      'ulf' => array(
-        'region' => 'facets',
-        'status' => 1,
-        'theme' => 'ulf',
-        'weight' => -2,
+        'weight' => -11,
       ),
     ),
     'title' => '',
@@ -496,10 +184,10 @@ function ulf_search_default_fe_block_settings() {
         'weight' => 0,
       ),
       'ulf' => array(
-        'region' => 'facets',
-        'status' => 1,
+        'region' => '',
+        'status' => 0,
         'theme' => 'ulf',
-        'weight' => -16,
+        'weight' => -12,
       ),
     ),
     'title' => '',
@@ -525,7 +213,7 @@ function ulf_search_default_fe_block_settings() {
         'region' => 'facets',
         'status' => 1,
         'theme' => 'ulf',
-        'weight' => -7,
+        'weight' => -15,
       ),
     ),
     'title' => '',
@@ -551,7 +239,7 @@ function ulf_search_default_fe_block_settings() {
         'region' => 'facets',
         'status' => 1,
         'theme' => 'ulf',
-        'weight' => -19,
+        'weight' => -13,
       ),
     ),
     'title' => '',
@@ -577,7 +265,7 @@ function ulf_search_default_fe_block_settings() {
         'region' => '',
         'status' => 0,
         'theme' => 'ulf',
-        'weight' => 0,
+        'weight' => -2,
       ),
     ),
     'title' => '',
