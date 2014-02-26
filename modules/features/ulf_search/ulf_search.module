@@ -86,9 +86,9 @@ function ulf_search_menu() {
 /**
  * Implements hook_form_FORM_ID_alter().
  *
- * Alter search form for Twitter Typeahead.
+ * Alter search form for Twitter Typeahead and html.
  */
-function ulf_search_form_search_api_page_search_form_default_alter(&$form, &$form_state) {
+function ulf_search_form_search_api_page_search_form_alter(&$form, &$form_state) {
   // Fetch search page id
   $results = db_select('search_api_page', 'n')
     ->fields('n', array('id'))
@@ -98,21 +98,41 @@ function ulf_search_form_search_api_page_search_form_default_alter(&$form, &$for
     $default_page_id = $result->id;
   }
 
-  //Remove title 
-  $form['search_block_form']['#title'] = FALSE;
+  // Used for search block.
+  switch ($form['#form_id'])  {
+    case "search_api_page_search_form_default" :
+      // Add class to submit.
+      $form['submit_' . $default_page_id]['#attributes']['class'][] = 'header-search-module--submit';
 
-  // Add class to submit.
-  $form['submit_' . $default_page_id]['#attributes']['class'][] = 'header-search-module--submit';
+      // Inline styling needed for Twitter Typeahead.
+      $form['keys_' . $default_page_id]['#attributes']['class'][] = 'form-search';
+      $form['keys_' . $default_page_id]['#attributes']['style'] = "position: relative; vertical-align: top; background-color: transparent;";
 
-  // Inline styling needed for Twitter Typeahead.
-  $form['keys_' . $default_page_id]['#attributes']['class'][] = 'form-search';
-  $form['keys_' . $default_page_id]['#attributes']['style'] = "position: relative; vertical-align: top; background-color: transparent;";
+      // Default placeholder.
+      $form['keys_' . $default_page_id]['#attributes']['placeholder'] =  t('E.g movies, music etc.');
 
-  // Default placeholder.
-  $form['keys_' . $default_page_id]['#attributes']['placeholder'] =  t('E.g movies, music etc.');
+      // Yet again, some id and classes for Twitter Typehead.
+      $form['keys_' . $default_page_id]['#attributes']['id'][] = 'typeahead';
+      $form['keys_' . $default_page_id]['#attributes']['class'][] = 'typeahead';
+      $form['keys_' . $default_page_id]['#attributes']['class'][] = 'tt-query';
+      break;
 
-  // Yet again, some id and classes for Twitter Typehead.
-  $form['keys_' . $default_page_id]['#attributes']['id'][] = 'typeahead';
-  $form['keys_' . $default_page_id]['#attributes']['class'][] = 'typeahead';
-  $form['keys_' . $default_page_id]['#attributes']['class'][] = 'tt-query';
+    // Used for search page.
+    case "search_api_page_search_form" :
+      // Add class to submit.
+      $form['form']['submit_' . $default_page_id]['#attributes']['class'][] = 'header-search-module--submit';
+
+      // Inline styling needed for Twitter Typeahead.
+      $form['form']['keys_' . $default_page_id]['#attributes']['class'][] = 'form-search';
+      $form['form']['keys_' . $default_page_id]['#attributes']['style'] = "position: relative; vertical-align: top; background-color: transparent;";
+
+      // Default placeholder.
+      $form['form']['keys_' . $default_page_id]['#attributes']['placeholder'] =  t('E.g movies, music etc.');
+
+      // Yet again, some id and classes for Twitter Typehead.
+      $form['form']['keys_' . $default_page_id]['#attributes']['id'][] = 'typeahead';
+      $form['form']['keys_' . $default_page_id]['#attributes']['class'][] = 'typeahead';
+      $form['form']['keys_' . $default_page_id]['#attributes']['class'][] = 'tt-query';
+      break;
+  }
 }
