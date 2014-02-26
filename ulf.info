@@ -20,6 +20,7 @@ dependencies[] = diff
 dependencies[] = elements
 dependencies[] = entity_view_mode
 dependencies[] = facetapi
+dependencies[] = facetapi_bonus
 dependencies[] = features
 dependencies[] = field_group
 dependencies[] = field_collection

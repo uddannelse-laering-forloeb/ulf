@@ -154,6 +154,9 @@ function ulf_search_facetapi_default_facet_settings() {
       'bundle' => 'none',
       'bundle_selected' => array(),
       'roles' => array(),
+      'facets' => array(),
+      'force_deactivation' => TRUE,
+      'regex' => FALSE,
     ),
     'facet_mincount' => '0',
     'facet_missing' => '0',
@@ -202,11 +205,43 @@ function ulf_search_facetapi_default_facet_settings() {
     'operator' => 'and',
     'hard_limit' => '50',
     'dependencies' => array(
+      'roles' => array(
+        1 => 0,
+        2 => 0,
+        3 => 0,
+        4 => 0,
+      ),
       'bundle' => 'none',
-      'bundle_selected' => array(),
-      'roles' => array(),
+      'bundle_selected' => array(
+        'course_educators' => 0,
+        'news' => 0,
+        'static_page' => 0,
+        'course' => 0,
+      ),
+      'facets' => array(
+        'field_target_group' => 'field_target_group',
+        'field_subjects_youth' => 0,
+        'field_subjects_primary_school' => 0,
+        'field_subject:name' => 0,
+        'field_offer_type' => 0,
+        'field_subject' => 0,
+        'field_free' => 0,
+        'field_facilities' => 0,
+        'field_educational_goals' => 0,
+      ),
+      'force_deactivation' => 1,
+      'regex' => 0,
+      'facet_items_field_target_group' => '',
+      'facet_items_field_subjects_youth' => '',
+      'facet_items_field_subjects_primary_school' => '',
+      'facet_items_field_subject:name' => '',
+      'facet_items_field_offer_type' => '',
+      'facet_items_field_subject' => '',
+      'facet_items_field_free' => '',
+      'facet_items_field_facilities' => '',
+      'facet_items_field_educational_goals' => '',
     ),
-    'facet_mincount' => '0',
+    'facet_mincount' => '1',
     'facet_missing' => '0',
     'flatten' => '0',
     'query_type' => 'term',
@@ -507,7 +542,32 @@ function ulf_search_facetapi_default_facet_settings() {
   $facet->settings = array(
     'weight' => 0,
     'widget' => 'facetapi_checkbox_links',
-    'filters' => array(),
+    'filters' => array(
+      'active_items' => array(
+        'status' => 0,
+        'weight' => '-50',
+      ),
+      'exclude_items' => array(
+        'status' => 1,
+        'weight' => '-49',
+      ),
+      'rewrite_items' => array(
+        'status' => 0,
+        'weight' => '-48',
+      ),
+      'narrow_results' => array(
+        'status' => 0,
+        'weight' => '-47',
+      ),
+      'show_if_minimum_items' => array(
+        'status' => 0,
+        'weight' => '-46',
+      ),
+      'deepest_level_items' => array(
+        'status' => 0,
+        'weight' => '-45',
+      ),
+    ),
     'active_sorts' => array(
       'active' => 'active',
       'count' => 'count',
@@ -535,6 +595,9 @@ function ulf_search_facetapi_default_facet_settings() {
       'format' => 'editor',
     ),
     'submit_realm' => 'Save and go back to realm settings',
+    'exclude' => 'not_free',
+    'regex' => 0,
+    'show_minimum_items' => 2,
   );
   $export['search_api@default:block:field_free'] = $facet;
 
@@ -947,23 +1010,55 @@ function ulf_search_facetapi_default_facet_settings() {
   $facet->settings = array(
     'weight' => 0,
     'widget' => 'facetapi_checkbox_links',
-    'filters' => array(),
+    'filters' => array(
+      'active_items' => array(
+        'status' => 0,
+        'weight' => '-50',
+      ),
+      'current_depth' => array(
+        'status' => 0,
+        'weight' => '-49',
+      ),
+      'exclude_items' => array(
+        'status' => 0,
+        'weight' => '-48',
+      ),
+      'rewrite_items' => array(
+        'status' => 0,
+        'weight' => '-47',
+      ),
+      'narrow_results' => array(
+        'status' => 0,
+        'weight' => '-46',
+      ),
+      'show_if_minimum_items' => array(
+        'status' => 0,
+        'weight' => '-45',
+      ),
+      'deepest_level_items' => array(
+        'status' => 0,
+        'weight' => '-44',
+      ),
+    ),
     'active_sorts' => array(
-      'count' => 'count',
-      'display' => 'display',
+      'natural' => 'natural',
       'active' => 0,
+      'count' => 0,
+      'display' => 0,
       'indexed' => 0,
     ),
     'sort_weight' => array(
       'active' => '-50',
-      'count' => '-49',
-      'display' => '-48',
-      'indexed' => '0',
+      'count' => '-48',
+      'display' => '-47',
+      'natural' => '-49',
+      'indexed' => '-46',
     ),
     'sort_order' => array(
       'active' => '3',
       'count' => '3',
       'display' => '4',
+      'natural' => '4',
       'indexed' => '4',
     ),
     'empty_behavior' => 'none',
@@ -975,6 +1070,9 @@ function ulf_search_facetapi_default_facet_settings() {
       'format' => 'editor',
     ),
     'submit_realm' => 'Save and go back to realm settings',
+    'exclude' => '',
+    'regex' => 0,
+    'show_minimum_items' => '1',
   );
   $export['search_api@default:block:field_target_group'] = $facet;
 
@@ -1033,18 +1131,21 @@ function ulf_search_facetapi_default_facet_settings() {
     'widget' => 'facetapi_checkbox_links',
     'filters' => array(),
     'active_sorts' => array(
+      'natural' => 'natural',
       'active' => 'active',
       'count' => 'count',
       'display' => 'display',
       'indexed' => 0,
     ),
     'sort_weight' => array(
-      'active' => '-50',
-      'count' => '-49',
-      'display' => '-48',
-      'indexed' => '0',
+      'natural' => '-50',
+      'active' => '-49',
+      'count' => '-48',
+      'display' => '-47',
+      'indexed' => '-46',
     ),
     'sort_order' => array(
+      'natural' => '4',
       'active' => '3',
       'count' => '3',
       'display' => '4',
