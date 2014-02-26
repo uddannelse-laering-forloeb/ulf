@@ -94,8 +94,10 @@ function ulf_search_form_search_api_page_search_form_alter(&$form, &$form_state)
     ->fields('n', array('id'))
     ->condition('index_id', 'default')
     ->execute();
-  foreach ($results as $result) {
-    $default_page_id = $result->id;
+  if(!empty($results)) {
+    foreach ($results as $result) {
+      $default_page_id = $result->id;
+    }
   }
 
   // Used for search block.
