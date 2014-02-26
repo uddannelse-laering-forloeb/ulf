@@ -90,8 +90,8 @@ function ulf_search_menu() {
  */
 function ulf_search_form_search_api_page_search_form_alter(&$form, &$form_state) {
   // Fetch search page id
-
-  $default_page_id = db_query("SELECT id FROM {search_api_page} WHERE index_id = 'default'")->fetchField();
+  $default_page_id = '1';
+  //$default_page_id = db_query("SELECT id FROM {search_api_page} WHERE index_id = 'default'")->fetchField();
 
   // Used for search block.
   switch ($form['#form_id'])  {
