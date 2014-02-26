@@ -51,14 +51,6 @@ function ulf_forms_form_alter(&$form, &$form_state, $form_id) {
     $form['#suffix'] = '</div>';
     break;
 
-  // Search page form.
-  case 'search_api_page_search_form':
-    $form['form']['keys_1']['#title'] = '<h1 class="page-title">' . t('Search result') . ': ' .  $form_state['build_info']['args']['1'] . '</h1>';
-    $form['#prefix'] = '<div class="search-module--form">';
-    $form['#suffix'] = '</div>';
-    $form['form']['submit_1']['#attributes']['class'][] = 'search-module--submit';
-    break;
-
   // User anonymous forms (Login, request pass and create account)
   case 'user_pass':
     $form['#prefix'] = '<div class="form-module--user-login">';
