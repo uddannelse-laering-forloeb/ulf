@@ -25,10 +25,10 @@ projects[entity_view_mode][version] = "1.0-rc1"
 
 projects[facetapi][subdir] = "contrib"
 projects[facetapi][version] = "1.3"
-projects[facetapi][patch][] = "https://drupal.org/files/limit-active-items.patch"
+;projects[facetapi][patch][] = "https://drupal.org/files/limit-active-items.patch"
 
-;projects[facetapi_bonus][subdir] = "contrib"
-;projects[facetapi_bonus][version] = "1.1"
+projects[facetapi_bonus][subdir] = "contrib"
+projects[facetapi_bonus][version] = "1.1"
 
 projects[features][subdir] = "contrib"
 projects[features][version] = "2.0"
@@ -137,11 +137,10 @@ libraries[ckeditor][download][url] = "http://download.cksource.com/CKEditor/CKEd
 libraries[ckeditor][directory_name] = "ckeditor"
 libraries[ckeditor][destination] = "libraries"
 
-projects[respondjs][download][type] = "git"
-projects[respondjs][download][url] = "git@github.com:scottjehl/Respond.git"
-projects[respondjs][destination] = "libraries"
-projects[respondjs][directory_name] = "Respond"
-projects[respondjs][type] = "library"
+libraries[respondjs][download][type] = "git"
+libraries[respondjs][download][url] = "git@github.com:scottjehl/Respond.git"
+libraries[respondjs][destination] = "libraries"
+libraries[respondjs][directory_name] = "respond"
 
 
 ; Base theme
