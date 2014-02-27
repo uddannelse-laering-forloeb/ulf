@@ -114,7 +114,8 @@ function ulf_search_form_search_api_page_search_form_alter(&$form, &$form_state)
     // Used for search page.
     case "search_api_page_search_form" :
       // Add class to submit.
-      $form['form']['keys_' . $default_page_id]['#title'] = '<h1 class="page-title">' . t('Search result') . ': ' .  $form_state['build_info']['args']['1'] . '</h1>';
+      $form['form']['keys_' . $default_page_id]['#default_value'] = str_replace('-',' ',$form['form']['keys_' . $default_page_id]['#default_value']);
+      $form['form']['keys_' . $default_page_id]['#title'] = '<h1 class="page-title">' . t('Search result') . ': ' .  $form['form']['keys_' . $default_page_id]['#default_value'] . '</h1>';
       $form['form']['#prefix'] = '<div class="search-module--form">';
       $form['form']['#suffix'] = '</div>';
       $form['form']['submit_' . $default_page_id]['#attributes']['class'][] = 'search-module--submit';

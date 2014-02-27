@@ -58,6 +58,9 @@ function ulf_practical_information_moderation_views_default_views() {
   $handler->display->display_options['fields']['field_target_group_sub-revision_id']['field'] = 'field_target_group_sub-revision_id';
   $handler->display->display_options['fields']['field_target_group_sub-revision_id']['label'] = 'excluded';
   $handler->display->display_options['fields']['field_target_group_sub-revision_id']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_target_group_sub-revision_id']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_target_group_sub-revision_id']['alter']['path'] = 'search/[field_target_group_sub-revision_id]';
+  $handler->display->display_options['fields']['field_target_group_sub-revision_id']['type'] = 'taxonomy_term_reference_plain';
   $handler->display->display_options['fields']['field_target_group_sub-revision_id']['delta_offset'] = '0';
   /* Field: Content (historical data): Gratis */
   $handler->display->display_options['fields']['field_free-revision_id']['id'] = 'field_free-revision_id';
@@ -100,6 +103,10 @@ function ulf_practical_information_moderation_views_default_views() {
   $handler->display->display_options['fields']['field_offer_type-revision_id']['field'] = 'field_offer_type-revision_id';
   $handler->display->display_options['fields']['field_offer_type-revision_id']['label'] = 'excluded';
   $handler->display->display_options['fields']['field_offer_type-revision_id']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_offer_type-revision_id']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_offer_type-revision_id']['alter']['path'] = 'search/[field_offer_type-revision_id]';
+  $handler->display->display_options['fields']['field_offer_type-revision_id']['alter']['replace_spaces'] = TRUE;
+  $handler->display->display_options['fields']['field_offer_type-revision_id']['type'] = 'taxonomy_term_reference_plain';
   /* Field: Content (historical data): Varighed */
   $handler->display->display_options['fields']['field_duration-revision_id']['id'] = 'field_duration-revision_id';
   $handler->display->display_options['fields']['field_duration-revision_id']['table'] = 'field_revision_field_duration';
@@ -122,6 +129,10 @@ function ulf_practical_information_moderation_views_default_views() {
   $handler->display->display_options['fields']['field_subject-revision_id']['field'] = 'field_subject-revision_id';
   $handler->display->display_options['fields']['field_subject-revision_id']['label'] = 'excluded';
   $handler->display->display_options['fields']['field_subject-revision_id']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_subject-revision_id']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_subject-revision_id']['alter']['path'] = 'search/[field_subject-revision_id]';
+  $handler->display->display_options['fields']['field_subject-revision_id']['alter']['replace_spaces'] = TRUE;
+  $handler->display->display_options['fields']['field_subject-revision_id']['type'] = 'taxonomy_term_reference_plain';
   $handler->display->display_options['fields']['field_subject-revision_id']['delta_offset'] = '0';
   /* Field: Content (historical data): Tidspunkt */
   $handler->display->display_options['fields']['field_period-revision_id_1']['id'] = 'field_period-revision_id_1';
@@ -213,6 +224,10 @@ function ulf_practical_information_moderation_views_default_views() {
   $handler->display->display_options['fields']['field_subject-revision_id']['field'] = 'field_subject-revision_id';
   $handler->display->display_options['fields']['field_subject-revision_id']['label'] = 'excluded';
   $handler->display->display_options['fields']['field_subject-revision_id']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_subject-revision_id']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_subject-revision_id']['alter']['path'] = 'search/[field_subject-revision_id]';
+  $handler->display->display_options['fields']['field_subject-revision_id']['alter']['replace_spaces'] = TRUE;
+  $handler->display->display_options['fields']['field_subject-revision_id']['type'] = 'taxonomy_term_reference_plain';
   $handler->display->display_options['fields']['field_subject-revision_id']['delta_offset'] = '0';
   /* Field: Content (historical data): Gratis */
   $handler->display->display_options['fields']['field_free-revision_id_2']['id'] = 'field_free-revision_id_2';

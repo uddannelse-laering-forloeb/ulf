@@ -50,7 +50,11 @@ function ulf_practical_information_view_views_default_views() {
   $handler->display->display_options['fields']['field_subject']['field'] = 'field_subject';
   $handler->display->display_options['fields']['field_subject']['label'] = 'excluded';
   $handler->display->display_options['fields']['field_subject']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_subject']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_subject']['alter']['path'] = 'search/[field_subject]';
+  $handler->display->display_options['fields']['field_subject']['alter']['replace_spaces'] = TRUE;
   $handler->display->display_options['fields']['field_subject']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_subject']['type'] = 'taxonomy_term_reference_plain';
   $handler->display->display_options['fields']['field_subject']['delta_offset'] = '0';
   /* Field: Content: Evt. yderligere oplysninger til varighed og pris */
   $handler->display->display_options['fields']['field_price_info']['id'] = 'field_price_info';
@@ -75,6 +79,9 @@ function ulf_practical_information_view_views_default_views() {
   $handler->display->display_options['fields']['field_target_group_sub']['field'] = 'field_target_group_sub';
   $handler->display->display_options['fields']['field_target_group_sub']['label'] = 'excluded';
   $handler->display->display_options['fields']['field_target_group_sub']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_target_group_sub']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_target_group_sub']['alter']['path'] = 'search/[field_target_group_sub]';
+  $handler->display->display_options['fields']['field_target_group_sub']['type'] = 'taxonomy_term_reference_plain';
   $handler->display->display_options['fields']['field_target_group_sub']['delta_offset'] = '0';
   /* Field: Content: Gratis */
   $handler->display->display_options['fields']['field_free']['id'] = 'field_free';
@@ -108,6 +115,10 @@ function ulf_practical_information_view_views_default_views() {
   $handler->display->display_options['fields']['field_offer_type']['field'] = 'field_offer_type';
   $handler->display->display_options['fields']['field_offer_type']['label'] = 'excluded';
   $handler->display->display_options['fields']['field_offer_type']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_offer_type']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_offer_type']['alter']['path'] = 'search/[field_offer_type]';
+  $handler->display->display_options['fields']['field_offer_type']['alter']['replace_spaces'] = TRUE;
+  $handler->display->display_options['fields']['field_offer_type']['type'] = 'taxonomy_term_reference_plain';
   /* Field: Content: Varighed */
   $handler->display->display_options['fields']['field_duration']['id'] = 'field_duration';
   $handler->display->display_options['fields']['field_duration']['table'] = 'field_data_field_duration';
@@ -222,6 +233,10 @@ function ulf_practical_information_view_views_default_views() {
   $handler->display->display_options['fields']['field_subject']['field'] = 'field_subject';
   $handler->display->display_options['fields']['field_subject']['label'] = 'excluded';
   $handler->display->display_options['fields']['field_subject']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_subject']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_subject']['alter']['path'] = 'search/[field_subject]';
+  $handler->display->display_options['fields']['field_subject']['alter']['replace_spaces'] = TRUE;
+  $handler->display->display_options['fields']['field_subject']['type'] = 'taxonomy_term_reference_plain';
   $handler->display->display_options['fields']['field_subject']['delta_offset'] = '0';
   /* Field: Content: Tidspunkt */
   $handler->display->display_options['fields']['field_period']['id'] = 'field_period';
