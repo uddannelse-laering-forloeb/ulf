@@ -143,8 +143,8 @@ libraries[respondjs][directory_name] = "respond"
 libraries[respondjs][destination] = "libraries"
 
 ; Base theme
-;projects[ulftheme][type] = "theme"
-;projects[ulftheme][download][type] = "git"
-;projects[ulftheme][download][url] = "git@github.com:uddannelse-laering-forloeb/ulftheme.git"
-;projects[ulftheme][download][branch] = "development"
+projects[ulftheme][type] = "theme"
+projects[ulftheme][download][type] = "git"
+projects[ulftheme][download][url] = "git@github.com:uddannelse-laering-forloeb/ulftheme.git"
+projects[ulftheme][download][branch] = "development"
 
