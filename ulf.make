@@ -122,4 +122,29 @@ projects[rules][version] = "2.6"
 projects[views][subdir] = "contrib"
 projects[views][version] = "3.7"
 
+projects[workbench][subdir] = "contrib"
+projects[workbench][version] = "1.2"
+
+projects[workbench_moderation][subdir] = "contrib"
+projects[workbench_moderation][version] = "1.3"
+
+projects[wysiwyg][subdir] = "contrib"
+projects[wysiwyg][version] = "2.2"
+
+; Libraries
+libraries[ckeditor][download][type] = "get"
+libraries[ckeditor][download][url] = "http://download.cksource.com/CKEditor/CKEditor/CKEditor%203.6.2/ckeditor_3.6.2.zip"
+libraries[ckeditor][directory_name] = "ckeditor"
+libraries[ckeditor][destination] = "libraries"
+
+libraries[respondjs][download][type] = "git"
+libraries[respondjs][download][url] = "git@github.com:scottjehl/Respond.git"
+libraries[respondjs][directory_name] = "respond"
+libraries[respondjs][destination] = "libraries"
+
+; Base theme
+;projects[ulftheme][type] = "theme"
+;projects[ulftheme][download][type] = "git"
+;projects[ulftheme][download][url] = "git@github.com:uddannelse-laering-forloeb/ulftheme.git"
+;projects[ulftheme][download][branch] = "development"
 
