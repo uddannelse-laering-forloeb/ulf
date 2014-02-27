@@ -137,10 +137,10 @@ libraries[ckeditor][download][url] = "http://download.cksource.com/CKEditor/CKEd
 libraries[ckeditor][directory_name] = "ckeditor"
 libraries[ckeditor][destination] = "libraries"
 
-libraries[respondjs][download][type] = "git"
-libraries[respondjs][download][url] = "git@github.com:scottjehl/Respond.git"
-libraries[respondjs][destination] = "libraries"
-libraries[respondjs][directory_name] = "respond"
+;libraries[respondjs][download][type] = "git"
+;libraries[respondjs][download][url] = "git@github.com:scottjehl/Respond.git"
+;libraries[respondjs][directory_name] = "respond"
+;libraries[respondjs][destination] = "libraries"
 
 
 ; Base theme
