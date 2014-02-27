@@ -133,12 +133,12 @@ libraries[ckeditor][download][url] = "http://download.cksource.com/CKEditor/CKEd
 libraries[ckeditor][directory_name] = "ckeditor"
 libraries[ckeditor][destination] = "libraries"
 
-; Base theme
 projects[respondjs][download][type] = "git"
 projects[respondjs][download][url] = "git@github.com:scottjehl/Respond.git"
 projects[respondjs][destination] = "libraries"
 projects[respondjs][directory_name] = "Respond"
 projects[respondjs][type] = "library"
+
 
 ; Base theme
 projects[ulftheme][type] = "theme"
