@@ -149,4 +149,3 @@ projects[ulftheme][type] = "theme"
 projects[ulftheme][download][type] = "git"
 projects[ulftheme][download][url] = "git@github.com:uddannelse-laering-forloeb/ulftheme.git"
 projects[ulftheme][download][branch] = "development"
-
