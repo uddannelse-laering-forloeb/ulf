@@ -27,8 +27,8 @@ projects[facetapi][subdir] = "contrib"
 projects[facetapi][version] = "1.3"
 projects[facetapi][patch][] = "https://drupal.org/files/limit-active-items.patch"
 
-projects[facetapi_bonus][subdir] = "contrib"
-projects[facetapi_bonus][version] = "1.1"
+;projects[facetapi_bonus][subdir] = "contrib"
+;projects[facetapi_bonus][version] = "1.1"
 
 projects[features][subdir] = "contrib"
 projects[features][version] = "2.0"
