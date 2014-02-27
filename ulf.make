@@ -87,7 +87,7 @@ projects[redirect][version] = "1.0-rc1"
 
 projects[search_api][subdir] = "contrib"
 projects[search_api][version] = "1.11"
-projects[search_api][patch][] = http://drupal.org/files/limit-active-items.patch
+projects[search_api][patch][] = "http://drupal.org/files/limit-active-items.patch"
 
 projects[search_api_page][subdir] = "contrib"
 projects[search_api_page][version] = "1.0"
