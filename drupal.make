@@ -11,7 +11,7 @@ projects[drupal][download][url] = http://ftp.drupal.org/files/projects/drupal-7.
 projects[drupal][patch][] = http://drupal.org/files/menu-get-item-rebuild-1232346-22_0.patch
 projects[drupal][patch][] = http://drupal.org/files/ssl-socket-transports-1879970-13.patch
 projects[drupal][patch][] = http://drupal.org/files/issues/autocomplete-1232416-17-7x.patch
-projects[drupal][patch][] = https://drupal.org/files/limit-active-items.patch
+projects[drupal][patch][] = http://drupal.org/files/limit-active-items.patch
 
 ; Get the profile, which will contain the next makefile.
 projects[ulf][type] = "profile"
