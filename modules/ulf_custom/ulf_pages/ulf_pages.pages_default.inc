@@ -1065,12 +1065,15 @@ function ulf_pages_default_page_manager_handlers() {
     $pane->pid = 'new-33';
     $pane->panel = 'beta';
     $pane->type = 'views_panes';
-    $pane->subtype = 'ulf_useful_info-panel_pane_1';
+    $pane->subtype = 'ulf_useful_info_moderation-panel_pane_1';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'override_title' => 1,
-      'override_title_text' => 'Nyttigt',
+      'arguments' => array(
+        'vid' => '%node:vid',
+      ),
+      'override_title' => 0,
+      'override_title_text' => '',
     );
     $pane->cache = array();
     $pane->style = array(
@@ -1089,12 +1092,15 @@ function ulf_pages_default_page_manager_handlers() {
     $pane->pid = 'new-34';
     $pane->panel = 'beta';
     $pane->type = 'views_panes';
-    $pane->subtype = 'ulf_practical_info-panel_pane_1';
+    $pane->subtype = 'ulf_practical_info_moderation-panel_pane_1';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'override_title' => 1,
-      'override_title_text' => 'Praktisk information',
+      'arguments' => array(
+        'vid' => '%node:vid',
+      ),
+      'override_title' => 0,
+      'override_title_text' => '',
     );
     $pane->cache = array();
     $pane->style = array(
@@ -1700,12 +1706,15 @@ function ulf_pages_default_page_manager_handlers() {
     $pane->pid = 'new-52';
     $pane->panel = 'beta';
     $pane->type = 'views_panes';
-    $pane->subtype = 'ulf_practical_info-panel_pane_2';
+    $pane->subtype = 'ulf_practical_info_moderation-panel_pane_2';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'override_title' => 1,
-      'override_title_text' => 'Praktisk information',
+      'arguments' => array(
+        'vid' => '%node:vid',
+      ),
+      'override_title' => 0,
+      'override_title_text' => '',
     );
     $pane->cache = array();
     $pane->style = array(
