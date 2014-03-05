@@ -91,6 +91,16 @@ function ulf_import_translation() {
  */
 function ulf_setup_filter_and_wysiwyg() {
   $format = new Stdclass();
+  $format->format = 'full_html';
+  $format->name = 'Full html';
+  $format->status = 1;
+  $format->weight = 0;
+  $format->filters = array();
+
+  filter_format_save($format);
+
+
+  $format = new Stdclass();
   $format->format = 'editor';
   $format->name = 'Editor';
   $format->status = 1;
@@ -123,15 +133,6 @@ function ulf_setup_filter_and_wysiwyg() {
       'settings' => array(),
     ),
   );
-
-  filter_format_save($format);
-
-  $format = new Stdclass();
-  $format->format = 'full_html';
-  $format->name = 'Full html';
-  $format->status = 1;
-  $format->weight = 0;
-  $format->filters = array();
 
   filter_format_save($format);
 

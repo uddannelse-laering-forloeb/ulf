@@ -8,6 +8,7 @@ dependencies[] = file
 dependencies[] = html5_tools
 dependencies[] = link
 dependencies[] = list
+dependencies[] = maxlength
 dependencies[] = number
 dependencies[] = options
 dependencies[] = strongarm

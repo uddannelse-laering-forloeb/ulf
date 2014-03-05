@@ -36,6 +36,7 @@ dependencies[] = libraries
 dependencies[] = link
 dependencies[] = list
 dependencies[] = menu
+dependencies[] = maxlength
 dependencies[] = module_filter
 dependencies[] = number
 dependencies[] = openid

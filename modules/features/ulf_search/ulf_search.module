@@ -65,9 +65,11 @@ function ulf_search_nodes() {
  * Include search JS for every pageload!
  */
 function ulf_search_init() {
-  drupal_add_js(drupal_get_path('module', 'ulf_search') . '/handlebars-v1.2.0.js');
-  drupal_add_js(drupal_get_path('module', 'ulf_search') . '/typeahead.bundle.js');
-  drupal_add_js(drupal_get_path('module', 'ulf_search') . '/ulf_search.js');
+  if ($GLOBALS['theme'] == 'ulftheme') {
+    drupal_add_js(drupal_get_path('module', 'ulf_search') . '/handlebars-v1.2.0.js');
+    drupal_add_js(drupal_get_path('module', 'ulf_search') . '/typeahead.bundle.js');
+    drupal_add_js(drupal_get_path('module', 'ulf_search') . '/ulf_search.js');
+  }
 }
 
 /**

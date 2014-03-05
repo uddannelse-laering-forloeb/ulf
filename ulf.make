@@ -73,6 +73,9 @@ projects[link][version] = "1.2"
 projects[mailsystem][subdir] = "contrib"
 projects[mailsystem][version] = "2.34"
 
+projects[maxlength][subdir] = "contrib"
+projects[maxlength][version] = "3.0-beta1"
+
 projects[mimemail][subdir] = "contrib"
 projects[mimemail][version] = "1.0-beta1"
 

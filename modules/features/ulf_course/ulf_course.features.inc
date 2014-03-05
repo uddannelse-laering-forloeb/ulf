@@ -31,7 +31,7 @@ function ulf_course_node_info() {
     'course' => array(
       'name' => t('Undervisnings- og læringsforløb'),
       'base' => 'node_content',
-      'description' => t('Undervisnings- og læringsforløb målrettet bør og unge.'),
+      'description' => t('Undervisnings- og læringsforløb målrettet børn og unge.'),
       'has_title' => '1',
       'title_label' => t('Titel'),
       'help' => '',

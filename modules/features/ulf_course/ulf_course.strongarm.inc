@@ -14,7 +14,7 @@ function ulf_course_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'additional_settings__active_tab_course';
-  $strongarm->value = 'edit-diff';
+  $strongarm->value = 'edit-submission';
   $export['additional_settings__active_tab_course'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -107,6 +107,20 @@ function ulf_course_strongarm() {
   $strongarm->name = 'language_content_type_course';
   $strongarm->value = '0';
   $export['language_content_type_course'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'maxlength_js_course';
+  $strongarm->value = '60';
+  $export['maxlength_js_course'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'maxlength_js_label_course';
+  $strongarm->value = 'Content limited to @limit characters, remaining: <strong>@remaining</strong>';
+  $export['maxlength_js_label_course'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
