@@ -126,6 +126,15 @@ function ulf_setup_filter_and_wysiwyg() {
 
   filter_format_save($format);
 
+  $format = new Stdclass();
+  $format->format = 'full_html';
+  $format->name = 'Full html';
+  $format->status = 1;
+  $format->weight = 0;
+  $format->filters = array();
+
+  filter_format_save($format);
+
   $settings = array(
     'default' => 1,
     'user_choose' => 0,
