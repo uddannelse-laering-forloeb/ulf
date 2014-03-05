@@ -173,7 +173,7 @@ function ulf_search_facetapi_default_facet_settings() {
       'force_deactivation' => TRUE,
       'regex' => FALSE,
     ),
-    'facet_mincount' => '0',
+    'facet_mincount' => '1',
     'facet_missing' => '0',
     'flatten' => '0',
     'query_type' => 'term',
