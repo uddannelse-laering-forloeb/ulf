@@ -126,7 +126,7 @@
     $( ".field-name-field-material-suggestions" ).hide();
     $( ".field-name-field-educational-goals" ).hide();
     $( ".field-name-field-subjects-primary-school" ).hide();
-    $( ".field-name-field-youth" ).show();
+    $( ".field-name-field-subjects-youth" ).show();
 
     // We act on our own classes as well. This is useful for changing help texts (See purpose field for example).
     $( ".is-preschool" ).hide();
@@ -138,7 +138,7 @@
     // Hide filter selection.
     $('.filter-wrapper').hide();
 
-    // We add border width in cs to reach seven theme.
+    // We add border width in js to reach seven theme.
     $('#node_course_form_group_practical_information').css('border-width', '2px');
 
     // Hide practical information until target group has been selected.
@@ -192,6 +192,32 @@
       } else {
         $( ".field-name-field-collection-price" ).show();
         $( ".field-name-field-price" ).show();
+      }
+    });
+
+    // If  "vary_duration" is checked disable "Duration" and "duration unit".
+    $( ".field-name-field-vary-duration .form-checkbox" ).click(function() {
+      if($(this).is(":checked")) {
+        $( ".field-name-field-duration .form-text" ).attr('readonly', true);
+        $( ".field-name-field-duration-unit .form-select" ).attr('disabled', true);
+        $( ".field-name-field-duration .form-text" ).css('background', '#eee');
+      } else {
+        $( ".field-name-field-duration .form-text" ).attr('readonly', false);
+        $( ".field-name-field-duration-unit .form-select" ).attr('disabled', false);
+        $( ".field-name-field-duration .form-text" ).css('background', '#fff');
+      }
+    });
+
+    // When "vary_price" is checked disable "Price".
+    $( ".field-name-field-vary-price .form-checkbox" ).click(function() {
+      if($(this).is(":checked")) {
+        $( ".field-name-field-price .form-text" ).attr('readonly', true);
+        $( ".field-name-field-unit-price .form-select" ).attr('disabled', true);
+        $( ".field-name-field-price .form-text" ).css('background', '#eee');
+      } else {
+        $( ".field-name-field-price .form-text" ).attr('readonly', false);
+        $( ".field-name-field-unit-price .form-select" ).attr('disabled', false);
+        $( ".field-name-field-price .form-text").css('background', '#fff');
       }
     });
   });

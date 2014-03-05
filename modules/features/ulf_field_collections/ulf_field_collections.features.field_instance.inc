@@ -13,11 +13,7 @@ function ulf_field_collections_field_default_field_instances() {
   // Exported field_instance: 'field_collection_item-field_collection_price-field_price'
   $field_instances['field_collection_item-field_collection_price-field_price'] = array(
     'bundle' => 'field_collection_price',
-    'default_value' => array(
-      0 => array(
-        'value' => 0,
-      ),
-    ),
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -48,7 +44,9 @@ function ulf_field_collections_field_default_field_instances() {
     'widget' => array(
       'active' => 0,
       'module' => 'number',
-      'settings' => array(),
+      'settings' => array(
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+      ),
       'type' => 'number',
       'weight' => 31,
     ),
@@ -57,11 +55,7 @@ function ulf_field_collections_field_default_field_instances() {
   // Exported field_instance: 'field_collection_item-field_collection_price-field_unit_price'
   $field_instances['field_collection_item-field_collection_price-field_unit_price'] = array(
     'bundle' => 'field_collection_price',
-    'default_value' => array(
-      0 => array(
-        'value' => 'per_person',
-      ),
-    ),
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -83,7 +77,9 @@ function ulf_field_collections_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+      ),
       'type' => 'options_select',
       'weight' => 33,
     ),

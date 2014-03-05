@@ -25,8 +25,8 @@ function ulf_course_field_group_info() {
     'children' => array(
       0 => 'field_activities',
       1 => 'field_background_knowledge',
-      2 => 'field_post_work',
-      3 => 'field_material_suggestions',
+      2 => 'field_material_suggestions',
+      3 => 'field_post_work',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -54,11 +54,11 @@ function ulf_course_field_group_info() {
     'label' => 'Forløbet',
     'weight' => '0',
     'children' => array(
-      0 => 'field_full_description',
-      1 => 'field_target_group',
-      2 => 'field_purpose',
-      3 => 'field_free',
-      4 => 'field_period_full_year',
+      0 => 'field_free',
+      1 => 'field_full_description',
+      2 => 'field_period_full_year',
+      3 => 'field_purpose',
+      4 => 'field_target_group',
       5 => 'title',
     ),
     'format_type' => 'div',
@@ -90,10 +90,11 @@ function ulf_course_field_group_info() {
   $field_group->parent_name = 'group_practical_information';
   $field_group->data = array(
     'label' => 'Varighed',
-    'weight' => '24',
+    'weight' => '25',
     'children' => array(
       0 => 'field_duration',
       1 => 'field_duration_unit',
+      2 => 'field_vary_duration',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -238,15 +239,16 @@ function ulf_course_field_group_info() {
     'children' => array(
       0 => 'field_collection_price',
       1 => 'field_count',
-      2 => 'field_offer_type',
-      3 => 'field_price_info',
-      4 => 'field_subject',
-      5 => 'field_tags',
-      6 => 'field_target_group_sub',
-      7 => 'field_subjects_primary_school',
-      8 => 'field_subjects_youth',
-      9 => 'field_educational_goals',
-      10 => 'group_duration',
+      2 => 'field_educational_goals',
+      3 => 'field_offer_type',
+      4 => 'field_price_info',
+      5 => 'field_subject',
+      6 => 'field_subjects_primary_school',
+      7 => 'field_subjects_youth',
+      8 => 'field_tags',
+      9 => 'field_target_group_sub',
+      10 => 'field_vary_price',
+      11 => 'group_duration',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

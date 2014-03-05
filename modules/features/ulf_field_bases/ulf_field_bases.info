@@ -63,3 +63,5 @@ features[field_base][] = field_tags
 features[field_base][] = field_target_group
 features[field_base][] = field_target_group_sub
 features[field_base][] = field_teaser
+features[field_base][] = field_vary_duration
+features[field_base][] = field_vary_price
