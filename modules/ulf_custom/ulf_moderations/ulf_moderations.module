@@ -23,7 +23,9 @@ function ulf_moderations_menu_local_tasks_alter(&$data, $router_item, $root_path
   if (in_array($root_path, $selected_paths)) {
     // Foreach tab.
     foreach($data['tabs']['0']['output'] as $key => $value) {
-
+      // Seems the workbench guys forgot the t() function.
+      $data['tabs']['0']['output'][$key]['#link']['title'] = t($value['#link']['title']);
+      
       // Check that we have the right tab.
       if ($value['#link']['path'] == 'node/%/moderation') {
 
