@@ -57,7 +57,7 @@ function ulf_search_default_search_api_index() {
         "field_subjects_primary_school" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_subjects_youth" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_tags" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
-        "field_target_group" : { "type" : "integer", "entity_type" : "taxonomy_term" },
+        "field_target_group" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_target_group_sub" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_teaser" : { "type" : "text" },
         "search_api_language" : { "type" : "string" },
@@ -66,7 +66,7 @@ function ulf_search_default_search_api_index() {
         "field_offer_type:name" : { "type" : "text" },
         "field_subject:name" : { "type" : "list\\u003Ctext\\u003E" },
         "field_tags:name" : { "type" : "list\\u003Ctext\\u003E" },
-        "field_target_group:name" : { "type" : "text" },
+        "field_target_group:name" : { "type" : "list\\u003Ctext\\u003E" },
         "field_target_group_sub:name" : { "type" : "list\\u003Ctext\\u003E" }
       },
       "data_alter_callbacks" : {

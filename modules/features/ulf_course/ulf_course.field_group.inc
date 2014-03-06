@@ -90,7 +90,7 @@ function ulf_course_field_group_info() {
   $field_group->parent_name = 'group_practical_information';
   $field_group->data = array(
     'label' => 'Varighed',
-    'weight' => '25',
+    'weight' => '24',
     'children' => array(
       0 => 'field_duration',
       1 => 'field_duration_unit',

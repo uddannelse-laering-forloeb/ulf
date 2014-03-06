@@ -167,7 +167,7 @@ function ulf_course_field_default_field_instances() {
       'module' => 'field_collection',
       'settings' => array(),
       'type' => 'field_collection_embed',
-      'weight' => 27,
+      'weight' => 25,
     ),
   );
 
@@ -1187,7 +1187,7 @@ function ulf_course_field_default_field_instances() {
         'rows' => 3,
       ),
       'type' => 'text_textarea',
-      'weight' => 28,
+      'weight' => 27,
     ),
   );
 
@@ -1342,7 +1342,7 @@ At opnå kendskab til...
     ),
     'entity_type' => 'node',
     'field_name' => 'field_subjects_primary_school',
-    'label' => 'Fag',
+    'label' => 'Fag - Grundskole',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -1350,7 +1350,9 @@ At opnå kendskab til...
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+      ),
       'type' => 'options_buttons',
       'weight' => 22,
     ),
@@ -1391,7 +1393,7 @@ At opnå kendskab til...
     ),
     'entity_type' => 'node',
     'field_name' => 'field_subjects_youth',
-    'label' => 'Fag',
+    'label' => 'Fag - Ungdomsuddannelse',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -1400,8 +1402,7 @@ At opnå kendskab til...
       'active' => 1,
       'module' => 'options',
       'settings' => array(
-        'autocomplete_path' => 'taxonomy/autocomplete',
-        'size' => 60,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_buttons',
       'weight' => 23,
@@ -1458,7 +1459,7 @@ At opnå kendskab til...
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 29,
+      'weight' => 28,
     ),
   );
 
@@ -1505,8 +1506,10 @@ At opnå kendskab til...
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_select',
+      'settings' => array(
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+      ),
+      'type' => 'options_buttons',
       'weight' => 2,
     ),
   );
@@ -1713,7 +1716,8 @@ At opnå kendskab til...
   t('Evt. yderligere oplysninger til faciliteter');
   t('Evt. yderligere oplysninger til periode');
   t('Evt. yderligere oplysninger til varighed og pris');
-  t('Fag');
+  t('Fag - Grundskole');
+  t('Fag - Ungdomsuddannelse');
   t('Formål / Kort beskrivelse');
   t('Gratis');
   t('Hele året');

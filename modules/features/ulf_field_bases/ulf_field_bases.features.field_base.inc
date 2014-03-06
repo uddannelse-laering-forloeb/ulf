@@ -1323,7 +1323,7 @@ function ulf_field_bases_field_default_field_bases() {
   // Exported field_base: 'field_target_group'
   $field_bases['field_target_group'] = array(
     'active' => 1,
-    'cardinality' => 1,
+    'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_target_group',
