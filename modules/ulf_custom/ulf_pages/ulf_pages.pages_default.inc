@@ -2757,6 +2757,45 @@ function ulf_pages_default_page_manager_handlers() {
     $pane->locks = array();
     $display->content['new-75'] = $pane;
     $display->panels['gamma'][0] = 'new-75';
+    $pane = new stdClass();
+    $pane->pid = 'new-76';
+    $pane->panel = 'gamma';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'ulf_course_by_user-panel_pane_2';
+    $pane->shown = TRUE;
+    $pane->access = array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'compare_users',
+          'settings' => array(
+            'equality' => '1',
+          ),
+          'context' => array(
+            0 => 'argument_entity_id:user_1',
+            1 => 'logged-in-user',
+          ),
+          'not' => FALSE,
+        ),
+      ),
+    );
+    $pane->configuration = array(
+      'link_to_view' => 0,
+      'override_title' => 1,
+      'override_title_text' => 'Ikke publiserede kurser/forløb',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => 'page-content',
+    );
+    $pane->extras = array();
+    $pane->position = 1;
+    $pane->locks = array();
+    $display->content['new-76'] = $pane;
+    $display->panels['gamma'][1] = 'new-76';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
@@ -2823,7 +2862,7 @@ function ulf_pages_default_page_manager_pages() {
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-76';
+    $pane->pid = 'new-77';
     $pane->panel = 'beta';
     $pane->type = 'views_panes';
     $pane->subtype = 'ulf_frontpage_promoted_courses-panel_pane_1';
@@ -2841,10 +2880,10 @@ function ulf_pages_default_page_manager_pages() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-76'] = $pane;
-    $display->panels['beta'][0] = 'new-76';
+    $display->content['new-77'] = $pane;
+    $display->panels['beta'][0] = 'new-77';
     $pane = new stdClass();
-    $pane->pid = 'new-77';
+    $pane->pid = 'new-78';
     $pane->panel = 'beta';
     $pane->type = 'views_panes';
     $pane->subtype = 'frontpage_target_groups-panel_pane_1';
@@ -2862,10 +2901,10 @@ function ulf_pages_default_page_manager_pages() {
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-77'] = $pane;
-    $display->panels['beta'][1] = 'new-77';
+    $display->content['new-78'] = $pane;
+    $display->panels['beta'][1] = 'new-78';
     $pane = new stdClass();
-    $pane->pid = 'new-78';
+    $pane->pid = 'new-79';
     $pane->panel = 'beta';
     $pane->type = 'views_panes';
     $pane->subtype = 'frontpage_target_groups-panel_pane_2';
@@ -2883,10 +2922,10 @@ function ulf_pages_default_page_manager_pages() {
     $pane->extras = array();
     $pane->position = 2;
     $pane->locks = array();
-    $display->content['new-78'] = $pane;
-    $display->panels['beta'][2] = 'new-78';
+    $display->content['new-79'] = $pane;
+    $display->panels['beta'][2] = 'new-79';
     $pane = new stdClass();
-    $pane->pid = 'new-79';
+    $pane->pid = 'new-80';
     $pane->panel = 'beta';
     $pane->type = 'views_panes';
     $pane->subtype = 'frontpage_target_groups-panel_pane_3';
@@ -2904,10 +2943,10 @@ function ulf_pages_default_page_manager_pages() {
     $pane->extras = array();
     $pane->position = 3;
     $pane->locks = array();
-    $display->content['new-79'] = $pane;
-    $display->panels['beta'][3] = 'new-79';
+    $display->content['new-80'] = $pane;
+    $display->panels['beta'][3] = 'new-80';
     $pane = new stdClass();
-    $pane->pid = 'new-80';
+    $pane->pid = 'new-81';
     $pane->panel = 'gamma';
     $pane->type = 'views_panes';
     $pane->subtype = 'frontpage_news-panel_pane_1';
@@ -2925,8 +2964,8 @@ function ulf_pages_default_page_manager_pages() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-80'] = $pane;
-    $display->panels['gamma'][0] = 'new-80';
+    $display->content['new-81'] = $pane;
+    $display->panels['gamma'][0] = 'new-81';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
