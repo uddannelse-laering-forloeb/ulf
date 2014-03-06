@@ -131,6 +131,14 @@ function ulf_course_providers_views_default_views() {
   $handler->display->display_options['pager']['options']['tags']['last'] = 'sidste »';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
+  /* Felt: Indhold: Beskrivelse */
+  $handler->display->display_options['fields']['field_full_description']['id'] = 'field_full_description';
+  $handler->display->display_options['fields']['field_full_description']['table'] = 'field_data_field_full_description';
+  $handler->display->display_options['fields']['field_full_description']['field'] = 'field_full_description';
+  $handler->display->display_options['fields']['field_full_description']['label'] = 'excluded';
+  $handler->display->display_options['fields']['field_full_description']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_full_description']['alter']['max_length'] = '300';
+  $handler->display->display_options['fields']['field_full_description']['alter']['trim'] = TRUE;
   /* Felt: Indhold: Titel */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -147,6 +155,7 @@ function ulf_course_providers_views_default_views() {
   $handler->display->display_options['fields']['field_purpose']['label'] = '';
   $handler->display->display_options['fields']['field_purpose']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_purpose']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_purpose']['empty'] = '[field_full_description]';
   /* Felt: Felt: Upload et billede/illustration */
   $handler->display->display_options['fields']['field_image']['id'] = 'field_image';
   $handler->display->display_options['fields']['field_image']['table'] = 'field_data_field_image';
@@ -222,6 +231,7 @@ function ulf_course_providers_views_default_views() {
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
+    'course_educators' => 'course_educators',
     'course' => 'course',
   );
   /* Filterkriterie: Indhold: Udgivet eller administrator */
@@ -255,6 +265,7 @@ function ulf_course_providers_views_default_views() {
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
+    'course_educators' => 'course_educators',
     'course' => 'course',
   );
   /* Filterkriterie: Indhold: Udgivet eller administrator */
@@ -290,6 +301,8 @@ function ulf_course_providers_views_default_views() {
     t('‹ forrige'),
     t('næste ›'),
     t('sidste »'),
+    t('excluded'),
+    t('[field_full_description]'),
     t('Redigér dette forløb'),
     t('<h3 class="search-module--result-header">[title]</h3>
 <div class="search-module--edit-link">[edit_node] <span class="is-moderation-[state]">(Ikke publiseret)</span></div>

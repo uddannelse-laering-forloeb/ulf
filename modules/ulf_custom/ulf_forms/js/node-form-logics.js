@@ -19,14 +19,14 @@
 
     // Hide specific fields only relevant for certain target groups.
     $( ".field-name-field-post-work" ).hide();
-    $( ".field-name-field-educational-material" ).hide();
     $( ".field-name-field-educational-goals" ).hide();
     $( ".field-name-field-subjects-primary-school" ).hide();
     $( ".field-name-field-subjects-youth" ).hide();
+    $( ".node-course-form .field-name-field-educational-material" ).hide();
+    $( ".node-course-form .field-name-field-inspirational-material" ).hide();
+    $( ".field-name-field-material-suggestions" ).hide();
     // Used in field help text.
     $( ".is-school" ).hide();
-    $( ".field-name-field-inspirational-material" ).hide();
-    $( ".field-name-field-material-suggestions" ).hide();
 
     // Show stuff depending on what the selection array contains.
     if ( $.inArray('Dagtilbud ', targetGroupSelections) > -1 ) {
