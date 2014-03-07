@@ -216,7 +216,7 @@ function ulf_course_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Useful';
+  $handler->display->display_options['title'] = 'Nyttigt';
   $handler->display->display_options['css_class'] = 'block-inline-module--content';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['use_more_text'] = 'mere';
@@ -334,7 +334,7 @@ function ulf_course_views_default_views() {
   );
   $translatables['ulf_useful_info'] = array(
     t('Master'),
-    t('Useful'),
+    t('Nyttigt'),
     t('mere'),
     t('Udfør'),
     t('Gendan'),
@@ -368,7 +368,7 @@ function ulf_course_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Useful';
+  $handler->display->display_options['title'] = 'Nyttigt';
   $handler->display->display_options['css_class'] = 'block-inline-module--content';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['use_more_text'] = 'mere';
@@ -469,7 +469,7 @@ function ulf_course_views_default_views() {
   );
   $translatables['ulf_useful_info_moderation'] = array(
     t('Master'),
-    t('Useful'),
+    t('Nyttigt'),
     t('mere'),
     t('Udfør'),
     t('Gendan'),
