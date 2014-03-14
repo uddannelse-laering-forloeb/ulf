@@ -10,9 +10,9 @@
 function ulf_base_user_default_roles() {
   $roles = array();
 
-  // Exported role: course editor.
-  $roles['course editor'] = array(
-    'name' => 'course editor',
+  // Exported role: course provider.
+  $roles['course provider'] = array(
+    'name' => 'course provider',
     'weight' => 2,
   );
 

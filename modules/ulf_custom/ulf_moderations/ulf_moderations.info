@@ -1,0 +1,5 @@
+name = Ulf Moderations
+description = Compare node revisions in a user friendly manner
+dependencies[] = diff
+package = Ulf base
+core = 7.x
