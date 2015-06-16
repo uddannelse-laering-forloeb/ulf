@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the Ulf base feature.
- */
-
-include_once 'ulf_base.features.inc';

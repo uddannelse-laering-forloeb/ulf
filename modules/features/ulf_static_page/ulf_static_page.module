@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the Ulf static page feature.
- */
-
-include_once 'ulf_static_page.features.inc';

@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the Ulf field collections feature.
- */
-
-include_once 'ulf_field_collections.features.inc';
