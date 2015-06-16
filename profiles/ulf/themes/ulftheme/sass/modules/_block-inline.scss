@@ -1,0 +1,43 @@
+/**
+ * Block inline module.
+ *
+ * Contains general inline block styles.
+ *
+ * @author Martin Yde.
+ */
+
+
+.block-inline-module {
+  @extend .block-module;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.block-inline-module--header {
+  @extend .block-module--header;
+}
+
+.block-inline-module--content {
+  @extend .block-module--content;
+}
+
+.block-inline-module--field-wrapper {
+  @extend .block-module--field-wrapper;
+}
+
+.block-inline-module--field-label {
+  @extend .block-module--field-label;
+
+  float:left;
+  width: 50%;
+}
+
+.block-inline-module--field-text {
+  @extend .block-module--field-text;
+
+  color: #666;
+  float:left;
+  width: 50%;
+}

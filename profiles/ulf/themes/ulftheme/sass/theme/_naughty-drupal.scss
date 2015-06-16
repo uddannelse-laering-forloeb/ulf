@@ -1,0 +1,16 @@
+/**
+ * Naughty Drupal
+ *
+ * Holds drupal specific corrections that needs adjustments
+ */
+
+
+/* The toolbar is styled from system.base.css and uses element-invisible tags that should have been hidden in system.base.css, but we are not using that stylesheet. @see ulf.info */
+
+.element-invisible {
+  display: none;
+}
+
+.toolbar-menu {
+  overflow: hidden;
+}

@@ -1,0 +1,61 @@
+/**
+ * Variables
+ *
+ * Theme specific variables
+ *
+ * @author magnify
+ */
+
+
+
+/* Layout
+   ================================================================================================================== */
+
+$layout-max-width:    75em;
+$layout-padding:      1.5em 1.25em;
+
+/* Colors
+   ================================================================================================================== */
+
+$gray-lightest:    lighten($black, 95%);
+$gray-lighter:     lighten($black, 90%);
+$gray-light:       lighten($black, 70%);
+$gray:             lighten($black, 60%);
+$gray-dark:        lighten($black, 50%);
+$gray-darker:      lighten($black, 40%);
+$gray-darkest:     lighten($black, 30%);
+$blue:             #269eD9;
+$blue-light:       lighten($blue, 5%);
+$yellow:           #f8b634;
+$yellow-light:     lighten($yellow, 5%);
+$white:            #fff;
+$red:              #ff6138;
+
+
+/* Typography
+   ================================================================================================================== */
+
+$font:             1em/1.5 "ff-scala-sans-web-pro", Arial, sans-serif;
+
+
+
+/* Link colors
+   ================================================================================================================== */
+
+$link-color:       $blue;
+$link-color-hover: darken($link-color, 10%);
+
+
+/* Spacing
+   ================================================================================================================== */
+
+$margin-bottom:         1em;
+$padding-bottom:        1em;
+
+$separator:             1px $gray-lighter dashed;
+
+
+/* Misc
+   ================================================================================================================== */
+
+$border-color:        $gray-lighter;

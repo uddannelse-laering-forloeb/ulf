@@ -1,0 +1,112 @@
+/**
+ * Block module.
+ *
+ * Contains general block styles.
+ *
+ */
+
+
+
+.block-module {
+  margin-bottom: 2em;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.block-module--wrapper {
+  margin-bottom: 2em;
+  overflow: hidden;
+
+  @include global-layout-content();
+  @include global-grid-padding-override();
+
+  // Override padding bottom
+  padding-bottom: 0;
+
+  &.is-last {
+    margin-bottom: 0;
+  }
+}
+
+
+.block-module--header {
+  margin-bottom: 0;
+  padding: .75em 1em .5em;
+
+  border: 1px solid $gray-lighter;
+  background: $gray-lightest;
+  font-size: 1.5em;
+
+  @include box-sizing(border-box);
+
+  @include breakpoint(45em) {
+    @include border-radius($border-radius/2 $border-radius/2 0 0);
+  }
+}
+
+.block-module--content {
+  padding: $layout-padding;
+
+  background: $white;
+
+  @include border-radius(0 0 $border-radius/2 $border-radius/2);
+}
+
+.block-module--field-wrapper {
+  border-bottom: $separator;
+  margin-bottom: $margin-bottom;
+  overflow: hidden;
+
+  &:last-child {
+    border-bottom: 0;
+    margin-bottom: 0;
+  }
+}
+
+.block-module--field-label {
+  font-weight: bold;
+}
+
+.block-module--field-text {
+  margin-bottom: $margin-bottom;
+}
+
+
+/* Block view
+   ================================================================================================================== */
+
+.block-module--content-element-wrapper {
+  border-bottom: $separator;
+  margin-bottom: $margin-bottom;
+  padding-bottom: $padding-bottom;
+
+  &:last-child {
+    border-bottom: 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+}
+
+
+
+/* Block list
+   ================================================================================================================== */
+
+.block--list {
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.block--list-item {
+  padding-top: .25em;
+  padding-bottom: .25em;
+
+  &:before {
+    @extend %icon-check;
+    @extend %icon-before;
+  }
+}

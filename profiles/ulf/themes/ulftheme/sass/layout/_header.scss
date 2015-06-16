@@ -1,0 +1,37 @@
+/**
+ * Header
+ *
+ */
+
+
+
+.header {
+  position: relative;
+
+  margin-bottom: 2em;
+
+  background-color: transparentize($white, .15);
+
+  @include breakpoint(45em) {
+    margin-bottom: 0;
+  }
+}
+
+.header--inner {
+  @extend %global--layout-container;
+
+  position: relative;
+
+  min-height: 5em;
+
+  @include zen-grid-container();
+  @include zen-clear(both);
+
+  @include breakpoint(45em) {
+    min-height: 7em;
+  }
+}
+
+.header--nav-wrapper {
+  height: 5em;
+}

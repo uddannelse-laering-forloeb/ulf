@@ -1,0 +1,41 @@
+/**
+ * Page module
+ */
+
+
+.page-wrapper {
+  // We want a full size mobile menu.
+  width: 100%;
+
+  &.is-moved-left {
+    .page-inner {
+      @include transform(translate3d(76%, 0, 0));
+    }
+  }
+}
+
+.page-inner {
+  position: relative;
+
+  min-height: 100%;
+  width: 100%;
+
+  @include transition(transform 500ms ease 0s);
+}
+
+.page-content {
+  @include global-layout-content();
+}
+
+.page-content--header {
+  margin-bottom: $margin-bottom / 2;
+  padding-bottom: $padding-bottom / 2;
+  border-bottom: $separator;
+}
+
+
+.page-title {
+  margin-bottom: .5em;
+
+  color: #333;
+}

@@ -1,0 +1,115 @@
+/**
+ * Teaser module
+ *
+ * Contains styles related to teasers.
+ *
+ */
+
+
+.teaser-module {
+  clear: both;
+  padding: 0 1em;
+  position: relative;
+
+  @include breakpoint(30em) {
+    &.is-odd {
+      clear: left;
+
+      @include zen-grid-item(6, 1);
+    }
+
+    &.is-even {
+      clear: none;
+
+      @include zen-grid-item(6, 1, right);
+    }
+  }
+}
+
+.teaser-module--promoted {
+  @extend .teaser-module;
+}
+
+.teaser-module--youth,
+.teaser-module--primary-school,
+.teaser-module--daycare {
+  @extend .teaser-module;
+}
+
+.teaser-module--inner {
+  position: relative;
+
+  margin-bottom: 2em;
+}
+
+
+// Teaser header
+
+.teaser-module--header {
+  margin-bottom: 0.75em;
+  padding-left: .626em;
+}
+
+.teaser-module--header-promoted {
+  @extend .teaser-module--header;
+}
+
+
+.teaser-module--text {
+  background-color: transparentize($blue, .15);
+  bottom: 0;
+  padding: 1em 1em;
+  position: absolute;
+  width: auto;
+  left: 0;
+  right: 0;
+
+  // Rendering field items with a link class is too much of a hassle, we nest an extra level instead.
+  a {
+    font-size: 1.1em;
+    line-height: 1.3em;
+    margin-right: 5px;
+  }
+}
+
+.teaser-module--image {
+  height: auto;
+  width: 100%;
+}
+
+// We cut the image at a breakpoint to keep the height at a reasonable size.
+.teaser-module--image-cut {
+  @include breakpoint(30em) {
+    height: 250px;
+    overflow: hidden;
+    max-width: 800px;
+  }
+}
+
+.teaser-module--label {
+  color: transparentize($white, .3);
+  font-size: 1.1em;
+  line-height: 1.3em;
+  margin-right: 0.4em;
+
+  &:focus,
+  &:link,
+  &:visited {
+    color: transparentize($white, .3);
+    text-decoration: none;
+  }
+}
+
+.teaser-module--title {
+  color: transparentize($white, .1);
+  font-size: 1.1em;
+  font-weight: bold;
+  line-height: 1.3em;
+
+  &:focus,
+  &:link,
+  &:visited {
+    color: transparentize($white, .1);
+    text-decoration: none;
+  }
+}

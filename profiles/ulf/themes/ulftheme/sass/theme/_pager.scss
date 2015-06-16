@@ -1,0 +1,53 @@
+/**
+* Tabs
+*/
+
+.pager {
+  border-top: 1px dashed $border-color;
+  padding-top: 2em;
+  padding-left: 0;
+
+  text-align: center;
+
+  li {
+    display: inline-block;
+    margin-left: -4px;
+    margin-right: 1em;
+  }
+
+  .pager-current,
+  a {
+    display: inline-block;
+    padding-top: .5em;
+    padding-right: 1em;
+    padding-bottom: .4em;
+    padding-left: 1em;
+
+    background-color: $gray-lighter;
+    text-decoration: none;
+
+    @include border-radius($border-radius);
+
+    &:hover {
+      background-color: darken($gray-lighter, 5%);
+      text-decoration: none;
+    }
+  }
+
+  .pager-current {
+    background-color: $gray-light;
+    color: $white;
+
+    &:hover {
+      background-color: darken($gray-light, 5%);
+    }
+  }
+
+  .disabled {
+    background-color: $gray-lightest;
+  }
+  .disabled a:hover {
+    cursor: default;
+    text-decoration: none;
+  }
+}

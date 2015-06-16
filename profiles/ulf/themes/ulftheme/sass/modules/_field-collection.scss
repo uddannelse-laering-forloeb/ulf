@@ -1,0 +1,57 @@
+/**
+ * Field collection module
+ *
+ * Contains general field collection styles.
+ *
+ * @author Martin Yde.
+ */
+
+%field-collection-module--field {
+  float: left;
+  overflow: hidden;
+  width: 100%;
+}
+
+%field-collection-module--label {
+  font-weight: bold;
+}
+
+.field-collection-module--contact-name,
+.field-collection-module--contact-email,
+.field-collection-module--contact-phone {
+  @extend %field-collection-module--field;
+}
+
+.field-collection-module--description {
+  @extend %field-collection-module--label;
+}
+
+.field-collection-module--value {
+  margin-bottom: $margin-bottom;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.field-collection-module--file,
+.field-collection-module--link,
+.field-collection-module--litt,
+.field-collection-module--description {
+  margin-bottom: 0.4em;
+}
+.field-collection-module--link {
+  &:before {
+    @extend %icon-link;
+    @extend %icon-before;
+  }
+}
+
+.field-collection-module--file {
+  &:before {
+    @extend %icon-doc;
+    @extend %icon-before;
+  }
+}
+
+

@@ -1,0 +1,85 @@
+/**
+ * Icons
+ */
+
+
+%icon-base {
+  display: inline-block;
+
+  font-family: "ulf-icons";
+  line-height: 100%;
+}
+
+%icon-before {
+  margin-right: .5em;
+}
+
+%icon-after {
+  margin-left: .5em;
+}
+
+%icon-check-circled {
+  @extend %icon-base;
+
+  content: '\e800';
+}
+
+%icon-cancel-circled {
+  @extend %icon-base;
+
+  content: '\e801';
+}
+
+%icon-check {
+  @extend %icon-base;
+
+  content: '\e802';
+}
+
+%icon-warning {
+  @extend %icon-base;
+
+  content: '\e803';
+}
+
+%icon-link {
+  @extend %icon-base;
+
+  content: '\e804';
+}
+
+%icon-arrow-right {
+  @extend %icon-base;
+
+  content: '\e805';
+}
+
+%icon-arrow-down-big {
+  @extend %icon-base;
+
+  content: '\e811';
+}
+
+%icon-list {
+  @extend %icon-base;
+
+  content: '\e806';
+}
+
+%icon-list-thumbs {
+  @extend %icon-base;
+
+  content: '\e807';
+}
+
+%icon-filter {
+  @extend %icon-base;
+
+  content: '\e808';
+}
+
+%icon-doc {
+  @extend %icon-base;
+
+  content: '\e809';
+}

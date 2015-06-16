@@ -1,0 +1,237 @@
+/**
+ * Nav module
+ *
+ * Contains styles related to the navigation bar.
+ *
+ */
+
+
+.nav--list {
+  display: block;
+  margin: 0;
+  padding: 0;
+
+  list-style-type: none;
+}
+
+.nav {
+  display: none;
+
+  @include breakpoint(45em) {
+    display: block;
+    margin-bottom: 2em;
+
+    background: $white;
+    border-top: 1px solid $gray-lighter;
+    border-bottom: 1px solid $gray-lighter;
+    text-align: right;
+  }
+
+  .nav--inner {
+    @extend %global--layout-container;
+
+    @include breakpoint($layout-max-width) {
+
+      padding-right: $zen-gutter-width / 2;
+      padding-left: $zen-gutter-width / 2;
+
+      @include box-sizing(border-box);
+    }
+  }
+
+  .nav--list-item {
+    display: inline-block;
+    height: 3.25em;
+
+    &:first-child {
+      .nav--list-link {
+        border-left: 1px solid $gray-lighter;
+      }
+    }
+  }
+
+  .nav--list-link {
+    border-right: 1px solid $gray-lighter;
+    display: inline-block;
+    /* Margin correction for display inline block */
+    margin-left: -4px;
+    padding: .75em .75em .45em;
+
+    height: 100%;
+    line-height: 160%;
+    text-decoration: none;
+    font-size: 115%;
+
+    @include box-sizing(border-box);
+
+    &:focus,
+    &:link,
+    &:visited {
+      color: $gray;
+      text-decoration: none;
+    }
+
+    &:hover,
+    &.active {
+      background-color: $gray-lightest;
+      color: $gray-darker;
+      text-decoration: none;
+    }
+
+    @include breakpoint($layout-max-width) {
+      padding-right: 2em;
+      padding-left: 2em;
+    }
+  }
+
+  .nav--list-dropdown-item {
+    @extend .nav--list-item;
+
+    position: relative;
+
+    display: inline-block;
+    height: 3.25em;
+
+    &:hover {
+      .nav--dropdown-item {
+        display: block;
+      }
+    }
+  }
+
+  .nav--dropdown-item {
+    position: absolute;
+    top: 3.25em;
+    right: 0;
+    z-index: 99;
+
+    border: 1px solid $gray-lighter;
+    display: none;
+
+    background-color: $white;
+    line-height: 2.7em;
+  }
+
+  .nav--dropdown-icon {
+    position: absolute;
+    top: 1em;
+    right: 1.25em;
+
+    max-width: .85em;
+  }
+
+  .nav--list-dropdown-link {
+    @extend .nav--list-link;
+
+    padding-right: 1em;
+
+    &:after {
+      @extend %icon-arrow-down-big;
+      @extend %icon-before;
+
+      margin-left: 1em;
+    }
+  }
+
+  .nav--dropdown-link {
+    border-bottom: 1px solid $gray-lightest;
+    padding-top: .5em;
+    padding-right: 2em;
+    padding-bottom: .4em;
+    padding-left: 1em;
+
+    display: block;
+    min-width: 12em;
+
+    text-align: right;
+
+    &:focus,
+    &:link,
+    &:visited {
+      color: $gray;
+      text-decoration: none;
+    }
+
+    &:hover {
+      color: $gray-darker;
+      text-decoration: none;
+    }
+
+    &:last-child {
+      border-bottom: 0;
+    }
+  }
+}
+
+
+
+/* Mobile navigation
+ *
+ * See specific IE9 styles in separate stylesheet
+ *
+   ================================================================================================================== */
+
+
+.nav--toggle-mobile-nav {
+  position: absolute;
+  top: 1.35em;
+  left: 1em;
+
+  @include breakpoint(45em) {
+    display: none;
+  }
+}
+
+.nav--mobile {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  overflow-y: auto;
+  z-index: 99;
+
+  padding: 1.5em;
+  height: 100%;
+  width: 76%;
+
+  background-color: $white;
+
+  -webkit-backface-visibility: hidden;
+
+  @include box-sizing(border-box);
+  @include box-shadow(-6px 0 10px -8px darken($white, 25%) inset);
+  @include transform(translate3d(-100%, 0, 0));
+
+  .nav--list-dropdown-link,
+  .nav--list-item {
+    border-bottom: 1px solid $border-color;
+    display: block;
+    margin-bottom: 1em;
+    padding-bottom: 1em;
+
+    a:before {
+      @extend %icon-arrow-right;
+      @extend %icon-before;
+    }
+  }
+
+  .nav--dropdown-link {
+    border-bottom: 1px solid $border-color;
+    display: block;
+    padding-left: 1em;
+    margin-bottom: 1em;
+    padding-bottom: 1em;
+
+    &:before {
+      @extend %icon-arrow-right;
+      @extend %icon-before;
+    }
+  }
+
+  .nav--list-dropdown-link {
+    &:before {
+      @extend %icon-arrow-right;
+      @extend %icon-before;
+    }
+  }
+}

@@ -1,0 +1,107 @@
+ /**
+ * Field module
+ *
+ * Contains general field styles.
+ *
+ */
+
+
+
+.field-module--wrapper {
+  @include global-layout-content();
+}
+
+.field-module--label {
+  font-size: 1.3em;
+  margin-bottom: 0.3em;
+}
+
+.field-module--text {
+  border-bottom: $separator;
+  margin-bottom: $margin-bottom * 1.6;
+  overflow: hidden;
+  padding-bottom: $padding-bottom;
+  width: 100%;
+
+  &:last-child {
+    border-bottom: 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+}
+
+
+// Specific fields are a bit different
+
+.field-module--author {
+  color: $gray-light;
+  font-size: 1.25em;
+
+  margin-bottom: $margin-bottom / 2;
+}
+
+.field-module--image {
+  @extend .field-module--text;
+
+  padding: 0;
+  border-bottom: 0;
+}
+
+.field-module--teaser,
+.field-module--purpose {
+  @extend .field-module--text;
+}
+
+.field-module--teaser-label,
+.field-module--purpose-label {
+  @extend .field-module--label;
+}
+
+.field-module--teaser-item,
+.field-module--purpose-item {
+  font-weight: bold;
+}
+
+.field-module--educational-material,
+.field-module--inspirational-material {
+  padding: 1em;
+
+  border: 1px solid $gray-lightest;
+  overflow: hidden;
+
+  @include border-radius($border-radius/2);
+}
+
+.field-module--educational-material-item,
+.field-module--inspirational-material-item {
+  border-bottom: $separator;
+  margin-bottom: $margin-bottom * 1.6;
+  padding-bottom: $padding-bottom;
+
+  &:last-child {
+    border-bottom: 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+}
+
+.field-module--profile-contact-item {
+  border-bottom: $separator;
+  margin-bottom: $margin-bottom;
+
+  overflow: hidden;
+}
+
+.field-module--tags {
+  padding: 0.8em 0;
+}
+
+.field-module--tags-item {
+  @extend %tag;
+}
+
+// If full year or free is checked hide duration and price on node view. (see practical info view and practical infor moderation view.)
+.is-time-full-year,
+.is-price-free {
+  display: none;
+}

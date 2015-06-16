@@ -1,0 +1,197 @@
+/**
+ * Search module.
+ */
+
+
+
+// Search wrapper and results
+
+.search-module--form-wrapper,
+.search-module--wrapper,
+.search-module--results {
+  @include global-layout-content();
+}
+
+.search-module--form-wrapper {
+  @include breakpoint(45em) {
+    @include border-radius($border-radius $border-radius 0 0);
+  }
+}
+
+.search-module--results-gallery {
+  float: left;
+
+  @include global-layout-content();
+  @include global-grid-padding-override();
+
+  .search-module--result-left,
+  .search-module--result-middle,
+  .search-module--result-right {
+    margin-bottom: 2em;
+  }
+
+  @include breakpoint(45em) {
+    .search-module--result-left {
+      @include zen-grid-item(4, 1);
+    }
+
+    .search-module--result-middle {
+      @include zen-grid-item(4, 5);
+    }
+
+    .search-module--result-right {
+      @include zen-grid-item(4, 1, right);
+    }
+  }
+}
+
+.search-module--results,
+.search-module--results-gallery {
+  padding-top: 0;
+
+  @include breakpoint(45em) {
+    @include border-radius(0 0 $border-radius $border-radius);
+  }
+}
+
+.search-module--result {
+  @extend %global-element-spacing;
+
+  overflow: hidden;
+
+  &.is-last {
+    @extend %global-reset-element-spacing;
+  }
+}
+
+.search-module--result-author {
+  margin-bottom: .5em;
+
+  color: $gray;
+}
+
+.search-module--result-header {
+  a {
+    &:link,
+    &:visited,
+    &:hover,
+    &:active {
+      text-decoration: none;
+    }
+  }
+}
+
+.search-module--result-image {
+  float: left;
+  margin-right: 2em;
+}
+
+.search-module--edit-link {
+  .is-moderation-published {
+    display: none;
+  }
+
+  .is-moderation-draft,
+  .is-moderation-needs_review {
+    color: $red;
+  }
+}
+
+
+// Search spelling suggestions
+
+.search-module--spelling-suggestions {
+  @extend %global-element-spacing;
+
+  margin-bottom: 0;
+
+  font-size: 110%;
+}
+
+// Search "did you mean text"
+
+.search-module--did-you-mean-text {
+  color: $gray-light;
+}
+
+
+// Search header
+
+.search-module--result-header {
+  text-decoration: none;
+
+  &:link {
+    text-decoration: none;
+  }
+}
+
+.search-module--result-content {
+  margin-bottom: $margin-bottom;
+}
+
+
+.search-module--form {
+  @extend .header-search-module--inner;
+
+  margin-bottom: 2em;
+
+  .form-text {
+    margin-bottom: .75em;
+    padding-top: 1em;
+    padding-right: 1.25em;
+    padding-bottom: .75em;
+    padding-left: 3.25em;
+    height: 55px;
+
+    background: $white url("../images/icon-search-transparent.png") no-repeat 1em center;
+
+    // Removing the browsers outline border when field is in focus
+    &:focus {
+      outline: none;
+    }
+
+    @include breakpoint($breakpoint-3) {
+      .form-search {
+        padding-right: 6em;
+        width: 90%;
+
+        @include border-radius($border-radius 0 0 $border-radius);
+      }
+    }
+  }
+}
+
+.search-module--submit {
+  @extend .header-search-module--submit;
+}
+.search-module--facets-wrapper {
+  display: none;
+
+  @include breakpoint(45em) {
+    display: block;
+  }
+}
+
+.search-module--facet-selection {
+  list-style-type: none;
+  padding: 0;
+  margin: 0 0 $margin-bottom;
+}
+
+li.search-module--facet-link {
+  list-style-image: none;
+  list-style-type: none;
+}
+
+
+/* Toogle search */
+
+.nav--toggle-header-search {
+  position: absolute;
+  top: 1.35em;
+  left: 5em;
+
+  @include breakpoint(45em) {
+    display: none;
+  }
+}
