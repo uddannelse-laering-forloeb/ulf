@@ -12,7 +12,7 @@ function ulf_preprocess_html(&$variables) {
  * Override or insert variables into the page template.
  */
 function ulf_preprocess_page(&$variables) {
-  $arg0 = arg(0);
+
   // Render facets specifically before search results .
   if (!empty($variables['page']['facets'])) {
     $variables['page']['content']['facets'] = $variables['page']['facets'];
@@ -28,7 +28,8 @@ function ulf_preprocess_page(&$variables) {
       'user/password',
       'user/register',
     );
-    if ($arg0 == 'user') {
+
+    if (arg(0) == 'user') {
       if(in_array(current_path(), $default_anonymous)) {
         $variables['theme_hook_suggestions'][] = 'page__user_anonymous';
       }
@@ -102,7 +103,6 @@ function ulf_preprocess_node(&$variables) {
  * Adds field class.
  */
 function ulf_preprocess_field(&$variables) {
-
   // Field in field collections want their own template suggestion.
   if ($variables['element']['#entity_type'] == 'field_collection_item') {
     $template_suggestion = 'field__custom_field_collection';
@@ -191,14 +191,14 @@ function ulf_preprocess_panels_pane(&$variables) {
     $variables['provided_class'] = $variables['pane']->css['css_class'];
   }
 
-  if ($variables['display']->layout =='onecol') {
+  if ($variables['display']->layout == 'onecol') {
     $variables['theme_hook_suggestions'][] = 'panels_pane__onecol';
   }
 
   // For some reason the "useful_info" pane does not register if it's empty. We look for a list item and if none exist send a variable to the template file
   $variables['content_is_empty'] = FALSE;
   if ($variables['pane']->subtype == 'ulf_useful_info-panel_pane_1') {
-    if (!preg_match('/<li class="block--list-item">/',$variables['content'])) {
+    if (!preg_match('/<li class="block--list-item">/', $variables['content'])) {
       $variables['content_is_empty'] = TRUE;
     }
   }
@@ -215,25 +215,25 @@ function ulf_preprocess_panels_pane(&$variables) {
  *
  * Remove the panel separator from the default rendering method.
  */
-function ulf_panels_default_style_render_region($vars) {
+function ulf_panels_default_style_render_region($variables) {
   $output = '';
-  $output .= implode('', $vars['panes']);
+  $output .= implode('', $variables['panes']);
   return $output;
 }
 
 /**
  * Implements theme_username().
  */
-function ulf_username($vars) {
-  if(!empty($vars['uid'])) {
-    $user = user_load($vars['uid']);
+function ulf_username($variables) {
+  if(!empty($variables['uid'])) {
+    $user = user_load($variables['uid']);
     $data = field_get_items('user', $user, 'field_profile_name');
     $profile_name = field_view_value('user', $user, 'field_profile_name', $data['0']);
     if (!empty($data)) {
-      return '<a href="/user/' . $vars['uid'] . '"> '. $profile_name['#markup']  .'</a>';
+      return '<a href="/user/' . $variables['uid'] . '"> '. $profile_name['#markup']  .'</a>';
     }
     else {
-      return '<a href="/user/' . $vars['uid'] . '"> '. $vars['name']  .'</a>';
+      return '<a href="/user/' . $variables['uid'] . '"> '. $variables['name']  .'</a>';
     }
   }
 }
@@ -241,26 +241,30 @@ function ulf_username($vars) {
 /**
  * Implements theme_links().
  */
-function ulf_links__system_main_menu(array $variables) {
-    $html = '<ul class="nav--list">';
-    foreach ($variables['links'] as $link) {
-      // The \n after the <li> tag is important when using display: inline-block.
-      $html .= '<li class="nav--list-item">'.l($link['title'], $link['href'], $link).'</li>' . "\n";
-    }
-    $html .= '</ul>';
+function ulf_links__system_main_menu($variables) {
+  $html = '<ul class="nav--list">';
+
+  foreach ($variables['links'] as $link) {
+    // The \n after the <li> tag is important when using display: inline-block.
+    $html .= '<li class="nav--list-item">' . l($link['title'], $link['href'], $link) . '</li>' . "\n";
+  }
+
+  $html .= '</ul>';
   return $html;
 }
 
 /**
  * Implements theme_links_mobile().
  */
-function ulf_links__system_main_menu_mobile(array $variables) {
-    $html = '<ul class="nav--list">';
-    foreach ($variables['links'] as $link) {
-      // The \n after the <li> tag is important when using display: inline-block.
-      $html .= '<li class="nav--mobile-link">'.l($link['title'], $link['href'], $link).'</li>' . "\n";
-    }
-    $html .= '</ul>';
+function ulf_links__system_main_menu_mobile($variables) {
+  $html = '<ul class="nav--list">';
+
+  foreach ($variables['links'] as $link) {
+    // The \n after the <li> tag is important when using display: inline-block.
+    $html .= '<li class="nav--mobile-link">' . l($link['title'], $link['href'], $link) . '</li>' . "\n";
+  }
+
+  $html .= '</ul>';
   return $html;
 }
 
@@ -270,16 +274,17 @@ function ulf_links__system_main_menu_mobile(array $variables) {
 function ulf_apachesolr_search_suggestions($variables) {
   $output = '<div class="search-module--spelling-suggestions">';
   $output .= '<div class="form-item"><span class="search-module--did-you-mean-text">' . t('Did you mean') . ': </span>';
-  foreach ((array) $variables['links'] as $link) {
+
+  foreach ($variables['links'] as $link) {
     $output .= '<span>' . $link . '</span>';
   }
+
   $output .= '</div></div>';
   return $output;
 }
 
 /**
  * Implements template_preprocess_search_result().
- * @param type $vars
  */
 function ulf_preprocess_search_api_page_result(&$vars) {
   // Fetch the data wrapper for the search result.
@@ -327,9 +332,6 @@ function ulf_preprocess_search_api_page_result(&$vars) {
 
 /**
  * Implements template_item_list().
- *
- * @param type $variables.
- * @return $output.
  */
 function ulf_item_list($variables) {
   $items = $variables['items'];
@@ -355,7 +357,7 @@ function ulf_item_list($variables) {
         }
       }
     }
-    $output .= "<$type" . drupal_attributes($attributes) . '>';
+    $output .= '<' . $type . drupal_attributes($attributes) . '>';
     $num_items = count($items);
     $i = 0;
     foreach ($items as $item) {
@@ -395,7 +397,7 @@ function ulf_item_list($variables) {
 
       $output .= '<li' . drupal_attributes($attributes) . '>' . $data . "</li>\n";
     }
-    $output .= "</$type>";
+    $output .= '</' . $type . '>';
   }
   $output .= '</div>';
   return $output;

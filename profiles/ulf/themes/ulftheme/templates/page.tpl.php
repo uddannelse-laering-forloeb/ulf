@@ -95,14 +95,14 @@
     <nav class="nav--mobile js-mobile-nav">
       <div class="nav--inner">
         <?php if ($main_menu_block) : ?>
-          <?php print render($main_menu_block); ?>
+          <?php print render($main_menu_block['content']); ?>
         <?php endif; ?>
       </div>
     </nav>
     <nav class="nav">
       <div class="nav--inner">
         <?php if ($main_menu) : ?>
-          <?php print render($main_menu_block); ?>
+          <?php print render($main_menu_block['content']); ?>
         <?php endif; ?>
       </div>
     </nav>
