@@ -204,7 +204,7 @@ function ulf_search_default_search_api_page() {
     "machine_name" : "default",
     "description" : "",
     "options" : {
-      "mode" : "terms",
+      "mode" : "direct",
       "fields" : {
         "title" : "title",
         "field_purpose" : "field_purpose",

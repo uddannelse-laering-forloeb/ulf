@@ -549,7 +549,8 @@ function ulf_course_educators_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-course_educators-field_relevance_primary_school'
+  // Exported field_instance:
+  // 'node-course_educators-field_relevance_primary_school'
   $field_instances['node-course_educators-field_relevance_primary_school'] = array(
     'bundle' => 'course_educators',
     'default_value' => NULL,
@@ -592,7 +593,8 @@ function ulf_course_educators_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-course_educators-field_relevance_upper_school'
+  // Exported field_instance:
+  // 'node-course_educators-field_relevance_upper_school'
   $field_instances['node-course_educators-field_relevance_upper_school'] = array(
     'bundle' => 'course_educators',
     'default_value' => NULL,

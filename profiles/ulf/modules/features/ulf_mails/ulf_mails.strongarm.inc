@@ -45,7 +45,7 @@ function ulf_mails_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'mimemail_key';
-  $strongarm->value = '3ef6589eafdc42f646e984440d8357f5';
+  $strongarm->value = 'oFVGhFwy8vGkFNM6TEE9KuNJFYm2MZFCpTuDxxfCUB4';
   $export['mimemail_key'] = $strongarm;
 
   $strongarm = new stdClass();
