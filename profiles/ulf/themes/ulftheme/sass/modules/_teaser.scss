@@ -1,115 +1,191 @@
 /**
- * Teaser module
  *
- * Contains styles related to teasers.
+ * Teaser
+ *
+ * Display of list items (Ie. Frontpage and search results. )
  *
  */
 
 
-.teaser-module {
-  clear: both;
-  padding: 0 1em;
+/* Placholders, variables and mixins related to this document only.
+================================================================================================================== */
+
+$black: rgb(0, 0, 0);
+$green: rgb(164, 218, 32);  // Daycare color.
+$purple: rgb(144, 29, 124); // School color.
+$orange: rgb(255, 104, 0);  // Youth color.
+$yellow: rgb(237, 215, 28); // Course color.
+
+// General teaser styles.
+%teaser--inner {
+  display: block;
+  height: 100%;
+  overflow: hidden;
+  margin: 0 $margin / 2;
   position: relative;
-
-  @include breakpoint(30em) {
-    &.is-odd {
-      clear: left;
-
-      @include zen-grid-item(6, 1);
-    }
-
-    &.is-even {
-      clear: none;
-
-      @include zen-grid-item(6, 1, right);
-    }
-  }
-}
-
-.teaser-module--promoted {
-  @extend .teaser-module;
-}
-
-.teaser-module--youth,
-.teaser-module--primary-school,
-.teaser-module--daycare {
-  @extend .teaser-module;
-}
-
-.teaser-module--inner {
-  position: relative;
-
-  margin-bottom: 2em;
 }
 
 
-// Teaser header
-
-.teaser-module--header {
-  margin-bottom: 0.75em;
-  padding-left: .626em;
-}
-
-.teaser-module--header-promoted {
-  @extend .teaser-module--header;
-}
-
-
-.teaser-module--text {
-  background-color: transparentize($blue, .15);
+// Teaser text styles.
+%teaser--text {
   bottom: 0;
-  padding: 1em 1em;
+  box-sizing: border-box;
+  font-size: 1.45em;
+  padding: 0 .5em;
   position: absolute;
-  width: auto;
-  left: 0;
-  right: 0;
-
-  // Rendering field items with a link class is too much of a hassle, we nest an extra level instead.
-  a {
-    font-size: 1.1em;
-    line-height: 1.3em;
-    margin-right: 5px;
-  }
-}
-
-.teaser-module--image {
-  height: auto;
   width: 100%;
 }
 
-// We cut the image at a breakpoint to keep the height at a reasonable size.
-.teaser-module--image-cut {
-  @include breakpoint(30em) {
-    height: 250px;
-    overflow: hidden;
-    max-width: 800px;
+
+
+/* Styles.
+================================================================================================================== */
+
+/* Teaser representing a target group. */
+.teaser--group {
+  margin-bottom: $margin;
+  width: 100%;
+
+  @include breakpoint(650px) {
+    margin-bottom: 0;
+    width: 33.33%;
+  }
+
+  &.is-course {
+    width: 50%;
+  }
+
+  &-inner {
+    @extend %teaser--inner;
+
+    @include strip-link-styles($white);
+
+    // Change text background transparency when hovering on the teaser.
+    // State class names are fetched from taxonomy terms, thus Danish ...
+    &:hover .teaser--group-text {
+      &.is-dagtilbud {
+        @include teaser-set-color('green', 1);
+      }
+
+      &.is-grundskole {
+        @include teaser-set-color('purple', 1);
+      }
+
+      &.is-ungdomsuddannelse {
+        @include teaser-set-color('orange', 1);
+      }
+
+      &.is-course {
+        @include teaser-set-color('yellow', 1);
+      }
+    }
+  }
+
+  &-text {
+    @extend %teaser--text;
+
+    height: 90px;
+
+    &.is-dagtilbud {
+      @include teaser-set-color('green', 0.7);
+    }
+
+    &.is-grundskole {
+      @include teaser-set-color('purple', 0.7);
+    }
+
+    &.is-ungdomsuddannelse {
+      @include teaser-set-color('orange', 0.7);
+    }
+
+    &.is-course {
+      @include teaser-set-color('yellow', 0.7);
+    }
+
+    &-inner {
+      position: relative;
+      top: 70%;
+
+      @include transform(translateY(-50%));
+    }
+  }
+
+  &-field img{
+    width: 100%;
   }
 }
 
-.teaser-module--label {
-  color: transparentize($white, .3);
-  font-size: 1.1em;
-  line-height: 1.3em;
-  margin-right: 0.4em;
+/* Teaser representing a content element. */
+.teaser--content {
+  margin-bottom: $margin;
+  height: 160px;
+  width: 100%;
 
-  &:focus,
-  &:link,
-  &:visited {
-    color: transparentize($white, .3);
-    text-decoration: none;
+  @include breakpoint(450px) {
+    width: 50%;
   }
-}
 
-.teaser-module--title {
-  color: transparentize($white, .1);
-  font-size: 1.1em;
-  font-weight: bold;
-  line-height: 1.3em;
+  @include breakpoint(800px) {
+    width: 25%;
+  }
 
-  &:focus,
-  &:link,
-  &:visited {
-    color: transparentize($white, .1);
-    text-decoration: none;
+  &-inner {
+    @extend %teaser--inner;
+
+
+
+    @include strip-link-styles($black);
+
+    // Change text background transparency when hovering on the teaser.
+    &:hover .teaser--content-text {
+      &.is-dagtilbud {
+        @include teaser-set-color('green', 1);
+      }
+
+      &.is-grundskole {
+        @include teaser-set-color('purple', 1);
+      }
+
+      &.is-ungdomsuddannelse {
+        @include teaser-set-color('orange', 1);
+      }
+
+      &.is-course {
+        @include teaser-set-color('yellow', 1);
+      }
+    }
+  }
+
+  &-field {
+    height: 100%;
+  }
+
+  &-text {
+    @extend %teaser--text;
+    @include teaser-set-color('white', 0.7);
+
+    border-bottom: solid;
+    border-width: 4px;
+    padding-top: .8em;
+
+    &.is-dagtilbud {
+      border-color: $green;
+    }
+
+    &.is-grundskole {
+      border-color: $purple;
+    }
+
+    &.is-ungdomsuddannelse {
+      border-color: $orange;
+    }
+
+    &.is-course {
+      border-color: $yellow;
+    }
+
+    &-inner {
+      position: relative;
+    }
   }
 }

@@ -3,33 +3,51 @@
  *
  */
 
+
 (function($) {
+  // Function for toggle burger navigation.
+  function toggle_nav() {
+    var overlay = $('.js-overlay');
+    var nav = $('.js-mobile-nav');
 
-  // Toggle mobile navigation.
-  function toggle_mobile_nav() {
-
-    // Attach click function.
     $('.js-toggle-mobile-nav').click(function() {
-      // Toggle state class on page wrapper.
-      $('.js-page-wrapper').toggleClass('is-moved-left');
+      // If nav is open we close it.
+      if (nav.hasClass('is-visible')) {
 
-      // Toggle state class on mobile nav.
-      $('.js-mobile-nav').toggleClass('is-open');
+        // Hide menu.
+        nav.addClass('is-hidden');
+        nav.removeClass('is-visible');
 
-      // Toggle state class facets.
-      $('.js-nav--toggle-facets').toggleClass('is-visible');
+        // Hide overlay.
+        overlay.addClass('is-hidden');
+        overlay.removeClass('is-visible');
 
-      // Disable default behaviour.
-      return false;
+        // We unlock the html and body element.
+        $('html').removeClass('is-locked');
+        $('body').removeClass('is-locked');
+      }
+
+      // If nav is closed we open it.
+      else {
+
+        // show menu.
+        nav.removeClass('is-hidden');
+        nav.addClass('is-visible');
+
+        // Show overlay.
+        overlay.removeClass('is-hidden');
+        overlay.addClass('is-visible');
+
+        // We lock the html and body element to only scroll the menu.
+        $('html').addClass('is-locked');
+        $('body').addClass('is-locked');
+      }
     });
-
   }
 
-  // Start the show.
+  // Start the show
   $(document).ready(function () {
-
-    toggle_mobile_nav();
-
+    toggle_nav();
   });
 
 })(jQuery);

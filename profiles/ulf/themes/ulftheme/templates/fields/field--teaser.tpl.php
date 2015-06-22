@@ -42,9 +42,4 @@
  * @ingroup themeable
  */
 ?>
-<div class="teaser-module--field">
-  <?php if (!$label_hidden): ?>
-    <div class="teaser-module--label"<?php print $title_attributes; ?>><?php print $label ?>:&nbsp;</div>
-  <?php endif; ?>
-  <?php print render($items['0']); ?>
-</div>
+<?php print render($items['0']); ?>

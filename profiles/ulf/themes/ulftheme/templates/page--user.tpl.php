@@ -77,18 +77,12 @@
     <header class="header" role="banner">
       <div class="header--inner">
         <div class="header--nav-wrapper">
-          <a href="#" class="nav--toggle-header-search js-toggle-header-search"><img src="/<?php echo $directory; ?>/images/icon-search.png"></a>
-          <a href="#" class="nav--toggle-mobile-nav js-toggle-mobile-nav"><img src="/<?php echo $directory; ?>/images/icon-menu.png"></a>
+          <a href="#" class="header--toggle-mobile-nav js-toggle-mobile-nav"><img src="/<?php echo $directory; ?>/images/icon-menu.png"></a>
           <?php if ($logo): ?>
-            <a class="logo" href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo">
-              <img class="logo-image" src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
+            <a class="header--logo" href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo">
+              <img class="header--logo-image" src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
             </a>
           <?php endif; ?>
-        </div>
-        <div class="header-search-module js-header-search">
-          <div class="header-search-module--inner">
-            <?php print render($ulf_search_block['content']); ?>
-          </div>
         </div>
       </div>
     </header>
@@ -100,11 +94,11 @@
       </div>
     </nav>
     <nav class="nav">
-      <div class="nav--inner">
-        <?php if ($main_menu_block) : ?>
+      <ul class="nav--inner">
+        <?php if ($main_menu) : ?>
           <?php print render($main_menu_block['content']); ?>
         <?php endif; ?>
-      </div>
+      </ul>
     </nav>
     <?php print $messages; ?>
     <?php if ($tabs): ?>

@@ -6,7 +6,101 @@
  */
 
 
+/**
+ *
+ * Block
+ *
+ * Display of block.
+ *
+ */
 
+
+/* Placholders, variables and mixins related to this document only.
+================================================================================================================== */
+%block {
+  margin-bottom: $margin;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+
+
+/* Styles.
+================================================================================================================== */
+
+.block--header {
+  font-weight: bold;
+  margin: 0;
+  padding: 20px 15px;
+}
+
+.block--content {
+  padding: 0 15px 20px 15px;
+}
+
+
+.block--field-wrapper {
+  border-bottom: 1px solid $white;
+  margin-bottom: $margin / 2;
+  padding-bottom: $margin / 2;
+
+  &:last-child {
+    border:0;
+    margin-bottom: 0;
+  }
+
+  &.is-inline {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+
+    .block--field-label,
+    .block--field-text {
+      width: 50%;
+    }
+  }
+}
+
+.block--field-label {
+  font-weight: bold;
+  margin-bottom: $margin / 4;
+}
+
+.block--field-text {
+  margin-bottom: $margin / 2;
+}
+
+
+
+/* Block types */
+.block--dark {
+  @extend %block;
+
+  background: $dark-blue;
+  color: $white;
+
+  a {
+    @include strip-link-styles($white, underline);
+  }
+}
+
+
+.block--light {
+  @extend %block;
+
+  background: $light-blue;
+  margin-bottom: $margin;
+
+  a {
+    @include strip-link-styles($dark-blue, underline);
+  }
+}
+
+
+
+/* --------------------------------- OLD STYLES
 .block-module {
   margin-bottom: 2em;
 
@@ -74,8 +168,6 @@
 }
 
 
-/* Block view
-   ================================================================================================================== */
 
 .block-module--content-element-wrapper {
   border-bottom: $separator;
@@ -90,9 +182,6 @@
 }
 
 
-
-/* Block list
-   ================================================================================================================== */
 
 .block--list {
   margin: 0;
@@ -110,3 +199,6 @@
     @extend %icon-before;
   }
 }
+
+
+*/
