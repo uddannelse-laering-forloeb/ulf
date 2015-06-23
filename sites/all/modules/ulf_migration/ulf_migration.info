@@ -1,0 +1,9 @@
+name = "ULF content migrate"
+description = "Migrate content from the different versions of ULF"
+package = "ULF"
+core = 7.x
+dependencies[] = migrate
+dependencies[] = migrate_ui
+dependencies[] = migrate_extras
+dependencies[] = migrate_d2d
+files[] = ulf_users.inc
