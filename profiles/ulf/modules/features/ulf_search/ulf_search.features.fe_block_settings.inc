@@ -247,7 +247,7 @@ function ulf_search_default_fe_block_settings() {
   );
 
   $export['search_api_page-default'] = array(
-    'cache' => 2,
+    'cache' => 5,
     'custom' => 0,
     'delta' => 'default',
     'module' => 'search_api_page',

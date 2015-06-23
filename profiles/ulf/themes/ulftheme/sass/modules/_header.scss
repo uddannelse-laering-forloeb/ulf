@@ -1,0 +1,54 @@
+/**
+ * Header
+ *
+ */
+
+.header {
+  position: relative;
+  background: url(../images/header-bg.jpg) repeat-x 0 0;
+  height: 85px;
+
+  @include box-shadow(2px 3px 4px rgba(51, 51, 51, 0.6));
+
+  @include breakpoint(45em) {
+    height: 160px;
+  }
+
+  &--inner {
+    height: 100%;
+    margin: 0 auto;
+    max-width: 75em;
+    position: relative;
+    width: 100%;
+  }
+
+  &--logo {
+    left: $margin /2;
+    max-width: 15em;
+    position: absolute;
+    top: 50%;
+
+    @include transform(translateY(-50%));
+
+    @include breakpoint(45em) {
+      max-width: 30%;
+    }
+  }
+
+  &--toggle-mobile-nav {
+    background: url(../images/icon-menu.png) no-repeat center center #ffffff;
+    display: block;
+    padding: 4px;
+    position: absolute;
+    top: 50%;
+    right: $margin /2;
+
+    @include transform(translateY(-50%));
+    @include border-radius(5px);
+    @include box-shadow(1px 2px 3px rgba(0, 0, 0, 0.6));
+
+    @include breakpoint(45em) {
+      display: none;
+    }
+  }
+}

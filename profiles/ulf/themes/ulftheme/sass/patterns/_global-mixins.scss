@@ -1,0 +1,42 @@
+/**
+ * Contains global mixins for use across the site.
+ */
+
+// Strip all link styles default color of links to inherit.
+@mixin strip-link-styles($color:inherit, $decoration: none) {
+  &:link {
+    color: $color;
+    text-decoration: $decoration;
+  }
+
+  &:visited {
+    color: $color;
+    text-decoration: $decoration;
+  }
+
+  &:hover {
+    color: $color;
+    text-decoration: $decoration;
+  }
+
+  &:focus {
+    color: $color;
+    text-decoration: $decoration;
+  }
+}
+
+
+// Set the color of the background to one of 4 different colors
+@mixin teaser-set-color($color, $transparency: 1) {
+  @if $color == "green" {
+    background: rgba(164, 218, 32, $transparency);
+  } @else if $color == "purple" {
+    background: rgba(144, 29, 124, $transparency)
+  } @else if $color == "orange" {
+    background: rgba(255, 104, 0, $transparency);
+  } @else if $color == "white" {
+    background: rgba(255, 255, 255, $transparency);
+  } @else if $color == "yellow" {
+    background: rgba(237, 215, 28, $transparency);
+  }
+}

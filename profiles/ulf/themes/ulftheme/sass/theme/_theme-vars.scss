@@ -24,7 +24,9 @@ $gray:             lighten($black, 60%);
 $gray-dark:        lighten($black, 50%);
 $gray-darker:      lighten($black, 40%);
 $gray-darkest:     lighten($black, 30%);
-$blue:             #269eD9;
+$blue:             #269eD9; // OLD color @todo cleanup.
+$light-blue:       #deeced;  // Block bg color.
+$dark-blue:        #17858c;  // Block bg color.
 $blue-light:       lighten($blue, 5%);
 $yellow:           #f8b634;
 $yellow-light:     lighten($yellow, 5%);
@@ -51,6 +53,7 @@ $link-color-hover: darken($link-color, 10%);
 
 $margin-bottom:         1em;
 $padding-bottom:        1em;
+$margin: 15px;
 
 $separator:             1px $gray-lighter dashed;
 
@@ -59,3 +62,7 @@ $separator:             1px $gray-lighter dashed;
    ================================================================================================================== */
 
 $border-color:        $gray-lighter;
+
+
+
+

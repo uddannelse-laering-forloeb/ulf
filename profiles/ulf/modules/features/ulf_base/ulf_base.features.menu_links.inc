@@ -10,17 +10,17 @@
 function ulf_base_menu_default_menu_links() {
   $menu_links = array();
 
-  // Exported menu link: main-menu_dagtilbud:search/dagtilbud
-  $menu_links['main-menu_dagtilbud:search/dagtilbud'] = array(
+  // Exported menu link: main-menu_daycare:search/dagtilbud
+  $menu_links['main-menu_daycare:search/dagtilbud'] = array(
     'menu_name' => 'main-menu',
     'link_path' => 'search/dagtilbud',
     'router_path' => 'search',
-    'link_title' => 'Dagtilbud',
+    'link_title' => 'Daycare',
     'options' => array(
       'attributes' => array(
         'title' => '',
       ),
-      'identifier' => 'main-menu_dagtilbud:search/dagtilbud',
+      'identifier' => 'main-menu_daycare:search/dagtilbud',
     ),
     'module' => 'menu',
     'hidden' => 0,
@@ -30,37 +30,17 @@ function ulf_base_menu_default_menu_links() {
     'weight' => -49,
     'customized' => 1,
   );
-  // Exported menu link: main-menu_forside:<front>
-  $menu_links['main-menu_forside:<front>'] = array(
-    'menu_name' => 'main-menu',
-    'link_path' => '<front>',
-    'router_path' => '',
-    'link_title' => 'Forside',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-      'identifier' => 'main-menu_forside:<front>',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 1,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -50,
-    'customized' => 1,
-  );
-  // Exported menu link: main-menu_grundskole:search/grundskole
-  $menu_links['main-menu_grundskole:search/grundskole'] = array(
+  // Exported menu link: main-menu_school:search/grundskole
+  $menu_links['main-menu_school:search/grundskole'] = array(
     'menu_name' => 'main-menu',
     'link_path' => 'search/grundskole',
     'router_path' => 'search',
-    'link_title' => 'Grundskole',
+    'link_title' => 'School',
     'options' => array(
       'attributes' => array(
         'title' => '',
       ),
-      'identifier' => 'main-menu_grundskole:search/grundskole',
+      'identifier' => 'main-menu_school:search/grundskole',
     ),
     'module' => 'menu',
     'hidden' => 0,
@@ -70,17 +50,17 @@ function ulf_base_menu_default_menu_links() {
     'weight' => -48,
     'customized' => 1,
   );
-  // Exported menu link: main-menu_ungdomsuddannelse:search/ungdomsuddannelse
-  $menu_links['main-menu_ungdomsuddannelse:search/ungdomsuddannelse'] = array(
+  // Exported menu link: main-menu_youth:search/ungdomsuddannelse
+  $menu_links['main-menu_youth:search/ungdomsuddannelse'] = array(
     'menu_name' => 'main-menu',
     'link_path' => 'search/ungdomsuddannelse',
     'router_path' => 'search',
-    'link_title' => 'Ungdomsuddannelse',
+    'link_title' => 'Youth',
     'options' => array(
       'attributes' => array(
         'title' => '',
       ),
-      'identifier' => 'main-menu_ungdomsuddannelse:search/ungdomsuddannelse',
+      'identifier' => 'main-menu_youth:search/ungdomsuddannelse',
     ),
     'module' => 'menu',
     'hidden' => 0,
@@ -92,10 +72,9 @@ function ulf_base_menu_default_menu_links() {
   );
   // Translatables
   // Included for use with string extractors like potx.
-  t('Dagtilbud');
-  t('Forside');
-  t('Grundskole');
-  t('Ungdomsuddannelse');
+  t('Daycare');
+  t('School');
+  t('Youth');
 
 
   return $menu_links;

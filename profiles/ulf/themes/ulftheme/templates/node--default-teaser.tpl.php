@@ -79,12 +79,12 @@
  * @ingroup themeable
  */
 ?>
-<?php print render($title_suffix); ?>
 <?php hide($content['links']);?>
-<div class="teaser-module--inner">
-  <?php print render($content['field_image']);?>
-  <div class="teaser-module--text">
-    <?php print render($content['field_target_group']);?>
-    <a href="<?php echo $node_url;?>" class="teaser-module--title"><?php print render($title);?></a>
+<a class="teaser--content-inner" href="<?php echo $node_url;?>">
+  <div class="teaser--content-field">
+    <?php print render($content['field_image']);?>
   </div>
-</div>
+  <div class="teaser--content-text is-<?php print $group_type;?>">
+    <div class="teaser--content-text-inner"><?php print render($title);?></div>
+  </div>
+</a>

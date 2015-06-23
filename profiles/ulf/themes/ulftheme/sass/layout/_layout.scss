@@ -3,91 +3,39 @@
  */
 
 
+
+/* Placholders, variables and mixins related to this document only.
+================================================================================================================== */
+
+%layout--element-inner {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  height: 100%;
+  margin: 0 auto;
+  max-width: 75em;
+  padding: 2em 0;
+  position: relative;
+  width: 100%;
+}
+
+
 /* Body
    ================================================================================================================== */
 
 body {
-  background-image: url("../images/background.png");
-  background-repeat: no-repeat;
-  background-position: -8em -15em;
-
-  padding-top: 5px;
-
-  @include background-size(40em);
-
-  @include breakpoint(35em) {
-    background-position: -5em -15em;
-
-    @include background-size(62.5em);
-  }
-
-  @include breakpoint($layout-max-width) {
-    background-position: 25% -15em;
-  }
-}
-
-
-
-/* Logo
-   ================================================================================================================== */
-
-.logo {
-  position: absolute;
-  top: 1.5em;
-  right: .5em;
-  overflow: hidden;
-
-  display: block;
-  height: 2.75em;
-  width: 4em;
-
-  @include breakpoint(45em) {
-    top: 2.25em;
-    left: $zen-gutter-width / 2;
-    overflow: visible;
-
-    width: 16%;
-  }
-}
-
-.logo-image {
-  max-width: 265%;
-
-  @include breakpoint(45em) {
-    max-width: 100%;
-  }
+  font-family: "Asap", sans-serif;
+  font-size: 14px;
+  margin: 0 auto;
 }
 
 
 /* Layout
    ================================================================================================================== */
 
-
-.layout-frontpage,
-.layout-default,
-.layout-alternative,
-.layout-search {
-  clear: both;
-  overflow: hidden;
-}
-
-
-.layout-inner {
-  @extend %global--layout-container;
-}
-
-
-.layout-element-alpha,
-.layout-element-beta,
-.layout-element-gamma,
-.layout-element-delta,
-.layout-element-epsilon {
-  float: left;
-
-  margin-bottom: 2em;
+.layout--element-header {
+  padding: 0 16px;
   width: 100%;
-
-  @include box-sizing(border-box);
 }
 
 
@@ -95,31 +43,22 @@ body {
 
 .layout-frontpage {
   .layout-element-alpha {
-    @include breakpoint(45em) {
-      @include zen-grid-item(12, 1);
-    }
+    background: $white;
   }
 
   .layout-element-beta {
-    @include breakpoint(45em) {
-      clear: left;
-
-      @include zen-grid-item(8.5, 1);
-    }
+    background: $gray-lightest;
   }
 
   .layout-element-gamma {
-    @include breakpoint(45em) {
-      @include zen-grid-item(3.5, 1, right);
-    }
+    background: $gray-lighter;
   }
 
-  .layout-element-delta,
-  .layout-element-epsilon {
-    @include breakpoint(45em) {
-      clear: left;
-
-      @include zen-grid-item(8.5, 1);
+  .layout-element-alpha,
+  .layout-element-beta,
+  .layout-element-gamma {
+    &-inner {
+      @extend %layout--element-inner;
     }
   }
 }
@@ -129,36 +68,22 @@ body {
 
 .layout-default {
   .layout-element-alpha {
-    @include breakpoint(45em) {
-      @include zen-grid-item(8.5, 1, right);
-    }
+    background: $white;
   }
 
   .layout-element-beta {
-    @include breakpoint(45em) {
-      @include zen-grid-item(3.5, 1);
-    }
+    background: $gray-lightest;
   }
 
   .layout-element-gamma {
-    @include breakpoint(45em) {
-      clear: both;
-
-      @include zen-grid-item(6, 1);
-    }
+    background: $gray-lighter;
   }
 
-  .layout-element-delta {
-    @include breakpoint(45em) {
-      @include zen-grid-item(6, 1, right);
-    }
-  }
-
-  .layout-element-epsilon {
-    @include breakpoint(45em) {
-      clear: both;
-
-      @include zen-grid-item(12, 1);
+  .layout-element-alpha,
+  .layout-element-beta,
+  .layout-element-gamma {
+    &-inner {
+      @extend %layout--element-inner;
     }
   }
 }
@@ -168,129 +93,22 @@ body {
 
 .layout-alternative {
   .layout-element-alpha {
-    @include breakpoint(45em) {
-      @include zen-grid-item(8.5, 1);
-    }
+    background: $white;
   }
 
   .layout-element-beta {
-    @include breakpoint(45em) {
-      @include zen-grid-item(3.5, 1, right);
+    background: $gray-lightest;
+  }
+
+  .layout-element-gamma {
+    background: $gray-lighter;
+  }
+
+  .layout-element-alpha,
+  .layout-element-beta,
+  .layout-element-gamma {
+    &-inner {
+      @extend %layout--element-inner;
     }
-  }
-
-  .layout-element-gamma,
-  .layout-element-delta {
-    @include breakpoint(45em) {
-      clear: left;
-
-      @include zen-grid-item(8.5, 1);
-    }
-  }
-
-  .layout-element-epsilon {
-    @include breakpoint(45em) {
-      clear: right;
-
-      @include zen-grid-item(3.5, 1, right);
-    }
-  }
-}
-
-
-// Search layout
-
-.layout-search {
-  @extend .layout-default;
-
-  .layout-element-alpha {
-    float: left;
-
-    @include breakpoint(45em) {
-      float: right;
-    }
-  }
-}
-
-
-
-/* Entity form layouts
-   ================================================================================================================== */
-
-.node--form {
-  @extend %global--layout-container;
-
-  @include zen-grid-container();
-  @include zen-clear(both);
-
-  .form-actions,
-  .vertical-tabs {
-    @include zen-grid-item(8, 1);
-    @include zen-clear(both);
-  }
-}
-
-.form-layout--alfa {
-  @include breakpoint($breakpoint-1) {
-    @include zen-grid-item(12, 1);
-    @include zen-clear(both);
-  }
-
-  @include breakpoint(50em) {
-    @include zen-grid-item(8, 1);
-    @include zen-clear(left);
-  }
-}
-
-%form-layout {
-  border: 0;
-  margin-bottom: $margin-bottom;
-}
-
-.form-layout--beta {
-  @extend %form-layout;
-
-  @include breakpoint($breakpoint-1) {
-    @include zen-grid-item(12, 1);
-    @include zen-clear(both);
-  }
-
-  @include breakpoint(50em) {
-    @include zen-grid-item(4, 1, right);
-    @include zen-clear(right);
-  }
-}
-
-// Includes a few field collections
-.form-layout--gamma,
-.form-layout--delta,
-.form-layout--epsilon {
-  @extend %form-layout;
-
-  @include breakpoint($breakpoint-1) {
-    @include zen-grid-item(12, 1);
-    @include zen-clear(both);
-  }
-
-  @include breakpoint(50em) {
-    @include zen-grid-item(8, 1);
-    @include zen-clear(left);
-    @include zen-nested-container();
-  }
-}
-
-.field-name-field-educational-material,
-.field-name-field-inspirational-material {
-  @extend %form-layout;
-
-  @include breakpoint($breakpoint-1) {
-    @include zen-grid-item(12, 1);
-    @include zen-clear(both);
-  }
-
-  @include breakpoint(50em) {
-    @include zen-grid-item(8, 1);
-    @include zen-clear(left);
-    @include zen-nested-container();
   }
 }

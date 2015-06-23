@@ -39,6 +39,7 @@ $box-sizing-polyfill-path: "/profiles/ulf/themes/ulftheme/scripts/boxsizing.htc"
 
 // Placeholder and mixins
 @import "patterns/_global-patterns";
+@import "patterns/_global-mixins";
 
 
 
@@ -53,11 +54,11 @@ $box-sizing-polyfill-path: "/profiles/ulf/themes/ulftheme/scripts/boxsizing.htc"
 
 // Layout
 @import "layout/_layout";
-@import "layout/_header";
-
 
 
 // Module
+@import "modules/_header";
+@import "modules/_footer";
 @import "modules/_search";
 @import "modules/_search-facets";
 @import "modules/_field";
@@ -71,6 +72,10 @@ $box-sizing-polyfill-path: "/profiles/ulf/themes/ulftheme/scripts/boxsizing.htc"
 @import "modules/_page";
 @import "modules/_tag";
 @import "modules/_twitter-typeahead";
+
+
+// Components
+@import "itk-components/_itk-menu";
 
 // Print
 @import "theme/_print";

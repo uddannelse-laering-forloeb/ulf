@@ -66,7 +66,7 @@ function ulf_course_field_group_info() {
       'label' => 'Forløbet',
       'instance_settings' => array(
         'required_fields' => 0,
-        'id' => '',
+        'id' => 'node_course_form_group_course',
         'classes' => 'form-layout--alfa',
         'description' => '',
         'show_label' => '0',

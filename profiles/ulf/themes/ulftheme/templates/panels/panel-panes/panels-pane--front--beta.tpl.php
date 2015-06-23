@@ -19,46 +19,44 @@
  * - $provided_class: Represents the class provided in the panel pane.
  */
 ?>
-<div class="block-module--wrapper">
-  <?php if ($pane_prefix): ?>
-    <?php print $pane_prefix; ?>
+<?php if ($pane_prefix): ?>
+  <?php print $pane_prefix; ?>
+<?php endif; ?>
+
+<?php if (!empty($provided_class)): ?>
+  <div class="layout--element-<?php print $provided_class; ?>">
+<?php endif; ?>
+
+  <?php if ($admin_links): ?>
+    <?php print $admin_links; ?>
   <?php endif; ?>
 
+  <?php print render($title_prefix); ?>
+    <h2 class="layout--element-header"><?php print $title; ?></h2>
+  <?php print render($title_suffix); ?>
+
+  <?php if ($feeds): ?>
+    <div class="feed">
+      <?php print $feeds; ?>
+    </div>
+  <?php endif; ?>
+
+  <?php print render($content); ?>
+
+  <?php if ($links): ?>
+    <div class="links">
+      <?php print $links; ?>
+    </div>
+  <?php endif; ?>
+
+  <?php if ($more): ?>
+    <div class="more-link">
+      <?php print $more; ?>
+    </div>
+  <?php endif; ?>
   <?php if (!empty($provided_class)): ?>
-    <div class="layout-block-<?php print $provided_class; ?>">
+    </div>
   <?php endif; ?>
-
-    <?php if ($admin_links): ?>
-      <?php print $admin_links; ?>
-    <?php endif; ?>
-
-    <?php print render($title_prefix); ?>
-      <h2 class="teaser-module--header"><?php print $title; ?></h2>
-    <?php print render($title_suffix); ?>
-
-    <?php if ($feeds): ?>
-      <div class="feed">
-        <?php print $feeds; ?>
-      </div>
-    <?php endif; ?>
-
-    <?php print render($content); ?>
-
-    <?php if ($links): ?>
-      <div class="links">
-        <?php print $links; ?>
-      </div>
-    <?php endif; ?>
-
-    <?php if ($more): ?>
-      <div class="more-link">
-        <?php print $more; ?>
-      </div>
-    <?php endif; ?>
-    <?php if (!empty($provided_class)): ?>
-      </div>
-    <?php endif; ?>
-  <?php if ($pane_suffix): ?>
-    <?php print $pane_suffix; ?>
-  <?php endif; ?>
-</div>
+<?php if ($pane_suffix): ?>
+  <?php print $pane_suffix; ?>
+<?php endif; ?>

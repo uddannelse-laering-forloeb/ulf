@@ -28,19 +28,23 @@
   <div class="layout-inner">
     <?php if(!empty ($content['alpha'])) : ?>
       <div class="layout-element-alpha">
-        <?php print $content['alpha']; ?>
+        <div class="layout-element-alpha-inner">
+          <?php print $content['alpha']; ?>
+        </div>
       </div>
     <?php endif;?>
     <?php if(!empty ($content['beta'])) : ?>
       <div class="layout-element-beta">
-        <div class="layout-element-inner">
+        <div class="layout-element-beta-inner">
           <?php print $content['beta']; ?>
         </div>
       </div>
     <?php endif;?>
     <?php if(!empty ($content['gamma'])) : ?>
       <div class="layout-element-gamma">
-        <?php print $content['gamma']; ?>
+        <div class="layout-element-gamma-inner">
+          <?php print $content['gamma']; ?>
+        </div>
       </div>
     <?php endif;?>
   </div>

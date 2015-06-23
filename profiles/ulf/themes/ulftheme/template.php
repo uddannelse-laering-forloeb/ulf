@@ -44,13 +44,7 @@ function ulf_preprocess_page(&$variables) {
  * Implements theme_menu_tree().
  */
 function ulf_menu_tree__main_menu ($variables) {
-  // If the menu contains <li> tag add a ul tag.
-  if (strpos($variables['tree'], '<li') !== FALSE) {
-    return '<ul class="nav--list">' . $variables['tree'] . '</ul>';
-  }
-  else {
-    return $variables['tree'];
-  }
+  return $variables['tree'];
 }
 
 /**
@@ -59,6 +53,21 @@ function ulf_menu_tree__main_menu ($variables) {
 function ulf_menu_link__main_menu($variables){
   $element = $variables['element'];
   $sub_menu = '';
+
+  switch ($element['#title']) {
+    case 'Daycare':
+      $element['#localized_options']['attributes']['class'][] = 'is-daycare';
+      break;
+    case 'School':
+      $element['#localized_options']['attributes']['class'][] = 'is-school';
+      break;
+    case 'Youth':
+      $element['#localized_options']['attributes']['class'][] = 'is-youth';
+      break;
+    case 'Courses':
+      $element['#localized_options']['attributes']['class'][] = 'is-course';
+      break;
+  }
 
   // Sub item exist (Element is parent).
   if (!empty($variables['element']['#below'])) {
@@ -93,7 +102,16 @@ function ulf_menu_link__main_menu($variables){
  */
 function ulf_preprocess_node(&$variables) {
   if ($variables['view_mode'] == 'teaser') {
+    $variables['group_type'] = 'course';
     $variables['theme_hook_suggestions'][] = 'node__default_teaser';
+    if (!empty($variables['field_target_group'])) {
+      // Get term id from target group field.
+      $term = $variables['field_target_group']['0']['taxonomy_term'];
+      if ($term) {
+        $wrapper = entity_metadata_wrapper('taxonomy_term', $term);
+        $variables['group_type'] = strtolower($wrapper->name->value());
+      }
+    }
   }
 }
 
@@ -242,14 +260,13 @@ function ulf_username($variables) {
  * Implements theme_links().
  */
 function ulf_links__system_main_menu($variables) {
-  $html = '<ul class="nav--list">';
+  $html = '';
 
   foreach ($variables['links'] as $link) {
     // The \n after the <li> tag is important when using display: inline-block.
     $html .= '<li class="nav--list-item">' . l($link['title'], $link['href'], $link) . '</li>' . "\n";
   }
 
-  $html .= '</ul>';
   return $html;
 }
 
@@ -257,14 +274,13 @@ function ulf_links__system_main_menu($variables) {
  * Implements theme_links_mobile().
  */
 function ulf_links__system_main_menu_mobile($variables) {
-  $html = '<ul class="nav--list">';
+  $html = '';
 
   foreach ($variables['links'] as $link) {
     // The \n after the <li> tag is important when using display: inline-block.
     $html .= '<li class="nav--mobile-link">' . l($link['title'], $link['href'], $link) . '</li>' . "\n";
   }
 
-  $html .= '</ul>';
   return $html;
 }
 
