@@ -54,7 +54,7 @@
     <script type="text/javascript" src="//use.typekit.net/wje6kjl.js"></script>
     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
     <script type="text/javascript" src="<?php echo $GLOBALS['base_root'] .'/profiles/ulf/libraries/Respond/dest/respond.min.js'; ?>"></script>
-    <link href="http://fonts.googleapis.com/css?family=Asap:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Asap:400,700,400italic,700italic" rel="stylesheet" type="text/css">
     <!--[if lt IE 9]>
     <link rel="stylesheet" href="/profiles/ulf/themes/ulftheme/css/ie8.css">
     <script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
