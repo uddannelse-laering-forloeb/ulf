@@ -298,7 +298,7 @@ function ulf_course_educators_field_default_field_instances() {
         'module' => 'image',
         'settings' => array(
           'image_link' => '',
-          'image_style' => '',
+          'image_style' => 'node_display',
         ),
         'type' => 'image',
         'weight' => 0,
