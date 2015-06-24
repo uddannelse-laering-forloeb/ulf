@@ -33,7 +33,7 @@
     padding-left: $margin / 2;
     padding-right: $margin / 2;
     margin: 0 auto;
-    max-width: 75em;
+    max-width: $layout-max-width;
     position: relative;
     width: 100%;
   }
@@ -56,19 +56,19 @@
     }
 
     &.is-daycare:hover {
-      @include teaser-set-color('green', $transparency: 1);
+      @include background-set-color('green', $transparency: 1);
     }
 
     &.is-school:hover {
-      @include teaser-set-color('purple', $transparency: 1);
+      @include background-set-color('purple', $transparency: 1);
     }
 
     &.is-youth:hover {
-      @include teaser-set-color('orange', $transparency: 1);
+      @include background-set-color('orange', $transparency: 1);
     }
 
     &.is-course:hover {
-      @include teaser-set-color('yellow', $transparency: 1);
+      @include background-set-color('yellow', $transparency: 1);
     }
   }
 }

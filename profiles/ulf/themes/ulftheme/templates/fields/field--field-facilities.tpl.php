@@ -44,8 +44,13 @@
  * @ingroup themeable
  */
 ?>
-<?php foreach ($items as $delta => $item): ?>
-  <?php if(!empty($item)) : ?>
-    <li class="block--list-item"> <?php print render($item); ?></li>
-  <?php endif; ?>
-<?php endforeach; ?>
+<?php if (!$label_hidden): ?>
+  <div class="block--field-label"<?php print $title_attributes; ?>><?php print $label ?>:&nbsp;</div>
+<?php endif; ?>
+<div class="block--field-text">
+  <?php foreach ($items as $delta => $item): ?>
+    <?php if(!empty($item)) : ?>
+      <li class="block--list-item"> <?php print render($item); ?></li>
+    <?php endif; ?>
+  <?php endforeach; ?>
+</div>

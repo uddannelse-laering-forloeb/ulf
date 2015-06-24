@@ -294,6 +294,8 @@ legend {
    ================================================================================================================== */
 
 .form-module--user-login {
+  margin: 0 auto;
+  max-width: $layout-max-width;
   position: relative;
 
   .form-item {

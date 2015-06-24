@@ -66,12 +66,10 @@ $box-sizing-polyfill-path: "/profiles/ulf/themes/ulftheme/scripts/boxsizing.htc"
 @import "modules/_teaser";
 @import "modules/_block";
 @import "modules/_block-inline";
-@import "modules/_field-collection";
 @import "modules/_nav";
 @import "modules/_header-search";
-@import "modules/_page";
-@import "modules/_tag";
 @import "modules/_twitter-typeahead";
+@import "modules/_content";
 
 
 // Components

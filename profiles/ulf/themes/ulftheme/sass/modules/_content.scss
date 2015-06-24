@@ -1,0 +1,41 @@
+/**
+ * Content
+ */
+
+
+
+/* Placeholders, variables and mixins related to this document only.
+================================================================================================================== */
+
+
+
+/* Styles
+================================================================================================================== */
+
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+
+  &--header,
+  &--system-block {
+    margin: 0 auto;
+    width: $layout-max-width;
+  }
+
+  &--image {
+    margin-bottom: $margin * 2;
+    position: relative;
+    width: 100%;
+  }
+
+  &--main {
+    width: 60%;
+  }
+
+  &--meta {
+    width: 35%;
+  }
+}
