@@ -25,10 +25,11 @@ function ulf_course_field_default_field_instances() {
         'weight' => 18,
       ),
       'full' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 24,
+        'type' => 'text_default',
+        'weight' => 4,
       ),
       'node_display' => array(
         'label' => 'above',
@@ -81,10 +82,11 @@ function ulf_course_field_default_field_instances() {
         'weight' => 19,
       ),
       'full' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 26,
+        'type' => 'text_default',
+        'weight' => 5,
       ),
       'node_display' => array(
         'label' => 'above',
@@ -142,13 +144,10 @@ function ulf_course_field_default_field_instances() {
         'label' => 'above',
         'module' => 'field_collection',
         'settings' => array(
-          'add' => 'Add',
-          'delete' => 'Delete',
-          'description' => TRUE,
-          'edit' => 'Edit',
+          'view_mode' => 'full',
         ),
-        'type' => 'field_collection_list',
-        'weight' => 11,
+        'type' => 'field_collection_fields',
+        'weight' => 17,
       ),
       'node_display' => array(
         'label' => 'above',
@@ -207,12 +206,12 @@ function ulf_course_field_default_field_instances() {
         'module' => 'number',
         'settings' => array(
           'decimal_separator' => '.',
-          'prefix_suffix' => TRUE,
+          'prefix_suffix' => 1,
           'scale' => 0,
-          'thousand_separator' => ' ',
+          'thousand_separator' => '',
         ),
         'type' => 'number_integer',
-        'weight' => 9,
+        'weight' => 12,
       ),
       'node_display' => array(
         'label' => 'above',
@@ -271,12 +270,12 @@ function ulf_course_field_default_field_instances() {
         'module' => 'number',
         'settings' => array(
           'decimal_separator' => '.',
-          'prefix_suffix' => TRUE,
+          'prefix_suffix' => 1,
           'scale' => 0,
-          'thousand_separator' => ' ',
+          'thousand_separator' => '',
         ),
         'type' => 'number_integer',
-        'weight' => 13,
+        'weight' => 14,
       ),
       'node_display' => array(
         'label' => 'hidden',
@@ -332,7 +331,7 @@ function ulf_course_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 12,
+        'weight' => 16,
       ),
       'node_display' => array(
         'label' => 'hidden',
@@ -381,9 +380,10 @@ function ulf_course_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'above',
+        'module' => 'taxonomy',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 22,
       ),
       'node_display' => array(
         'label' => 'above',
@@ -432,9 +432,12 @@ function ulf_course_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 16,
+        'module' => 'field_collection',
+        'settings' => array(
+          'view_mode' => 'full',
+        ),
+        'type' => 'field_collection_fields',
+        'weight' => 8,
       ),
       'node_display' => array(
         'label' => 'above',
@@ -481,8 +484,9 @@ function ulf_course_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'above',
+        'module' => 'list',
         'settings' => array(),
-        'type' => 'hidden',
+        'type' => 'list_default',
         'weight' => 23,
       ),
       'node_display' => array(
@@ -530,9 +534,10 @@ function ulf_course_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'above',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 22,
+        'type' => 'text_default',
+        'weight' => 24,
       ),
       'node_display' => array(
         'label' => 'above',
@@ -549,7 +554,7 @@ function ulf_course_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_facilities_info',
-    'label' => 'Evt. yderligere oplysninger til faciliteter',
+    'label' => 'Yderligere oplysninger til faciliteter',
     'required' => 0,
     'settings' => array(
       'text_processing' => 1,
@@ -590,9 +595,10 @@ function ulf_course_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'above',
+        'module' => 'list',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 17,
+        'type' => 'list_default',
+        'weight' => 26,
       ),
       'node_display' => array(
         'label' => 'above',
@@ -645,7 +651,7 @@ function ulf_course_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 15,
+        'weight' => 3,
       ),
       'node_display' => array(
         'label' => 'above',
@@ -706,10 +712,10 @@ function ulf_course_field_default_field_instances() {
         'module' => 'image',
         'settings' => array(
           'image_link' => '',
-          'image_style' => '',
+          'image_style' => 'node_display',
         ),
         'type' => 'image',
-        'weight' => 5,
+        'weight' => 0,
       ),
       'node_display' => array(
         'label' => 'hidden',
@@ -777,9 +783,12 @@ function ulf_course_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 18,
+        'module' => 'field_collection',
+        'settings' => array(
+          'view_mode' => 'full',
+        ),
+        'type' => 'field_collection_fields',
+        'weight' => 9,
       ),
       'node_display' => array(
         'label' => 'above',
@@ -825,10 +834,11 @@ function ulf_course_field_default_field_instances() {
         'weight' => 21,
       ),
       'full' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 29,
+        'type' => 'text_default',
+        'weight' => 7,
       ),
       'node_display' => array(
         'label' => 'above',
@@ -845,7 +855,7 @@ function ulf_course_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_material_suggestions',
-    'label' => 'Evt. forslag til forberedelse og/eller efterbehandling i daginstitutionen',
+    'label' => 'Forslag til forberedelse og/eller efterbehandling i daginstitutionen',
     'required' => 0,
     'settings' => array(
       'text_processing' => 1,
@@ -887,7 +897,7 @@ function ulf_course_field_default_field_instances() {
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
-        'weight' => 7,
+        'weight' => 10,
       ),
       'node_display' => array(
         'label' => 'above',
@@ -928,7 +938,7 @@ function ulf_course_field_default_field_instances() {
         'label' => 'above',
         'module' => 'date',
         'settings' => array(
-          'format_type' => 'long',
+          'format_type' => 'dmy',
           'fromto' => 'both',
           'multiple_from' => '',
           'multiple_number' => '',
@@ -939,9 +949,16 @@ function ulf_course_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 19,
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'dmy',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+        ),
+        'type' => 'date_default',
+        'weight' => 13,
       ),
       'node_display' => array(
         'label' => 'above',
@@ -958,7 +975,7 @@ function ulf_course_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_period',
-    'label' => 'Tidspunkt',
+    'label' => 'Periode',
     'required' => 1,
     'settings' => array(
       'default_value' => 'now',
@@ -972,7 +989,7 @@ function ulf_course_field_default_field_instances() {
       'module' => 'date',
       'settings' => array(
         'increment' => 15,
-        'input_format' => 'm/d/Y - H:i:s',
+        'input_format' => 'd/m/Y - H:i:s',
         'input_format_custom' => '',
         'label_position' => 'above',
         'text_parts' => array(),
@@ -1003,9 +1020,10 @@ function ulf_course_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'above',
+        'module' => 'list',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 20,
+        'type' => 'list_default',
+        'weight' => 25,
       ),
       'node_display' => array(
         'label' => 'above',
@@ -1054,9 +1072,10 @@ function ulf_course_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'above',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 21,
+        'type' => 'text_default',
+        'weight' => 15,
       ),
       'node_display' => array(
         'label' => 'above',
@@ -1073,7 +1092,7 @@ function ulf_course_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_period_info',
-    'label' => 'Evt. yderligere oplysninger til periode',
+    'label' => 'Yderligere oplysninger til periode',
     'required' => 0,
     'settings' => array(
       'text_processing' => 1,
@@ -1109,10 +1128,11 @@ function ulf_course_field_default_field_instances() {
         'weight' => 20,
       ),
       'full' => array(
-        'label' => 'above',
+        'label' => 'hidden',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 27,
+        'type' => 'text_default',
+        'weight' => 6,
       ),
       'node_display' => array(
         'label' => 'above',
@@ -1169,7 +1189,7 @@ function ulf_course_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 14,
+        'weight' => 18,
       ),
       'node_display' => array(
         'label' => 'above',
@@ -1186,7 +1206,7 @@ function ulf_course_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_price_info',
-    'label' => 'Evt. yderligere oplysninger til varighed og pris',
+    'label' => 'Yderligere oplysninger til varighed og pris',
     'required' => 0,
     'settings' => array(
       'text_processing' => 1,
@@ -1233,9 +1253,10 @@ At opnå kendskab til...
       ),
       'full' => array(
         'label' => 'above',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 25,
+        'type' => 'text_default',
+        'weight' => 2,
       ),
       'node_display' => array(
         'label' => 'above',
@@ -1252,7 +1273,7 @@ At opnå kendskab til...
     ),
     'entity_type' => 'node',
     'field_name' => 'field_purpose',
-    'label' => 'Formål / Kort beskrivelse',
+    'label' => 'Formål',
     'required' => 1,
     'settings' => array(
       'text_processing' => 0,
@@ -1292,7 +1313,7 @@ At opnå kendskab til...
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
-        'weight' => 8,
+        'weight' => 19,
       ),
       'node_display' => array(
         'label' => 'above',
@@ -1339,9 +1360,10 @@ At opnå kendskab til...
       ),
       'full' => array(
         'label' => 'above',
+        'module' => 'taxonomy',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 20,
       ),
       'node_display' => array(
         'label' => 'above',
@@ -1390,9 +1412,10 @@ At opnå kendskab til...
       ),
       'full' => array(
         'label' => 'above',
+        'module' => 'taxonomy',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 21,
       ),
       'node_display' => array(
         'label' => 'above',
@@ -1440,11 +1463,11 @@ At opnå kendskab til...
         'weight' => 13,
       ),
       'full' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
-        'weight' => 4,
+        'weight' => 1,
       ),
       'node_display' => array(
         'label' => 'hidden',
@@ -1494,9 +1517,10 @@ At opnå kendskab til...
       ),
       'full' => array(
         'label' => 'above',
+        'module' => 'taxonomy',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 30,
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 27,
       ),
       'node_display' => array(
         'label' => 'above',
@@ -1549,7 +1573,7 @@ At opnå kendskab til...
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
-        'weight' => 10,
+        'weight' => 11,
       ),
       'node_display' => array(
         'label' => 'above',
@@ -1602,7 +1626,7 @@ At opnå kendskab til...
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 28,
       ),
       'node_display' => array(
         'label' => 'above',
@@ -1658,7 +1682,7 @@ At opnå kendskab til...
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 29,
       ),
       'node_display' => array(
         'label' => 'above',
@@ -1728,13 +1752,10 @@ At opnå kendskab til...
   t('Emneord');
   t('Er der inspirationsmateriale tilknyttet besøget/forløbet? Her kan du uploade materialet.');
   t('Er der undervisningsmateriale tilknyttet besøget/forløbet? Her kan du uploade materialet');
-  t('Evt. forslag til forberedelse og/eller efterbehandling i daginstitutionen');
-  t('Evt. yderligere oplysninger til faciliteter');
-  t('Evt. yderligere oplysninger til periode');
-  t('Evt. yderligere oplysninger til varighed og pris');
   t('Fag - Grundskole');
   t('Fag - Ungdomsuddannelse');
-  t('Formål / Kort beskrivelse');
+  t('Formål');
+  t('Forslag til forberedelse og/eller efterbehandling i daginstitutionen');
   t('Gratis');
   t('Hele året');
   t('Hvilke faciliteter kan I tilbyde?');
@@ -1742,9 +1763,9 @@ At opnå kendskab til...
   t('Læringsmål');
   t('Målgruppe');
   t('Overordnet målgruppe');
+  t('Periode');
   t('Pris');
   t('Sæt kryds i alle de aldre, som besøget/forløbet er relevant for.');
-  t('Tidspunkt');
   t('Tilbudstype');
   t('Undervisningsmateriale');
   t('Upload et billede/illustration');
@@ -1754,6 +1775,9 @@ At opnå kendskab til...
   t('Ved tilvalg bør prisen uddybes i feltet "Evt. yderligere oplysninger til varighed og pris".');
   t('Ved tilvalg bør varigheden uddybes i feltet "Evt. yderligere oplysninger til varighed og pris".');
   t('Vælg enhed');
+  t('Yderligere oplysninger til faciliteter');
+  t('Yderligere oplysninger til periode');
+  t('Yderligere oplysninger til varighed og pris');
 
   return $field_instances;
 }
