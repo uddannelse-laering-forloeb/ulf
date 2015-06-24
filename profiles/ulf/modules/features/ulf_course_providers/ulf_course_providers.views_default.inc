@@ -148,7 +148,7 @@ function ulf_course_providers_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
-  /* Felt: Indhold: Formål / Kort beskrivelse */
+  /* Felt: Indhold: Formål */
   $handler->display->display_options['fields']['field_purpose']['id'] = 'field_purpose';
   $handler->display->display_options['fields']['field_purpose']['table'] = 'field_data_field_purpose';
   $handler->display->display_options['fields']['field_purpose']['field'] = 'field_purpose';
