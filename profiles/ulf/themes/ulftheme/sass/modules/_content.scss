@@ -17,6 +17,7 @@
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-between;
+  margin: 0 $margin / 2;
   width: 100%;
 
   &--header,
@@ -32,10 +33,18 @@
   }
 
   &--main {
-    width: 60%;
+    width: 100%;
+
+    @include breakpoint($node-breakpoint) {
+      width: 60%;
+    }
   }
 
   &--meta {
-    width: 35%;
+    width: 100%;
+
+    @include breakpoint($node-breakpoint) {
+      width: 35%;
+    }
   }
 }

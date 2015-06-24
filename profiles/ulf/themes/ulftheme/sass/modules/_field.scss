@@ -15,11 +15,14 @@
 
 .field {
 
+  /* Display: of node title. */
   &--title {
     @extend %content--header;
 
     border-bottom: solid;
-    border-width: 4px;
+    border-width: 0;
+    padding: 0;
+    position: relative;
     font-size: 3em;
     font-weight: bold;
 
@@ -40,7 +43,14 @@
     &.is-course {
       border-color: $yellow;
     }
+
+    @include breakpoint($node-breakpoint){
+      border-width: 4px;
+      padding: 0 .5em;
+      position: absolute;
+    }
   }
+
 
   /* Display of tags field. */
   &--tags {
@@ -71,6 +81,7 @@
       background: darken($dark-blue, 5%);
     }
   }
+
 
 
   /* Display of field collections in main content. */

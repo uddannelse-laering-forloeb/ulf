@@ -120,7 +120,7 @@
             </h2>
             <div class="block--content">
               <div class="block--field-wrapper is-inline">
-                <div class="block--field-label"><?php print t('Contact');?></div>
+                <div class="block--field-label"><?php print t('Contact');?>:</div>
                 <?php print render($name); ?>
               </div>
               <div class="block--field-wrapper is-inline">
@@ -135,13 +135,13 @@
                   <?php print render($content['field_period']); ?>
                 <?php endif;?>
                 <?php if ($field_duration) : ?>
-                  <div class="block--field-label"><?php print t('Duration');?></div>
+                  <div class="block--field-label"><?php print t('Duration');?>:</div>
                   <div class="block--field-text"><?php print render($content['field_duration']); ?><?php print render($content['field_duration_unit']); ?></div>
                 <?php endif;?>
                 <?php if ($field_free['0']['value'] == 0 ) : ?>
                   <?php print render($content['field_collection_price']); ?>
                 <?php else : ?>
-                  <div class="block--field-label"><?php print t('This course is free');?></div>
+                  <div class="block--field-label"><?php print t('This course is free.');?></div>
                 <?php endif;?>
                 <?php print render($content['field_period_info']); ?>
                 <?php print render($content['field_price_info']); ?>

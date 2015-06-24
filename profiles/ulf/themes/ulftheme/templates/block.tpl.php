@@ -44,10 +44,10 @@
  * @ingroup themeable
  */
 ?>
-<div class="block-module contextual-links-region">
+<div class="block--default contextual-links-region">
   <?php print render($title_prefix); ?>
   <?php if ($block->subject): ?>
-    <div class="block-module--label"><?php print $block->subject ?></div>
+    <div class="block--default-label"><?php print $block->subject ?></div>
   <?php endif;?>
   <?php print render($title_suffix); ?>
   <?php print $content ?>
