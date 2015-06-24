@@ -80,17 +80,119 @@
  * @ingroup themeable
  */
 ?>
-<?php if ($display_submitted): ?>
-  <div class="submitted">
-    <?php print $submitted; ?>
+<div class="layout-node">
+  <div class="layout-element-alpha">
+    <div class="layout-element-alpha-inner">
+      <?php if ($display_submitted): ?>
+        <div class="submitted">
+          <?php print $submitted; ?>
+        </div>
+      <?php endif; ?>
+      <div class="content">
+        <div class="content--image">
+          <div class="field--title is-<?php print $group_type?>"><?php print render($title); ?></div>
+          <?php print render($content['field_image']); ?>
+        </div>
+        <div class="content--main">
+          <?php print render($content['field_tags']); ?>
+          <?php print render($content['field_purpose']); ?>
+          <?php print render($content['field_full_description']); ?>
+          <?php if ($field_activities || $field_background_knowledge || $field_post_work || $field_material_suggestions) : ?>
+            <div class="field--collection-wrapper">
+              <div class="field--collection-label"><?php print t('Yderligere information');?></div>
+              <div class="field--collection-content">
+                <div class="field--collection-item">
+                  <?php print render($content['field_activities']); ?>
+                  <?php print render($content['field_background_knowledge']); ?>
+                  <?php print render($content['field_post_work']); ?>
+                  <?php print render($content['field_material_suggestions']); ?>
+                </div>
+              </div>
+            </div>
+          <?php endif; ?>
+          <?php print render($content['field_educational_material']); ?>
+          <?php print render($content['field_inspirational_material']); ?>
+        </div>
+        <div class="content--meta">
+          <div class="block--light">
+            <h2 class="block--header">
+              <?php print t('Practical information'); ?>
+            </h2>
+            <div class="block--content">
+              <div class="block--field-wrapper is-inline">
+                <div class="block--field-label"><?php print t('Contact');?></div>
+                <?php print render($name); ?>
+              </div>
+              <div class="block--field-wrapper is-inline">
+                <?php print render($content['field_offer_type']); ?>
+                <?php print render($content['field_target_group_sub']); ?>
+                <?php print render($content['field_count']); ?>
+              </div>
+              <?php /* If any of the fields in this wrapper contain data */ ?>
+              <?php if ($field_duration || $field_period_full_year['0']['value'] == 0 || $field_collection_price || $field_free['0']['value'] == 1 || $field_period_info || $field_price_info) : ?>
+              <div class="block--field-wrapper">
+                <?php if ($field_period_full_year['0']['value'] == 0 ) : ?>
+                  <?php print render($content['field_period']); ?>
+                <?php endif;?>
+                <?php if ($field_duration) : ?>
+                  <div class="block--field-label"><?php print t('Duration');?></div>
+                  <div class="block--field-text"><?php print render($content['field_duration']); ?><?php print render($content['field_duration_unit']); ?></div>
+                <?php endif;?>
+                <?php if ($field_free['0']['value'] == 0 ) : ?>
+                  <?php print render($content['field_collection_price']); ?>
+                <?php else : ?>
+                  <div class="block--field-label"><?php print t('This course is free');?></div>
+                <?php endif;?>
+                <?php print render($content['field_period_info']); ?>
+                <?php print render($content['field_price_info']); ?>
+              </div>
+              <?php endif;?>
+              <?php /* If any of the fields in this wrapper contain data */ ?>
+              <?php if ($field_subject) : ?>
+                <div class="block--field-wrapper">
+                  <?php print render($content['field_subject']); ?>
+                </div>
+              <?php endif;?>
+              <?php if ($field_educational_goals || $field_subjects_primary_school || $field_subjects_youth) : ?>
+                <div class="block--field-wrapper">
+                  <?php print render($content['field_educational_goals']); ?>
+                  <?php print render($content['field_subjects_primary_school']); ?>
+                  <?php print render($content['field_subjects_youth']); ?>
+                </div>
+              <?php endif; ?>
+              <?php if ($field_facilities || $field_facilities_info) : ?>
+                <div class="block--field-wrapper">
+                  <?php print render($content['field_facilities']); ?>
+                  <?php print render($content['field_facilities_info']); ?>
+                </div>
+              <?php endif; ?>
+            </div>
+          </div>
+          <div class="block--dark">
+            <h2 class="block--header">
+              <?php print t('Contact organizer');?>
+            </h2>
+            <div class="block--content">
+              <div class="block--field-label"><?php print $profile_name; ?></div>
+              <div class="block--field-text"><?php print $profile_address; ?></div>
+              <div class="block--field-text"><?php print $profile_postal_code; ?> <?php print $profile_city; ?></div>
+              <div class="block--field-text"><?php print $profile_phone; ?></div>
+              <a href="/user/<?php print $uid ?>"><?php print t('View organizer profile'); ?></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <?php
+      // We hide the comments and links now so that we can render them later.
+      hide($content['field_period']);
+      hide($content['field_collection_price']);
+      hide($content['field_free']);
+      hide($content['field_period_full_year']);
+      hide($content['field_target_group']);
+      hide($content['comments']);
+      hide($content['links']);
+      ?>
+      <div style=""><?php print render($content); ?></div>
+    </div>
   </div>
-<?php endif; ?>
-<?php print render($title_suffix); ?>
-  <?php
-    // We hide the comments and links now so that we can render them later.
-    hide($content['comments']);
-    hide($content['links']);
-    print render($content);
-  ?>
-
-<?php print render($content['links']); ?>
+</div>

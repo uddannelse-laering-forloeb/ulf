@@ -11,7 +11,7 @@
 /* Layout
    ================================================================================================================== */
 
-$layout-max-width:    75em;
+$layout-max-width:    1000px;
 $layout-padding:      1.5em 1.25em;
 
 /* Colors
@@ -24,14 +24,19 @@ $gray:             lighten($black, 60%);
 $gray-dark:        lighten($black, 50%);
 $gray-darker:      lighten($black, 40%);
 $gray-darkest:     lighten($black, 30%);
-$blue:             #269eD9; // OLD color @todo cleanup.
+$white:            #fff;
+$black:            #000;
 $light-blue:       #deeced;  // Block bg color.
 $dark-blue:        #17858c;  // Block bg color.
-$blue-light:       lighten($blue, 5%);
-$yellow:           #f8b634;
-$yellow-light:     lighten($yellow, 5%);
-$white:            #fff;
-$red:              #ff6138;
+$green:            rgb(164, 218, 32);  // Daycare color.
+$purple:           rgb(144, 29, 124); // School color.
+$orange:           rgb(255, 104, 0);  // Youth color.
+$yellow:           rgb(237, 215, 28); // Course color.
+
+$blue:             #269eD9; // OLD color @todo cleanup.
+$blue-light:       lighten($blue, 5%); // OLD color @todo cleanup.
+$yellow-light:     lighten($yellow, 5%); // OLD color @todo cleanup.
+$red:              #ff6138;// OLD color @todo cleanup.
 
 
 /* Typography

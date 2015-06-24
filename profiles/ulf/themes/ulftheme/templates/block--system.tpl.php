@@ -44,5 +44,4 @@
  * @ingroup themeable
  */
 ?>
-<?php print render($title_prefix); ?>
 <?php print $content ?>

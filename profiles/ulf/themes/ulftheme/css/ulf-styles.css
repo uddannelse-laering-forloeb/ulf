@@ -430,6 +430,15 @@ label {
 /**
  * Contains global placeholders for use across the site
  */
+.field--title, .teaser--group-text, .teaser--content-text {
+  bottom: 0;
+  box-sizing: border-box;
+  font-size: 1.45em;
+  padding: 0 .5em;
+  position: absolute;
+  width: 100%; }
+
+/* ------- OLD stuff @todo cleanup----------- */
 /* Use this placeholder to center a container */
 .search-module--result, .search-module--spelling-suggestions, .search-facets-mobile--toggle-wrapper {
   border-bottom: 1px dashed #e6e6e6;
@@ -491,12 +500,12 @@ label {
     background-color: #269eD9; }
 
 .button-yellow, .search-facets-mobile--toggle {
-  background-color: #f9bf4d;
-  border: 1px solid #f8b634;
+  background-color: #efdb34;
+  border: 1px solid #edd71c;
   color: #fff;
-  text-shadow: 0.025em 0.025em 0.1em #f1a208; }
+  text-shadow: 0.025em 0.025em 0.1em #c6b310; }
   .button-yellow:hover, .search-facets-mobile--toggle:hover {
-    background-color: #f8b634; }
+    background-color: #edd71c; }
 
 /**
 * Tabs
@@ -607,20 +616,6 @@ label {
 /**
  * Icons
  */
-.field-collection-module--link:before, .field-collection-module--file:before {
-  display: inline-block;
-  font-family: "ulf-icons";
-  line-height: 100%; }
-
-.field-collection-module--link:before, .field-collection-module--file:before {
-  margin-right: .5em; }
-
-.field-collection-module--link:before {
-  content: '\e804'; }
-
-.field-collection-module--file:before {
-  content: '\e809'; }
-
 /**
  * Naughty Drupal
  *
@@ -640,9 +635,7 @@ label {
 ================================================================================================================== */
 .layout-frontpage .layout-element-alpha-inner,
 .layout-frontpage .layout-element-beta-inner,
-.layout-frontpage .layout-element-gamma-inner, .layout-default .layout-element-alpha-inner,
-.layout-default .layout-element-beta-inner,
-.layout-default .layout-element-gamma-inner, .layout-alternative .layout-element-alpha-inner,
+.layout-frontpage .layout-element-gamma-inner, .layout-node .layout-element-alpha-inner, .layout-alternative .layout-element-alpha-inner,
 .layout-alternative .layout-element-beta-inner,
 .layout-alternative .layout-element-gamma-inner {
   display: flex;
@@ -650,7 +643,7 @@ label {
   flex-direction: row;
   height: 100%;
   margin: 0 auto;
-  max-width: 75em;
+  max-width: 1000px;
   padding: 2em 0;
   position: relative;
   width: 100%; }
@@ -658,6 +651,7 @@ label {
 /* Body
    ================================================================================================================== */
 body {
+  background: #fff;
   font-family: "Asap", sans-serif;
   font-size: 14px;
   margin: 0 auto; }
@@ -675,11 +669,9 @@ body {
 .layout-frontpage .layout-element-gamma {
   background: #e6e6e6; }
 
-.layout-default .layout-element-alpha {
-  background: #fff; }
-.layout-default .layout-element-beta {
+.layout-node .layout-element-beta {
   background: #f2f2f2; }
-.layout-default .layout-element-gamma {
+.layout-node .layout-element-gamma {
   background: #e6e6e6; }
 
 .layout-alternative .layout-element-alpha {
@@ -706,7 +698,7 @@ body {
   .header--inner {
     height: 100%;
     margin: 0 auto;
-    max-width: 75em;
+    max-width: 1000px;
     position: relative;
     width: 100%; }
   .header--logo {
@@ -988,77 +980,63 @@ li.search-module--facet-link {
 * Contains general field styles.
 *
 */
-.field-module--wrapper {
-  padding: 1.5em 1.25em;
-  background-color: #fff; }
-  @media only screen and (min-width: 45em) {
-    .field-module--wrapper {
-      -moz-border-radius: 0.6em;
-      -webkit-border-radius: 0.6em;
-      border-radius: 0.6em; } }
-
-.field-module--label, .field-module--teaser-label,
-.field-module--purpose-label {
-  font-size: 1.3em;
-  margin-bottom: 0.3em; }
-
-.field-module--text, .field-module--image, .field-module--teaser,
-.field-module--purpose {
-  border-bottom: 1px #e6e6e6 dashed;
-  margin-bottom: 1.6em;
-  overflow: hidden;
-  padding-bottom: 1em;
-  width: 100%; }
-  .field-module--text:last-child, .field-module--image:last-child, .field-module--teaser:last-child,
-  .field-module--purpose:last-child {
-    border-bottom: 0;
-    margin-bottom: 0;
-    padding-bottom: 0; }
-
-.field-module--author {
-  color: #b3b3b3;
-  font-size: 1.25em;
-  margin-bottom: 0.5em; }
-
-.field-module--image {
-  padding: 0;
-  border-bottom: 0; }
-
-.field-module--teaser-item,
-.field-module--purpose-item {
-  font-weight: bold; }
-
-.field-module--educational-material,
-.field-module--inspirational-material {
-  padding: 1em;
-  border: 1px solid #f2f2f2;
-  overflow: hidden;
-  -moz-border-radius: 0.3em;
-  -webkit-border-radius: 0.3em;
-  border-radius: 0.3em; }
-
-.field-module--educational-material-item,
-.field-module--inspirational-material-item {
-  border-bottom: 1px #e6e6e6 dashed;
-  margin-bottom: 1.6em;
-  padding-bottom: 1em; }
-  .field-module--educational-material-item:last-child,
-  .field-module--inspirational-material-item:last-child {
-    border-bottom: 0;
-    margin-bottom: 0;
-    padding-bottom: 0; }
-
-.field-module--profile-contact-item {
-  border-bottom: 1px #e6e6e6 dashed;
-  margin-bottom: 1em;
-  overflow: hidden; }
-
-.field-module--tags {
-  padding: 0.8em 0; }
-
-.is-time-full-year,
-.is-price-free {
-  display: none; }
+/* Placholders, variables and mixins related to this document only.
+================================================================================================================== */
+/* Styles.
+================================================================================================================== */
+.field {
+  /* Display of tags field. */
+  /* Display of field collections in main content. */ }
+  .field--title {
+    border-bottom: solid;
+    border-width: 4px;
+    font-size: 3em;
+    font-weight: bold;
+    background: rgba(255, 255, 255, 0.7); }
+    .field--title.is-dagtilbud {
+      border-color: #a4da20; }
+    .field--title.is-grundskole {
+      border-color: #901d7c; }
+    .field--title.is-ungdomsuddannelse {
+      border-color: #ff6800; }
+    .field--title.is-course {
+      border-color: #edd71c; }
+  .field--tags {
+    padding: 0.8em 0; }
+  .field--tags-item {
+    display: inline-block;
+    margin-bottom: .25em;
+    padding: .1em 1em;
+    background: #17858c;
+    color: #fff;
+    cursor: pointer;
+    font-size: 85%;
+    -moz-border-radius: 0.6em;
+    -webkit-border-radius: 0.6em;
+    border-radius: 0.6em; }
+    .field--tags-item:link, .field--tags-item:visited, .field--tags-item:hover, .field--tags-item:active {
+      color: #fff;
+      text-decoration: none; }
+    .field--tags-item:hover {
+      background: #137076; }
+  .field--collection-wrapper {
+    margin-bottom: 15px; }
+  .field--collection-label {
+    color: #fff;
+    background: #17858c;
+    padding: 15px; }
+  .field--collection-content {
+    border-left: 1px solid #b3b3b3;
+    border-right: 1px solid #b3b3b3; }
+  .field--collection-item {
+    border-bottom: 1px solid #b3b3b3;
+    padding: 15px; }
+  .field--collection-description, .field--collection-file, .field--collection-link, .field--collection-litt {
+    display: block;
+    margin-bottom: 7.5px;
+    width: 100%; }
+  .field--collection-description {
+    font-weight: bold; }
 
 /**
  * Forms
@@ -1277,6 +1255,8 @@ legend a {
 /* Anonymous user forms
    ================================================================================================================== */
 .form-module--user-login {
+  margin: 0 auto;
+  max-width: 1000px;
   position: relative; }
   .form-module--user-login .form-item {
     margin-bottom: 1em; }
@@ -1296,14 +1276,6 @@ legend a {
   overflow: hidden;
   margin: 0 7.5px;
   position: relative; }
-
-.teaser--group-text, .teaser--content-text {
-  bottom: 0;
-  box-sizing: border-box;
-  font-size: 1.45em;
-  padding: 0 .5em;
-  position: absolute;
-  width: 100%; }
 
 /* Styles.
 ================================================================================================================== */
@@ -1369,16 +1341,16 @@ legend a {
     .teaser--content {
       width: 25%; } }
   .teaser--content-inner:link {
-    color: black;
+    color: #000;
     text-decoration: none; }
   .teaser--content-inner:visited {
-    color: black;
+    color: #000;
     text-decoration: none; }
   .teaser--content-inner:hover {
-    color: black;
+    color: #000;
     text-decoration: none; }
   .teaser--content-inner:focus {
-    color: black;
+    color: #000;
     text-decoration: none; }
   .teaser--content-inner:hover .teaser--content-text.is-dagtilbud {
     background: #a4da20; }
@@ -1406,12 +1378,6 @@ legend a {
     .teaser--content-text-inner {
       position: relative; }
 
-/**
- * Block module.
- *
- * Contains general block styles.
- *
- */
 /**
  *
  * Block
@@ -1613,34 +1579,6 @@ legend a {
   width: 50%; }
 
 /**
- * Field collection module
- *
- * Contains general field collection styles.
- *
- * @author Martin Yde.
- */
-.field-collection-module--contact-name,
-.field-collection-module--contact-email,
-.field-collection-module--contact-phone {
-  float: left;
-  overflow: hidden;
-  width: 100%; }
-
-.field-collection-module--description {
-  font-weight: bold; }
-
-.field-collection-module--value {
-  margin-bottom: 1em; }
-  .field-collection-module--value:last-child {
-    margin-bottom: 0; }
-
-.field-collection-module--file,
-.field-collection-module--link,
-.field-collection-module--litt,
-.field-collection-module--description {
-  margin-bottom: 0.4em; }
-
-/**
  * Nav module
  *
  * Contains styles related to the navigation bar.
@@ -1680,7 +1618,7 @@ legend a {
     padding-left: 7.5px;
     padding-right: 7.5px;
     margin: 0 auto;
-    max-width: 75em;
+    max-width: 1000px;
     position: relative;
     width: 100%; }
   .nav--dropdown-item {
@@ -1790,67 +1728,6 @@ legend a {
       border-radius: 0 0.6em 0.6em 0; } }
 
 /**
- * Page module
- */
-.page-wrapper {
-  width: 100%; }
-  .page-wrapper.is-moved-left .page-inner {
-    -moz-transform: translate3d(76%, 0, 0);
-    -ms-transform: translate3d(76%, 0, 0);
-    -webkit-transform: translate3d(76%, 0, 0);
-    transform: translate3d(76%, 0, 0); }
-
-.page-inner {
-  position: relative;
-  min-height: 100%;
-  width: 100%;
-  -moz-transition: -moz-transform 500ms ease 0s;
-  -o-transition: -o-transform 500ms ease 0s;
-  -webkit-transition: -webkit-transform 500ms ease;
-  -webkit-transition-delay: 0s;
-  transition: transform 500ms ease 0s; }
-
-.page-content {
-  padding: 1.5em 1.25em;
-  background-color: #fff; }
-  @media only screen and (min-width: 45em) {
-    .page-content {
-      -moz-border-radius: 0.6em;
-      -webkit-border-radius: 0.6em;
-      border-radius: 0.6em; } }
-
-.page-content--header {
-  margin-bottom: 0.5em;
-  padding-bottom: 0.5em;
-  border-bottom: 1px #e6e6e6 dashed; }
-
-.page-title {
-  margin-bottom: .5em;
-  color: #333; }
-
-/**
- *
- * Tag
- *
- */
-.field-module--tags-item {
-  display: inline-block;
-  margin-bottom: .25em;
-  padding: .1em 1em;
-  background-color: #edd71c;
-  color: #fff;
-  cursor: pointer;
-  font-size: 85%;
-  -moz-border-radius: 0.6em;
-  -webkit-border-radius: 0.6em;
-  border-radius: 0.6em; }
-  .field-module--tags-item:link, .field-module--tags-item:visited, .field-module--tags-item:hover, .field-module--tags-item:active {
-    color: #fff;
-    text-decoration: none; }
-  .field-module--tags-item:hover {
-    background-color: #af9e0e; }
-
-/**
  * Twitter typeahead
  *
  * http://twitter.github.io/typeahead.js/
@@ -1863,7 +1740,7 @@ legend a {
     border: 0;
     margin-bottom: 0;
     padding: 0; }
-  @media only screen and (min-width: 75em) {
+  @media only screen and (min-width: 1000px) {
     .typeahead-block {
       -moz-border-radius: 0 0 0.6em 0.6em;
       -webkit-border-radius: 0;
@@ -1950,6 +1827,31 @@ legend a {
     border-bottom: 0;
     margin-bottom: 0;
     padding-bottom: 0; }
+
+/**
+ * Content
+ */
+/* Placeholders, variables and mixins related to this document only.
+================================================================================================================== */
+/* Styles
+================================================================================================================== */
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%; }
+  .content--header, .content--system-block {
+    margin: 0 auto;
+    width: 1000px; }
+  .content--image {
+    margin-bottom: 30px;
+    position: relative;
+    width: 100%; }
+  .content--main {
+    width: 60%; }
+  .content--meta {
+    width: 35%; }
 
 /**
  *
@@ -2081,8 +1983,7 @@ html.is-locked body {
     color: #000;
     page-break-after: avoid; }
 
-  .field-module--text, .field-module--image, .field-module--teaser,
-  .field-module--purpose {
+  .field-module--text {
     page-break-before: avoid; }
 
   .layout-element-alpha,
@@ -2123,8 +2024,5 @@ html.is-locked body {
 
   .block-inline-module--field-wrapper,
   .field-module--text,
-  .field-module--image,
-  .field-module--teaser,
-  .field-module--purpose,
   .block-module--field-wrapper {
     border-color: #b3b3b3; } }

@@ -27,7 +27,7 @@
 
 
 // Set the color of the background to one of 4 different colors
-@mixin teaser-set-color($color, $transparency: 1) {
+@mixin background-set-color($color, $transparency: 1) {
   @if $color == "green" {
     background: rgba(164, 218, 32, $transparency);
   } @else if $color == "purple" {

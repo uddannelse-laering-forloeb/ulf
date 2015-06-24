@@ -44,14 +44,11 @@
  * @ingroup themeable
  */
 ?>
-
-<div class="field-module--text">
-  <?php if (!$label_hidden): ?>
-    <div class="field-module--label"<?php print $title_attributes; ?>><?php print $label ?>:&nbsp;</div>
-  <?php endif; ?>
-  <div class="field-module--items"<?php print $content_attributes; ?>>
-    <?php foreach ($items as $delta => $item): ?>
-      <div class="field-module--item <?php print $delta % 2 ? 'odd' : 'even'; ?>"<?php print $item_attributes[$delta]; ?>><?php print render($item); ?></div>
-    <?php endforeach; ?>
-  </div>
+<?php if (!$label_hidden): ?>
+  <div class="block--field-label"<?php print $title_attributes; ?>><?php print $label ?>:&nbsp;</div>
+<?php endif; ?>
+<div class="block--field-text"<?php print $content_attributes; ?>>
+  <?php foreach ($items as $delta => $item): ?>
+    <?php print render($item); ?>
+  <?php endforeach; ?>
 </div>

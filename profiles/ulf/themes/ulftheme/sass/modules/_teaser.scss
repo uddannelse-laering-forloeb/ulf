@@ -9,13 +9,6 @@
 
 /* Placholders, variables and mixins related to this document only.
 ================================================================================================================== */
-
-$black: rgb(0, 0, 0);
-$green: rgb(164, 218, 32);  // Daycare color.
-$purple: rgb(144, 29, 124); // School color.
-$orange: rgb(255, 104, 0);  // Youth color.
-$yellow: rgb(237, 215, 28); // Course color.
-
 // General teaser styles.
 %teaser--inner {
   display: block;
@@ -24,18 +17,6 @@ $yellow: rgb(237, 215, 28); // Course color.
   margin: 0 $margin / 2;
   position: relative;
 }
-
-
-// Teaser text styles.
-%teaser--text {
-  bottom: 0;
-  box-sizing: border-box;
-  font-size: 1.45em;
-  padding: 0 .5em;
-  position: absolute;
-  width: 100%;
-}
-
 
 
 /* Styles.
@@ -64,42 +45,42 @@ $yellow: rgb(237, 215, 28); // Course color.
     // State class names are fetched from taxonomy terms, thus Danish ...
     &:hover .teaser--group-text {
       &.is-dagtilbud {
-        @include teaser-set-color('green', 1);
+        @include background-set-color('green', 1);
       }
 
       &.is-grundskole {
-        @include teaser-set-color('purple', 1);
+        @include background-set-color('purple', 1);
       }
 
       &.is-ungdomsuddannelse {
-        @include teaser-set-color('orange', 1);
+        @include background-set-color('orange', 1);
       }
 
       &.is-course {
-        @include teaser-set-color('yellow', 1);
+        @include background-set-color('yellow', 1);
       }
     }
   }
 
   &-text {
-    @extend %teaser--text;
+    @extend %content--header;
 
     height: 90px;
 
     &.is-dagtilbud {
-      @include teaser-set-color('green', 0.7);
+      @include background-set-color('green', 0.7);
     }
 
     &.is-grundskole {
-      @include teaser-set-color('purple', 0.7);
+      @include background-set-color('purple', 0.7);
     }
 
     &.is-ungdomsuddannelse {
-      @include teaser-set-color('orange', 0.7);
+      @include background-set-color('orange', 0.7);
     }
 
     &.is-course {
-      @include teaser-set-color('yellow', 0.7);
+      @include background-set-color('yellow', 0.7);
     }
 
     &-inner {
@@ -139,19 +120,19 @@ $yellow: rgb(237, 215, 28); // Course color.
     // Change text background transparency when hovering on the teaser.
     &:hover .teaser--content-text {
       &.is-dagtilbud {
-        @include teaser-set-color('green', 1);
+        @include background-set-color('green', 1);
       }
 
       &.is-grundskole {
-        @include teaser-set-color('purple', 1);
+        @include background-set-color('purple', 1);
       }
 
       &.is-ungdomsuddannelse {
-        @include teaser-set-color('orange', 1);
+        @include background-set-color('orange', 1);
       }
 
       &.is-course {
-        @include teaser-set-color('yellow', 1);
+        @include background-set-color('yellow', 1);
       }
     }
   }
@@ -161,8 +142,8 @@ $yellow: rgb(237, 215, 28); // Course color.
   }
 
   &-text {
-    @extend %teaser--text;
-    @include teaser-set-color('white', 0.7);
+    @extend %content--header;
+    @include background-set-color('white', 0.7);
 
     border-bottom: solid;
     border-width: 4px;

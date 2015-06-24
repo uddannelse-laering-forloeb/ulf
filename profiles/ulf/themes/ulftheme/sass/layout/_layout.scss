@@ -13,7 +13,7 @@
   flex-direction: row;
   height: 100%;
   margin: 0 auto;
-  max-width: 75em;
+  max-width: $layout-max-width;
   padding: 2em 0;
   position: relative;
   width: 100%;
@@ -24,6 +24,7 @@
    ================================================================================================================== */
 
 body {
+  background: $white;
   font-family: "Asap", sans-serif;
   font-size: 14px;
   margin: 0 auto;
@@ -66,9 +67,9 @@ body {
 
 // Default layout
 
-.layout-default {
+.layout-node {
   .layout-element-alpha {
-    background: $white;
+
   }
 
   .layout-element-beta {
@@ -79,9 +80,7 @@ body {
     background: $gray-lighter;
   }
 
-  .layout-element-alpha,
-  .layout-element-beta,
-  .layout-element-gamma {
+  .layout-element-alpha {
     &-inner {
       @extend %layout--element-inner;
     }

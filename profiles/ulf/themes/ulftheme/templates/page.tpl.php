@@ -108,7 +108,11 @@
       </div>
     <?php endif; ?>
 
-    <?php if ($title && !$is_front): ?><div class="page-title"><h1><?php print $title; ?></h1></div><?php endif; ?>
+    <?php if ($title && !$is_front && !isset($node)): ?>
+      <div class="content--header">
+        <h1><?php print $title; ?></h1>
+      </div>
+    <?php endif; ?>
     <?php print render($page['content']); ?>
     <footer class="footer">
       <?php print render($page['footer']); ?>
