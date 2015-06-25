@@ -48,10 +48,13 @@ function ulf_migration_migrate_api() {
       // Taxonomies.
 
 
-      // Static pages. (omulf)
+      // Static pages (omulf).
+      'UlfStatic' => array(
+        'class_name' => 'UlfStaticMigration',
+        'group_name' => 'ulf_content',
+      ),
 
-
-      // news.
+      // News.
       'UlfNews' => array(
         'class_name' => 'UlfNewsMigration',
         'group_name' => 'ulf_content',

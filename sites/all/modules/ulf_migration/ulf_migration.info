@@ -10,5 +10,6 @@ files[] = includes/ulf_files.inc
 files[] = includes/ulf_roles.inc
 files[] = includes/ulf_users.inc
 files[] = includes/ulf_users_contact.inc
+files[] = includes/ulf_static.inc
 files[] = includes/ulf_news.inc
 files[] = includes/ulf_educators.inc
