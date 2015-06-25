@@ -44,16 +44,16 @@ class UlfNewsMigration extends DrupalNode7Migration {
     $this->addFieldMapping('field_image:file_class')
       ->defaultValue('MigrateFileFid');
 
+    $this->addFieldMapping('field_content:format')->defaultValue('editor');
+
     $this->addSimpleMappings(array(
       'field_teaser',
       'field_teaser:language',
       'field_content',
-      'field_content:format',
       'field_content:language',
       'field_image:alt',
       'field_image:title',
     ));
-
 
     $this->addUnmigratedSources(array(
       'revision',
