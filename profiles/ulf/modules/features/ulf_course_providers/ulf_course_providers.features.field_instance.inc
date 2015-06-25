@@ -17,14 +17,14 @@ function ulf_course_providers_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'image',
         'settings' => array(
           'image_link' => '',
-          'image_style' => '',
+          'image_style' => 'node_display',
         ),
         'type' => 'image',
-        'weight' => 13,
+        'weight' => 1,
       ),
     ),
     'entity_type' => 'user',
@@ -33,7 +33,7 @@ function ulf_course_providers_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'alt_field' => 0,
-      'default_image' => 0,
+      'default_image' => 29,
       'file_directory' => 'udbyder',
       'file_extensions' => 'png gif jpg jpeg',
       'max_filesize' => '',
@@ -50,7 +50,7 @@ function ulf_course_providers_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 19,
+      'weight' => 2,
     ),
   );
 
@@ -62,11 +62,11 @@ function ulf_course_providers_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 0,
+        'weight' => 7,
       ),
     ),
     'entity_type' => 'user',
@@ -84,7 +84,7 @@ function ulf_course_providers_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 7,
+      'weight' => 8,
     ),
   );
 
@@ -96,11 +96,11 @@ function ulf_course_providers_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 2,
+        'weight' => 9,
       ),
     ),
     'entity_type' => 'user',
@@ -118,7 +118,7 @@ function ulf_course_providers_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 9,
+      'weight' => 10,
     ),
   );
 
@@ -133,14 +133,10 @@ function ulf_course_providers_field_default_field_instances() {
         'label' => 'above',
         'module' => 'field_collection',
         'settings' => array(
-          'add' => 'Add',
-          'delete' => 'Delete',
-          'description' => TRUE,
-          'edit' => 'Edit',
           'view_mode' => 'full',
         ),
-        'type' => 'field_collection_view',
-        'weight' => 14,
+        'type' => 'field_collection_fields',
+        'weight' => 5,
       ),
     ),
     'entity_type' => 'user',
@@ -155,7 +151,7 @@ function ulf_course_providers_field_default_field_instances() {
       'module' => 'field_collection',
       'settings' => array(),
       'type' => 'field_collection_embed',
-      'weight' => 15,
+      'weight' => 6,
     ),
   );
 
@@ -167,29 +163,33 @@ function ulf_course_providers_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 5,
+        'weight' => 2,
       ),
     ),
     'entity_type' => 'user',
     'field_name' => 'field_profile_description',
     'label' => 'Kort præsentation af forløbsudbyder',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'text_processing' => 0,
-      'user_register_form' => 0,
+      'user_register_form' => 1,
     ),
     'widget' => array(
       'active' => 1,
       'module' => 'text',
       'settings' => array(
+        'maxlength_js' => '',
+        'maxlength_js_enforce' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'maxlength_js_truncate_html' => 0,
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 12,
+      'weight' => 3,
     ),
   );
 
@@ -201,11 +201,11 @@ function ulf_course_providers_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 6,
+        'weight' => 3,
       ),
     ),
     'entity_type' => 'user',
@@ -223,7 +223,7 @@ function ulf_course_providers_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 13,
+      'weight' => 4,
     ),
   );
 
@@ -239,7 +239,7 @@ function ulf_course_providers_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 7,
+        'weight' => 4,
       ),
     ),
     'entity_type' => 'user',
@@ -257,7 +257,7 @@ function ulf_course_providers_field_default_field_instances() {
         'rows' => 3,
       ),
       'type' => 'text_textarea',
-      'weight' => 14,
+      'weight' => 5,
     ),
   );
 
@@ -269,11 +269,11 @@ function ulf_course_providers_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_default',
-        'weight' => 4,
+        'weight' => 12,
       ),
     ),
     'entity_type' => 'user',
@@ -307,7 +307,7 @@ function ulf_course_providers_field_default_field_instances() {
       'module' => 'html5_tools',
       'settings' => array(),
       'type' => 'urlwidget',
-      'weight' => 11,
+      'weight' => 12,
     ),
   );
 
@@ -318,14 +318,14 @@ function ulf_course_providers_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'image',
         'settings' => array(
           'image_link' => '',
-          'image_style' => '',
+          'image_style' => 'logo',
         ),
         'type' => 'image',
-        'weight' => 15,
+        'weight' => 6,
       ),
     ),
     'entity_type' => 'user',
@@ -351,7 +351,7 @@ function ulf_course_providers_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 20,
+      'weight' => 7,
     ),
   );
 
@@ -363,127 +363,31 @@ function ulf_course_providers_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 16,
+        'weight' => 0,
       ),
     ),
     'entity_type' => 'user',
     'field_name' => 'field_profile_name',
     'label' => 'Navn',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'text_processing' => 0,
-      'user_register_form' => 0,
+      'user_register_form' => 1,
     ),
     'widget' => array(
       'active' => 1,
       'module' => 'text',
       'settings' => array(
+        'maxlength_js' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 6,
-    ),
-  );
-
-  // Exported field_instance: 'user-user-field_profile_order_availa'
-  $field_instances['user-user-field_profile_order_availa'] = array(
-    'bundle' => 'user',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 12,
-      ),
-    ),
-    'entity_type' => 'user',
-    'field_name' => 'field_profile_order_availa',
-    'label' => 'Træffetid',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 0,
-      'user_register_form' => 0,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 18,
-    ),
-  );
-
-  // Exported field_instance: 'user-user-field_profile_order_mail'
-  $field_instances['user-user-field_profile_order_mail'] = array(
-    'bundle' => 'user',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 9,
-      ),
-    ),
-    'entity_type' => 'user',
-    'field_name' => 'field_profile_order_mail',
-    'label' => 'Mailadresse',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 0,
-      'user_register_form' => 0,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'html5_tools',
-      'settings' => array(),
-      'type' => 'emailwidget',
-      'weight' => 16,
-    ),
-  );
-
-  // Exported field_instance: 'user-user-field_profile_order_phone'
-  $field_instances['user-user-field_profile_order_phone'] = array(
-    'bundle' => 'user',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 10,
-      ),
-    ),
-    'entity_type' => 'user',
-    'field_name' => 'field_profile_order_phone',
-    'label' => 'Telefonnr.',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 0,
-      'user_register_form' => 0,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'html5_tools',
-      'settings' => array(),
-      'type' => 'telwidget',
-      'weight' => 17,
+      'weight' => 1,
     ),
   );
 
@@ -495,11 +399,11 @@ function ulf_course_providers_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 11,
+        'weight' => 10,
       ),
     ),
     'entity_type' => 'user',
@@ -515,7 +419,7 @@ function ulf_course_providers_field_default_field_instances() {
       'module' => 'html5_tools',
       'settings' => array(),
       'type' => 'telwidget',
-      'weight' => 10,
+      'weight' => 11,
     ),
   );
 
@@ -527,16 +431,16 @@ function ulf_course_providers_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'number',
         'settings' => array(
           'decimal_separator' => '.',
-          'prefix_suffix' => TRUE,
+          'prefix_suffix' => 1,
           'scale' => 0,
-          'thousand_separator' => ' ',
+          'thousand_separator' => '',
         ),
         'type' => 'number_integer',
-        'weight' => 1,
+        'weight' => 8,
       ),
     ),
     'entity_type' => 'user',
@@ -555,7 +459,7 @@ function ulf_course_providers_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 8,
+      'weight' => 9,
     ),
   );
 
@@ -568,12 +472,10 @@ function ulf_course_providers_field_default_field_instances() {
   t('Kontakt');
   t('Kort præsentation af forløbsudbyder');
   t('Logo');
-  t('Mailadresse');
   t('Navn');
   t('Postnr.');
   t('Pædagogisk profil');
   t('Telefonnr.');
-  t('Træffetid');
   t('Upload et billede/illustration');
 
   return $field_instances;
