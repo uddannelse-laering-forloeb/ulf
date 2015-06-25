@@ -1,11 +1,11 @@
 <?php
 
 /**
- * @file field--custom-field-collection.tpl.php
+ * @file field.tpl.php
+ * Default template implementation to display the value of a field.
  *
- * Used for field inside field collections
- *
- * @see template.php
+ * This file is not used and is here as a starting point for customization only.
+ * @see theme_field()
  *
  * Available variables:
  * - $items: An array of field values. Use render() to output them.
@@ -44,10 +44,13 @@
  * @ingroup themeable
  */
 ?>
-
+<div class="field--collection-wrapper">
 <?php if (!$label_hidden): ?>
-  <div class="<?php echo $field_name_css_field_collection; ?>-label"<?php print $title_attributes; ?>><?php print $label ?></div>
+  <div class="field--collection-label"<?php print $title_attributes; ?>><?php print $label ?></div>
 <?php endif; ?>
-<?php foreach ($items as $delta => $item): ?>
-  <div class="<?php echo $field_name_css_field_collection; ?>-item"><?php print render($item); ?></div>
-<?php endforeach; ?>
+  <div class="field--collection-content">
+    <?php foreach ($items as $delta => $item): ?>
+      <div class="field--collection-item"><?php print render($item); ?></div>
+    <?php endforeach; ?>
+  </div>
+</div>

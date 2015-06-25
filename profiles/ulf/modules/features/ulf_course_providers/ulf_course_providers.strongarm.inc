@@ -29,28 +29,37 @@ function ulf_course_providers_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'googleanalytics' => array(
-          'weight' => '1',
+          'weight' => '17',
         ),
         'redirect' => array(
-          'weight' => '5',
+          'weight' => '16',
         ),
         'account' => array(
           'weight' => '0',
         ),
         'timezone' => array(
-          'weight' => '4',
+          'weight' => '18',
         ),
         'locale' => array(
-          'weight' => '3',
+          'weight' => '15',
         ),
         'wysiwyg' => array(
-          'weight' => '2',
+          'weight' => '14',
+        ),
+        'mimemail' => array(
+          'weight' => '13',
         ),
       ),
       'display' => array(
         'summary' => array(
           'default' => array(
-            'weight' => '5',
+            'weight' => '13',
+            'visible' => FALSE,
+          ),
+        ),
+        'mimemail' => array(
+          'default' => array(
+            'weight' => '11',
             'visible' => TRUE,
           ),
         ),

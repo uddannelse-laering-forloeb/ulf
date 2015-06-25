@@ -19,8 +19,6 @@ function ulf_preprocess_page(&$variables) {
     $mobile_search_facets_path = $GLOBALS['base_root'] . '/' . path_to_theme() .'/scripts/mobile-search-facets.js';
     drupal_add_js($mobile_search_facets_path, 'file');
   }
-  $respond_path = $GLOBALS['base_root'] .'/profiles/ulf/libraries/respond/dest/respond.min.js';
-  drupal_add_js($respond_path, 'file');
 
   if ($variables['user']->uid == '0') {
     $default_anonymous = array (
@@ -36,7 +34,6 @@ function ulf_preprocess_page(&$variables) {
     }
   }
   $variables['main_menu_block'] = module_invoke('system', 'block_view', 'main-menu');
-  $variables['ulf_search_block'] = module_invoke('search_api_page', 'block_view', 'default');
 }
 
 
@@ -102,17 +99,35 @@ function ulf_menu_link__main_menu($variables){
  */
 function ulf_preprocess_node(&$variables) {
   if ($variables['view_mode'] == 'teaser') {
-    $variables['group_type'] = 'course';
     $variables['theme_hook_suggestions'][] = 'node__default_teaser';
+  }
+
+  $variables['group_type'] = 'course';
+  if($variables['type'] == 'course') {
     if (!empty($variables['field_target_group'])) {
       // Get term id from target group field.
       $term = $variables['field_target_group']['0']['taxonomy_term'];
       if ($term) {
-        $wrapper = entity_metadata_wrapper('taxonomy_term', $term);
-        $variables['group_type'] = strtolower($wrapper->name->value());
+        $term_wrapper = entity_metadata_wrapper('taxonomy_term', $term);
+        $variables['group_type'] = strtolower($term_wrapper->name->value());
       }
     }
   }
+
+  if (($variables['type'] == 'course'|| $variables['type'] == 'course_educators') && $variables['view_mode'] == 'full') {
+    // Fetch author.
+    $variables['author'] = user_load($variables['uid']);
+    $author_wrapper = entity_metadata_wrapper('user', $variables['author']);
+    $variables['profile_name'] = $author_wrapper->field_profile_name->value();
+    $variables['profile_address'] = $author_wrapper->field_profile_address->value();
+    $variables['profile_postal_code'] = $author_wrapper->field_profile_postal_code->value();
+    $variables['profile_city'] = $author_wrapper->field_profile_city->value();
+    $variables['profile_phone'] = $author_wrapper->field_profile_phone->value();
+  }
+}
+
+function ulf_preprocess_user_profile(&$variables) {
+  $variables['content_by_user'] = views_embed_view('content_by_user', 'block_1');
 }
 
 /**
@@ -121,73 +136,19 @@ function ulf_preprocess_node(&$variables) {
  * Adds field class.
  */
 function ulf_preprocess_field(&$variables) {
-  // Field in field collections want their own template suggestion.
-  if ($variables['element']['#entity_type'] == 'field_collection_item') {
-    $template_suggestion = 'field__custom_field_collection';
-
-    // We add this suggestion to the top of suggestion array so other more specific templates will be able to override this one.
-    array_unshift($variables['theme_hook_suggestions'], $template_suggestion);
-
-    // We add a css class to be available with this template.
-    $variables['field_name_css_field_collection'] = 'field-collection-module--' . str_replace('field_', '', $variables['element']['#field_name']);
-
-    // We dont want underscores in our css.
-    $variables['field_name_css_field_collection'] = str_replace('_', '-', $variables['field_name_css_field_collection']);
-  }
-
-  // Several fields have little adjustments that separate them from default (ie bold, no border etc.).
-  // Instead of using multiple classes og several new templates we rename their field_name_css variable, and provide a new template suggestion.
-  $custom_style_template = array(
-    'field_teaser',
-    'field_purpose',
-    'field_profile_contact',
-  );
-
-  if (in_array($variables['element']['#field_name'], $custom_style_template)) {
-    $variables['theme_hook_suggestions'][] = 'field__custom_style';
-
-    // We add a css class to be available with this template.
-    $variables['field_name_css'] = str_replace('field_', 'field-module--', $variables['element']['#field_name']);
-
-    // We dont want underscores in our css.
-    $variables['field_name_css'] = str_replace('_', '-', $variables['field_name_css']);
-  }
-
   // Some fields need all their html stripped, and want only the field value shown. We add a template for that.
   $stripped_template = array(
-    'field_target_group',
-    'field_collection_price'
+    'field_duration',
+    'field_duration_unit',
+    'field_profile_postal_code',
+    'field_profile_city'
   );
 
   if (in_array($variables['element']['#field_name'], $stripped_template)) {
     $variables['theme_hook_suggestions'][] = 'field__stripped';
   }
-
-  // Fields in teasers should be styled through the teaser module (scss), using a specific tpl.
-  if ($variables['element']['#view_mode'] == 'teaser') {
-    $variables['theme_hook_suggestions'][] = 'field__teaser';
-
-    // All fields get a specicfic field teaser template suggestion
-    $variables['theme_hook_suggestions'][] = 'field__teaser__' . $variables['element']['#field_name'];
-    if ($variables['element']['#field_name'] == 'field_target_group') {
-      foreach($variables['items'] as $key => $item) {
-        $variables['items'][$key]['#options']['attributes']['class'][] = 'teaser-module--label';
-      }
-    }
-    // We add a css class to be available with this template.
-    $variables['field_name_css_teaser'] = str_replace('field_', 'teaser-module--', $variables['element']['#field_name']);
-
-    // We dont want underscores in our css.
-    $variables['field_name_css_teaser'] = str_replace('_', '-', $variables['field_name_css']);
-  }
-
-  // Tags want a link class
-  if ($variables['element']['#field_name'] == 'field_tags') {
-    foreach($variables['items'] as $key => $item) {
-      $variables['items'][$key]['#options']['attributes']['class'] = 'field-module--tags-item';
-    }
-  }
 }
+
 
 /**
  * Override or insert variables into the panel pane template.

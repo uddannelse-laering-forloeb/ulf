@@ -45,8 +45,6 @@
  */
 ?>
 
-<span class="field-collection-module--unit-price">
-  <?php foreach ($items as $delta => $item): ?>
-    <?php print render($item); ?>
-  <?php endforeach; ?>
-</span>
+<?php foreach ($items as $delta => $item): ?>
+  <?php print render($item); ?>
+<?php endforeach; ?>

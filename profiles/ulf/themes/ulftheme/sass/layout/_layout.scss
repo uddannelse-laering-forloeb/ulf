@@ -13,7 +13,7 @@
   flex-direction: row;
   height: 100%;
   margin: 0 auto;
-  max-width: 75em;
+  max-width: $layout-max-width;
   padding: 2em 0;
   position: relative;
   width: 100%;
@@ -24,9 +24,14 @@
    ================================================================================================================== */
 
 body {
+  background: $dark-blue; // Used for maintaining footer bg color for pages with very little content.
   font-family: "Asap", sans-serif;
   font-size: 14px;
   margin: 0 auto;
+}
+
+.page-wrapper {
+  background: $white; // The actual background for content should be white.
 }
 
 
@@ -34,14 +39,15 @@ body {
    ================================================================================================================== */
 
 .layout--element-header {
-  padding: 0 16px;
+  padding: 0 $margin / 2;
   width: 100%;
 }
 
 
-// Frontpage layout
+// Frontpage and profile layout.
 
-.layout-frontpage {
+.layout-frontpage,
+.layout-profile {
   .layout-element-alpha {
     background: $white;
   }
@@ -66,9 +72,9 @@ body {
 
 // Default layout
 
-.layout-default {
+.layout-node {
   .layout-element-alpha {
-    background: $white;
+
   }
 
   .layout-element-beta {
@@ -79,34 +85,7 @@ body {
     background: $gray-lighter;
   }
 
-  .layout-element-alpha,
-  .layout-element-beta,
-  .layout-element-gamma {
-    &-inner {
-      @extend %layout--element-inner;
-    }
-  }
-}
-
-
-// alternative layout
-
-.layout-alternative {
   .layout-element-alpha {
-    background: $white;
-  }
-
-  .layout-element-beta {
-    background: $gray-lightest;
-  }
-
-  .layout-element-gamma {
-    background: $gray-lighter;
-  }
-
-  .layout-element-alpha,
-  .layout-element-beta,
-  .layout-element-gamma {
     &-inner {
       @extend %layout--element-inner;
     }

@@ -44,13 +44,15 @@
  * @ingroup themeable
  */
 ?>
-<div class="field--collection-wrapper">
 <?php if (!$label_hidden): ?>
-  <div class="field--collection-label"<?php print $title_attributes; ?>><?php print $label ?></div>
+  <div class="block--field-label"<?php print $title_attributes; ?>><?php print $label ?>:&nbsp;</div>
 <?php endif; ?>
-  <div class="field--collection-content">
-    <?php foreach ($items as $delta => $item): ?>
-      <div class="field--collection-item"><?php print render($item); ?></div>
-    <?php endforeach; ?>
-  </div>
+<div class="block--field-text"<?php print $content_attributes; ?>>
+  <?php foreach ($items as $delta => $item): ?>
+    <?php if(count($items) != $delta + 1) : ?>
+      <?php print render($item) . ','; ?>
+      <?php else : ?>
+        <?php print render($item); ?>
+    <?php endif; ?>
+  <?php endforeach; ?>
 </div>

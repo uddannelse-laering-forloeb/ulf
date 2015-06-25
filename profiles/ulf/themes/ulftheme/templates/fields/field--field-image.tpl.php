@@ -45,8 +45,8 @@
  */
 ?>
 
-<div class="field-module--image">
-  <div class="field-module--image-items"<?php print $content_attributes; ?>>
+<div class="field--image">
+  <div class="field--image-items"<?php print $content_attributes; ?>>
     <?php print render($items['0']); ?>
   </div>
 </div>

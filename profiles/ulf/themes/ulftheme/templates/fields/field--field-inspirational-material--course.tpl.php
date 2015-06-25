@@ -45,11 +45,13 @@
  */
 ?>
 
-<?php if (!$label_hidden): ?>
-  <div class="field-module--label"<?php print $title_attributes; ?>><?php print $label ?></div>
-<?php endif; ?>
-<div class="field-module--educational-material">
-  <?php foreach ($items as $delta => $item): ?>
-    <div class="field-module--educational-material-item <?php print $delta % 2 ? 'is-even' : 'is-odd'; ?>"> <?php print render($item); ?></div>
-  <?php endforeach; ?>
+<div class="field--collection-wrapper">
+  <?php if (!$label_hidden): ?>
+    <div class="field--collection-label"<?php print $title_attributes; ?>><?php print $label ?></div>
+  <?php endif; ?>
+  <div class="field--collection-content">
+    <?php foreach ($items as $delta => $item): ?>
+      <div class="field--collection-item"><?php print render($item); ?></div>
+    <?php endforeach; ?>
+  </div>
 </div>

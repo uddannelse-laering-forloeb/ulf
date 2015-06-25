@@ -3,7 +3,6 @@
 /**
  * @file
  * Default theme implementation for field collection items.
- * This is the field item wrapper and NOT an actual field template as we know it.
  *
  * Available variables:
  * - $content: An array of comment items. Use render($content) to print them all, or
@@ -29,5 +28,8 @@
  * @see template_process()
  */
 ?>
-
-<?php print render($content); ?>
+<div class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
+  <?php
+    print render($content);
+  ?>
+</div>

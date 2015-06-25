@@ -45,11 +45,8 @@
  */
 ?>
 
-<div class="field-module--tags">
-  <?php if (!$label_hidden): ?>
-    <div class="field-module--label"<?php print $title_attributes; ?>><?php print $label ?>:&nbsp;</div>
-  <?php endif; ?>
+<div class="field--tags">
   <?php foreach ($items as $delta => $item): ?>
-    <?php print l($item['#title'], 'search/' . strtolower($item['#options']['entity']->name), array('attributes' => array('class' => 'field-module--tags-item'))); ?>
+    <?php print l($item['#title'], 'search/' . strtolower($item['#options']['entity']->name), array('attributes' => array('class' => 'field--tags-item'))); ?>
   <?php endforeach; ?>
 </div>

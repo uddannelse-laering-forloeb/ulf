@@ -43,9 +43,7 @@
  * @ingroup themeable
  */
 ?>
-<?php if (!$label_hidden): ?>
-  <div class="field-module--label"<?php print $title_attributes; ?>><?php print $label ?>:&nbsp;</div>
-<?php endif; ?>
+
 <?php foreach ($items as $delta => $item): ?>
-  <div class="field-collection-module--file"><?php print strip_tags(render($item), '<a>'); ?></div>
+  <div class="field--collection-file"><?php print strip_tags(render($item), '<a>'); ?></div>
 <?php endforeach; ?>

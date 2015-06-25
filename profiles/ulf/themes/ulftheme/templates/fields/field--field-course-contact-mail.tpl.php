@@ -1,8 +1,8 @@
 <?php
 
 /**
- * @file field.tpl.php
- * Default template implementation to display the value of a field.
+ * @file field--stripped.tpl.php
+ * Template for fields displaying only field values.
  *
  * This file is not used and is here as a starting point for customization only.
  * @see theme_field()
@@ -44,12 +44,11 @@
  * @ingroup themeable
  */
 ?>
-
 <?php if (!$label_hidden): ?>
-  <div class="block-inline-module--field-label"<?php print $title_attributes; ?>><?php print $label ?>:&nbsp;</div>
+  <div class="block--field-label"<?php print $title_attributes; ?>><?php print $label ?>:&nbsp;</div>
 <?php endif; ?>
-<div class="block-inline-module--field-text"<?php print $content_attributes; ?>>
+<div class="block--field-text"<?php print $content_attributes; ?>>
   <?php foreach ($items as $delta => $item): ?>
-    <?php print render($item); ?>
+    <a href="mailto:<?php print $item['#markup']?>"><?php print render($item); ?></a>
   <?php endforeach; ?>
 </div>
