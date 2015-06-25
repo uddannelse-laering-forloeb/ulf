@@ -108,7 +108,7 @@
       </div>
     <?php endif; ?>
 
-    <?php if ($title && !$is_front && !isset($node)): ?>
+    <?php if ($title && !$is_front && !isset($node) && arg(0) != 'user'): ?>
       <div class="content--header">
         <h1><?php print $title; ?></h1>
       </div>

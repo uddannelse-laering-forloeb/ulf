@@ -19,8 +19,6 @@ function ulf_preprocess_page(&$variables) {
     $mobile_search_facets_path = $GLOBALS['base_root'] . '/' . path_to_theme() .'/scripts/mobile-search-facets.js';
     drupal_add_js($mobile_search_facets_path, 'file');
   }
-  $respond_path = $GLOBALS['base_root'] .'/profiles/ulf/libraries/respond/dest/respond.min.js';
-  drupal_add_js($respond_path, 'file');
 
   if ($variables['user']->uid == '0') {
     $default_anonymous = array (
@@ -36,7 +34,6 @@ function ulf_preprocess_page(&$variables) {
     }
   }
   $variables['main_menu_block'] = module_invoke('system', 'block_view', 'main-menu');
-  $variables['ulf_search_block'] = module_invoke('search_api_page', 'block_view', 'default');
 }
 
 
@@ -129,6 +126,9 @@ function ulf_preprocess_node(&$variables) {
   }
 }
 
+function ulf_preprocess_user_profile(&$variables) {
+  $variables['content_by_user'] = views_embed_view('content_by_user', 'block_1');
+}
 
 /**
  * Override or insert variables into the field template.
@@ -139,7 +139,9 @@ function ulf_preprocess_field(&$variables) {
   // Some fields need all their html stripped, and want only the field value shown. We add a template for that.
   $stripped_template = array(
     'field_duration',
-    'field_duration_unit'
+    'field_duration_unit',
+    'field_profile_postal_code',
+    'field_profile_city'
   );
 
   if (in_array($variables['element']['#field_name'], $stripped_template)) {

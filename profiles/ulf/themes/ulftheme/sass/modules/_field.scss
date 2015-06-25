@@ -44,6 +44,10 @@
       border-color: $yellow;
     }
 
+    &.is-profile {
+      border-color: $dark-blue;
+    }
+
     @include breakpoint($node-breakpoint){
       border-width: 4px;
       padding: 0 .5em;
