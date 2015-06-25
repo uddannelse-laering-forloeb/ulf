@@ -25,6 +25,17 @@ function ulf_migration_migrate_api() {
         'class_name' => 'UlfFilesMigration',
         'group_name' => 'ulf_files',
       ),
+      // Roles.
+      'UlfRoles' => array(
+        'class_name' => 'UlfRolesMigration',
+        'group_name' => 'ulf_users',
+      ),
+      // Users.
+      'UlfUsersContact' => array(
+        'class_name' => 'UlfUsersContactMigration',
+        'group_name' => 'ulf_users',
+      ),
+
       // Users.
       'UlfUsers' => array(
         'class_name' => 'UlfUsersMigration',
