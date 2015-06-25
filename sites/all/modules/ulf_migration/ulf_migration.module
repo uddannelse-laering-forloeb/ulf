@@ -52,7 +52,10 @@ function ulf_migration_migrate_api() {
 
 
       // news.
-
+      'UlfNews' => array(
+        'class_name' => 'UlfNewsMigration',
+        'group_name' => 'ulf_content',
+      ),
 
       // course-educators
       'UlfCoursesEducation' => array(

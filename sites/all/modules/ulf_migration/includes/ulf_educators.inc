@@ -1,11 +1,11 @@
 <?php
 /**
  * @file
- * Handling user migration
+ * Handling courses education migration.
  */
 
 /**
- * Class UlfUsersMigration.
+ * Class UlfCoursesEducationMigration.
  */
 class UlfCoursesEducationMigration extends DrupalNode7Migration {
   /**
@@ -21,6 +21,7 @@ class UlfCoursesEducationMigration extends DrupalNode7Migration {
       'source_version' => 7,
       'destination_type' => 'course_educators',
       'source_type' => 'course_educators',
+      'user_migration' => 'UlfUsers',
     );
 
     $this->dependencies = array('UlfFiles', 'UlfUsers');
@@ -35,9 +36,6 @@ class UlfCoursesEducationMigration extends DrupalNode7Migration {
 
     $this->removeFieldMapping('body:summary');
     $this->removeFieldMapping('body:format');
-
-    $this->addFieldMapping('uid', 'uid')
-      ->sourceMigration('UlfUsers');
 
     $this->addFieldMapping('field_price', 'field_paris');
 
