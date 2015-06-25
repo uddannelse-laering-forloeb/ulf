@@ -6,4 +6,5 @@ dependencies[] = migrate
 dependencies[] = migrate_ui
 dependencies[] = migrate_extras
 dependencies[] = migrate_d2d
-files[] = ulf_users.inc
+files[] = includes/ulf_files.inc
+files[] = includes/ulf_users.inc

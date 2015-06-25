@@ -12,18 +12,25 @@ function ulf_migration_migrate_api() {
   $api = array(
     'api' => 2,
     'groups' => array(
+      'ulf_files' => array(
+        'title' => t('Files'),
+      ),
       'ulf_users' => array(
         'title' => t('Users'),
       ),
     ),
     'migrations' => array(
+      // Files.
+      'UlfFiles' => array(
+        'class_name' => 'UlfFilesMigration',
+        'group_name' => 'ulf_files',
+      ),
       // Users.
       'UlfUsers' => array(
         'class_name' => 'UlfUsersMigration',
         'group_name' => 'ulf_users',
       ),
 
-      // Files.
 
 
       // Taxonomies.
