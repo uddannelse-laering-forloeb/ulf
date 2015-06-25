@@ -51,14 +51,7 @@
     <?php print $scripts; ?>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
-<<<<<<< Updated upstream
-    <script type="text/javascript" src="//use.typekit.net/wje6kjl.js"></script>
-    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
-    <script type="text/javascript" src="<?php echo $GLOBALS['base_root'] .'/profiles/ulf/libraries/Respond/dest/respond.min.js'; ?>"></script>
     <link href="http://fonts.googleapis.com/css?family=Asap:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-=======
-    <link href="https://fonts.googleapis.com/css?family=Asap:400,700,400italic,700italic" rel="stylesheet" type="text/css">
->>>>>>> Stashed changes
     <!--[if lt IE 9]>
     <link rel="stylesheet" href="/profiles/ulf/themes/ulftheme/css/ie8.css">
     <script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
