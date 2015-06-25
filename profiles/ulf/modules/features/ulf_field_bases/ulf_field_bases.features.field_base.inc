@@ -357,7 +357,7 @@ function ulf_field_bases_field_default_field_bases() {
     'locked' => 0,
     'module' => 'image',
     'settings' => array(
-      'default_image' => 0,
+      'default_image' => 30,
       'uri_scheme' => 'public',
     ),
     'translatable' => 0,
@@ -721,69 +721,6 @@ function ulf_field_bases_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_profile_name',
-    'indexes' => array(
-      'format' => array(
-        0 => 'format',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'text',
-    'settings' => array(
-      'max_length' => 255,
-    ),
-    'translatable' => 0,
-    'type' => 'text',
-  );
-
-  // Exported field_base: 'field_profile_order_availa'
-  $field_bases['field_profile_order_availa'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_profile_order_availa',
-    'indexes' => array(
-      'format' => array(
-        0 => 'format',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'text',
-    'settings' => array(
-      'max_length' => 255,
-    ),
-    'translatable' => 0,
-    'type' => 'text',
-  );
-
-  // Exported field_base: 'field_profile_order_mail'
-  $field_bases['field_profile_order_mail'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_profile_order_mail',
-    'indexes' => array(
-      'format' => array(
-        0 => 'format',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'text',
-    'settings' => array(
-      'max_length' => 255,
-    ),
-    'translatable' => 0,
-    'type' => 'text',
-  );
-
-  // Exported field_base: 'field_profile_order_phone'
-  $field_bases['field_profile_order_phone'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_profile_order_phone',
     'indexes' => array(
       'format' => array(
         0 => 'format',
