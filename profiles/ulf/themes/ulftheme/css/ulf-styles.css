@@ -635,9 +635,10 @@ label {
 ================================================================================================================== */
 .layout-frontpage .layout-element-alpha-inner,
 .layout-frontpage .layout-element-beta-inner,
-.layout-frontpage .layout-element-gamma-inner, .layout-node .layout-element-alpha-inner, .layout-alternative .layout-element-alpha-inner,
-.layout-alternative .layout-element-beta-inner,
-.layout-alternative .layout-element-gamma-inner {
+.layout-frontpage .layout-element-gamma-inner,
+.layout-profile .layout-element-alpha-inner,
+.layout-profile .layout-element-beta-inner,
+.layout-profile .layout-element-gamma-inner, .layout-node .layout-element-alpha-inner {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
@@ -651,34 +652,33 @@ label {
 /* Body
    ================================================================================================================== */
 body {
-  background: #fff;
+  background: #17858c;
   font-family: "Asap", sans-serif;
   font-size: 14px;
   margin: 0 auto; }
 
+.page-wrapper {
+  background: #fff; }
+
 /* Layout
    ================================================================================================================== */
 .layout--element-header {
-  padding: 0 16px;
+  padding: 0 7.5px;
   width: 100%; }
 
-.layout-frontpage .layout-element-alpha {
+.layout-frontpage .layout-element-alpha,
+.layout-profile .layout-element-alpha {
   background: #fff; }
-.layout-frontpage .layout-element-beta {
+.layout-frontpage .layout-element-beta,
+.layout-profile .layout-element-beta {
   background: #f2f2f2; }
-.layout-frontpage .layout-element-gamma {
+.layout-frontpage .layout-element-gamma,
+.layout-profile .layout-element-gamma {
   background: #e6e6e6; }
 
 .layout-node .layout-element-beta {
   background: #f2f2f2; }
 .layout-node .layout-element-gamma {
-  background: #e6e6e6; }
-
-.layout-alternative .layout-element-alpha {
-  background: #fff; }
-.layout-alternative .layout-element-beta {
-  background: #f2f2f2; }
-.layout-alternative .layout-element-gamma {
   background: #e6e6e6; }
 
 /**
@@ -1004,6 +1004,8 @@ li.search-module--facet-link {
       border-color: #ff6800; }
     .field--title.is-course {
       border-color: #edd71c; }
+    .field--title.is-profile {
+      border-color: #17858c; }
     @media only screen and (min-width: 55em) {
       .field--title {
         border-width: 4px;
@@ -1432,6 +1434,10 @@ legend a {
 .block--field-text {
   margin-bottom: 7.5px; }
 
+.block--field-logo {
+  text-align: center;
+  padding: 30px 15px 0 15px; }
+
 /* Block types */
 .block--dark {
   background: #17858c;
@@ -1769,6 +1775,8 @@ legend a {
     @media only screen and (min-width: 55em) {
       .content--meta {
         width: 35%; } }
+  .content--empty {
+    margin: 0 7.5px; }
 
 /**
  *
