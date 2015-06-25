@@ -31,7 +31,7 @@ function ulf_search_default_search_api_index() {
       "index_directly" : 1,
       "cron_limit" : "50",
       "fields" : {
-        "title" : { "type" : "text" },
+        "author:field_profile_name" : { "type" : "text" },
         "field_collection_price" : {
           "type" : "list\\u003Cinteger\\u003E",
           "entity_type" : "field_collection_item"
@@ -46,28 +46,28 @@ function ulf_search_default_search_api_index() {
         },
         "field_facilities" : { "type" : "list\\u003Cstring\\u003E" },
         "field_free" : { "type" : "boolean" },
+        "field_full_description:value" : { "type" : "text" },
         "field_inspirational_material" : {
           "type" : "list\\u003Cinteger\\u003E",
           "entity_type" : "field_collection_item"
         },
         "field_offer_type" : { "type" : "integer", "entity_type" : "taxonomy_term" },
+        "field_offer_type:name" : { "type" : "text" },
         "field_period_full_year" : { "type" : "boolean" },
         "field_purpose" : { "type" : "text" },
         "field_subject" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
+        "field_subject:name" : { "type" : "list\\u003Ctext\\u003E" },
         "field_subjects_primary_school" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_subjects_youth" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_tags" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
+        "field_tags:name" : { "type" : "list\\u003Ctext\\u003E" },
         "field_target_group" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
+        "field_target_group:name" : { "type" : "list\\u003Ctext\\u003E" },
         "field_target_group_sub" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
+        "field_target_group_sub:name" : { "type" : "list\\u003Ctext\\u003E" },
         "field_teaser" : { "type" : "text" },
         "search_api_language" : { "type" : "string" },
-        "author:field_profile_name" : { "type" : "text" },
-        "field_full_description:value" : { "type" : "text" },
-        "field_offer_type:name" : { "type" : "text" },
-        "field_subject:name" : { "type" : "list\\u003Ctext\\u003E" },
-        "field_tags:name" : { "type" : "list\\u003Ctext\\u003E" },
-        "field_target_group:name" : { "type" : "list\\u003Ctext\\u003E" },
-        "field_target_group_sub:name" : { "type" : "list\\u003Ctext\\u003E" }
+        "title" : { "type" : "text" }
       },
       "data_alter_callbacks" : {
         "search_api_alter_bundle_filter" : {
