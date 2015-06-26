@@ -1,7 +1,18 @@
 /**
- * Header
+ *
+ * Header module.
+ *
+ * Contains styles related to header display.
  *
  */
+
+
+/* Placholders, variables and mixins related to this document only.
+================================================================================================================== */
+
+
+/* Styles.
+================================================================================================================== */
 
 .header {
   position: relative;
@@ -23,7 +34,7 @@
   }
 
   &--logo {
-    left: $margin /2;
+    left: $spacing /2;
     max-width: 15em;
     position: absolute;
     top: 50%;
@@ -41,7 +52,7 @@
     padding: 4px;
     position: absolute;
     top: 50%;
-    right: $margin /2;
+    right: $spacing /2;
 
     @include transform(translateY(-50%));
     @include border-radius(5px);

@@ -1,7 +1,10 @@
 /**
+ *
  * Layouts
+ *
+ * Holds layout styling for the basic building blocks across the site.
+ *
  */
-
 
 
 /* Placholders, variables and mixins related to this document only.
@@ -25,8 +28,7 @@
 
 body {
   background: $dark-blue; // Used for maintaining footer bg color for pages with very little content.
-  font-family: "Asap", sans-serif;
-  font-size: 14px;
+  font: $font;
   margin: 0 auto;
 }
 
@@ -39,7 +41,7 @@ body {
    ================================================================================================================== */
 
 .layout--element-header {
-  padding: 0 $margin / 2;
+  padding: 0 $spacing / 2;
   width: 100%;
 }
 

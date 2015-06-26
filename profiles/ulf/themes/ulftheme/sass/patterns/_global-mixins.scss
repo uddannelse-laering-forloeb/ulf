@@ -1,6 +1,14 @@
 /**
+ *
+ * Global mixins.
+ *
  * Contains global mixins for use across the site.
+ *
  */
+
+
+/* Styles
+   ========================================================================== */
 
 // Strip all link styles default color of links to inherit.
 @mixin strip-link-styles($color:inherit, $decoration: none) {
@@ -26,7 +34,7 @@
 }
 
 
-// Set the color of the background to one of 4 different colors
+// Set the color of the background to one of 4 different colors.
 @mixin background-set-color($color, $transparency: 1) {
   @if $color == "green" {
     background: rgba(164, 218, 32, $transparency);
@@ -39,4 +47,10 @@
   } @else if $color == "yellow" {
     background: rgba(237, 215, 28, $transparency);
   }
+}
+
+
+// Set breakpoints.
+@mixin breakpoint($breakpoint) {
+  @media only screen and (min-width: $breakpoint) { @content; }
 }

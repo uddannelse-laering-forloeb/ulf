@@ -1,9 +1,21 @@
 /**
-* Tabs
-*/
+ *
+ * Tabs
+ *
+ * The pager uses Drupal default htmt. Thus we nest to style elements within.
+ * "We can't stop here. This is bat country!!"
+ *
+ */
+
+/* Placholders, variables and mixins related to this document only.
+================================================================================================================== */
+
+
+/* Styles.
+================================================================================================================== */
 
 .pager {
-  border-top: 1px dashed $border-color;
+  border-top: 1px dashed $gray-light;
   padding-top: 2em;
   padding-left: 0;
 
@@ -25,8 +37,6 @@
 
     background-color: $gray-lighter;
     text-decoration: none;
-
-    @include border-radius($border-radius);
 
     &:hover {
       background-color: darken($gray-lighter, 5%);

@@ -1,7 +1,18 @@
 /**
-* Tabs
-*/
+ *
+ * Tabs
+ *
+ * Tabs use Drupals default html, thus we nest the list items and links here.
+ * "We can't stop here. This is bat country!!"
+ *
+ */
 
+/* Placholders, variables and mixins related to this document only.
+================================================================================================================== */
+
+
+/* Styles.
+================================================================================================================== */
 
 .tabs {
   margin-bottom: 0;
@@ -37,7 +48,6 @@
       line-height: inherit;
       text-decoration: none;
 
-      @include border-radius($border-radius $border-radius 0 0);
 
       &:hover {
         background: $gray-lightest;
@@ -62,7 +72,6 @@
 
     background-color: $white;
 
-    @include border-radius($border-radius $border-radius 0 0);
 
     li {
       a {
@@ -74,15 +83,6 @@
 
       a.active {
         background: $gray-lighter;
-      }
-    }
-
-    li,
-    li.active,
-    li:hover,
-    li.active:hover {
-      a {
-        @include border-radius($border-radius);
       }
     }
   }

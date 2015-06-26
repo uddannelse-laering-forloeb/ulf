@@ -1,20 +1,21 @@
 /**
  *
- * Teaser
+ * Teaser module.
  *
- * Display of list items (Ie. Frontpage and search results. )
+ * Display of list items (Ie. Frontpage and search results.)
  *
  */
 
 
 /* Placholders, variables and mixins related to this document only.
 ================================================================================================================== */
+
 // General teaser styles.
 %teaser--inner {
   display: block;
   height: 100%;
   overflow: hidden;
-  margin: 0 $margin / 2;
+  margin: 0 $spacing / 2;
   position: relative;
 }
 
@@ -24,7 +25,7 @@
 
 /* Teaser representing a target group. */
 .teaser--group {
-  margin-bottom: $margin;
+  margin-bottom: $spacing;
   width: 100%;
 
   @include breakpoint(650px) {
@@ -98,7 +99,7 @@
 
 /* Teaser representing a content element. */
 .teaser--content {
-  margin-bottom: $margin;
+  margin-bottom: $spacing;
   height: 160px;
   width: 100%;
 
@@ -112,9 +113,6 @@
 
   &-inner {
     @extend %teaser--inner;
-
-
-
     @include strip-link-styles($black);
 
     // Change text background transparency when hovering on the teaser.

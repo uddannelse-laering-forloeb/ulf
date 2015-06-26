@@ -34,21 +34,6 @@ function ulf_base_image_default_styles() {
     ),
   );
 
-  // Exported image style: panorama.
-  $styles['panorama'] = array(
-    'label' => 'Panorama',
-    'effects' => array(
-      1 => array(
-        'name' => 'image_scale_and_crop',
-        'data' => array(
-          'width' => 1000,
-          'height' => 320,
-        ),
-        'weight' => 1,
-      ),
-    ),
-  );
-
   // Exported image style: teaser_display.
   $styles['teaser_display'] = array(
     'label' => 'Teaser display',
@@ -58,21 +43,6 @@ function ulf_base_image_default_styles() {
         'data' => array(
           'width' => 752,
           'height' => 695,
-        ),
-        'weight' => 1,
-      ),
-    ),
-  );
-
-  // Exported image style: ulf_list_display.
-  $styles['ulf_list_display'] = array(
-    'label' => 'Ulf list display',
-    'effects' => array(
-      3 => array(
-        'name' => 'image_scale_and_crop',
-        'data' => array(
-          'width' => 125,
-          'height' => 95,
         ),
         'weight' => 1,
       ),

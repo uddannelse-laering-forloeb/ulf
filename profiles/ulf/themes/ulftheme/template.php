@@ -1,38 +1,12 @@
 <?php
 
 /**
- * Override or insert variables into the html template.
- */
-function ulf_preprocess_html(&$variables) {
-
-}
-
-
-/**
+ * Implements hook_preprocess_page().
+ *
  * Override or insert variables into the page template.
  */
 function ulf_preprocess_page(&$variables) {
-
-  // Render facets specifically before search results .
-  if (!empty($variables['page']['facets'])) {
-    $variables['page']['content']['facets'] = $variables['page']['facets'];
-    $mobile_search_facets_path = $GLOBALS['base_root'] . '/' . path_to_theme() .'/scripts/mobile-search-facets.js';
-    drupal_add_js($mobile_search_facets_path, 'file');
-  }
-
-  if ($variables['user']->uid == '0') {
-    $default_anonymous = array (
-      'user',
-      'user/password',
-      'user/register',
-    );
-
-    if (arg(0) == 'user') {
-      if(in_array(current_path(), $default_anonymous)) {
-        $variables['theme_hook_suggestions'][] = 'page__user_anonymous';
-      }
-    }
-  }
+  // Provide main menu as block for all pages.
   $variables['main_menu_block'] = module_invoke('system', 'block_view', 'main-menu');
 }
 
@@ -41,8 +15,10 @@ function ulf_preprocess_page(&$variables) {
  * Implements theme_menu_tree().
  */
 function ulf_menu_tree__main_menu ($variables) {
+  // Strip default main menu tree of wrappers.
   return $variables['tree'];
 }
+
 
 /**
  * Implements theme_menu_link().
@@ -51,6 +27,7 @@ function ulf_menu_link__main_menu($variables){
   $element = $variables['element'];
   $sub_menu = '';
 
+  // Set type of link based on title of link.
   switch ($element['#title']) {
     case 'Daycare':
       $element['#localized_options']['attributes']['class'][] = 'is-daycare';
@@ -77,12 +54,14 @@ function ulf_menu_link__main_menu($variables){
     }
     $output = l($element['#title'], $element['#href'], $element['#localized_options']);
   }
+
   // Element has parent.
   elseif ($element['#original_link']['plid'] > 0) {
     $element['#localized_options']['attributes']['class'][] = 'nav--dropdown-link';
     $output = l($element['#title'], $element['#href'], $element['#localized_options']);
     return $output;
   }
+
   // Default main menu link, not parent and not child.
   else {
     $element['#attributes']['class'] = 'nav--list-item';
@@ -92,17 +71,22 @@ function ulf_menu_link__main_menu($variables){
   return "<li" . drupal_attributes($element['#attributes']) . ">" . $output . $sub_menu . "</li>\n";
 }
 
+
 /**
- * Override or insert variables into the node template.
+ * Implements hook_preprocess_node().
  *
  * Adds a default teaser template.
  */
 function ulf_preprocess_node(&$variables) {
+  // Set default node teaser template.
   if ($variables['view_mode'] == 'teaser') {
     $variables['theme_hook_suggestions'][] = 'node__default_teaser';
   }
 
+  // Set default group type.
   $variables['group_type'] = 'course';
+
+  // Add target group variable to template.
   if($variables['type'] == 'course') {
     if (!empty($variables['field_target_group'])) {
       // Get term id from target group field.
@@ -114,6 +98,7 @@ function ulf_preprocess_node(&$variables) {
     }
   }
 
+  // Display author meta data on courses.
   if (($variables['type'] == 'course'|| $variables['type'] == 'course_educators') && $variables['view_mode'] == 'full') {
     // Fetch author.
     $variables['author'] = user_load($variables['uid']);
@@ -126,14 +111,18 @@ function ulf_preprocess_node(&$variables) {
   }
 }
 
+
+/**
+ * Implements hook_preprocess_user_profile().
+ */
 function ulf_preprocess_user_profile(&$variables) {
+  // Enable a view for user profile templates.
   $variables['content_by_user'] = views_embed_view('content_by_user', 'block_1');
 }
 
+
 /**
  * Override or insert variables into the field template.
- *
- * Adds field class.
  */
 function ulf_preprocess_field(&$variables) {
   // Some fields need all their html stripped, and want only the field value shown. We add a template for that.
@@ -141,7 +130,8 @@ function ulf_preprocess_field(&$variables) {
     'field_duration',
     'field_duration_unit',
     'field_profile_postal_code',
-    'field_profile_city'
+    'field_profile_city',
+    'field_unit_price',
   );
 
   if (in_array($variables['element']['#field_name'], $stripped_template)) {
@@ -159,9 +149,9 @@ function ulf_preprocess_panels_pane(&$variables) {
   $variables['theme_hook_suggestions'][] = 'panels_pane__' . str_replace('-', '__', $variables['pane']->subtype);
   $variables['theme_hook_suggestions'][] = 'panels_pane__'  . $variables['pane']->panel . '__' . str_replace('-', '__', $variables['pane']->subtype);
 
-  // Frontpage panes
+  // Frontpage panes.
   if ($variables['is_front'] && !empty($variables['pane']->panel)) {
-    $variables['theme_hook_suggestions'][] = 'panels_pane__front__' . $variables['pane']->panel;
+    $variables['theme_hook_suggestions'][] = 'panels_pane__front';
   }
 
   // We only want to use the class provided from the ui.
@@ -169,25 +159,8 @@ function ulf_preprocess_panels_pane(&$variables) {
   if(!empty($variables['pane']->css['css_class'])) {
     $variables['provided_class'] = $variables['pane']->css['css_class'];
   }
-
-  if ($variables['display']->layout == 'onecol') {
-    $variables['theme_hook_suggestions'][] = 'panels_pane__onecol';
-  }
-
-  // For some reason the "useful_info" pane does not register if it's empty. We look for a list item and if none exist send a variable to the template file
-  $variables['content_is_empty'] = FALSE;
-  if ($variables['pane']->subtype == 'ulf_useful_info-panel_pane_1') {
-    if (!preg_match('/<li class="block--list-item">/', $variables['content'])) {
-      $variables['content_is_empty'] = TRUE;
-    }
-  }
-
-  if ($variables['pane']->type == 'entity_field') {
-    if (!empty($variables['content'])) {
-      $variables['theme_hook_suggestions'][] = 'panels_pane__' . $variables['content']['#bundle'] . '__' . $variables['content']['#field_name'];
-    }
-  }
 }
+
 
 /**
  * Implements theme_panels_default_style_render_region().
@@ -199,6 +172,7 @@ function ulf_panels_default_style_render_region($variables) {
   $output .= implode('', $variables['panes']);
   return $output;
 }
+
 
 /**
  * Implements theme_username().
@@ -217,6 +191,7 @@ function ulf_username($variables) {
   }
 }
 
+
 /**
  * Implements theme_links().
  */
@@ -230,6 +205,7 @@ function ulf_links__system_main_menu($variables) {
 
   return $html;
 }
+
 
 /**
  * Implements theme_links_mobile().
@@ -245,67 +221,6 @@ function ulf_links__system_main_menu_mobile($variables) {
   return $html;
 }
 
-/**
- * Implements theme_apachesolr_search_suggestions().
- */
-function ulf_apachesolr_search_suggestions($variables) {
-  $output = '<div class="search-module--spelling-suggestions">';
-  $output .= '<div class="form-item"><span class="search-module--did-you-mean-text">' . t('Did you mean') . ': </span>';
-
-  foreach ($variables['links'] as $link) {
-    $output .= '<span>' . $link . '</span>';
-  }
-
-  $output .= '</div></div>';
-  return $output;
-}
-
-/**
- * Implements template_preprocess_search_result().
- */
-function ulf_preprocess_search_api_page_result(&$vars) {
-  // Fetch the data wrapper for the search result.
-  if($vars['index']->item_type == 'node') {
-    $wrapper = entity_metadata_wrapper('node', $vars['item']);
-  }
-
-  // Fetch profile name from user.
-  $vars['username'] = db_query("SELECT field_profile_name_value FROM {field_data_field_profile_name} WHERE entity_id=:uid AND entity_type='user'", array(':uid' => $vars['item']->uid))->fetchField();
-  $vars['username'] = check_plain($vars['username']);
-  // Use default username if no profile name is set.
-  if (empty($vars['username'])) {
-    $vars['username'] = $vars['item']->name;
-  }
-
-  // Fetch image from result
-  if(!empty($wrapper->field_image)) {
-    $image = $wrapper->field_image->value();
-    if(!empty($image['0'])) {
-      $vars['image'] = theme('image_style', array('path' => $image['0']['uri'], 'style_name' => 'ulf_list_display'));
-    }
-  }
-  else {
-    $vars['image'] = FALSE;
-  }
-
-  // Set the result text variable.
-  $vars['result_text'] = FALSE;
-
-  // Result description is used for teasertext on course_educators content type
-  if(!empty($wrapper->field_full_description)) {
-    $vars['result_description'] = $wrapper->field_full_description->value();
-    if (is_array($vars['result_description'])) {
-      $vars['result_description'] = $vars['result_description']['safe_value'];
-    }
-    $vars['result_text'] = truncate_utf8($vars['result_description'], '200', TRUE, TRUE);
-  }
-
-  // Purpose is used as teasertext on result_description content type
-  if(!empty($wrapper->field_purpose)) {
-    $vars['result_purpose'] = $wrapper->field_purpose->value();
-    $vars['result_text'] = truncate_utf8($vars['result_purpose'], '200', TRUE, TRUE);
-  }
-}
 
 /**
  * Implements template_item_list().

@@ -1,6 +1,6 @@
 <?php
 /**
- * @file panels-pane--node-title.tpl.php
+ * @file panels-pane.tpl.php
  * Main panel pane template
  *
  * Variables available:
@@ -15,7 +15,8 @@
  * - $feeds: Any feed icons or associated with the content
  * - $display: The complete panels display object containing all kinds of
  *   data including the contexts and all of the other panes being displayed.
+ *
+ * - $provided_class: Represents the class provided in the panel pane.
  */
 ?>
-
 <?php print render($content); ?>

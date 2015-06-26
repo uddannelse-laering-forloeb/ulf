@@ -53,12 +53,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
     <link href="http://fonts.googleapis.com/css?family=Asap:400,700,400italic,700italic" rel="stylesheet" type="text/css">
     <!--[if lt IE 9]>
-    <link rel="stylesheet" href="/profiles/ulf/themes/ulftheme/css/ie8.css">
     <script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-    <!--[if lt IE 10]>
-    <link rel="stylesheet" href="/profiles/ulf/themes/ulftheme/css/ie9.css">
     <![endif]-->
   </head>
   <body>

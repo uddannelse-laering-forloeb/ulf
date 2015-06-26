@@ -28,8 +28,8 @@
  * @see template_process()
  */
 ?>
-<div class="<?php print $classes; ?> clearfix"<?php print $attributes; ?>>
+<div class="field--collection-item-inner">
   <?php
-    print render($content);
+  print render($content);
   ?>
 </div>

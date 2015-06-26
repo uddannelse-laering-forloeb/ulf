@@ -1,0 +1,48 @@
+/**
+ *
+ * Buttons
+ *
+ * Display of buttons on the site.
+ *
+ */
+
+
+/* Placholders, variables and mixins related to this document only.
+================================================================================================================== */
+
+%button {
+  display: inline-block;
+  font-size: 125%;
+  padding: .5em 1.5em;
+  position: relative;
+
+  cursor: pointer;
+  text-align: center;
+  vertical-align: middle;
+
+  &:focus,
+  &:hover,
+  &:active {
+    text-decoration: none;
+  }
+
+  @include border-radius($border-radius);
+}
+
+
+/* Styles.
+================================================================================================================== */
+
+.button {
+  @extend %button;
+
+  background-color: $dark-blue;
+  border: 1px solid $dark-blue;
+  color: $white;
+
+  @include text-shadow(.025em .025em .1em darken($dark-blue, 10%));
+
+  &:hover {
+    background-color: $dark-blue;
+  }
+}

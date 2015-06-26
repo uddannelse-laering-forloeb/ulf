@@ -23,10 +23,6 @@ projects[entity][version] = "1.3"
 projects[entity_view_mode][subdir] = "contrib"
 projects[entity_view_mode][version] = "1.0-rc1"
 
-projects[facetapi][subdir] = "contrib"
-projects[facetapi][version] = "1.3"
-projects[facetapi][patch][] = "https://drupal.org/files/limit-active-items.patch"
-
 projects[facetapi_bonus][subdir] = "contrib"
 projects[facetapi_bonus][version] = "1.1"
 
@@ -97,9 +93,6 @@ projects[search_api][version] = "1.11"
 
 projects[search_api_page][subdir] = "contrib"
 projects[search_api_page][version] = "1.0"
-
-projects[search_api_solr][subdir] = "contrib"
-projects[search_api_solr][version] = "1.4"
 
 projects[search_api_spellcheck][subdir] = "contrib"
 projects[search_api_spellcheck][version] = "1.0"
