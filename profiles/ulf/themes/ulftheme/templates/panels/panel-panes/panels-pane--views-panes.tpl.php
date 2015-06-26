@@ -22,11 +22,6 @@
 <?php if ($pane_prefix): ?>
   <?php print $pane_prefix; ?>
 <?php endif; ?>
-
-<?php if (!empty($provided_class)): ?>
-  <div class="layout--element-<?php print $provided_class; ?>">
-<?php endif; ?>
-
   <?php if ($admin_links): ?>
     <?php print $admin_links; ?>
   <?php endif; ?>
@@ -54,9 +49,7 @@
       <?php print $more; ?>
     </div>
   <?php endif; ?>
-  <?php if (!empty($provided_class)): ?>
-    </div>
-  <?php endif; ?>
+
 <?php if ($pane_suffix): ?>
   <?php print $pane_suffix; ?>
 <?php endif; ?>

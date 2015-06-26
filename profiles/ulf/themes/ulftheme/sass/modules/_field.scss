@@ -1,9 +1,10 @@
 /**
-* Field module
-*
-* Contains general field styles.
-*
-*/
+ *
+ * Field module.
+ *
+ * Contains styles related to content fields.
+ *
+ */
 
 
 /* Placholders, variables and mixins related to this document only.
@@ -87,16 +88,15 @@
   }
 
 
-
   /* Display of field collections in main content. */
   &--collection-wrapper {
-    margin-bottom: $margin;
+    margin-bottom: $spacing;
   }
 
   &--collection-label {
     color: $white;
     background: $dark-blue;
-    padding: $margin;
+    padding: $spacing;
   }
 
   &--collection-content {
@@ -106,7 +106,7 @@
 
   &--collection-item {
     border-bottom: 1px solid $gray-light;
-    padding: $margin;
+    padding: $spacing;
   }
 
   &--collection-description,
@@ -114,7 +114,7 @@
   &--collection-link,
   &--collection-litt {
     display: block;
-    margin-bottom: $margin / 2;
+    margin-bottom: $spacing / 2;
     width: 100%;
   }
 

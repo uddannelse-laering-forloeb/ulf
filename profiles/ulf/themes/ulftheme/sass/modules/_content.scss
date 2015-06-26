@@ -1,7 +1,10 @@
 /**
- * Content
+ *
+ * Content module.
+ *
+ * Contains styles related to content (Ie. Nodes, course providers)
+ *
  */
-
 
 
 /* Placeholders, variables and mixins related to this document only.
@@ -17,7 +20,7 @@
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-between;
-  margin: 0 $margin / 2;
+  margin: 0 $spacing / 2;
   width: 100%;
 
   &--header,
@@ -27,7 +30,7 @@
   }
 
   &--image {
-    margin-bottom: $margin * 2;
+    margin-bottom: $spacing * 2;
     position: relative;
     width: 100%;
   }
@@ -49,6 +52,6 @@
   }
 
   &--empty {
-    margin: 0 $margin / 2;
+    margin: 0 $spacing / 2;
   }
 }

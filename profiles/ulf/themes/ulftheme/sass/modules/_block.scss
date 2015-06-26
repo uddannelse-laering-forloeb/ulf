@@ -1,8 +1,8 @@
 /**
  *
- * Block
+ * Block module.
  *
- * Display of block.
+ * Contains styles related to blocks.
  *
  */
 
@@ -10,7 +10,7 @@
 /* Placholders, variables and mixins related to this document only.
 ================================================================================================================== */
 %block {
-  margin-bottom: $margin;
+  margin-bottom: $spacing;
 
   &:last-child {
     margin-bottom: 0;
@@ -24,18 +24,18 @@
 .block--header {
   font-weight: bold;
   margin: 0;
-  padding: 20px 15px;
+  padding: $spacing;
 }
 
 .block--content {
-  padding: 0 15px 20px 15px;
+  padding: 0 $spacing $spacing;
 }
 
 
 .block--field-wrapper {
   border-bottom: 1px solid $white;
-  margin-bottom: $margin / 2;
-  padding-bottom: $margin / 2;
+  margin-bottom: $spacing / 2;
+  padding-bottom: $spacing / 2;
 
   &:last-child {
     border:0;
@@ -56,16 +56,20 @@
 
 .block--field-label {
   font-weight: bold;
-  margin-bottom: $margin / 4;
+  margin-bottom: $spacing / 4;
 }
 
 .block--field-text {
-  margin-bottom: $margin / 2;
+  margin-bottom: $spacing / 2;
 }
 
 .block--field-logo {
   text-align: center;
-  padding: $margin * 2 $margin 0 $margin;
+  padding: $spacing * 2 $spacing 0 $spacing;
+}
+
+.block--list-item {
+  display: block;
 }
 
 
@@ -86,10 +90,10 @@
   @extend %block;
 
   background: $light-blue;
-  margin-bottom: $margin;
+  margin-bottom: $spacing;
 
   a {
-    @include strip-link-styles($dark-blue, underline);
+    @include strip-link-styles($link-color, underline);
   }
 }
 

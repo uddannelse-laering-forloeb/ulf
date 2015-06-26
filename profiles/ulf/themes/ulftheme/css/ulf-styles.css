@@ -4,28 +4,11 @@
  * @author magnify
  */
 /* Compass */
-/* Zen Grids - http://zengrids.com */
-/**
- * Variables
- *
- * @author magnify
- */
-/* Layout
-   ================================================================================================================== */
-/* Colors
-   ================================================================================================================== */
-/* Typograhy
-   ================================================================================================================== */
-/* Link colors
-   ================================================================================================================== */
-/* Spacing
-   ================================================================================================================== */
 /**
  * Variables
  *
  * Theme specific variables
  *
- * @author magnify
  */
 /* Layout
    ================================================================================================================== */
@@ -37,12 +20,14 @@
    ================================================================================================================== */
 /* Spacing
    ================================================================================================================== */
-/* Misc
+/* Border radius
    ================================================================================================================== */
 /**
+ *
  * Normalize
  *
  * Normalize.css v2.1.2 | MIT License | git.io/normalize
+ *
  */
 /* HTML5 display definitions
    ================================================================================================================== */
@@ -293,16 +278,16 @@ table {
   border-spacing: 0; }
 
 /**
+ *
  * Base
  *
- * Contains styling and reset of basic elements
+ * Contains styling and reset of basic elements.
  *
- * @author magnify
  */
 body {
   background-color: #f2f2f2;
   color: #333;
-  font: 1em/1.5 "ff-scala-sans-web-pro", Arial, sans-serif; }
+  font: 14px/1.5 "Asap", sans-serif; }
 
 h1,
 h2,
@@ -312,7 +297,7 @@ h5,
 h6 {
   margin-top: 0;
   margin-bottom: .25em;
-  font-family: 1em/1.5 "ff-scala-sans-web-pro", Arial, sans-serif;
+  font-family: 14px/1.5 "Asap", sans-serif;
   font-weight: normal;
   /* This fixes huge spaces when a heading wraps onto two lines */
   line-height: 1.2;
@@ -330,15 +315,15 @@ em {
 /* Links
    ================================================================================================================== */
 a:link {
-  color: #269eD9;
+  color: #17858c;
   text-decoration: underline; }
 a:visited {
-  color: #228ec3; }
+  color: #137076; }
 a:hover {
-  color: #1e7eae;
+  color: #105b60;
   text-decoration: none; }
 a:focus {
-  color: #1e7eae; }
+  color: #105b60; }
 
 /* Paragraph
    ================================================================================================================== */
@@ -354,80 +339,6 @@ img {
   vertical-align: bottom; }
 
 /**
- * Forms
- *
- * @author magnify
- */
-/* Basic styling
-   ================================================================================================================== */
-input,
-textarea {
-  font: 1em/1.5 "ff-scala-sans-web-pro", Arial, sans-serif; }
-
-input[type="text"],
-input[type="password"],
-input[type="date"],
-input[type="datetime"],
-input[type="email"],
-input[type="number"],
-input[type="search"],
-input[type="tel"],
-input[type="time"],
-input[type="url"],
-textarea {
-  border: 1px solid #e6e6e6;
-  display: block;
-  min-height: 1.25em;
-  width: 100%;
-  padding: .75em;
-  color: #666666;
-  background-color: #fff;
-  -moz-border-radius: 0.6em;
-  -webkit-border-radius: 0.6em;
-  border-radius: 0.6em;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box; }
-  input[type="text"]:focus,
-  input[type="password"]:focus,
-  input[type="date"]:focus,
-  input[type="datetime"]:focus,
-  input[type="email"]:focus,
-  input[type="number"]:focus,
-  input[type="search"]:focus,
-  input[type="tel"]:focus,
-  input[type="time"]:focus,
-  input[type="url"]:focus,
-  textarea:focus {
-    border: 1px solid gray;
-    color: #4d4d4d; }
-  input[type="text"][disabled],
-  input[type="password"][disabled],
-  input[type="date"][disabled],
-  input[type="datetime"][disabled],
-  input[type="email"][disabled],
-  input[type="number"][disabled],
-  input[type="search"][disabled],
-  input[type="tel"][disabled],
-  input[type="time"][disabled],
-  input[type="url"][disabled],
-  textarea[disabled] {
-    -moz-box-shadow: 0 0 0;
-    -webkit-box-shadow: 0 0 0;
-    box-shadow: 0 0 0;
-    border: 1px solid #b3b3b3;
-    background-color: #bfbfbf; }
-
-/* Labels
-   ================================================================================================================== */
-label {
-  display: block;
-  margin-bottom: .25em;
-  /* Move labels so they align better with fields when using rounded corners */
-  margin-left: .3em;
-  color: #666666; }
-
-/**
  * Contains global placeholders for use across the site
  */
 .field--title, .teaser--group-text, .teaser--content-text {
@@ -440,76 +351,27 @@ label {
 
 /* ------- OLD stuff @todo cleanup----------- */
 /* Use this placeholder to center a container */
-.search-module--result, .search-module--spelling-suggestions, .search-facets-mobile--toggle-wrapper {
-  border-bottom: 1px dashed #e6e6e6;
-  margin-bottom: 2em;
-  padding-bottom: 2em; }
-
-.search-module--result.is-last {
-  border-bottom: 0;
-  margin-bottom: 0;
-  padding-bottom: 0; }
-
 /**
+ *
+ * Global mixins.
+ *
  * Contains global mixins for use across the site.
- */
-/**
- * Breakpoints
  *
- * Should contain breakpoint variables and breakpoints related mixins
- *
- * @author magnify
  */
-/* Breakpoints
-   *
-   * These are only examples, change/add/remove so they match your needs
-   *
-   ================================================================================================================== */
-/* Mixins
-   *
-   * Use this mixin to change styling for your rulesets depending on a breakpoint (width)
-   *
-   * Usage example: @include breakpoint($breakpoint-x)
-   *
-   ================================================================================================================== */
+/* Styles
+   ========================================================================== */
 /**
- * Buttons
  *
- * @author magnify
+ * Tabs
+ *
+ * Tabs use Drupals default html, thus we nest the list items and links here.
+ * "We can't stop here. This is bat country!!"
+ *
  */
-.button, .is-default-form .form-submit, .form-module--user-submit, .header-search-module--submit, .search-module--submit, .button-yellow, .search-facets-mobile--toggle {
-  display: inline-block;
-  font-size: 125%;
-  padding: .5em 1.5em;
-  position: relative;
-  cursor: pointer;
-  text-align: center;
-  vertical-align: middle;
-  -moz-border-radius: 0.6em;
-  -webkit-border-radius: 0.6em;
-  border-radius: 0.6em; }
-  .button:focus, .is-default-form .form-submit:focus, .form-module--user-submit:focus, .header-search-module--submit:focus, .search-module--submit:focus, .button-yellow:focus, .search-facets-mobile--toggle:focus, .button:hover, .is-default-form .form-submit:hover, .form-module--user-submit:hover, .header-search-module--submit:hover, .search-module--submit:hover, .button-yellow:hover, .search-facets-mobile--toggle:hover, .button:active, .is-default-form .form-submit:active, .form-module--user-submit:active, .header-search-module--submit:active, .search-module--submit:active, .button-yellow:active, .search-facets-mobile--toggle:active {
-    text-decoration: none; }
-
-.button, .is-default-form .form-submit, .form-module--user-submit, .header-search-module--submit, .search-module--submit {
-  background-color: #3ca8dd;
-  border: 1px solid #269eD9;
-  color: #fff;
-  text-shadow: 0.025em 0.025em 0.1em #1e7eae; }
-  .button:hover, .is-default-form .form-submit:hover, .form-module--user-submit:hover, .header-search-module--submit:hover, .search-module--submit:hover {
-    background-color: #269eD9; }
-
-.button-yellow, .search-facets-mobile--toggle {
-  background-color: #efdb34;
-  border: 1px solid #edd71c;
-  color: #fff;
-  text-shadow: 0.025em 0.025em 0.1em #c6b310; }
-  .button-yellow:hover, .search-facets-mobile--toggle:hover {
-    background-color: #edd71c; }
-
-/**
-* Tabs
-*/
+/* Placholders, variables and mixins related to this document only.
+================================================================================================================== */
+/* Styles.
+================================================================================================================== */
 .tabs {
   margin-bottom: 0;
   margin-right: auto;
@@ -537,10 +399,7 @@ label {
       margin: 0;
       padding: .5em 1.25em 0.25em;
       line-height: inherit;
-      text-decoration: none;
-      -moz-border-radius: 0.6em 0.6em 0 0;
-      -webkit-border-radius: 0.6em;
-      border-radius: 0.6em 0.6em 0 0; }
+      text-decoration: none; }
       .tabs li a:hover,
       .tabs li.active a:hover,
       .tabs li:hover a:hover,
@@ -556,29 +415,28 @@ label {
     margin-top: 0;
     margin-bottom: -.5em;
     padding: 1.5em 1em .25em;
-    background-color: #fff;
-    -moz-border-radius: 0.6em 0.6em 0 0;
-    -webkit-border-radius: 0.6em;
-    border-radius: 0.6em 0.6em 0 0; }
+    background-color: #fff; }
     .tabs.secondary li a {
       border: 1px solid #b3b3b3;
       padding: .5em 1.25em .25em;
       background: #fff; }
     .tabs.secondary li a.active {
       background: #e6e6e6; }
-    .tabs.secondary li a,
-    .tabs.secondary li.active a,
-    .tabs.secondary li:hover a,
-    .tabs.secondary li.active:hover a {
-      -moz-border-radius: 0.6em;
-      -webkit-border-radius: 0.6em;
-      border-radius: 0.6em; }
 
 /**
-* Tabs
-*/
+ *
+ * Tabs
+ *
+ * The pager uses Drupal default htmt. Thus we nest to style elements within.
+ * "We can't stop here. This is bat country!!"
+ *
+ */
+/* Placholders, variables and mixins related to this document only.
+================================================================================================================== */
+/* Styles.
+================================================================================================================== */
 .pager {
-  border-top: 1px dashed #e6e6e6;
+  border-top: 1px dashed #b3b3b3;
   padding-top: 2em;
   padding-left: 0;
   text-align: center; }
@@ -594,10 +452,7 @@ label {
     padding-bottom: .4em;
     padding-left: 1em;
     background-color: #e6e6e6;
-    text-decoration: none;
-    -moz-border-radius: 0.6em;
-    -webkit-border-radius: 0.6em;
-    border-radius: 0.6em; }
+    text-decoration: none; }
     .pager .pager-current:hover,
     .pager a:hover {
       background-color: #d9d9d9;
@@ -614,22 +469,11 @@ label {
     text-decoration: none; }
 
 /**
- * Icons
- */
-/**
- * Naughty Drupal
  *
- * Holds drupal specific corrections that needs adjustments
- */
-/* The toolbar is styled from system.base.css and uses element-invisible tags that should have been hidden in system.base.css, but we are not using that stylesheet. @see ulf.info */
-.element-invisible {
-  display: none; }
-
-.toolbar-menu {
-  overflow: hidden; }
-
-/**
  * Layouts
+ *
+ * Holds layout styling for the basic building blocks across the site.
+ *
  */
 /* Placholders, variables and mixins related to this document only.
 ================================================================================================================== */
@@ -653,8 +497,7 @@ label {
    ================================================================================================================== */
 body {
   background: #17858c;
-  font-family: "Asap", sans-serif;
-  font-size: 14px;
+  font: 14px/1.5 "Asap", sans-serif;
   margin: 0 auto; }
 
 .page-wrapper {
@@ -682,9 +525,16 @@ body {
   background: #e6e6e6; }
 
 /**
- * Header
+ *
+ * Header module.
+ *
+ * Contains styles related to header display.
  *
  */
+/* Placholders, variables and mixins related to this document only.
+================================================================================================================== */
+/* Styles.
+================================================================================================================== */
 .header {
   position: relative;
   background: url(../images/header-bg.jpg) repeat-x 0 0;
@@ -735,251 +585,27 @@ body {
         display: none; } }
 
 /**
- * Footer
+ *
+ * Footer module.
+ *
+ * Contains styles related to the footer.
  *
  */
+/* Placholders, variables and mixins related to this document only.
+================================================================================================================== */
+/* Styles.
+================================================================================================================== */
 .footer {
   background: #17858c;
   min-height: 15em; }
 
 /**
- * Search module.
- */
-.search-module--form-wrapper,
-.search-module--wrapper,
-.search-module--results {
-  padding: 1.5em 1.25em;
-  background-color: #fff; }
-  @media only screen and (min-width: 45em) {
-    .search-module--form-wrapper,
-    .search-module--wrapper,
-    .search-module--results {
-      -moz-border-radius: 0.6em;
-      -webkit-border-radius: 0.6em;
-      border-radius: 0.6em; } }
-
-@media only screen and (min-width: 45em) {
-  .search-module--form-wrapper {
-    -moz-border-radius: 0.6em 0.6em 0 0;
-    -webkit-border-radius: 0.6em;
-    border-radius: 0.6em 0.6em 0 0; } }
-
-.search-module--results-gallery {
-  float: left;
-  padding: 1.5em 1.25em;
-  background-color: #fff;
-  padding-right: .312em;
-  padding-left: .312em; }
-  @media only screen and (min-width: 45em) {
-    .search-module--results-gallery {
-      -moz-border-radius: 0.6em;
-      -webkit-border-radius: 0.6em;
-      border-radius: 0.6em; } }
-  .search-module--results-gallery .search-module--result-left,
-  .search-module--results-gallery .search-module--result-middle,
-  .search-module--results-gallery .search-module--result-right {
-    margin-bottom: 2em; }
-  @media only screen and (min-width: 45em) {
-    .search-module--results-gallery .search-module--result-left {
-      float: left;
-      width: 33.33333%;
-      margin-left: 0%;
-      margin-right: -33.33333%;
-      padding-left: 15px;
-      padding-right: 15px;
-      -moz-box-sizing: border-box;
-      -webkit-box-sizing: border-box;
-      -ms-box-sizing: border-box;
-      box-sizing: border-box;
-      word-wrap: break-word; }
-    .search-module--results-gallery .search-module--result-middle {
-      float: left;
-      width: 33.33333%;
-      margin-left: 33.33333%;
-      margin-right: -66.66667%;
-      padding-left: 15px;
-      padding-right: 15px;
-      -moz-box-sizing: border-box;
-      -webkit-box-sizing: border-box;
-      -ms-box-sizing: border-box;
-      box-sizing: border-box;
-      word-wrap: break-word; }
-    .search-module--results-gallery .search-module--result-right {
-      float: right;
-      width: 33.33333%;
-      margin-right: 0%;
-      margin-left: -33.33333%;
-      padding-left: 15px;
-      padding-right: 15px;
-      -moz-box-sizing: border-box;
-      -webkit-box-sizing: border-box;
-      -ms-box-sizing: border-box;
-      box-sizing: border-box;
-      word-wrap: break-word; } }
-
-.search-module--results,
-.search-module--results-gallery {
-  padding-top: 0; }
-  @media only screen and (min-width: 45em) {
-    .search-module--results,
-    .search-module--results-gallery {
-      -moz-border-radius: 0 0 0.6em 0.6em;
-      -webkit-border-radius: 0;
-      border-radius: 0 0 0.6em 0.6em; } }
-
-.search-module--result {
-  overflow: hidden; }
-
-.search-module--result-author {
-  margin-bottom: .5em;
-  color: #999999; }
-
-.search-module--result-header a:link, .search-module--result-header a:visited, .search-module--result-header a:hover, .search-module--result-header a:active {
-  text-decoration: none; }
-
-.search-module--result-image {
-  float: left;
-  margin-right: 2em; }
-
-.search-module--edit-link .is-moderation-published {
-  display: none; }
-.search-module--edit-link .is-moderation-draft,
-.search-module--edit-link .is-moderation-needs_review {
-  color: #ff6138; }
-
-.search-module--spelling-suggestions {
-  margin-bottom: 0;
-  font-size: 110%; }
-
-.search-module--did-you-mean-text {
-  color: #b3b3b3; }
-
-.search-module--result-header {
-  text-decoration: none; }
-  .search-module--result-header:link {
-    text-decoration: none; }
-
-.search-module--result-content {
-  margin-bottom: 1em; }
-
-.search-module--form {
-  margin-bottom: 2em; }
-  .search-module--form .form-text {
-    margin-bottom: .75em;
-    padding-top: 1em;
-    padding-right: 1.25em;
-    padding-bottom: .75em;
-    padding-left: 3.25em;
-    height: 55px;
-    background: #fff url("../images/icon-search-transparent.png") no-repeat 1em center; }
-    .search-module--form .form-text:focus {
-      outline: none; }
-    @media only screen and (min-width: 28em) {
-      .search-module--form .form-text .form-search {
-        padding-right: 6em;
-        width: 90%;
-        -moz-border-radius: 0.6em 0 0 0.6em;
-        -webkit-border-radius: 0.6em;
-        border-radius: 0.6em 0 0 0.6em; } }
-
-.search-module--facets-wrapper {
-  display: none; }
-  @media only screen and (min-width: 45em) {
-    .search-module--facets-wrapper {
-      display: block; } }
-
-.search-module--facet-selection {
-  list-style-type: none;
-  padding: 0;
-  margin: 0 0 1em; }
-
-li.search-module--facet-link {
-  list-style-image: none;
-  list-style-type: none; }
-
-/* Toogle search */
-.nav--toggle-header-search {
-  position: absolute;
-  top: 1.35em;
-  left: 5em; }
-  @media only screen and (min-width: 45em) {
-    .nav--toggle-header-search {
-      display: none; } }
-
-/**
  *
- * Search facets
+ * Field module.
+ *
+ * Contains styles related to content fields.
  *
  */
-.search-facets {
-  display: none; }
-  @media only screen and (min-width: 45em) {
-    .search-facets {
-      display: block; } }
-
-.search-facets--group {
-  border: 1px solid #e6e6e6;
-  margin-bottom: 2em;
-  padding-bottom: 0.5em;
-  padding-left: 1em;
-  -moz-border-radius: 0.6em;
-  -webkit-border-radius: 0.6em;
-  border-radius: 0.6em; }
-
-.search-facets--header {
-  padding-right: .5em;
-  padding-left: .5em;
-  font-size: 125%; }
-
-.search-facets--item {
-  margin-bottom: 0.5em; }
-
-.search-facets--input {
-  margin-right: .25em; }
-
-.search-facets--link {
-  display: inline;
-  color: #269eD9;
-  cursor: pointer;
-  text-decoration: underline; }
-  .search-facets--link:hover {
-    color: #269eD9;
-    text-decoration: none; }
-
-.search-facets--inactive-text {
-  margin-bottom: 0.5em;
-  color: #999999;
-  text-align: center; }
-
-/* Search facets mobile
-   ================================================================================================================== */
-.search-facets-mobile--toggle-wrapper {
-  margin-bottom: 0;
-  padding-top: 2em;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box; }
-  @media only screen and (min-width: 45em) {
-    .search-facets-mobile--toggle-wrapper {
-      display: none; } }
-
-.search-facets-mobile--toggle {
-  width: 100%;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box; }
-
-.search-facets-mobile {
-  display: none; }
-  .search-facets-mobile.is-visible {
-    display: block; }
-
-/**
-* Field module
-*
-* Contains general field styles.
-*
-*/
 /* Placholders, variables and mixins related to this document only.
 ================================================================================================================== */
 /* Styles.
@@ -1021,9 +647,9 @@ li.search-module--facet-link {
     color: #fff;
     cursor: pointer;
     font-size: 85%;
-    -moz-border-radius: 0.6em;
-    -webkit-border-radius: 0.6em;
-    border-radius: 0.6em; }
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; }
     .field--tags-item:link, .field--tags-item:visited, .field--tags-item:hover, .field--tags-item:active {
       color: #fff;
       text-decoration: none; }
@@ -1049,15 +675,19 @@ li.search-module--facet-link {
     font-weight: bold; }
 
 /**
- * Forms
  *
- * @author magnify
+ * Form module
+ *
+ * Contains styles related to form elements.
+ *
  */
-/* Basic styling
-   ================================================================================================================== */
+/* Placholders, variables and mixins related to this document only.
+================================================================================================================== */
+/* Styles.
+================================================================================================================== */
 input,
 textarea {
-  font: 1em/1.5 "ff-scala-sans-web-pro", Arial, sans-serif; }
+  font: 14px/1.5 "Asap", sans-serif; }
 
 input[type="text"],
 input[type="password"],
@@ -1077,9 +707,9 @@ textarea {
   padding: .75em;
   color: #666666;
   background-color: #fafafa;
-  -moz-border-radius: 0.6em;
-  -webkit-border-radius: 0.6em;
-  border-radius: 0.6em;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box; }
@@ -1113,169 +743,11 @@ textarea {
     border: 1px solid #b3b3b3;
     background-color: #bfbfbf; }
 
-/* Labels
-   ================================================================================================================== */
-label {
-  display: block;
-  margin-bottom: .25em;
-  /* Move labels so they align better with fields when using rounded corners */
-  margin-left: .2em;
-  color: gray; }
-
-/* Form elements
- *
- * Based on Drupal's form markup, guidelines are not used
- *
-   ================================================================================================================== */
-.is-default-form .form-wrapper {
-  margin-bottom: 1em; }
-
-.is-default-form .form-item {
-  padding: 0.5em; }
-
-.is-default-form .form-item-description {
-  padding-top: .5em;
-  color: #999999; }
-
-.is-default-form .form-required {
-  color: #ff6138; }
-
-.is-default-form .form-select {
-  border: 1px solid #e6e6e6;
-  padding: .75em;
-  width: 100%;
-  /* Set height for chrome */
-  height: 3em;
-  background-color: #fafafa;
-  -moz-border-radius: 0.6em;
-  -webkit-border-radius: 0.6em;
-  border-radius: 0.6em;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box; }
-
-.is-default-form .form-textarea {
-  height: 6em; }
-
-.is-default-form .form-type-checkbox {
-  overflow: hidden;
-  line-height: 1em;
-  margin: 0;
-  padding: 0.5em; }
-  .is-default-form .form-type-checkbox .form-checkbox {
-    float: left;
-    margin-right: 1em;
-    vertical-align: middle; }
-
-.is-default-form .form-submit {
-  width: 100%; }
-
-/* Node form
-   ================================================================================================================== */
-.field-name-field-subjects .form-select,
-.field-name-field-subject .form-select {
-  /* Set height for chrome */
-  height: 10em; }
-
-.field-name-field-image thead {
-  display: none; }
-
-.field-multiple-table {
-  width: 100%; }
-
-.vertical-tabs-panes {
-  padding: 1em 1em 1em 0; }
-
-.container-inline-date {
-  clear: none;
-  float: left;
-  width: 100%; }
-  @media only screen and (min-width: 40em) {
-    .container-inline-date {
-      clear: none;
-      float: left;
-      width: 50%; } }
-
-.field-name-field-price,
-.field-name-field-unit-price,
-.field-name-field-duration,
-.field-name-field-duration-unit {
-  width: 100%; }
-  @media only screen and (min-width: 75em) {
-    .field-name-field-price,
-    .field-name-field-unit-price,
-    .field-name-field-duration,
-    .field-name-field-duration-unit {
-      clear: none;
-      float: left;
-      width: 50%; } }
-
-.field-name-field-educational-material,
-.field-name-field-inspirational-material,
-.fieldset-wrapper {
-  background: #fff;
-  padding: 1em;
-  -moz-border-radius: 0.6em;
-  -webkit-border-radius: 0.6em;
-  border-radius: 0.6em; }
-
-legend a {
-  font-size: 1.5em; }
-  legend a:link {
-    color: #4d4d4d; }
-
-.node--form thead label {
-  color: #4d4d4d;
-  text-align: left;
-  font-weight: normal;
-  font-size: 1.5em; }
-
-.node--form tbody tr {
-  background: #f2f2f2;
-  background: #f2f2f2;
-  margin-bottom: 1em;
-  padding: 1em;
-  display: block; }
-
-.tabledrag-toggle-weight-wrapper,
-.field-multiple-drag {
-  display: none; }
-
-.node--form .vertical-tabs ul.vertical-tabs-list,
-.node--form .vertical-tabs {
-  margin: 0;
-  width: 100%; }
-  @media only screen and (min-width: 50em) {
-    .node--form .vertical-tabs ul.vertical-tabs-list,
-    .node--form .vertical-tabs {
-      margin: auto;
-      width: auto; } }
-
-.node--form .vertical-tabs-processed {
-  border: 1px solid #e6e6e6;
-  float: left; }
-  @media only screen and (min-width: 50em) {
-    .node--form .vertical-tabs-processed {
-      border: 0;
-      float: none; } }
-
-.node--form .form-submit {
-  margin: 1em 1em 1em 0; }
-
-/* Anonymous user forms
-   ================================================================================================================== */
-.form-module--user-login {
-  margin: 0 auto;
-  max-width: 1000px;
-  position: relative; }
-  .form-module--user-login .form-item {
-    margin-bottom: 1em; }
-
 /**
  *
- * Teaser
+ * Teaser module.
  *
- * Display of list items (Ie. Frontpage and search results. )
+ * Display of list items (Ie. Frontpage and search results.)
  *
  */
 /* Placholders, variables and mixins related to this document only.
@@ -1390,9 +862,9 @@ legend a {
 
 /**
  *
- * Block
+ * Block module.
  *
- * Display of block.
+ * Contains styles related to blocks.
  *
  */
 /* Placholders, variables and mixins related to this document only.
@@ -1407,10 +879,10 @@ legend a {
 .block--header {
   font-weight: bold;
   margin: 0;
-  padding: 20px 15px; }
+  padding: 15px; }
 
 .block--content {
-  padding: 0 15px 20px 15px; }
+  padding: 0 15px 15px; }
 
 .block--field-wrapper {
   border-bottom: 1px solid #fff;
@@ -1437,6 +909,9 @@ legend a {
 .block--field-logo {
   text-align: center;
   padding: 30px 15px 0 15px; }
+
+.block--list-item {
+  display: block; }
 
 /* Block types */
 .block--dark {
@@ -1476,30 +951,14 @@ legend a {
   margin: 0 auto; }
 
 /**
- * Block inline module.
  *
- * Contains general inline block styles.
- *
- * @author Martin Yde.
- */
-.block-inline-module:last-child {
-  margin-bottom: 0; }
-
-.block-inline-module--field-label {
-  float: left;
-  width: 50%; }
-
-.block-inline-module--field-text {
-  color: #666;
-  float: left;
-  width: 50%; }
-
-/**
- * Nav module
+ * Nav module.
  *
  * Contains styles related to the navigation bar.
  *
  */
+/* Placholders, variables and mixins related to this document only.
+================================================================================================================== */
 .nav--list-dropdown-item, .nav--list-item {
   display: inline-block;
   height: 100%; }
@@ -1566,186 +1025,11 @@ legend a {
     background: none; }
 
 /**
- * Header search module
  *
- * Contains styling for header search module
- */
-.header-search-module {
-  max-width: 100%;
-  min-height: 9.5em;
-  overflow: hidden;
-  padding-right: 15px;
-  padding-left: 15px;
-  -webkit-backface-visibility: hidden;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box; }
-  .header-search-module.is-hidden {
-    min-height: 0;
-    max-height: 0; }
-  .header-search-module.is-visible {
-    min-height: 9.5em;
-    -moz-transition: min-height 250ms ease-out 0.25s;
-    -o-transition: min-height 250ms ease-out 0.25s;
-    -webkit-transition: min-height 250ms ease-out;
-    -webkit-transition-delay: 0.25s;
-    transition: min-height 250ms ease-out 0.25s; }
-  @media only screen and (min-width: 28em) {
-    .header-search-module {
-      -moz-border-radius: 0 0 0.6em 0.6em;
-      -webkit-border-radius: 0;
-      border-radius: 0 0 0.6em 0.6em; }
-      .header-search-module.is-visible {
-        height: 3em; } }
-  @media only screen and (min-width: 45em) {
-    .header-search-module {
-      position: absolute;
-      top: 1.5em;
-      right: 15px;
-      overflow: visible;
-      padding-right: 0;
-      padding-left: 0;
-      width: 50%; } }
-  .header-search-module .form-search {
-    margin-bottom: .75em;
-    padding-top: 1em;
-    padding-right: 1.25em;
-    padding-bottom: .75em;
-    padding-left: 3.25em;
-    height: 55px;
-    background: #fff url("../images/icon-search-transparent.png") no-repeat 1em center; }
-    .header-search-module .form-search:focus {
-      outline: none; }
-    @media only screen and (min-width: 28em) {
-      .header-search-module .form-search .form-search {
-        padding-right: 6em;
-        width: 90%;
-        -moz-border-radius: 0.6em 0 0 0.6em;
-        -webkit-border-radius: 0.6em;
-        border-radius: 0.6em 0 0 0.6em; } }
-
-.header-search-module--inner, .search-module--form {
-  position: relative; }
-
-.header-search-module--submit, .search-module--submit {
-  height: 55px;
-  width: 100%; }
-  @media only screen and (min-width: 28em) {
-    .header-search-module--submit, .search-module--submit {
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      padding-top: .35em;
-      padding-bottom: .35em;
-      width: auto;
-      font-size: 125%;
-      -moz-border-radius: 0 0.6em 0.6em 0;
-      -webkit-border-radius: 0;
-      border-radius: 0 0.6em 0.6em 0; } }
-
-/**
- * Twitter typeahead
+ * Content module.
  *
- * http://twitter.github.io/typeahead.js/
+ * Contains styles related to content (Ie. Nodes, course providers)
  *
- */
-.typeahead-block {
-  position: relative;
-  margin-top: -1em; }
-  .typeahead-block .form-item {
-    border: 0;
-    margin-bottom: 0;
-    padding: 0; }
-  @media only screen and (min-width: 1000px) {
-    .typeahead-block {
-      -moz-border-radius: 0 0 0.6em 0.6em;
-      -webkit-border-radius: 0;
-      border-radius: 0 0 0.6em 0.6em; } }
-
-.typeahead-block--wrapper {
-  position: relative; }
-  .typeahead-block--wrapper .tt-hint,
-  .typeahead-block--wrapper .typeahead {
-    margin-bottom: 1em;
-    padding-top: 1.25em;
-    padding-right: 1.25em;
-    padding-bottom: 1.25em;
-    padding-left: 3em;
-    height: 65px;
-    background-color: #fff; }
-    .typeahead-block--wrapper .tt-hint:focus,
-    .typeahead-block--wrapper .typeahead:focus {
-      outline: none; }
-    @media only screen and (min-width: 45em) {
-      .typeahead-block--wrapper .tt-hint,
-      .typeahead-block--wrapper .typeahead {
-        margin-bottom: 0;
-        padding-right: 6em;
-        width: 90%;
-        -moz-border-radius: 0.6em 0 0 0.6em;
-        -webkit-border-radius: 0.6em;
-        border-radius: 0.6em 0 0 0.6em; } }
-
-.typeahead-block--icon {
-  position: absolute;
-  top: 1.2em;
-  left: .35em;
-  color: #999999;
-  font-size: 200%;
-  z-index: 1; }
-
-.twitter-typeahead {
-  display: block !important;
-  background-color: #fff;
-  -moz-border-radius: 0.6em;
-  -webkit-border-radius: 0.6em;
-  border-radius: 0.6em; }
-
-/* Suggestions
-   ========================================================================== */
-.tt-dropdown-menu {
-  position: absolute;
-  z-index: 90;
-  border: 1px solid gray;
-  margin-top: .5em;
-  padding: 1em;
-  width: 100%;
-  background-color: #fff;
-  -moz-border-radius: 0.6em;
-  -webkit-border-radius: 0.6em;
-  border-radius: 0.6em;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box; }
-  @media only screen and (min-width: 45em) {
-    .tt-dropdown-menu {
-      top: 7.5em; } }
-
-.tt-suggestion-header {
-  border-bottom: 1px solid #f2f2f2;
-  margin-bottom: 1em;
-  padding-bottom: 1em;
-  font-size: 110%;
-  font-weight: bold; }
-
-.tt-suggestion {
-  border-bottom: 1px solid #e6e6e6;
-  color: #269eD9;
-  cursor: pointer;
-  display: block;
-  margin-bottom: 1em;
-  padding-bottom: 1em; }
-  .tt-suggestion:link, .tt-suggestion:visited {
-    text-decoration: none; }
-  .tt-suggestion:hover, .tt-suggestion:active {
-    text-decoration: underline; }
-  .tt-suggestion:last-child {
-    border-bottom: 0;
-    margin-bottom: 0;
-    padding-bottom: 0; }
-
-/**
- * Content
  */
 /* Placeholders, variables and mixins related to this document only.
 ================================================================================================================== */
@@ -1777,6 +1061,39 @@ legend a {
         width: 35%; } }
   .content--empty {
     margin: 0 7.5px; }
+
+/**
+ *
+ * Buttons
+ *
+ * Display of buttons on the site.
+ *
+ */
+/* Placholders, variables and mixins related to this document only.
+================================================================================================================== */
+.button {
+  display: inline-block;
+  font-size: 125%;
+  padding: .5em 1.5em;
+  position: relative;
+  cursor: pointer;
+  text-align: center;
+  vertical-align: middle;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px; }
+  .button:focus, .button:hover, .button:active {
+    text-decoration: none; }
+
+/* Styles.
+================================================================================================================== */
+.button {
+  background-color: #17858c;
+  border: 1px solid #17858c;
+  color: #fff;
+  text-shadow: 0.025em 0.025em 0.1em #105b60; }
+  .button:hover {
+    background-color: #17858c; }
 
 /**
  *
@@ -1886,68 +1203,3 @@ html.is-locked,
 html.is-locked body {
   overflow: hidden;
   height: 100%; }
-
-@media print {
-  body {
-    color: #000;
-    background: #fff;
-    font-size: 12px; }
-
-  a:link,
-  a:visited {
-    color: #000;
-    text-decoration: none; }
-
-  header, nav, aside, img {
-    display: none; }
-
-  h1 {
-    padding: 1em 0; }
-
-  h2, h3 {
-    color: #000;
-    page-break-after: avoid; }
-
-  .field-module--text {
-    page-break-before: avoid; }
-
-  .layout-element-alpha,
-  .layout-element-gamma,
-  .layout-element-epsilon {
-    page-break-inside: avoid; }
-
-  h2.block-module--header {
-    border: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-    padding-left: 0.75em; }
-
-  .field-module--author,
-  .field-module--author--value,
-  .block-inline-module--field-text {
-    color: #000; }
-
-  .layout-element-alpha,
-  .layout-element-beta,
-  .layout-element-delta,
-  .layout-element-epsilon {
-    border-bottom: 1px dashed #000; }
-
-  .field-module--wrapper,
-  .page-content {
-    padding-top: 0;
-    padding-bottom: 0; }
-
-  .field-module--educational-material,
-  .field-module--inspirational-material {
-    border: 0;
-    padding-left: 0;
-    padding-right: 0; }
-
-  .field-module--image {
-    display: none; }
-
-  .block-inline-module--field-wrapper,
-  .field-module--text,
-  .block-module--field-wrapper {
-    border-color: #b3b3b3; } }

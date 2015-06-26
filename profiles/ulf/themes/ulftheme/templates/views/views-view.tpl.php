@@ -53,9 +53,7 @@
   <?php if ($rows): ?>
     <?php print $rows; ?>
   <?php elseif ($empty): ?>
-    <div class="block-module--content">
-      <?php print $empty; ?>
-    </div>
+    <?php print $empty; ?>
   <?php endif; ?>
 
   <?php if ($pager): ?>
