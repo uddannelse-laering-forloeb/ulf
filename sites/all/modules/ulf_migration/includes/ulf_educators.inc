@@ -27,6 +27,7 @@ class UlfCoursesEducationMigration extends DrupalNode7Migration {
     $this->dependencies = array('UlfFiles', 'UlfUsers');
 
     $this->sourceFields += array(
+      'field_image_media_fids' => t('Image file ids'),
       'body:summary' => t('Empty body summary'),
       'body:format' => t('Empty body format'),
     );
@@ -37,8 +38,44 @@ class UlfCoursesEducationMigration extends DrupalNode7Migration {
     $this->removeFieldMapping('body:summary');
     $this->removeFieldMapping('body:format');
 
-    $this->addFieldMapping('field_price', 'field_paris');
+    // Map image files.
+    $this->addFieldMapping('field_image', 'field_image_media_fids')
+      ->sourceMigration('UlfFiles');
+    $this->addFieldMapping('field_image:file_class')
+      ->defaultValue('MigrateFileFid');
+    $this->addFieldMapping('field_image:alt', 'field_image_media:alt');
+    $this->addFieldMapping('field_image:title', 'field_image_media:title');
 
+    $this->addFieldMapping('field_relevance_educators', 'field_relevance_educators')
+      ->sourceMigration('UlfCourseRelevancyEducators');
+    $this->addFieldMapping('field_relevance_educators:source_type')
+      ->defaultValue('tid');
+    $this->addFieldMapping('field_relevance_educators:create_term')
+      ->defaultValue(FALSE);
+
+    $this->addFieldMapping('field_relevance_primary_school', 'field_relevance_primary_school')
+      ->sourceMigration('UlfSubjectsPrimarySchools');
+    $this->addFieldMapping('field_relevance_primary_school:source_type')
+      ->defaultValue('tid');
+    $this->addFieldMapping('field_relevance_primary_school:create_term')
+      ->defaultValue(FALSE);
+
+    $this->addFieldMapping('field_subject', 'field_subject')
+      ->sourceMigration('UlfTopics');
+    $this->addFieldMapping('field_subject:source_type')
+      ->defaultValue('tid');
+    $this->addFieldMapping('field_subject:create_term')
+      ->defaultValue(FALSE);
+
+    $this->addFieldMapping('field_relevance_upper_school', 'field_relevance_upper_school')
+      ->sourceMigration('UlfSubjectsYouth');
+    $this->addFieldMapping('field_relevance_upper_school:source_type')
+      ->defaultValue('tid');
+    $this->addFieldMapping('field_relevance_upper_school:create_term')
+      ->defaultValue(FALSE);
+
+    $this->addFieldMapping('field_course_contact_mail', 'field_contact_mail');
+    $this->addFieldMapping('field_course_contact_mail:language', 'field_contact_mail:language');
 
     $this->addSimpleMappings(array(
       'field_catering',
@@ -51,18 +88,58 @@ class UlfCoursesEducationMigration extends DrupalNode7Migration {
       'field_full_description:language',
     ));
 
-    // Field collection.
-    //   'field_educational_material',
-    //   'field_educational_material:revision_id',
-
+    $this->addUnmigratedDestinations(array(
+      'field_educational_material',
+      'field_educational_material:revision_id',
+      'field_relevance_educators:ignore_case',
+      'field_relevance_primary_school:ignore_case',
+      'field_subject:ignore_case',
+      'field_relevance_upper_school:ignore_case',
+      'field_image:language',
+      'field_image:preserve_files',
+    ));
 
     $this->addUnmigratedSources(array(
       'revision',
       'revision_uid',
       'log',
-      'field_paris:revision_id',
-      'field_paris:language',
+      'field_educational_material',
+      'field_educational_material:revision_id',
+      'field_educational_material:language',
+      'field_relevance_educators:language',
+      'field_relevance_primary_school:language',
+      'field_subject:language',
+      'field_relevance_upper_school:language',
+      'field_image_media',
+      'field_image_media:width',
+      'field_image_media:height',
+      'field_image_media:language',
     ));
   }
 
+  /**
+   * Load extra information about fields.
+   *
+   * @param $row
+   * @return bool
+   */
+  public function prepareRow($row) {
+    if (parent::prepareRow($row) === FALSE) {
+      return FALSE;
+    }
+
+    // Query provider images fids.
+    $query = Database::getConnection('default', $this->sourceConnection)
+      ->select('field_data_field_image_media', 'media')
+      ->fields('media', array('delta', 'field_image_media_fid'))
+      ->condition('entity_id', $row->nid, '=')
+      ->execute();
+
+    $row->field_image_media_fids = array();
+    foreach($query as $fid) {
+      $row->field_image_fids[$fid->delta] = $fid->field_image_media_fid;
+    }
+
+    return TRUE;
+  }
 }

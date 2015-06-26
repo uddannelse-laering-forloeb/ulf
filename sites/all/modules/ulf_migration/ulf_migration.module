@@ -18,6 +18,9 @@ function ulf_migration_migrate_api() {
       'ulf_users' => array(
         'title' => t('Users'),
       ),
+      'ulf_field_collections' => array(
+        'title' => t('Field collections'),
+      ),
       'ulf_taxonomy' => array(
         'title' => t('Taxonomies'),
       ),
@@ -31,16 +34,23 @@ function ulf_migration_migrate_api() {
         'class_name' => 'UlfFilesMigration',
         'group_name' => 'ulf_files',
       ),
+
       // Roles.
       'UlfRoles' => array(
         'class_name' => 'UlfRolesMigration',
         'group_name' => 'ulf_users',
       ),
+
       // Users contact field collection.
       'UlfUsersContact' => array(
         'class_name' => 'UlfUsersContactMigration',
-        'group_name' => 'ulf_users',
+        'group_name' => 'ulf_field_collections',
       ),
+      'UlfEducationalMaterial' => array(
+        'class_name' => 'UlfEducationalMaterialMigration',
+        'group_name' => 'ulf_field_collections',
+      ),
+
 
       // Users.
       'UlfUsers' => array(
@@ -104,9 +114,6 @@ function ulf_migration_migrate_api() {
         'class_name' => 'UlfCoursesEducationMigration',
         'group_name' => 'ulf_content',
       ),
-
-      // course-educators.
-
 
       // course.
 
