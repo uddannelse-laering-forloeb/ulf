@@ -116,7 +116,10 @@ function ulf_migration_migrate_api() {
       ),
 
       // course.
-
+      'UlfCourses' => array(
+        'class_name' => 'UlfCoursesMigration',
+        'group_name' => 'ulf_content',
+      ),
     ),
     'field handlers' => array(
       'DateMigrateFieldHandler',

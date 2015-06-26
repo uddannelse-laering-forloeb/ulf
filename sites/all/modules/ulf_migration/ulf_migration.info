@@ -21,5 +21,6 @@ files[] = includes/taxonomy/ulf_educational_goals.inc
 files[] = includes/taxonomy/ulf_tags.inc
 files[] = includes/taxonomy/ulf_offer_type.inc
 files[] = includes/ulf_educators.inc
+files[] = includes/ulf_courses.inc
 files[] = includes/field_collections/ulf_users_contact.inc
 files[] = includes/field_collections/ulf_educational_material.inc
