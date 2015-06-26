@@ -18,6 +18,9 @@ function ulf_migration_migrate_api() {
       'ulf_users' => array(
         'title' => t('Users'),
       ),
+      'ulf_taxonomy' => array(
+        'title' => t('Taxonomies'),
+      ),
       'ulf_content' => array(
         'title' => t('Content'),
       ),
@@ -46,6 +49,42 @@ function ulf_migration_migrate_api() {
       ),
 
       // Taxonomies.
+      'UlfTopics' => array(
+        'class_name' => 'UlfTopicsMigration',
+        'group_name' => 'ulf_taxonomy',
+      ),
+      'UlfTargetGroups' => array(
+        'class_name' => 'UlfTargetGroupsMigration',
+        'group_name' => 'ulf_taxonomy',
+      ),
+      'UlfTargetGroupsSub' => array(
+        'class_name' => 'UlfTargetGroupsSubMigration',
+        'group_name' => 'ulf_taxonomy',
+      ),
+      'UlfSubjectsPrimarySchools' => array(
+        'class_name' => 'UlfSubjectsPrimarySchoolsMigration',
+        'group_name' => 'ulf_taxonomy',
+      ),
+      'UlfSubjectsYouth' => array(
+        'class_name' => 'UlfSubjectsYouthMigration',
+        'group_name' => 'ulf_taxonomy',
+      ),
+      'UlfCourseRelevancyEducators' => array(
+        'class_name' => 'UlfCourseRelevancyEducatorsMigration',
+        'group_name' => 'ulf_taxonomy',
+      ),
+      'UlfEducationalGoals' => array(
+        'class_name' => 'UlfEducationalGoalsMigration',
+        'group_name' => 'ulf_taxonomy',
+      ),
+      'UlfTags' => array(
+        'class_name' => 'UlfTagsMigration',
+        'group_name' => 'ulf_taxonomy',
+      ),
+      'UlfOfferType' => array(
+        'class_name' => 'UlfOfferTypeMigration',
+        'group_name' => 'ulf_taxonomy',
+      ),
 
 
       // Static pages (omulf).
