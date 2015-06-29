@@ -639,15 +639,12 @@ body {
     padding-left: 15px; }
   .footer ol {
     padding-left: 20px; }
+  .footer table {
+    table-layout: fixed;
+    width: 100%; }
   .footer td,
   .footer th {
     padding: .5em 1em; }
-    .footer td:first-child,
-    .footer th:first-child {
-      padding-left: 0; }
-    .footer td:last-child,
-    .footer th:last-child {
-      padding-right: 0; }
 
 /**
  *

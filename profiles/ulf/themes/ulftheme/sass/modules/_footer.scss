@@ -61,16 +61,13 @@
     padding-left: 20px;
   }
 
+  table {
+    table-layout: fixed;
+    width: 100%
+  }
+
   td,
   th {
     padding: .5em 1em;
-
-    &:first-child {
-      padding-left: 0;
-    }
-
-    &:last-child {
-      padding-right: 0;
-    }
   }
 }
