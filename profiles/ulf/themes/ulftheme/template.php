@@ -74,8 +74,6 @@ function ulf_menu_link__main_menu($variables){
 
 /**
  * Implements hook_preprocess_node().
- *
- * Adds a default teaser template.
  */
 function ulf_preprocess_node(&$variables) {
   // Set default node teaser template.
@@ -109,6 +107,13 @@ function ulf_preprocess_node(&$variables) {
     $variables['profile_city'] = $author_wrapper->field_profile_city->value();
     $variables['profile_phone'] = $author_wrapper->field_profile_phone->value();
   }
+}
+
+/**
+ * Implements hook_preprocess_block().
+ */
+function ulf_preprocess_block(&$variables) {
+  $a = 1;
 }
 
 

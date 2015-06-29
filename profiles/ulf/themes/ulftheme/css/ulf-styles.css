@@ -427,7 +427,7 @@ img {
  *
  * Tabs
  *
- * The pager uses Drupal default htmt. Thus we nest to style elements within.
+ * The pager uses Drupals default html. Thus we nest to style elements within.
  * "We can't stop here. This is bat country!!"
  *
  */
@@ -483,15 +483,18 @@ img {
 .layout-profile .layout-element-alpha-inner,
 .layout-profile .layout-element-beta-inner,
 .layout-profile .layout-element-gamma-inner, .layout-node .layout-element-alpha-inner {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
   height: 100%;
   margin: 0 auto;
   max-width: 1000px;
   padding: 2em 0;
   position: relative;
-  width: 100%; }
+  width: 100%;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-flex-direction: row;
+  flex-direction: row; }
 
 /* Body
    ================================================================================================================== */
@@ -597,7 +600,54 @@ body {
 ================================================================================================================== */
 .footer {
   background: #17858c;
+  color: #fff;
   min-height: 15em; }
+  .footer--inner {
+    margin: 0 auto;
+    max-width: 1000px;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-flex-direction: row;
+    flex-direction: row; }
+  .footer--block {
+    padding: 2em 0;
+    position: relative;
+    width: 100%; }
+    @media only screen and (min-width: 45em) {
+      .footer--block {
+        width: 33%; } }
+  .footer--block-inner {
+    overflow: hidden;
+    padding: 0 7.5px; }
+  .footer hr {
+    border-color: #fff; }
+  .footer a:link {
+    color: #fff;
+    text-decoration: underline; }
+  .footer a:visited {
+    color: #fff;
+    text-decoration: underline; }
+  .footer a:hover {
+    color: #fff;
+    text-decoration: underline; }
+  .footer a:focus {
+    color: #fff;
+    text-decoration: underline; }
+  .footer ul {
+    padding-left: 15px; }
+  .footer ol {
+    padding-left: 20px; }
+  .footer td,
+  .footer th {
+    padding: .5em 1em; }
+    .footer td:first-child,
+    .footer th:first-child {
+      padding-left: 0; }
+    .footer td:last-child,
+    .footer th:last-child {
+      padding-right: 0; }
 
 /**
  *
@@ -892,8 +942,11 @@ textarea {
     border: 0;
     margin-bottom: 0; }
   .block--field-wrapper.is-inline {
+    display: -webkit-flex;
     display: flex;
+    -webkit-flex-wrap: wrap;
     flex-wrap: wrap;
+    -webkit-flex-direction: row;
     flex-direction: row; }
     .block--field-wrapper.is-inline .block--field-label,
     .block--field-wrapper.is-inline .block--field-text {
@@ -1036,15 +1089,19 @@ textarea {
 /* Styles
 ================================================================================================================== */
 .content {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: space-between;
   margin: 0 7.5px;
-  width: 100%; }
+  width: 100%;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-justify-content: space-between;
+  justify-content: space-between; }
   .content--header, .content--system-block {
     margin: 0 auto;
-    width: 1000px; }
+    max-width: 1000px; }
   .content--image {
     margin-bottom: 30px;
     position: relative;

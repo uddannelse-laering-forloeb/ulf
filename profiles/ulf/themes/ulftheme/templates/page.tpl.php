@@ -115,7 +115,9 @@
     <?php endif; ?>
     <?php print render($page['content']); ?>
     <footer class="footer">
-      <?php print render($page['footer']); ?>
+      <div class="footer--inner">
+        <?php print render($page['footer']); ?>
+      </div>
     </footer>
   </div>
 </div>

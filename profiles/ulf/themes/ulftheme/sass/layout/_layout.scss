@@ -11,15 +11,16 @@
 ================================================================================================================== */
 
 %layout--element-inner {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
   height: 100%;
   margin: 0 auto;
   max-width: $layout-max-width;
   padding: 2em 0;
   position: relative;
   width: 100%;
+
+  @include display-flex;
+  @include flex-wrap(wrap);
+  @include flex-direction(row);
 }
 
 

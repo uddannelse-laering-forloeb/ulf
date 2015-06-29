@@ -16,17 +16,18 @@
 ================================================================================================================== */
 
 .content {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: space-between;
   margin: 0 $spacing / 2;
   width: 100%;
+
+  @include display-flex;
+  @include flex-wrap(wrap);
+  @include flex-direction(row);
+  @include justify-content(space-between);
 
   &--header,
   &--system-block {
     margin: 0 auto;
-    width: $layout-max-width;
+    max-width: $layout-max-width;
   }
 
   &--image {

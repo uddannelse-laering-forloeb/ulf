@@ -43,9 +43,9 @@
   }
 
   &.is-inline {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
+    @include display-flex;
+    @include flex-wrap(wrap);
+    @include flex-direction(row);
 
     .block--field-label,
     .block--field-text {
@@ -96,6 +96,7 @@
     @include strip-link-styles($link-color, underline);
   }
 }
+
 
 .block--default {
   @extend %block;

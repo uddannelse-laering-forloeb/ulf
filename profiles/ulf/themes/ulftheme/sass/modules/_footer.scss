@@ -16,5 +16,61 @@
 
 .footer {
   background: $dark-blue;
+  color: $white;
   min-height: 15em;
+
+  &--inner {
+    margin: 0 auto;
+    max-width: $layout-max-width;
+
+    @include display-flex;
+    @include flex-wrap(wrap);
+    @include flex-direction(row);
+  }
+
+  &--block {
+    padding: 2em 0;
+    position: relative;
+    width: 100%;
+
+    @include breakpoint(45em) {
+      width: 33%;
+    }
+  }
+
+  &--block-inner {
+    overflow: hidden;
+    padding: 0 $spacing / 2;
+  }
+
+  // Content elements in footer.
+
+  hr {
+    border-color: $white;
+  }
+
+  a {
+    @include strip-link-styles($white, underline);
+  }
+
+  ul {
+    padding-left: $spacing;
+  }
+
+  ol {
+    padding-left: 20px;
+  }
+
+  td,
+  th {
+    padding: .5em 1em;
+
+    &:first-child {
+      padding-left: 0;
+    }
+
+    &:last-child {
+      padding-right: 0;
+    }
+  }
 }

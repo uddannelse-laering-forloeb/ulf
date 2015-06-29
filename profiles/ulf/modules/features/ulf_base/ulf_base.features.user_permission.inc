@@ -39,7 +39,9 @@ function ulf_base_user_default_permissions() {
   // Exported permission: 'access contextual links'.
   $permissions['access contextual links'] = array(
     'name' => 'access contextual links',
-    'roles' => array(),
+    'roles' => array(
+      'editor' => 'editor',
+    ),
     'module' => 'contextual',
   );
 
@@ -71,6 +73,15 @@ function ulf_base_user_default_permissions() {
       'editor' => 'editor',
     ),
     'module' => 'user',
+  );
+
+  // Exported permission: 'administer blocks'.
+  $permissions['administer blocks'] = array(
+    'name' => 'administer blocks',
+    'roles' => array(
+      'editor' => 'editor',
+    ),
+    'module' => 'block',
   );
 
   // Exported permission: 'administer content types'.
@@ -239,6 +250,15 @@ function ulf_base_user_default_permissions() {
       'editor' => 'editor',
     ),
     'module' => 'panels',
+  );
+
+  // Exported permission: 'use text format full_html'.
+  $permissions['use text format full_html'] = array(
+    'name' => 'use text format full_html',
+    'roles' => array(
+      'editor' => 'editor',
+    ),
+    'module' => 'filter',
   );
 
   // Exported permission: 'view own unpublished content'.
