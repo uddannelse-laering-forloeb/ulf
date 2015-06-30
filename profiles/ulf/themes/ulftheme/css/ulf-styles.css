@@ -1,7 +1,5 @@
 /**
  * Stylesheet import
- *
- * @author magnify
  */
 /* Compass */
 /**
@@ -425,7 +423,7 @@ img {
 
 /**
  *
- * Tabs
+ * Pager
  *
  * The pager uses Drupals default html. Thus we nest to style elements within.
  * "We can't stop here. This is bat country!!"
@@ -475,14 +473,17 @@ img {
  * Holds layout styling for the basic building blocks across the site.
  *
  */
-/* Placholders, variables and mixins related to this document only.
+/* Placeholders, variables and mixins related to this document only.
 ================================================================================================================== */
+.layout-node .layout-element-alpha-inner,
+.layout-node .layout-element-beta-inner,
+.layout-node .layout-element-gamma-inner,
 .layout-frontpage .layout-element-alpha-inner,
 .layout-frontpage .layout-element-beta-inner,
 .layout-frontpage .layout-element-gamma-inner,
 .layout-profile .layout-element-alpha-inner,
 .layout-profile .layout-element-beta-inner,
-.layout-profile .layout-element-gamma-inner, .layout-node .layout-element-alpha-inner {
+.layout-profile .layout-element-gamma-inner {
   height: 100%;
   margin: 0 auto;
   max-width: 1000px;
@@ -512,19 +513,17 @@ body {
   padding: 0 7.5px;
   width: 100%; }
 
+.layout-node .layout-element-alpha,
 .layout-frontpage .layout-element-alpha,
 .layout-profile .layout-element-alpha {
   background: #fff; }
+.layout-node .layout-element-beta,
 .layout-frontpage .layout-element-beta,
 .layout-profile .layout-element-beta {
   background: #f2f2f2; }
+.layout-node .layout-element-gamma,
 .layout-frontpage .layout-element-gamma,
 .layout-profile .layout-element-gamma {
-  background: #e6e6e6; }
-
-.layout-node .layout-element-beta {
-  background: #f2f2f2; }
-.layout-node .layout-element-gamma {
   background: #e6e6e6; }
 
 /**
@@ -534,8 +533,6 @@ body {
  * Contains styles related to header display.
  *
  */
-/* Placholders, variables and mixins related to this document only.
-================================================================================================================== */
 /* Styles.
 ================================================================================================================== */
 .header {
@@ -594,8 +591,6 @@ body {
  * Contains styles related to the footer.
  *
  */
-/* Placholders, variables and mixins related to this document only.
-================================================================================================================== */
 /* Styles.
 ================================================================================================================== */
 .footer {
@@ -653,8 +648,6 @@ body {
  * Contains styles related to content fields.
  *
  */
-/* Placholders, variables and mixins related to this document only.
-================================================================================================================== */
 /* Styles.
 ================================================================================================================== */
 .field {
@@ -728,8 +721,6 @@ body {
  * Contains styles related to form elements.
  *
  */
-/* Placholders, variables and mixins related to this document only.
-================================================================================================================== */
 /* Styles.
 ================================================================================================================== */
 input,
@@ -797,7 +788,7 @@ textarea {
  * Display of list items (Ie. Frontpage and search results.)
  *
  */
-/* Placholders, variables and mixins related to this document only.
+/* Placeholders, variables and mixins related to this document only.
 ================================================================================================================== */
 .teaser--group-inner, .teaser--content-inner {
   display: block;
@@ -914,7 +905,7 @@ textarea {
  * Contains styles related to blocks.
  *
  */
-/* Placholders, variables and mixins related to this document only.
+/* Placeholders, variables and mixins related to this document only.
 ================================================================================================================== */
 .block--dark, .block--light, .block--default {
   margin-bottom: 15px; }
@@ -1007,7 +998,7 @@ textarea {
  * Contains styles related to the navigation bar.
  *
  */
-/* Placholders, variables and mixins related to this document only.
+/* Placeholders, variables and mixins related to this document only.
 ================================================================================================================== */
 .nav--list-dropdown-item, .nav--list-item {
   display: inline-block;
@@ -1063,16 +1054,17 @@ textarea {
  *
  * Nesting once for all list items on mobile device.
  *  ================================================================================================================== */
-.nav--mobile {
-  top: 0; }
-  .nav--mobile .nav--list-dropdown-item, .nav--mobile .nav--list-item {
-    border-bottom: 1px solid #fff;
-    display: block;
-    width: 100%; }
-    .nav--mobile .nav--list-dropdown-item:last-child, .nav--mobile .nav--list-item:last-child {
-      border-bottom: 0; }
-  .nav--mobile .nav--list-dropdown-link:hover, .nav--mobile .nav--list-link:hover {
-    background: none; }
+.nav--mobile .nav--list-dropdown-item,
+.nav--mobile .nav--list-item {
+  border-bottom: 1px solid #fff;
+  display: block;
+  width: 100%; }
+  .nav--mobile .nav--list-dropdown-item:last-child,
+  .nav--mobile .nav--list-item:last-child {
+    border-bottom: 0; }
+.nav--mobile .nav--list-dropdown-link:hover,
+.nav--mobile .nav--list-link:hover {
+  background: none; }
 
 /**
  *
@@ -1081,8 +1073,6 @@ textarea {
  * Contains styles related to content (Ie. Nodes, course providers)
  *
  */
-/* Placeholders, variables and mixins related to this document only.
-================================================================================================================== */
 /* Styles
 ================================================================================================================== */
 .content {
@@ -1123,29 +1113,27 @@ textarea {
  * Display of buttons on the site.
  *
  */
-/* Placholders, variables and mixins related to this document only.
+/* Placeholders, variables and mixins related to this document only. @todo cleanup.
+================================================================================================================== */
+/* Styles.
 ================================================================================================================== */
 .button {
-  display: inline-block;
-  font-size: 125%;
-  padding: .5em 1.5em;
   position: relative;
+  border: 1px solid #17858c;
+  display: inline-block;
+  padding: .5em 1.5em;
+  background-color: #17858c;
+  color: #fff;
   cursor: pointer;
+  font-size: 125%;
   text-align: center;
   vertical-align: middle;
+  text-shadow: 0.025em 0.025em 0.1em #105b60;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   border-radius: 5px; }
   .button:focus, .button:hover, .button:active {
     text-decoration: none; }
-
-/* Styles.
-================================================================================================================== */
-.button {
-  background-color: #17858c;
-  border: 1px solid #17858c;
-  color: #fff;
-  text-shadow: 0.025em 0.025em 0.1em #105b60; }
   .button:hover {
     background-color: #17858c; }
 
@@ -1215,6 +1203,7 @@ textarea {
   overflow-y: auto;
   position: fixed;
   left: -20em;
+  top: 0;
   z-index: 99;
   max-width: 90%;
   width: 20em;
@@ -1227,13 +1216,13 @@ textarea {
   box-shadow: -5px 0px 10px rgba(0, 0, 0, 0.25);
   /* States */ }
   .is-visible.nav--mobile {
-    -moz-animation: toggle-nav-open 0.75s ease 1 forwards;
-    -webkit-animation: toggle-nav-open 0.75s ease 1 forwards;
-    animation: toggle-nav-open 0.75s ease 1 forwards; }
+    -moz-animation: toggle-nav-open 0.25s ease 1 forwards;
+    -webkit-animation: toggle-nav-open 0.25s ease 1 forwards;
+    animation: toggle-nav-open 0.25s ease 1 forwards; }
   .is-hidden.nav--mobile {
-    -moz-animation: toggle-nav-close 0.75s ease 1 forwards;
-    -webkit-animation: toggle-nav-close 0.75s ease 1 forwards;
-    animation: toggle-nav-close 0.75s ease 1 forwards; }
+    -moz-animation: toggle-nav-close 0.25s ease 1 forwards;
+    -webkit-animation: toggle-nav-close 0.25s ease 1 forwards;
+    animation: toggle-nav-close 0.25s ease 1 forwards; }
 
 /* Invisible close element that allows the user to close the menu by clicking outside it */
 .nav--overlay {

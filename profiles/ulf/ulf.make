@@ -66,6 +66,9 @@ projects[libraries][version] = "2.1"
 projects[link][subdir] = "contrib"
 projects[link][version] = "1.2"
 
+projects[mailchimp][subdir] = "contrib"
+projects[mailchimp][version] = "3.4"
+
 projects[mailsystem][subdir] = "contrib"
 projects[mailsystem][version] = "2.34"
 

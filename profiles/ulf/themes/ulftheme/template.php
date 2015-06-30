@@ -2,12 +2,21 @@
 
 /**
  * Implements hook_preprocess_page().
- *
- * Override or insert variables into the page template.
  */
 function ulf_preprocess_page(&$variables) {
   // Provide main menu as block for all pages.
   $variables['main_menu_block'] = module_invoke('system', 'block_view', 'main-menu');
+}
+
+
+/**
+ * Implements hook_preprocess_front_page().
+ *
+ * An override of the panels page used on front page.
+ */
+function ulf_preprocess_front_page(&$variables) {
+  // Provide main menu as block for all pages.
+  $variables['newsletter_block'] = module_invoke('mailchimp_signup', 'block_view', 'signup_to_newsletter');
 }
 
 
@@ -107,13 +116,6 @@ function ulf_preprocess_node(&$variables) {
     $variables['profile_city'] = $author_wrapper->field_profile_city->value();
     $variables['profile_phone'] = $author_wrapper->field_profile_phone->value();
   }
-}
-
-/**
- * Implements hook_preprocess_block().
- */
-function ulf_preprocess_block(&$variables) {
-  $a = 1;
 }
 
 

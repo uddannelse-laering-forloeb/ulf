@@ -7,10 +7,6 @@
  */
 
 
-/* Placholders, variables and mixins related to this document only.
-================================================================================================================== */
-
-
 /* Styles.
 ================================================================================================================== */
 
@@ -43,7 +39,7 @@
     padding: 0 $spacing / 2;
   }
 
-  // Content elements in footer.
+  // Content elements in footer is editable by editors. We set some defaults.
 
   hr {
     border-color: $white;

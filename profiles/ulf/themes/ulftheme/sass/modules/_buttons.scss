@@ -7,18 +7,28 @@
  */
 
 
-/* Placholders, variables and mixins related to this document only.
+/* Placeholders, variables and mixins related to this document only. @todo cleanup.
 ================================================================================================================== */
 
-%button {
-  display: inline-block;
-  font-size: 125%;
-  padding: .5em 1.5em;
+
+/* Styles.
+================================================================================================================== */
+
+.button {
   position: relative;
 
+  border: 1px solid $dark-blue;
+  display: inline-block;
+  padding: .5em 1.5em;
+
+  background-color: $dark-blue;
+  color: $white;
   cursor: pointer;
+  font-size: 125%;
   text-align: center;
   vertical-align: middle;
+
+  @include text-shadow(.025em .025em .1em darken($dark-blue, 10%));
 
   &:focus,
   &:hover,
@@ -26,23 +36,9 @@
     text-decoration: none;
   }
 
-  @include border-radius($border-radius);
-}
-
-
-/* Styles.
-================================================================================================================== */
-
-.button {
-  @extend %button;
-
-  background-color: $dark-blue;
-  border: 1px solid $dark-blue;
-  color: $white;
-
-  @include text-shadow(.025em .025em .1em darken($dark-blue, 10%));
-
   &:hover {
     background-color: $dark-blue;
   }
+
+  @include border-radius($border-radius);
 }

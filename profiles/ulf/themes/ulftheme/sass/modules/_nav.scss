@@ -7,13 +7,14 @@
  */
 
 
-/* Placholders, variables and mixins related to this document only.
+/* Placeholders, variables and mixins related to this document only.
 ================================================================================================================== */
 
 %nav--list-item {
   display: inline-block;
   height: 100%;
 }
+
 
 %nav--list-link {
   display: block;
@@ -86,12 +87,11 @@
  *  ================================================================================================================== */
 
 .nav--mobile {
+  // Itk component.
   @extend %itk--menu;
 
-  top: 0;
-
-  & .nav--list-dropdown-item,
-  & .nav--list-item {
+  .nav--list-dropdown-item,
+  .nav--list-item {
     border-bottom: 1px solid $white;
     display: block;
     width: 100%;
@@ -101,8 +101,8 @@
     }
   }
 
-  & .nav--list-dropdown-link:hover,
-  & .nav--list-link:hover {
+  .nav--list-dropdown-link:hover,
+  .nav--list-link:hover {
     background: none;
   }
 }

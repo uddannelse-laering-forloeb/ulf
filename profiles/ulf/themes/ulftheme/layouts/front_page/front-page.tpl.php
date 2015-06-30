@@ -44,6 +44,11 @@
       <div class="layout-element-gamma">
         <div class="layout-element-gamma-inner">
           <?php print $content['gamma']; ?>
+          <?php if(!empty ($newsletter_block)) : ?>
+            <div class="block--newsletter">
+              <?php print render($newsletter_block['content']); ?>
+            </div>
+          <?php endif;?>
         </div>
       </div>
     <?php endif;?>

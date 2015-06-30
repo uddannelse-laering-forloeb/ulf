@@ -7,7 +7,7 @@
  */
 
 
-/* Placholders, variables and mixins related to this document only.
+/* Placeholders, variables and mixins related to this document only.
 ================================================================================================================== */
 
 %layout--element-inner {
@@ -49,6 +49,7 @@ body {
 
 // Frontpage and profile layout.
 
+.layout-node,
 .layout-frontpage,
 .layout-profile {
   .layout-element-alpha {
@@ -66,29 +67,6 @@ body {
   .layout-element-alpha,
   .layout-element-beta,
   .layout-element-gamma {
-    &-inner {
-      @extend %layout--element-inner;
-    }
-  }
-}
-
-
-// Default layout
-
-.layout-node {
-  .layout-element-alpha {
-
-  }
-
-  .layout-element-beta {
-    background: $gray-lightest;
-  }
-
-  .layout-element-gamma {
-    background: $gray-lighter;
-  }
-
-  .layout-element-alpha {
     &-inner {
       @extend %layout--element-inner;
     }
