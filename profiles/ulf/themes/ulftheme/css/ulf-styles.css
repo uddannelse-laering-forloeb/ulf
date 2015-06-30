@@ -641,9 +641,13 @@ body {
   .footer th {
     padding: .5em 1em; }
   .footer--eu-compliance {
-    height: 80px;
+    height: 150px;
+    padding: 7.5px;
     margin: 0 auto;
     max-width: 1000px; }
+    @media only screen and (min-width: 45em) {
+      .footer--eu-compliance {
+        height: 80px; } }
   .footer--eu-compliance-inner {
     position: relative;
     top: 50%;
@@ -662,9 +666,15 @@ body {
   .footer--eu-compliance-text {
     color: #fff;
     text-align: left;
-    width: 50%; }
+    width: 100%; }
+    @media only screen and (min-width: 45em) {
+      .footer--eu-compliance-text {
+        width: 50%; } }
   .footer--eu-compliance-buttons {
-    width: 30%; }
+    width: 100%; }
+    @media only screen and (min-width: 45em) {
+      .footer--eu-compliance-buttons {
+        width: 30%; } }
 
 /**
  *

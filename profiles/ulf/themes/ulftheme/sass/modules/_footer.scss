@@ -68,9 +68,14 @@
   }
 
   &--eu-compliance {
-    height: 80px;
+    height: 150px;
+    padding: $spacing / 2;
     margin: 0 auto;
     max-width: $layout-max-width;
+
+    @include breakpoint(45em) {
+      height: 80px;
+    }
   }
 
 
@@ -88,10 +93,19 @@
   &--eu-compliance-text {
     color: $white;
     text-align: left;
-    width: 50%;
+    width: 100%;
+
+    @include breakpoint(45em) {
+      width: 50%;
+    }
+
   }
 
   &--eu-compliance-buttons {
-    width: 30%;
+    width: 100%;
+
+    @include breakpoint(45em) {
+      width: 30%;
+    }
   }
 }
