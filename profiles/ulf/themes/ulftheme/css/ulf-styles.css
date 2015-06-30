@@ -645,6 +645,31 @@ body {
   .footer td,
   .footer th {
     padding: .5em 1em; }
+  .footer--eu-compliance {
+    height: 80px;
+    margin: 0 auto;
+    max-width: 1000px; }
+  .footer--eu-compliance-inner {
+    position: relative;
+    top: 50%;
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-flex-direction: row;
+    flex-direction: row; }
+  .footer--eu-compliance-text {
+    color: #fff;
+    text-align: left;
+    width: 50%; }
+  .footer--eu-compliance-buttons {
+    width: 30%; }
 
 /**
  *
@@ -816,8 +841,9 @@ textarea {
     .teaser--group {
       margin-bottom: 0;
       width: 33.33%; } }
-  .teaser--group.is-course {
-    width: 50%; }
+  @media only screen and (min-width: 650px) {
+    .teaser--group.is-course {
+      width: 50%; } }
   .teaser--group-inner:link {
     color: #fff;
     text-decoration: none; }
@@ -1000,6 +1026,35 @@ textarea {
   max-width: 1000px;
   margin: 0 auto; }
 
+.block--newsletter {
+  display: -webkit-flex;
+  display: flex;
+  width: 100%; }
+  @media only screen and (min-width: 650px) {
+    .block--newsletter {
+      width: 50%; } }
+  .block--newsletter-inner {
+    box-sizing: border-box;
+    margin: 0 7.5px;
+    position: relative;
+    width: 100%;
+    background: #f2f2f2; }
+  .block--newsletter-header {
+    padding: 15px; }
+  .block--newsletter form {
+    width: 100%; }
+    @media only screen and (min-width: 850px) {
+      .block--newsletter form {
+        position: absolute;
+        top: 50%;
+        -moz-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%); } }
+  .block--newsletter .form-submit,
+  .block--newsletter .form-item {
+    margin: 15px; }
+
 /**
  *
  * Nav module.
@@ -1125,6 +1180,7 @@ textarea {
  */
 /* Placholders, variables and mixins related to this document only.
 ================================================================================================================== */
+.form-submit,
 .button {
   display: inline-block;
   font-size: 125%;
@@ -1132,20 +1188,22 @@ textarea {
   position: relative;
   cursor: pointer;
   text-align: center;
-  vertical-align: middle;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  border-radius: 5px; }
-  .button:focus, .button:hover, .button:active {
+  vertical-align: middle; }
+  .form-submit:focus,
+  .button:focus, .form-submit:hover,
+  .button:hover, .form-submit:active,
+  .button:active {
     text-decoration: none; }
 
 /* Styles.
 ================================================================================================================== */
+.form-submit,
 .button {
   background-color: #17858c;
   border: 1px solid #17858c;
   color: #fff;
   text-shadow: 0.025em 0.025em 0.1em #105b60; }
+  .form-submit:hover,
   .button:hover {
     background-color: #17858c; }
 

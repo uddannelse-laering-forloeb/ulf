@@ -34,7 +34,9 @@
   }
 
   &.is-course {
-    width: 50%;
+    @include breakpoint(650px) {
+      width: 50%;
+    }
   }
 
   &-inner {

@@ -54,3 +54,11 @@
 @mixin breakpoint($breakpoint) {
   @media only screen and (min-width: $breakpoint) { @content; }
 }
+
+
+// Center a html elememt vertically ()
+@mixin vertical-center() {
+  top: 50%;
+
+  @include transform(translateY(-50%));
+}

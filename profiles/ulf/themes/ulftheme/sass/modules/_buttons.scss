@@ -25,14 +25,13 @@
   &:active {
     text-decoration: none;
   }
-
-  @include border-radius($border-radius);
 }
 
 
 /* Styles.
 ================================================================================================================== */
 
+.form-submit,
 .button {
   @extend %button;
 

@@ -51,3 +51,41 @@ function ulf_base_image_default_styles() {
 
   return $styles;
 }
+
+/**
+ * Implements hook_default_mailchimp_signup().
+ */
+function ulf_base_default_mailchimp_signup() {
+  $items = array();
+  $items['signup_to_newsletter'] = entity_import('mailchimp_signup', '{
+    "name" : "signup_to_newsletter",
+    "mc_lists" : { "bd5595991a" : "bd5595991a" },
+    "mode" : "3",
+    "title" : "Signup to newsletter",
+    "settings" : {
+      "path" : "newsletter\\/signup",
+      "submit_button" : "Indsend",
+      "confirmation_message" : "Du er nu oprettet som abonnent.",
+      "destination" : "",
+      "mergefields" : { "EMAIL" : {
+          "name" : "Emailadresse",
+          "req" : true,
+          "field_type" : "email",
+          "public" : true,
+          "show" : true,
+          "order" : "1",
+          "default" : "",
+          "helptext" : "",
+          "size" : "25",
+          "tag" : "EMAIL",
+          "id" : 0
+        }
+      },
+      "description" : "",
+      "doublein" : 0,
+      "send_welcome" : 0,
+      "include_interest_groups" : 0
+    }
+  }');
+  return $items;
+}

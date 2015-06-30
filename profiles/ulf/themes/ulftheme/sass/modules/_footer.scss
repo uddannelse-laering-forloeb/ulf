@@ -70,4 +70,32 @@
   th {
     padding: .5em 1em;
   }
+
+  &--eu-compliance {
+    height: 80px;
+    margin: 0 auto;
+    max-width: $layout-max-width;
+  }
+
+
+  &--eu-compliance-inner {
+    position: relative;
+
+    @include vertical-center();
+
+    @include display-flex;
+    @include justify-content(space-between);
+    @include flex-wrap(wrap);
+    @include flex-direction(row);
+  }
+
+  &--eu-compliance-text {
+    color: $white;
+    text-align: left;
+    width: 50%;
+  }
+
+  &--eu-compliance-buttons {
+    width: 30%;
+  }
 }
