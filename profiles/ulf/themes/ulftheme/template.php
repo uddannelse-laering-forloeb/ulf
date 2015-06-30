@@ -10,9 +10,7 @@ function ulf_preprocess_page(&$variables) {
 
 
 /**
- * Implements hook_preprocess_front_page().
- *
- * An override of the panels page used on front page.
+ * Implements hook_preprocess_layout().
  */
 function ulf_preprocess_front_page(&$variables) {
   // Provide main menu as block for all pages.

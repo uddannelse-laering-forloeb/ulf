@@ -46,7 +46,10 @@
           <?php print $content['gamma']; ?>
           <?php if(!empty ($newsletter_block)) : ?>
             <div class="block--newsletter">
-              <?php print render($newsletter_block['content']); ?>
+              <div class="block--newsletter-inner">
+                <h2 class="block--newsletter-header"><?php print t('Newsletter signup'); ?></h2>
+                <?php print render($newsletter_block['content']); ?>
+              </div>
             </div>
           <?php endif;?>
         </div>

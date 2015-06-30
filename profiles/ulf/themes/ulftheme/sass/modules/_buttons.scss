@@ -14,7 +14,7 @@
 /* Styles.
 ================================================================================================================== */
 
-.button {
+%button {
   position: relative;
 
   border: 1px solid $dark-blue;
@@ -26,7 +26,6 @@
   cursor: pointer;
   font-size: 125%;
   text-align: center;
-  vertical-align: middle;
 
   @include text-shadow(.025em .025em .1em darken($dark-blue, 10%));
 
@@ -35,6 +34,21 @@
   &:active {
     text-decoration: none;
   }
+}
+
+
+/* Styles.
+================================================================================================================== */
+
+.form-submit,
+.button {
+  @extend %button;
+
+  background-color: $dark-blue;
+  border: 1px solid $dark-blue;
+  color: $white;
+
+  @include text-shadow(.025em .025em .1em darken($dark-blue, 10%));
 
   &:hover {
     background-color: $dark-blue;

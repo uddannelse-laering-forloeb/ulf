@@ -34,7 +34,7 @@ function ulf_footer_default_fe_block_settings() {
         'weight' => -13,
       ),
     ),
-    'title' => 'Footer one',
+    'title' => '',
     'visibility' => 0,
   );
 
@@ -60,7 +60,7 @@ function ulf_footer_default_fe_block_settings() {
         'weight' => -11,
       ),
     ),
-    'title' => 'Footer three',
+    'title' => '',
     'visibility' => 0,
   );
 
@@ -86,7 +86,7 @@ function ulf_footer_default_fe_block_settings() {
         'weight' => -12,
       ),
     ),
-    'title' => 'Footer two',
+    'title' => 'Quick links',
     'visibility' => 0,
   );
 

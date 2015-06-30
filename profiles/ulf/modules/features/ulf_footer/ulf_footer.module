@@ -1,5 +1,7 @@
 <?php
 /**
  * @file
- * Drupal needs this blank file.
+ * Code for the Ulf footer feature.
  */
+
+include_once 'ulf_footer.features.inc';
