@@ -24,11 +24,11 @@
 .block--header {
   font-weight: bold;
   margin: 0;
-  padding: $spacing;
+  padding: $spacing $spacing 0;
 }
 
 .block--content {
-  padding: 0 $spacing $spacing;
+  padding: $spacing;
 }
 
 
@@ -65,7 +65,6 @@
 
 .block--field-logo {
   text-align: center;
-  padding: $spacing * 2 $spacing 0 $spacing;
 }
 
 .block--list-item {
@@ -90,7 +89,6 @@
   @extend %block;
 
   background: $light-blue;
-  margin-bottom: $spacing;
 
   a {
     @include strip-link-styles($link-color, underline);
@@ -101,18 +99,22 @@
 .block--default {
   @extend %block;
 
+  background: $gray-lighter;
   max-width: $layout-max-width;
-  margin: 0 auto;
 }
 
 
 .block--newsletter {
   @include display-flex;
+
   width: 100%;
 
-  @include breakpoint(650px){
-    width: 50%;
-  };
+  // Use a breakpoint on frontpage.
+  &.is-front {
+    @include breakpoint(650px){
+      width: 50%;
+    };
+  }
 
   &-inner {
     box-sizing: border-box;

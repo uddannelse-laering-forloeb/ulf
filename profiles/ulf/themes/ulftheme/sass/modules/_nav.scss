@@ -11,8 +11,10 @@
 ================================================================================================================== */
 
 %nav--list-item {
+  position: relative;
   display: inline-block;
   height: 100%;
+  vertical-align: top;
 }
 
 
@@ -29,10 +31,16 @@
 
 
 /* Styles
-   ========================================================================== */
+========================================================================== */
 
 .nav {
+  display: none;
   background: $gray-darkest;
+
+
+  @include breakpoint(45em) {
+    display: block;
+  }
 
   &--inner {
     box-sizing: border-box;
@@ -78,13 +86,29 @@
       @include background-set-color('yellow', $transparency: 1);
     }
   }
+
+  &--sub {
+
+    @include breakpoint(45em) {
+      position: absolute;
+
+      z-index: 1;
+      right: 0;
+
+      background: $gray-dark;
+
+      &.is-hidden {
+        display: none;
+      }
+    }
+  }
 }
 
 
 /* Mobile navigation
  *
  * Nesting once for all list items on mobile device.
- *  ================================================================================================================== */
+================================================================================================================== */
 
 .nav--mobile {
   // Itk component.
@@ -93,12 +117,15 @@
   .nav--list-dropdown-item,
   .nav--list-item {
     border-bottom: 1px solid $white;
-    display: block;
     width: 100%;
 
     &:last-child {
       border-bottom: 0;
     }
+  }
+
+  .nav--list-link {
+    display: inline;
   }
 
   .nav--list-dropdown-link:hover,
@@ -109,4 +136,80 @@
 
 .nav--overlay {
   @extend %itk--menu-nav-overlay;
+}
+
+
+
+/* Static pages menu
+ *
+ * Static pages menu displayed in main menu sub, mobile menu and on node pages.
+================================================================================================================== */
+
+.nav {
+  & .nav--static-pages {
+    box-sizing: border-box;
+    min-width: 0;
+
+    @include breakpoint(45em) {
+      min-width: 200px;
+    }
+  }
+
+  & .nav--static-pages-item {
+
+    a {
+      @include strip-link-styles($white);
+      border-top: 1px solid $white;
+      display: block;
+      padding: 1em;
+
+      &:hover {
+        background: $gray;
+      }
+
+      &.active {
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+.nav--mobile {
+  & .nav--static-pages-item {
+    border-top: 1px solid $white;
+    padding: 1em;
+
+    a {
+      @include strip-link-styles($white);
+
+      display: inline;
+      margin-left: 1em;
+
+      &.active {
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+
+.nav--static-pages.is-node {
+  display: block;
+
+  & .nav--static-pages-item {
+    border-bottom: 1px solid $white;
+    padding: 1em 0;
+
+    &:last-child {
+      border-bottom: 0;
+    }
+
+    a {
+      @include strip-link-styles($dark-blue);
+
+      &.active {
+        font-weight: bold;
+      }
+    }
+  }
 }
