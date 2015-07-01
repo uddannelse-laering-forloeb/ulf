@@ -45,13 +45,13 @@ function ulf_menu_link__main_menu($variables){
 
   // Set type of link based on title of link.
   switch ($element['#title']) {
-    case 'Daycare':
+    case 'Dagtilbud':
       $element['#localized_options']['attributes']['class'][] = 'is-daycare';
       break;
-    case 'School':
+    case 'Grundskole':
       $element['#localized_options']['attributes']['class'][] = 'is-school';
       break;
-    case 'Youth':
+    case 'Ungdomsuddannelse':
       $element['#localized_options']['attributes']['class'][] = 'is-youth';
       break;
     case 'Courses':
