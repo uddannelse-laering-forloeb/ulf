@@ -97,18 +97,16 @@
           ?>
         </div>
         <div class="content--meta">
-          <?php if($static_page_menu) : ?>
-            <div class="block--default">
-              <h2 class="block--header">
-                <?php print t('More info'); ?>
-              </h2>
-              <div class="block--content">
-                <div class="block--field-text">
+          <div class="block--default">
+            <h2 class="block--header">
+              <?php print t('News'); ?>
+            </h2>
+            <div class="block--content">
+              <div class="block--field-text">
 
-                </div>
               </div>
             </div>
-          <?php endif; ?>
+          </div>
           <?php if($newsletter_block) : ?>
             <div class="block--light">
               <h2 class="block--header">
