@@ -22,7 +22,7 @@ function ulf_news_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Frontpage news';
+  $handler->display->display_options['title'] = 'Nyheder';
   $handler->display->display_options['css_class'] = 'block-module--content';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['use_more_text'] = 'mere';
@@ -77,7 +77,7 @@ function ulf_news_views_default_views() {
   $handler->display->display_options['fields']['view_node']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['view_node']['element_wrapper_type'] = '0';
   $handler->display->display_options['fields']['view_node']['element_default_classes'] = FALSE;
-  $handler->display->display_options['fields']['view_node']['text'] = 'Read the news';
+  $handler->display->display_options['fields']['view_node']['text'] = 'Læs nyheden';
   /* Sorteringskriterie: Indhold: Oprettelsesdato */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
@@ -102,7 +102,7 @@ function ulf_news_views_default_views() {
   $handler = $view->new_display('panel_pane', 'Content pane', 'panel_pane_1');
   $translatables['frontpage_news'] = array(
     t('Master'),
-    t('Frontpage news'),
+    t('Nyheder'),
     t('mere'),
     t('Udfør'),
     t('Gendan'),
@@ -110,7 +110,7 @@ function ulf_news_views_default_views() {
     t('Stigende'),
     t('Faldende'),
     t('Ingen nyheder'),
-    t('Read the news'),
+    t('Læs nyheden'),
     t('Content pane'),
     t('View panes'),
   );
