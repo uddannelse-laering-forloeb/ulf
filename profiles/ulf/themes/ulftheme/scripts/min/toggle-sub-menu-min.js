@@ -1,0 +1,1 @@
+!function($){function s(){var s=$(".js-about-menu");$(".js-toggle-about").hover(function(){s.hasClass("is-visible")?(s.addClass("is-hidden"),s.removeClass("is-visible")):(s.removeClass("is-hidden"),s.addClass("is-visible"))})}$(document).ready(function(){s()})}(jQuery);

@@ -13,7 +13,7 @@ function ulf_preprocess_page(&$variables) {
  * Implements hook_preprocess_layout().
  */
 function ulf_preprocess_front_page(&$variables) {
-  // Provide main menu as block for all pages.
+  // Provide newsletter block for front page.
   $variables['newsletter_block'] = module_invoke('mailchimp_signup', 'block_view', 'signup_to_newsletter');
 }
 
@@ -25,6 +25,15 @@ function ulf_menu_tree__main_menu ($variables) {
   // Strip default main menu tree of wrappers.
   return $variables['tree'];
 }
+
+/**
+ * Implements theme_menu_tree().
+ */
+function ulf_menu_tree__menu_about_ulf ($variables) {
+  // Strip default main menu tree of wrappers.
+  return $variables['tree'];
+}
+
 
 
 /**
@@ -48,34 +57,18 @@ function ulf_menu_link__main_menu($variables){
     case 'Courses':
       $element['#localized_options']['attributes']['class'][] = 'is-course';
       break;
+    case 'Om ULF':
+      $menu_array = module_invoke('menu', 'block_view', 'menu-about-ulf');
+      $element['#attributes']['class'][] = 'js-toggle-about';
+      $sub_menu = '<div class="nav--sub js-about-menu is-hidden"><ul class="nav--static-pages is-menu">' . render($menu_array['content']) . '</ul></div>';
+      break;
   }
 
-  // Sub item exist (Element is parent).
-  if (!empty($variables['element']['#below'])) {
-    $element['#attributes']['class'] = 'nav--list-dropdown-item';
-    $sub_menu = '<div class="nav--dropdown-item">' . drupal_render($element['#below']) . '</div>';
-    $element['#localized_options']['attributes']['class'][] = 'nav--list-dropdown-link';
-    if ($element['#href'] == '<front>') {
-      $element['#localized_options']['external'] = TRUE;
-      $element['#href'] = '#';
-    }
-    $output = l($element['#title'], $element['#href'], $element['#localized_options']);
-  }
+  $element['#attributes']['class'][] = 'nav--list-item';
+  $element['#localized_options']['attributes']['class'][] = 'nav--list-link';
+  $output = l($element['#title'], $element['#href'], $element['#localized_options']);
 
-  // Element has parent.
-  elseif ($element['#original_link']['plid'] > 0) {
-    $element['#localized_options']['attributes']['class'][] = 'nav--dropdown-link';
-    $output = l($element['#title'], $element['#href'], $element['#localized_options']);
-    return $output;
-  }
-
-  // Default main menu link, not parent and not child.
-  else {
-    $element['#attributes']['class'] = 'nav--list-item';
-    $element['#localized_options']['attributes']['class'][] = 'nav--list-link';
-    $output = l($element['#title'], $element['#href'], $element['#localized_options']);
-  }
-  return "<li" . drupal_attributes($element['#attributes']) . ">" . $output . $sub_menu . "</li>\n";
+  return "<li" . drupal_attributes($element['#attributes']) . ">" . $output . $sub_menu . "</li>" ;
 }
 
 
@@ -113,6 +106,14 @@ function ulf_preprocess_node(&$variables) {
     $variables['profile_postal_code'] = $author_wrapper->field_profile_postal_code->value();
     $variables['profile_city'] = $author_wrapper->field_profile_city->value();
     $variables['profile_phone'] = $author_wrapper->field_profile_phone->value();
+  }
+
+  if ($variables['type'] == 'static_page') {
+    // Provide menu block for static page nodes.
+    $variables['static_page_menu'] = module_invoke('menu', 'block_view', 'menu-about-ulf');
+
+    // Provide newsletter block for static pages.
+    $variables['newsletter_block'] = module_invoke('mailchimp_signup', 'block_view', 'signup_to_newsletter');
   }
 }
 
@@ -180,24 +181,6 @@ function ulf_panels_default_style_render_region($variables) {
 
 
 /**
- * Implements theme_username().
- */
-function ulf_username($variables) {
-  if(!empty($variables['uid'])) {
-    $user = user_load($variables['uid']);
-    $data = field_get_items('user', $user, 'field_profile_name');
-    $profile_name = field_view_value('user', $user, 'field_profile_name', $data['0']);
-    if (!empty($data)) {
-      return '<a href="/user/' . $variables['uid'] . '"> '. $profile_name['#markup']  .'</a>';
-    }
-    else {
-      return '<a href="/user/' . $variables['uid'] . '"> '. $variables['name']  .'</a>';
-    }
-  }
-}
-
-
-/**
  * Implements theme_links().
  */
 function ulf_links__system_main_menu($variables) {
@@ -211,91 +194,17 @@ function ulf_links__system_main_menu($variables) {
   return $html;
 }
 
-
 /**
- * Implements theme_links_mobile().
+ * Implements theme_links().
  */
-function ulf_links__system_main_menu_mobile($variables) {
-  $html = '';
+function ulf_menu_link__menu_about_ulf($variables) {
+  $element = $variables ['element'];
+  $sub_menu = '';
+  $element['#attributes']['class'] = 'nav--static-pages-item';
 
-  foreach ($variables['links'] as $link) {
-    // The \n after the <li> tag is important when using display: inline-block.
-    $html .= '<li class="nav--mobile-link">' . l($link['title'], $link['href'], $link) . '</li>' . "\n";
+  if ($element ['#below']) {
+    $sub_menu = drupal_render($element ['#below']);
   }
-
-  return $html;
-}
-
-
-/**
- * Implements template_item_list().
- */
-function ulf_item_list($variables) {
-  $items = $variables['items'];
-  $title = $variables['title'];
-  $type = $variables['type'];
-  $attributes = $variables['attributes'];
-
-  // Only output the list container and title, if there are any list items.
-  // Check to see whether the block title exists before adding a header.
-  // Empty headers are not semantic and present accessibility challenges.
-  $output = '<div class="item-list">';
-  if (isset($title) && $title !== '') {
-    $output .= '<h3>' . $title . '</h3>';
-  }
-
-  if (!empty($items)) {
-    // We break in and take control of the default item list rendering.
-    if(!empty($variables['attributes'])) {
-      if (!empty($variables['attributes']['id'])) {
-        if (strpos($variables['attributes']['id'], 'facetapi') !== FALSE) {
-          $attributes['class'][] = 'search-module--facet-selection';
-          $list_item_class = 'search-facets--item';
-        }
-      }
-    }
-    $output .= '<' . $type . drupal_attributes($attributes) . '>';
-    $num_items = count($items);
-    $i = 0;
-    foreach ($items as $item) {
-      $attributes = array();
-      $children = array();
-      $data = '';
-      $i++;
-      if (is_array($item)) {
-        foreach ($item as $key => $value) {
-          if ($key == 'data') {
-            $data = $value;
-          }
-          elseif ($key == 'children') {
-            $children = $value;
-          }
-          else {
-            $attributes[$key] = $value;
-          }
-        }
-      }
-      else {
-        $data = $item;
-      }
-      if (count($children) > 0) {
-        // Render nested list.
-        $data .= theme_item_list(array('items' => $children, 'title' => NULL, 'type' => $type, 'attributes' => $attributes));
-      }
-      if ($i == 1) {
-        $attributes['class'][] = 'first';
-      }
-      if ($i == $num_items) {
-        $attributes['class'][] = 'last';
-      }
-      if (!empty($list_item_class)) {
-        $attributes['class'][] = $list_item_class;
-      }
-
-      $output .= '<li' . drupal_attributes($attributes) . '>' . $data . "</li>\n";
-    }
-    $output .= '</' . $type . '>';
-  }
-  $output .= '</div>';
-  return $output;
+  $output = l($element ['#title'], $element ['#href'], $element ['#localized_options']);
+  return '<li' . drupal_attributes($element ['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
 }

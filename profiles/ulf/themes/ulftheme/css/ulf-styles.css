@@ -336,6 +336,13 @@ img {
   max-width: 100%;
   vertical-align: bottom; }
 
+/* List
+   ================================================================================================================== */
+ul {
+  padding: 0;
+  list-style-type: none;
+  margin: 0; }
+
 /**
  * Contains global placeholders for use across the site
  */
@@ -953,10 +960,10 @@ textarea {
 .block--header {
   font-weight: bold;
   margin: 0;
-  padding: 15px; }
+  padding: 15px 15px 0; }
 
 .block--content {
-  padding: 0 15px 15px; }
+  padding: 15px; }
 
 .block--field-wrapper {
   border-bottom: 1px solid #fff;
@@ -984,8 +991,7 @@ textarea {
   margin-bottom: 7.5px; }
 
 .block--field-logo {
-  text-align: center;
-  padding: 30px 15px 0 15px; }
+  text-align: center; }
 
 .block--list-item {
   display: block; }
@@ -1008,8 +1014,7 @@ textarea {
     text-decoration: underline; }
 
 .block--light {
-  background: #deeced;
-  margin-bottom: 15px; }
+  background: #deeced; }
   .block--light a:link {
     color: #17858c;
     text-decoration: underline; }
@@ -1024,15 +1029,15 @@ textarea {
     text-decoration: underline; }
 
 .block--default {
-  max-width: 1000px;
-  margin: 0 auto; }
+  background: #e6e6e6;
+  max-width: 1000px; }
 
 .block--newsletter {
   display: -webkit-flex;
   display: flex;
   width: 100%; }
   @media only screen and (min-width: 650px) {
-    .block--newsletter {
+    .block--newsletter.is-front {
       width: 50%; } }
   .block--newsletter-inner {
     box-sizing: border-box;
@@ -1066,8 +1071,10 @@ textarea {
 /* Placeholders, variables and mixins related to this document only.
 ================================================================================================================== */
 .nav--list-dropdown-item, .nav--list-item {
+  position: relative;
   display: inline-block;
-  height: 100%; }
+  height: 100%;
+  vertical-align: top; }
 
 .nav--list-dropdown-link, .nav--list-link {
   display: block;
@@ -1090,9 +1097,13 @@ textarea {
     text-decoration: none; }
 
 /* Styles
-   ========================================================================== */
+========================================================================== */
 .nav {
+  display: none;
   background: #4d4d4d; }
+  @media only screen and (min-width: 45em) {
+    .nav {
+      display: block; } }
   .nav--inner {
     box-sizing: border-box;
     height: 40px;
@@ -1114,22 +1125,105 @@ textarea {
     background: #ff6800; }
   .nav--list-dropdown-link.is-course:hover, .nav--list-link.is-course:hover {
     background: #edd71c; }
+  @media only screen and (min-width: 45em) {
+    .nav--sub {
+      position: absolute;
+      z-index: 1;
+      right: 0;
+      background: gray; }
+      .nav--sub.is-hidden {
+        display: none; } }
 
 /* Mobile navigation
  *
  * Nesting once for all list items on mobile device.
- *  ================================================================================================================== */
+================================================================================================================== */
 .nav--mobile .nav--list-dropdown-item,
 .nav--mobile .nav--list-item {
   border-bottom: 1px solid #fff;
-  display: block;
   width: 100%; }
   .nav--mobile .nav--list-dropdown-item:last-child,
   .nav--mobile .nav--list-item:last-child {
     border-bottom: 0; }
+.nav--mobile .nav--list-link {
+  display: inline; }
 .nav--mobile .nav--list-dropdown-link:hover,
 .nav--mobile .nav--list-link:hover {
   background: none; }
+
+/* Static pages menu
+ *
+ * Static pages menu displayed in main menu sub, mobile menu and on node pages.
+================================================================================================================== */
+.nav .nav--static-pages {
+  box-sizing: border-box;
+  min-width: 0; }
+  @media only screen and (min-width: 45em) {
+    .nav .nav--static-pages {
+      min-width: 200px; } }
+.nav .nav--static-pages-item a {
+  border-top: 1px solid #fff;
+  display: block;
+  padding: 1em; }
+  .nav .nav--static-pages-item a:link {
+    color: #fff;
+    text-decoration: none; }
+  .nav .nav--static-pages-item a:visited {
+    color: #fff;
+    text-decoration: none; }
+  .nav .nav--static-pages-item a:hover {
+    color: #fff;
+    text-decoration: none; }
+  .nav .nav--static-pages-item a:focus {
+    color: #fff;
+    text-decoration: none; }
+  .nav .nav--static-pages-item a:hover {
+    background: #999999; }
+  .nav .nav--static-pages-item a.active {
+    font-weight: bold; }
+
+.nav--mobile .nav--static-pages-item {
+  border-top: 1px solid #fff;
+  padding: 1em; }
+  .nav--mobile .nav--static-pages-item a {
+    display: inline;
+    margin-left: 1em; }
+    .nav--mobile .nav--static-pages-item a:link {
+      color: #fff;
+      text-decoration: none; }
+    .nav--mobile .nav--static-pages-item a:visited {
+      color: #fff;
+      text-decoration: none; }
+    .nav--mobile .nav--static-pages-item a:hover {
+      color: #fff;
+      text-decoration: none; }
+    .nav--mobile .nav--static-pages-item a:focus {
+      color: #fff;
+      text-decoration: none; }
+    .nav--mobile .nav--static-pages-item a.active {
+      font-weight: bold; }
+
+.nav--static-pages.is-node {
+  display: block; }
+  .nav--static-pages.is-node .nav--static-pages-item {
+    border-bottom: 1px solid #fff;
+    padding: 1em 0; }
+    .nav--static-pages.is-node .nav--static-pages-item:last-child {
+      border-bottom: 0; }
+    .nav--static-pages.is-node .nav--static-pages-item a:link {
+      color: #17858c;
+      text-decoration: none; }
+    .nav--static-pages.is-node .nav--static-pages-item a:visited {
+      color: #17858c;
+      text-decoration: none; }
+    .nav--static-pages.is-node .nav--static-pages-item a:hover {
+      color: #17858c;
+      text-decoration: none; }
+    .nav--static-pages.is-node .nav--static-pages-item a:focus {
+      color: #17858c;
+      text-decoration: none; }
+    .nav--static-pages.is-node .nav--static-pages-item a.active {
+      font-weight: bold; }
 
 /**
  *
