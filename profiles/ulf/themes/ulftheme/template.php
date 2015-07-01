@@ -54,7 +54,7 @@ function ulf_menu_link__main_menu($variables){
     case 'Ungdomsuddannelse':
       $element['#localized_options']['attributes']['class'][] = 'is-youth';
       break;
-    case 'Courses':
+    case 'Kurser':
       $element['#localized_options']['attributes']['class'][] = 'is-course';
       break;
     case 'Om ULF':
@@ -84,17 +84,31 @@ function ulf_preprocess_node(&$variables) {
   // Set default group type.
   $variables['group_type'] = 'course';
 
-  // Add target group variable to template.
-  if($variables['type'] == 'course') {
-    if (!empty($variables['field_target_group'])) {
-      // Get term id from target group field.
-      $term = $variables['field_target_group']['0']['taxonomy_term'];
-      if ($term) {
-        $term_wrapper = entity_metadata_wrapper('taxonomy_term', $term);
-        $variables['group_type'] = strtolower($term_wrapper->name->value());
+  // Provide variables for use in the different templates.
+  switch ($variables['type']) { // Switch on content type.
+    case 'course':
+      if (!empty($variables['field_target_group'])) {
+        // Get term id from target group field.
+        $term = $variables['field_target_group']['0']['taxonomy_term'];
+        if ($term) {
+          $term_wrapper = entity_metadata_wrapper('taxonomy_term', $term);
+          $variables['group_type'] = strtolower($term_wrapper->name->value());
+        }
       }
-    }
+      break;
+    case 'static_page':
+      // Provide menu block for static page nodes.
+      $variables['static_page_menu'] = module_invoke('menu', 'block_view', 'menu-about-ulf');
+
+      // Provide newsletter block for static pages.
+      $variables['newsletter_block'] = module_invoke('mailchimp_signup', 'block_view', 'signup_to_newsletter');
+      break;
+    case 'news':
+      // Provide newsletter block for static pages.
+      $variables['newsletter_block'] = module_invoke('mailchimp_signup', 'block_view', 'signup_to_newsletter');
+      break;
   }
+
 
   // Display author meta data on courses.
   if (($variables['type'] == 'course'|| $variables['type'] == 'course_educators') && $variables['view_mode'] == 'full') {
@@ -106,14 +120,6 @@ function ulf_preprocess_node(&$variables) {
     $variables['profile_postal_code'] = $author_wrapper->field_profile_postal_code->value();
     $variables['profile_city'] = $author_wrapper->field_profile_city->value();
     $variables['profile_phone'] = $author_wrapper->field_profile_phone->value();
-  }
-
-  if ($variables['type'] == 'static_page') {
-    // Provide menu block for static page nodes.
-    $variables['static_page_menu'] = module_invoke('menu', 'block_view', 'menu-about-ulf');
-
-    // Provide newsletter block for static pages.
-    $variables['newsletter_block'] = module_invoke('mailchimp_signup', 'block_view', 'signup_to_newsletter');
   }
 }
 
