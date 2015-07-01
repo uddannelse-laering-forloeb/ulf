@@ -5,7 +5,6 @@
 
 #v1.0.0 - Beta1
 
-__Admin__
 * Added profile display
 * Added courses display
 * Added static pages display
@@ -20,3 +19,4 @@ __Admin__
 * Added styling for courses
 * Added newsletter signup form
 * Added cookies warning
+* Added menu access for editors
