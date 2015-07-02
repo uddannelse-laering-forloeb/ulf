@@ -19,12 +19,6 @@
   @include flex-direction(row);
   @include justify-content(space-between);
 
-  &--header,
-  &--system-block {
-    margin: 0 auto;
-    max-width: $layout-max-width;
-  }
-
   &--image {
     margin-bottom: $spacing * 2;
     min-height: 120px;

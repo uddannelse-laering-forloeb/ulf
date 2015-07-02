@@ -73,8 +73,8 @@
  */
 ?>
 <a class="nav--overlay js-toggle-mobile-nav js-overlay"></a>
-<div class="page-wrapper js-page-wrapper">
-  <div class="page-inner">
+<div class="page--wrapper js-page-wrapper">
+  <div class="page--inner">
     <header class="header" role="banner">
       <div class="header--inner">
         <div class="header--nav-wrapper">
@@ -101,19 +101,30 @@
         <?php endif; ?>
       </ul>
     </nav>
-    <?php print $messages; ?>
-    <?php if ($tabs): ?>
-      <div class="tabs">
-        <?php print render($tabs); ?>
-      </div>
-    <?php endif; ?>
+    <div class="page--messages">
+      <?php print $messages; ?>
+    </div>
 
-    <?php if ($title && !$is_front && !isset($node) && arg(0) != 'user'): ?>
-      <div class="content--header">
+    <?php if ($is_front || isset($node) || (arg(0) == 'user' && is_numeric(arg(1)))) : ?>
+      <?php if ($tabs): ?>
+        <div class="tabs">
+          <?php print render($tabs); ?>
+        </div>
+      <?php endif; ?>
+      <?php print render($page['content']); ?>
+    <?php else: ?>
+      <div class="page--header">
         <h1><?php print $title; ?></h1>
       </div>
+      <div class="page--content">
+        <?php if ($tabs): ?>
+          <div class="tabs">
+            <?php print render($tabs); ?>
+          </div>
+        <?php endif; ?>
+        <?php print render($page['content']); ?>
+      </div>
     <?php endif; ?>
-    <?php print render($page['content']); ?>
     <footer class="footer">
       <div class="footer--inner">
         <?php print render($page['footer']); ?>

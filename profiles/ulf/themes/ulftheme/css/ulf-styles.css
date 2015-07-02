@@ -344,6 +344,76 @@ ul {
   margin: 0; }
 
 /**
+ *
+ * Form module
+ *
+ * Contains styles related to form elements.
+ *
+ */
+/* Styles.
+================================================================================================================== */
+input,
+textarea {
+  font: 14px/1.5 "Asap", sans-serif; }
+
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="datetime"],
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="time"],
+input[type="url"],
+textarea {
+  border: 1px solid #e6e6e6;
+  display: block;
+  min-height: 1.25em;
+  width: 100%;
+  padding: .75em;
+  color: #666666;
+  background-color: #fafafa;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+  input[type="text"]:focus,
+  input[type="password"]:focus,
+  input[type="date"]:focus,
+  input[type="datetime"]:focus,
+  input[type="email"]:focus,
+  input[type="number"]:focus,
+  input[type="search"]:focus,
+  input[type="tel"]:focus,
+  input[type="time"]:focus,
+  input[type="url"]:focus,
+  textarea:focus {
+    border: 1px solid gray;
+    color: #4d4d4d; }
+  input[type="text"][disabled],
+  input[type="password"][disabled],
+  input[type="date"][disabled],
+  input[type="datetime"][disabled],
+  input[type="email"][disabled],
+  input[type="number"][disabled],
+  input[type="search"][disabled],
+  input[type="tel"][disabled],
+  input[type="time"][disabled],
+  input[type="url"][disabled],
+  textarea[disabled] {
+    -moz-box-shadow: 0 0 0;
+    -webkit-box-shadow: 0 0 0;
+    box-shadow: 0 0 0;
+    border: 1px solid #b3b3b3;
+    background-color: #bfbfbf; }
+
+.form-item {
+  padding: 1em 0; }
+
+/**
  * Contains global placeholders for use across the site
  */
 .field--title, .teaser--group-text, .teaser--content-text {
@@ -354,8 +424,6 @@ ul {
   position: absolute;
   width: 100%; }
 
-/* ------- OLD stuff @todo cleanup----------- */
-/* Use this placeholder to center a container */
 /**
  *
  * Global mixins.
@@ -514,13 +582,10 @@ body {
   font: 14px/1.5 "Asap", sans-serif;
   margin: 0 auto; }
 
-.page-wrapper {
-  background: #fff; }
-
 /* Layout
    ================================================================================================================== */
 .layout--element-header {
-  padding: 0 7.5px;
+  padding: 0 8px;
   width: 100%; }
 
 .layout-node .layout-element-alpha,
@@ -566,7 +631,7 @@ body {
     position: relative;
     width: 100%; }
   .header--logo {
-    left: 7.5px;
+    left: 8px;
     max-width: 15em;
     position: absolute;
     top: 50%;
@@ -583,7 +648,7 @@ body {
     padding: 4px;
     position: absolute;
     top: 50%;
-    right: 7.5px;
+    right: 8px;
     -moz-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
     -webkit-transform: translateY(-50%);
@@ -629,7 +694,7 @@ body {
         width: 33%; } }
   .footer--block-inner {
     overflow: hidden;
-    padding: 0 7.5px; }
+    padding: 0 8px; }
   .footer hr {
     border-color: #fff; }
   .footer a:link {
@@ -645,7 +710,7 @@ body {
     color: #fff;
     text-decoration: underline; }
   .footer ul {
-    padding-left: 15px; }
+    padding-left: 16px; }
   .footer ol {
     padding-left: 20px; }
   .footer table {
@@ -656,39 +721,45 @@ body {
     padding: .5em 1em; }
   .footer--eu-compliance {
     height: 150px;
-    padding: 7.5px;
+    padding: 8px;
     margin: 0 auto;
     max-width: 1000px; }
-    @media only screen and (min-width: 45em) {
+    @media only screen and (min-width: 55em) {
       .footer--eu-compliance {
         height: 80px; } }
-  .footer--eu-compliance-inner {
-    position: relative;
-    top: 50%;
-    -moz-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    -webkit-transform: translateY(-50%);
-    transform: translateY(-50%);
-    display: -webkit-flex;
-    display: flex;
-    -webkit-justify-content: space-between;
-    justify-content: space-between;
-    -webkit-flex-wrap: wrap;
-    flex-wrap: wrap;
-    -webkit-flex-direction: row;
-    flex-direction: row; }
-  .footer--eu-compliance-text {
-    color: #fff;
-    text-align: left;
-    width: 100%; }
-    @media only screen and (min-width: 45em) {
-      .footer--eu-compliance-text {
-        width: 50%; } }
-  .footer--eu-compliance-buttons {
-    width: 100%; }
-    @media only screen and (min-width: 45em) {
-      .footer--eu-compliance-buttons {
-        width: 30%; } }
+
+.footer--eu-compliance-inner {
+  position: relative;
+  top: 50%;
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-flex-direction: row;
+  flex-direction: row; }
+
+.footer--eu-compliance-text {
+  color: #fff;
+  text-align: left;
+  width: 100%; }
+  @media only screen and (min-width: 55em) {
+    .footer--eu-compliance-text {
+      width: 50%; } }
+
+.footer--eu-compliance-buttons {
+  width: 100%; }
+  @media only screen and (min-width: 55em) {
+    .footer--eu-compliance-buttons {
+      width: 45%; } }
+  .footer--eu-compliance-buttons .button {
+    margin: 8px;
+    padding: .2em .8em; }
 
 /**
  *
@@ -745,93 +816,23 @@ body {
     .field--tags-item:hover {
       background: #137076; }
   .field--collection-wrapper {
-    margin-bottom: 15px; }
+    margin-bottom: 16px; }
   .field--collection-label {
     color: #fff;
     background: #17858c;
-    padding: 15px; }
+    padding: 16px; }
   .field--collection-content {
     border-left: 1px solid #b3b3b3;
     border-right: 1px solid #b3b3b3; }
   .field--collection-item {
     border-bottom: 1px solid #b3b3b3;
-    padding: 15px; }
+    padding: 16px; }
   .field--collection-description, .field--collection-file, .field--collection-link, .field--collection-litt {
     display: block;
-    margin-bottom: 7.5px;
+    margin-bottom: 8px;
     width: 100%; }
   .field--collection-description {
     font-weight: bold; }
-
-/**
- *
- * Form module
- *
- * Contains styles related to form elements.
- *
- */
-/* Styles.
-================================================================================================================== */
-input,
-textarea {
-  font: 14px/1.5 "Asap", sans-serif; }
-
-input[type="text"],
-input[type="password"],
-input[type="date"],
-input[type="datetime"],
-input[type="email"],
-input[type="number"],
-input[type="search"],
-input[type="tel"],
-input[type="time"],
-input[type="url"],
-textarea {
-  border: 1px solid #e6e6e6;
-  display: block;
-  min-height: 1.25em;
-  width: 100%;
-  padding: .75em;
-  color: #666666;
-  background-color: #fafafa;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  border-radius: 5px;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box; }
-  input[type="text"]:focus,
-  input[type="password"]:focus,
-  input[type="date"]:focus,
-  input[type="datetime"]:focus,
-  input[type="email"]:focus,
-  input[type="number"]:focus,
-  input[type="search"]:focus,
-  input[type="tel"]:focus,
-  input[type="time"]:focus,
-  input[type="url"]:focus,
-  textarea:focus {
-    border: 1px solid gray;
-    color: #4d4d4d; }
-  input[type="text"][disabled],
-  input[type="password"][disabled],
-  input[type="date"][disabled],
-  input[type="datetime"][disabled],
-  input[type="email"][disabled],
-  input[type="number"][disabled],
-  input[type="search"][disabled],
-  input[type="tel"][disabled],
-  input[type="time"][disabled],
-  input[type="url"][disabled],
-  textarea[disabled] {
-    -moz-box-shadow: 0 0 0;
-    -webkit-box-shadow: 0 0 0;
-    box-shadow: 0 0 0;
-    border: 1px solid #b3b3b3;
-    background-color: #bfbfbf; }
-
-.form-type-checkboxes {
-  padding: 1em 0; }
 
 /**
  *
@@ -846,14 +847,14 @@ textarea {
   display: block;
   height: 100%;
   overflow: hidden;
-  margin: 0 7.5px;
+  margin: 0 8px;
   position: relative; }
 
 /* Styles.
 ================================================================================================================== */
 /* Teaser representing a target group. */
 .teaser--group {
-  margin-bottom: 15px;
+  margin-bottom: 16px;
   width: 100%; }
   @media only screen and (min-width: 650px) {
     .teaser--group {
@@ -904,7 +905,7 @@ textarea {
 
 /* Teaser representing a content element. */
 .teaser--content {
-  margin-bottom: 15px;
+  margin-bottom: 16px;
   height: 160px;
   width: 100%; }
   @media only screen and (min-width: 450px) {
@@ -961,7 +962,7 @@ textarea {
 /* Placeholders, variables and mixins related to this document only.
 ================================================================================================================== */
 .block--dark, .block--light, .block--default {
-  margin-bottom: 15px; }
+  margin-bottom: 16px; }
   .block--dark:last-child, .block--light:last-child, .block--default:last-child {
     margin-bottom: 0; }
 
@@ -970,15 +971,15 @@ textarea {
 .block--header {
   font-weight: bold;
   margin: 0;
-  padding: 15px 15px 0; }
+  padding: 16px 16px 0; }
 
 .block--content {
-  padding: 15px; }
+  padding: 16px; }
 
 .block--field-wrapper {
   border-bottom: 1px solid #fff;
-  margin-bottom: 7.5px;
-  padding-bottom: 7.5px; }
+  margin-bottom: 8px;
+  padding-bottom: 8px; }
   .block--field-wrapper:last-child {
     border: 0;
     margin-bottom: 0; }
@@ -995,10 +996,10 @@ textarea {
 
 .block--field-label {
   font-weight: bold;
-  margin-bottom: 3.75px; }
+  margin-bottom: 4px; }
 
 .block--field-text {
-  margin-bottom: 7.5px; }
+  margin-bottom: 8px; }
 
 .block--field-logo {
   text-align: center; }
@@ -1051,12 +1052,12 @@ textarea {
       width: 50%; } }
   .block--newsletter-inner {
     box-sizing: border-box;
-    margin: 0 7.5px;
+    margin: 0 8px;
     position: relative;
     width: 100%;
     background: #f2f2f2; }
   .block--newsletter-header {
-    padding: 15px; }
+    padding: 16px; }
   .block--newsletter form {
     width: 100%; }
     @media only screen and (min-width: 850px) {
@@ -1071,7 +1072,7 @@ textarea {
     display: none; }
   .block--newsletter .form-submit,
   .block--newsletter .form-item {
-    margin: 15px; }
+    margin: 0 16px; }
 
 /**
  *
@@ -1092,7 +1093,7 @@ textarea {
   display: block;
   font-weight: bold;
   line-height: 40px;
-  padding: 0 15px;
+  padding: 0 16px;
   vertical-align: middle;
   text-transform: uppercase; }
   .nav--list-dropdown-link:link, .nav--list-link:link {
@@ -1119,8 +1120,6 @@ textarea {
   .nav--inner {
     box-sizing: border-box;
     height: 40px;
-    padding-left: 7.5px;
-    padding-right: 7.5px;
     margin: 0 auto;
     max-width: 1000px;
     position: relative;
@@ -1247,7 +1246,7 @@ textarea {
 /* Styles
 ================================================================================================================== */
 .content {
-  margin: 0 7.5px;
+  margin: 0 8px;
   width: 100%;
   display: -webkit-flex;
   display: flex;
@@ -1257,11 +1256,8 @@ textarea {
   flex-direction: row;
   -webkit-justify-content: space-between;
   justify-content: space-between; }
-  .content--header, .content--system-block {
-    margin: 0 auto;
-    max-width: 1000px; }
   .content--image {
-    margin-bottom: 30px;
+    margin-bottom: 32px;
     min-height: 120px;
     position: relative;
     width: 100%; }
@@ -1276,7 +1272,7 @@ textarea {
       .content--meta {
         width: 35%; } }
   .content--empty {
-    margin: 0 7.5px; }
+    margin: 0 8px; }
 
 /**
  *
@@ -1321,6 +1317,32 @@ textarea {
   .form-submit:hover,
   .button:hover {
     background-color: #17858c; }
+
+/**
+ *
+ * Page module.
+ *
+ * Contains styles related to default pages.
+ *
+ */
+/* Styles.
+================================================================================================================== */
+.page--wrapper {
+  background: #fff; }
+
+.page--header {
+  padding: 16px 16px 0;
+  margin: 0 auto;
+  max-width: 1000px; }
+
+.page--content {
+  margin: 16px auto 16px;
+  max-width: 1000px;
+  padding: 0 16px; }
+
+.page--messages {
+  margin: auto;
+  max-width: 1000px; }
 
 /**
  *

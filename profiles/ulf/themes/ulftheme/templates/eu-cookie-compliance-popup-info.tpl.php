@@ -22,7 +22,7 @@
       <div class="footer--eu-compliance-text">
         <?php print $message ?>
       </div>
-      <div id="popup-buttons footer--eu-compliance-buttons">
+      <div id="popup-buttons" class="footer--eu-compliance-buttons">
         <button type="button" class="agree-button button"><?php print $agree_button; ?></button>
         <button type="button" class="find-more-button button"><?php print $disagree_button; ?></button>
       </div>
