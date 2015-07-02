@@ -140,6 +140,12 @@
     };
   }
 
+  &.is-front {
+    .form-type-checkboxes {
+      display: none;
+    }
+  }
+
   .form-submit,
   .form-item {
     margin: $spacing;

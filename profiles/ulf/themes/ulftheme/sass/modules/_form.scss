@@ -51,3 +51,7 @@ textarea {
   @include border-radius($border-radius);
   @include box-sizing(border-box);
 }
+
+.form-type-checkboxes {
+  padding: 1em 0;
+}
