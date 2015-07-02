@@ -1,0 +1,85 @@
+<?php
+/**
+ * @file
+ *
+ */
+
+/**
+ * Implements hook_search_api_service_info().
+ */
+function search_api_search_node_search_api_service_info() {
+  return array(
+    'search_api_search_node_service' => array(
+      'name' => t('Search node service'),
+      'description' => t('<p>Index items using search node, for simple searches.</p>'),
+      'class' => 'SearchApiSearchNodeService',
+    )
+  );
+}
+
+function search_api_search_node_form_search_api_admin_add_index_alter(&$form, &$form_state, $form_id) {
+  search_api_search_node_form_search_api_admin_index_edit_alter($form, $form_state, $form_id);
+}
+
+function search_api_search_node_form_search_api_admin_index_edit_alter(&$form, &$form_state, $form_id) {
+  // Get the element to be places inside the array.
+  $form['options']['search_node_indexes'] = array(
+    '#prefix' => '<div id="search-api-search-node-indexes">',
+    '#suffix' => '</div>',
+  );
+
+  // Try to get hold of the current selected server.
+  $servers = search_api_server_load_multiple(FALSE, array('enabled' => 1));
+  $server = NULL;
+  if (isset($form_state['values']['server'])) {
+    $server = $servers[$form_state['values']['server']];
+    $default = $form_state['values']['options']['search_node_indexes'];
+  }
+  else if (!empty($form_state['index'])) {
+    $server = $servers[$form_state['index']->server];
+    $default = $form_state['index']->options['search_node_indexes'];
+  }
+
+  // Check if this is a search node server.
+  if (isset($server) && $server->class == 'search_api_search_node_service') {
+    // Get connection to the client.
+    $client = new SearchNodeClient($server->options['host'], $server->options['apikey']);
+
+    // Authenticate and get indexes..
+    $options = array();
+    $result = $client->authenticate();
+    if ($result['status'] == 200) {
+      $indexes = $client->getIndexes();
+      foreach ($indexes as $index) {
+        $options[$index->index] = $index->name;
+      }
+    }
+
+    $form['options']['search_node_indexes'] += array(
+      '#type' => 'radios',
+      '#title' => t('Search node indexes'),
+      '#description' => t('Select the search node index to use'),
+      '#default_value' => $default,
+      '#options' => $options,
+    );
+  }
+
+  $form['server'] += array(
+    '#ajax' => array(
+      'callback' => 'search_api_search_node_index_ajax_callback',
+      'wrapper' => 'search-api-search-node-indexes',
+    ),
+  );
+
+  $t=1;
+}
+
+/**
+ * AJAX submit callback for search_api_admin_add_index().
+ *
+ * Used for displaying the matching datasource configuration form for the
+ * selected item type.
+ */
+function search_api_search_node_index_ajax_callback(array $form, array &$form_state) {
+  return $form['options']['search_node_indexes'];
+}
