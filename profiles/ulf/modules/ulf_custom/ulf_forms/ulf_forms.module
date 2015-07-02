@@ -10,13 +10,17 @@
  * Modify forms
  */
 function ulf_forms_form_alter(&$form, &$form_state, $form_id) {
+  $form['#attached']['js'] = array();
+  $form['#attached']['js'][] = drupal_get_path('module', 'ulf_forms') . '/js/node-form-logics.js';
+  $form['#attached']['js'][] = drupal_get_path('module', 'ulf_forms') . '/js/jquery.imagesloaded.js';
+  $form['#attached']['js'][] = drupal_get_path('module', 'ulf_forms') . '/js/jquery.imgareaselect.dev.js';
+
   switch ($form_id) {
 
   // Course node form.
   case 'course_node_form':
-    $form['#attached']['js'] = array(
-      drupal_get_path('module', 'ulf_forms') . '/js/node-form-logics.js',
-    );
+
+    $form['#attached']['js'][] = drupal_get_path('module', 'ulf_forms') . '/js/node-form-logics.js';
 
     // User messages.
 
@@ -44,9 +48,6 @@ function ulf_forms_form_alter(&$form, &$form_state, $form_id) {
 
   // Course educators node form.
   case 'course_educators_node_form':
-    $form['#attached']['js'] = array(
-      drupal_get_path('module', 'ulf_forms') . '/js/node-form-logics.js',
-    );
     $form['#prefix'] = '<div class="node--form is-default-form">';
     $form['#suffix'] = '</div>';
     break;

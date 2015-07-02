@@ -51,3 +51,16 @@ function ulf_update_7001(){
   module_disable($modules_disable);
   module_enable($modules_enable);
 }
+
+/**
+ * Implements hook_update_N().
+ *
+ * Enable new modules for profile, disable old ones.
+ */
+function ulf_update_7002(){
+  $modules_enable = array(
+    'manualcrop',
+  );
+
+  module_enable($modules_enable);
+}

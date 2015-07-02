@@ -4,7 +4,6 @@
  */
 (function($) {
 
-
   // Array to hold subgroup checkboxes
   var subgroup = new Array();
 
@@ -109,6 +108,10 @@
   // Called when the document has finished loading.
   $(document).ready(function() {
 
+    // Set cropping for all content type forms
+    $('.manualcrop-selection-info').css('border', '2px dotted white');
+    $('.manualcrop-selection-info').css('box-sizing', 'border-box');
+
     /// --- A lot of actions related to click events
 
     // Change stuff when a new target group is added or removed.
@@ -189,6 +192,7 @@
 
     // We add border width in js to reach seven theme.
     $('#node_course_form_group_practical_information').css('border-width', '2px');
+
 
     // Fill the subgroup array.
     $('.field-name-field-target-group-sub .option').each(function() {

@@ -23,13 +23,17 @@ function ulf_base_image_default_styles() {
   $styles['node_display'] = array(
     'label' => 'Node display',
     'effects' => array(
-      1 => array(
-        'name' => 'image_scale_and_crop',
+      6 => array(
+        'name' => 'manualcrop_crop_and_scale',
         'data' => array(
           'width' => 1000,
           'height' => 320,
+          'upscale' => 1,
+          'respectminimum' => 1,
+          'onlyscaleifcrop' => 0,
+          'style_name' => 'node_display',
         ),
-        'weight' => 1,
+        'weight' => 0,
       ),
     ),
   );
@@ -38,13 +42,17 @@ function ulf_base_image_default_styles() {
   $styles['teaser_display'] = array(
     'label' => 'Teaser display',
     'effects' => array(
-      1 => array(
-        'name' => 'image_scale_and_crop',
+      8 => array(
+        'name' => 'manualcrop_crop_and_scale',
         'data' => array(
           'width' => 752,
           'height' => 695,
+          'upscale' => 1,
+          'respectminimum' => 1,
+          'onlyscaleifcrop' => 0,
+          'style_name' => 'teaser_display',
         ),
-        'weight' => 1,
+        'weight' => 0,
       ),
     ),
   );
