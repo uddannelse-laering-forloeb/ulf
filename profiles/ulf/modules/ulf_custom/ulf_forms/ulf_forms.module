@@ -11,6 +11,7 @@
  */
 function ulf_forms_form_alter(&$form, &$form_state, $form_id) {
   $form['#attached']['js'] = array();
+  $form['#attached']['css'][] = drupal_get_path('module', 'ulf_forms') . '/css/node-form-styles.css';
   $form['#attached']['js'][] = drupal_get_path('module', 'ulf_forms') . '/js/node-form-logics.js';
   $form['#attached']['js'][] = drupal_get_path('module', 'ulf_forms') . '/js/jquery.imagesloaded.js';
   $form['#attached']['js'][] = drupal_get_path('module', 'ulf_forms') . '/js/jquery.imgareaselect.dev.js';
