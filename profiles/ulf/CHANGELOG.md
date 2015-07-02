@@ -20,3 +20,4 @@
 * Added newsletter signup form
 * Added cookies warning
 * Added menu access for editors
+* Added imagecrop for main content images
