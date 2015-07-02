@@ -11,7 +11,7 @@ function ulf_course_providers_views_default_views() {
   $export = array();
 
   $view = new view();
-  $view->name = 'content_by_user';
+  $view->name = 'ulf_content_by_user';
   $view->description = 'Displays content by the user profile with uid fetched from url';
   $view->tag = 'default';
   $view->base_table = 'node';
@@ -35,7 +35,7 @@ function ulf_course_providers_views_default_views() {
   $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'Stigende';
   $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Faldende';
   $handler->display->display_options['pager']['type'] = 'some';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '8';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '4';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['style_options']['row_class'] = 'teaser--content';
@@ -94,7 +94,7 @@ function ulf_course_providers_views_default_views() {
 
   /* Display: Blok */
   $handler = $view->new_display('block', 'Blok', 'block_1');
-  $translatables['content_by_user'] = array(
+  $translatables['ulf_content_by_user'] = array(
     t('Master'),
     t('Content by user'),
     t('mere'),
@@ -108,7 +108,7 @@ function ulf_course_providers_views_default_views() {
     t('Block'),
     t('Blok'),
   );
-  $export['content_by_user'] = $view;
+  $export['ulf_content_by_user'] = $view;
 
   return $export;
 }

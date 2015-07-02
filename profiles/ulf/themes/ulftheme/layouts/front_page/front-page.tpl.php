@@ -44,6 +44,13 @@
       <div class="layout-element-gamma">
         <div class="layout-element-gamma-inner">
           <?php print $content['gamma']; ?>
+        </div>
+      </div>
+    <?php endif;?>
+    <?php if(!empty ($content['delta'])) : ?>
+      <div class="layout-element-delta">
+        <div class="layout-element-delta-inner">
+          <?php print $content['delta']; ?>
           <?php if(!empty ($newsletter_block)) : ?>
             <div class="block--newsletter is-front">
               <div class="block--newsletter-inner">

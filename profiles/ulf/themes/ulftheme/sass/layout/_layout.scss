@@ -61,12 +61,17 @@ body {
   }
 
   .layout-element-gamma {
+    background: $gray-lightest;
+  }
+
+  .layout-element-delta {
     background: $gray-lighter;
   }
 
   .layout-element-alpha,
   .layout-element-beta,
-  .layout-element-gamma {
+  .layout-element-gamma,
+  .layout-element-delta {
     &-inner {
       @extend %layout--element-inner;
     }

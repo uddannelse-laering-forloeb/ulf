@@ -59,6 +59,7 @@ function ulf_update_7001(){
  */
 function ulf_update_7002(){
   $modules_enable = array(
+    'views_ui',
     'manualcrop',
   );
 

@@ -106,6 +106,7 @@ function ulf_preprocess_node(&$variables) {
     case 'news':
       // Provide newsletter block for static pages.
       $variables['newsletter_block'] = module_invoke('mailchimp_signup', 'block_view', 'signup_to_newsletter');
+      $variables['group_type'] = 'news';
       break;
   }
 
@@ -129,7 +130,7 @@ function ulf_preprocess_node(&$variables) {
  */
 function ulf_preprocess_user_profile(&$variables) {
   // Enable a view for user profile templates.
-  $variables['content_by_user'] = views_embed_view('content_by_user', 'block_1');
+  $variables['content_by_user'] = views_embed_view('ulf_content_by_user', 'block_1');
 }
 
 
