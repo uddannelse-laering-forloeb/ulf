@@ -90,9 +90,9 @@ function ulf_base_default_mailchimp_signup() {
         }
       },
       "description" : "",
-      "doublein" : 0,
-      "send_welcome" : 0,
-      "include_interest_groups" : 0
+      "doublein" : 1,
+      "send_welcome" : 1,
+      "include_interest_groups" : 1
     }
   }');
   return $items;

@@ -485,12 +485,15 @@ ul {
 .layout-node .layout-element-alpha-inner,
 .layout-node .layout-element-beta-inner,
 .layout-node .layout-element-gamma-inner,
+.layout-node .layout-element-delta-inner,
 .layout-frontpage .layout-element-alpha-inner,
 .layout-frontpage .layout-element-beta-inner,
 .layout-frontpage .layout-element-gamma-inner,
+.layout-frontpage .layout-element-delta-inner,
 .layout-profile .layout-element-alpha-inner,
 .layout-profile .layout-element-beta-inner,
-.layout-profile .layout-element-gamma-inner {
+.layout-profile .layout-element-gamma-inner,
+.layout-profile .layout-element-delta-inner {
   height: 100%;
   margin: 0 auto;
   max-width: 1000px;
@@ -531,6 +534,10 @@ body {
 .layout-node .layout-element-gamma,
 .layout-frontpage .layout-element-gamma,
 .layout-profile .layout-element-gamma {
+  background: #f2f2f2; }
+.layout-node .layout-element-delta,
+.layout-frontpage .layout-element-delta,
+.layout-profile .layout-element-delta {
   background: #e6e6e6; }
 
 /**
