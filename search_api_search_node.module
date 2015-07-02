@@ -28,6 +28,8 @@ function search_api_search_node_form_search_api_admin_index_edit_alter(&$form, &
     '#suffix' => '</div>',
   );
 
+  $default = array();
+
   // Try to get hold of the current selected server.
   $servers = search_api_server_load_multiple(FALSE, array('enabled' => 1));
   $server = NULL;
@@ -70,8 +72,6 @@ function search_api_search_node_form_search_api_admin_index_edit_alter(&$form, &
       'wrapper' => 'search-api-search-node-indexes',
     ),
   );
-
-  $t=1;
 }
 
 /**

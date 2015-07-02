@@ -76,7 +76,31 @@ class SearchNodeClient {
     return $indexes;
   }
 
-  public function add() {
+  public function add($index, $type, $id, $data) {
+    $request = drupal_http_request($this->host . '/api', array(
+      'method' => 'POST',
+      'headers' => array(
+        'Content-Type' => 'application/json',
+        'Authorization' => 'Bearer ' . $this->token
+      ),
+      'data' => json_encode(
+        array(
+          'index' => $index,
+          'type' => $type,
+          'id' => $id,
+          'data' => $data,
+        )
+      )
+    ));
+
+    if ($request->code == 201) {
+      return TRUE;
+    }
+
+    return FALSE;
+  }
+
+  public function update() {
 
   }
 

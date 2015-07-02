@@ -10,11 +10,22 @@
  */
 class SearchApiSearchNodeService extends SearchApiAbstractService {
 
+  protected $connection;
+
   /**
    * {@inheritdoc}
    */
   public function __construct(SearchApiServer $server) {
     parent::__construct($server);
+
+    // Get connection to the client.
+    if (isset($this->options['host'])) {
+      $this->connection = new SearchNodeClient($this->options['host'], $this->options['apikey']);
+      /**
+       * @TODO: Handle auth better.
+       */
+      $this->connection->authenticate();
+    }
   }
 
   /**
@@ -76,11 +87,8 @@ class SearchApiSearchNodeService extends SearchApiAbstractService {
   public function getExtraInformation() {
     $info = array();
 
-    // Get connection to the client.
-    $client = new SearchNodeClient($this->options['host'], $this->options['apikey']);
-
     // Test that authentication is working.
-    $result = $client->authenticate();
+    $result = $this->connection->authenticate();
     if ($result['status'] != 200) {
       $info[] = array(
         'label' => t('Authentication status'),
@@ -97,7 +105,7 @@ class SearchApiSearchNodeService extends SearchApiAbstractService {
     }
 
     // Get available indexes for that API key.
-    $indexes = $client->getIndexes();
+    $indexes = $this->connection->getIndexes();
     if (empty($indexes)) {
       $info[] = array(
         'label' => t('Indexes'),
@@ -126,25 +134,26 @@ class SearchApiSearchNodeService extends SearchApiAbstractService {
    parent::addIndex($index);
   }
 
-
   /**
    * {@inheritdoc}
    */
   public function indexItems(SearchApiIndex $index, array $items) {
-//    if (empty($this->options['indexes'][$index->machine_name])) {
-//      throw new SearchApiException(t('No field settings for index with id @id.', array('@id' => $index->machine_name)));
-//    }
-//    $indexed = array();
-//    foreach ($items as $id => $item) {
-//      try {
-//        $this->indexItem($index, $id, $item);
-//        $indexed[] = $id;
-//      }
-//      catch (Exception $e) {
-//        // We just log the error, hoping we can index the other items.
-//        watchdog('search_api_db', check_plain($e->getMessage()), NULL, WATCHDOG_WARNING);
-//      }
-//    }
+    $indexed = array();
+
+    $search_node_index = $index->options['search_node_indexes'];
+    if (!empty($search_node_index)) {
+      foreach ($items as $id => $item) {
+        /**
+         * @TODO: Maybe better handle encoding below.
+         */
+        if ($this->connection->add($search_node_index, $item['type']['value'], $id, json_encode($item))){
+          $indexed[] = $id;
+        }
+        else {
+          watchdog('search_api_db', check_plain('exception'), NULL, WATCHDOG_WARNING);
+        }
+      }
+    }
 
     return $indexed;
   }
