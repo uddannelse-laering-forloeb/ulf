@@ -104,8 +104,42 @@ class SearchNodeClient {
 
   }
 
-  public function remove() {
+  public function remove($index, $type, $id) {
+    $request = drupal_http_request($this->host . '/api', array(
+      'method' => 'DELETE',
+      'headers' => array(
+        'Content-Type' => 'application/json',
+        'Authorization' => 'Bearer ' . $this->token
+      ),
+      'data' => json_encode(
+        array(
+          'index' => $index,
+          'type' => $type,
+          'id' => $id,
+        )
+      )
+    ));
 
+    if ($request->code == 201) {
+      return TRUE;
+    }
+
+    return FALSE;
   }
 
+  public function flush($index) {
+    $request = drupal_http_request($this->host . '/api/' . $index . '/flush', array(
+      'method' => 'DELETE',
+      'headers' => array(
+        'Content-Type' => 'application/json',
+        'Authorization' => 'Bearer ' . $this->token
+      ),
+    ));
+
+    if ($request->code == 200) {
+      return TRUE;
+    }
+
+    return FALSE;
+  }
 }
