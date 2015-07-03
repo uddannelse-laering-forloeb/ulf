@@ -54,6 +54,9 @@ textarea {
 
 .form-item {
   padding: 1em 0;
+
+  // Form items within form items shouldnt have the padding (IE checkbox lists)
+  & .form-item {
+    padding: 0;
+  }
 }
-
-

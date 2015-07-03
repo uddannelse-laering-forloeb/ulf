@@ -412,6 +412,8 @@ textarea {
 
 .form-item {
   padding: 1em 0; }
+  .form-item .form-item {
+    padding: 0; }
 
 /**
  * Contains global placeholders for use across the site
