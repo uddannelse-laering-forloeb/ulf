@@ -1,0 +1,64 @@
+/**
+ *
+ * Global mixins.
+ *
+ * Contains global mixins for use across the site.
+ *
+ */
+
+
+/* Styles
+   ========================================================================== */
+
+// Strip all link styles default color of links to inherit.
+@mixin strip-link-styles($color:inherit, $decoration: none) {
+  &:link {
+    color: $color;
+    text-decoration: $decoration;
+  }
+
+  &:visited {
+    color: $color;
+    text-decoration: $decoration;
+  }
+
+  &:hover {
+    color: $color;
+    text-decoration: $decoration;
+  }
+
+  &:focus {
+    color: $color;
+    text-decoration: $decoration;
+  }
+}
+
+
+// Set the color of the background to one of 4 different colors.
+@mixin background-set-color($color, $transparency: 1) {
+  @if $color == "green" {
+    background: rgba(164, 218, 32, $transparency);
+  } @else if $color == "purple" {
+    background: rgba(144, 29, 124, $transparency)
+  } @else if $color == "orange" {
+    background: rgba(255, 104, 0, $transparency);
+  } @else if $color == "white" {
+    background: rgba(255, 255, 255, $transparency);
+  } @else if $color == "yellow" {
+    background: rgba(237, 215, 28, $transparency);
+  }
+}
+
+
+// Set breakpoints.
+@mixin breakpoint($breakpoint) {
+  @media only screen and (min-width: $breakpoint) { @content; }
+}
+
+
+// Center a html elememt vertically ()
+@mixin vertical-center() {
+  top: 50%;
+
+  @include transform(translateY(-50%));
+}

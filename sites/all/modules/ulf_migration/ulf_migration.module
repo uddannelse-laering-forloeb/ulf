@@ -1,0 +1,49 @@
+<?php
+/**
+ * @file
+ * Defines migration groups and what to migrate.
+ */
+
+/**
+ * Implements hook_migrate_api().
+ */
+function ulf_migration_migrate_api() {
+  // Define migration groups.
+  $api = array(
+    'api' => 2,
+    'groups' => array(
+      'ulf_users' => array(
+        'title' => t('Users'),
+      ),
+    ),
+    'migrations' => array(
+      // Users.
+      'UlfUsers' => array(
+        'class_name' => 'UlfUsersMigration',
+        'group_name' => 'ulf_users',
+      ),
+
+      // Files.
+
+
+      // Taxonomies.
+
+
+      // Static pages. (omulf)
+
+
+      // news.
+
+      // course-educators.
+
+
+      // course.
+
+    ),
+    'field handlers' => array(
+      'DateMigrateFieldHandler',
+    ),
+  );
+
+  return $api;
+}

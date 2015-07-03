@@ -1,0 +1,121 @@
+/**
+ *
+ * Field module.
+ *
+ * Contains styles related to content fields.
+ *
+ */
+
+
+/* Styles.
+================================================================================================================== */
+
+.field {
+
+  /* Display: of node title. */
+  &--title {
+    @extend %content--header;
+
+    border-bottom: solid;
+    border-width: 0;
+    padding: 0;
+    position: relative;
+    font-size: 3em;
+    font-weight: bold;
+
+    @include background-set-color('white', 0.7);
+
+    &.is-dagtilbud {
+      border-color: $green;
+    }
+
+    &.is-grundskole {
+      border-color: $purple;
+    }
+
+    &.is-ungdomsuddannelse {
+      border-color: $orange;
+    }
+
+    &.is-course {
+      border-color: $yellow;
+    }
+
+    &.is-profile {
+      border-color: $dark-blue;
+    }
+
+    @include breakpoint($node-breakpoint){
+      border-width: 4px;
+      padding: 0 .5em;
+      position: absolute;
+    }
+  }
+
+
+  /* Display of tags field. */
+  &--tags {
+    padding: 0.8em 0;
+  }
+
+  &--tags-item {
+    display: inline-block;
+    margin-bottom: .25em;
+    padding: .1em 1em;
+
+    background: $dark-blue;
+    color: $white;
+    cursor: pointer;
+    font-size: 85%;
+
+    @include border-radius($border-radius);
+
+    &:link,
+    &:visited,
+    &:hover,
+    &:active {
+      color: $white;
+      text-decoration: none;
+    }
+
+    &:hover {
+      background: darken($dark-blue, 5%);
+    }
+  }
+
+
+  /* Display of field collections in main content. */
+  &--collection-wrapper {
+    margin-bottom: $spacing;
+  }
+
+  &--collection-label {
+    color: $white;
+    background: $dark-blue;
+    padding: $spacing;
+  }
+
+  &--collection-content {
+    border-left: 1px solid $gray-light;
+    border-right: 1px solid $gray-light;
+  }
+
+  &--collection-item {
+    border-bottom: 1px solid $gray-light;
+    padding: $spacing;
+  }
+
+  &--collection-description,
+  &--collection-file,
+  &--collection-link,
+  &--collection-litt {
+    display: block;
+    margin-bottom: $spacing / 2;
+    width: 100%;
+  }
+
+  &--collection-description {
+    font-weight: bold;
+  }
+}
+

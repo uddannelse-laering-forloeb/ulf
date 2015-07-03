@@ -1,0 +1,48 @@
+/**
+ *
+ * Content module.
+ *
+ * Contains styles related to content (Ie. Nodes, course providers)
+ *
+ */
+
+
+/* Styles
+================================================================================================================== */
+
+.content {
+  margin: 0 $spacing / 2;
+  width: 100%;
+
+  @include display-flex;
+  @include flex-wrap(wrap);
+  @include flex-direction(row);
+  @include justify-content(space-between);
+
+  &--image {
+    margin-bottom: $spacing * 2;
+    min-height: 120px;
+    position: relative;
+    width: 100%;
+  }
+
+  &--main {
+    width: 100%;
+
+    @include breakpoint($node-breakpoint) {
+      width: 60%;
+    }
+  }
+
+  &--meta {
+    width: 100%;
+
+    @include breakpoint($node-breakpoint) {
+      width: 35%;
+    }
+  }
+
+  &--empty {
+    margin: 0 $spacing / 2;
+  }
+}

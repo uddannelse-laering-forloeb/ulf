@@ -1,0 +1,213 @@
+/**
+ *
+ * Nav module.
+ *
+ * Contains styles related to the navigation bar.
+ *
+ */
+
+
+/* Placeholders, variables and mixins related to this document only.
+================================================================================================================== */
+
+%nav--list-item {
+  position: relative;
+  display: inline-block;
+  height: 100%;
+  vertical-align: top;
+}
+
+
+%nav--list-link {
+  display: block;
+  font-weight: bold;
+  line-height: 40px;
+  padding:  0 $spacing;
+  vertical-align: middle;
+  text-transform: uppercase;
+
+  @include strip-link-styles($white);
+}
+
+
+/* Styles
+========================================================================== */
+
+.nav {
+  display: none;
+  background: $gray-darkest;
+
+
+  @include breakpoint(45em) {
+    display: block;
+  }
+
+  &--inner {
+    box-sizing: border-box;
+    height: 40px;
+    margin: 0 auto;
+    max-width: $layout-max-width;
+    position: relative;
+    width: 100%;
+  }
+
+  &--list-dropdown-item,
+  &--list-item {
+    @extend %nav--list-item;
+  }
+
+  &--dropdown-item {
+    display: none;
+  }
+
+  &--list-dropdown-link,
+  &--list-link {
+    @extend %nav--list-link;
+
+    &:hover {
+      background: $gray-dark;
+    }
+
+    &.is-daycare:hover {
+      @include background-set-color('green', $transparency: 1);
+    }
+
+    &.is-school:hover {
+      @include background-set-color('purple', $transparency: 1);
+    }
+
+    &.is-youth:hover {
+      @include background-set-color('orange', $transparency: 1);
+    }
+
+    &.is-course:hover {
+      @include background-set-color('yellow', $transparency: 1);
+    }
+  }
+
+  &--sub {
+
+    @include breakpoint(45em) {
+      position: absolute;
+
+      z-index: 1;
+      right: 0;
+
+      background: $gray-dark;
+
+      &.is-hidden {
+        display: none;
+      }
+    }
+  }
+}
+
+
+/* Mobile navigation
+ *
+ * Nesting once for all list items on mobile device.
+================================================================================================================== */
+
+.nav--mobile {
+  // Itk component.
+  @extend %itk--menu;
+
+  .nav--list-dropdown-item,
+  .nav--list-item {
+    border-bottom: 1px solid $white;
+    width: 100%;
+
+    &:last-child {
+      border-bottom: 0;
+    }
+  }
+
+  .nav--list-link {
+    display: inline;
+  }
+
+  .nav--list-dropdown-link:hover,
+  .nav--list-link:hover {
+    background: none;
+  }
+}
+
+.nav--overlay {
+  @extend %itk--menu-nav-overlay;
+}
+
+
+
+/* Static pages menu
+ *
+ * Static pages menu displayed in main menu sub, mobile menu and on node pages.
+================================================================================================================== */
+
+.nav {
+  & .nav--static-pages {
+    box-sizing: border-box;
+    min-width: 0;
+
+    @include breakpoint(45em) {
+      min-width: 200px;
+    }
+  }
+
+  & .nav--static-pages-item {
+
+    a {
+      @include strip-link-styles($white);
+      border-top: 1px solid $white;
+      display: block;
+      padding: 1em;
+
+      &:hover {
+        background: $gray;
+      }
+
+      &.active {
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+.nav--mobile {
+  & .nav--static-pages-item {
+    border-top: 1px solid $white;
+    padding: 1em;
+
+    a {
+      @include strip-link-styles($white);
+
+      display: inline;
+      margin-left: 1em;
+
+      &.active {
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+
+.nav--static-pages.is-node {
+  display: block;
+
+  & .nav--static-pages-item {
+    border-bottom: 1px solid $white;
+    padding: 1em 0;
+
+    &:last-child {
+      border-bottom: 0;
+    }
+
+    a {
+      @include strip-link-styles($dark-blue);
+
+      &.active {
+        font-weight: bold;
+      }
+    }
+  }
+}

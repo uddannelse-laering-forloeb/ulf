@@ -1,0 +1,172 @@
+/**
+ *
+ * Teaser module.
+ *
+ * Display of list items (Ie. Frontpage and search results.)
+ *
+ */
+
+
+/* Placeholders, variables and mixins related to this document only.
+================================================================================================================== */
+
+// General teaser styles.
+%teaser--inner {
+  display: block;
+  height: 100%;
+  overflow: hidden;
+  margin: 0 $spacing / 2;
+  position: relative;
+}
+
+
+/* Styles.
+================================================================================================================== */
+
+/* Teaser representing a target group. */
+.teaser--group {
+  margin-bottom: $spacing;
+  width: 100%;
+
+  @include breakpoint(650px) {
+    margin-bottom: 0;
+    width: 33.33%;
+  }
+
+  &.is-course {
+    @include breakpoint(650px) {
+      width: 50%;
+    }
+  }
+
+  &-inner {
+    @extend %teaser--inner;
+
+    @include strip-link-styles($white);
+
+    // Change text background transparency when hovering on the teaser.
+    // State class names are fetched from taxonomy terms, thus Danish ...
+    &:hover .teaser--group-text {
+      &.is-dagtilbud {
+        @include background-set-color('green', 1);
+      }
+
+      &.is-grundskole {
+        @include background-set-color('purple', 1);
+      }
+
+      &.is-ungdomsuddannelse {
+        @include background-set-color('orange', 1);
+      }
+
+      &.is-course {
+        @include background-set-color('yellow', 1);
+      }
+    }
+  }
+
+  &-text {
+    @extend %content--header;
+
+    height: 90px;
+
+    &.is-dagtilbud {
+      @include background-set-color('green', 0.7);
+    }
+
+    &.is-grundskole {
+      @include background-set-color('purple', 0.7);
+    }
+
+    &.is-ungdomsuddannelse {
+      @include background-set-color('orange', 0.7);
+    }
+
+    &.is-course {
+      @include background-set-color('yellow', 0.7);
+    }
+
+    &-inner {
+      position: relative;
+      top: 70%;
+
+      @include transform(translateY(-50%));
+    }
+  }
+
+  &-field img{
+    width: 100%;
+  }
+}
+
+/* Teaser representing a content element. */
+.teaser--content {
+  margin-bottom: $spacing;
+  height: 160px;
+  width: 100%;
+
+  @include breakpoint(450px) {
+    width: 50%;
+  }
+
+  @include breakpoint(800px) {
+    width: 25%;
+  }
+
+  &-inner {
+    @extend %teaser--inner;
+    @include strip-link-styles($black);
+
+    // Change text background transparency when hovering on the teaser.
+    &:hover .teaser--content-text {
+      &.is-dagtilbud {
+        @include background-set-color('green', 1);
+      }
+
+      &.is-grundskole {
+        @include background-set-color('purple', 1);
+      }
+
+      &.is-ungdomsuddannelse {
+        @include background-set-color('orange', 1);
+      }
+
+      &.is-course {
+        @include background-set-color('yellow', 1);
+      }
+    }
+  }
+
+  &-field {
+    height: 100%;
+  }
+
+  &-text {
+    @extend %content--header;
+    @include background-set-color('white', 0.7);
+
+    border-bottom: solid;
+    border-width: 4px;
+    padding-top: .8em;
+
+    &.is-dagtilbud {
+      border-color: $green;
+    }
+
+    &.is-grundskole {
+      border-color: $purple;
+    }
+
+    &.is-ungdomsuddannelse {
+      border-color: $orange;
+    }
+
+    &.is-course {
+      border-color: $yellow;
+    }
+
+    &-inner {
+      position: relative;
+    }
+  }
+}

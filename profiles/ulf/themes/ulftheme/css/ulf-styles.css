@@ -1,0 +1,1457 @@
+/**
+ * Stylesheet import
+ */
+/* Compass */
+/**
+ * Variables
+ *
+ * Theme specific variables
+ *
+ */
+/* Layout
+   ================================================================================================================== */
+/* Colors
+   ================================================================================================================== */
+/* Typography
+   ================================================================================================================== */
+/* Link colors
+   ================================================================================================================== */
+/* Spacing
+   ================================================================================================================== */
+/* Border radius
+   ================================================================================================================== */
+/**
+ *
+ * Normalize
+ *
+ * Normalize.css v2.1.2 | MIT License | git.io/normalize
+ *
+ */
+/* HTML5 display definitions
+   ================================================================================================================== */
+/* Correct `block` display not defined in IE 8/9. */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section,
+summary {
+  display: block; }
+
+/* Correct `inline-block` display not defined in IE 8/9. */
+audio,
+canvas,
+video {
+  display: inline-block; }
+
+/* Prevent modern browsers from displaying `audio` without controls. */
+/* Remove excess height in iOS 5 devices. */
+audio:not([controls]) {
+  display: none;
+  height: 0; }
+
+/* Address styling not present in IE 8/9. */
+[hidden] {
+  display: none; }
+
+/* Base
+   ================================================================================================================== */
+/* 1. Set default fontello family to sans-serif. */
+/* 2. Prevent iOS text size adjust after orientation change, without disabling user zoom. */
+html {
+  font-family: sans-serif;
+  /* 1 */
+  -ms-text-size-adjust: 100%;
+  /* 2 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */ }
+
+/* Remove default margin. */
+body {
+  margin: 0; }
+
+/* Links
+   ================================================================================================================== */
+/* Address `outline` inconsistency between Chrome and other browsers. */
+a:focus {
+  outline: thin dotted; }
+
+/* Improve readability when focused and also mouse hovered in all browsers. */
+a:active,
+a:hover {
+  outline: 0; }
+
+/* Typography
+   ================================================================================================================== */
+/* Address variable `h1` fontello-size and margin within `section` and `article` */
+/* contexts in Firefox 4+, Safari 5, and Chrome. */
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0; }
+
+/* Address styling not present in IE 8/9, Safari 5, and Chrome. */
+abbr[title] {
+  border-bottom: 1px dotted; }
+
+/* Address style set to `bolder` in Firefox 4+, Safari 5, and Chrome. */
+b,
+strong {
+  font-weight: bold; }
+
+/* Address styling not present in Safari 5 and Chrome. */
+dfn {
+  font-style: italic; }
+
+/* Address differences between Firefox and other browsers. */
+hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0; }
+
+/* Address styling not present in IE 8/9. */
+mark {
+  background: #ff0;
+  color: #000; }
+
+/* Correct fontello family set oddly in Safari 5 and Chrome. */
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, serif;
+  font-size: 1em; }
+
+/* Improve readability of pre-formatted text in all browsers. */
+pre {
+  white-space: pre-wrap; }
+
+/* Set consistent quote types. */
+q {
+  quotes: "\201C" "\201D" "\2018" "\2019"; }
+
+/* Address inconsistent and variable fontello size in all browsers. */
+small {
+  font-size: 80%; }
+
+/* Prevent `sub` and `sup` affecting `line-height` in all browsers. */
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline; }
+
+sup {
+  top: -0.5em; }
+
+sub {
+  bottom: -0.25em; }
+
+/* Embedded content
+   ================================================================================================================== */
+/* Remove border when inside `a` element in IE 8/9. */
+img {
+  border: 0; }
+
+/* Correct overflow displayed oddly in IE 9. */
+svg:not(:root) {
+  overflow: hidden; }
+
+/* Figures
+   ================================================================================================================== */
+/* Address margin not present in IE 8/9 and Safari 5. */
+figure {
+  margin: 0; }
+
+/* Forms
+   ================================================================================================================== */
+/* Define consistent border, margin, and padding. */
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em; }
+
+/* 1. Correct `color` not being inherited in IE 8/9. */
+/* 2. Remove padding so people aren't caught out if they zero out fieldsets. */
+legend {
+  border: 0;
+  /* 1 */
+  padding: 0;
+  /* 2 */ }
+
+/* 1. Correct fontello family not being inherited in all browsers. */
+/* 2. Correct fontello size not being inherited in all browsers. */
+/* 3. Address margins set differently in Firefox 4+, Safari 5, and Chrome. */
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  /* 1 */
+  font-size: 100%;
+  /* 2 */
+  margin: 0;
+  /* 3 */ }
+
+/* Address Firefox 4+ setting `line-height` on `input` using `!important` in */
+/* the UA stylesheet. */
+button,
+input {
+  line-height: normal; }
+
+/* Address inconsistent `text-transform` inheritance for `button` and `select`. */
+/* All other form control elements do not inherit `text-transform` values. */
+/* Correct `button` style inheritance in Chrome, Safari 5+, and IE 8+. */
+/* Correct `select` style inheritance in Firefox 4+ and Opera. */
+button,
+select {
+  text-transform: none; }
+
+/* 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio` and `video` controls. */
+/* 2. Correct inability to style clickable `input` types in iOS. */
+/* 3. Improve usability and consistency of cursor style between image-type `input` and others. */
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  /* 2 */
+  cursor: pointer;
+  /* 3 */ }
+
+/* Re-set default cursor for disabled elements. */
+button[disabled],
+html input[disabled] {
+  cursor: default; }
+
+/* 1. Address box sizing set to `content-box` in IE 8/9. */
+/* 2. Remove excess padding in IE 8/9. */
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box;
+  /* 1 */
+  padding: 0;
+  /* 2 */ }
+
+/* 1. Address `appearance` set to `searchfield` in Safari 5 and Chrome. */
+/* 2. Address `box-sizing` set to `border-box` in Safari 5 and Chrome (include `-moz` to future-proof). */
+input[type="search"] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  /* 2 */
+  box-sizing: content-box; }
+
+/* Remove inner padding and search cancel button in Safari 5 and Chrome on OS X. */
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none; }
+
+/* Remove inner padding and border in Firefox 4+. */
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0; }
+
+/* 1. Remove default vertical scrollbar in IE 8/9. */
+/* 2. Improve readability and alignment in all browsers. */
+textarea {
+  overflow: auto;
+  /* 1 */
+  vertical-align: top;
+  /* 2 */ }
+
+/* Tables
+   ================================================================================================================== */
+/* Remove most spacing between table cells. */
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+/**
+ *
+ * Base
+ *
+ * Contains styling and reset of basic elements.
+ *
+ */
+body {
+  background-color: #f2f2f2;
+  color: #333;
+  font: 14px/1.5 "Asap", sans-serif; }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+  margin-bottom: .25em;
+  font-family: 14px/1.5 "Asap", sans-serif;
+  font-weight: normal;
+  /* This fixes huge spaces when a heading wraps onto two lines */
+  line-height: 1.2;
+  /* Voodoo to enable ligatures and kerning */
+  text-rendering: optimizeLegibility; }
+
+strong {
+  font-weight: bold; }
+
+em {
+  font-style: italic; }
+  em strong {
+    font-weight: bold; }
+
+/* Links
+   ================================================================================================================== */
+a:link {
+  color: #17858c;
+  text-decoration: underline; }
+a:visited {
+  color: #137076; }
+a:hover {
+  color: #105b60;
+  text-decoration: none; }
+a:focus {
+  color: #105b60; }
+
+/* Paragraph
+   ================================================================================================================== */
+p {
+  margin-top: 0; }
+
+/* Image
+   ================================================================================================================== */
+img {
+  display: inline;
+  height: auto;
+  max-width: 100%;
+  vertical-align: bottom; }
+
+/* List
+   ================================================================================================================== */
+ul {
+  padding: 0;
+  list-style-type: none;
+  margin: 0; }
+
+/**
+ *
+ * Form module
+ *
+ * Contains styles related to form elements.
+ *
+ */
+/* Styles.
+================================================================================================================== */
+input,
+textarea {
+  font: 14px/1.5 "Asap", sans-serif; }
+
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="datetime"],
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="time"],
+input[type="url"],
+textarea {
+  border: 1px solid #e6e6e6;
+  display: block;
+  min-height: 1.25em;
+  width: 100%;
+  padding: .75em;
+  color: #666666;
+  background-color: #fafafa;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+  input[type="text"]:focus,
+  input[type="password"]:focus,
+  input[type="date"]:focus,
+  input[type="datetime"]:focus,
+  input[type="email"]:focus,
+  input[type="number"]:focus,
+  input[type="search"]:focus,
+  input[type="tel"]:focus,
+  input[type="time"]:focus,
+  input[type="url"]:focus,
+  textarea:focus {
+    border: 1px solid gray;
+    color: #4d4d4d; }
+  input[type="text"][disabled],
+  input[type="password"][disabled],
+  input[type="date"][disabled],
+  input[type="datetime"][disabled],
+  input[type="email"][disabled],
+  input[type="number"][disabled],
+  input[type="search"][disabled],
+  input[type="tel"][disabled],
+  input[type="time"][disabled],
+  input[type="url"][disabled],
+  textarea[disabled] {
+    -moz-box-shadow: 0 0 0;
+    -webkit-box-shadow: 0 0 0;
+    box-shadow: 0 0 0;
+    border: 1px solid #b3b3b3;
+    background-color: #bfbfbf; }
+
+.form-item {
+  padding: 1em 0; }
+  .form-item .form-item {
+    padding: 0; }
+
+/**
+ * Contains global placeholders for use across the site
+ */
+.field--title, .teaser--group-text, .teaser--content-text {
+  bottom: 0;
+  box-sizing: border-box;
+  font-size: 1.45em;
+  padding: 0 .5em;
+  position: absolute;
+  width: 100%; }
+
+/**
+ *
+ * Global mixins.
+ *
+ * Contains global mixins for use across the site.
+ *
+ */
+/* Styles
+   ========================================================================== */
+/**
+ *
+ * Tabs
+ *
+ * Tabs use Drupals default html, thus we nest the list items and links here.
+ * "We can't stop here. This is bat country!!"
+ *
+ */
+/* Placholders, variables and mixins related to this document only.
+================================================================================================================== */
+/* Styles.
+================================================================================================================== */
+.tabs {
+  margin-bottom: 0;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 75em; }
+  .tabs.primary {
+    padding-left: 1.5em;
+    border: none; }
+  .tabs li,
+  .tabs li.active,
+  .tabs li:hover,
+  .tabs li.active:hover {
+    border-right: none;
+    display: inline-block;
+    padding-right: 0;
+    background: transparent; }
+    .tabs li a,
+    .tabs li.active a,
+    .tabs li:hover a,
+    .tabs li.active:hover a {
+      border-top: 1px solid #b3b3b3;
+      border-right: 1px solid #b3b3b3;
+      border-left: 1px solid #b3b3b3;
+      display: block;
+      margin: 0;
+      padding: .5em 1.25em 0.25em;
+      line-height: inherit;
+      text-decoration: none; }
+      .tabs li a:hover,
+      .tabs li.active a:hover,
+      .tabs li:hover a:hover,
+      .tabs li.active:hover a:hover {
+        background: #f2f2f2;
+        color: #000;
+        text-decoration: none; }
+  .tabs li a {
+    background: #e6e6e6; }
+  .tabs li a.active {
+    background: #fff; }
+  .tabs.secondary {
+    margin-top: 0;
+    margin-bottom: -.5em;
+    padding: 1.5em 1em .25em;
+    background-color: #fff; }
+    .tabs.secondary li a {
+      border: 1px solid #b3b3b3;
+      padding: .5em 1.25em .25em;
+      background: #fff; }
+    .tabs.secondary li a.active {
+      background: #e6e6e6; }
+
+/**
+ *
+ * Pager
+ *
+ * The pager uses Drupals default html. Thus we nest to style elements within.
+ * "We can't stop here. This is bat country!!"
+ *
+ */
+/* Placholders, variables and mixins related to this document only.
+================================================================================================================== */
+/* Styles.
+================================================================================================================== */
+.pager {
+  border-top: 1px dashed #b3b3b3;
+  padding-top: 2em;
+  padding-left: 0;
+  text-align: center; }
+  .pager li {
+    display: inline-block;
+    margin-left: -4px;
+    margin-right: 1em; }
+  .pager .pager-current,
+  .pager a {
+    display: inline-block;
+    padding-top: .5em;
+    padding-right: 1em;
+    padding-bottom: .4em;
+    padding-left: 1em;
+    background-color: #e6e6e6;
+    text-decoration: none; }
+    .pager .pager-current:hover,
+    .pager a:hover {
+      background-color: #d9d9d9;
+      text-decoration: none; }
+  .pager .pager-current {
+    background-color: #b3b3b3;
+    color: #fff; }
+    .pager .pager-current:hover {
+      background-color: #a6a6a6; }
+  .pager .disabled {
+    background-color: #f2f2f2; }
+  .pager .disabled a:hover {
+    cursor: default;
+    text-decoration: none; }
+
+/**
+ *
+ * Layouts
+ *
+ * Holds layout styling for the basic building blocks across the site.
+ *
+ */
+/* Placeholders, variables and mixins related to this document only.
+================================================================================================================== */
+.layout-node .layout-element-alpha-inner,
+.layout-node .layout-element-beta-inner,
+.layout-node .layout-element-gamma-inner,
+.layout-node .layout-element-delta-inner,
+.layout-frontpage .layout-element-alpha-inner,
+.layout-frontpage .layout-element-beta-inner,
+.layout-frontpage .layout-element-gamma-inner,
+.layout-frontpage .layout-element-delta-inner,
+.layout-profile .layout-element-alpha-inner,
+.layout-profile .layout-element-beta-inner,
+.layout-profile .layout-element-gamma-inner,
+.layout-profile .layout-element-delta-inner {
+  height: 100%;
+  margin: 0 auto;
+  max-width: 1000px;
+  padding: 2em 0;
+  position: relative;
+  width: 100%;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-flex-direction: row;
+  flex-direction: row; }
+
+/* Body
+   ================================================================================================================== */
+body {
+  background: #17858c;
+  font: 14px/1.5 "Asap", sans-serif;
+  margin: 0 auto; }
+
+/* Layout
+   ================================================================================================================== */
+.layout--element-header {
+  padding: 0 8px;
+  width: 100%; }
+
+.layout-node .layout-element-alpha,
+.layout-frontpage .layout-element-alpha,
+.layout-profile .layout-element-alpha {
+  background: #fff; }
+.layout-node .layout-element-beta,
+.layout-frontpage .layout-element-beta,
+.layout-profile .layout-element-beta {
+  background: #f2f2f2; }
+.layout-node .layout-element-gamma,
+.layout-frontpage .layout-element-gamma,
+.layout-profile .layout-element-gamma {
+  background: #f2f2f2; }
+.layout-node .layout-element-delta,
+.layout-frontpage .layout-element-delta,
+.layout-profile .layout-element-delta {
+  background: #e6e6e6; }
+
+/**
+ *
+ * Header module.
+ *
+ * Contains styles related to header display.
+ *
+ */
+/* Styles.
+================================================================================================================== */
+.header {
+  position: relative;
+  background: url(../images/header-bg.jpg) repeat-x 0 0;
+  height: 85px;
+  -moz-box-shadow: 2px 3px 4px rgba(51, 51, 51, 0.6);
+  -webkit-box-shadow: 2px 3px 4px rgba(51, 51, 51, 0.6);
+  box-shadow: 2px 3px 4px rgba(51, 51, 51, 0.6); }
+  @media only screen and (min-width: 45em) {
+    .header {
+      height: 160px; } }
+  .header--inner {
+    height: 100%;
+    margin: 0 auto;
+    max-width: 1000px;
+    position: relative;
+    width: 100%; }
+  .header--logo {
+    left: 8px;
+    max-width: 15em;
+    position: absolute;
+    top: 50%;
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%); }
+    @media only screen and (min-width: 45em) {
+      .header--logo {
+        max-width: 30%; } }
+  .header--toggle-mobile-nav {
+    background: url(../images/icon-menu.png) no-repeat center center #ffffff;
+    display: block;
+    padding: 4px;
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    -moz-box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.6);
+    -webkit-box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.6);
+    box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.6); }
+    @media only screen and (min-width: 45em) {
+      .header--toggle-mobile-nav {
+        display: none; } }
+
+/**
+ *
+ * Footer module.
+ *
+ * Contains styles related to the footer.
+ *
+ */
+/* Styles.
+================================================================================================================== */
+.footer {
+  background: #17858c;
+  color: #fff;
+  min-height: 15em; }
+  .footer--inner {
+    margin: 0 auto;
+    max-width: 1000px;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-flex-direction: row;
+    flex-direction: row; }
+  .footer--block {
+    padding: 2em 0;
+    position: relative;
+    width: 100%; }
+    @media only screen and (min-width: 45em) {
+      .footer--block {
+        width: 33%; } }
+  .footer--block-inner {
+    overflow: hidden;
+    padding: 0 8px; }
+  .footer hr {
+    border-color: #fff; }
+  .footer a:link {
+    color: #fff;
+    text-decoration: underline; }
+  .footer a:visited {
+    color: #fff;
+    text-decoration: underline; }
+  .footer a:hover {
+    color: #fff;
+    text-decoration: underline; }
+  .footer a:focus {
+    color: #fff;
+    text-decoration: underline; }
+  .footer ul {
+    padding-left: 16px; }
+  .footer ol {
+    padding-left: 20px; }
+  .footer table {
+    table-layout: fixed;
+    width: 100%; }
+  .footer td,
+  .footer th {
+    padding: .5em 1em; }
+  .footer--eu-compliance {
+    height: 150px;
+    padding: 8px;
+    margin: 0 auto;
+    max-width: 1000px; }
+    @media only screen and (min-width: 55em) {
+      .footer--eu-compliance {
+        height: 80px; } }
+
+.footer--eu-compliance-inner {
+  position: relative;
+  top: 50%;
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-flex-direction: row;
+  flex-direction: row; }
+
+.footer--eu-compliance-text {
+  color: #fff;
+  text-align: left;
+  width: 100%; }
+  @media only screen and (min-width: 55em) {
+    .footer--eu-compliance-text {
+      width: 50%; } }
+
+.footer--eu-compliance-buttons {
+  width: 100%; }
+  @media only screen and (min-width: 55em) {
+    .footer--eu-compliance-buttons {
+      width: 45%; } }
+  .footer--eu-compliance-buttons .button {
+    margin: 8px;
+    padding: .2em .8em; }
+
+/**
+ *
+ * Field module.
+ *
+ * Contains styles related to content fields.
+ *
+ */
+/* Styles.
+================================================================================================================== */
+.field {
+  /* Display: of node title. */
+  /* Display of tags field. */
+  /* Display of field collections in main content. */ }
+  .field--title {
+    border-bottom: solid;
+    border-width: 0;
+    padding: 0;
+    position: relative;
+    font-size: 3em;
+    font-weight: bold;
+    background: rgba(255, 255, 255, 0.7); }
+    .field--title.is-dagtilbud {
+      border-color: #a4da20; }
+    .field--title.is-grundskole {
+      border-color: #901d7c; }
+    .field--title.is-ungdomsuddannelse {
+      border-color: #ff6800; }
+    .field--title.is-course {
+      border-color: #edd71c; }
+    .field--title.is-profile {
+      border-color: #17858c; }
+    @media only screen and (min-width: 55em) {
+      .field--title {
+        border-width: 4px;
+        padding: 0 .5em;
+        position: absolute; } }
+  .field--tags {
+    padding: 0.8em 0; }
+  .field--tags-item {
+    display: inline-block;
+    margin-bottom: .25em;
+    padding: .1em 1em;
+    background: #17858c;
+    color: #fff;
+    cursor: pointer;
+    font-size: 85%;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; }
+    .field--tags-item:link, .field--tags-item:visited, .field--tags-item:hover, .field--tags-item:active {
+      color: #fff;
+      text-decoration: none; }
+    .field--tags-item:hover {
+      background: #137076; }
+  .field--collection-wrapper {
+    margin-bottom: 16px; }
+  .field--collection-label {
+    color: #fff;
+    background: #17858c;
+    padding: 16px; }
+  .field--collection-content {
+    border-left: 1px solid #b3b3b3;
+    border-right: 1px solid #b3b3b3; }
+  .field--collection-item {
+    border-bottom: 1px solid #b3b3b3;
+    padding: 16px; }
+  .field--collection-description, .field--collection-file, .field--collection-link, .field--collection-litt {
+    display: block;
+    margin-bottom: 8px;
+    width: 100%; }
+  .field--collection-description {
+    font-weight: bold; }
+
+/**
+ *
+ * Teaser module.
+ *
+ * Display of list items (Ie. Frontpage and search results.)
+ *
+ */
+/* Placeholders, variables and mixins related to this document only.
+================================================================================================================== */
+.teaser--group-inner, .teaser--content-inner {
+  display: block;
+  height: 100%;
+  overflow: hidden;
+  margin: 0 8px;
+  position: relative; }
+
+/* Styles.
+================================================================================================================== */
+/* Teaser representing a target group. */
+.teaser--group {
+  margin-bottom: 16px;
+  width: 100%; }
+  @media only screen and (min-width: 650px) {
+    .teaser--group {
+      margin-bottom: 0;
+      width: 33.33%; } }
+  @media only screen and (min-width: 650px) {
+    .teaser--group.is-course {
+      width: 50%; } }
+  .teaser--group-inner:link {
+    color: #fff;
+    text-decoration: none; }
+  .teaser--group-inner:visited {
+    color: #fff;
+    text-decoration: none; }
+  .teaser--group-inner:hover {
+    color: #fff;
+    text-decoration: none; }
+  .teaser--group-inner:focus {
+    color: #fff;
+    text-decoration: none; }
+  .teaser--group-inner:hover .teaser--group-text.is-dagtilbud {
+    background: #a4da20; }
+  .teaser--group-inner:hover .teaser--group-text.is-grundskole {
+    background: #901d7c; }
+  .teaser--group-inner:hover .teaser--group-text.is-ungdomsuddannelse {
+    background: #ff6800; }
+  .teaser--group-inner:hover .teaser--group-text.is-course {
+    background: #edd71c; }
+  .teaser--group-text {
+    height: 90px; }
+    .teaser--group-text.is-dagtilbud {
+      background: rgba(164, 218, 32, 0.7); }
+    .teaser--group-text.is-grundskole {
+      background: rgba(144, 29, 124, 0.7); }
+    .teaser--group-text.is-ungdomsuddannelse {
+      background: rgba(255, 104, 0, 0.7); }
+    .teaser--group-text.is-course {
+      background: rgba(237, 215, 28, 0.7); }
+    .teaser--group-text-inner {
+      position: relative;
+      top: 70%;
+      -moz-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      -webkit-transform: translateY(-50%);
+      transform: translateY(-50%); }
+  .teaser--group-field img {
+    width: 100%; }
+
+/* Teaser representing a content element. */
+.teaser--content {
+  margin-bottom: 16px;
+  height: 160px;
+  width: 100%; }
+  @media only screen and (min-width: 450px) {
+    .teaser--content {
+      width: 50%; } }
+  @media only screen and (min-width: 800px) {
+    .teaser--content {
+      width: 25%; } }
+  .teaser--content-inner:link {
+    color: #000;
+    text-decoration: none; }
+  .teaser--content-inner:visited {
+    color: #000;
+    text-decoration: none; }
+  .teaser--content-inner:hover {
+    color: #000;
+    text-decoration: none; }
+  .teaser--content-inner:focus {
+    color: #000;
+    text-decoration: none; }
+  .teaser--content-inner:hover .teaser--content-text.is-dagtilbud {
+    background: #a4da20; }
+  .teaser--content-inner:hover .teaser--content-text.is-grundskole {
+    background: #901d7c; }
+  .teaser--content-inner:hover .teaser--content-text.is-ungdomsuddannelse {
+    background: #ff6800; }
+  .teaser--content-inner:hover .teaser--content-text.is-course {
+    background: #edd71c; }
+  .teaser--content-field {
+    height: 100%; }
+  .teaser--content-text {
+    background: rgba(255, 255, 255, 0.7);
+    border-bottom: solid;
+    border-width: 4px;
+    padding-top: .8em; }
+    .teaser--content-text.is-dagtilbud {
+      border-color: #a4da20; }
+    .teaser--content-text.is-grundskole {
+      border-color: #901d7c; }
+    .teaser--content-text.is-ungdomsuddannelse {
+      border-color: #ff6800; }
+    .teaser--content-text.is-course {
+      border-color: #edd71c; }
+    .teaser--content-text-inner {
+      position: relative; }
+
+/**
+ *
+ * Block module.
+ *
+ * Contains styles related to blocks.
+ *
+ */
+/* Placeholders, variables and mixins related to this document only.
+================================================================================================================== */
+.block--dark, .block--light, .block--default {
+  margin-bottom: 16px; }
+  .block--dark:last-child, .block--light:last-child, .block--default:last-child {
+    margin-bottom: 0; }
+
+/* Styles.
+================================================================================================================== */
+.block--header {
+  font-weight: bold;
+  margin: 0;
+  padding: 16px 16px 0; }
+
+.block--content {
+  padding: 16px; }
+
+.block--field-wrapper {
+  border-bottom: 1px solid #fff;
+  margin-bottom: 8px;
+  padding-bottom: 8px; }
+  .block--field-wrapper:last-child {
+    border: 0;
+    margin-bottom: 0; }
+  .block--field-wrapper.is-inline {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-flex-direction: row;
+    flex-direction: row; }
+    .block--field-wrapper.is-inline .block--field-label,
+    .block--field-wrapper.is-inline .block--field-text {
+      width: 50%; }
+
+.block--field-label {
+  font-weight: bold;
+  margin-bottom: 4px; }
+
+.block--field-text {
+  margin-bottom: 8px; }
+
+.block--field-logo {
+  text-align: center; }
+
+.block--list-item {
+  display: block; }
+
+/* Block types */
+.block--dark {
+  background: #17858c;
+  color: #fff; }
+  .block--dark a:link {
+    color: #fff;
+    text-decoration: underline; }
+  .block--dark a:visited {
+    color: #fff;
+    text-decoration: underline; }
+  .block--dark a:hover {
+    color: #fff;
+    text-decoration: underline; }
+  .block--dark a:focus {
+    color: #fff;
+    text-decoration: underline; }
+
+.block--light {
+  background: #deeced; }
+  .block--light a:link {
+    color: #17858c;
+    text-decoration: underline; }
+  .block--light a:visited {
+    color: #17858c;
+    text-decoration: underline; }
+  .block--light a:hover {
+    color: #17858c;
+    text-decoration: underline; }
+  .block--light a:focus {
+    color: #17858c;
+    text-decoration: underline; }
+
+.block--default {
+  background: #e6e6e6;
+  max-width: 1000px; }
+
+.block--newsletter {
+  display: -webkit-flex;
+  display: flex;
+  width: 100%; }
+  @media only screen and (min-width: 650px) {
+    .block--newsletter.is-front {
+      width: 50%; } }
+  .block--newsletter-inner {
+    box-sizing: border-box;
+    margin: 0 8px;
+    position: relative;
+    width: 100%;
+    background: #f2f2f2; }
+  .block--newsletter-header {
+    padding: 16px; }
+  .block--newsletter form {
+    width: 100%; }
+    @media only screen and (min-width: 850px) {
+      .block--newsletter form {
+        position: absolute;
+        top: 50%;
+        -moz-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%); } }
+  .block--newsletter.is-front .form-type-checkboxes {
+    display: none; }
+  .block--newsletter .form-submit,
+  .block--newsletter .form-item {
+    margin: 0 16px; }
+
+/**
+ *
+ * Nav module.
+ *
+ * Contains styles related to the navigation bar.
+ *
+ */
+/* Placeholders, variables and mixins related to this document only.
+================================================================================================================== */
+.nav--list-dropdown-item, .nav--list-item {
+  position: relative;
+  display: inline-block;
+  height: 100%;
+  vertical-align: top; }
+
+.nav--list-dropdown-link, .nav--list-link {
+  display: block;
+  font-weight: bold;
+  line-height: 40px;
+  padding: 0 16px;
+  vertical-align: middle;
+  text-transform: uppercase; }
+  .nav--list-dropdown-link:link, .nav--list-link:link {
+    color: #fff;
+    text-decoration: none; }
+  .nav--list-dropdown-link:visited, .nav--list-link:visited {
+    color: #fff;
+    text-decoration: none; }
+  .nav--list-dropdown-link:hover, .nav--list-link:hover {
+    color: #fff;
+    text-decoration: none; }
+  .nav--list-dropdown-link:focus, .nav--list-link:focus {
+    color: #fff;
+    text-decoration: none; }
+
+/* Styles
+========================================================================== */
+.nav {
+  display: none;
+  background: #4d4d4d; }
+  @media only screen and (min-width: 45em) {
+    .nav {
+      display: block; } }
+  .nav--inner {
+    box-sizing: border-box;
+    height: 40px;
+    margin: 0 auto;
+    max-width: 1000px;
+    position: relative;
+    width: 100%; }
+  .nav--dropdown-item {
+    display: none; }
+  .nav--list-dropdown-link:hover, .nav--list-link:hover {
+    background: gray; }
+  .nav--list-dropdown-link.is-daycare:hover, .nav--list-link.is-daycare:hover {
+    background: #a4da20; }
+  .nav--list-dropdown-link.is-school:hover, .nav--list-link.is-school:hover {
+    background: #901d7c; }
+  .nav--list-dropdown-link.is-youth:hover, .nav--list-link.is-youth:hover {
+    background: #ff6800; }
+  .nav--list-dropdown-link.is-course:hover, .nav--list-link.is-course:hover {
+    background: #edd71c; }
+  @media only screen and (min-width: 45em) {
+    .nav--sub {
+      position: absolute;
+      z-index: 1;
+      right: 0;
+      background: gray; }
+      .nav--sub.is-hidden {
+        display: none; } }
+
+/* Mobile navigation
+ *
+ * Nesting once for all list items on mobile device.
+================================================================================================================== */
+.nav--mobile .nav--list-dropdown-item,
+.nav--mobile .nav--list-item {
+  border-bottom: 1px solid #fff;
+  width: 100%; }
+  .nav--mobile .nav--list-dropdown-item:last-child,
+  .nav--mobile .nav--list-item:last-child {
+    border-bottom: 0; }
+.nav--mobile .nav--list-link {
+  display: inline; }
+.nav--mobile .nav--list-dropdown-link:hover,
+.nav--mobile .nav--list-link:hover {
+  background: none; }
+
+/* Static pages menu
+ *
+ * Static pages menu displayed in main menu sub, mobile menu and on node pages.
+================================================================================================================== */
+.nav .nav--static-pages {
+  box-sizing: border-box;
+  min-width: 0; }
+  @media only screen and (min-width: 45em) {
+    .nav .nav--static-pages {
+      min-width: 200px; } }
+.nav .nav--static-pages-item a {
+  border-top: 1px solid #fff;
+  display: block;
+  padding: 1em; }
+  .nav .nav--static-pages-item a:link {
+    color: #fff;
+    text-decoration: none; }
+  .nav .nav--static-pages-item a:visited {
+    color: #fff;
+    text-decoration: none; }
+  .nav .nav--static-pages-item a:hover {
+    color: #fff;
+    text-decoration: none; }
+  .nav .nav--static-pages-item a:focus {
+    color: #fff;
+    text-decoration: none; }
+  .nav .nav--static-pages-item a:hover {
+    background: #999999; }
+  .nav .nav--static-pages-item a.active {
+    font-weight: bold; }
+
+.nav--mobile .nav--static-pages-item {
+  border-top: 1px solid #fff;
+  padding: 1em; }
+  .nav--mobile .nav--static-pages-item a {
+    display: inline;
+    margin-left: 1em; }
+    .nav--mobile .nav--static-pages-item a:link {
+      color: #fff;
+      text-decoration: none; }
+    .nav--mobile .nav--static-pages-item a:visited {
+      color: #fff;
+      text-decoration: none; }
+    .nav--mobile .nav--static-pages-item a:hover {
+      color: #fff;
+      text-decoration: none; }
+    .nav--mobile .nav--static-pages-item a:focus {
+      color: #fff;
+      text-decoration: none; }
+    .nav--mobile .nav--static-pages-item a.active {
+      font-weight: bold; }
+
+.nav--static-pages.is-node {
+  display: block; }
+  .nav--static-pages.is-node .nav--static-pages-item {
+    border-bottom: 1px solid #fff;
+    padding: 1em 0; }
+    .nav--static-pages.is-node .nav--static-pages-item:last-child {
+      border-bottom: 0; }
+    .nav--static-pages.is-node .nav--static-pages-item a:link {
+      color: #17858c;
+      text-decoration: none; }
+    .nav--static-pages.is-node .nav--static-pages-item a:visited {
+      color: #17858c;
+      text-decoration: none; }
+    .nav--static-pages.is-node .nav--static-pages-item a:hover {
+      color: #17858c;
+      text-decoration: none; }
+    .nav--static-pages.is-node .nav--static-pages-item a:focus {
+      color: #17858c;
+      text-decoration: none; }
+    .nav--static-pages.is-node .nav--static-pages-item a.active {
+      font-weight: bold; }
+
+/**
+ *
+ * Content module.
+ *
+ * Contains styles related to content (Ie. Nodes, course providers)
+ *
+ */
+/* Styles
+================================================================================================================== */
+.content {
+  margin: 0 8px;
+  width: 100%;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-justify-content: space-between;
+  justify-content: space-between; }
+  .content--image {
+    margin-bottom: 32px;
+    min-height: 120px;
+    position: relative;
+    width: 100%; }
+  .content--main {
+    width: 100%; }
+    @media only screen and (min-width: 55em) {
+      .content--main {
+        width: 60%; } }
+  .content--meta {
+    width: 100%; }
+    @media only screen and (min-width: 55em) {
+      .content--meta {
+        width: 35%; } }
+  .content--empty {
+    margin: 0 8px; }
+
+/**
+ *
+ * Buttons
+ *
+ * Display of buttons on the site.
+ *
+ */
+/* Placeholders, variables and mixins related to this document only. @todo cleanup.
+================================================================================================================== */
+/* Styles.
+================================================================================================================== */
+.form-submit,
+.button {
+  position: relative;
+  border: 1px solid #17858c;
+  display: inline-block;
+  padding: .5em 1.5em;
+  background-color: #17858c;
+  color: #fff;
+  cursor: pointer;
+  font-size: 125%;
+  text-align: center;
+  text-shadow: 0.025em 0.025em 0.1em #105b60; }
+  .form-submit:focus,
+  .button:focus, .form-submit:hover,
+  .button:hover, .form-submit:active,
+  .button:active {
+    text-decoration: none; }
+
+/* Styles.
+================================================================================================================== */
+.form-submit,
+.button {
+  background-color: #17858c;
+  border: 1px solid #17858c;
+  color: #fff;
+  text-shadow: 0.025em 0.025em 0.1em #105b60;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px; }
+  .form-submit:hover,
+  .button:hover {
+    background-color: #17858c; }
+
+/**
+ *
+ * Page module.
+ *
+ * Contains styles related to default pages.
+ *
+ */
+/* Styles.
+================================================================================================================== */
+.page--wrapper {
+  background: #fff; }
+
+.page--header {
+  padding: 16px 16px 0;
+  margin: 0 auto;
+  max-width: 1000px; }
+
+.page--content {
+  margin: 16px auto 16px;
+  max-width: 1000px;
+  padding: 0 16px; }
+
+.page--messages {
+  margin: auto;
+  max-width: 1000px; }
+
+/**
+ *
+ * Itk tabs
+ *
+ * A component for displaying an expanding side menu.
+ *
+ */
+/* Imports, placeholder classes, mixins and variables related to this document.
+   ========================================================================== */
+/* Variables used within this document. */
+/* Menu positioning */
+/* Animations related to this document.
+   ========================================================================== */
+@-moz-keyframes toggle-nav-open {
+  0% {
+    left: -20em; }
+  100% {
+    left: 0; } }
+@-webkit-keyframes toggle-nav-open {
+  0% {
+    left: -20em; }
+  100% {
+    left: 0; } }
+@keyframes toggle-nav-open {
+  0% {
+    left: -20em; }
+  100% {
+    left: 0; } }
+@-moz-keyframes toggle-nav-close {
+  0% {
+    left: 0; }
+  100% {
+    left: -20em; } }
+@-webkit-keyframes toggle-nav-close {
+  0% {
+    left: 0; }
+  100% {
+    left: -20em; } }
+@keyframes toggle-nav-close {
+  0% {
+    left: 0; }
+  100% {
+    left: -20em; } }
+@-moz-keyframes toggle-nav-overlay {
+  0% {
+    background-color: transparent; }
+  100% {
+    background-color: rgba(0, 0, 0, 0.65); } }
+@-webkit-keyframes toggle-nav-overlay {
+  0% {
+    background-color: transparent; }
+  100% {
+    background-color: rgba(0, 0, 0, 0.65); } }
+@keyframes toggle-nav-overlay {
+  0% {
+    background-color: transparent; }
+  100% {
+    background-color: rgba(0, 0, 0, 0.65); } }
+/* Styles
+   ========================================================================== */
+.nav--mobile {
+  color: #fff;
+  height: 100%;
+  overflow-y: auto;
+  position: fixed;
+  left: -20em;
+  top: 0;
+  z-index: 99;
+  max-width: 90%;
+  width: 20em;
+  background: #4d4d4d;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -moz-box-shadow: -5px 0px 10px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: -5px 0px 10px rgba(0, 0, 0, 0.25);
+  box-shadow: -5px 0px 10px rgba(0, 0, 0, 0.25);
+  /* States */ }
+  .is-visible.nav--mobile {
+    -moz-animation: toggle-nav-open 0.25s ease 1 forwards;
+    -webkit-animation: toggle-nav-open 0.25s ease 1 forwards;
+    animation: toggle-nav-open 0.25s ease 1 forwards; }
+  .is-hidden.nav--mobile {
+    -moz-animation: toggle-nav-close 0.25s ease 1 forwards;
+    -webkit-animation: toggle-nav-close 0.25s ease 1 forwards;
+    animation: toggle-nav-close 0.25s ease 1 forwards; }
+
+/* Invisible close element that allows the user to close the menu by clicking outside it */
+.nav--overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 98;
+  cursor: pointer; }
+  .is-visible.nav--overlay {
+    display: block;
+    width: 100%;
+    -moz-animation: toggle-nav-overlay 0.75s linear 1 forwards;
+    -webkit-animation: toggle-nav-overlay 0.75s linear 1 forwards;
+    animation: toggle-nav-overlay 0.75s linear 1 forwards; }
+
+/* Make sure the user can't scroll when overlays are active */
+html.is-locked,
+html.is-locked body {
+  overflow: hidden;
+  height: 100%; }

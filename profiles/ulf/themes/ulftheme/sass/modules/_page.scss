@@ -1,0 +1,32 @@
+/**
+ *
+ * Page module.
+ *
+ * Contains styles related to default pages.
+ *
+ */
+
+
+/* Styles.
+================================================================================================================== */
+
+.page--wrapper {
+  background: $white; // The actual background for content should be white.
+}
+
+.page--header {
+  padding: $spacing $spacing 0;
+  margin: 0 auto;
+  max-width: 1000px;
+}
+
+.page--content {
+  margin: $spacing auto $spacing;
+  max-width: $layout-max-width;
+  padding: 0 $spacing;
+}
+
+.page--messages {
+  margin: auto;
+  max-width: $layout-max-width;
+}

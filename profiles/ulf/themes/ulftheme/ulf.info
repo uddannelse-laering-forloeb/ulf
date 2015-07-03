@@ -1,0 +1,20 @@
+name = ulf
+version = VERSION
+core = 7.x
+
+regions[header] = Header
+regions[content] = Content
+regions[footer] = Footer
+
+stylesheets[all][] = css/ulf-styles.css
+stylesheets[all][] = icons/ulf-icons.css
+
+scripts[] = scripts/mobile-nav.js
+scripts[] = scripts/toggle-sub-menu.js
+
+; Disable stylesheets
+stylesheets[all][] = system.theme.css
+stylesheets[all][] = system.menus.css
+
+; Panels layouts. You can place multiple layouts under the "layouts" folder.
+plugins[panels][layouts] = layouts

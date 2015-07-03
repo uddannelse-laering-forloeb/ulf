@@ -1,0 +1,117 @@
+/**
+ *
+ * Footer module.
+ *
+ * Contains styles related to the footer.
+ *
+ */
+
+
+/* Styles.
+================================================================================================================== */
+
+.footer {
+  background: $dark-blue;
+  color: $white;
+  min-height: 15em;
+
+  &--inner {
+    margin: 0 auto;
+    max-width: $layout-max-width;
+
+    @include display-flex;
+    @include flex-wrap(wrap);
+    @include flex-direction(row);
+  }
+
+  &--block {
+    padding: 2em 0;
+    position: relative;
+    width: 100%;
+
+    @include breakpoint(45em) {
+      width: 33%;
+    }
+  }
+
+  &--block-inner {
+    overflow: hidden;
+    padding: 0 $spacing / 2;
+  }
+
+  // Content elements in footer is editable by editors. We set some defaults.
+
+  hr {
+    border-color: $white;
+  }
+
+  a {
+    @include strip-link-styles($white, underline);
+  }
+
+  ul {
+    padding-left: $spacing;
+  }
+
+  ol {
+    padding-left: 20px;
+  }
+
+  table {
+    table-layout: fixed;
+    width: 100%
+  }
+
+  td,
+  th {
+    padding: .5em 1em;
+  }
+
+  &--eu-compliance {
+    height: 150px;
+    padding: $spacing / 2;
+    margin: 0 auto;
+    max-width: $layout-max-width;
+
+    @include breakpoint($node-breakpoint) {
+      height: 80px;
+    }
+  }
+}
+
+
+// Display of EU compliance popup.
+.footer--eu-compliance-inner {
+  position: relative;
+
+  @include vertical-center();
+
+  @include display-flex;
+  @include justify-content(space-between);
+  @include flex-wrap(wrap);
+  @include flex-direction(row);
+}
+
+.footer--eu-compliance-text {
+  color: $white;
+  text-align: left;
+  width: 100%;
+
+  @include breakpoint($node-breakpoint) {
+    width: 50%;
+  }
+}
+
+
+.footer--eu-compliance-buttons {
+  width: 100%;
+
+  @include breakpoint($node-breakpoint) {
+    width: 45%;
+  }
+
+  .button {
+    margin: $spacing /2;
+    padding: .2em .8em;
+  }
+}
