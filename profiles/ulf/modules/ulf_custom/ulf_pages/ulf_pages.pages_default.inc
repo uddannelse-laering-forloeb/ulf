@@ -275,16 +275,16 @@ function ulf_pages_default_page_manager_pages() {
     'title' => 'Newsletter archive',
     'body' => '<div class="content--newsletter-archive">
 <h3 class="content--header-grouping">Generelt</h3>
-<script language="javascript" src="//us8.campaign-archive2.com/generate-js/?u=064509eb2d1820f18782ba2da&fid=13689&show=50" type="text/javascript"></script>
+<script language="javascript" src="http//us8.campaign-archive2.com/generate-js/?u=064509eb2d1820f18782ba2da&fid=13689&show=50" type="text/javascript"></script>
 
 <h3 class="content--header-grouping">Dagtilbud</h3>
-<script language="javascript" src="//us8.campaign-archive2.com/generate-js/?u=064509eb2d1820f18782ba2da&fid=13677&show=50" type="text/javascript"></script>
+<script language="javascript" src="http//us8.campaign-archive2.com/generate-js/?u=064509eb2d1820f18782ba2da&fid=13677&show=50" type="text/javascript"></script>
 
 <h3 class="content--header-grouping">Grundskole</h3>
-<script language="javascript" src="//us8.campaign-archive2.com/generate-js/?u=064509eb2d1820f18782ba2da&fid=13681&show=50" type="text/javascript"></script>
+<script language="javascript" src="http//us8.campaign-archive2.com/generate-js/?u=064509eb2d1820f18782ba2da&fid=13681&show=50" type="text/javascript"></script>
 
 <h3 class="content--header-grouping">Ungdomsuddannelse</h3>
-<script language="javascript" src=" //us8.campaign-archive2.com/generate-js/?u=064509eb2d1820f18782ba2da&fid=13685&show=50" type="text/javascript"></script>
+<script language="javascript" src="http//us8.campaign-archive2.com/generate-js/?u=064509eb2d1820f18782ba2da&fid=13685&show=50" type="text/javascript"></script>
 </div>',
     'format' => 'full_html',
     'substitute' => TRUE,
