@@ -3,6 +3,15 @@
 #In development
 
 
+#v1.0.0 - Beta2
+
+* Added news archive page /news
+* Added profiles overview page /organizers
+* Added newsletter signup page /newsletter/signup
+* Added styling for login
+
+
+
 #v1.0.0 - Beta1
 
 * Added profile display
