@@ -16,10 +16,11 @@
 
 .pager {
   border-top: 1px dashed $gray-light;
+  margin-top: 2em;
   padding-top: 2em;
   padding-left: 0;
-
   text-align: center;
+  width: 100%;
 
   li {
     display: inline-block;

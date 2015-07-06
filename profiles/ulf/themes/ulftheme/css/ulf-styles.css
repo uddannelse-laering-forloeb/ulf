@@ -512,9 +512,11 @@ textarea {
 ================================================================================================================== */
 .pager {
   border-top: 1px dashed #b3b3b3;
+  margin-top: 2em;
   padding-top: 2em;
   padding-left: 0;
-  text-align: center; }
+  text-align: center;
+  width: 100%; }
   .pager li {
     display: inline-block;
     margin-left: -4px;
@@ -552,6 +554,10 @@ textarea {
  */
 /* Placeholders, variables and mixins related to this document only.
 ================================================================================================================== */
+.layout-view-page .layout-element-alpha-inner,
+.layout-view-page .layout-element-beta-inner,
+.layout-view-page .layout-element-gamma-inner,
+.layout-view-page .layout-element-delta-inner,
 .layout-node .layout-element-alpha-inner,
 .layout-node .layout-element-beta-inner,
 .layout-node .layout-element-gamma-inner,
@@ -590,22 +596,29 @@ body {
   padding: 0 8px;
   width: 100%; }
 
+.layout-view-page .layout-element-alpha,
 .layout-node .layout-element-alpha,
 .layout-frontpage .layout-element-alpha,
 .layout-profile .layout-element-alpha {
   background: #fff; }
+.layout-view-page .layout-element-beta,
 .layout-node .layout-element-beta,
 .layout-frontpage .layout-element-beta,
 .layout-profile .layout-element-beta {
   background: #f2f2f2; }
+.layout-view-page .layout-element-gamma,
 .layout-node .layout-element-gamma,
 .layout-frontpage .layout-element-gamma,
 .layout-profile .layout-element-gamma {
   background: #f2f2f2; }
+.layout-view-page .layout-element-delta,
 .layout-node .layout-element-delta,
 .layout-frontpage .layout-element-delta,
 .layout-profile .layout-element-delta {
   background: #e6e6e6; }
+
+.layout-view-page .layout-element-alpha-inner {
+  padding: 0; }
 
 /**
  *
@@ -916,6 +929,11 @@ body {
   @media only screen and (min-width: 800px) {
     .teaser--content {
       width: 25%; } }
+  .teaser--content-header {
+    border-bottom: 1px solid #000;
+    margin: 16px 8px 16px;
+    width: 100%;
+    text-transform: capitalize; }
   .teaser--content-inner:link {
     color: #000;
     text-decoration: none; }

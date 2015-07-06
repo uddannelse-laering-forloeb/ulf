@@ -31,6 +31,7 @@ features[field_instance][] = user-user-field_profile_phone
 features[field_instance][] = user-user-field_profile_postal_code
 features[image][] = logo
 features[variable][] = field_bundle_settings_user__user
+features[views_view][] = ulf_all_organizers
 features[views_view][] = ulf_content_by_user
 features_exclude[dependencies][ctools] = ctools
 features_exclude[field_base][field_image] = field_image
