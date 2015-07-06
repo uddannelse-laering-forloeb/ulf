@@ -13,3 +13,12 @@
   position: absolute;
   width: 100%;
 }
+
+
+// Header used for a group of content. (/news, /organizer)
+%content--header-grouping {
+  border-bottom: 1px solid $black;
+  margin: $spacing $spacing/2 $spacing;
+  width: 100%;
+  text-transform: capitalize;
+}

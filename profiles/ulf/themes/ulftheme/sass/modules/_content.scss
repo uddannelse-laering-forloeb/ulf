@@ -45,4 +45,21 @@
   &--empty {
     margin: 0 $spacing / 2;
   }
+
+
+  &--header-grouping {
+    @extend %content--header-grouping;
+  }
+
+
+  // Newsletter archive page.
+  &--newsletter-archive {
+    .display_archive {
+      margin: $spacing $spacing/2 $spacing * 2;
+    }
+
+    .campaign {
+      margin-bottom: $spacing / 2;
+    }
+  }
 }

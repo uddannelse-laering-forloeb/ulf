@@ -426,6 +426,12 @@ textarea {
   position: absolute;
   width: 100%; }
 
+.teaser--content-header, .content--header-grouping {
+  border-bottom: 1px solid #000;
+  margin: 16px 8px 16px;
+  width: 100%;
+  text-transform: capitalize; }
+
 /**
  *
  * Global mixins.
@@ -929,11 +935,6 @@ body {
   @media only screen and (min-width: 800px) {
     .teaser--content {
       width: 25%; } }
-  .teaser--content-header {
-    border-bottom: 1px solid #000;
-    margin: 16px 8px 16px;
-    width: 100%;
-    text-transform: capitalize; }
   .teaser--content-inner:link {
     color: #000;
     text-decoration: none; }
@@ -1293,6 +1294,10 @@ body {
         width: 35%; } }
   .content--empty {
     margin: 0 8px; }
+  .content--newsletter-archive .display_archive {
+    margin: 16px 8px 32px; }
+  .content--newsletter-archive .campaign {
+    margin-bottom: 8px; }
 
 /**
  *
