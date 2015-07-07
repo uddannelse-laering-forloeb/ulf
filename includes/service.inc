@@ -131,10 +131,6 @@ class SearchApiSearchNodeService extends SearchApiAbstractService {
    * {@inheritdoc}
    */
   public function indexItems(SearchApiIndex $index, array $items) {
-    if (empty($this->options['indexes'][$index->machine_name])) {
-      throw new SearchApiException(t('No field settings for index with id @id.', array('@id' => $index->machine_name)));
-    }
-
     $indexed = array();
 
     $search_node_index = $index->options['search_node_indexes'];

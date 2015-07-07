@@ -97,11 +97,36 @@ class SearchNodeClient {
       return TRUE;
     }
 
+    // Entity already in the index (reindex).
+    if ($request->code == 409) {
+      return $this->update($index, $type, $id, $data);
+    }
+
     return FALSE;
   }
 
-  public function update() {
+  public function update($index, $type, $id, $data) {
+    $request = drupal_http_request($this->host . '/api', array(
+      'method' => 'PUT',
+      'headers' => array(
+        'Content-Type' => 'application/json',
+        'Authorization' => 'Bearer ' . $this->token
+      ),
+      'data' => json_encode(
+        array(
+          'index' => $index,
+          'type' => $type,
+          'id' => $id,
+          'data' => $data,
+        )
+      )
+    ));
 
+    if ($request->code == 200) {
+      return TRUE;
+    }
+
+    return FALSE;
   }
 
   public function remove($index, $type, $id) {
