@@ -1,0 +1,122 @@
+<?php
+
+/**
+ * @TODO: Search block
+ * @TODO: Search result block
+ * @TODO: Angular front-end
+ * @TODO: Menu callback for the front-end
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function search_node_page_menu() {
+  $items = array();
+
+  $items ['admin/config/search/search_node'] = array(
+    'title' => 'Search node',
+    'description' => 'Handle search node filters and settings.',
+    'page callback' => array('drupal_get_form'),
+    'page arguments' => array('search_node_page_admin_overview'),
+    'access arguments' => array('administer search_node'),
+    'file' => 'search_node_page.admin.inc',
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function search_node_page_block_info() {
+  return array(
+    'search_node_search_box' => array(
+      'info' => t('Search node search field and filters'),
+    ),
+    'search_node_search_result' => array(
+      'info' => t('Search node results'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_block_configure().
+ */
+function search_node_page_block_configure($delta='') {
+  $form = array();
+
+  switch($delta) {
+    case 'search_node_search_box':
+      /**
+       * @TODO: Which index and filters to use.
+       */
+      break;
+
+    case 'search_node_search_result' :
+      /**
+       * @TODO: What options should be here?
+       */
+      break;
+  }
+
+  return $form;
+}
+
+/**
+ * Implements hook_block_save().
+ */
+function search_node_page_block_save($delta = '', $edit = array()) {
+  switch($delta) {
+    case 'search_node_search_box':
+      /**
+       * @TODO: Save settings.
+       */
+      break;
+  }
+}
+
+/**
+ * Implements hook_block_view().
+ *
+ * @TODO: Move HTML into template function and tpl's.
+ */
+function search_node_page_block_view($delta='') {
+  $block = array();
+
+  switch($delta) {
+    case 'search_node_search_box' :
+      $block['content'] = '<form id="searchBoxApp" data-ng-controller="boxController">
+        <span data-ng-include="template">
+          <div class="row collapse">
+            <div class="small-10 columns">
+              <input type="text" placeholder="Søg, f.eks. musik, kursus">
+            </div>
+            <div class="small-2 columns">
+              <a href="#" class="button postfix">Søg</a>
+            </div>
+          </div>
+        </span>
+      </form>';
+
+      /**
+       * @TODO: Attach all JS files.
+       */
+      $block['#attached']['js'][] = array(
+        'type' => 'file',
+        'data' => 'path/to/somescript.js',
+      );
+      break;
+
+    case 'search_node_search_result':
+      $block['content'] = '<form id="searchResultApp"  data-ng-controller="resultController" >
+        <span data-ng-include="template">
+          <div class="row collapse">
+            No results.
+          </div>
+        </span>
+      </form>';
+      break;
+  }
+
+  return $block;
+}
