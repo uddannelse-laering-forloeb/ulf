@@ -101,6 +101,9 @@
         <?php endif; ?>
       </ul>
     </nav>
+    <?php if ($search_widget_block) : ?>
+      <?php print render($search_widget_block['content']); ?>
+    <?php endif; ?>
     <div class="page--messages">
       <?php print $messages; ?>
     </div>

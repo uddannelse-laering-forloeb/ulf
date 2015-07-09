@@ -6,6 +6,7 @@
 function ulf_preprocess_page(&$variables) {
   // Provide main menu as block for all pages.
   $variables['main_menu_block'] = module_invoke('system', 'block_view', 'main-menu');
+  $variables['search_widget_block'] = module_invoke('ulf_search', 'block_view', 'search_widget');
 }
 
 

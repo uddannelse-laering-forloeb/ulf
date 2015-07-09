@@ -1,0 +1,53 @@
+<?php
+
+/**
+ * Implements hook_theme().
+ */
+function ulf_search_theme() {
+  return array(
+    'search_widget' => array(
+      'variables' => array(),
+      'template' => 'templates/search-widget',
+    ),
+    'search_results' => array(
+      'variables' => array(),
+      'template' => 'templates/search-results',
+    ),
+  );
+}
+
+
+/**
+ * Implements hook_block_info().
+ */
+function ulf_search_block_info() {
+  $blocks = array();
+  $blocks['search_widget'] = array(
+    'info' => t('ULF search widget'),
+  );
+  $blocks['search_results'] = array(
+    'info' => t('ULF search results'),
+  );
+
+  return $blocks;
+}
+
+
+/**
+ * Implements hook_block_view().
+ */
+function ulf_search_block_view($delta = '') {
+  $block = array();
+
+  switch($delta) {
+    case 'search_widget' :
+      $variables = array();
+      $block['content'] = theme('search_widget', $variables);
+      break;
+    case 'search_results' :
+      $variables = array();
+      $block['content'] = theme('search_results', $variables);
+      break;
+  }
+  return $block;
+}
