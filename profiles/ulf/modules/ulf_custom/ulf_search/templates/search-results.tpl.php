@@ -6,7 +6,7 @@
  */
 ?>
 <div class="search-results-header">
-  <h2>Ca. <strong>37</strong> resultater på søgning efter <strong><em>musik</em></strong></h2>
+  <h2><strong>37</strong> resultater på søgning efter <strong><em>musik</em></strong></h2>
 </div>
 <div class="search-results">
   <article class="search-results--result is-dagtilbud">
