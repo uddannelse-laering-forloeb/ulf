@@ -295,3 +295,101 @@
     @include strip-link-styles($white);
   }
 }
+
+
+.search-results {
+  margin-bottom: 2em;
+
+  &--result {
+    @include display-flex;
+    @include flex-flow(row wrap);
+
+    border-width: 1px;
+    border-style: solid;
+    margin-bottom: 2em;
+    padding: $boxlist-padding;
+
+    &.is-dagtilbud {
+      border-color: $green;
+    }
+
+    &.is-grundskole {
+      border-color: $purple;
+    }
+
+    &.is-ungdomsuddannelse {
+      border-color: $orange;
+    }
+
+    header,
+    figure {
+      width: 100%;
+    }
+
+    header {
+      @include order(2);
+    }
+
+    figure {
+      @include order(1);
+
+      margin-bottom: 1em;
+    }
+
+    @media only screen and (min-width: 30em) {
+      @include flex-flow(row nowrap);
+
+      border-width: 1px 1px 6px;
+      padding: 0;
+
+      header {
+        padding: $boxlist-padding;
+
+        @include flex-grow(1);
+        @include flex-shrink(1);
+      }
+
+      figure {
+        display: block;
+        margin-bottom: 0;
+        max-width: 225px;
+
+        @include flex-basis(200px);
+        @include flex-grow(0);
+      }
+    }
+  }
+
+  &--header {
+    margin-top: 0;
+    margin-bottom: .5em;
+  }
+
+  &--type {
+    color: transparentize($boxlist-font-color, .5);
+  }
+
+  &--type:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// Show 2 columns side by side
+.search-results.is-side-by-side {
+  // Stack until there is enough space to display them side by side
+  @media only screen and (min-width: 60em) {
+    @include display-flex;
+    @include flex-flow(row nowrap);
+    @include justify-content(space-between);
+
+    .search-results--result {
+      margin-right: 1em;
+      margin-bottom: 0;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}
+
