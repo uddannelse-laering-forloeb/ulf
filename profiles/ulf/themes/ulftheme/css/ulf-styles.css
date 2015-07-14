@@ -1610,6 +1610,10 @@ body {
       color: #fff;
       text-decoration: none; }
 
+.search-results-header {
+  margin-bottom: 2em;
+  padding-top: 1em; }
+
 .search-results {
   margin-bottom: 2em; }
   .search-results--result {
@@ -1617,15 +1621,16 @@ body {
     display: flex;
     -webkit-flex-flow: row wrap;
     flex-flow: row wrap;
-    border-width: 1px;
-    border-style: solid;
     margin-bottom: 2em;
     padding: 1em; }
     .search-results--result.is-dagtilbud {
+      background-color: rgba(164, 218, 32, 0.1);
       border-color: #a4da20; }
     .search-results--result.is-grundskole {
+      background-color: rgba(144, 29, 124, 0.1);
       border-color: #901d7c; }
     .search-results--result.is-ungdomsuddannelse {
+      background-color: rgba(255, 104, 0, 0.1);
       border-color: #ff6800; }
     .search-results--result header,
     .search-results--result figure {
@@ -1641,7 +1646,8 @@ body {
       .search-results--result {
         -webkit-flex-flow: row nowrap;
         flex-flow: row nowrap;
-        border-width: 1px 1px 6px;
+        border-style: solid;
+        border-width: 0 0 6px;
         padding: 0; }
         .search-results--result header {
           padding: 1em;
