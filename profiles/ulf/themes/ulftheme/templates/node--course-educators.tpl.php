@@ -117,7 +117,7 @@
                   <?php print render($content['field_period']); ?>
                 <?php endif;?>
                 <?php if ($field_free['0']['value'] == 0 ) : ?>
-                  <div class="block--field-label"><?php print t('Price');?>:</div>
+                  <div class="block--field-label"><?php print t('Price');?></div>
                   <?php print render($content['field_price']); ?>
                 <?php else : ?>
                   <div class="block--field-label"><?php print t('This course is free.');?></div>
@@ -147,7 +147,9 @@
               <div class="block--field-label"><?php print $profile_name; ?></div>
               <div class="block--field-text"><?php print $profile_address; ?></div>
               <div class="block--field-text"><?php print $profile_postal_code; ?> <?php print $profile_city; ?></div>
-              <div class="block--field-text"><?php print $profile_phone; ?></div>
+              </br>
+              <div class="block--field-text"><strong><?php print t('Phone')?>.</strong> <?php print $profile_phone; ?></div>
+              </br>
               <a href="/user/<?php print $uid ?>"><?php print t('View organizer profile'); ?></a>
             </div>
           </div>

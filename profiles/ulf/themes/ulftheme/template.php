@@ -110,7 +110,6 @@ function ulf_preprocess_node(&$variables) {
       break;
   }
 
-
   // Display author meta data on courses.
   if (($variables['type'] == 'course'|| $variables['type'] == 'course_educators') && $variables['view_mode'] == 'full') {
     // Fetch author.
