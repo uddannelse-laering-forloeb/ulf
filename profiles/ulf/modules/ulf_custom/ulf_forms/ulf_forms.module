@@ -66,12 +66,21 @@ function ulf_forms_form_alter(&$form, &$form_state, $form_id) {
     $form['actions']['submit']['#attributes']['class'][] = 'form-module--user-submit';
     break;
 
+  case 'user_profile_form':
+    global $user;
+    if ($user->uid != 1 ) {
+        $form['mimemail']['#access'] = FALSE;
+        $form['locale']['#access'] = FALSE;
+    }
+    break;
   case 'user_login':
     $form['#prefix'] = '<div class="form-module--user-login">';
     $form['#suffix'] = '</div>';
     $form['actions']['submit']['#attributes']['class'][] = 'form-module--user-submit';
     break;
   }
+
+
 }
 
 /**

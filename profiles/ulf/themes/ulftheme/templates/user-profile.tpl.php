@@ -55,7 +55,7 @@
           </div>
           <div class="content--meta">
             <?php if (isset($user_profile['field_profile_logo'])) :?>
-            <div class="block--light">
+            <div class="block">
               <div class="block--content">
                 <div class="block--field-logo">
                   <?php print render($user_profile['field_profile_logo']); ?>
@@ -71,6 +71,7 @@
                 <div class="block--field-label"><?php print render($user_profile['field_profile_name']); ?></div>
                 <div class="block--field-text"><?php print render($user_profile['field_profile_address']); ?></div>
                 <div class="block--field-text"><?php print render($user_profile['field_profile_postal_code']); ?> <?php print render($user_profile['field_profile_city']); ?></div>
+                </br>
                 <div class="block--field-text"><?php print render($user_profile['field_profile_phone']); ?></div>
                 <div class="block--field-text"><?php print render($user_profile['field_profile_home_page']); ?></div>
               </div>
