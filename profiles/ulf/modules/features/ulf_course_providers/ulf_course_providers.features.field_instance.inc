@@ -190,7 +190,7 @@ function ulf_course_providers_field_default_field_instances() {
     'label' => 'Kort præsentation af forløbsudbyder',
     'required' => 1,
     'settings' => array(
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => 1,
     ),
     'widget' => array(
