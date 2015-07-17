@@ -44,10 +44,10 @@
             <?php print render($user_profile['field_image']); ?>
           </div>
           <div class="content--main">
-            <div class="block--field-label"><?php print t('Description');?>:</div>
+            <div class="block--field-label"><?php print t('Description');?></div>
             <?php print render($user_profile['field_profile_description']); ?>
-            <?php if (isset($user_profile['field_profile_educat_profi'])) :?>
-              <div class="block--field-label"><?php print t('Profile');?>:</div>
+            <?php if (isset($user_profile['field_profile_educat_profi'])) : ?>
+              <div class="block--field-label"><?php print t('Profile');?></div>
               <?php print render($user_profile['field_profile_educat_profi']); ?>
             <?php endif; ?>
             <?php print render($user_profile['field_profile_entry']); ?>

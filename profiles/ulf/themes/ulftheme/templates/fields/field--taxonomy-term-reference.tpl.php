@@ -50,7 +50,7 @@
 <div class="block--field-text"<?php print $content_attributes; ?>>
   <?php foreach ($items as $delta => $item): ?>
     <?php if(count($items) != $delta + 1) : ?>
-      <?php print render($item) . ','; ?>
+      <?php print render($item) . '</br>'; ?>
       <?php else : ?>
         <?php print render($item); ?>
     <?php endif; ?>

@@ -95,8 +95,8 @@
         </div>
         <div class="content--main">
           <?php print render($content['field_tags']); ?>
-          <?php print render($content['field_purpose']); ?>
           <?php print render($content['field_full_description']); ?>
+          <?php print render($content['field_purpose']); ?>
           <?php if ($field_activities || $field_background_knowledge || $field_post_work || $field_material_suggestions) : ?>
             <div class="field--collection-wrapper">
               <div class="field--collection-label"><?php print t('Yderligere information');?></div>
@@ -134,6 +134,7 @@
                 <?php if ($field_period_full_year['0']['value'] == 0 ) : ?>
                   <?php print render($content['field_period']); ?>
                 <?php endif;?>
+                <?php print render($content['field_period_info']); ?>
                 <?php if ($field_duration) : ?>
                   <div class="block--field-label"><?php print t('Duration');?></div>
                   <div class="block--field-text"><?php print render($content['field_duration']); ?><?php print render($content['field_duration_unit']); ?></div>
@@ -143,7 +144,6 @@
                 <?php else : ?>
                   <div class="block--field-label"><?php print t('This course is free.');?></div>
                 <?php endif;?>
-                <?php print render($content['field_period_info']); ?>
                 <?php print render($content['field_price_info']); ?>
               </div>
               <?php endif;?>
