@@ -46,7 +46,7 @@ function ulf_course_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_activities',
-    'label' => 'Aktiviteter',
+    'label' => 'Forslag ti laktiviteter',
     'required' => 0,
     'settings' => array(
       'text_processing' => 1,
@@ -103,7 +103,7 @@ function ulf_course_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_background_knowledge',
-    'label' => 'Baggrundsviden',
+    'label' => 'Forslag til baggrundsviden',
     'required' => 0,
     'settings' => array(
       'text_processing' => 1,
@@ -228,7 +228,7 @@ function ulf_course_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_count',
-    'label' => 'Antal',
+    'label' => 'Antal deltagere',
     'required' => 1,
     'settings' => array(
       'max' => '',
@@ -251,7 +251,7 @@ function ulf_course_field_default_field_instances() {
     'bundle' => 'course',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Angiv antal',
+    'description' => 'Angiv helt antal timer / lektioner',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -304,9 +304,7 @@ function ulf_course_field_default_field_instances() {
     'widget' => array(
       'active' => 0,
       'module' => 'html5_tools',
-      'settings' => array(
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-      ),
+      'settings' => array(),
       'type' => 'numberfield',
       'weight' => 22,
     ),
@@ -356,9 +354,7 @@ function ulf_course_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-      ),
+      'settings' => array(),
       'type' => 'options_select',
       'weight' => 23,
     ),
@@ -526,14 +522,14 @@ function ulf_course_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
         'weight' => 24,
       ),
       'full' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
@@ -1079,14 +1075,14 @@ function ulf_course_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
         'weight' => 29,
       ),
       'full' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
@@ -1164,7 +1160,7 @@ function ulf_course_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_post_work',
-    'label' => 'Efterbehandling',
+    'label' => 'Forslag til efterbehandling',
     'required' => 0,
     'settings' => array(
       'text_processing' => 1,
@@ -1200,7 +1196,7 @@ function ulf_course_field_default_field_instances() {
         'weight' => 12,
       ),
       'full' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
@@ -1751,15 +1747,12 @@ At opnå kendskab til...
   t('<p>Vælg besøg, hvis gruppen går rundt på egen hånd</p>
 <p>Vælg forløb, hvis det er et specifikt, tilrettelagt forløb med en formidler tilknyttet</p>
 ');
-  t('Aktiviteter');
-  t('Angiv antal');
   t('Angiv beløbet efterfulgt af afregningsenhed eller vælg \'gratis\'');
   t('Angiv enhed');
+  t('Angiv helt antal timer / lektioner');
   t('Angiv max. antal deltagere');
-  t('Antal');
-  t('Baggrundsviden');
+  t('Antal deltagere');
   t('Beskrivelse');
-  t('Efterbehandling');
   t('Eksempeltekst (bør skiftes, så målgruppen afspejles): Skovene omkring Gl. Rye gemmer på mange spor af tidligere tiders udnyttelse af skoven - skoven gav og giver stadig menneskene såvel materialer som oplevelser. Vi hører om fortidens brug af skoven fra bondestenalderens svedjebrug til middelalderens munke.');
   t('Eksempeltekst (bør skiftes, så målgruppen afspejles): Spørg i familien om nogen har gamle ”Himmelbjerg-souvenirs” og lav en lille udstilling i klassen med dem.');
   t('Eksempeltekst (bør skiftes, så målgruppen afspejles): Øvelse med håndtering af oldsager, som skal beskrives, tegnes og berøres i grupper. Gåtur til Galgebakken, hvor vi hører om stedets historie (hængninger). På hjemturen samler vi en stok, som skal snittes til en ”Himmelbjergstok” i snitteværksted på Gl. Rye Mølle.');
@@ -1770,6 +1763,9 @@ At opnå kendskab til...
   t('Fag - Grundskole');
   t('Fag - Ungdomsuddannelse');
   t('Formål');
+  t('Forslag ti laktiviteter');
+  t('Forslag til baggrundsviden');
+  t('Forslag til efterbehandling');
   t('Forslag til forberedelse og/eller efterbehandling i daginstitutionen');
   t('Gratis');
   t('Hele året');

@@ -281,7 +281,7 @@ function ulf_course_providers_field_default_field_instances() {
     'bundle' => 'user',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Url example: http://ulfiaarhus.dk',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -299,6 +299,7 @@ function ulf_course_providers_field_default_field_instances() {
       'absolute_url' => 1,
       'attributes' => array(
         'class' => '',
+        'configurable_class' => 0,
         'configurable_title' => 0,
         'rel' => '',
         'target' => '_blank',
@@ -309,8 +310,8 @@ function ulf_course_providers_field_default_field_instances() {
       ),
       'enable_tokens' => 0,
       'rel_remove' => 'default',
-      'title' => 'none',
-      'title_label_use_field_label' => FALSE,
+      'title' => 'optional',
+      'title_label_use_field_label' => 0,
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 0,
@@ -504,6 +505,7 @@ function ulf_course_providers_field_default_field_instances() {
   t('Pædagogisk profil');
   t('Telefonnr.');
   t('Upload et billede/illustration');
+  t('Url example: http://ulfiaarhus.dk');
 
   return $field_instances;
 }
