@@ -169,7 +169,7 @@
 
       // Hide filter selections.
       $('.filter-wrapper').hide();
-      
+
       // Hide specific fields only relevant for certain target groups.
       $('.field-name-field-post-work').hide();
       $('.field-name-field-educational-goals').hide();
