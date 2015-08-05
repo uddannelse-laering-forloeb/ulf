@@ -10,21 +10,21 @@
  * Modify forms
  */
 function ulf_forms_form_alter(&$form, &$form_state, $form_id) {
+  global $user;
   $form['#attached']['js'] = array();
   $form['#attached']['css'][] = drupal_get_path('module', 'ulf_forms') . '/css/node-form-styles.css';
   $form['#attached']['js'][] = drupal_get_path('module', 'ulf_forms') . '/js/node-form-logics.js';
   $form['#attached']['js'][] = drupal_get_path('module', 'ulf_forms') . '/js/jquery.imagesloaded.js';
   $form['#attached']['js'][] = drupal_get_path('module', 'ulf_forms') . '/js/jquery.imgareaselect.dev.js';
 
+  if (in_array('course provider', $user->roles) || in_array('editor', $user->roles)) {
+    $form['#attached']['js'][] = drupal_get_path('module', 'ulf_forms') . '/js/hide-rich-text-selection.js';
+  }
+
   switch ($form_id) {
 
   // Course node form.
   case 'course_node_form':
-
-    $form['#attached']['js'][] = drupal_get_path('module', 'ulf_forms') . '/js/node-form-logics.js';
-
-    // User messages.
-
     // Assist on node add.
     if (empty($form['nid']['#value'])) {
       $message_required = '<p>' . t('Required fields are marked with a star and can be found in the "Practical information" field group.') . '</p>';
@@ -39,13 +39,18 @@ function ulf_forms_form_alter(&$form, &$form_state, $form_id) {
 
     // Latest moderation log.
     if (!empty($form['vid']['#value'])) {
-      $latest_log_message = t('Latest message') . ': ' . ulf_forms_fetch_moderation_log_latest($form['vid']['#value']);
+      $latest_log_message = t('Latest message') . ': ' . _ulf_forms_fetch_moderation_log_latest($form['vid']['#value']);
       drupal_set_message($latest_log_message);
     }
 
     $form['#prefix'] = '<div class="node--form is-default-form">';
     $form['#suffix'] = '</div>';
+
+
+    $form['#submit'][] = '_custom_redirect_node_form_submit';
+
     break;
+
 
   // Course educators node form.
   case 'course_educators_node_form':
@@ -79,9 +84,8 @@ function ulf_forms_form_alter(&$form, &$form_state, $form_id) {
     $form['actions']['submit']['#attributes']['class'][] = 'form-module--user-submit';
     break;
   }
-
-
 }
+
 
 /**
  * Implements hook_wysiwyg_editor_settings_alter().
@@ -94,14 +98,40 @@ function ulf_forms_wysiwyg_editor_settings_alter(&$settings, $context) {
   }
 }
 
+
 /**
  * Fetch the latest moderation log.
  */
-function ulf_forms_fetch_moderation_log_latest($vid) {
+function _ulf_forms_fetch_moderation_log_latest($vid) {
   $result = db_select('node_revision', 'n')
     ->fields('n', array('log'))
     ->condition('vid', $vid,'=')
     ->execute()
     ->fetchAssoc();
   return $result['log'];
+}
+
+
+/**
+ * Add custom redirect on node/edit form submit.
+ */
+function _custom_redirect_node_form_submit($form, &$form_state) {
+  if (!empty($form_state['node']->nid)) {
+    $_GET['destination'] = 'node/' . $form_state['node']->nid . '/edit';
+  }
+}
+
+
+/**
+ * Implements hook_node_insert().
+ *
+ * Set destination to node edit form when new node has been added.
+ *
+ * @todo, Find a better way.
+ */
+
+function ulf_forms_node_insert($node) {
+  if($node->is_new) {
+    $_GET['destination'] = 'node/' . $node->nid . '/edit';
+  }
 }

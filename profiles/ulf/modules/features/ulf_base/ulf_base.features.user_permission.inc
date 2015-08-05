@@ -40,6 +40,7 @@ function ulf_base_user_default_permissions() {
   $permissions['access contextual links'] = array(
     'name' => 'access contextual links',
     'roles' => array(
+      'course provider' => 'course provider',
       'editor' => 'editor',
     ),
     'module' => 'contextual',
@@ -273,18 +274,14 @@ function ulf_base_user_default_permissions() {
   // Exported permission: 'use panels in place editing'.
   $permissions['use panels in place editing'] = array(
     'name' => 'use panels in place editing',
-    'roles' => array(
-      'editor' => 'editor',
-    ),
+    'roles' => array(),
     'module' => 'panels',
   );
 
   // Exported permission: 'use text format full_html'.
   $permissions['use text format full_html'] = array(
     'name' => 'use text format full_html',
-    'roles' => array(
-      'editor' => 'editor',
-    ),
+    'roles' => array(),
     'module' => 'filter',
   );
 

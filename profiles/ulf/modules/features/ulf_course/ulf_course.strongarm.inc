@@ -14,7 +14,7 @@ function ulf_course_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'additional_settings__active_tab_course';
-  $strongarm->value = 'edit-submission';
+  $strongarm->value = 'edit-workflow';
   $export['additional_settings__active_tab_course'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -75,10 +75,10 @@ function ulf_course_strongarm() {
           'weight' => '1',
         ),
         'path' => array(
-          'weight' => '7',
+          'weight' => '9',
         ),
         'redirect' => array(
-          'weight' => '8',
+          'weight' => '10',
         ),
       ),
       'display' => array(
@@ -171,7 +171,7 @@ function ulf_course_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'workbench_moderation_default_state_course';
-  $strongarm->value = 'published';
+  $strongarm->value = 'needs_review';
   $export['workbench_moderation_default_state_course'] = $strongarm;
 
   return $export;

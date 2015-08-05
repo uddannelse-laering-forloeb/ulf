@@ -45,9 +45,7 @@ function ulf_field_collections_field_default_field_instances() {
     'widget' => array(
       'active' => 0,
       'module' => 'number',
-      'settings' => array(
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-      ),
+      'settings' => array(),
       'type' => 'number',
       'weight' => 31,
     ),
@@ -527,7 +525,7 @@ function ulf_field_collections_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'hidden',
+        'label' => 'inline',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
@@ -536,7 +534,7 @@ function ulf_field_collections_field_default_field_instances() {
     ),
     'entity_type' => 'field_collection_item',
     'field_name' => 'field_contact_phone',
-    'label' => 'Telefon',
+    'label' => 'Tlf.',
     'required' => 0,
     'settings' => array(
       'text_processing' => 0,
@@ -598,8 +596,8 @@ function ulf_field_collections_field_default_field_instances() {
   t('Litteraturforslag');
   t('Navn');
   t('Pris');
-  t('Telefon');
   t('Titel/Beskrivelse');
+  t('Tlf.');
   t('Træffetid');
 
   return $field_instances;

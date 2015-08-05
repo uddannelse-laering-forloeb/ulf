@@ -218,7 +218,7 @@ function ulf_field_collections_field_default_field_bases() {
     'locked' => 0,
     'module' => 'number',
     'settings' => array(
-      'decimal_separator' => '.',
+      'decimal_separator' => ',',
       'precision' => 14,
       'scale' => 2,
     ),

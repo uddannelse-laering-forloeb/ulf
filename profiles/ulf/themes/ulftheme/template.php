@@ -149,6 +149,24 @@ function ulf_preprocess_field(&$variables) {
   if (in_array($variables['element']['#field_name'], $stripped_template)) {
     $variables['theme_hook_suggestions'][] = 'field__stripped';
   }
+
+
+  // Some fields should be displayed with label and content inline.
+  $inline_template = array(
+    'field_contact_phone',
+    'field_contact_office_hours',
+  );
+
+  $variables['display_type'] = 'is-block';
+  if (in_array($variables['element']['#field_name'], $inline_template)) {
+    $variables['display_type'] = 'is-inline';
+  }
+
+  // Change the "to" to "-" between from and to period.
+  // @todo, find a better way.
+  if ($variables['element']['#field_name'] == 'field_period') {
+    $variables['items']['0']['#markup'] = str_replace(' til ', ' - ', $variables['items']['0']['#markup']);
+  }
 }
 
 

@@ -46,7 +46,7 @@ function ulf_course_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_activities',
-    'label' => 'Forslag ti laktiviteter',
+    'label' => 'Forslag til aktiviteter',
     'required' => 0,
     'settings' => array(
       'text_processing' => 1,
@@ -174,7 +174,7 @@ function ulf_course_field_default_field_instances() {
       'module' => 'field_collection',
       'settings' => array(),
       'type' => 'field_collection_embed',
-      'weight' => 25,
+      'weight' => 12,
     ),
   );
 
@@ -306,7 +306,7 @@ function ulf_course_field_default_field_instances() {
       'module' => 'html5_tools',
       'settings' => array(),
       'type' => 'numberfield',
-      'weight' => 22,
+      'weight' => 9,
     ),
   );
 
@@ -356,7 +356,7 @@ function ulf_course_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 23,
+      'weight' => 10,
     ),
   );
 
@@ -623,7 +623,7 @@ function ulf_course_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 9,
+      'weight' => 11,
     ),
   );
 
@@ -1007,7 +1007,7 @@ function ulf_course_field_default_field_instances() {
         'year_range' => '-0:+5',
       ),
       'type' => 'date_popup',
-      'weight' => 16,
+      'weight' => 25,
     ),
   );
 
@@ -1063,7 +1063,7 @@ function ulf_course_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 8,
+      'weight' => 24,
     ),
   );
 
@@ -1120,7 +1120,7 @@ function ulf_course_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 17,
+      'weight' => 26,
     ),
   );
 
@@ -1234,7 +1234,7 @@ function ulf_course_field_default_field_instances() {
         'rows' => 3,
       ),
       'type' => 'text_textarea',
-      'weight' => 27,
+      'weight' => 13,
     ),
   );
 
@@ -1459,60 +1459,6 @@ At opnå kendskab til...
     ),
   );
 
-  // Exported field_instance: 'node-course-field_tags'
-  $field_instances['node-course-field_tags'] = array(
-    'bundle' => 'course',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 13,
-      ),
-      'full' => array(
-        'label' => 'hidden',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 1,
-      ),
-      'node_display' => array(
-        'label' => 'hidden',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 2,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 18,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_tags',
-    'label' => 'Emneord',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'taxonomy',
-      'settings' => array(
-        'autocomplete_path' => 'taxonomy/autocomplete',
-        'size' => 60,
-      ),
-      'type' => 'taxonomy_autocomplete',
-      'weight' => 28,
-    ),
-  );
-
   // Exported field_instance: 'node-course-field_target_group'
   $field_instances['node-course-field_target_group'] = array(
     'bundle' => 'course',
@@ -1557,9 +1503,7 @@ At opnå kendskab til...
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-      ),
+      'settings' => array(),
       'type' => 'options_buttons',
       'weight' => 2,
     ),
@@ -1615,118 +1559,6 @@ At opnå kendskab til...
     ),
   );
 
-  // Exported field_instance: 'node-course-field_vary_duration'
-  $field_instances['node-course-field_vary_duration'] = array(
-    'bundle' => 'course',
-    'default_value' => array(
-      0 => array(
-        'value' => 0,
-      ),
-    ),
-    'deleted' => 0,
-    'description' => 'Ved tilvalg bør varigheden uddybes i feltet "Evt. yderligere oplysninger til varighed og pris".',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 37,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 28,
-      ),
-      'node_display' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_vary_duration',
-    'label' => 'Varierende varighed',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'display_label' => 1,
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-      ),
-      'type' => 'options_onoff',
-      'weight' => 24,
-    ),
-  );
-
-  // Exported field_instance: 'node-course-field_vary_price'
-  $field_instances['node-course-field_vary_price'] = array(
-    'bundle' => 'course',
-    'default_value' => array(
-      0 => array(
-        'value' => 0,
-      ),
-    ),
-    'deleted' => 0,
-    'description' => 'Ved tilvalg bør prisen uddybes i feltet "Evt. yderligere oplysninger til varighed og pris".',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 36,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 29,
-      ),
-      'node_display' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_vary_price',
-    'label' => 'Varierende pris',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'display_label' => 1,
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-      ),
-      'type' => 'options_onoff',
-      'weight' => 26,
-    ),
-  );
-
   // Translatables
   // Included for use with string extractors like potx.
   t('<p class="is-preschool">
@@ -1757,13 +1589,12 @@ At opnå kendskab til...
   t('Eksempeltekst (bør skiftes, så målgruppen afspejles): Spørg i familien om nogen har gamle ”Himmelbjerg-souvenirs” og lav en lille udstilling i klassen med dem.');
   t('Eksempeltekst (bør skiftes, så målgruppen afspejles): Øvelse med håndtering af oldsager, som skal beskrives, tegnes og berøres i grupper. Gåtur til Galgebakken, hvor vi hører om stedets historie (hængninger). På hjemturen samler vi en stok, som skal snittes til en ”Himmelbjergstok” i snitteværksted på Gl. Rye Mølle.');
   t('Emneområde');
-  t('Emneord');
   t('Er der inspirationsmateriale tilknyttet besøget/forløbet? Her kan du uploade materialet.');
   t('Er der undervisningsmateriale tilknyttet besøget/forløbet? Her kan du uploade materialet');
   t('Fag - Grundskole');
   t('Fag - Ungdomsuddannelse');
   t('Formål');
-  t('Forslag ti laktiviteter');
+  t('Forslag til aktiviteter');
   t('Forslag til baggrundsviden');
   t('Forslag til efterbehandling');
   t('Forslag til forberedelse og/eller efterbehandling i daginstitutionen');
@@ -1780,11 +1611,7 @@ At opnå kendskab til...
   t('Tilbudstype');
   t('Undervisningsmateriale');
   t('Upload et billede/illustration');
-  t('Varierende pris');
-  t('Varierende varighed');
   t('Varighed');
-  t('Ved tilvalg bør prisen uddybes i feltet "Evt. yderligere oplysninger til varighed og pris".');
-  t('Ved tilvalg bør varigheden uddybes i feltet "Evt. yderligere oplysninger til varighed og pris".');
   t('Vælg enhed');
   t('Yderligere oplysninger til faciliteter');
   t('Yderligere oplysninger til periode');

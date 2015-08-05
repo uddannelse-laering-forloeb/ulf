@@ -156,7 +156,7 @@ function ulf_course_providers_field_default_field_instances() {
     ),
     'entity_type' => 'user',
     'field_name' => 'field_profile_contact',
-    'label' => 'Kontakt',
+    'label' => 'Kontaktpersoner',
     'required' => 0,
     'settings' => array(
       'user_register_form' => 0,
@@ -436,7 +436,7 @@ function ulf_course_providers_field_default_field_instances() {
     ),
     'entity_type' => 'user',
     'field_name' => 'field_profile_phone',
-    'label' => 'Telefonnr.',
+    'label' => 'Tlf.',
     'required' => 0,
     'settings' => array(
       'text_processing' => 0,
@@ -497,13 +497,13 @@ function ulf_course_providers_field_default_field_instances() {
   t('By');
   t('Entré');
   t('Hjemmeside');
-  t('Kontakt');
+  t('Kontaktpersoner');
   t('Kort præsentation af forløbsudbyder');
   t('Logo');
   t('Navn');
   t('Postnr.');
   t('Pædagogisk profil');
-  t('Telefonnr.');
+  t('Tlf.');
   t('Upload et billede/illustration');
   t('Url example: http://ulfiaarhus.dk');
 

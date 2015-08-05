@@ -21,7 +21,7 @@ function ulf_course_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Aktiviteter, baggrundsviden og efterbehandling',
-    'weight' => '6',
+    'weight' => '8',
     'children' => array(
       0 => 'field_activities',
       1 => 'field_background_knowledge',
@@ -54,12 +54,10 @@ function ulf_course_field_group_info() {
     'label' => 'Forløbet',
     'weight' => '0',
     'children' => array(
-      0 => 'field_free',
-      1 => 'field_full_description',
-      2 => 'field_period_full_year',
-      3 => 'field_purpose',
-      4 => 'field_target_group',
-      5 => 'title',
+      0 => 'field_full_description',
+      1 => 'field_purpose',
+      2 => 'field_target_group',
+      3 => 'title',
     ),
     'format_type' => 'div',
     'format_settings' => array(
@@ -87,24 +85,26 @@ function ulf_course_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'course';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_practical_information';
+  $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Varighed',
-    'weight' => '24',
+    'label' => 'Varighed og pris',
+    'weight' => '2',
     'children' => array(
-      0 => 'field_duration',
-      1 => 'field_duration_unit',
-      2 => 'field_vary_duration',
+      0 => 'field_collection_price',
+      1 => 'field_duration',
+      2 => 'field_duration_unit',
+      3 => 'field_free',
+      4 => 'field_price_info',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'label' => 'Varighed',
+      'label' => 'Varighed og pris',
       'instance_settings' => array(
         'required_fields' => 0,
         'classes' => 'group-duration field-group-fieldset',
         'description' => '',
       ),
-      'formatter' => 'open',
+      'formatter' => 'collapsed',
     ),
   );
   $export['group_duration|node|course|form'] = $field_group;
@@ -120,7 +120,7 @@ function ulf_course_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Faciliteter',
-    'weight' => '4',
+    'weight' => '6',
     'children' => array(
       0 => 'field_facilities',
       1 => 'field_facilities_info',
@@ -149,7 +149,7 @@ function ulf_course_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Materialer',
-    'weight' => '5',
+    'weight' => '7',
     'children' => array(
       0 => 'field_educational_material',
       1 => 'field_inspirational_material',
@@ -178,7 +178,7 @@ function ulf_course_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Billeder/medier',
-    'weight' => '3',
+    'weight' => '5',
     'children' => array(
       0 => 'field_image',
     ),
@@ -206,10 +206,11 @@ function ulf_course_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Periode',
-    'weight' => '2',
+    'weight' => '4',
     'children' => array(
       0 => 'field_period',
-      1 => 'field_period_info',
+      1 => 'field_period_full_year',
+      2 => 'field_period_info',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -237,18 +238,13 @@ function ulf_course_field_group_info() {
     'label' => 'Praktisk information',
     'weight' => '1',
     'children' => array(
-      0 => 'field_collection_price',
-      1 => 'field_count',
-      2 => 'field_educational_goals',
-      3 => 'field_offer_type',
-      4 => 'field_price_info',
-      5 => 'field_subject',
-      6 => 'field_subjects_primary_school',
-      7 => 'field_subjects_youth',
-      8 => 'field_tags',
-      9 => 'field_target_group_sub',
-      10 => 'field_vary_price',
-      11 => 'group_duration',
+      0 => 'field_count',
+      1 => 'field_educational_goals',
+      2 => 'field_offer_type',
+      3 => 'field_subject',
+      4 => 'field_subjects_primary_school',
+      5 => 'field_subjects_youth',
+      6 => 'field_target_group_sub',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

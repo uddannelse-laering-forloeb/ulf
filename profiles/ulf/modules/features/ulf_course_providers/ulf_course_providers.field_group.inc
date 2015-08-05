@@ -20,7 +20,7 @@ function ulf_course_providers_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Metadata',
+    'label' => 'Organization',
     'weight' => '6',
     'children' => array(
       0 => 'field_profile_address',
@@ -32,12 +32,13 @@ function ulf_course_providers_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'label' => 'Organization',
       'instance_settings' => array(
-        'description' => '',
-        'classes' => 'group-metadata field-group-fieldset',
         'required_fields' => 1,
+        'classes' => 'group-metadata field-group-fieldset',
+        'description' => '',
       ),
+      'formatter' => 'open',
     ),
   );
   $export['group_metadata|user|user|form'] = $field_group;

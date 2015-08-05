@@ -26,13 +26,6 @@
     width: 100%;
   }
 
-  &--main {
-    width: 100%;
-
-    @include breakpoint($node-breakpoint) {
-      width: 60%;
-    }
-  }
 
   &--meta {
     width: 100%;
@@ -63,31 +56,40 @@
     }
   }
 
-  // Display of html elements inside main content. (Through Wysiwyg)
 
-  ul {
-    padding-left: $spacing;
-  }
+  &--main {
+    width: 100%;
 
-  ol {
-    padding-left: 20px;
-  }
+    @include breakpoint($node-breakpoint) {
+      width: 60%;
+    }
 
-  blockquote {
-    position: relative;
+    // Display of html elements inside main content. (Through Wysiwyg)
 
-    box-sizing: border-box;
-    margin: 1em 0;
-    padding: 2em 2em 1em;
+    ul {
+      padding-left: $spacing;
+    }
 
-    background-color: $gray-lightest;
+    ol {
+      padding-left: 20px;
+    }
 
-    :before {
-      content: '"';
-      position: absolute;
-      font-size: 3em;
-      top: 0;
-      left: .3em;
+    blockquote {
+      position: relative;
+
+      box-sizing: border-box;
+      margin: 1em 0;
+      padding: 2em 2em 1em;
+
+      background-color: $gray-lightest;
+
+      :before {
+        content: '"';
+        position: absolute;
+        font-size: 3em;
+        top: 0;
+        left: .3em;
+      }
     }
   }
 }
