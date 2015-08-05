@@ -43,11 +43,11 @@
         }
       }
 
+
       /**
        * Displays and hides Target Subgroup divs according to the accept function.
        * @param acceptFunction The function that decided if the text is accepted or rejected.
        */
-
       function displayRelevantSubgroupByKeyword(acceptFunction) {
         // Iterate each subgroup input.
         $.each(subgroup, function (index, arr) {
@@ -59,6 +59,7 @@
           }
         });
       }
+
 
       /**
        * Sets up available fields when Preschool is selected.
@@ -76,6 +77,7 @@
         $('.is-preschool').show();
       }
 
+
       /**
        * Sets up available fields when Primary School is selected.
        */
@@ -91,6 +93,7 @@
         $('.field-name-field-subjects-primary-school').show();
         $('.is-school').show();
       }
+
 
       /**
        * Sets up available fields when Youth is selected.
@@ -184,8 +187,6 @@
         // The actual clicked item.
         var id = ($(this).val());
         var selected = $('.field-name-field-target-group input[value="' + id + '"]').next().text().replace(/ /g,'');
-        console.log(id);
-        console.log(selected);
         changeSelection(selected, id);
       });
 
@@ -218,83 +219,3 @@
     }
   };
 }(jQuery));
-
-
-
-
-
-
-
-
-/*
-
- (function($) {
-
- // Start the show.
- Drupal.behaviors.ulfCourseFormAlter = {
- attach: function () {
-
- // Show hide fields when group type changes
- $( ".js-group-type-select" ).change(function() {
- // Identify each grouping item by it's delta id.
- var delta = $( this ).data('delta');
- if($( this ).val() == '') {
- $('.js-full-text.delta-' + delta).hide();
- $('.js-media.delta-' + delta).hide();
- $('.js-list-text.delta-' + delta).hide();
- $('.js-file.delta-' + delta).hide();
- }
- if($( this ).val() == 'full_text') {
- $('.js-full-text.delta-' + delta).show();
- $('.js-media.delta-' + delta).hide();
- $('.js-list-text.delta-' + delta).hide();
- $('.js-file.delta-' + delta).show();
- }
- if($( this ).val() == 'list_text') {
- $('.js-full-text.delta-' + delta).hide();
- $('.js-media.delta-' + delta).hide();
- $('.js-list-text.delta-' + delta).show();
- $('.js-file.delta-' + delta).show();
- }
- if($( this ).val() == 'media') {
- $('.js-full-text.delta-' + delta).hide();
- $('.js-media.delta-' + delta).show();
- $('.js-list-text.delta-' + delta).hide();
- $('.js-file.delta-' + delta).hide();
- }
- });
- // On first look at page set default displays of each grouping.
- $(".js-group-type-select").each(function () {
- // Identify each grouping item by it's delta id.
- var delta = $(this).data('delta');
- if ($(this).val() == '') {
- $('.js-full-text.delta-' + delta).hide();
- $('.js-media.delta-' + delta).hide();
- $('.js-list-text.delta-' + delta).hide();
- $('.js-file.delta-' + delta).hide();
- }
- if ($(this).val() == 'full_text') {
- $('.js-full-text.delta-' + delta).show();
- $('.js-media.delta-' + delta).hide();
- $('.js-list-text.delta-' + delta).hide();
- $('.js-file.delta-' + delta).show();
- }
- if ($(this).val() == 'list_text') {
- $('.js-full-text.delta-' + delta).hide();
- $('.js-media.delta-' + delta).hide();
- $('.js-list-text.delta-' + delta).show();
- $('.js-file.delta-' + delta).show();
- }
- if ($(this).val() == 'media') {
- $('.js-full-text.delta-' + delta).hide();
- $('.js-media.delta-' + delta).show();
- $('.js-list-text.delta-' + delta).hide();
- $('.js-file.delta-' + delta).hide();
- }
- });
- }
- };
-
- })(jQuery);
-
- */
