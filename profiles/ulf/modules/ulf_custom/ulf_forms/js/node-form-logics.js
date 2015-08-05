@@ -167,8 +167,9 @@
       // Hide all target subgroups.
       $('.field-name-field-target-group-sub input').parent().hide()
 
-      // Hide fields and groups.
-
+      // Hide filter selections.
+      $('.filter-wrapper').hide();
+      
       // Hide specific fields only relevant for certain target groups.
       $('.field-name-field-post-work').hide();
       $('.field-name-field-educational-goals').hide();
