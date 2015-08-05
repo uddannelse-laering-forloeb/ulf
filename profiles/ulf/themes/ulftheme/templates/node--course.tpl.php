@@ -94,7 +94,6 @@
           <?php print render($content['field_image']); ?>
         </div>
         <div class="content--main">
-          <?php print render($content['field_tags']); ?>
           <?php print render($content['field_full_description']); ?>
           <?php print render($content['field_purpose']); ?>
           <?php if ($field_activities || $field_background_knowledge || $field_post_work || $field_material_suggestions) : ?>
@@ -121,7 +120,7 @@
             <div class="block--content">
               <div class="block--field-wrapper is-inline">
                 <div class="block--field-label"><?php print t('Contact');?></div>
-                <?php print render($name); ?>
+                <a href="/user/<?php print $uid; ?>"><?php print $profile_name; ?></a>
               </div>
               <div class="block--field-wrapper is-inline">
                 <?php print render($content['field_offer_type']); ?>
@@ -177,7 +176,7 @@
               <div class="block--field-text"><?php print $profile_address; ?></div>
               <div class="block--field-text"><?php print $profile_postal_code; ?> <?php print $profile_city; ?></div>
               </br>
-              <div class="block--field-text"><strong><?php print t('Phone')?>.</strong> <?php print $profile_phone; ?></div>
+              <div class="block--field-text"><strong><?php print t('Phone')?></strong> <?php print $profile_phone; ?></div>
               </br>
               <a href="/user/<?php print $uid ?>"><?php print t('View organizer profile'); ?></a>
             </div>

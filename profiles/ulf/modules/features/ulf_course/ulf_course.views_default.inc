@@ -91,7 +91,7 @@ function ulf_course_views_default_views() {
   $handler->display->display_options['fields']['field_profile_home_page']['relationship'] = 'uid';
   $handler->display->display_options['fields']['field_profile_home_page']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_profile_home_page']['click_sort_column'] = 'url';
-  /* Felt: Bruger: Telefonnr. */
+  /* Felt: Bruger: Tlf. */
   $handler->display->display_options['fields']['field_profile_phone']['id'] = 'field_profile_phone';
   $handler->display->display_options['fields']['field_profile_phone']['table'] = 'field_data_field_profile_phone';
   $handler->display->display_options['fields']['field_profile_phone']['field'] = 'field_profile_phone';

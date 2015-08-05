@@ -793,7 +793,6 @@ body {
 ================================================================================================================== */
 .field {
   /* Display: of node title. */
-  /* Display of tags field. */
   /* Display of field collections in main content. */ }
   .field--title {
     border-bottom: solid;
@@ -818,24 +817,6 @@ body {
         border-width: 4px;
         padding: 0 .5em;
         position: absolute; } }
-  .field--tags {
-    padding: 0.8em 0; }
-  .field--tags-item {
-    display: inline-block;
-    margin-bottom: .25em;
-    padding: .1em 1em;
-    background: #17858c;
-    color: #fff;
-    cursor: pointer;
-    font-size: 85%;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    border-radius: 5px; }
-    .field--tags-item:link, .field--tags-item:visited, .field--tags-item:hover, .field--tags-item:active {
-      color: #fff;
-      text-decoration: none; }
-    .field--tags-item:hover {
-      background: #137076; }
   .field--collection-wrapper {
     margin-bottom: 16px; }
   .field--collection-label {
@@ -1018,6 +999,9 @@ body {
 .block--field-label {
   font-weight: bold;
   margin-bottom: 4px; }
+  .block--field-label.is-inline {
+    float: left;
+    margin-right: .5em; }
 
 .block--field-text {
   margin-bottom: 8px; }
@@ -1282,11 +1266,6 @@ body {
     min-height: 120px;
     position: relative;
     width: 100%; }
-  .content--main {
-    width: 100%; }
-    @media only screen and (min-width: 55em) {
-      .content--main {
-        width: 60%; } }
   .content--meta {
     width: 100%; }
     @media only screen and (min-width: 55em) {
@@ -1298,22 +1277,27 @@ body {
     margin: 16px 8px 32px; }
   .content--newsletter-archive .campaign {
     margin-bottom: 8px; }
-  .content ul {
-    padding-left: 16px; }
-  .content ol {
-    padding-left: 20px; }
-  .content blockquote {
-    position: relative;
-    box-sizing: border-box;
-    margin: 1em 0;
-    padding: 2em 2em 1em;
-    background-color: #f2f2f2; }
-    .content blockquote :before {
-      content: '"';
-      position: absolute;
-      font-size: 3em;
-      top: 0;
-      left: .3em; }
+  .content--main {
+    width: 100%; }
+    @media only screen and (min-width: 55em) {
+      .content--main {
+        width: 60%; } }
+    .content--main ul {
+      padding-left: 16px; }
+    .content--main ol {
+      padding-left: 20px; }
+    .content--main blockquote {
+      position: relative;
+      box-sizing: border-box;
+      margin: 1em 0;
+      padding: 2em 2em 1em;
+      background-color: #f2f2f2; }
+      .content--main blockquote :before {
+        content: '"';
+        position: absolute;
+        font-size: 3em;
+        top: 0;
+        left: .3em; }
 
 /**
  *
