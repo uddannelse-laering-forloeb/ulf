@@ -111,6 +111,7 @@
           <?php endif; ?>
           <?php print render($content['field_educational_material']); ?>
           <?php print render($content['field_inspirational_material']); ?>
+          <?php print render($content['links']); ?>
         </div>
         <div class="content--meta">
           <div class="block--light">
