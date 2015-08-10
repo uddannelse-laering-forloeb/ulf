@@ -89,7 +89,13 @@ function ulf_preprocess_node(&$variables) {
     case 'course':
       if (!empty($variables['field_target_group'])) {
         // Get term id from target group field.
-        $term = $variables['field_target_group']['0']['taxonomy_term'];
+
+        if ($variables['view_mode'] == 'print') {
+          $term = $variables['field_target_group']['und']['0']['tid'];
+        } else {
+          $term = $variables['field_target_group']['0']['taxonomy_term'];
+        }
+
         if ($term) {
           $term_wrapper = entity_metadata_wrapper('taxonomy_term', $term);
           $variables['group_type'] = strtolower($term_wrapper->name->value());
@@ -111,7 +117,7 @@ function ulf_preprocess_node(&$variables) {
   }
 
   // Display author meta data on courses.
-  if (($variables['type'] == 'course'|| $variables['type'] == 'course_educators') && $variables['view_mode'] == 'full') {
+  if (($variables['type'] == 'course'|| $variables['type'] == 'course_educators') && ($variables['view_mode'] == 'full' || $variables['view_mode'] == 'print')) {
     // Fetch author.
     $variables['author'] = user_load($variables['uid']);
     $author_wrapper = entity_metadata_wrapper('user', $variables['author']);
