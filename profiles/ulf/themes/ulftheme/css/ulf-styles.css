@@ -1100,6 +1100,21 @@ body {
   .block--newsletter .form-item {
     margin: 0 16px; }
 
+.block--pdf {
+  margin: 32px 0; }
+  .block--pdf-link:link {
+    color: #fff;
+    text-decoration: none; }
+  .block--pdf-link:visited {
+    color: #fff;
+    text-decoration: none; }
+  .block--pdf-link:hover {
+    color: #fff;
+    text-decoration: none; }
+  .block--pdf-link:focus {
+    color: #fff;
+    text-decoration: none; }
+
 /**
  *
  * Nav module.
@@ -1331,7 +1346,7 @@ body {
 ================================================================================================================== */
 /* Styles.
 ================================================================================================================== */
-.form-submit,
+.block--pdf-link, .form-submit,
 .button {
   position: relative;
   border: 1px solid #17858c;
@@ -1343,9 +1358,9 @@ body {
   font-size: 125%;
   text-align: center;
   text-shadow: 0.025em 0.025em 0.1em #105b60; }
-  .form-submit:focus,
-  .button:focus, .form-submit:hover,
-  .button:hover, .form-submit:active,
+  .block--pdf-link:focus, .form-submit:focus,
+  .button:focus, .block--pdf-link:hover, .form-submit:hover,
+  .button:hover, .block--pdf-link:active, .form-submit:active,
   .button:active {
     text-decoration: none; }
 
