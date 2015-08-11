@@ -88,15 +88,18 @@
           <?php print $submitted; ?>
         </div>
       <?php endif; ?>
-      <div class="content">
+      <div class="content is-<?php print $group_type; ?>">
         <div class="content--image">
-          <div class="field--title is-<?php print $group_type?>"><?php print render($title); ?></div>
+          <div class="field--title is-<?php print $group_type; ?>"><?php print render($title); ?></div>
           <?php print render($content['field_image']); ?>
         </div>
         <div class="content--main">
           <?php print render($content['field_full_description']); ?>
           <?php print render($content['field_catering']); ?>
           <?php print render($content['field_educational_material']); ?>
+          <div class="block--pdf">
+            <a class="block--pdf-link" target="_blank" href="/printpdf/<?php print $node->nid; ?>"><?php print t('Print this offer as pdf')?></a>
+          </div>
         </div>
         <div class="content--meta">
           <div class="block--light">

@@ -88,9 +88,9 @@
           <?php print $submitted; ?>
         </div>
       <?php endif; ?>
-      <div class="content">
+      <div class="content is-<?php print $group_type; ?>">
         <div class="content--image">
-          <div class="field--title is-<?php print $group_type?>"><?php print render($title); ?></div>
+          <div class="field--title is-<?php print $group_type; ?>"><?php print render($title); ?></div>
           <?php print render($content['field_image']); ?>
         </div>
         <div class="content--main">
@@ -111,6 +111,9 @@
           <?php endif; ?>
           <?php print render($content['field_educational_material']); ?>
           <?php print render($content['field_inspirational_material']); ?>
+          <div class="block--pdf">
+            <a class="block--pdf-link" target="_blank" href="/printpdf/<?php print $node->nid; ?>"><?php print t('Print this offer as pdf'); ?></a>
+          </div>
         </div>
         <div class="content--meta">
           <div class="block--light">
@@ -191,8 +194,7 @@
       hide($content['field_period_full_year']);
       hide($content['field_target_group']);
       hide($content['comments']);
-      hide($content['links']);
-      ?>
+      hide($content['links']); ?>
       <div style=""><?php print render($content); ?></div>
     </div>
   </div>
