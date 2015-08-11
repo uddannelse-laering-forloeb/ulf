@@ -33,7 +33,16 @@ function ulf_base_image_default_styles() {
           'onlyscaleifcrop' => 0,
           'style_name' => 'node_display',
         ),
-        'weight' => 0,
+        'weight' => -11,
+      ),
+      10 => array(
+        'name' => 'image_scale',
+        'data' => array(
+          'width' => 1000,
+          'height' => '',
+          'upscale' => 1,
+        ),
+        'weight' => -10,
       ),
     ),
   );
@@ -52,7 +61,16 @@ function ulf_base_image_default_styles() {
           'onlyscaleifcrop' => 0,
           'style_name' => 'teaser_display',
         ),
-        'weight' => 0,
+        'weight' => -11,
+      ),
+      9 => array(
+        'name' => 'image_scale',
+        'data' => array(
+          'width' => 752,
+          'height' => '',
+          'upscale' => 1,
+        ),
+        'weight' => -10,
       ),
     ),
   );

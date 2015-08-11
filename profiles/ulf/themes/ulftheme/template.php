@@ -160,6 +160,7 @@ function ulf_preprocess_field(&$variables) {
   // Some fields should be displayed with label and content inline.
   $inline_template = array(
     'field_contact_phone',
+    'field_profile_mail',
     'field_contact_office_hours',
   );
 

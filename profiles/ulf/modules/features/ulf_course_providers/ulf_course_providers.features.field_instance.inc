@@ -323,7 +323,7 @@ function ulf_course_providers_field_default_field_instances() {
       'module' => 'html5_tools',
       'settings' => array(),
       'type' => 'urlwidget',
-      'weight' => 13,
+      'weight' => 14,
     ),
   );
 
@@ -355,7 +355,7 @@ function ulf_course_providers_field_default_field_instances() {
       'file_extensions' => 'png gif jpg jpeg',
       'max_filesize' => '',
       'max_resolution' => '',
-      'min_resolution' => '',
+      'min_resolution' => '1000x700',
       'title_field' => 0,
       'user_register_form' => 0,
     ),
@@ -363,23 +363,55 @@ function ulf_course_providers_field_default_field_instances() {
       'active' => 1,
       'module' => 'image',
       'settings' => array(
-        'manualcrop_crop_info' => TRUE,
-        'manualcrop_default_crop_area' => TRUE,
-        'manualcrop_enable' => FALSE,
-        'manualcrop_inline_crop' => FALSE,
-        'manualcrop_instant_crop' => FALSE,
-        'manualcrop_instant_preview' => TRUE,
-        'manualcrop_keyboard' => TRUE,
-        'manualcrop_maximize_default_crop_area' => FALSE,
+        'manualcrop_crop_info' => 1,
+        'manualcrop_default_crop_area' => 1,
+        'manualcrop_enable' => 0,
+        'manualcrop_inline_crop' => 0,
+        'manualcrop_instant_crop' => 0,
+        'manualcrop_instant_preview' => 1,
+        'manualcrop_keyboard' => 1,
+        'manualcrop_maximize_default_crop_area' => 0,
         'manualcrop_require_cropping' => array(),
         'manualcrop_styles_list' => array(),
         'manualcrop_styles_mode' => 'include',
-        'manualcrop_thumblist' => FALSE,
+        'manualcrop_thumblist' => 0,
         'preview_image_style' => 'thumbnail',
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
       'weight' => 8,
+    ),
+  );
+
+  // Exported field_instance: 'user-user-field_profile_mail'
+  $field_instances['user-user-field_profile_mail'] = array(
+    'bundle' => 'user',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'inline',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 13,
+      ),
+    ),
+    'entity_type' => 'user',
+    'field_name' => 'field_profile_mail',
+    'label' => 'Mail',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => 0,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'html5_tools',
+      'settings' => array(),
+      'type' => 'emailwidget',
+      'weight' => 13,
     ),
   );
 
@@ -500,6 +532,7 @@ function ulf_course_providers_field_default_field_instances() {
   t('Kontaktpersoner');
   t('Kort præsentation af forløbsudbyder');
   t('Logo');
+  t('Mail');
   t('Navn');
   t('Postnr.');
   t('Pædagogisk profil');

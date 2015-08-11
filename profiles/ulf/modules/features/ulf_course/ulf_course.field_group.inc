@@ -181,6 +181,7 @@ function ulf_course_field_group_info() {
     'weight' => '5',
     'children' => array(
       0 => 'field_image',
+      1 => 'field_video',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -245,6 +246,7 @@ function ulf_course_field_group_info() {
       4 => 'field_subjects_primary_school',
       5 => 'field_subjects_youth',
       6 => 'field_target_group_sub',
+      7 => 'field_special_needs',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
