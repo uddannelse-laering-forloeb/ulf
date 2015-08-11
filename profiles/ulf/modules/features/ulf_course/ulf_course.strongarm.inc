@@ -14,7 +14,7 @@ function ulf_course_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'additional_settings__active_tab_course';
-  $strongarm->value = 'edit-workflow';
+  $strongarm->value = 'edit-print';
   $export['additional_settings__active_tab_course'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -35,7 +35,7 @@ function ulf_course_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'diff_view_mode_preview_node_course';
-  $strongarm->value = '';
+  $strongarm->value = 'diff_standard';
   $export['diff_view_mode_preview_node_course'] = $strongarm;
 
   $strongarm = new stdClass();

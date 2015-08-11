@@ -138,3 +138,4 @@ features[variable][] = user_pictures
 features[variable][] = user_register
 features[variable][] = user_signatures
 features[variable][] = workbench_moderation_nodedraft_disabled
+features_exclude[dependencies][list] = list

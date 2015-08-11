@@ -29,7 +29,7 @@ function ulf_course_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 4,
+        'weight' => 3,
       ),
       'node_display' => array(
         'label' => 'above',
@@ -86,7 +86,7 @@ function ulf_course_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 5,
+        'weight' => 4,
       ),
       'node_display' => array(
         'label' => 'above',
@@ -147,7 +147,7 @@ function ulf_course_field_default_field_instances() {
           'view_mode' => 'full',
         ),
         'type' => 'field_collection_fields',
-        'weight' => 17,
+        'weight' => 16,
       ),
       'node_display' => array(
         'label' => 'above',
@@ -211,7 +211,7 @@ function ulf_course_field_default_field_instances() {
           'thousand_separator' => '',
         ),
         'type' => 'number_integer',
-        'weight' => 12,
+        'weight' => 11,
       ),
       'node_display' => array(
         'label' => 'above',
@@ -275,7 +275,7 @@ function ulf_course_field_default_field_instances() {
           'thousand_separator' => '',
         ),
         'type' => 'number_integer',
-        'weight' => 14,
+        'weight' => 13,
       ),
       'node_display' => array(
         'label' => 'hidden',
@@ -329,7 +329,7 @@ function ulf_course_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 16,
+        'weight' => 15,
       ),
       'node_display' => array(
         'label' => 'hidden',
@@ -379,7 +379,7 @@ function ulf_course_field_default_field_instances() {
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
-        'weight' => 22,
+        'weight' => 21,
       ),
       'node_display' => array(
         'label' => 'above',
@@ -406,7 +406,7 @@ function ulf_course_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 21,
+      'weight' => 22,
     ),
   );
 
@@ -433,7 +433,7 @@ function ulf_course_field_default_field_instances() {
           'view_mode' => 'full',
         ),
         'type' => 'field_collection_fields',
-        'weight' => 8,
+        'weight' => 7,
       ),
       'node_display' => array(
         'label' => 'above',
@@ -483,7 +483,7 @@ function ulf_course_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 23,
+        'weight' => 22,
       ),
       'node_display' => array(
         'label' => 'above',
@@ -533,7 +533,7 @@ function ulf_course_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 24,
+        'weight' => 23,
       ),
       'node_display' => array(
         'label' => 'above',
@@ -594,7 +594,7 @@ function ulf_course_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 26,
+        'weight' => 25,
       ),
       'node_display' => array(
         'label' => 'above',
@@ -647,7 +647,7 @@ function ulf_course_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 3,
+        'weight' => 2,
       ),
       'node_display' => array(
         'label' => 'above',
@@ -745,7 +745,7 @@ function ulf_course_field_default_field_instances() {
       'file_extensions' => 'png gif jpg jpeg',
       'max_filesize' => '',
       'max_resolution' => '',
-      'min_resolution' => '',
+      'min_resolution' => '1000x700',
       'title_field' => 1,
       'user_register_form' => FALSE,
     ),
@@ -799,7 +799,7 @@ function ulf_course_field_default_field_instances() {
           'view_mode' => 'full',
         ),
         'type' => 'field_collection_fields',
-        'weight' => 9,
+        'weight' => 8,
       ),
       'node_display' => array(
         'label' => 'above',
@@ -849,7 +849,7 @@ function ulf_course_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 7,
+        'weight' => 6,
       ),
       'node_display' => array(
         'label' => 'above',
@@ -908,7 +908,7 @@ function ulf_course_field_default_field_instances() {
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
-        'weight' => 10,
+        'weight' => 9,
       ),
       'node_display' => array(
         'label' => 'above',
@@ -969,7 +969,7 @@ function ulf_course_field_default_field_instances() {
           'multiple_to' => '',
         ),
         'type' => 'date_default',
-        'weight' => 13,
+        'weight' => 12,
       ),
       'node_display' => array(
         'label' => 'above',
@@ -1034,7 +1034,7 @@ function ulf_course_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 25,
+        'weight' => 24,
       ),
       'node_display' => array(
         'label' => 'above',
@@ -1086,7 +1086,7 @@ function ulf_course_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 15,
+        'weight' => 14,
       ),
       'node_display' => array(
         'label' => 'above',
@@ -1143,7 +1143,7 @@ function ulf_course_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 6,
+        'weight' => 5,
       ),
       'node_display' => array(
         'label' => 'above',
@@ -1200,7 +1200,7 @@ function ulf_course_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 18,
+        'weight' => 17,
       ),
       'node_display' => array(
         'label' => 'above',
@@ -1267,7 +1267,7 @@ At opnå kendskab til...
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 2,
+        'weight' => 1,
       ),
       'node_display' => array(
         'label' => 'above',
@@ -1305,6 +1305,61 @@ At opnå kendskab til...
     ),
   );
 
+  // Exported field_instance: 'node-course-field_special_needs'
+  $field_instances['node-course-field_special_needs'] = array(
+    'bundle' => 'course',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 37,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 28,
+      ),
+      'node_display' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_special_needs',
+    'label' => 'Forløb for børn og unge med særlige behov',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 20,
+    ),
+  );
+
   // Exported field_instance: 'node-course-field_subject'
   $field_instances['node-course-field_subject'] = array(
     'bundle' => 'course',
@@ -1324,7 +1379,7 @@ At opnå kendskab til...
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
-        'weight' => 19,
+        'weight' => 18,
       ),
       'node_display' => array(
         'label' => 'above',
@@ -1374,7 +1429,7 @@ At opnå kendskab til...
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
-        'weight' => 20,
+        'weight' => 19,
       ),
       'node_display' => array(
         'label' => 'above',
@@ -1403,7 +1458,7 @@ At opnå kendskab til...
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_buttons',
-      'weight' => 22,
+      'weight' => 23,
     ),
   );
 
@@ -1426,7 +1481,7 @@ At opnå kendskab til...
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
-        'weight' => 21,
+        'weight' => 20,
       ),
       'node_display' => array(
         'label' => 'above',
@@ -1455,7 +1510,7 @@ At opnå kendskab til...
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_buttons',
-      'weight' => 23,
+      'weight' => 24,
     ),
   );
 
@@ -1477,7 +1532,7 @@ At opnå kendskab til...
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
-        'weight' => 27,
+        'weight' => 26,
       ),
       'node_display' => array(
         'label' => 'above',
@@ -1528,7 +1583,7 @@ At opnå kendskab til...
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
-        'weight' => 11,
+        'weight' => 10,
       ),
       'node_display' => array(
         'label' => 'above',
@@ -1555,7 +1610,71 @@ At opnå kendskab til...
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 20,
+      'weight' => 21,
+    ),
+  );
+
+  // Exported field_instance: 'node-course-field_video'
+  $field_instances['node-course-field_video'] = array(
+    'bundle' => 'course',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Angiv URLen på en Youtube eller Vimeo video',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'video_embed_field',
+        'settings' => array(
+          'description' => 1,
+          'description_position' => 'bottom',
+          'video_style' => 'normal',
+        ),
+        'type' => 'video_embed_field',
+        'weight' => 36,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'module' => 'video_embed_field',
+        'settings' => array(
+          'description' => 1,
+          'description_position' => 'bottom',
+          'video_style' => 'normal',
+        ),
+        'type' => 'video_embed_field',
+        'weight' => 27,
+      ),
+      'node_display' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_video',
+    'label' => 'VIdeo',
+    'required' => 0,
+    'settings' => array(
+      'allowed_providers' => array(
+        'vimeo' => 'vimeo',
+        'youtube' => 'youtube',
+      ),
+      'description_field' => 0,
+      'description_length' => 128,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'video_embed_field',
+      'settings' => array(),
+      'type' => 'video_embed_field_video',
+      'weight' => 4,
     ),
   );
 
@@ -1579,6 +1698,7 @@ At opnå kendskab til...
   t('<p>Vælg besøg, hvis gruppen går rundt på egen hånd</p>
 <p>Vælg forløb, hvis det er et specifikt, tilrettelagt forløb med en formidler tilknyttet</p>
 ');
+  t('Angiv URLen på en Youtube eller Vimeo video');
   t('Angiv beløbet efterfulgt af afregningsenhed eller vælg \'gratis\'');
   t('Angiv enhed');
   t('Angiv helt antal timer / lektioner');
@@ -1593,6 +1713,7 @@ At opnå kendskab til...
   t('Er der undervisningsmateriale tilknyttet besøget/forløbet? Her kan du uploade materialet');
   t('Fag - Grundskole');
   t('Fag - Ungdomsuddannelse');
+  t('Forløb for børn og unge med særlige behov');
   t('Formål');
   t('Forslag til aktiviteter');
   t('Forslag til baggrundsviden');
@@ -1611,6 +1732,7 @@ At opnå kendskab til...
   t('Tilbudstype');
   t('Undervisningsmateriale');
   t('Upload et billede/illustration');
+  t('VIdeo');
   t('Varighed');
   t('Vælg enhed');
   t('Yderligere oplysninger til faciliteter');

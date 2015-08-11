@@ -95,6 +95,7 @@
         </div>
         <div class="content--main">
           <?php print render($content['field_full_description']); ?>
+          <?php print render($content['field_video']); ?>
           <?php print render($content['field_catering']); ?>
           <?php print render($content['field_educational_material']); ?>
           <div class="block--pdf">

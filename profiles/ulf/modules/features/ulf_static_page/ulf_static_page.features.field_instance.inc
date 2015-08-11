@@ -96,7 +96,7 @@ function ulf_static_page_field_default_field_instances() {
       'file_extensions' => 'png gif jpg jpeg',
       'max_filesize' => '',
       'max_resolution' => '',
-      'min_resolution' => '',
+      'min_resolution' => '1000x700',
       'title_field' => 1,
       'user_register_form' => FALSE,
     ),

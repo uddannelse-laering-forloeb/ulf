@@ -118,6 +118,9 @@ projects[uuid_features][version] = "1.0-alpha3"
 projects[rules][subdir] = "contrib"
 projects[rules][version] = "2.6"
 
+projects[video_embed_field][subdir] = "contrib"
+projects[video_embed_field][version] = "2.0-beta10"
+
 projects[views][subdir] = "contrib"
 projects[views][version] = "3.7"
 
