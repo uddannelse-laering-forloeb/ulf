@@ -70,8 +70,6 @@ class UlfEducationalMaterialMigration extends DrupalMigration {
     // Unmapped destination fields.
     $this->addUnmigratedDestinations(array(
       'path',
-      'field_material_description:language',
-      'field_material_file:language',
       'field_material_file:destination_dir',
       'field_material_file:destination_file',
       'field_material_file:file_replace',
@@ -82,8 +80,7 @@ class UlfEducationalMaterialMigration extends DrupalMigration {
       'field_material_link:title',
       'field_material_link:attributes',
       'field_material_link:language',
-      'field_material_litt:language',
-    ));
+     ));
   }
 
   protected function query() {
@@ -103,7 +100,6 @@ class UlfEducationalMaterialMigration extends DrupalMigration {
 
     $litt = $query->leftJoin('field_data_field_material_litt_slag', 'litt', 'litt.entity_id = m.field_educational_material_value');
     $query->fields($litt, array('field_material_litt_slag_value'));
-
 
     return $query;
   }

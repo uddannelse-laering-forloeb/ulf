@@ -61,9 +61,6 @@ class UlfUsersContactMigration extends DrupalMigration {
 
     // Unmapped destination fields.
     $this->addUnmigratedDestinations(array(
-      'field_contact_email:language',
-      'field_contact_name:language',
-      'field_contact_phone:language',
       'path',
     ));
   }
