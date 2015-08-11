@@ -81,5 +81,13 @@ function ulf_taxonomies_taxonomy_default_vocabularies() {
       'module' => 'taxonomy',
       'weight' => -10,
     ),
+    'primary_school' => array(
+      'name' => 'Undgomdsuddannelser',
+      'machine_name' => 'primary_school',
+      'description' => '',
+      'hierarchy' => 0,
+      'module' => 'taxonomy',
+      'weight' => -10,
+    ),
   );
 }
