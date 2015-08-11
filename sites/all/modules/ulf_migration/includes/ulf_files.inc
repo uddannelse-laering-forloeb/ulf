@@ -30,6 +30,9 @@ class UlfFilesMigration extends DrupalFile7Migration {
     // Unmapped destination fields.
     $this->addUnmigratedDestinations(array('path', 'urlencode'));
 
+    $this->addFieldmapping('preserve_files', NULL, FALSE)
+      ->defaultValue(FALSE);
+
     // Unmapped destination fields.
     $this->addUnmigratedSources(array('uuid'));
     $this->removeFieldMapping('NULL', 'urlencode');

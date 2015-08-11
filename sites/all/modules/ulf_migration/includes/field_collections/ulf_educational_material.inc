@@ -55,6 +55,8 @@ class UlfEducationalMaterialMigration extends DrupalMigration {
     $this->addFieldMapping('field_material_file', 'field_material_file_fid');
     $this->addFieldMapping('field_material_file:file_class')
       ->defaultValue('MigrateFileFid');
+    $this->addFieldMapping('field_material_file:preserve_files', NULL, FALSE)
+      ->defaultValue(TRUE);
 
     $this->addFieldMapping('field_material_link', 'field_material_link_url');
 
@@ -70,7 +72,6 @@ class UlfEducationalMaterialMigration extends DrupalMigration {
       'path',
       'field_material_description:language',
       'field_material_file:language',
-      'field_material_file:preserve_files',
       'field_material_file:destination_dir',
       'field_material_file:destination_file',
       'field_material_file:file_replace',

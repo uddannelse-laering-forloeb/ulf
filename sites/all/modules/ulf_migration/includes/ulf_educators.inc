@@ -43,6 +43,8 @@ class UlfCoursesEducationMigration extends DrupalNode7Migration {
       ->sourceMigration('UlfFiles');
     $this->addFieldMapping('field_image:file_class')
       ->defaultValue('MigrateFileFid');
+    $this->addFieldMapping('field_image:preserve_files', NULL, FALSE)
+      ->defaultValue(TRUE);
     $this->addFieldMapping('field_image:alt', 'field_image_media:alt');
     $this->addFieldMapping('field_image:title', 'field_image_media:title');
 
@@ -96,7 +98,6 @@ class UlfCoursesEducationMigration extends DrupalNode7Migration {
       'field_subject:ignore_case',
       'field_relevance_upper_school:ignore_case',
       'field_image:language',
-      'field_image:preserve_files',
     ));
 
     $this->addUnmigratedSources(array(

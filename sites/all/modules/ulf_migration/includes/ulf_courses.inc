@@ -43,6 +43,8 @@ class UlfCoursesMigration extends DrupalNode7Migration {
       ->sourceMigration('UlfFiles');
     $this->addFieldMapping('field_image:file_class')
       ->defaultValue('MigrateFileFid');
+    $this->addFieldMapping('field_image:preserve_files', NULL, FALSE)
+      ->defaultValue(TRUE);
     $this->addFieldMapping('field_image:alt', 'field_image_media:alt');
     $this->addFieldMapping('field_image:title', 'field_image_media:title');
 
@@ -53,8 +55,7 @@ class UlfCoursesMigration extends DrupalNode7Migration {
     $this->addFieldMapping('field_educational_goals:create_term')
       ->defaultValue(FALSE);
 
-    $this->addFieldMapping('field_target_group', 'field_target_group')
-      ->sourceMigration('UlfTargetGroups');
+    $this->addFieldMapping('field_target_group', 'field_target_group');
     $this->addFieldMapping('field_target_group:source_type')
       ->defaultValue('tid');
     $this->addFieldMapping('field_target_group:create_term')
@@ -63,30 +64,25 @@ class UlfCoursesMigration extends DrupalNode7Migration {
     $this->addFieldMapping('field_full_description:format')
       ->defaultValue('editor');
 
+    $this->addFieldMapping('field_purpose:format')
+      ->defaultValue('editor');
+
     $this->addSimpleMappings(array(
       'field_activities',
       'field_activities:format',
-      'field_activities:language',
       'field_background_knowledge',
       'field_background_knowledge:format',
-      'field_background_knowledge:language',
       'field_facilities',
       'field_facilities_info',
       'field_facilities_info:format',
-      'field_facilities_info:language',
       'field_purpose',
-      'field_purpose:language',
       'field_count',
       'field_full_description',
-      'field_full_description:language'
-
     ));
 
     $this->addUnmigratedDestinations(array(
       'field_educational_goals:ignore_case',
       'field_target_group:ignore_case',
-      'field_image:language',
-      'field_image:preserve_files',
       'field_collection_price:revision_id',
       'field_educational_material:revision_id',
       'field_inspirational_material:revision_id',
@@ -128,7 +124,40 @@ class UlfCoursesMigration extends DrupalNode7Migration {
 
     $row->field_image_media_fids = array();
     foreach($query as $fid) {
-      $row->field_image_fids[$fid->delta] = $fid->field_image_media_fid;
+      $row->field_image_media_fids[$fid->delta] = $fid->field_image_media_fid;
+    }
+
+    // Fix count field.
+    if (!empty($row->field_count)) {
+      $row->field_count[0] = is_numeric($row->field_count[0]) ? $row->field_count[0] : 0;
+    }
+
+    // Map target groups to new vocabuary (many to one).
+    $tid = !empty($row->field_target_group) ? (int) $row->field_target_group[0] : 0;
+    switch ($tid) {
+      // Map to "dagtilbud".
+      case 14:
+      case 144:
+      case 145:
+        $row->field_target_group = 11;
+        break;
+
+      // Map to "grundskole".
+      case 120:
+      case 146:
+      case 147:
+      case 148:
+        $row->field_target_group = 117;
+        break;
+
+      // Map to "Ungdomsundannelse".
+      case 139:
+      case 149:
+        $row->field_target_group = 136;
+        break;
+
+      default:
+        $t=1;
     }
 
     return TRUE;
