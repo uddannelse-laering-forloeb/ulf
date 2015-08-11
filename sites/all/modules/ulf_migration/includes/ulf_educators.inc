@@ -54,9 +54,9 @@ class UlfCoursesEducationMigration extends DrupalNode7Migration {
       ->defaultValue('tid');
     $this->addFieldMapping('field_relevance_educators:create_term')
       ->defaultValue(FALSE);
-
+    
     $this->addFieldMapping('field_relevance_primary_school', 'field_relevance_primary_school')
-      ->sourceMigration('UlfSubjectsPrimarySchools');
+      ->sourceMigration('UlfElementarySchool');
     $this->addFieldMapping('field_relevance_primary_school:source_type')
       ->defaultValue('tid');
     $this->addFieldMapping('field_relevance_primary_school:create_term')
@@ -70,24 +70,20 @@ class UlfCoursesEducationMigration extends DrupalNode7Migration {
       ->defaultValue(FALSE);
 
     $this->addFieldMapping('field_relevance_upper_school', 'field_relevance_upper_school')
-      ->sourceMigration('UlfSubjectsYouth');
+      ->sourceMigration('UlfPrimarySchool');
     $this->addFieldMapping('field_relevance_upper_school:source_type')
       ->defaultValue('tid');
     $this->addFieldMapping('field_relevance_upper_school:create_term')
       ->defaultValue(FALSE);
 
     $this->addFieldMapping('field_course_contact_mail', 'field_contact_mail');
-    $this->addFieldMapping('field_course_contact_mail:language', 'field_contact_mail:language');
 
     $this->addSimpleMappings(array(
       'field_catering',
       'field_catering:format',
-      'field_catering:language',
       'field_course_contact_name',
-      'field_course_contact_name:language',
       'field_full_description',
       'field_full_description:format',
-      'field_full_description:language',
     ));
 
     $this->addUnmigratedDestinations(array(
@@ -97,7 +93,6 @@ class UlfCoursesEducationMigration extends DrupalNode7Migration {
       'field_relevance_primary_school:ignore_case',
       'field_subject:ignore_case',
       'field_relevance_upper_school:ignore_case',
-      'field_image:language',
     ));
 
     $this->addUnmigratedSources(array(

@@ -91,7 +91,14 @@ function ulf_migration_migrate_api() {
         'class_name' => 'UlfOfferTypeMigration',
         'group_name' => 'ulf_taxonomy',
       ),
-
+      'UlfPrimarySchool' => array(
+        'class_name' => 'UlfPrimarySchoolMigration',
+        'group_name' => 'ulf_taxonomy',
+      ),
+      'UlfElementarySchool' => array(
+        'class_name' => 'UlfElementarySchoolMigration',
+        'group_name' => 'ulf_taxonomy',
+      ),
 
       // Static pages (omulf).
       'UlfStatic' => array(

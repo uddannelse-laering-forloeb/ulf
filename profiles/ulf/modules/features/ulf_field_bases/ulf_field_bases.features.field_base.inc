@@ -833,7 +833,7 @@ function ulf_field_bases_field_default_field_bases() {
     'settings' => array(
       'allowed_values' => array(
         0 => array(
-          'vocabulary' => 'subjects_primary_school',
+          'vocabulary' => 'elementary_school',
           'parent' => 0,
         ),
       ),
