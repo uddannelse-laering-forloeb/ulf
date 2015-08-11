@@ -40,6 +40,16 @@ body {
     position: relative;
 }
 
+/* Logo display. */
+.print-logo {
+    background: url("../images/header-bg.jpg");
+}
+
+.print-logo img{
+    width: 20%;
+    padding: 1em;
+}
+
 h2 {
     font-size: 1.2em;
     margin: 0 0 10px 0;
@@ -60,6 +70,7 @@ a {
 .block--pdf {
     display: none;
 }
+
 
 /* Layout */
 

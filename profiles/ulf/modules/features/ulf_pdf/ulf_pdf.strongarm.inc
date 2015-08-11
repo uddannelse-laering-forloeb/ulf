@@ -133,7 +133,7 @@ function ulf_pdf_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'print_logo_options';
-  $strongarm->value = '0';
+  $strongarm->value = '1';
   $export['print_logo_options'] = $strongarm;
 
   $strongarm = new stdClass();
