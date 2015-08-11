@@ -139,7 +139,7 @@ class UlfCoursesMigration extends DrupalNode7Migration {
       case 14:
       case 144:
       case 145:
-        $row->field_target_group = 11;
+        $row->field_target_group = 147;
         break;
 
       // Map to "grundskole".
@@ -147,17 +147,14 @@ class UlfCoursesMigration extends DrupalNode7Migration {
       case 146:
       case 147:
       case 148:
-        $row->field_target_group = 117;
+        $row->field_target_group = 148;
         break;
 
       // Map to "Ungdomsundannelse".
       case 139:
       case 149:
-        $row->field_target_group = 136;
+        $row->field_target_group = 149;
         break;
-
-      default:
-        $t=1;
     }
 
     return TRUE;
