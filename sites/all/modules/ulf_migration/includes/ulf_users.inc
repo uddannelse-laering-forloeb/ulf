@@ -40,6 +40,8 @@ class UlfUsersMigration extends DrupalUser7Migration {
       ->sourceMigration('UlfFiles');
     $this->addFieldMapping('field_image:file_class')
       ->defaultValue('MigrateFileFid');
+    $this->addFieldMapping('field_image:preserve_files', NULL, FALSE)
+      ->defaultValue(TRUE);
     $this->addFieldMapping('field_image:alt', 'field_provider_media:alt');
     $this->addFieldMapping('field_image:title', 'field_provider_media:title');
 
@@ -48,6 +50,8 @@ class UlfUsersMigration extends DrupalUser7Migration {
       ->sourceMigration('UlfFiles');
     $this->addFieldMapping('field_profile_logo:file_class')
       ->defaultValue('MigrateFileFid');
+    $this->addFieldMapping('field_profile_logo:preserve_files', NULL, FALSE)
+      ->defaultValue(TRUE);
     $this->addFieldMapping('field_profile_logo:alt', 'field_provider_logo:alt');
     $this->addFieldMapping('field_profile_logo:title', 'field_provider_logo:title');
 
@@ -94,15 +98,12 @@ class UlfUsersMigration extends DrupalUser7Migration {
       'field_provider_logo:height',
       'field_provider_logo:language',
       'field_profile_contact',
-
      ));
 
     // Unmapped destination fields.
     $this->addUnmigratedDestinations(array(
       'field_image:language',
-      'field_image:preserve_files',
       'field_profile_logo:language',
-      'field_profile_logo:preserve_files',
       'field_profile_contact',
       'field_profile_contact:revision_id',
     ));
