@@ -19,5 +19,7 @@ features[taxonomy][] = tags
 features[taxonomy][] = target_group
 features[taxonomy][] = target_group_sub
 features[taxonomy][] = topic
+features[taxonomy][] = primary_school
+features[taxonomy][] = elementary_school
 features[views_view][] = ulf_taxonomy_term
 features_exclude[dependencies][ctools] = ctools
