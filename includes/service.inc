@@ -139,7 +139,8 @@ class SearchApiSearchNodeService extends SearchApiAbstractService {
         /**
          * @TODO: Maybe better handle encoding below.
          */
-        if ($this->connection->add($search_node_index, $item['type']['value'], $id, json_encode($item))){
+        $filteredItem = $this->filterOutValue($item);
+        if ($this->connection->add($search_node_index, $filteredItem['type'], $id, json_encode($filteredItem))){
           $indexed[] = $id;
         }
         else {
@@ -187,7 +188,76 @@ class SearchApiSearchNodeService extends SearchApiAbstractService {
   /**
    * {@inheritdoc}
    */
-  public function search(SearchApiQueryInterface $query) {
+  public function query(SearchApiIndex $index, $options = array()) {
+    return new SearchApiQuery($index, $options);
+  }
 
+  /**
+   * {@inheritdoc}
+   *
+   * @TODO: Build search without Angular support.
+   *
+   *
+   * An associative array containing the search results. The following keys
+   *   are standardized:
+   *   - 'result count': The overall number of results for this query, without
+   *     range restrictions. Might be approximated, for large numbers, or
+   *     skipped entirely if the "skip result count" option was set on this
+   *     query.
+   *   - results: An array of results, ordered as specified. The array keys are
+   *     the items' IDs, values are arrays containing the following keys:
+   *     - id: The item's ID.
+   *     - score: A float measuring how well the item fits the search.
+   *     - fields: (optional) If set, an array containing some field values
+   *       already ready-to-use. This allows search engines (or postprocessors)
+   *       to store extracted fields so other modules don't have to extract them
+   *       again. This fields should always be checked by modules that want to
+   *       use field contents of the result items.
+   *     - entity: (optional) If set, the fully loaded result item. This field
+   *       should always be used by modules using search results, to avoid
+   *       duplicate item loads.
+   *     - excerpt: (optional) If set, an HTML text containing highlighted
+   *       portions of the fulltext that match the query.
+   *   - warnings: A numeric array of translated warning messages that may be
+   *     displayed to the user.
+   *   - ignored: A numeric array of search keys that were ignored for this
+   *     search (e.g., because of being too short or stop words).
+   *   - performance: An associative array with the time taken (as floats, in
+   *     seconds) for specific parts of the search execution:
+   *     - complete: The complete runtime of the query.
+   *     - hooks: Hook invocations and other client-side preprocessing.
+   *     - preprocessing: Preprocessing of the service class.
+   *     - execution: The actual query to the search server, in whatever form.
+   *     - postprocessing: Preparing the results for returning.
+   *   Additional metadata may be returned in other keys. Only 'result count'
+   *   and 'result' always have to be set, all other entries are optional.
+   */
+  public function search(SearchApiQueryInterface $query) {
+    $t=1;
+    return array(
+      'result count' => 0,
+      'results' => array(),
+    );
+  }
+
+
+  /**
+   * Filter out everything but the value.
+   *
+   * We do this as the field metadata is handled in the search node index
+   * configuration, so to simplify the search queries.
+   *
+   * @param array $item
+   *   Item to filter away metadata.
+   *
+   * @return array mixed
+   *   The filter item to index.
+   */
+  private function filterOutValue(array $item) {
+    foreach ($item as $key => $field) {
+      $item[$key] = $field['value'];
+    }
+
+    return $item;
   }
 }

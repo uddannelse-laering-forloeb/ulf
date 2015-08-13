@@ -35,10 +35,22 @@ function search_api_search_node_form_search_api_admin_index_edit_alter(&$form, &
   $server = NULL;
   if (isset($form_state['values']['server'])) {
     $server = $servers[$form_state['values']['server']];
+
+    // Check if this is a search node server index.
+    if ($server->class != 'search_api_search_node_service') {
+      return;
+    }
+
     $default = $form_state['values']['options']['search_node_indexes'];
   }
   else if (!empty($form_state['index'])) {
     $server = $servers[$form_state['index']->server];
+
+    // Check if this is a search node server index.
+    if ($server->class != 'search_api_search_node_service') {
+      return;
+    }
+
     $default = $form_state['index']->options['search_node_indexes'];
   }
 
