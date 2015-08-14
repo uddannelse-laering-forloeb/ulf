@@ -92,7 +92,8 @@ function ulf_preprocess_node(&$variables) {
 
         if ($variables['view_mode'] == 'print') {
           $term = $variables['field_target_group']['und']['0']['tid'];
-        } else {
+        }
+        else {
           $term = $variables['field_target_group']['0']['taxonomy_term'];
         }
 
@@ -114,6 +115,12 @@ function ulf_preprocess_node(&$variables) {
       $variables['newsletter_block'] = module_invoke('mailchimp_signup', 'block_view', 'signup_to_newsletter');
       $variables['group_type'] = 'news';
       break;
+  }
+
+  if (user_access('moderate content from needs_review to published') && arg(2) == 'draft') {
+    $variables['display_workflow_actions'] =  TRUE;
+  } else {
+    $variables['display_workflow_actions'] =  FALSE;
   }
 
   // Display author meta data on courses.
