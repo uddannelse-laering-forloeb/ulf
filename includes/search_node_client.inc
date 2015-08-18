@@ -98,13 +98,8 @@ class SearchNodeClient {
       return TRUE;
     }
     else if ($request->code == 200) {
-      // Updated.
+      // Updated (reindex with new version).
       return TRUE;
-    }
-
-    // Entity already in the index (reindex).
-    if ($request->code == 409) {
-      return $this->update($index, $type, $id, $data);
     }
 
     return FALSE;
