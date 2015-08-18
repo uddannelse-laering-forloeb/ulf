@@ -25,6 +25,32 @@ function search_node_page_menu() {
   return $items;
 }
 
+
+/**
+ * Implements hook_libraries_info().
+ *
+ * For defining external libraries.
+ */
+function search_node_page_libraries_info() {
+  // A very simple library. No changing APIs (hence, no versions), no variants.
+  // Expected to be extracted into 'sites/all/libraries/simple'.
+  $libraries['angular'] = array(
+    'name' => 'Angular JS',
+    'vendor url' => 'https://angularjs.org/',
+    'download url' => 'https://angularjs.org/',
+    'version arguments' => array(
+      'file' => 'angular.js',
+      'pattern' => '/AngularJS v(\d+\.\d+.\d+)/',
+      'lines' => 5,
+    ),
+    'files' => array(
+      'js' => array('angular.js'),
+    ),
+  );
+
+  return $libraries;
+}
+
 /**
  * Implements hook_block_info().
  */
@@ -83,6 +109,25 @@ function search_node_page_block_save($delta = '', $edit = array()) {
 function search_node_page_block_view($delta='') {
   $block = array();
 
+  // Check if the angular library is installed.
+  if (($library = libraries_load('angular')) && !empty($library['installed'])) {
+    /**
+     * Get read-only API-key from search API as configuration to angular.
+     */
+
+    /**
+     * @TODO: Attach all JS files.
+     */
+    $block['#attached']['js'][] = array(
+      'type' => 'file',
+      'data' => 'path/to/somescript.js',
+    );
+  }
+  else {
+    // Something went wrong.
+    drupal_set_message($library['error message'], 'ERROR');
+  }
+
   switch($delta) {
     case 'search_node_search_box' :
       $block['content'] = '<form id="searchBoxApp" data-ng-controller="boxController">
@@ -97,14 +142,6 @@ function search_node_page_block_view($delta='') {
           </div>
         </span>
       </form>';
-
-      /**
-       * @TODO: Attach all JS files.
-       */
-      $block['#attached']['js'][] = array(
-        'type' => 'file',
-        'data' => 'path/to/somescript.js',
-      );
       break;
 
     case 'search_node_search_result':
