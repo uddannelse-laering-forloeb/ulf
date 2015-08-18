@@ -94,6 +94,11 @@ class SearchNodeClient {
     ));
 
     if ($request->code == 201) {
+      // Created.
+      return TRUE;
+    }
+    else if ($request->code == 200) {
+      // Updated.
       return TRUE;
     }
 

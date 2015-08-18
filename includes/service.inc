@@ -144,7 +144,7 @@ class SearchApiSearchNodeService extends SearchApiAbstractService {
           $indexed[] = $id;
         }
         else {
-          watchdog('search_api_db', check_plain('exception'), NULL, WATCHDOG_WARNING);
+          watchdog('search_api_db', 'Unable to add content to the search index', NULL, WATCHDOG_ERROR);
         }
       }
     }
@@ -233,13 +233,32 @@ class SearchApiSearchNodeService extends SearchApiAbstractService {
    *   and 'result' always have to be set, all other entries are optional.
    */
   public function search(SearchApiQueryInterface $query) {
-    $t=1;
     return array(
       'result count' => 0,
       'results' => array(),
     );
   }
 
+  /**
+   * Get taxonomy names based on ids.
+   *
+   * @param array $tids
+   *   Taxonomy ids to translate to names.
+   *
+   * @return array
+   *   The names of the tids given.
+   */
+  private function addTaxonomyNames($tids) {
+    $terms = array();
+    foreach ($tids as $tid) {
+      $term = taxonomy_term_load($tid);
+      if ($term) {
+        array_push($terms, $term->name);
+      }
+    }
+
+    return $terms;
+  }
 
   /**
    * Filter out everything but the value.
@@ -255,7 +274,15 @@ class SearchApiSearchNodeService extends SearchApiAbstractService {
    */
   private function filterOutValue(array $item) {
     foreach ($item as $key => $field) {
-      $item[$key] = $field['value'];
+      $type = isset($field['entity_type']) ? $field['entity_type'] : $field['type'];
+      switch ($type) {
+        case 'taxonomy_term':
+          $item[$key] = $this->addTaxonomyNames($field['value']);
+          break;
+
+        default:
+          $item[$key] = $field['value'];
+      }
     }
 
     return $item;
