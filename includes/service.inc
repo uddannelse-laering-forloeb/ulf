@@ -3,6 +3,8 @@
 /**
  * @file
  * Contains SearchApiSearchNodeService.
+ *
+ * This services is used to index data at the search node.
  */
 
 /**
@@ -21,9 +23,6 @@ class SearchApiSearchNodeService extends SearchApiAbstractService {
     // Get connection to the client.
     if (isset($this->options['host'])) {
       $this->connection = new SearchNodeClient($this->options['host'], $this->options['apikey']);
-      /**
-       * @TODO: Handle auth better.
-       */
       $this->connection->authenticate();
     }
   }
@@ -55,13 +54,6 @@ class SearchApiSearchNodeService extends SearchApiAbstractService {
       '#required' => TRUE,
       '#default_value' => isset($this->options['apikey_readonly']) ? $this->options['apikey_readonly'] : '',
     );
-
-
-    if (module_exists('search_api_autocomplete')) {
-      /**
-       * @TODO: Auto complete support.
-       */
-    }
 
     return $form;
   }
@@ -136,11 +128,10 @@ class SearchApiSearchNodeService extends SearchApiAbstractService {
     $search_node_index = $index->options['search_node_indexes'];
     if (!empty($search_node_index)) {
       foreach ($items as $id => $item) {
-        /**
-         * @TODO: Maybe better handle encoding below.
-         */
+        // Filter the items to better match the value search node works.
         $filteredItem = $this->filterOutValue($item);
         if ($this->connection->add($search_node_index, $filteredItem['type'], $id, json_encode($filteredItem))){
+          // Mark the content as indexed.
           $indexed[] = $id;
         }
         else {
@@ -168,11 +159,11 @@ class SearchApiSearchNodeService extends SearchApiAbstractService {
         }
         else {
           foreach ($data as $id => $type) {
-            /**
-             * @TODO: Maybe better handle encoding below.
-             */
             if (!$this->connection->remove($search_node_index, $type, $id)) {
-              watchdog('search_api_db', check_plain('exception'), NULL, WATCHDOG_WARNING);
+              /**
+               * @TODO: Get better error message form search node.
+               */
+              watchdog('search_api_db', 'Unable to delete item with %id and type %type.', array('%id' => $id, '%type' => $type), WATCHDOG_WARNING);
 
               throw new SearchApiException('Unable to delete item.');
             }
