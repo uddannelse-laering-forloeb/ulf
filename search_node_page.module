@@ -22,9 +22,46 @@ function search_node_page_menu() {
     'file' => 'search_node_page.admin.inc',
   );
 
+  $items ['search_node/api/%/auth'] = array(
+    'title' => 'Search node authentication',
+    'description' => 'Authentication call to get token based on API key',
+    'page callback' => 'search_node_page_authenticate',
+    'page arguments' => array(2),
+    'access arguments' => array('use search_node'),
+  );
+
   return $items;
 }
 
+/**
+ * Authentication callback.
+ *
+ * @param $search_server
+ *   The machine name of the search api server to use.
+ */
+function search_node_page_authenticate($search_server) {
+  $server = search_api_server_load($search_server);
+  if ($server) {
+    $search_node = new SearchNodeClient($server->options['host'], $server->options['apikey_readonly']);
+    $auth = $search_node->authenticate();
+    if ($auth['status'] == 200) {
+      drupal_json_output(array(
+        'status' => $auth['status'],
+        'token' => $search_node->getToken(),
+      ));
+    }
+    else {
+      // Auth failed.
+      drupal_json_output($auth);
+    }
+  }
+  else {
+    drupal_json_output(array(
+      'status' => 404,
+      'token' => t('Search node server not found.'),
+    ));
+  }
+}
 
 /**
  * Implements hook_libraries_info().
@@ -48,6 +85,25 @@ function search_node_page_libraries_info() {
     ),
   );
 
+  $libraries['search_node'] = array(
+    'name' => 'Search node Angular library',
+    'vendor url' => 'http://example.com/simple',
+    'download url' => 'http://example.com/simple',
+    'version arguments' => array(
+      'file' => 'search.min.js',
+      'pattern' => '/@version v(\d+\.\d+.\d+(-\w*\d*)*)/',
+      'lines' => 5,
+    ),
+    'library path' => drupal_get_path('module', 'search_node_page') . '/js',
+    'files' => array(
+      'js' => array(
+        'config.js',
+        'assets.min.js',
+        'search.min.js'
+      ),
+    ),
+  );
+
   return $libraries;
 }
 
@@ -57,10 +113,10 @@ function search_node_page_libraries_info() {
 function search_node_page_block_info() {
   return array(
     'search_node_search_box' => array(
-      'info' => t('Search node search field and filters'),
+      'info' => t('Search node - Search field'),
     ),
     'search_node_search_result' => array(
-      'info' => t('Search node results'),
+      'info' => t('Search node - Results'),
     ),
   );
 }
@@ -73,9 +129,112 @@ function search_node_page_block_configure($delta='') {
 
   switch($delta) {
     case 'search_node_search_box':
-      /**
-       * @TODO: Which index and filters to use.
-       */
+      $form['search_node'] = array(
+        '#type' => 'fieldset',
+        '#title' => 'Search node configuration',
+        '#tree' => TRUE,
+      );
+
+      // Load saved configuration.
+      $default = variable_get('search_node_page_search_box', array());
+
+      // Get list of all search node search API servers.
+      $search_nodes = array();
+      $servers = search_api_server_load_multiple(FALSE);
+      foreach ($servers as $server) {
+        if ($server->class == 'search_api_search_node_service') {
+          $search_nodes[$server->machine_name] = $server->name;
+        }
+      }
+
+      // Allow selection of search server.
+      $form['search_node']['host'] = array(
+        '#type' => 'select',
+        '#title' => t('Search node server'),
+        '#description' => t('Select the search api search node server to use'),
+        '#options' => array('_none_' => t('Select server')) + $search_nodes,
+        '#default_value' => isset($default['host']) ? $default['host'] : '_none_',
+        '#ajax' => array(
+          'callback' => 'search_node_page_block_index_ajax_callback',
+          'wrapper' => 'search-node-page-block-indexes',
+        ),
+      );
+
+      $indexes = array('_none_' => t('Select index'));
+      $form['search_node']['index'] = array(
+        '#type' => 'select',
+        '#title' => t('Search index'),
+        '#description' => t('Select the search api search node server to use'),
+        '#options' => $indexes,
+        '#default_value' => isset($default['index']) ? $default['index'] : '_none_',
+        '#prefix' => '<div id="search-node-page-block-indexes">',
+        '#suffix' => '</div>',
+        '#ajax' => array(
+          'callback' => 'search_node_page_block_options_ajax_callback',
+          'wrapper' => 'search-node-page-block-options',
+        ),
+      );
+
+      $form['search_node']['options'] = array(
+        '#type' => 'fieldset',
+        '#title' => 'Search options',
+        '#tree' => TRUE,
+        '#prefix' => '<div id="search-node-page-block-options">',
+        '#suffix' => '</div>',
+      );
+
+      $form['search_node']['options']['cache_expire'] = array(
+        '#type' => 'textfield',
+        '#title' => t('Cache expire'),
+        '#description' => t('Filter and search cache expire time in seconds.'),
+        '#default_value' => isset($default['options']['cache_expire']) ? $default['options']['cache_expire'] : '30',
+      );
+
+      $form['search_node']['options']['size'] = array(
+        '#type' => 'textfield',
+        '#title' => t('Result size'),
+        '#description' => t('The number of results to show on the search result page - more result will be displayed using a pager.'),
+        '#default_value' => isset($default['options']['size']) ? $default['options']['size'] : '8'
+      );
+
+      $search_fields = array();
+      $form['search_node']['options']['fields'] = array(
+        '#type' => 'checkboxes',
+        '#title' => t('Search fields'),
+        '#description' => t('Select the fields to search in the index'),
+        '#options' => $search_fields,
+        '#default_value' => isset($default['options']['fields']) ? $default['options']['fields'] : array(),
+      );
+
+      $filters = array();
+      $form['search_node']['options']['filters'] = array(
+        '#type' => 'checkboxes',
+        '#title' => t('Search filters'),
+        '#description' => t('Select the filters to use'),
+        '#options' => $filters,
+        '#default_value' => isset($default['options']['filters']) ? $default['options']['filters'] : array(),
+      );
+
+      $form['search_node']['templates'] = array(
+        '#type' => 'fieldset',
+        '#title' => 'Search templates',
+        '#description' => t('The AngularJS templates use by the frontend. You should customize these to fit your search results.'),
+        '#tree' => TRUE,
+      );
+
+      $path = drupal_get_path('module', 'search_node_page');
+      $form['search_node']['templates']['box'] = array(
+        '#type' => 'textfield',
+        '#title' => 'Search box and filters',
+        '#default_value' => isset($default['options']['box']) ? $default['options']['box'] : '/' . $path . '/js/templates/search.html',
+      );
+
+      $path = drupal_get_path('module', 'search_node_page');
+      $form['search_node']['templates']['result'] = array(
+        '#type' => 'textfield',
+        '#title' => 'Search result',
+        '#default_value' => isset($default['options']['result']) ? $default['options']['result'] : '/' . $path . '/js/templates/result.html',
+      );
       break;
 
     case 'search_node_search_result' :
@@ -89,14 +248,74 @@ function search_node_page_block_configure($delta='') {
 }
 
 /**
+ * Implements hook_form_HOOK_alter().
+ *
+ * Change the block configuration form to support ajax updates.
+ */
+function search_node_page_form_block_admin_configure_alter(&$form, &$form_state, $form_id) {
+  if ($form['delta']['#value'] == 'search_node_search_box') {
+
+    // Try to load selected server.
+    $selected_server = !empty($form_state['values']['search_node']['host']) ? $form_state['values']['search_node']['host'] : $form['settings']['search_node']['host']['#default_value'];
+    $server = search_api_server_load($selected_server);
+
+    // Build indexes available base on the loaded server.
+    if ($server) {
+      $server_indexes = search_api_index_load_multiple(FALSE, array('server' => $server->machine_name));
+    }
+
+    if (!empty($server_indexes)) {
+      // Build index selection.
+      $indexes = array('_none_' => t('Select index'));
+      foreach ($server_indexes as $index) {
+        $indexes[$index->machine_name] = $index->name . ' (' . $index->options['search_node_indexes'] . ')';
+      }
+      $form['settings']['search_node']['index']['#options'] = $indexes;
+
+      // Build field and filter selection.
+      $fields = array();
+      $filters = array();
+      $selected_index = !empty($form_state['values']['search_node']['index']) ? $form_state['values']['search_node']['index'] : $form['settings']['search_node']['index']['#default_value'];
+      $index = search_api_index_load($selected_index);
+      foreach ($index->options['fields'] as $field => $options) {
+        if (isset($options['entity_type']) && $options['entity_type'] == 'taxonomy_term') {
+          // Load field.
+          $info = field_info_field($field);
+          $vocab = taxonomy_vocabulary_machine_name_load($info['settings']['allowed_values'][0]['vocabulary']);
+          $filters[$vocab->machine_name] = $vocab->name . ' (' . $field .')';
+        }
+        else {
+          $name = explode(':', $field);
+          $fields[$field] = array_shift($name) . ' (' . $field .')';
+        }
+      }
+      $form['settings']['search_node']['options']['fields']['#options'] = $fields;
+      $form['settings']['search_node']['options']['filters']['#options'] = $filters;
+    }
+  }
+}
+
+/**
+ * Ajax callback to update the block configuration form.
+ */
+function search_node_page_block_index_ajax_callback(array $form, array &$form_state) {
+  return $form['settings']['search_node']['index'];
+}
+
+/**
+ * Ajax callback to update the block configuration form.
+ */
+function search_node_page_block_options_ajax_callback(array $form, array &$form_state) {
+  return $form['settings']['search_node']['options'];
+}
+
+/**
  * Implements hook_block_save().
  */
 function search_node_page_block_save($delta = '', $edit = array()) {
   switch($delta) {
     case 'search_node_search_box':
-      /**
-       * @TODO: Save settings.
-       */
+      variable_set('search_node_page_search_box', $edit['search_node']);
       break;
   }
 }
@@ -122,6 +341,14 @@ function search_node_page_block_view($delta='') {
       'type' => 'file',
       'data' => 'path/to/somescript.js',
     );
+  }
+  else {
+    // Something went wrong.
+    drupal_set_message($library['error message'], 'ERROR');
+  }
+
+  if (($library = libraries_load('search_node')) && !empty($library['installed'])) {
+    drupal_set_message('TEST');
   }
   else {
     // Something went wrong.
