@@ -1,10 +1,7 @@
 <?php
-
 /**
- * @TODO: Search block
- * @TODO: Search result block
- * @TODO: Angular front-end
- * @TODO: Menu callback for the front-end
+ * @file
+ * This is implements the blocks used to display the search.
  */
 
 /**
@@ -97,7 +94,6 @@ function search_node_page_libraries_info() {
     'library path' => drupal_get_path('module', 'search_node_page') . '/js',
     'files' => array(
       'js' => array(
-        'config.js',
         'assets.min.js',
         'search.min.js'
       ),
@@ -124,7 +120,7 @@ function search_node_page_block_info() {
 /**
  * Implements hook_block_configure().
  */
-function search_node_page_block_configure($delta='') {
+function search_node_page_block_configure($delta) {
   $form = array();
 
   switch($delta) {
@@ -148,12 +144,12 @@ function search_node_page_block_configure($delta='') {
       }
 
       // Allow selection of search server.
-      $form['search_node']['host'] = array(
+      $form['search_node']['server'] = array(
         '#type' => 'select',
         '#title' => t('Search node server'),
         '#description' => t('Select the search api search node server to use'),
         '#options' => array('_none_' => t('Select server')) + $search_nodes,
-        '#default_value' => isset($default['host']) ? $default['host'] : '_none_',
+        '#default_value' => isset($default['server']) ? $default['server'] : '_none_',
         '#ajax' => array(
           'callback' => 'search_node_page_block_index_ajax_callback',
           'wrapper' => 'search-node-page-block-indexes',
@@ -235,6 +231,13 @@ function search_node_page_block_configure($delta='') {
         '#title' => 'Search result',
         '#default_value' => isset($default['options']['result']) ? $default['options']['result'] : '/' . $path . '/js/templates/result.html',
       );
+
+      $path = drupal_get_path('module', 'search_node_page');
+      $form['search_node']['templates']['pager'] = array(
+        '#type' => 'textfield',
+        '#title' => 'Search pager',
+        '#default_value' => isset($default['options']['pager']) ? $default['options']['pager'] : '/' . $path . '/js/templates/pager.html',
+      );
       break;
 
     case 'search_node_search_result' :
@@ -256,7 +259,7 @@ function search_node_page_form_block_admin_configure_alter(&$form, &$form_state,
   if ($form['delta']['#value'] == 'search_node_search_box') {
 
     // Try to load selected server.
-    $selected_server = !empty($form_state['values']['search_node']['host']) ? $form_state['values']['search_node']['host'] : $form['settings']['search_node']['host']['#default_value'];
+    $selected_server = !empty($form_state['values']['search_node']['server']) ? $form_state['values']['search_node']['server'] : $form['settings']['search_node']['server']['#default_value'];
     $server = search_api_server_load($selected_server);
 
     // Build indexes available base on the loaded server.
@@ -282,9 +285,10 @@ function search_node_page_form_block_admin_configure_alter(&$form, &$form_state,
           // Load field.
           $info = field_info_field($field);
           $vocab = taxonomy_vocabulary_machine_name_load($info['settings']['allowed_values'][0]['vocabulary']);
-          $filters[$vocab->machine_name] = $vocab->name . ' (' . $field .')';
+          $filters[$field] = $vocab->name . ' (' . $field .')';
         }
         else {
+          // The index save some fields with ":".
           $name = explode(':', $field);
           $fields[$field] = array_shift($name) . ' (' . $field .')';
         }
@@ -322,42 +326,108 @@ function search_node_page_block_save($delta = '', $edit = array()) {
 
 /**
  * Implements hook_block_view().
- *
- * @TODO: Move HTML into template function and tpl's.
  */
 function search_node_page_block_view($delta='') {
   $block = array();
 
-  // Check if the angular library is installed.
-  if (($library = libraries_load('angular')) && !empty($library['installed'])) {
-    /**
-     * Get read-only API-key from search API as configuration to angular.
-     */
 
-    /**
-     * @TODO: Attach all JS files.
-     */
-    $block['#attached']['js'][] = array(
-      'type' => 'file',
-      'data' => 'path/to/somescript.js',
-    );
-  }
-  else {
-    // Something went wrong.
-    drupal_set_message($library['error message'], 'ERROR');
-  }
-
-  if (($library = libraries_load('search_node')) && !empty($library['installed'])) {
-    drupal_set_message('TEST');
-  }
-  else {
-    // Something went wrong.
-    drupal_set_message($library['error message'], 'ERROR');
-  }
 
   switch($delta) {
     case 'search_node_search_box' :
-      $block['content'] = '<form id="searchBoxApp" data-ng-controller="boxController">
+
+      // Build configuration object.
+      $configuration = variable_get('search_node_page_search_box', array());
+      if (empty($configuration)) {
+        drupal_set_message(t('Search node - search box needs to be configured before it can be used.'), 'error');
+      }
+      else {
+        // Check if the angular library is installed.
+        if (($library = libraries_load('angular')) && empty($library['installed'])) {
+          // Something went wrong.
+          drupal_set_message($library['error message'], 'error');
+        }
+
+        // Load server settings.
+        $server = search_api_server_load($configuration['server']);
+
+        // Load index.
+        $index = search_api_index_load($configuration['index']);
+
+        // Build array to convert to json configuration.
+        $conf = array(
+          'templates' => array(
+            'box' => $configuration['templates']['box'],
+            'result' => $configuration['templates']['result'],
+          ),
+          'provider' => array(
+            'service' => 'searchNodeProvider',
+            'host' => $server->options['host'],
+            'auth' => '/search_node/api/' . $server->machine_name . '/auth',
+            'index' => $index->options['search_node_indexes'],
+            'fields' => array_keys(array_filter($configuration['options']['fields'])),
+            'pager' => array(
+              'size' => (int) $configuration['options']['size'],
+              'page' => 0
+            ),
+            'cacheExpire' => (int) $configuration['options']['cache_expire'],
+          ),
+        );
+
+        // Build filters.
+        if (!empty($configuration['options']['filters'])) {
+          $filters = array();
+          foreach (array_filter($configuration['options']['filters']) as $field) {
+            $info = field_info_field($field);
+            $vocab = taxonomy_vocabulary_machine_name_load($info['settings']['allowed_values'][0]['vocabulary']);
+
+            $terms = array();
+            foreach (taxonomy_get_tree($vocab->vid) as $term) {
+              $terms[$term->name] = array(
+                'value' => $term->name,
+              );
+            }
+            /**
+             * @TODO: Fix type, so it's not hardcoded.
+             */
+            // Add filters.
+            $filters[] = array(
+              'field' => $field,
+              'name' => $vocab->name,
+              'type' => 'and',
+              'terms' => $terms,
+            );
+          }
+
+          // Add the filters.
+          $conf['provider']['filters'] = $filters;
+        }
+
+        // Add the configuration to the page.
+        drupal_add_js("angular.module('searchAppConfig', []).constant('CONFIG', " . json_encode($conf). ");", array(
+            'type' => 'inline',
+            'scope' => 'footer',
+            'weight' => 5,
+          )
+        );
+
+        // Load search framework and ensure that it's loaded after the configuration.
+        $library = libraries_detect('search_node');
+        if (empty($library['installed'])) {
+          drupal_set_message($library['error message'], 'error');
+        }
+        else {
+          foreach ($library['files']['js'] as $file => $v) {
+            drupal_add_js($library['library path'] . '/' . $file, array(
+                'type' => 'file',
+                'scope' => 'footer',
+                'weight' => 6,
+              )
+            );
+          }
+        }
+
+
+        $block['content'] = '<form id="searchBoxApp" data-ng-strict-di data-ng-controller="boxController">
         <span data-ng-include="template">
           <div class="row collapse">
             <div class="small-10 columns">
@@ -369,10 +439,11 @@ function search_node_page_block_view($delta='') {
           </div>
         </span>
       </form>';
+      }
       break;
 
     case 'search_node_search_result':
-      $block['content'] = '<form id="searchResultApp"  data-ng-controller="resultController" >
+      $block['content'] = '<form id="searchResultApp" data-ng-strict-di data-ng-controller="resultController" >
         <span data-ng-include="template">
           <div class="row collapse">
             No results.
