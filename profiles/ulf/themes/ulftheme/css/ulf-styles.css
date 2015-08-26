@@ -1362,13 +1362,8 @@ body {
 ================================================================================================================== */
 /* Styles.
 ================================================================================================================== */
-<<<<<<< HEAD
-.form-submit,
-.button, .search--filter-search-submit[type="submit"], .search--filter-dropdown-submit, .search--widget-selected-item {
-=======
 .block--pdf-link, .form-submit,
-.button {
->>>>>>> development
+.button, .search--filter-search-submit[type="submit"], .search--filter-dropdown-submit, .search--widget-selected-item {
   position: relative;
   border: 1px solid #17858c;
   display: inline-block;
@@ -1379,17 +1374,10 @@ body {
   font-size: 125%;
   text-align: center;
   text-shadow: 0.025em 0.025em 0.1em #105b60; }
-<<<<<<< HEAD
-  .form-submit:focus,
-  .button:focus, .search--filter-search-submit[type="submit"]:focus, .search--filter-dropdown-submit:focus, .search--widget-selected-item:focus, .form-submit:hover,
-  .button:hover, .search--filter-search-submit[type="submit"]:hover, .search--filter-dropdown-submit:hover, .search--widget-selected-item:hover, .form-submit:active,
-  .button:active, .search--filter-search-submit[type="submit"]:active, .search--filter-dropdown-submit:active, .search--widget-selected-item:active {
-=======
   .block--pdf-link:focus, .form-submit:focus,
-  .button:focus, .block--pdf-link:hover, .form-submit:hover,
-  .button:hover, .block--pdf-link:active, .form-submit:active,
-  .button:active {
->>>>>>> development
+  .button:focus, .search--filter-search-submit[type="submit"]:focus, .search--filter-dropdown-submit:focus, .search--widget-selected-item:focus, .block--pdf-link:hover, .form-submit:hover,
+  .button:hover, .search--filter-search-submit[type="submit"]:hover, .search--filter-dropdown-submit:hover, .search--widget-selected-item:hover, .block--pdf-link:active, .form-submit:active,
+  .button:active, .search--filter-search-submit[type="submit"]:active, .search--filter-dropdown-submit:active, .search--widget-selected-item:active {
     text-decoration: none; }
 
 /* Styles.
@@ -1672,6 +1660,8 @@ body {
       color: #fff;
       text-decoration: none; }
 
+/* Display search results.
+================================================================================================================== */
 .search-results-header {
   margin-bottom: 2em;
   padding-top: 1em; }
