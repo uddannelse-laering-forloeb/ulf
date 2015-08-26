@@ -10,15 +10,6 @@
 function search_node_page_menu() {
   $items = array();
 
-  $items ['admin/config/search/search_node'] = array(
-    'title' => 'Search node',
-    'description' => 'Handle search node filters and settings.',
-    'page callback' => array('drupal_get_form'),
-    'page arguments' => array('search_node_page_admin_overview'),
-    'access arguments' => array('administer search_node'),
-    'file' => 'search_node_page.admin.inc',
-  );
-
   $items ['search_node/api/%/auth'] = array(
     'title' => 'Search node authentication',
     'description' => 'Authentication call to get token based on API key',

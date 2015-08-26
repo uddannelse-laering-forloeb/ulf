@@ -5,5 +5,3 @@ dependencies[] = libraries
 core = 7.x
 package = Search
 version = 1.0.0
-
-configure = admin/config/search/search_node
