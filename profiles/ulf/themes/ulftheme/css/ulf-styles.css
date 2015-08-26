@@ -555,6 +555,27 @@ textarea {
 
 /**
  *
+ * Font definitions
+ *
+ * Should contain definitions for all font-families used on the site
+ *
+ */
+@font-face {
+  font-family: 'Asap';
+  src: url("../fonts/Asap-Regular.ttf");
+  /* Pretty Modern Browsers */ }
+@font-face {
+  font-family: 'Asap';
+  src: url("../fonts/Asap-Bold.ttf");
+  /* Pretty Modern Browsers */
+  font-weight: bold; }
+@font-face {
+  font-family: 'Asap';
+  src: url("../fonts/Asap-Italic.ttf");
+  /* Pretty Modern Browsers */
+  font-style: italic; }
+/**
+ *
  * Layouts
  *
  * Holds layout styling for the basic building blocks across the site.
@@ -795,8 +816,8 @@ body {
 ================================================================================================================== */
 .field {
   /* Display: of node title. */
-  /* Display of tags field. */
-  /* Display of field collections in main content. */ }
+  /* Display of field collections in main content. */
+  /* Video display. */ }
   .field--title {
     border-bottom: solid;
     border-width: 0;
@@ -820,24 +841,6 @@ body {
         border-width: 4px;
         padding: 0 .5em;
         position: absolute; } }
-  .field--tags {
-    padding: 0.8em 0; }
-  .field--tags-item {
-    display: inline-block;
-    margin-bottom: .25em;
-    padding: .1em 1em;
-    background: #17858c;
-    color: #fff;
-    cursor: pointer;
-    font-size: 85%;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    border-radius: 5px; }
-    .field--tags-item:link, .field--tags-item:visited, .field--tags-item:hover, .field--tags-item:active {
-      color: #fff;
-      text-decoration: none; }
-    .field--tags-item:hover {
-      background: #137076; }
   .field--collection-wrapper {
     margin-bottom: 16px; }
   .field--collection-label {
@@ -856,6 +859,19 @@ body {
     width: 100%; }
   .field--collection-description {
     font-weight: bold; }
+  .field--video {
+    margin-bottom: 16px; }
+  .field--video-player {
+    height: 0;
+    width: 100%;
+    position: relative;
+    padding-bottom: 56.25%; }
+    .field--video-player iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%; }
 
 /**
  *
@@ -1020,6 +1036,9 @@ body {
 .block--field-label {
   font-weight: bold;
   margin-bottom: 4px; }
+  .block--field-label.is-inline {
+    float: left;
+    margin-right: .5em; }
 
 .block--field-text {
   margin-bottom: 8px; }
@@ -1096,6 +1115,21 @@ body {
   .block--newsletter .form-submit,
   .block--newsletter .form-item {
     margin: 0 16px; }
+
+.block--pdf {
+  margin: 32px 0; }
+  .block--pdf-link:link {
+    color: #fff;
+    text-decoration: none; }
+  .block--pdf-link:visited {
+    color: #fff;
+    text-decoration: none; }
+  .block--pdf-link:hover {
+    color: #fff;
+    text-decoration: none; }
+  .block--pdf-link:focus {
+    color: #fff;
+    text-decoration: none; }
 
 /**
  *
@@ -1284,11 +1318,6 @@ body {
     min-height: 120px;
     position: relative;
     width: 100%; }
-  .content--main {
-    width: 100%; }
-    @media only screen and (min-width: 55em) {
-      .content--main {
-        width: 60%; } }
   .content--meta {
     width: 100%; }
     @media only screen and (min-width: 55em) {
@@ -1300,6 +1329,27 @@ body {
     margin: 16px 8px 32px; }
   .content--newsletter-archive .campaign {
     margin-bottom: 8px; }
+  .content--main {
+    width: 100%; }
+    @media only screen and (min-width: 55em) {
+      .content--main {
+        width: 60%; } }
+    .content--main ul {
+      padding-left: 16px; }
+    .content--main ol {
+      padding-left: 20px; }
+    .content--main blockquote {
+      position: relative;
+      box-sizing: border-box;
+      margin: 1em 0;
+      padding: 2em 2em 1em;
+      background-color: #f2f2f2; }
+      .content--main blockquote :before {
+        content: '"';
+        position: absolute;
+        font-size: 3em;
+        top: 0;
+        left: .3em; }
 
 /**
  *
@@ -1312,8 +1362,13 @@ body {
 ================================================================================================================== */
 /* Styles.
 ================================================================================================================== */
+<<<<<<< HEAD
 .form-submit,
 .button, .search--filter-search-submit[type="submit"], .search--filter-dropdown-submit, .search--widget-selected-item {
+=======
+.block--pdf-link, .form-submit,
+.button {
+>>>>>>> development
   position: relative;
   border: 1px solid #17858c;
   display: inline-block;
@@ -1324,10 +1379,17 @@ body {
   font-size: 125%;
   text-align: center;
   text-shadow: 0.025em 0.025em 0.1em #105b60; }
+<<<<<<< HEAD
   .form-submit:focus,
   .button:focus, .search--filter-search-submit[type="submit"]:focus, .search--filter-dropdown-submit:focus, .search--widget-selected-item:focus, .form-submit:hover,
   .button:hover, .search--filter-search-submit[type="submit"]:hover, .search--filter-dropdown-submit:hover, .search--widget-selected-item:hover, .form-submit:active,
   .button:active, .search--filter-search-submit[type="submit"]:active, .search--filter-dropdown-submit:active, .search--widget-selected-item:active {
+=======
+  .block--pdf-link:focus, .form-submit:focus,
+  .button:focus, .block--pdf-link:hover, .form-submit:hover,
+  .button:hover, .block--pdf-link:active, .form-submit:active,
+  .button:active {
+>>>>>>> development
     text-decoration: none; }
 
 /* Styles.

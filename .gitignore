@@ -1,10 +1,6 @@
 # Ignore configuration files that may contain sensitive information.
 sites/*/settings*.php
-sites/default/files.tar.gz
-profiles/ulf/themes/ulftheme/config.codekit
 
 # Ignore paths that contain user-generated content.
 sites/*/files
 sites/*/private
-profiles/ulf/themes/ulftheme/frontend-boilerplate
-profiles/ulf/themes/v2

@@ -52,38 +52,6 @@
     }
   }
 
-
-  /* Display of tags field. */
-  &--tags {
-    padding: 0.8em 0;
-  }
-
-  &--tags-item {
-    display: inline-block;
-    margin-bottom: .25em;
-    padding: .1em 1em;
-
-    background: $dark-blue;
-    color: $white;
-    cursor: pointer;
-    font-size: 85%;
-
-    @include border-radius($border-radius);
-
-    &:link,
-    &:visited,
-    &:hover,
-    &:active {
-      color: $white;
-      text-decoration: none;
-    }
-
-    &:hover {
-      background: darken($dark-blue, 5%);
-    }
-  }
-
-
   /* Display of field collections in main content. */
   &--collection-wrapper {
     margin-bottom: $spacing;
@@ -116,6 +84,27 @@
 
   &--collection-description {
     font-weight: bold;
+  }
+
+
+  /* Video display. */
+  &--video {
+    margin-bottom: $spacing;
+  }
+
+  &--video-player {
+    height: 0;
+    width: 100%;
+    position: relative;
+    padding-bottom: 56.25%;
+
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
   }
 }
 

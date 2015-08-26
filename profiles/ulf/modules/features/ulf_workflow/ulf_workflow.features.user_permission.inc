@@ -14,6 +14,7 @@ function ulf_workflow_user_default_permissions() {
   $permissions['access workbench'] = array(
     'name' => 'access workbench',
     'roles' => array(
+      'course provider' => 'course provider',
       'editor' => 'editor',
     ),
     'module' => 'workbench',
@@ -38,9 +39,7 @@ function ulf_workflow_user_default_permissions() {
   // Exported permission: 'bypass workbench moderation'.
   $permissions['bypass workbench moderation'] = array(
     'name' => 'bypass workbench moderation',
-    'roles' => array(
-      'editor' => 'editor',
-    ),
+    'roles' => array(),
     'module' => 'workbench_moderation',
   );
 
@@ -57,9 +56,7 @@ function ulf_workflow_user_default_permissions() {
   // Exported permission: 'moderate content from needs_review to draft'.
   $permissions['moderate content from needs_review to draft'] = array(
     'name' => 'moderate content from needs_review to draft',
-    'roles' => array(
-      'editor' => 'editor',
-    ),
+    'roles' => array(),
     'module' => 'workbench_moderation',
   );
 
@@ -75,9 +72,7 @@ function ulf_workflow_user_default_permissions() {
   // Exported permission: 'use workbench_moderation my drafts tab'.
   $permissions['use workbench_moderation my drafts tab'] = array(
     'name' => 'use workbench_moderation my drafts tab',
-    'roles' => array(
-      'editor' => 'editor',
-    ),
+    'roles' => array(),
     'module' => 'workbench_moderation',
   );
 

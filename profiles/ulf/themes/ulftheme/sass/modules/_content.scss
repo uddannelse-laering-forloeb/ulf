@@ -26,13 +26,6 @@
     width: 100%;
   }
 
-  &--main {
-    width: 100%;
-
-    @include breakpoint($node-breakpoint) {
-      width: 60%;
-    }
-  }
 
   &--meta {
     width: 100%;
@@ -60,6 +53,43 @@
 
     .campaign {
       margin-bottom: $spacing / 2;
+    }
+  }
+
+
+  &--main {
+    width: 100%;
+
+    @include breakpoint($node-breakpoint) {
+      width: 60%;
+    }
+
+    // Display of html elements inside main content. (Through Wysiwyg)
+
+    ul {
+      padding-left: $spacing;
+    }
+
+    ol {
+      padding-left: 20px;
+    }
+
+    blockquote {
+      position: relative;
+
+      box-sizing: border-box;
+      margin: 1em 0;
+      padding: 2em 2em 1em;
+
+      background-color: $gray-lightest;
+
+      :before {
+        content: '"';
+        position: absolute;
+        font-size: 3em;
+        top: 0;
+        left: .3em;
+      }
     }
   }
 }

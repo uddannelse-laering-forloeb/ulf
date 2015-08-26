@@ -1,0 +1,24 @@
+/**
+ *
+ * Font definitions
+ *
+ * Should contain definitions for all font-families used on the site
+ *
+ */
+
+@font-face {
+  font-family: 'Asap';
+  src: url('../fonts/Asap-Regular.ttf'); /* Pretty Modern Browsers */
+}
+
+@font-face {
+  font-family: 'Asap';
+  src: url('../fonts/Asap-Bold.ttf'); /* Pretty Modern Browsers */
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Asap';
+  src: url('../fonts/Asap-Italic.ttf'); /* Pretty Modern Browsers */
+  font-style: italic;
+}

@@ -52,6 +52,27 @@ function ulf_field_collections_field_default_field_bases() {
     'type' => 'text',
   );
 
+  // Exported field_base: 'field_contact_office_hours'
+  $field_bases['field_contact_office_hours'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_contact_office_hours',
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'max_length' => 255,
+    ),
+    'translatable' => 0,
+    'type' => 'text',
+  );
+
   // Exported field_base: 'field_contact_phone'
   $field_bases['field_contact_phone'] = array(
     'active' => 1,
@@ -59,6 +80,27 @@ function ulf_field_collections_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_contact_phone',
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'max_length' => 255,
+    ),
+    'translatable' => 0,
+    'type' => 'text',
+  );
+
+  // Exported field_base: 'field_contact_title'
+  $field_bases['field_contact_title'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_contact_title',
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -176,7 +218,7 @@ function ulf_field_collections_field_default_field_bases() {
     'locked' => 0,
     'module' => 'number',
     'settings' => array(
-      'decimal_separator' => '.',
+      'decimal_separator' => ',',
       'precision' => 14,
       'scale' => 2,
     ),

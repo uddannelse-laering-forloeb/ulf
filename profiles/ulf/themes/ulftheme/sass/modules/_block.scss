@@ -57,6 +57,11 @@
 .block--field-label {
   font-weight: bold;
   margin-bottom: $spacing / 4;
+
+  &.is-inline {
+    float: left;
+    margin-right: .5em;
+  }
 }
 
 .block--field-text {
@@ -137,7 +142,7 @@
       position: absolute;
 
       @include vertical-center();
-    };
+    }
   }
 
   &.is-front {
@@ -149,5 +154,16 @@
   .form-submit,
   .form-item {
     margin: 0 $spacing;
+  }
+}
+
+
+.block--pdf {
+  margin: 2 * $spacing 0;
+
+  &-link {
+    @extend %button;
+
+    @include strip-link-styles($white);
   }
 }

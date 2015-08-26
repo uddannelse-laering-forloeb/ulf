@@ -44,18 +44,21 @@
             <?php print render($user_profile['field_image']); ?>
           </div>
           <div class="content--main">
-            <div class="block--field-label"><?php print t('Description');?>:</div>
+            <div class="block--field-label"><?php print t('Description');?></div>
             <?php print render($user_profile['field_profile_description']); ?>
-            <?php if (isset($user_profile['field_profile_educat_profi'])) :?>
-              <div class="block--field-label"><?php print t('Profile');?>:</div>
+            <?php if (isset($user_profile['field_profile_educat_profi'])) : ?>
+              <div class="block--field-label"><?php print t('Profile');?></div>
               <?php print render($user_profile['field_profile_educat_profi']); ?>
             <?php endif; ?>
             <?php print render($user_profile['field_profile_entry']); ?>
             <?php print render($user_profile['field_profile_contact']); ?>
+            <div class="block--pdf">
+              <a class="block--pdf-link" target="_blank" href="/printpdf/user/<?php print $user->uid; ?>"><?php print t('Print this offer as pdf')?></a>
+            </div>
           </div>
           <div class="content--meta">
             <?php if (isset($user_profile['field_profile_logo'])) :?>
-            <div class="block--light">
+            <div class="block">
               <div class="block--content">
                 <div class="block--field-logo">
                   <?php print render($user_profile['field_profile_logo']); ?>
@@ -71,7 +74,9 @@
                 <div class="block--field-label"><?php print render($user_profile['field_profile_name']); ?></div>
                 <div class="block--field-text"><?php print render($user_profile['field_profile_address']); ?></div>
                 <div class="block--field-text"><?php print render($user_profile['field_profile_postal_code']); ?> <?php print render($user_profile['field_profile_city']); ?></div>
+                </br>
                 <div class="block--field-text"><?php print render($user_profile['field_profile_phone']); ?></div>
+                <div class="block--field-text"><?php print render($user_profile['field_profile_mail']); ?></div>
                 <div class="block--field-text"><?php print render($user_profile['field_profile_home_page']); ?></div>
               </div>
             </div>

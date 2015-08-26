@@ -5,3 +5,11 @@
  */
 
 include_once 'ulf_workflow.features.inc';
+
+function ulf_workflow_preprocess_page(&$variables) {
+  $a = 1;
+}
+
+function ulf_workflow_preprocess_page__node__revisions(&$variables) {
+  $a = 1;
+}
