@@ -31,6 +31,22 @@ function search_node_page_menu() {
 }
 
 /**
+ * Implements hook_theme().
+ */
+function search_node_page_theme() {
+  return array(
+    'search_node_page_search_box' => array(
+      'variables' => array(),
+      'template' => 'templates/search-box',
+    ),
+    'search_node_page_search_results' => array(
+      'variables' => array(),
+      'template' => 'templates/search-results',
+    ),
+  );
+}
+
+/**
  * Authentication callback.
  *
  * @param $search_server
@@ -222,21 +238,21 @@ function search_node_page_block_configure($delta) {
       $form['search_node']['templates']['box'] = array(
         '#type' => 'textfield',
         '#title' => 'Search box and filters',
-        '#default_value' => isset($default['options']['box']) ? $default['options']['box'] : '/' . $path . '/js/templates/search.html',
+        '#default_value' => isset($default['templates']['box']) ? $default['templates']['box'] : '/' . $path . '/templates/angular/search.html',
       );
 
       $path = drupal_get_path('module', 'search_node_page');
       $form['search_node']['templates']['result'] = array(
         '#type' => 'textfield',
         '#title' => 'Search result',
-        '#default_value' => isset($default['options']['result']) ? $default['options']['result'] : '/' . $path . '/js/templates/result.html',
+        '#default_value' => isset($default['templates']['result']) ? $default['templates']['result'] : '/' . $path . '/templates/angular/result.html',
       );
 
       $path = drupal_get_path('module', 'search_node_page');
       $form['search_node']['templates']['pager'] = array(
         '#type' => 'textfield',
         '#title' => 'Search pager',
-        '#default_value' => isset($default['options']['pager']) ? $default['options']['pager'] : '/' . $path . '/js/templates/pager.html',
+        '#default_value' => isset($default['templates']['pager']) ? $default['templates']['pager'] : '/' . $path . '/templates/angular/pager.html',
       );
       break;
 
@@ -427,29 +443,16 @@ function search_node_page_block_view($delta='') {
         }
 
 
-        $block['content'] = '<form id="searchBoxApp" data-ng-strict-di data-ng-controller="boxController">
-        <span data-ng-include="template">
-          <div class="row collapse">
-            <div class="small-10 columns">
-              <input type="text" placeholder="Søg, f.eks. musik, kursus">
-            </div>
-            <div class="small-2 columns">
-              <a href="#" class="button postfix">Søg</a>
-            </div>
-          </div>
-        </span>
-      </form>';
+        $block['content'] = array(
+          '#theme' => 'search_node_page_search_box',
+        );
       }
       break;
 
     case 'search_node_search_result':
-      $block['content'] = '<form id="searchResultApp" data-ng-strict-di data-ng-controller="resultController" >
-        <span data-ng-include="template">
-          <div class="row collapse">
-            No results.
-          </div>
-        </span>
-      </form>';
+      $block['content'] = array(
+        '#theme' => 'search_node_page_search_results',
+      );
       break;
   }
 
