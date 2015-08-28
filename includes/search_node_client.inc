@@ -80,6 +80,16 @@ class SearchNodeClient {
   }
 
   /**
+   * Get the current token.
+   *
+   * @return string
+   *   The token from last authentication.
+   */
+  function getToken() {
+    return $this->token;
+  }
+
+  /**
    * Get indexes available with the current API key.
    *
    * @return array|mixed
