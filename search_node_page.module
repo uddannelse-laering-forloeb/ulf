@@ -15,7 +15,7 @@ function search_node_page_menu() {
     'description' => 'Authentication call to get token based on API key',
     'page callback' => 'search_node_page_authenticate',
     'page arguments' => array(2),
-    'access arguments' => array('use search_node'),
+    'access arguments' => array('search content'),
   );
 
   return $items;
