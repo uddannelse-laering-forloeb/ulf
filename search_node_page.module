@@ -365,6 +365,7 @@ function search_node_page_block_view($delta='') {
           'templates' => array(
             'box' => $configuration['templates']['box'],
             'result' => $configuration['templates']['result'],
+            'pager' => $configuration['templates']['pager'],
           ),
           'provider' => array(
             'service' => 'searchNodeProvider',
