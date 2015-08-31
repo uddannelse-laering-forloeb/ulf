@@ -1351,6 +1351,7 @@ body {
       .content--main {
         width: 60%; } }
     .content--main ul {
+      list-style-type: disc;
       padding-left: 16px; }
     .content--main ol {
       padding-left: 20px; }

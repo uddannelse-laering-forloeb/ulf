@@ -161,7 +161,7 @@ function ulf_workflow_course_node_form_draft_submit($form, &$form_state) {
   $form_state['values']['workbench_moderation_state_new'] = 'draft';
 
   // Tell the end user what is happening.
-  drupal_set_message(t('The content has been saved as a draft. REMEMBER: Ulf will not publish the content before it is sent to revision'));
+  drupal_set_message(t('The content has been saved as a draft. REMEMBER: ULF will not publish the content before it is sent to revision'));
 }
 
 
