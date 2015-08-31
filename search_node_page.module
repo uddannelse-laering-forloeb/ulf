@@ -28,11 +28,13 @@ function search_node_page_theme() {
   return array(
     'search_node_page_search_box' => array(
       'variables' => array(),
-      'template' => 'templates/search-box',
+      'template' => 'search-node-page-search-box',
+      'path' => drupal_get_path('module', 'search_node_page') . '/templates',
     ),
     'search_node_page_search_results' => array(
       'variables' => array(),
-      'template' => 'templates/search-results',
+      'template' => 'search-node-page-search-results',
+      'path' => drupal_get_path('module', 'search_node_page') . '/templates',
     ),
   );
 }
@@ -336,8 +338,6 @@ function search_node_page_block_save($delta = '', $edit = array()) {
  */
 function search_node_page_block_view($delta='') {
   $block = array();
-
-
 
   switch($delta) {
     case 'search_node_search_box' :
