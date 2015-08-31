@@ -20,6 +20,8 @@
    ================================================================================================================== */
 /* Border radius
    ================================================================================================================== */
+/* Boxlist
+   ================================================================================================================== */
 /**
  *
  * Normalize
@@ -1361,7 +1363,7 @@ body {
 /* Styles.
 ================================================================================================================== */
 .block--pdf-link, .form-submit,
-.button {
+.button, .search--filter-search-submit[type="submit"], .search--filter-dropdown-submit, .search--widget-selected-item {
   position: relative;
   border: 1px solid #17858c;
   display: inline-block;
@@ -1373,9 +1375,9 @@ body {
   text-align: center;
   text-shadow: 0.025em 0.025em 0.1em #105b60; }
   .block--pdf-link:focus, .form-submit:focus,
-  .button:focus, .block--pdf-link:hover, .form-submit:hover,
-  .button:hover, .block--pdf-link:active, .form-submit:active,
-  .button:active {
+  .button:focus, .search--filter-search-submit[type="submit"]:focus, .search--filter-dropdown-submit:focus, .search--widget-selected-item:focus, .block--pdf-link:hover, .form-submit:hover,
+  .button:hover, .search--filter-search-submit[type="submit"]:hover, .search--filter-dropdown-submit:hover, .search--widget-selected-item:hover, .block--pdf-link:active, .form-submit:active,
+  .button:active, .search--filter-search-submit[type="submit"]:active, .search--filter-dropdown-submit:active, .search--widget-selected-item:active {
     text-decoration: none; }
 
 /* Styles.
@@ -1418,6 +1420,322 @@ body {
 .page--messages {
   margin: auto;
   max-width: 1000px; }
+
+/**
+ *
+ * Search module.
+ *
+ * Contains styles related to search widget and search results.
+ *
+ */
+/* Styles
+================================================================================================================== */
+.search {
+  /* Seperate Filter styling
+  ================================================================================================================== */
+  /* Extra search (Mobile show/hide, selected facets)
+  ================================================================================================================== */ }
+  .search--widget {
+    background: #f2f2f2;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 1;
+    -moz-box-shadow: 0 5px 5px rgba(0, 0, 0, 0.25);
+    -webkit-box-shadow: 0 5px 5px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.25); }
+    .search--widget.is-daycare, .search--widget.is-daycare .search--filter-dropdown {
+      background: #a4da20; }
+    .search--widget.is-school, .search--widget.is-school .search--filter-dropdown {
+      background: #901d7c;
+      color: #fff; }
+      .search--widget.is-school a, .search--widget.is-school .search--filter-dropdown a {
+        color: #fff; }
+    .search--widget.is-youth, .search--widget.is-youth .search--filter-dropdown {
+      background: #ff6800; }
+    .search--widget.is-course, .search--widget.is-course .search--filter-dropdown {
+      background: #edd71c; }
+  .search--widget-inner {
+    box-sizing: border-box;
+    margin: 0 auto;
+    max-width: 1000px;
+    position: relative;
+    z-index: 2;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-align-content: stretch;
+    align-content: stretch; }
+  .search--lock-overlay {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0; }
+    .search--lock-overlay.is-active {
+      display: block; }
+  .search--filter-wrapper {
+    box-sizing: border-box;
+    position: relative;
+    z-index: 0;
+    width: 100%;
+    padding-bottom: 1px;
+    padding-right: 1px; }
+    @media only screen and (min-width: 650px) {
+      .search--filter-wrapper {
+        width: 50%; } }
+    @media only screen and (min-width: 1000px) {
+      .search--filter-wrapper {
+        width: 33%; } }
+    .search--filter-wrapper.is-active {
+      z-index: 2; }
+  .search--filter-wrapper-inner {
+    -webkit-align-content: stretch;
+    align-content: stretch;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    background: rgba(0, 0, 0, 0.15);
+    box-sizing: border-box;
+    min-height: 5.5em; }
+  .search--filter-text {
+    margin: 0 16px;
+    position: relative;
+    width: 100%; }
+  .search--filter-search-text[type="text"] {
+    max-width: 63%;
+    padding: .4em;
+    position: absolute;
+    top: 50%;
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%); }
+  .search--filter-search-submit[type="submit"] {
+    padding: .1em 1.5em;
+    max-width: 35%;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%); }
+  .search--filter-span {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    margin: 0 16px; }
+    .search--filter-span-wrapper {
+      max-width: 49%; }
+    .search--filter-span-text[type="text"] {
+      padding: .4em; }
+  .search--filter-list {
+    position: relative;
+    width: 100%; }
+  .search--filter-label {
+    background: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDQ4IDQ4IiB3aWR0aD0iNDgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTE0IDIwbDEwIDEwIDEwLTEweiIvPjxwYXRoIGQ9Ik0wIDBoNDh2NDhoLTQ4eiIgZmlsbD0ibm9uZSIvPjwvc3ZnPg==") no-repeat right -10px;
+    margin: 0 16px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    display: block;
+    font-size: 1.3em; }
+    .search--filter-label:link {
+      color: #000;
+      text-decoration: none; }
+    .search--filter-label:visited {
+      color: #000;
+      text-decoration: none; }
+    .search--filter-label:hover {
+      color: #000;
+      text-decoration: none; }
+    .search--filter-label:focus {
+      color: #000;
+      text-decoration: none; }
+  .search--filter-dropdown {
+    display: none;
+    position: relative;
+    width: 100%;
+    z-index: 1;
+    font-size: 1.3em; }
+    @media only screen and (min-width: 650px) {
+      .search--filter-dropdown {
+        position: absolute; } }
+    .search--filter-dropdown-inner {
+      background: rgba(0, 0, 0, 0.15);
+      height: 100%; }
+    .search--filter-dropdown.is-visible {
+      display: block; }
+    .search--filter-dropdown-header {
+      margin: 0 16px;
+      padding: 28px 0 16px;
+      position: relative; }
+    .search--filter-dropdown-header-close {
+      position: absolute;
+      right: 0;
+      width: 25px;
+      height: 25px; }
+    .search--filter-dropdown-content {
+      font-size: .9em;
+      margin: 0 16px; }
+    .search--filter-dropdown-submit {
+      display: block;
+      margin: 16px;
+      font-size: .9em;
+      padding: .1em 2em; }
+      .search--filter-dropdown-submit:link {
+        color: #fff;
+        text-decoration: none; }
+      .search--filter-dropdown-submit:visited {
+        color: #fff;
+        text-decoration: none; }
+      .search--filter-dropdown-submit:hover {
+        color: #fff;
+        text-decoration: none; }
+      .search--filter-dropdown-submit:focus {
+        color: #fff;
+        text-decoration: none; }
+    .search--filter-dropdown input[type="checkbox"] {
+      margin-bottom: 16px;
+      margin-right: 8px; }
+  .search--widget-filters {
+    background: #f2f2f2;
+    position: relative;
+    z-index: 1; }
+    @media only screen and (min-width: 650px) {
+      .search--widget-filters {
+        display: none; } }
+  .search--widget-filters-inner {
+    box-sizing: border-box;
+    margin: 0 auto;
+    max-width: 1000px;
+    padding: 16px 8px;
+    text-align: center; }
+  .search--widget-selected {
+    background: #e6e6e6;
+    position: relative;
+    z-index: 1; }
+  .search--widget-selected-inner {
+    box-sizing: border-box;
+    margin: 0 auto;
+    max-width: 1000px;
+    padding: 16px 8px; }
+  .search--widget-selected-item {
+    background: #17858c url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkJz48c3ZnIGhlaWdodD0iMTZweCIgaWQ9IkxheWVyXzEiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUxMiA1MTI7ZmlsbDojZmZmOyIgdmVyc2lvbj0iMS4xIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgd2lkdGg9IjE2cHgiIHhtbDpzcGFjZT0icHJlc2VydmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjxwYXRoIGQ9Ik00MzcuNSwzODYuNkwzMDYuOSwyNTZsMTMwLjYtMTMwLjZjMTQuMS0xNC4xLDE0LjEtMzYuOCwwLTUwLjljLTE0LjEtMTQuMS0zNi44LTE0LjEtNTAuOSwwTDI1NiwyMDUuMUwxMjUuNCw3NC41ICBjLTE0LjEtMTQuMS0zNi44LTE0LjEtNTAuOSwwYy0xNC4xLDE0LjEtMTQuMSwzNi44LDAsNTAuOUwyMDUuMSwyNTZMNzQuNSwzODYuNmMtMTQuMSwxNC4xLTE0LjEsMzYuOCwwLDUwLjkgIGMxNC4xLDE0LjEsMzYuOCwxNC4xLDUwLjksMEwyNTYsMzA2LjlsMTMwLjYsMTMwLjZjMTQuMSwxNC4xLDM2LjgsMTQuMSw1MC45LDBDNDUxLjUsNDIzLjQsNDUxLjUsNDAwLjYsNDM3LjUsMzg2LjZ6Ii8+PC9zdmc+) no-repeat 95% center;
+    font-size: .9em;
+    padding: .1em 3em .1em 2em;
+    margin-bottom: 4px; }
+    .search--widget-selected-item:link {
+      color: #fff;
+      text-decoration: none; }
+    .search--widget-selected-item:visited {
+      color: #fff;
+      text-decoration: none; }
+    .search--widget-selected-item:hover {
+      color: #fff;
+      text-decoration: none; }
+    .search--widget-selected-item:focus {
+      color: #fff;
+      text-decoration: none; }
+
+/* Display search results.
+================================================================================================================== */
+.search-results-header {
+  margin-bottom: 2em;
+  padding-top: 1em; }
+
+.search-results {
+  margin-bottom: 2em; }
+  .search-results--result {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    margin-bottom: 2em;
+    padding: 1em; }
+    .search-results--result.is-dagtilbud {
+      background-color: rgba(164, 218, 32, 0.1);
+      border-color: #a4da20; }
+    .search-results--result.is-grundskole {
+      background-color: rgba(144, 29, 124, 0.1);
+      border-color: #901d7c; }
+    .search-results--result.is-ungdomsuddannelse {
+      background-color: rgba(255, 104, 0, 0.1);
+      border-color: #ff6800; }
+    .search-results--result header,
+    .search-results--result figure {
+      width: 100%; }
+    .search-results--result header {
+      -webkit-order: 2;
+      order: 2; }
+    .search-results--result figure {
+      -webkit-order: 1;
+      order: 1;
+      margin-bottom: 1em; }
+    @media only screen and (min-width: 30em) {
+      .search-results--result {
+        -webkit-flex-flow: row nowrap;
+        flex-flow: row nowrap;
+        border-style: solid;
+        border-width: 0 0 6px;
+        padding: 0; }
+        .search-results--result header {
+          padding: 1em;
+          -webkit-flex-grow: 1;
+          flex-grow: 1;
+          -webkit-flex-shrink: 1;
+          flex-shrink: 1; }
+        .search-results--result figure {
+          display: block;
+          margin-bottom: 0;
+          max-width: 225px;
+          -webkit-flex-basis: 200px;
+          flex-basis: 200px;
+          -webkit-flex-grow: 0;
+          flex-grow: 0; } }
+  .search-results--header {
+    margin-top: 0;
+    margin-bottom: .5em; }
+  .search-results--type {
+    color: rgba(0, 0, 0, 0.5); }
+  .search-results--type:last-child {
+    margin-bottom: 0; }
+
+@media only screen and (min-width: 60em) {
+  .search-results.is-side-by-side {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-flow: row nowrap;
+    flex-flow: row nowrap;
+    -webkit-justify-content: space-between;
+    justify-content: space-between; }
+    .search-results.is-side-by-side .search-results--result {
+      margin-right: 1em;
+      margin-bottom: 0; }
+      .search-results.is-side-by-side .search-results--result:last-child {
+        margin-right: 0; } }
 
 /**
  *
