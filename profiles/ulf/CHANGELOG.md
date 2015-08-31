@@ -9,6 +9,7 @@
 * Added profiles overview page /organizers
 * Added newsletter signup page /newsletter/signup
 * Added styling for login
+* Added newsletter archive page /newsletter/archive
 
 
 
