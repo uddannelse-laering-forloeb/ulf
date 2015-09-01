@@ -45,7 +45,9 @@ function ulf_field_collections_field_default_field_instances() {
     'widget' => array(
       'active' => 0,
       'module' => 'number',
-      'settings' => array(),
+      'settings' => array(
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+      ),
       'type' => 'number',
       'weight' => 31,
     ),
@@ -146,7 +148,7 @@ function ulf_field_collections_field_default_field_instances() {
     'settings' => array(
       'description_field' => 0,
       'file_directory' => 'material',
-      'file_extensions' => 'txt pdf doc docx',
+      'file_extensions' => 'txt',
       'max_filesize' => '',
       'user_register_form' => FALSE,
     ),
@@ -173,7 +175,7 @@ function ulf_field_collections_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'link',
         'settings' => array(),
-        'type' => 'link_url',
+        'type' => 'link_default',
         'weight' => 2,
       ),
     ),
@@ -185,10 +187,9 @@ function ulf_field_collections_field_default_field_instances() {
       'absolute_url' => 1,
       'attributes' => array(
         'class' => '',
-        'configurable_class' => 0,
         'configurable_title' => 0,
         'rel' => '',
-        'target' => '_blank',
+        'target' => 'default',
         'title' => '',
       ),
       'display' => array(
@@ -197,7 +198,7 @@ function ulf_field_collections_field_default_field_instances() {
       'enable_tokens' => 1,
       'rel_remove' => 'default',
       'title' => 'optional',
-      'title_label_use_field_label' => 0,
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 0,
@@ -309,7 +310,7 @@ function ulf_field_collections_field_default_field_instances() {
     'settings' => array(
       'description_field' => 0,
       'file_directory' => 'material',
-      'file_extensions' => 'txt pdf doc docx',
+      'file_extensions' => 'txt',
       'max_filesize' => '',
       'user_register_form' => FALSE,
     ),
@@ -348,10 +349,9 @@ function ulf_field_collections_field_default_field_instances() {
       'absolute_url' => 1,
       'attributes' => array(
         'class' => '',
-        'configurable_class' => 0,
         'configurable_title' => 0,
         'rel' => '',
-        'target' => '_blank',
+        'target' => 'default',
         'title' => '',
       ),
       'display' => array(
@@ -360,7 +360,7 @@ function ulf_field_collections_field_default_field_instances() {
       'enable_tokens' => 1,
       'rel_remove' => 'default',
       'title' => 'optional',
-      'title_label_use_field_label' => 0,
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 0,
@@ -424,7 +424,7 @@ function ulf_field_collections_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 2,
+        'weight' => 1,
       ),
     ),
     'entity_type' => 'field_collection_item',
@@ -440,7 +440,7 @@ function ulf_field_collections_field_default_field_instances() {
       'module' => 'html5_tools',
       'settings' => array(),
       'type' => 'emailwidget',
-      'weight' => 3,
+      'weight' => 2,
     ),
   );
 
@@ -525,16 +525,16 @@ function ulf_field_collections_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'inline',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 3,
+        'weight' => 2,
       ),
     ),
     'entity_type' => 'field_collection_item',
     'field_name' => 'field_contact_phone',
-    'label' => 'Tlf.',
+    'label' => 'Telefon',
     'required' => 0,
     'settings' => array(
       'text_processing' => 0,
@@ -545,7 +545,7 @@ function ulf_field_collections_field_default_field_instances() {
       'module' => 'html5_tools',
       'settings' => array(),
       'type' => 'telwidget',
-      'weight' => 4,
+      'weight' => 3,
     ),
   );
 
@@ -596,8 +596,8 @@ function ulf_field_collections_field_default_field_instances() {
   t('Litteraturforslag');
   t('Navn');
   t('Pris');
+  t('Telefon');
   t('Titel/Beskrivelse');
-  t('Tlf.');
   t('Træffetid');
 
   return $field_instances;

@@ -57,6 +57,7 @@ function ulf_workflow_preprocess_node(&$variables) {
   ));
 }
 
+
 /**
  * Implements hook_menu_local_tasks_alter.
  *
@@ -76,6 +77,7 @@ function ulf_workflow_menu_local_tasks_alter(&$data) {
   }
 }
 
+
 /**
  * Implements hook_form_FORM_ID_alter().
  *
@@ -86,6 +88,13 @@ function ulf_workflow_menu_local_tasks_alter(&$data) {
  * @param $form_id
  */
 function ulf_workflow_form_course_node_form_alter(&$form, &$form_state, $form_id) {
+  // Disable workbench dropdown widget and revision log.
+  $form['options']['workbench_moderation_state_new']['#access'] = FALSE;
+  $form['options']['log']['#access'] = FALSE;
+  $form['revision_information']['workbench_moderation_state_new']['#access'] = FALSE;
+  $form['revision_information']['#access'] = FALSE;
+
+
   // Add a save draft action button.
   $form['actions']['save'] = array (
     '#type' => 'submit',
@@ -110,20 +119,14 @@ function ulf_workflow_form_course_node_form_alter(&$form, &$form_state, $form_id
     ),
   );
 
-  // Change default submit to Send to revision or Save(Editor).
+  // Change default submit to "Send to revision" or "Save" (Editor).
   if (user_access('moderate content from needs_review to published')) {
     $form['actions']['submit']['#value'] = t('Save');
   }
   else {
     $form['actions']['submit']['#value'] = t('Send to revision');
+    $form['actions']['submit']['#submit'][] = 'ulf_workflow_course_node_form_send_to_revision';
   }
-
-
-  // Disable workbench dropdown widget and revision log.
-  $form['options']['workbench_moderation_state_new']['#access'] = FALSE;
-  $form['options']['log']['#access'] = FALSE;
-  $form['revision_information']['workbench_moderation_state_new']['#access'] = FALSE;
-  $form['revision_information']['#access'] = FALSE;
 
   // Add a destination parameter if it's a new node. (See hook_node_insert for destination on new nodes.)
   if (!empty($form['nid']['#value'])) {
@@ -131,8 +134,10 @@ function ulf_workflow_form_course_node_form_alter(&$form, &$form_state, $form_id
   }
 
   // Hide save as draft after the content is first published.
-  if (array_key_exists('published', $form_state['node']->workbench_moderation)) {
-    $form['actions']['save']['#access'] = FALSE;
+  if (property_exists($form_state['node'], 'workbench_moderation')) {
+    if (array_key_exists('published', $form_state['node']->workbench_moderation)) {
+      $form['actions']['save']['#access'] = FALSE;
+    }
   }
 }
 
@@ -147,6 +152,12 @@ function ulf_workflow_form_course_node_form_alter(&$form, &$form_state, $form_id
  * @param $form_id
  */
 function ulf_workflow_form_course_educators_node_form_alter(&$form, &$form_state, $form_id) {
+  // Disable workbench dropdown widget.
+  $form['options']['workbench_moderation_state_new']['#access'] = FALSE;
+  $form['options']['log']['#access'] = FALSE;
+  $form['revision_information']['workbench_moderation_state_new']['#access'] = FALSE;
+  $form['revision_information']['#access'] = FALSE;
+
   // Add a save draft action button.
   $form['actions']['save'] = array (
     '#type' => 'submit',
@@ -177,18 +188,19 @@ function ulf_workflow_form_course_educators_node_form_alter(&$form, &$form_state
   }
   else {
     $form['actions']['submit']['#value'] = t('Send to revision');
+    $form['actions']['submit']['#submit'][] = 'ulf_workflow_course_node_form_send_to_revision';
   }
-
-
-  // Disable workbench dropdown widget.
-  $form['options']['workbench_moderation_state_new']['#access'] = FALSE;
-  $form['options']['log']['#access'] = FALSE;
-  $form['revision_information']['workbench_moderation_state_new']['#access'] = FALSE;
-  $form['revision_information']['#access'] = FALSE;
 
   // Add a destination parameter if it's a new node. (See hook_node_insert for destination on new nodes.)
   if (!empty($form['nid']['#value'])) {
     $form['#action'] .= '?destination=node/' . $form['nid']['#value'] . '/edit';
+  }
+
+  // Hide save as draft after the content is first published.
+  if (property_exists($form_state['node'], 'workbench_moderation')) {
+    if (array_key_exists('published', $form_state['node']->workbench_moderation)) {
+      $form['actions']['save']['#access'] = FALSE;
+    }
   }
 }
 
@@ -219,6 +231,18 @@ function ulf_workflow_course_node_form_publish_submit($form, &$form_state) {
   // Tell the end user what is happening.
   $_GET['destination'] = 'node/' . $form['nid']['#value'];
   drupal_set_message(t('The content has been published'));
+  _send_published_mail($form['#node']);
+}
+
+
+/**
+ * Custom submit handler/function to the course & course_educators form.
+ *
+ * This will save the node and send to revision by admin.
+ */
+function ulf_workflow_course_node_form_send_to_revision($form, &$form_state) {
+  // Send mail when content is ready for revision.
+  _send_revision_ready_mail($form['#node']);
 }
 
 
@@ -234,4 +258,103 @@ function ulf_workflow_node_insert($node) {
   if (($node->type == 'course' || $node->type == 'course_educators')) {
     $_GET['destination'] = 'node/' . $node->nid . '/edit';
   }
+}
+
+/**
+ * Create and send mail to editor when new draft is ready for publishing.
+ *
+ * @param $node
+ *
+ * */
+function _send_published_mail($node) {
+  // Get author fields.
+  $user = user_load($node->uid);
+  $module = 'ulf_workflow';
+
+  // Set recipient.
+  $to = $user->mail;
+  $key = 'published_mail_author';
+
+  // Provide additional parameters.
+  $params['user'] = $user;
+  drupal_mail($module, $key, $to, language_default(), $params);
+}
+
+/**
+ * Create and send mail to editor when new draft is ready for publishing.
+ *
+ * @param $node
+ *
+ * */
+function _send_revision_ready_mail($node) {
+  $module = 'ulf_workflow';
+  $key = 'revision_ready_mail_admin';
+
+  // Get author fields.
+  $user = user_load($node->uid);
+
+  // Set recipient.
+  $to = variable_get('site_mail');
+
+  // Provide additional parameters.
+  $params['user'] = $user;
+  drupal_mail($module, $key, $to, language_default(), $params);
+}
+
+
+/**
+ * Implements hook_mailkeys().
+ *
+ * @return array
+ */
+function ulf_workflow_mailkeys() {
+  return array(
+    'revision_ready_mail_admin' => t('Mail sent to admin(Site mail address) when a new draft is ready for revision.'),
+    'published_mail_author' => t('Mail sent to author when an editor publishes the content.'),
+  );
+}
+
+
+/**
+ * Implements hook_mail_edit_text().
+ *
+ * @param string $mailkey
+ * @param object $language
+ *
+ * @return array
+ */
+function ulf_workflow_mail_edit_text($mailkey, $language) {
+  $return = array();
+  switch ($mailkey) {
+    case 'revision_ready_mail_admin':
+      $return['subject'] = 'A new draft is ready for publishing by [user:field_profile_name]';
+      $return['body'] =
+'[user:field-profile-name] has marked a draft ready for publishing.
+
+This is an automated message created by [site:name].';
+      return $return;
+      break;
+    case 'published_mail_author':
+      $return['subject'] = 'Content you sent to revision has been published by an admin on [site:name]';
+      $return['body'] =
+'Some content you sent to revision has now been published on [site:name].
+
+Go to [site:login-url] and login to see what has been published.
+
+This is an automated message created by [site:name].';
+      return $return;
+      break;
+  }
+}
+
+
+/**
+ * Implements hook_mail_edit_token_types().
+ *
+ * @param string $mailkey
+ *
+ * @return array
+ */
+function ulf_workflow_mail_edit_token_types($mailkey) {
+  return user_mail_edit_token_types($mailkey);
 }
