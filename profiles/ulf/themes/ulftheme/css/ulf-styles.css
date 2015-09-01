@@ -1516,6 +1516,9 @@ body {
     @media only screen and (min-width: 1000px) {
       .search--filter-wrapper {
         width: 33%; } }
+    @media only screen and (min-width: 1000px) {
+      .search--filter-wrapper:nth-child(3), .search--filter-wrapper:nth-child(6) {
+        width: 34%; } }
     .search--filter-wrapper.is-active {
       z-index: 2; }
   .search--filter-wrapper-inner {

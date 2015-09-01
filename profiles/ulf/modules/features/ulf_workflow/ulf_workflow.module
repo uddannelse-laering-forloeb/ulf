@@ -58,6 +58,25 @@ function ulf_workflow_preprocess_node(&$variables) {
 }
 
 /**
+ * Implements hook_menu_local_tasks_alter.
+ *
+ * Change revision view access.
+ */
+function ulf_workflow_menu_local_tasks_alter(&$data) {
+  global $user;
+  if (in_array('course provider', $user->roles)) {
+    if ($data['tabs']) {
+      $tabs = $data['tabs']['0']['output'];
+      foreach($tabs as $key => $tab) {
+        if ($tab['#link']['path'] == 'node/%/moderation') {
+          unset($data['tabs']['0']['output'][$key]);
+        }
+      }
+    }
+  }
+}
+
+/**
  * Implements hook_form_FORM_ID_alter().
  *
  * Add workflow actions to node course type.
@@ -70,7 +89,7 @@ function ulf_workflow_form_course_node_form_alter(&$form, &$form_state, $form_id
   // Add a save draft action button.
   $form['actions']['save'] = array (
     '#type' => 'submit',
-    '#access' => 'true',
+    '#access' => !user_access('moderate content from needs_review to published'),
     '#value' => t('Save as draft'),
     '#weight' => 7,
     '#submit' => array(
@@ -91,15 +110,29 @@ function ulf_workflow_form_course_node_form_alter(&$form, &$form_state, $form_id
     ),
   );
 
-  // Change default submit to send to revision.
-  $form['actions']['submit']['#value'] = t('Send to revision');
+  // Change default submit to Send to revision or Save(Editor).
+  if (user_access('moderate content from needs_review to published')) {
+    $form['actions']['submit']['#value'] = t('Save');
+  }
+  else {
+    $form['actions']['submit']['#value'] = t('Send to revision');
+  }
 
-  // Disable workbench dropdown widget.
+
+  // Disable workbench dropdown widget and revision log.
   $form['options']['workbench_moderation_state_new']['#access'] = FALSE;
+  $form['options']['log']['#access'] = FALSE;
+  $form['revision_information']['workbench_moderation_state_new']['#access'] = FALSE;
+  $form['revision_information']['#access'] = FALSE;
 
   // Add a destination parameter if it's a new node. (See hook_node_insert for destination on new nodes.)
   if (!empty($form['nid']['#value'])) {
     $form['#action'] = '/node/' . $form['nid']['#value'] . '/edit?destination=node/' . $form['nid']['#value'] . '/edit';
+  }
+
+  // Hide save as draft after the content is first published.
+  if (array_key_exists('published', $form_state['node']->workbench_moderation)) {
+    $form['actions']['save']['#access'] = FALSE;
   }
 }
 
@@ -117,7 +150,7 @@ function ulf_workflow_form_course_educators_node_form_alter(&$form, &$form_state
   // Add a save draft action button.
   $form['actions']['save'] = array (
     '#type' => 'submit',
-    '#access' => 'true',
+    '#access' => !user_access('moderate content from needs_review to published'),
     '#value' => t('Save as draft'),
     '#weight' => 7,
     '#submit' => array(
@@ -138,11 +171,20 @@ function ulf_workflow_form_course_educators_node_form_alter(&$form, &$form_state
     ),
   );
 
-  // Change default submit to send to revision.
-  $form['actions']['submit']['#value'] = t('Send to revision');
+  // Change default submit to Send to revision or Save(Editor).
+  if (user_access('moderate content from needs_review to published')) {
+    $form['actions']['submit']['#value'] = t('Save');
+  }
+  else {
+    $form['actions']['submit']['#value'] = t('Send to revision');
+  }
+
 
   // Disable workbench dropdown widget.
   $form['options']['workbench_moderation_state_new']['#access'] = FALSE;
+  $form['options']['log']['#access'] = FALSE;
+  $form['revision_information']['workbench_moderation_state_new']['#access'] = FALSE;
+  $form['revision_information']['#access'] = FALSE;
 
   // Add a destination parameter if it's a new node. (See hook_node_insert for destination on new nodes.)
   if (!empty($form['nid']['#value'])) {

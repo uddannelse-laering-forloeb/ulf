@@ -308,6 +308,7 @@ function ulf_base_user_default_permissions() {
   $permissions['view revisions'] = array(
     'name' => 'view revisions',
     'roles' => array(
+      'course provider' => 'course provider',
       'editor' => 'editor',
     ),
     'module' => 'node',
