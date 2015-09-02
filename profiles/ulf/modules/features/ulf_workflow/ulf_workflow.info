@@ -31,6 +31,4 @@ features[user_permission][] = view moderation messages
 features[variable][] = workbench_moderation_default_state_course_educators
 features[variable][] = workbench_myworkbench_disabled
 features[views_view][] = ulf_workbench_edits_by_user
-features[views_view][] = ulf_workbench_moderation_content
-features[views_view][] = ulf_workbench_recent_content
 features_exclude[dependencies][ctools] = ctools
