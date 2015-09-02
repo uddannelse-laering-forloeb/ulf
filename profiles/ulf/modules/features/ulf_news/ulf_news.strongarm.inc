@@ -14,7 +14,7 @@ function ulf_news_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'additional_settings__active_tab_news';
-  $strongarm->value = 'edit-workflow';
+  $strongarm->value = 'edit-submission';
   $export['additional_settings__active_tab_news'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -93,7 +93,7 @@ function ulf_news_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_preview_news';
-  $strongarm->value = '1';
+  $strongarm->value = '0';
   $export['node_preview_news'] = $strongarm;
 
   $strongarm = new stdClass();

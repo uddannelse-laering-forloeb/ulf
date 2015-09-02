@@ -54,5 +54,11 @@
     background-color: $dark-blue;
   }
 
+  &:link {
+    color: $white;
+    text-decoration: none;
+  }
+
+
   @include border-radius($border-radius);
 }

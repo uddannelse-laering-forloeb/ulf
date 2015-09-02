@@ -94,6 +94,14 @@
       width: 33%;
     }
 
+    // Splitting to three blocks per line, means we need the middle ones to take 1% extra for full width.
+    &:nth-child(3),
+    &:nth-child(6) {
+     @include breakpoint(1000px) {
+        width: 34%;
+      }
+    }
+
     &.is-active {
       z-index: 2;
     }
