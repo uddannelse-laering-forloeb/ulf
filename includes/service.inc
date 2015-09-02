@@ -260,6 +260,25 @@ class SearchApiSearchNodeService extends SearchApiAbstractService {
   }
 
   /**
+   * Create ULR from file id.
+   *
+   * @TODO: Support multi value file fields.
+   *
+   * @param $fids
+   *
+   * @return string
+   */
+  private function addFileUrl($fids) {
+    $url = '';
+    if (!empty($fids)) {
+      $file = file_load($fids[0]);
+      $url = file_create_url($file->uri);
+    }
+
+    return $url;
+  }
+
+  /**
    * Filter out everything but the value.
    *
    * We do this as the field metadata is handled in the search node index
@@ -277,6 +296,10 @@ class SearchApiSearchNodeService extends SearchApiAbstractService {
       switch ($type) {
         case 'taxonomy_term':
           $item[$key] = $this->addTaxonomyNames($field['value']);
+          break;
+
+        case 'file':
+          $item[$key] = $this->addFileUrl($field['value']);
           break;
 
         default:
