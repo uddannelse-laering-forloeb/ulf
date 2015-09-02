@@ -81,6 +81,7 @@ function ulf_search_settings_default_page_manager_pages() {
             'changed' => 0,
             'created' => 0,
             'field_free' => 0,
+            'field_image:file' => 0,
             'field_period:value' => 0,
             'field_price' => 0,
             'nid' => 0,
@@ -92,7 +93,9 @@ function ulf_search_settings_default_page_manager_pages() {
             'field_offer_type' => 'field_offer_type',
             'field_subject' => 'field_subject',
             'field_subjects_primary_school' => 'field_subjects_primary_school',
-            'field_subjects_youth' => 'field_subjects_youth',
+            'field_subjects_youth' => 0,
+            'field_target_group' => 0,
+            'field_target_group_sub' => 0,
           ),
         ),
         'templates' => array(
