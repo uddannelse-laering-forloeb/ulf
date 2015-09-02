@@ -56,7 +56,7 @@
     <script type="text/javascript" src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
   </head>
-  <body>
+  <body class="<?php print $classes; ?>">
     <?php print $page_top; ?>
     <?php print $page; ?>
     <?php print $page_bottom; ?>

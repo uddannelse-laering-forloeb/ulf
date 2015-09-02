@@ -44,9 +44,11 @@
  * @ingroup themeable
  */
 ?>
-<?php print render($title_prefix); ?>
-<?php if ($block->subject): ?>
-  <div class="block--default-label"><?php print $block->subject ?></div>
-<?php endif;?>
-<?php print render($title_suffix); ?>
-<?php print $content ?>
+<div class="contextual-links-region">
+  <?php print render($title_prefix); ?>
+  <?php if ($block->subject): ?>
+    <div class="block--default-label"><?php print $block->subject ?></div>
+  <?php endif;?>
+  <?php print render($title_suffix); ?>
+  <?php print $content ?>
+</div>

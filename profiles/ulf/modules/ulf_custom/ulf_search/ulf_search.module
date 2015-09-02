@@ -51,3 +51,12 @@ function ulf_search_block_view($delta = '') {
   }
   return $block;
 }
+
+function ulf_search_preprocess_search_node_page_search_box(&$variables) {
+  drupal_add_js(drupal_get_path('module', 'ulf_search') . '/js/search_box_controller.js', array(
+      'type' => 'file',
+      'scope' => 'footer',
+      'weight' => 7,
+    )
+  );
+}
