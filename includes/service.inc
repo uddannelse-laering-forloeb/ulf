@@ -130,6 +130,14 @@ class SearchApiSearchNodeService extends SearchApiAbstractService {
       foreach ($items as $id => $item) {
         // Filter the items to better match the value search node works.
         $filteredItem = $this->filterOutValue($item);
+
+        // Check if content type have been set.
+        if (!isset($filteredItem['type'])) {
+          drupal_set_message('The index content did not have a type, so defaults to "entity"', 'warning', FALSE);
+          $filteredItem['type'] = 'entity';
+        }
+
+        // Add it to the index
         if ($this->connection->add($search_node_index, $filteredItem['type'], $id, json_encode($filteredItem))){
           // Mark the content as indexed.
           $indexed[] = $id;
