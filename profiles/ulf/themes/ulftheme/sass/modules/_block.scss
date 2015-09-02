@@ -105,7 +105,17 @@
   @extend %block;
 
   background: $gray-lighter;
+  margin: 0 auto $spacing;
   max-width: $layout-max-width;
+
+  // Workbench moderation block (Top of draft content)
+  // We use the html and classes provided by workbench module.
+  .workbench-info-block {
+    background: inherit;
+    border-color: inherit;
+    color: inherit;
+    font-size: 1em;
+  }
 }
 
 
@@ -165,5 +175,23 @@
     @extend %button;
 
     @include strip-link-styles($white);
+  }
+}
+
+
+.block--workflow {
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: $spacing / 2;
+  width: 1000px;
+
+  &-inner {
+    background: $light-blue;
+    box-sizing: border-box;
+    padding: $spacing;
+  }
+
+  & .button {
+    font-size: .8em;
   }
 }

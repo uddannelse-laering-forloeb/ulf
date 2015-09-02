@@ -81,6 +81,17 @@
  */
 ?>
 <div class="layout-node">
+  <?php if ($display_workflow_actions) : ?>
+    <div class="block--workflow">
+      <div class="block--workflow-inner">
+        <h3><?php print t('Workflow');?></h3>
+        <div class="block--workflow-description">
+          <?php print t('Would you like to publish this draft?');?>
+        </div>
+        <?php print $publish_link; ?>
+      </div>
+    </div>
+  <?php endif; ?>
   <div class="layout-element-alpha">
     <div class="layout-element-alpha-inner">
       <?php if ($display_submitted): ?>

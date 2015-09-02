@@ -196,8 +196,8 @@ function ulf_field_bases_field_default_field_bases() {
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
-        'hours' => 'timer',
-        'lessons' => 'lektioner',
+        'hours' => 'Timer',
+        'lessons' => 'Lektioner',
       ),
       'allowed_values_function' => '',
     ),
@@ -854,7 +854,7 @@ function ulf_field_bases_field_default_field_bases() {
     'settings' => array(
       'allowed_values' => array(
         0 => array(
-          'vocabulary' => 'elementary_school',
+          'vocabulary' => 'subjects_primary_school',
           'parent' => 0,
         ),
       ),
@@ -880,7 +880,7 @@ function ulf_field_bases_field_default_field_bases() {
     'settings' => array(
       'allowed_values' => array(
         0 => array(
-          'vocabulary' => 'primary_school',
+          'vocabulary' => 'subjects_youth',
           'parent' => 0,
         ),
       ),

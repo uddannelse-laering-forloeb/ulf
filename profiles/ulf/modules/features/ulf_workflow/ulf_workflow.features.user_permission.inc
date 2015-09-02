@@ -20,6 +20,15 @@ function ulf_workflow_user_default_permissions() {
     'module' => 'workbench',
   );
 
+  // Exported permission: 'administer mail templates'.
+  $permissions['administer mail templates'] = array(
+    'name' => 'administer mail templates',
+    'roles' => array(
+      'editor' => 'editor',
+    ),
+    'module' => 'mail_edit',
+  );
+
   // Exported permission: 'administer workbench'.
   $permissions['administer workbench'] = array(
     'name' => 'administer workbench',
@@ -72,7 +81,10 @@ function ulf_workflow_user_default_permissions() {
   // Exported permission: 'use workbench_moderation my drafts tab'.
   $permissions['use workbench_moderation my drafts tab'] = array(
     'name' => 'use workbench_moderation my drafts tab',
-    'roles' => array(),
+    'roles' => array(
+      'course provider' => 'course provider',
+      'editor' => 'editor',
+    ),
     'module' => 'workbench_moderation',
   );
 
@@ -98,6 +110,7 @@ function ulf_workflow_user_default_permissions() {
   $permissions['view moderation history'] = array(
     'name' => 'view moderation history',
     'roles' => array(
+      'course provider' => 'course provider',
       'editor' => 'editor',
     ),
     'module' => 'workbench_moderation',
@@ -106,10 +119,7 @@ function ulf_workflow_user_default_permissions() {
   // Exported permission: 'view moderation messages'.
   $permissions['view moderation messages'] = array(
     'name' => 'view moderation messages',
-    'roles' => array(
-      'course provider' => 'course provider',
-      'editor' => 'editor',
-    ),
+    'roles' => array(),
     'module' => 'workbench_moderation',
   );
 

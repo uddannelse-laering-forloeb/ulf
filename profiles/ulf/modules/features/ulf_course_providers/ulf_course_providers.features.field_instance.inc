@@ -99,7 +99,7 @@ function ulf_course_providers_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 9,
+      'weight' => 8,
     ),
   );
 
@@ -133,7 +133,7 @@ function ulf_course_providers_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 11,
+      'weight' => 10,
     ),
   );
 
@@ -156,7 +156,7 @@ function ulf_course_providers_field_default_field_instances() {
     ),
     'entity_type' => 'user',
     'field_name' => 'field_profile_contact',
-    'label' => 'Kontaktpersoner',
+    'label' => 'Kontakt',
     'required' => 0,
     'settings' => array(
       'user_register_form' => 0,
@@ -166,7 +166,7 @@ function ulf_course_providers_field_default_field_instances() {
       'module' => 'field_collection',
       'settings' => array(),
       'type' => 'field_collection_embed',
-      'weight' => 7,
+      'weight' => 6,
     ),
   );
 
@@ -190,7 +190,7 @@ function ulf_course_providers_field_default_field_instances() {
     'label' => 'Kort præsentation af forløbsudbyder',
     'required' => 1,
     'settings' => array(
-      'text_processing' => 1,
+      'text_processing' => 0,
       'user_register_form' => 1,
     ),
     'widget' => array(
@@ -281,7 +281,7 @@ function ulf_course_providers_field_default_field_instances() {
     'bundle' => 'user',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Url example: http://ulfiaarhus.dk',
+    'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -299,7 +299,6 @@ function ulf_course_providers_field_default_field_instances() {
       'absolute_url' => 1,
       'attributes' => array(
         'class' => '',
-        'configurable_class' => 0,
         'configurable_title' => 0,
         'rel' => '',
         'target' => '_blank',
@@ -310,8 +309,8 @@ function ulf_course_providers_field_default_field_instances() {
       ),
       'enable_tokens' => 0,
       'rel_remove' => 'default',
-      'title' => 'optional',
-      'title_label_use_field_label' => 0,
+      'title' => 'none',
+      'title_label_use_field_label' => FALSE,
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 0,
@@ -323,7 +322,7 @@ function ulf_course_providers_field_default_field_instances() {
       'module' => 'html5_tools',
       'settings' => array(),
       'type' => 'urlwidget',
-      'weight' => 14,
+      'weight' => 12,
     ),
   );
 
@@ -355,7 +354,7 @@ function ulf_course_providers_field_default_field_instances() {
       'file_extensions' => 'png gif jpg jpeg',
       'max_filesize' => '',
       'max_resolution' => '',
-      'min_resolution' => '1000x700',
+      'min_resolution' => '',
       'title_field' => 0,
       'user_register_form' => 0,
     ),
@@ -363,23 +362,23 @@ function ulf_course_providers_field_default_field_instances() {
       'active' => 1,
       'module' => 'image',
       'settings' => array(
-        'manualcrop_crop_info' => 1,
-        'manualcrop_default_crop_area' => 1,
-        'manualcrop_enable' => 0,
-        'manualcrop_inline_crop' => 0,
-        'manualcrop_instant_crop' => 0,
-        'manualcrop_instant_preview' => 1,
-        'manualcrop_keyboard' => 1,
-        'manualcrop_maximize_default_crop_area' => 0,
+        'manualcrop_crop_info' => TRUE,
+        'manualcrop_default_crop_area' => TRUE,
+        'manualcrop_enable' => FALSE,
+        'manualcrop_inline_crop' => FALSE,
+        'manualcrop_instant_crop' => FALSE,
+        'manualcrop_instant_preview' => TRUE,
+        'manualcrop_keyboard' => TRUE,
+        'manualcrop_maximize_default_crop_area' => FALSE,
         'manualcrop_require_cropping' => array(),
         'manualcrop_styles_list' => array(),
         'manualcrop_styles_mode' => 'include',
-        'manualcrop_thumblist' => 0,
+        'manualcrop_thumblist' => FALSE,
         'preview_image_style' => 'thumbnail',
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 8,
+      'weight' => 7,
     ),
   );
 
@@ -459,7 +458,7 @@ function ulf_course_providers_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'inline',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
@@ -468,7 +467,7 @@ function ulf_course_providers_field_default_field_instances() {
     ),
     'entity_type' => 'user',
     'field_name' => 'field_profile_phone',
-    'label' => 'Tlf.',
+    'label' => 'Telefonnr.',
     'required' => 0,
     'settings' => array(
       'text_processing' => 0,
@@ -479,7 +478,7 @@ function ulf_course_providers_field_default_field_instances() {
       'module' => 'html5_tools',
       'settings' => array(),
       'type' => 'telwidget',
-      'weight' => 12,
+      'weight' => 11,
     ),
   );
 
@@ -519,7 +518,7 @@ function ulf_course_providers_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 10,
+      'weight' => 9,
     ),
   );
 
@@ -529,16 +528,15 @@ function ulf_course_providers_field_default_field_instances() {
   t('By');
   t('Entré');
   t('Hjemmeside');
-  t('Kontaktpersoner');
+  t('Kontakt');
   t('Kort præsentation af forløbsudbyder');
   t('Logo');
   t('Mail');
   t('Navn');
   t('Postnr.');
   t('Pædagogisk profil');
-  t('Tlf.');
+  t('Telefonnr.');
   t('Upload et billede/illustration');
-  t('Url example: http://ulfiaarhus.dk');
 
   return $field_instances;
 }

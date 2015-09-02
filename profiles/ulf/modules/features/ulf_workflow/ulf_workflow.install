@@ -1,0 +1,22 @@
+<?php
+/**
+ * Set weight of the ulf_forms module to 999.
+ */
+function ulf_workflow_update_7100() {
+  db_update('system')
+    ->fields(array('weight' => 999))
+    ->condition('name', 'ulf_workflow', '=')
+    ->execute();
+}
+
+
+/**
+ * Set weight of the ulf_forms module to 1001.
+ */
+function ulf_workflow_update_7200() {
+  db_update('system')
+    ->fields(array('weight' => 1001))
+    ->condition('name', 'ulf_workflow', '=')
+    ->execute();
+}
+
