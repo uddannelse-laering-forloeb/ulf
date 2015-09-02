@@ -71,22 +71,28 @@ function ulf_search_settings_default_page_manager_pages() {
       'override_title_heading' => 'h2',
       'search_node' => array(
         'server' => 'search_node',
-        'index' => 'test',
+        'index' => 'courses',
         'options' => array(
           'cache_expire' => '30',
           'size' => '8',
           'fields' => array(
-            'field_teaser' => 'field_teaser',
+            'field_full_description:value' => 'field_full_description:value',
             'title' => 'title',
             'changed' => 0,
             'created' => 0,
+            'field_free' => 0,
+            'field_period:value' => 0,
+            'field_price' => 0,
             'nid' => 0,
             'search_api_language' => 0,
             'type' => 0,
           ),
           'filters' => array(
-            'field_educational_goals' => 0,
-            'field_subject' => 0,
+            'field_educational_goals' => 'field_educational_goals',
+            'field_offer_type' => 'field_offer_type',
+            'field_subject' => 'field_subject',
+            'field_subjects_primary_school' => 'field_subjects_primary_school',
+            'field_subjects_youth' => 'field_subjects_youth',
           ),
         ),
         'templates' => array(
