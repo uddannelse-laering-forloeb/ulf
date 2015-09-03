@@ -51,6 +51,19 @@ angular.module('searchBoxApp').controller('UlfBoxController', ['CONFIG', 'commun
             }
           );
 
+          // Updated selected filters base on search query.
+          var filters = angular.copy($scope.query.filters);
+          var selectedFilters = {};
+          for (var field in filters) {
+            selectedFilters[field] = []
+            for (var key in filters[field]) {
+              if (filters[field][key]) {
+                selectedFilters[field].push(key);
+              }
+            }
+          }
+          $scope.selectedFilters = selectedFilters;
+
           // Send results.
           communicatorService.$emit('hits', {"hits" : data});
         },
@@ -78,6 +91,9 @@ angular.module('searchBoxApp').controller('UlfBoxController', ['CONFIG', 'commun
         'text': '',
         'filters': {}
       };
+
+      // Init selected filters.
+      $scope.selectedFilters = {};
 
       // Check if any search query have been located from the hash tag.
       if (state.hasOwnProperty('query')) {
@@ -108,7 +124,7 @@ angular.module('searchBoxApp').controller('UlfBoxController', ['CONFIG', 'commun
     }
 
     /**
-     * @TODO: Missing description.
+     * Handle pager updated from the search result application.
      */
     communicatorService.$on('pager', function (event, data) {
       $scope.query.pager = {
@@ -119,7 +135,7 @@ angular.module('searchBoxApp').controller('UlfBoxController', ['CONFIG', 'commun
     });
 
     /**
-     * @TODO: Missing description.
+     * Click hanlder for searches.
      */
     $scope.searchClicked = function searchClicked() {
       // Reset pager.
@@ -155,6 +171,24 @@ angular.module('searchBoxApp').controller('UlfBoxController', ['CONFIG', 'commun
         // Open new filter.
         $scope.toggleFilterClasses['active'] = true;
         $scope.toggleFilterClasses[id] = ['is-active', 'is-visible'];
+      }
+    };
+
+    /**
+     * Remove filter from the current query.
+     *
+     * @param field
+     *   The field/filter to remove the filter from.
+     * @param filter
+     *   The filter word its self.
+     */
+    $scope.removeFilter = function removeFilter(field, filter) {
+      if ($scope.query.filters[field].hasOwnProperty(filter)) {
+        // Remove the filter for current query.
+        delete $scope.query.filters[field][filter];
+
+        // Update search.
+        search();
       }
     };
 
