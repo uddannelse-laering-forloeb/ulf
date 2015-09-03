@@ -138,6 +138,7 @@ a {
 
 .block--light {
     background: #deeced;
+    display: block;
     margin-bottom: 10px;
     padding: 20px;
 }
@@ -145,9 +146,14 @@ a {
 .block--dark {
     background: #17858c;
     color: #fff;
+    display: block;
     margin-bottom: 20px;
     padding: 20px;
 }
+
+.block--dark .is-full-width {
+     width: 100%;
+ }
 
 .block--dark a {
     display: none;
