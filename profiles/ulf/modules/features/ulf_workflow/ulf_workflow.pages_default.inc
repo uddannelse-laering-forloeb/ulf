@@ -13,6 +13,87 @@ function ulf_workflow_default_page_manager_handlers() {
   $handler = new stdClass();
   $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
   $handler->api_version = 1;
+  $handler->name = 'myworkbench__others';
+  $handler->task = 'myworkbench';
+  $handler->subtask = '';
+  $handler->handler = 'panel_context';
+  $handler->weight = -29;
+  $handler->conf = array(
+    'title' => 'Others',
+    'no_blocks' => 0,
+    'pipeline' => 'standard',
+    'body_classes_to_remove' => '',
+    'body_classes_to_add' => '',
+    'css_id' => '',
+    'css' => '',
+    'contexts' => array(),
+    'relationships' => array(),
+    'name' => 'others',
+    'access' => array(
+      'plugins' => array(),
+      'logic' => 'and',
+    ),
+  );
+  $display = new panels_display();
+  $display->layout = 'onecol';
+  $display->layout_settings = array();
+  $display->panel_settings = array(
+    'style_settings' => array(
+      'default' => NULL,
+      'middle' => NULL,
+    ),
+  );
+  $display->cache = array();
+  $display->title = '';
+  $display->uuid = 'beccf3ab-0fd1-400b-83a0-560ff947e84d';
+  $display->content = array();
+  $display->panels = array();
+    $pane = new stdClass();
+    $pane->pid = 'new-5c907e36-565b-429e-a5ac-2f74f532e569';
+    $pane->panel = 'middle';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'ulf_workbench_edits_by_user-panel_pane_5';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array();
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $pane->uuid = '5c907e36-565b-429e-a5ac-2f74f532e569';
+    $display->content['new-5c907e36-565b-429e-a5ac-2f74f532e569'] = $pane;
+    $display->panels['middle'][0] = 'new-5c907e36-565b-429e-a5ac-2f74f532e569';
+    $pane = new stdClass();
+    $pane->pid = 'new-e2053737-8401-4e72-8986-813ef00d6152';
+    $pane->panel = 'middle';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'ulf_workbench_edits_by_user-panel_pane_6';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array();
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 1;
+    $pane->locks = array();
+    $pane->uuid = 'e2053737-8401-4e72-8986-813ef00d6152';
+    $display->content['new-e2053737-8401-4e72-8986-813ef00d6152'] = $pane;
+    $display->panels['middle'][1] = 'new-e2053737-8401-4e72-8986-813ef00d6152';
+  $display->hide_title = PANELS_TITLE_FIXED;
+  $display->title_pane = '0';
+  $handler->conf['display'] = $display;
+  $export['myworkbench__others'] = $handler;
+
+  $handler = new stdClass();
+  $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
+  $handler->api_version = 1;
   $handler->name = 'myworkbench__panel_context_d4523189-c8b5-4d33-b532-de17adacbccc';
   $handler->task = 'myworkbench';
   $handler->subtask = '';
@@ -31,15 +112,13 @@ function ulf_workflow_default_page_manager_handlers() {
     'name' => '',
     'access' => array(
       'plugins' => array(
-        0 => array(
-          'name' => 'role',
+        1 => array(
+          'name' => 'perm',
           'settings' => array(
-            'rids' => array(
-              0 => 4,
-            ),
+            'perm' => 'access content',
           ),
           'context' => 'logged-in-user',
-          'not' => TRUE,
+          'not' => FALSE,
         ),
       ),
       'logic' => 'and',
