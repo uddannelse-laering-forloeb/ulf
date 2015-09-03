@@ -307,6 +307,14 @@ function search_node_page_configuration_form($form, array &$form_state = array()
     '#tree' => TRUE,
   );
 
+  $form['search_node']['id'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Search id'),
+    '#description' => t('This is used to uniquely identify this search field in frontend cache.'),
+    '#default_value' => isset($defaults['id']) ? $defaults['id'] : REQUEST_TIME,
+    '#required' => TRUE,
+  );
+
   // Get list of all search node search API servers.
   $search_nodes = array();
   $servers = search_api_server_load_multiple(FALSE);
@@ -323,6 +331,7 @@ function search_node_page_configuration_form($form, array &$form_state = array()
     '#description' => t('Select the search api search node server to use'),
     '#options' => array('_none_' => t('Select server')) + $search_nodes,
     '#default_value' => isset($defaults['server']) ? $defaults['server'] : '_none_',
+    '#required' => TRUE,
     '#ajax' => array(
       'callback' => 'search_node_page_block_index_ajax_callback',
       'wrapper' => 'search-node-page-block-indexes',
@@ -336,6 +345,7 @@ function search_node_page_configuration_form($form, array &$form_state = array()
     '#description' => t('Select the search api search node server to use'),
     '#options' => $indexes,
     '#default_value' => isset($defaults['index']) ? $defaults['index'] : '_none_',
+    '#required' => TRUE,
     '#prefix' => '<div id="search-node-page-block-indexes">',
     '#suffix' => '</div>',
     '#ajax' => array(
@@ -429,6 +439,7 @@ function search_node_page_configuration_form($form, array &$form_state = array()
     '#type' => 'textfield',
     '#title' => 'Search box and filters',
     '#default_value' => isset($defaults['templates']['box']) ? $defaults['templates']['box'] : '/' . $path . '/templates/angular/search.html',
+    '#required' => TRUE,
   );
 
   $path = drupal_get_path('module', 'search_node_page');
@@ -436,6 +447,7 @@ function search_node_page_configuration_form($form, array &$form_state = array()
     '#type' => 'textfield',
     '#title' => 'Search result',
     '#default_value' => isset($defaults['templates']['result']) ? $defaults['templates']['result'] : '/' . $path . '/templates/angular/result.html',
+    '#required' => TRUE,
   );
 
   $path = drupal_get_path('module', 'search_node_page');
@@ -443,6 +455,7 @@ function search_node_page_configuration_form($form, array &$form_state = array()
     '#type' => 'textfield',
     '#title' => 'Search pager',
     '#default_value' => isset($defaults['templates']['pager']) ? $defaults['templates']['pager'] : '/' . $path . '/templates/angular/pager.html',
+    '#required' => TRUE,
   );
 
   return $form;
@@ -531,6 +544,7 @@ function search_node_page_build_search_box($configuration = array()) {
 
     // Build array to convert to json configuration.
     $conf = array(
+      'id' => $configuration['id'],
       'templates' => array(
         'box' => $configuration['templates']['box'],
         'result' => $configuration['templates']['result'],
