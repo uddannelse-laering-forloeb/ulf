@@ -102,6 +102,9 @@ angular.module('searchBoxApp').controller('UlfBoxController', ['CONFIG', 'commun
           }
         );
       }
+
+      // Set selected filters class array.
+      $scope.toggleFilterClasses = {};
     }
 
     /**
@@ -125,6 +128,34 @@ angular.module('searchBoxApp').controller('UlfBoxController', ['CONFIG', 'commun
       }
 
       search();
+    };
+
+    /**
+     * Open clicked filter.
+     *
+     * @param id
+     *   The ID of the filter to open.
+     */
+    $scope.openFilter = function openFilter(id) {
+      if ($scope.toggleFilterClasses.hasOwnProperty(id)) {
+        // Same filter clicked just, close it.
+        $scope.toggleFilterClasses = {
+          'active': false
+        };
+
+      }
+      else {
+        // Close active filter.
+        if ($scope.toggleFilterClasses.active) {
+          $scope.toggleFilterClasses = {
+            'active': false
+          };
+        }
+
+        // Open new filter.
+        $scope.toggleFilterClasses['active'] = true;
+        $scope.toggleFilterClasses[id] = ['is-active', 'is-visible'];
+      }
     };
 
     // Get set show on the road.
