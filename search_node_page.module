@@ -22,6 +22,17 @@ function search_node_page_menu() {
 }
 
 /**
+ * Implements hook_permission().
+ */
+function search_node_page_permission() {
+  return array(
+    'search content' => array(
+      'title' => t('Search node - search content'),
+    ),
+  );
+}
+
+/**
  * Implements hook_theme().
  */
 function search_node_page_theme() {
