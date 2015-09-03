@@ -62,6 +62,10 @@
     float: left;
     margin-right: .5em;
   }
+
+  &.is-full-width {
+    width: 100%;
+  }
 }
 
 .block--field-text {

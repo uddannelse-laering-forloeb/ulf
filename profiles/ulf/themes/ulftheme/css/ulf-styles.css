@@ -1039,6 +1039,8 @@ body {
   .block--field-label.is-inline {
     float: left;
     margin-right: .5em; }
+  .block--field-label.is-full-width {
+    width: 100%; }
 
 .block--field-text {
   margin-bottom: 8px; }
