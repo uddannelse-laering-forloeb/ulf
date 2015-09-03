@@ -115,10 +115,10 @@ function ulf_workflow_default_page_manager_handlers() {
         1 => array(
           'name' => 'perm',
           'settings' => array(
-            'perm' => 'access content',
+            'perm' => 'administer nodes',
           ),
           'context' => 'logged-in-user',
-          'not' => FALSE,
+          'not' => TRUE,
         ),
       ),
       'logic' => 'and',
