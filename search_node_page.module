@@ -204,12 +204,32 @@ function search_node_page_form_block_admin_configure_alter(&$form, &$form_state,
       }
       $form['settings']['search_node']['options']['fields']['#options'] = $fields;
       $form['settings']['search_node']['options']['filters']['#options'] = $filters;
+
+      // Update force filters with the options.
+      $form['settings']['search_node']['forces']['field']['#options'] = $fields;
+
+
+      // Update force filters with the options.
+      $form['settings']['search_node']['forces']['field']['#options'] = array('_none_' => t('Select field')) + $filters;
+
+      // Load taxonomy based on selected field.
+      $field = !empty($form_state['values']['search_node']['forces']['field']) ? $form_state['values']['search_node']['forces']['field'] : $form['search_node']['forces']['field']['#default_value'];
+      $info = field_info_field($field);
+      $vocab = taxonomy_vocabulary_machine_name_load($info['settings']['allowed_values'][0]['vocabulary']);
+      $terms = array();
+      foreach (taxonomy_get_tree($vocab->vid) as $term) {
+        $terms[$term->name] = $term->name;
+      }
+      $form['settings']['search_node']['forces']['selected']['#options'] = $terms;
     }
   }
 }
 
 /**
  * Implements hook_form_HOOK_alter().
+ *
+ * @TODO: Merge the two alter functions, they differe in the way they access
+ *        the form elemenets.
  *
  * Change the panes configuration form to support ajax updates.
  */
@@ -256,6 +276,19 @@ function search_node_page_form_search_node_page_search_box_content_type_edit_for
     }
     $form['search_node']['options']['fields']['#options'] = $fields;
     $form['search_node']['options']['filters']['#options'] = $filters;
+
+    // Update force filters with the options.
+    $form['search_node']['forces']['field']['#options'] = array('_none_' => t('Select field')) + $filters;
+
+    // Load taxonomy based on selected field.
+    $field = !empty($form_state['input']['search_node']['forces']['field']) ? $form_state['input']['search_node']['forces']['field'] : $form['search_node']['forces']['field']['#default_value'];
+    $info = field_info_field($field);
+    $vocab = taxonomy_vocabulary_machine_name_load($info['settings']['allowed_values'][0]['vocabulary']);
+    $terms = array();
+    foreach (taxonomy_get_tree($vocab->vid) as $term) {
+      $terms[$term->name] = $term->name;
+    }
+    $form['search_node']['forces']['selected']['#options'] = $terms;
   }
 }
 
@@ -351,9 +384,42 @@ function search_node_page_configuration_form($form, array &$form_state = array()
     '#default_value' => isset($defaults['options']['filters']) ? $defaults['options']['filters'] : array(),
   );
 
+  $form['search_node']['forces'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Forced filters'),
+    '#description' => t('Forced filters are filters that is allways applied and can not be removed be the user. You should not select an allready used filter, as that would create some strange UI behaviour.'),
+    '#tree' => TRUE,
+  );
+
+  /**
+   * @TOOO: Added support for more than one field.
+   */
+  $form['search_node']['forces']['field'] = array(
+    '#type' => 'select',
+    '#title' => t('Field to force'),
+    '#description' => t('Select the filter field to force'),
+    '#options' => array('_none_' => t('Select field')),
+    '#default_value' => isset($defaults['forces']['field']) ? $defaults['forces']['field'] : '_none_',
+    '#ajax' => array(
+      'callback' => 'search_node_page_block_force_field_ajax_callback',
+      'wrapper' => 'search-node-page-block-force-field-selected',
+    ),
+  );
+
+  $selected = array();
+  $form['search_node']['forces']['selected'] = array(
+    '#type' => 'checkboxes',
+    '#title' => t('Search filters'),
+    '#description' => t('Select the filters to use'),
+    '#options' => $selected,
+    '#default_value' => isset($defaults['forces']['selected']) ? $defaults['forces']['selected'] : array(),
+    '#prefix' => '<div id="search-node-page-block-force-field-selected">',
+    '#suffix' => '</div>',
+  );
+
   $form['search_node']['templates'] = array(
     '#type' => 'fieldset',
-    '#title' => 'Search templates',
+    '#title' => t('Search templates'),
     '#description' => t('The AngularJS templates use by the frontend. You should customize these to fit your search results.'),
     '#tree' => TRUE,
   );
@@ -383,19 +449,26 @@ function search_node_page_configuration_form($form, array &$form_state = array()
 }
 
 /**
- * Ajax callback to update the block configuration form.
+ * Ajax callback to update the block and panes configuration form.
  */
 function search_node_page_block_index_ajax_callback(array $form, array &$form_state) {
-  $d = $form['search_node']['index'];
   return isset($form['settings']['search_node']['index']) ? $form['settings']['search_node']['index'] : $form['search_node']['index'];
 }
 
 /**
- * Ajax callback to update the block configuration form.
+ * Ajax callback to update the block and panes configuration form.
  */
 function search_node_page_block_options_ajax_callback(array $form, array &$form_state) {
   return isset($form['settings']['search_node']['options']) ? $form['settings']['search_node']['options'] : $form['search_node']['options'];
 }
+
+/**
+ * Ajax callback to update the block and panes configuration form.
+ */
+function search_node_page_block_force_field_ajax_callback(array $form, array &$form_state) {
+  return isset($form['settings']['search_node']['forces']['selected']) ? $form['settings']['search_node']['forces']['selected'] : $form['search_node']['forces']['selected'];
+}
+
 
 /**
  * Implements hook_block_save().
@@ -504,6 +577,16 @@ function search_node_page_build_search_box($configuration = array()) {
 
       // Add the filters.
       $conf['provider']['filters'] = $filters;
+    }
+
+    // Check if any filters have been forced.
+    if (!empty($configuration['forces']['selected'])) {
+      $conf['provider']['force'] = array(
+        array(
+          'field' => $configuration['forces']['field'],
+          'values' => array_filter($configuration['forces']['selected']),
+        ),
+      );
     }
 
     // Add the configuration to the page.
