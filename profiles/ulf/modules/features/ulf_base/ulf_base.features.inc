@@ -54,8 +54,8 @@ function ulf_base_image_default_styles() {
       11 => array(
         'name' => 'image_scale_and_crop',
         'data' => array(
-          'width' => 300,
-          'height' => 420,
+          'width' => 550,
+          'height' => 550,
         ),
         'weight' => 2,
       ),

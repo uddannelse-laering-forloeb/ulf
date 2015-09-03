@@ -38,7 +38,7 @@ function ulf_course_providers_field_default_field_instances() {
       'file_extensions' => 'png gif jpg jpeg',
       'max_filesize' => '',
       'max_resolution' => '',
-      'min_resolution' => '',
+      'min_resolution' => '1000x550',
       'title_field' => 0,
       'user_register_form' => 0,
     ),
