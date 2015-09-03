@@ -63,12 +63,16 @@ function ulf_forms_form_alter(&$form, &$form_state, $form_id) {
     break;
 
   case 'user_register_form':
+    $form['#attached']['js'][] = drupal_get_path('module', 'ulf_forms') . '/js/jquery.imagesloaded.js';
+    $form['#attached']['js'][] = drupal_get_path('module', 'ulf_forms') . '/js/jquery.imgareaselect.dev.js';
     $form['#prefix'] = '<div class="form-module--user-login">';
     $form['#suffix'] = '</div>';
     $form['actions']['submit']['#attributes']['class'][] = 'form-module--user-submit';
     break;
 
   case 'user_profile_form':
+    $form['#attached']['js'][] = drupal_get_path('module', 'ulf_forms') . '/js/jquery.imagesloaded.js';
+    $form['#attached']['js'][] = drupal_get_path('module', 'ulf_forms') . '/js/jquery.imgareaselect.dev.js';
     global $user;
     if ($user->uid != 1 ) {
         $form['mimemail']['#access'] = FALSE;
