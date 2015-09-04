@@ -85,8 +85,6 @@ angular.module('searchBoxApp').controller('UlfBoxController', ['CONFIG', 'commun
      * Execute the search and emit the results.
      */
     function search() {
-      $scope.query.interval.field = 'field_periode';
-
       searchProxy.search($scope.query).then(
         function (data) {
           // Updated filters.
@@ -154,6 +152,12 @@ angular.module('searchBoxApp').controller('UlfBoxController', ['CONFIG', 'commun
         if (CONFIG.provider.hasOwnProperty('pager')) {
           // Add pager information to the search query.
           $scope.query.pager = angular.copy(CONFIG.provider.pager);
+        }
+
+        // Check if any intervals have been configured.
+        if (CONFIG.provider.hasOwnProperty('intervals')) {
+          $scope.intervals = CONFIG.provider.intervals;
+          $scope.query.intervals = {};
         }
 
         // Get filters based on search content (maybe slow).
