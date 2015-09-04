@@ -37,7 +37,7 @@ angular.module('searchBoxApp').directive('datetimePicker', ['$filter',
       restrict: 'A',
       require: '^ngModel',
       link: function(scope, el, attrs, ctrl) {
-        var dateFormat = attrs.datetimePicker;
+        var dateFormat = undefined;
         var lastUnixTime = (new Date).getTime();
         el.datetimepicker({
           timepicker: false,
@@ -63,7 +63,11 @@ angular.module('searchBoxApp').directive('datetimePicker', ['$filter',
          * Return the lastest timestamp to the model.
          */
         ctrl.$parsers.unshift(function (viewValue) {
-          return lastUnixTime;
+          if (lastUnixTime !== undefined) {
+            return lastUnixTime;
+          }
+
+          return '';
         });
       }
     }
