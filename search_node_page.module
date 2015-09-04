@@ -216,9 +216,11 @@ function search_node_page_form_block_admin_configure_alter(&$form, &$form_state,
       $form['settings']['search_node']['options']['fields']['#options'] = $fields;
       $form['settings']['search_node']['options']['filters']['#options'] = $filters;
 
+      // Updater interval fields.
+      $form['settings']['search_node']['intervals']['fields']['#options'] = $fields;
+
       // Update force filters with the options.
       $form['settings']['search_node']['forces']['field']['#options'] = $fields;
-
 
       // Update force filters with the options.
       $form['settings']['search_node']['forces']['field']['#options'] = array('_none_' => t('Select field')) + $filters;
@@ -287,6 +289,9 @@ function search_node_page_form_search_node_page_search_box_content_type_edit_for
     }
     $form['search_node']['options']['fields']['#options'] = $fields;
     $form['search_node']['options']['filters']['#options'] = $filters;
+
+    // Updater interval fields.
+    $form['search_node']['intervals']['fields']['#options'] = $fields;
 
     // Update force filters with the options.
     $form['search_node']['forces']['field']['#options'] = array('_none_' => t('Select field')) + $filters;
@@ -378,13 +383,15 @@ function search_node_page_configuration_form($form, array &$form_state = array()
     '#title' => t('Cache expire'),
     '#description' => t('Filter and search cache expire time in seconds.'),
     '#default_value' => isset($defaults['options']['cache_expire']) ? $defaults['options']['cache_expire'] : '30',
+    '#required' => TRUE,
   );
 
   $form['search_node']['options']['size'] = array(
     '#type' => 'textfield',
     '#title' => t('Result size'),
     '#description' => t('The number of results to show on the search result page - more result will be displayed using a pager.'),
-    '#default_value' => isset($defaults['options']['size']) ? $defaults['options']['size'] : '8'
+    '#default_value' => isset($defaults['options']['size']) ? $defaults['options']['size'] : '8',
+    '#required' => TRUE,
   );
 
   $search_fields = array();
@@ -394,6 +401,7 @@ function search_node_page_configuration_form($form, array &$form_state = array()
     '#description' => t('Select the fields to search in the index'),
     '#options' => $search_fields,
     '#default_value' => isset($defaults['options']['fields']) ? $defaults['options']['fields'] : array(),
+    '#required' => TRUE,
   );
 
   $filters = array();
@@ -405,11 +413,32 @@ function search_node_page_configuration_form($form, array &$form_state = array()
     '#default_value' => isset($defaults['options']['filters']) ? $defaults['options']['filters'] : array(),
   );
 
+
+  $form['search_node']['intervals'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Search intervals'),
+    '#description' => t('Special search fields (boxes) that allows range searches (intervals).'),
+    '#tree' => TRUE,
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+  );
+
+  $search_fields = array();
+  $form['search_node']['intervals']['fields'] = array(
+    '#type' => 'checkboxes',
+    '#title' => t('Interval fields'),
+    '#description' => t('Select the interval fields to search.'),
+    '#options' => $search_fields,
+    '#default_value' => isset($defaults['intervals']['fields']) ? $defaults['intervals']['fields'] : array(),
+  );
+
   $form['search_node']['forces'] = array(
     '#type' => 'fieldset',
     '#title' => t('Forced filters'),
     '#description' => t('Forced filters are filters that is allways applied and can not be removed be the user. You should not select an allready used filter, as that would create some strange UI behaviour.'),
     '#tree' => TRUE,
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
   );
 
   /**
@@ -443,6 +472,8 @@ function search_node_page_configuration_form($form, array &$form_state = array()
     '#title' => t('Search templates'),
     '#description' => t('The AngularJS templates use by the frontend. You should customize these to fit your search results.'),
     '#tree' => TRUE,
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
   );
 
   $path = drupal_get_path('module', 'search_node_page');
@@ -604,6 +635,12 @@ function search_node_page_build_search_box($configuration = array()) {
       $conf['provider']['filters'] = $filters;
     }
 
+    // Add intervals to the configuration.
+    if (!empty($configuration['intervals']['fields'])) {
+      $intervals = array_filter($configuration['intervals']['fields']);
+      $conf['provider']['intervals'] = array_values($intervals);
+    }
+
     // Check if any filters have been forced.
     if (!empty($configuration['forces']['selected'])) {
       $conf['provider']['force'] = array(
@@ -637,7 +674,6 @@ function search_node_page_build_search_box($configuration = array()) {
         );
       }
     }
-
 
     return array(
       '#theme' => 'search_node_page_search_box',
