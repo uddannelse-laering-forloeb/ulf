@@ -37,6 +37,8 @@ angular.module('searchBoxApp').directive('datetimePicker', ['$filter',
       restrict: 'A',
       require: '^ngModel',
       link: function(scope, el, attrs, ctrl) {
+        console.log(attrs);
+        var angularFormat = attrs.angularFormat;
         var dateFormat = attrs.datetimePicker;
         var lastUnixTime = undefined;
         el.datetimepicker({
@@ -44,7 +46,9 @@ angular.module('searchBoxApp').directive('datetimePicker', ['$filter',
           lang: 'da',
           format: dateFormat,
           onChangeDateTime:function(dp, $input){
-            lastUnixTime = Math.floor(dp.getTime() / 1000);
+            if (dp) {
+              lastUnixTime = Math.floor(dp.getTime() / 1000);
+            }
           }
         });
 
@@ -53,7 +57,7 @@ angular.module('searchBoxApp').directive('datetimePicker', ['$filter',
          */
         ctrl.$formatters.unshift(function(value) {
           if (value !== undefined) {
-            return $filter('date')(value * 1000, dateFormat);
+            return $filter('date')(value * 1000, angularFormat);
           }
 
           return '';
@@ -67,7 +71,7 @@ angular.module('searchBoxApp').directive('datetimePicker', ['$filter',
             return lastUnixTime;
           }
 
-          return '';
+          return 'test';
         });
       }
     }
@@ -141,6 +145,12 @@ angular.module('searchBoxApp').controller('UlfBoxController', ['CONFIG', 'commun
       // Init selected filters.
       $scope.selectedFilters = {};
 
+      // Check if any intervals have been configured.
+      if (CONFIG.provider.hasOwnProperty('intervals')) {
+        $scope.intervals = CONFIG.provider.intervals;
+        $scope.query.intervals = {};
+      }
+
       // Check if any search query have been located from the hash tag.
       if (state.hasOwnProperty('query')) {
         // Query found in state, so execute that search.
@@ -152,12 +162,6 @@ angular.module('searchBoxApp').controller('UlfBoxController', ['CONFIG', 'commun
         if (CONFIG.provider.hasOwnProperty('pager')) {
           // Add pager information to the search query.
           $scope.query.pager = angular.copy(CONFIG.provider.pager);
-        }
-
-        // Check if any intervals have been configured.
-        if (CONFIG.provider.hasOwnProperty('intervals')) {
-          $scope.intervals = CONFIG.provider.intervals;
-          $scope.query.intervals = {};
         }
 
         // Get filters based on search content (maybe slow).
