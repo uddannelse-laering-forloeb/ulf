@@ -113,6 +113,10 @@
     width: 25%;
   }
 
+  &-header {
+    @extend %content--header-grouping;
+  }
+
   &-inner {
     @extend %teaser--inner;
     @include strip-link-styles($black);

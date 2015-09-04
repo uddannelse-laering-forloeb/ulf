@@ -73,39 +73,45 @@
     margin: 0 auto;
     max-width: $layout-max-width;
 
-    @include breakpoint(45em) {
+    @include breakpoint($node-breakpoint) {
       height: 80px;
     }
   }
+}
 
 
-  &--eu-compliance-inner {
-    position: relative;
+// Display of EU compliance popup.
+.footer--eu-compliance-inner {
+  position: relative;
 
-    @include vertical-center();
+  @include vertical-center();
 
-    @include display-flex;
-    @include justify-content(space-between);
-    @include flex-wrap(wrap);
-    @include flex-direction(row);
+  @include display-flex;
+  @include justify-content(space-between);
+  @include flex-wrap(wrap);
+  @include flex-direction(row);
+}
+
+.footer--eu-compliance-text {
+  color: $white;
+  text-align: left;
+  width: 100%;
+
+  @include breakpoint($node-breakpoint) {
+    width: 50%;
+  }
+}
+
+
+.footer--eu-compliance-buttons {
+  width: 100%;
+
+  @include breakpoint($node-breakpoint) {
+    width: 45%;
   }
 
-  &--eu-compliance-text {
-    color: $white;
-    text-align: left;
-    width: 100%;
-
-    @include breakpoint(45em) {
-      width: 50%;
-    }
-
-  }
-
-  &--eu-compliance-buttons {
-    width: 100%;
-
-    @include breakpoint(45em) {
-      width: 30%;
-    }
+  .button {
+    margin: $spacing /2;
+    padding: .2em .8em;
   }
 }

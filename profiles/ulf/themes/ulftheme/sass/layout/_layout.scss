@@ -33,11 +33,6 @@ body {
   margin: 0 auto;
 }
 
-.page-wrapper {
-  background: $white; // The actual background for content should be white.
-}
-
-
 /* Layout
    ================================================================================================================== */
 
@@ -49,6 +44,7 @@ body {
 
 // Frontpage and profile layout.
 
+.layout-view-page,
 .layout-node,
 .layout-frontpage,
 .layout-profile {
@@ -75,5 +71,11 @@ body {
     &-inner {
       @extend %layout--element-inner;
     }
+  }
+}
+
+.layout-view-page {
+  .layout-element-alpha-inner {
+    padding: 0;
   }
 }

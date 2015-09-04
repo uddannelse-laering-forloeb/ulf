@@ -89,7 +89,14 @@ function ulf_preprocess_node(&$variables) {
     case 'course':
       if (!empty($variables['field_target_group'])) {
         // Get term id from target group field.
-        $term = $variables['field_target_group']['0']['taxonomy_term'];
+
+        if ($variables['view_mode'] == 'print') {
+          $term = $variables['field_target_group']['und']['0']['tid'];
+        }
+        else {
+          $term = $variables['field_target_group']['0']['taxonomy_term'];
+        }
+
         if ($term) {
           $term_wrapper = entity_metadata_wrapper('taxonomy_term', $term);
           $variables['group_type'] = strtolower($term_wrapper->name->value());
@@ -110,9 +117,14 @@ function ulf_preprocess_node(&$variables) {
       break;
   }
 
+  if (user_access('moderate content from needs_review to published') && arg(2) == 'draft') {
+    $variables['display_workflow_actions'] =  TRUE;
+  } else {
+    $variables['display_workflow_actions'] =  FALSE;
+  }
 
   // Display author meta data on courses.
-  if (($variables['type'] == 'course'|| $variables['type'] == 'course_educators') && $variables['view_mode'] == 'full') {
+  if (($variables['type'] == 'course'|| $variables['type'] == 'course_educators') && ($variables['view_mode'] == 'full' || $variables['view_mode'] == 'print')) {
     // Fetch author.
     $variables['author'] = user_load($variables['uid']);
     $author_wrapper = entity_metadata_wrapper('user', $variables['author']);
@@ -149,6 +161,25 @@ function ulf_preprocess_field(&$variables) {
 
   if (in_array($variables['element']['#field_name'], $stripped_template)) {
     $variables['theme_hook_suggestions'][] = 'field__stripped';
+  }
+
+
+  // Some fields should be displayed with label and content inline.
+  $inline_template = array(
+    'field_contact_phone',
+    'field_profile_mail',
+    'field_contact_office_hours',
+  );
+
+  $variables['display_type'] = 'is-block';
+  if (in_array($variables['element']['#field_name'], $inline_template)) {
+    $variables['display_type'] = 'is-inline';
+  }
+
+  // Change the "to" to "-" between from and to period.
+  // @todo, find a better way.
+  if ($variables['element']['#field_name'] == 'field_period') {
+    $variables['items']['0']['#markup'] = str_replace(' til ', ' - ', $variables['items']['0']['#markup']);
   }
 }
 
@@ -214,4 +245,92 @@ function ulf_menu_link__menu_about_ulf($variables) {
   }
   $output = l($element ['#title'], $element ['#href'], $element ['#localized_options']);
   return '<li' . drupal_attributes($element ['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
+}
+
+
+/**
+ * Implements theme_item_list().
+ */
+function ulf_item_list($variables) {
+  $items = $variables ['items'];
+  $title = $variables ['title'];
+  $type = $variables ['type'];
+  $attributes = $variables ['attributes'];
+
+  // Only output the list container and title, if there are any list items.
+  // Check to see whether the block title exists before adding a header.
+  // Empty headers are not semantic and present accessibility challenges.
+  $output = '';
+  if (isset($title) && $title !== '') {
+    $output .= '<h3>' . $title . '</h3>';
+  }
+
+  if (!empty($items)) {
+    $output .= "<$type" . drupal_attributes($attributes) . '>';
+    $num_items = count($items);
+    $i = 0;
+    foreach ($items as $item) {
+      $attributes = array();
+      $children = array();
+      $data = '';
+      $i++;
+      if (is_array($item)) {
+        foreach ($item as $key => $value) {
+          if ($key == 'data') {
+            $data = $value;
+          }
+          elseif ($key == 'children') {
+            $children = $value;
+          }
+          else {
+            $attributes [$key] = $value;
+          }
+        }
+      }
+      else {
+        $data = $item;
+      }
+      if (count($children) > 0) {
+        // Render nested list.
+        $data .= theme_item_list(array('items' => $children, 'title' => NULL, 'type' => $type, 'attributes' => $attributes));
+      }
+      if ($i == 1) {
+        $attributes ['class'][] = 'first';
+      }
+      if ($i == $num_items) {
+        $attributes ['class'][] = 'last';
+      }
+      $output .= '<li' . drupal_attributes($attributes) . '>' . $data . "</li>\n";
+    }
+    $output .= "</$type>";
+  }
+  return $output;
+}
+
+function ulf_file_link($variables) {
+  $file = $variables['file'];
+  $icon_directory = $variables['icon_directory'];
+
+  $url = file_create_url($file->uri);
+  $icon = theme('file_icon', array('file' => $file, 'icon_directory' => $icon_directory));
+
+  // Set options as per anchor format described at
+  // http://microformats.org/wiki/file-format-examples
+  $options = array(
+    'attributes' => array(
+      'type' => $file->filemime . '; length=' . $file->filesize,
+      'target' => '_blank',
+    ),
+  );
+
+  // Use the description as the link text if available.
+  if (empty($file->description)) {
+    $link_text = $file->filename;
+  }
+  else {
+    $link_text = $file->description;
+    $options['attributes']['title'] = check_plain($file->filename);
+  }
+
+  return '<span class="file">' . $icon . ' ' . l($link_text, $url, $options) . '</span>';
 }

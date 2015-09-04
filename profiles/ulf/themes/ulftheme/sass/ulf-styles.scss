@@ -16,6 +16,7 @@
 // Include base
 @import "base/_normalize";
 @import "base/_base";
+@import "base/_form";
 
 
 
@@ -28,6 +29,7 @@
 // Theme
 @import "theme/_tabs";
 @import "theme/_pager";
+@import "theme/_fonts";
 
 
 // Layout
@@ -38,12 +40,13 @@
 @import "modules/_header";
 @import "modules/_footer";
 @import "modules/_field";
-@import "modules/_form";
 @import "modules/_teaser";
 @import "modules/_block";
 @import "modules/_nav";
 @import "modules/_content";
 @import "modules/_buttons";
+@import "modules/_page";
+@import "modules/_search";
 
 // Components
 @import "itk-components/_itk-menu";

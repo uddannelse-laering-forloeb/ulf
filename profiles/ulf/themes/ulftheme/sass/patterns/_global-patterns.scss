@@ -15,36 +15,10 @@
 }
 
 
-
-/* ------- OLD stuff @todo cleanup----------- */
-
-// We define this as a mixin because it is used in a placeholder
-@mixin global-layout-content() {
-  padding: $layout-padding;
-
-  background-color: $white;
-
-  @include breakpoint(45em) {
-    @include border-radius($border-radius);
-  }
-}
-
-
-@mixin global-grid-padding-override() {
-  padding-right: .312em;
-  padding-left: .312em;
-}
-
-
-/* Use this placeholder to center a container */
-%global--layout-container {
-  margin-right: auto;
-  margin-left: auto;
-  max-width: $layout-max-width;
-}
-
-%global-reset-element-spacing {
-  border-bottom: 0;
-  margin-bottom: 0;
-  padding-bottom: 0;
+// Header used for a group of content. (/news, /organizer)
+%content--header-grouping {
+  border-bottom: 1px solid $black;
+  margin: $spacing $spacing/2 $spacing;
+  width: 100%;
+  text-transform: capitalize;
 }

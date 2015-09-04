@@ -57,6 +57,15 @@
 .block--field-label {
   font-weight: bold;
   margin-bottom: $spacing / 4;
+
+  &.is-inline {
+    float: left;
+    margin-right: .5em;
+  }
+
+  &.is-full-width {
+    width: 100%;
+  }
 }
 
 .block--field-text {
@@ -100,7 +109,17 @@
   @extend %block;
 
   background: $gray-lighter;
+  margin: 0 auto $spacing;
   max-width: $layout-max-width;
+
+  // Workbench moderation block (Top of draft content)
+  // We use the html and classes provided by workbench module.
+  .workbench-info-block {
+    background: inherit;
+    border-color: inherit;
+    color: inherit;
+    font-size: 1em;
+  }
 }
 
 
@@ -137,11 +156,46 @@
       position: absolute;
 
       @include vertical-center();
-    };
+    }
+  }
+
+  &.is-front {
+    .form-type-checkboxes {
+      display: none;
+    }
   }
 
   .form-submit,
   .form-item {
-    margin: $spacing;
+    margin: 0 $spacing;
+  }
+}
+
+
+.block--pdf {
+  margin: 2 * $spacing 0;
+
+  &-link {
+    @extend %button;
+
+    @include strip-link-styles($white);
+  }
+}
+
+
+.block--workflow {
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: $spacing / 2;
+  width: 1000px;
+
+  &-inner {
+    background: $light-blue;
+    box-sizing: border-box;
+    padding: $spacing;
+  }
+
+  & .button {
+    font-size: .8em;
   }
 }

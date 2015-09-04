@@ -35,7 +35,7 @@ function ulf_course_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'diff_view_mode_preview_node_course';
-  $strongarm->value = '';
+  $strongarm->value = 'diff_standard';
   $export['diff_view_mode_preview_node_course'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -75,10 +75,10 @@ function ulf_course_strongarm() {
           'weight' => '1',
         ),
         'path' => array(
-          'weight' => '7',
+          'weight' => '9',
         ),
         'redirect' => array(
-          'weight' => '8',
+          'weight' => '10',
         ),
       ),
       'display' => array(
@@ -150,7 +150,7 @@ function ulf_course_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_preview_course';
-  $strongarm->value = '1';
+  $strongarm->value = '0';
   $export['node_preview_course'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -171,7 +171,7 @@ function ulf_course_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'workbench_moderation_default_state_course';
-  $strongarm->value = 'published';
+  $strongarm->value = 'needs_review';
   $export['workbench_moderation_default_state_course'] = $strongarm;
 
   return $export;

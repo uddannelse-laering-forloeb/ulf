@@ -122,7 +122,7 @@ function ulf_news_field_default_field_instances() {
       'file_extensions' => 'png gif jpg jpeg',
       'max_filesize' => '',
       'max_resolution' => '',
-      'min_resolution' => '',
+      'min_resolution' => '1000x550',
       'title_field' => 1,
       'user_register_form' => FALSE,
     ),
@@ -141,7 +141,6 @@ function ulf_news_field_default_field_instances() {
         'manualcrop_require_cropping' => array(),
         'manualcrop_styles_list' => array(
           'node_display' => 'node_display',
-          'teaser_display' => 'teaser_display',
         ),
         'manualcrop_styles_mode' => 'include',
         'manualcrop_thumblist' => 0,

@@ -88,15 +88,19 @@
           <?php print $submitted; ?>
         </div>
       <?php endif; ?>
-      <div class="content">
+      <div class="content is-<?php print $group_type; ?>">
         <div class="content--image">
-          <div class="field--title is-<?php print $group_type?>"><?php print render($title); ?></div>
+          <div class="field--title is-<?php print $group_type; ?>"><?php print render($title); ?></div>
           <?php print render($content['field_image']); ?>
         </div>
         <div class="content--main">
           <?php print render($content['field_full_description']); ?>
+          <?php print render($content['field_video']); ?>
           <?php print render($content['field_catering']); ?>
           <?php print render($content['field_educational_material']); ?>
+          <div class="block--pdf">
+            <a class="block--pdf-link" target="_blank" href="/printpdf/<?php print $node->nid; ?>"><?php print t('Print this offer as pdf')?></a>
+          </div>
         </div>
         <div class="content--meta">
           <div class="block--light">
@@ -117,7 +121,7 @@
                   <?php print render($content['field_period']); ?>
                 <?php endif;?>
                 <?php if ($field_free['0']['value'] == 0 ) : ?>
-                  <div class="block--field-label"><?php print t('Price');?>:</div>
+                  <div class="block--field-label"><?php print t('Price');?></div>
                   <?php print render($content['field_price']); ?>
                 <?php else : ?>
                   <div class="block--field-label"><?php print t('This course is free.');?></div>
@@ -147,7 +151,9 @@
               <div class="block--field-label"><?php print $profile_name; ?></div>
               <div class="block--field-text"><?php print $profile_address; ?></div>
               <div class="block--field-text"><?php print $profile_postal_code; ?> <?php print $profile_city; ?></div>
-              <div class="block--field-text"><?php print $profile_phone; ?></div>
+              </br>
+              <div class="block--field-text"><strong><?php print t('Phone')?>.</strong> <?php print $profile_phone; ?></div>
+              </br>
               <a href="/user/<?php print $uid ?>"><?php print t('View organizer profile'); ?></a>
             </div>
           </div>

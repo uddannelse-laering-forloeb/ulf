@@ -36,6 +36,7 @@ features[variable][] = node_submitted_news
 features[variable][] = save_continue_news
 features[variable][] = workbench_moderation_default_state_news
 features[views_view][] = ulf_frontpage_news
+features[views_view][] = ulf_news_archive
 features_exclude[field_base][field_image] = field_image
 features_exclude[field_base][field_teaser] = field_teaser
 features_exclude[field_base][field_content] = field_content

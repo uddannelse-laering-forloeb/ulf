@@ -81,6 +81,17 @@
  */
 ?>
 <div class="layout-node">
+  <?php if ($display_workflow_actions) : ?>
+    <div class="block--workflow">
+      <div class="block--workflow-inner">
+        <h3><?php print t('Workflow');?></h3>
+        <div class="block--workflow-description">
+          <?php print t('Would you like to publish this draft?');?>
+        </div>
+        <?php print $publish_link; ?>
+      </div>
+    </div>
+  <?php endif; ?>
   <div class="layout-element-alpha">
     <div class="layout-element-alpha-inner">
       <?php if ($display_submitted): ?>
@@ -88,15 +99,15 @@
           <?php print $submitted; ?>
         </div>
       <?php endif; ?>
-      <div class="content">
+      <div class="content is-<?php print $group_type; ?>">
         <div class="content--image">
-          <div class="field--title is-<?php print $group_type?>"><?php print render($title); ?></div>
+          <div class="field--title is-<?php print $group_type; ?>"><?php print render($title); ?></div>
           <?php print render($content['field_image']); ?>
         </div>
         <div class="content--main">
-          <?php print render($content['field_tags']); ?>
-          <?php print render($content['field_purpose']); ?>
           <?php print render($content['field_full_description']); ?>
+          <?php print render($content['field_purpose']); ?>
+          <?php print render($content['field_video']); ?>
           <?php if ($field_activities || $field_background_knowledge || $field_post_work || $field_material_suggestions) : ?>
             <div class="field--collection-wrapper">
               <div class="field--collection-label"><?php print t('Yderligere information');?></div>
@@ -106,12 +117,16 @@
                   <?php print render($content['field_background_knowledge']); ?>
                   <?php print render($content['field_post_work']); ?>
                   <?php print render($content['field_material_suggestions']); ?>
+
                 </div>
               </div>
             </div>
           <?php endif; ?>
           <?php print render($content['field_educational_material']); ?>
           <?php print render($content['field_inspirational_material']); ?>
+          <div class="block--pdf">
+            <a class="block--pdf-link" target="_blank" href="/printpdf/<?php print $node->nid; ?>"><?php print t('Print this offer as pdf'); ?></a>
+          </div>
         </div>
         <div class="content--meta">
           <div class="block--light">
@@ -120,22 +135,28 @@
             </h2>
             <div class="block--content">
               <div class="block--field-wrapper is-inline">
-                <div class="block--field-label"><?php print t('Contact');?>:</div>
-                <?php print render($name); ?>
+                <div class="block--field-label"><?php print t('Contact');?></div>
+                <a href="/user/<?php print $uid; ?>"><?php print $profile_name; ?></a>
               </div>
               <div class="block--field-wrapper is-inline">
                 <?php print render($content['field_offer_type']); ?>
                 <?php print render($content['field_target_group_sub']); ?>
                 <?php print render($content['field_count']); ?>
               </div>
+              <?php if (!empty($content['field_special_needs']) && $content['field_special_needs']['#items']['0']['value'] == 1 ) : ?>
+                <div class="block--field-wrapper">
+                  <div class="block--field-label"><?php print t('This course supports children and youth with special needs.');?></div>
+                </div>
+              <?php endif; ?>
               <?php /* If any of the fields in this wrapper contain data */ ?>
               <?php if ($field_duration || $field_period_full_year['0']['value'] == 0 || $field_collection_price || $field_free['0']['value'] == 1 || $field_period_info || $field_price_info) : ?>
               <div class="block--field-wrapper">
                 <?php if ($field_period_full_year['0']['value'] == 0 ) : ?>
                   <?php print render($content['field_period']); ?>
                 <?php endif;?>
+                <?php print render($content['field_period_info']); ?>
                 <?php if ($field_duration) : ?>
-                  <div class="block--field-label"><?php print t('Duration');?>:</div>
+                  <div class="block--field-label"><?php print t('Duration');?></div>
                   <div class="block--field-text"><?php print render($content['field_duration']); ?><?php print render($content['field_duration_unit']); ?></div>
                 <?php endif;?>
                 <?php if ($field_free['0']['value'] == 0 ) : ?>
@@ -143,7 +164,6 @@
                 <?php else : ?>
                   <div class="block--field-label"><?php print t('This course is free.');?></div>
                 <?php endif;?>
-                <?php print render($content['field_period_info']); ?>
                 <?php print render($content['field_price_info']); ?>
               </div>
               <?php endif;?>
@@ -176,7 +196,9 @@
               <div class="block--field-label"><?php print $profile_name; ?></div>
               <div class="block--field-text"><?php print $profile_address; ?></div>
               <div class="block--field-text"><?php print $profile_postal_code; ?> <?php print $profile_city; ?></div>
-              <div class="block--field-text"><?php print $profile_phone; ?></div>
+              </br>
+              <div class="block--field-text"><strong><?php print t('Phone')?></strong> <?php print $profile_phone; ?></div>
+              </br>
               <a href="/user/<?php print $uid ?>"><?php print t('View organizer profile'); ?></a>
             </div>
           </div>
@@ -184,14 +206,14 @@
       </div>
       <?php
       // We hide the comments and links now so that we can render them later.
+      hide($content['field_special_needs']);
       hide($content['field_period']);
       hide($content['field_collection_price']);
       hide($content['field_free']);
       hide($content['field_period_full_year']);
       hide($content['field_target_group']);
       hide($content['comments']);
-      hide($content['links']);
-      ?>
+      hide($content['links']); ?>
       <div style=""><?php print render($content); ?></div>
     </div>
   </div>

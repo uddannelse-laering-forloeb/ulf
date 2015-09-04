@@ -1,0 +1,235 @@
+/**
+ *
+ * Font definitions
+ *
+ * Should contain definitions for all font-families used on the site
+ *
+ */
+
+/**
+ *
+ * Font definitions
+ *
+ * Should contain definitions for all font-families used on the site
+ *
+ */
+
+@font-face {
+    font-family: 'Asap';
+    src: url("../fonts/Asap-Regular.ttf");
+    /* Pretty Modern Browsers */ }
+@font-face {
+    font-family: 'Asap';
+    src: url("../fonts/Asap-Bold.ttf");
+    /* Pretty Modern Browsers */
+    font-weight: bold; }
+@font-face {
+    font-family: 'Asap';
+    src: url("../fonts/Asap-Italic.ttf");
+    /* Pretty Modern Browsers */
+    font-style: italic; }
+
+body {
+    background: white;
+    width: 700px;
+    color: #3f3f3f;
+    font-family: sans-serif;
+    font-size: 14px;
+    box-shadow: none;
+    text-shadow: none;
+    position: relative;
+}
+
+/* Logo display. */
+.print-logo {
+    background: url("../images/header-bg.jpg");
+}
+
+.print-logo img{
+    width: 20%;
+    padding: 1em;
+}
+
+h2 {
+    font-size: 1.2em;
+    margin: 0 0 10px 0;
+}
+
+a {
+    color: #3f3f3f;
+    text-decoration: none;
+}
+
+/* Hide default stuff */
+
+.layout-element-beta,   /* User profile extra courses. */
+.print-title,
+.print-hr,
+.print-site_name,
+.print-breadcrumb,
+.block--pdf {
+    display: none;
+}
+
+
+/* Layout */
+
+.content {
+    position: relative;
+    width: 700px;
+}
+
+.content--image {
+    margin-bottom: 120px;
+    position: relative;
+    width: 100%;
+}
+
+.field--image img{
+    border-bottom: 5px solid #17858c;
+}
+
+.is-dagtilbud  .field--image img{
+    border-bottom: 5px solid #a4da20;
+}
+
+.is-grundskole .field--image img {
+    border-bottom: 5px solid #901d7c;
+}
+
+.is-ungdomsuddannelse .field--image img {
+    border-bottom: 5px solid #ff6800;
+}
+
+.is-course .field--image img {
+    border-bottom: 5px solid #edd71c;
+}
+
+
+.field--title {
+    position: absolute;
+    font-size: 30px;
+    top: 260px;
+}
+
+.content--main {
+    float: left;
+    position: relative;
+    width: 50%;
+}
+
+.content--meta {
+    float: right;
+    position: relative;
+    width: 45%;
+}
+
+
+/* Elements */
+.field--image img {
+    width: 700px;
+}
+
+.block--field-logo {
+    margin-bottom: 30px;
+}
+
+/* Blocks */
+
+.block--light {
+    background: #deeced;
+    display: block;
+    margin-bottom: 10px;
+    padding: 20px;
+}
+
+.block--dark {
+    background: #17858c;
+    color: #fff;
+    display: block;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+.block--dark .is-full-width {
+     width: 100%;
+ }
+
+.block--dark a {
+    display: none;
+}
+
+.block--field-wrapper {
+    border-bottom: 1px solid #fff;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    page-break-inside : avoid;
+}
+
+.block--field-wrapper:last-child {
+    border-bottom: 0;
+}
+
+.block--field-label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.is-inline {
+    overflow: hidden;
+}
+
+.is-inline .block--field-label {
+    float: left;
+    width: 50%;
+}
+
+.is-inline .block--field-text {
+    float: left;
+    width: 50%;
+}
+
+.block--field-text {
+    margin-bottom: 10px;
+}
+
+.block--field-text:last-child {
+    margin-bottom: 0;
+}
+
+/* Fields */
+
+/* Display of field collections in main content. */
+.field--collection-wrapper {
+    margin-bottom: 10px;
+    page-break-inside : avoid;
+}
+
+.field--collection-label {
+    color: white;
+    background: #17858c;
+    padding: 10px;
+}
+
+.field--collection-content {
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+}
+
+.field--collection-item {
+    border-bottom: 1px solid gray;
+    padding: 10px;
+}
+
+.field--collection-description,
+.field--collection-file,
+.field--collection-link,
+.field--collection-litt {
+    display: block;
+    margin-bottom: 5px;
+    width: 100%;
+}
+
+.field--collection-description {
+    font-weight: bold;
+}

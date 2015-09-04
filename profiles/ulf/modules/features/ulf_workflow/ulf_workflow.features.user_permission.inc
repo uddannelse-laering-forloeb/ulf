@@ -14,9 +14,19 @@ function ulf_workflow_user_default_permissions() {
   $permissions['access workbench'] = array(
     'name' => 'access workbench',
     'roles' => array(
+      'course provider' => 'course provider',
       'editor' => 'editor',
     ),
     'module' => 'workbench',
+  );
+
+  // Exported permission: 'administer mail templates'.
+  $permissions['administer mail templates'] = array(
+    'name' => 'administer mail templates',
+    'roles' => array(
+      'editor' => 'editor',
+    ),
+    'module' => 'mail_edit',
   );
 
   // Exported permission: 'administer workbench'.
@@ -38,9 +48,7 @@ function ulf_workflow_user_default_permissions() {
   // Exported permission: 'bypass workbench moderation'.
   $permissions['bypass workbench moderation'] = array(
     'name' => 'bypass workbench moderation',
-    'roles' => array(
-      'editor' => 'editor',
-    ),
+    'roles' => array(),
     'module' => 'workbench_moderation',
   );
 
@@ -57,9 +65,7 @@ function ulf_workflow_user_default_permissions() {
   // Exported permission: 'moderate content from needs_review to draft'.
   $permissions['moderate content from needs_review to draft'] = array(
     'name' => 'moderate content from needs_review to draft',
-    'roles' => array(
-      'editor' => 'editor',
-    ),
+    'roles' => array(),
     'module' => 'workbench_moderation',
   );
 
@@ -76,6 +82,7 @@ function ulf_workflow_user_default_permissions() {
   $permissions['use workbench_moderation my drafts tab'] = array(
     'name' => 'use workbench_moderation my drafts tab',
     'roles' => array(
+      'course provider' => 'course provider',
       'editor' => 'editor',
     ),
     'module' => 'workbench_moderation',
@@ -103,6 +110,7 @@ function ulf_workflow_user_default_permissions() {
   $permissions['view moderation history'] = array(
     'name' => 'view moderation history',
     'roles' => array(
+      'course provider' => 'course provider',
       'editor' => 'editor',
     ),
     'module' => 'workbench_moderation',
@@ -111,10 +119,7 @@ function ulf_workflow_user_default_permissions() {
   // Exported permission: 'view moderation messages'.
   $permissions['view moderation messages'] = array(
     'name' => 'view moderation messages',
-    'roles' => array(
-      'course provider' => 'course provider',
-      'editor' => 'editor',
-    ),
+    'roles' => array(),
     'module' => 'workbench_moderation',
   );
 
