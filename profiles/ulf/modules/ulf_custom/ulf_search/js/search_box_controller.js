@@ -37,7 +37,6 @@ angular.module('searchBoxApp').directive('datetimePicker', ['$filter',
       restrict: 'A',
       require: '^ngModel',
       link: function(scope, el, attrs, ctrl) {
-        console.log(attrs);
         var angularFormat = attrs.angularFormat;
         var dateFormat = attrs.datetimePicker;
         var lastUnixTime = undefined;
