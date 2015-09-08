@@ -133,7 +133,7 @@ class UlfCoursesEducationMigration extends DrupalNode7Migration {
 
     $row->field_image_media_fids = array();
     foreach($query as $fid) {
-      $row->field_image_fids[$fid->delta] = $fid->field_image_media_fid;
+      $row->field_image_media_fids[$fid->delta] = $fid->field_image_media_fid;
     }
 
     return TRUE;
