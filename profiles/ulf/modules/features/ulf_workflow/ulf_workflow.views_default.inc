@@ -208,6 +208,25 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['relationship'] = 'vid';
   $handler->display->display_options['filters']['status']['value'] = '1';
+  /* Filterkriterie: Global: Combine fields filter */
+  $handler->display->display_options['filters']['combine']['id'] = 'combine';
+  $handler->display->display_options['filters']['combine']['table'] = 'views';
+  $handler->display->display_options['filters']['combine']['field'] = 'combine';
+  $handler->display->display_options['filters']['combine']['operator'] = 'contains';
+  $handler->display->display_options['filters']['combine']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['combine']['expose']['operator_id'] = 'combine_op';
+  $handler->display->display_options['filters']['combine']['expose']['label'] = 'Søg på titel';
+  $handler->display->display_options['filters']['combine']['expose']['operator'] = 'combine_op';
+  $handler->display->display_options['filters']['combine']['expose']['identifier'] = 'combine';
+  $handler->display->display_options['filters']['combine']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+  );
+  $handler->display->display_options['filters']['combine']['fields'] = array(
+    'title' => 'title',
+  );
 
   /* Display: Published content */
   $handler = $view->new_display('panel_pane', 'Published content', 'panel_pane_1');
@@ -721,6 +740,7 @@ function ulf_workflow_views_default_views() {
     t('Last updated'),
     t('Redigér'),
     t('Alle'),
+    t('Søg på titel'),
     t('Published content'),
     t('more'),
     t('Titel'),

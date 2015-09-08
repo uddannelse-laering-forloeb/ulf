@@ -259,6 +259,22 @@ function ulf_workflow_course_node_form_send_to_revision($form, &$form_state) {
 
 
 /**
+ * Implements hook_user_update().
+ *
+ * @param $edit
+ * @param $account
+ * @param $category
+ */
+function ulf_workflow_user_update(&$edit, $account, $category) {
+  global $user;
+  // Send user edited mails to site mail when a user is changed.
+  if (!in_array('editor',$user->roles)) {
+    _send_user_edited_mail($account);
+  }
+}
+
+
+/**
  * Implements hook_node_insert().
  *
  * Set a destination parameter when the node is first saved.
@@ -271,6 +287,19 @@ function ulf_workflow_node_insert($node) {
     $_GET['destination'] = 'node/' . $node->nid . '/edit';
   }
 }
+
+/**
+ * Implements hook_user_insert().
+ *
+ * @param $edit
+ * @param $account
+ * @param $category
+ */
+
+function ulf_workflow_user_insert(&$edit, $account, $category) {
+  $account->roles[] = 'course provider';
+}
+
 
 /**
  * Create and send mail to editor when new draft is ready for publishing.
@@ -315,6 +344,25 @@ function _send_revision_ready_mail($node) {
 
 
 /**
+ * Create and send mail to editor when a user has been changed.
+ *
+ * @param $node
+ *
+ * */
+function _send_user_edited_mail($user) {
+  $module = 'ulf_workflow';
+  $key = 'user_edited_mail_admin';
+
+  // Set recipient.
+  $to = variable_get('site_mail');
+
+  // Provide additional parameters.
+  $params['user'] = $user;
+  drupal_mail($module, $key, $to, language_default(), $params);
+}
+
+
+/**
  * Implements hook_mailkeys().
  *
  * @return array
@@ -323,6 +371,7 @@ function ulf_workflow_mailkeys() {
   return array(
     'revision_ready_mail_admin' => t('Mail sent to admin(Site mail address) when a new draft is ready for revision.'),
     'published_mail_author' => t('Mail sent to author when an editor publishes the content.'),
+    'user_edited_mail_admin' => t('Mail sent to admin(Site mail address) when a user has changed its account.'),
   );
 }
 
@@ -338,6 +387,8 @@ function ulf_workflow_mailkeys() {
 function ulf_workflow_mail_edit_text($mailkey, $language) {
   $return = array();
   switch ($mailkey) {
+
+    // Revision ready mail.
     case 'revision_ready_mail_admin':
       $return['subject'] = 'A new draft is ready for publishing by [user:field_profile_name]';
       $return['body'] =
@@ -346,12 +397,26 @@ function ulf_workflow_mail_edit_text($mailkey, $language) {
 This is an automated message created by [site:name].';
       return $return;
       break;
+
+    // Content published mail.
     case 'published_mail_author':
       $return['subject'] = 'Content you sent to revision has been published by an admin on [site:name]';
       $return['body'] =
 'Some content you sent to revision has now been published on [site:name].
 
 Go to [site:login-url] and login to see what has been published.
+
+This is an automated message created by [site:name].';
+      return $return;
+      break;
+
+    // User edited mail.
+    case 'user_edited_mail_admin':
+      $return['subject'] = 'The organisation: [user:field_profile_name] has made changes to its profile';
+      $return['body'] =
+'The organisation: [user:field_profile_name] has made changes to its profile [current-date:short].
+
+Go to [user:url] to see the changes.
 
 This is an automated message created by [site:name].';
       return $return;
