@@ -79,6 +79,14 @@ function ulf_preprocess_node(&$variables) {
   // Set default node teaser template.
   if ($variables['view_mode'] == 'teaser') {
     $variables['theme_hook_suggestions'][] = 'node__default_teaser';
+
+    // Set teaser text.
+    if ($variables['type'] == 'news') {
+      $variables['teaser_content'] = ulf_teaser_filter($variables['content']['field_teaser']['0']['#markup']);
+    }
+    else {
+      $variables['teaser_content'] = ulf_teaser_filter($variables['content']['field_full_description']['0']['#markup']);
+    }
   }
 
   // Set default group type.
@@ -88,8 +96,8 @@ function ulf_preprocess_node(&$variables) {
   switch ($variables['type']) { // Switch on content type.
     case 'course':
       if (!empty($variables['field_target_group'])) {
-        // Get term id from target group field.
 
+        // Get term id from target group field.
         if ($variables['view_mode'] == 'print') {
           $term = $variables['field_target_group']['und']['0']['tid'];
         }
@@ -110,9 +118,11 @@ function ulf_preprocess_node(&$variables) {
       // Provide newsletter block for static pages.
       $variables['newsletter_block'] = module_invoke('mailchimp_signup', 'block_view', 'signup_to_newsletter');
       break;
+
     case 'news':
       // Provide newsletter block for static pages.
       $variables['newsletter_block'] = module_invoke('mailchimp_signup', 'block_view', 'signup_to_newsletter');
+      $variables['latest_news_titles'] = module_invoke('views', 'block_view', 'ulf_news_archive-block_1');
       $variables['group_type'] = 'news';
       break;
   }
@@ -123,12 +133,13 @@ function ulf_preprocess_node(&$variables) {
     $variables['display_workflow_actions'] =  FALSE;
   }
 
+  // Fetch author.
+  $variables['author'] = user_load($variables['uid']);
+  $author_wrapper = entity_metadata_wrapper('user', $variables['author']);
+  $variables['profile_name'] = $author_wrapper->field_profile_name->value();
+
   // Display author meta data on courses.
   if (($variables['type'] == 'course'|| $variables['type'] == 'course_educators') && ($variables['view_mode'] == 'full' || $variables['view_mode'] == 'print')) {
-    // Fetch author.
-    $variables['author'] = user_load($variables['uid']);
-    $author_wrapper = entity_metadata_wrapper('user', $variables['author']);
-    $variables['profile_name'] = $author_wrapper->field_profile_name->value();
     $variables['profile_address'] = $author_wrapper->field_profile_address->value();
     $variables['profile_postal_code'] = $author_wrapper->field_profile_postal_code->value();
     $variables['profile_city'] = $author_wrapper->field_profile_city->value();
@@ -159,6 +170,11 @@ function ulf_preprocess_field(&$variables) {
     'field_unit_price',
   );
 
+  // Strip teaser fields.
+  if ($variables['element']['#view_mode'] == 'teaser') {
+    $stripped_template[] = 'field_period';
+  }
+
   if (in_array($variables['element']['#field_name'], $stripped_template)) {
     $variables['theme_hook_suggestions'][] = 'field__stripped';
   }
@@ -180,6 +196,11 @@ function ulf_preprocess_field(&$variables) {
   // @todo, find a better way.
   if ($variables['element']['#field_name'] == 'field_period') {
     $variables['items']['0']['#markup'] = str_replace(' til ', ' - ', $variables['items']['0']['#markup']);
+  }
+
+  // Display of teaser fields.
+  if ($variables['element']['#view_mode'] == 'teaser' && $variables['element']['#field_type'] == 'taxonomy_term_reference' ) {
+    $variables['theme_hook_suggestions'][] = 'field__taxonomy_term_reference__stripped';
   }
 }
 
@@ -333,4 +354,19 @@ function ulf_file_link($variables) {
   }
 
   return '<span class="file">' . $icon . ' ' . l($link_text, $url, $options) . '</span>';
+}
+
+
+function ulf_teaser_filter($str) {
+  // Clean out headlines.
+  $str = strip_tags($str);
+
+
+    // Trim string to word boundry.
+    $trimmed = substr($str, 0, 100);
+    if (strlen($str) > 100) {
+      $trimmed = $trimmed . '...';
+    }
+
+    return $trimmed;
 }

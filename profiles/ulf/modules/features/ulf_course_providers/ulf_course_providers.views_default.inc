@@ -22,7 +22,7 @@ function ulf_course_providers_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'All organizers';
+  $handler->display->display_options['title'] = 'All courses';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -52,12 +52,12 @@ function ulf_course_providers_views_default_views() {
   $handler->display->display_options['style_options']['row_class_special'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
-  /* Relationship: Content: Author */
+  /* Forbindelse: Content: Author */
   $handler->display->display_options['relationships']['uid']['id'] = 'uid';
   $handler->display->display_options['relationships']['uid']['table'] = 'node';
   $handler->display->display_options['relationships']['uid']['field'] = 'uid';
   $handler->display->display_options['relationships']['uid']['label'] = 'forfatter';
-  /* Field: User: Navn */
+  /* Felt: User: Navn */
   $handler->display->display_options['fields']['field_profile_name']['id'] = 'field_profile_name';
   $handler->display->display_options['fields']['field_profile_name']['table'] = 'field_data_field_profile_name';
   $handler->display->display_options['fields']['field_profile_name']['field'] = 'field_profile_name';
@@ -65,7 +65,13 @@ function ulf_course_providers_views_default_views() {
   $handler->display->display_options['fields']['field_profile_name']['label'] = '';
   $handler->display->display_options['fields']['field_profile_name']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_profile_name']['element_label_colon'] = FALSE;
-  /* Field: Content: Rendered Node */
+  /* Felt: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = 'Titel';
+  $handler->display->display_options['fields']['title']['exclude'] = TRUE;
+  /* Felt: Content: Rendered Node */
   $handler->display->display_options['fields']['rendered_entity']['id'] = 'rendered_entity';
   $handler->display->display_options['fields']['rendered_entity']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['rendered_entity']['field'] = 'rendered_entity';
@@ -75,19 +81,19 @@ function ulf_course_providers_views_default_views() {
   $handler->display->display_options['fields']['rendered_entity']['display'] = 'view';
   $handler->display->display_options['fields']['rendered_entity']['view_mode'] = 'teaser';
   $handler->display->display_options['fields']['rendered_entity']['bypass_access'] = 0;
-  /* Sort criterion: Content: Post date */
+  /* Sorteringskriterie: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Filter criterion: Content: Published */
+  /* Filterkriterie: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Type */
+  /* Filterkriterie: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -95,13 +101,33 @@ function ulf_course_providers_views_default_views() {
     'course_educators' => 'course_educators',
     'course' => 'course',
   );
+  /* Filterkriterie: Global: Combine fields filter */
+  $handler->display->display_options['filters']['combine']['id'] = 'combine';
+  $handler->display->display_options['filters']['combine']['table'] = 'views';
+  $handler->display->display_options['filters']['combine']['field'] = 'combine';
+  $handler->display->display_options['filters']['combine']['operator'] = 'contains';
+  $handler->display->display_options['filters']['combine']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['combine']['expose']['operator_id'] = 'combine_op';
+  $handler->display->display_options['filters']['combine']['expose']['label'] = 'Søg på titel eller afsender';
+  $handler->display->display_options['filters']['combine']['expose']['operator'] = 'combine_op';
+  $handler->display->display_options['filters']['combine']['expose']['identifier'] = 'combine';
+  $handler->display->display_options['filters']['combine']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+  );
+  $handler->display->display_options['filters']['combine']['fields'] = array(
+    'field_profile_name' => 'field_profile_name',
+    'title' => 'title',
+  );
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'organizers';
   $translatables['ulf_all_organizers'] = array(
     t('Master'),
-    t('All organizers'),
+    t('All courses'),
     t('more'),
     t('Apply'),
     t('Reset'),
@@ -116,6 +142,8 @@ function ulf_course_providers_views_default_views() {
     t('næste ›'),
     t('sidste »'),
     t('forfatter'),
+    t('Titel'),
+    t('Søg på titel eller afsender'),
     t('Page'),
   );
   $export['ulf_all_organizers'] = $view;
@@ -139,7 +167,7 @@ function ulf_course_providers_views_default_views() {
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'some';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '4';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '0';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['style_options']['row_class'] = 'teaser--content';
@@ -147,26 +175,26 @@ function ulf_course_providers_views_default_views() {
   $handler->display->display_options['style_options']['row_class_special'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'entity';
   $handler->display->display_options['row_options']['view_mode'] = 'teaser';
-  /* No results behavior: Global: Text area */
+  /* Opførsel ved ingen resultater: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = '<div class="content--empty">This profile has no courses to offer.</div>';
   $handler->display->display_options['empty']['area']['format'] = 'full_html';
-  /* Field: Content: Title */
+  /* Felt: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Sort criterion: Content: Post date */
+  /* Sorteringskriterie: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Contextual filter: Content: Author uid */
+  /* Kontekstuelt filter: Content: Author uid */
   $handler->display->display_options['arguments']['uid']['id'] = 'uid';
   $handler->display->display_options['arguments']['uid']['table'] = 'node';
   $handler->display->display_options['arguments']['uid']['field'] = 'uid';
@@ -177,7 +205,7 @@ function ulf_course_providers_views_default_views() {
   $handler->display->display_options['arguments']['uid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['uid']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['uid']['summary_options']['items_per_page'] = '25';
-  /* Filter criterion: Content: Type */
+  /* Filterkriterie: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -186,7 +214,7 @@ function ulf_course_providers_views_default_views() {
     'course' => 'course',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Workbench Moderation: Published */
+  /* Filterkriterie: Workbench Moderation: Published */
   $handler->display->display_options['filters']['published']['id'] = 'published';
   $handler->display->display_options['filters']['published']['table'] = 'workbench_moderation_node_history';
   $handler->display->display_options['filters']['published']['field'] = 'published';

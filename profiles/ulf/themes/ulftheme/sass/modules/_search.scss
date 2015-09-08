@@ -314,81 +314,22 @@
 }
 
 .search-results {
-  margin-bottom: 2em;
+  margin: 0 $spacing / 2 2em;
 
   &--result {
-    @include display-flex;
-    @include flex-flow(row wrap);
-
-    margin-bottom: 2em;
-    padding: $boxlist-padding;
-
-    &.is-dagtilbud {
-      background-color: transparentize($green, .9);
-      border-color: $green;
-    }
-
-    &.is-grundskole {
-      background-color: transparentize($purple, .9);
-      border-color: $purple;
-    }
-
-    &.is-ungdomsuddannelse {
-      background-color: transparentize($orange, .9);
-      border-color: $orange;
-    }
-
-    header,
-    figure {
-      width: 100%;
-    }
-
-    header {
-      @include order(2);
-    }
-
-    figure {
-      @include order(1);
-
-      margin-bottom: 1em;
-    }
-
-    @media only screen and (min-width: 30em) {
-      @include flex-flow(row nowrap);
-
-      border-style: solid;
-      border-width: 0 0 6px;
-      padding: 0;
-
-      header {
-        padding: $boxlist-padding;
-
-        @include flex-grow(1);
-        @include flex-shrink(1);
-      }
-
-      figure {
-        display: block;
-        margin-bottom: 0;
-        max-width: 225px;
-
-        @include flex-basis(200px);
-        @include flex-grow(0);
-      }
-    }
+    @extend %teaser--wrapper;
   }
 
   &--header {
-    margin-top: 0;
-    margin-bottom: .5em;
+    @extend %teaser--header;
   }
 
   &--type {
-    color: transparentize($boxlist-font-color, .5);
+    @extend %teaser--type;
   }
 
   &--type:last-child {
-    margin-bottom: 0;
+    @extend %teaser--type-last-child;
   }
 }
 
@@ -397,12 +338,12 @@
   // Stack until there is enough space to display them side by side
   @media only screen and (min-width: 60em) {
     @include display-flex;
-    @include flex-flow(row nowrap);
+    @include flex-flow(row wrap);
     @include justify-content(space-between);
 
     .search-results--result {
-      margin-right: 1em;
-      margin-bottom: 0;
+      margin-bottom: 1em;
+      max-width: 49%;
 
       &:last-child {
         margin-right: 0;

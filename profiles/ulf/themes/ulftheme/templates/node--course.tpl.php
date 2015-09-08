@@ -117,7 +117,6 @@
                   <?php print render($content['field_background_knowledge']); ?>
                   <?php print render($content['field_post_work']); ?>
                   <?php print render($content['field_material_suggestions']); ?>
-
                 </div>
               </div>
             </div>
