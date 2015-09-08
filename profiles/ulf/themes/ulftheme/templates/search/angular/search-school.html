@@ -1,48 +1,89 @@
 <div class="search--widget is-school">
-  <div class="search--widget-inner" >
+  <div class="search--widget-inner">
+
+    <!-- Search field -->
     <div class="search--filter-wrapper">
       <div class="search--filter-wrapper-inner">
         <div class="search--filter-text">
-          <input type="text" id="search" name="search" value="" size="60" maxlength="128" class="search--filter-search-text" data-code="13" data-key-code="searchClicked()" data-ng-model="query.text">
-          <input class="search--filter-search-submit" type="submit" id="search-submit" name="search-submit" value="Search" data-ng-click="searchClicked()">
+          <input type="text" id="search" name="search" value="" size="60"
+                 maxlength="128" class="search--filter-search-text"
+                 data-code="13" data-key-code="searchClicked()"
+                 data-ng-model="query.text">
+          <input class="search--filter-search-submit" type="submit"
+                 id="search-submit" name="search-submit" value="Search"
+                 data-ng-click="searchClicked()">
         </div>
       </div>
     </div>
 
-    <div class="search--filter-wrapper">
+    <!-- Interval search fields -->
+    <div class="search--filter-wrapper" data-ng-repeat="interval in intervals">
       <div class="search--filter-wrapper-inner">
         <div class="search--filter-span">
           <div class="search--filter-span-wrapper">
-            <label class="search--filter-span-label" for="interval-from">From</label>
-            <input type="text" id="interval-from" data-ng-model="query.interval.from" name="search" value="" size="60" maxlength="128" class="search--filter-span-text">
+            <label class="search--filter-span-label"
+                   for="interval-from">From</label>
+            <input type="text" id="interval-from" data-datetime-picker="d/m/y" data-angular-format="dd/MM/yy"
+                   data-ng-model="query.intervals[interval].from" value=""
+                   size="60" maxlength="128" class="search--filter-span-text">
           </div>
           <div class="search--filter-span-wrapper">
-            <label class="search--filter-span-label" for="interval-to">To</label>
-            <input type="text" id="interval-to" data-ng-model="query.interval.to" name="search" value="" size="60" maxlength="128" class="search--filter-span-text">
+            <label class="search--filter-span-label"
+                   for="interval-to">To</label>
+            <input type="text" id="interval-to" data-datetime-picker="d/m/y" data-angular-format="dd/MM/yy"
+                   data-ng-model="query.intervals[interval].to" value=""
+                   size="60" maxlength="128" class="search--filter-span-text">
           </div>
         </div>
       </div>
     </div>
 
-    <div id={{id}} data-ng-class="toggleFilterClasses[id][0]" class="search--filter-wrapper" data-ng-repeat="(id, filter) in filters">
+    <!-- Search filters -->
+    <div id={{id}} data-ng-class="toggleFilterClasses[id][0]"
+         class="search--filter-wrapper"
+         data-ng-repeat="(id, filter) in filters">
       <div class="search--filter-wrapper-inner">
         <div class="search--filter-list">
-          <a href="#" class="search--filter-label" data-ng-click="openFilter(id)">{{ filter.name }}</a>
-          <div class="search--filter-dropdown" data-ng-class="toggleFilterClasses[id][1]">
+          <div href="#" class="search--filter-label"
+               data-ng-click="openFilter(id)">{{ filter.name }}
+          </div>
+          <div class="search--filter-dropdown"
+               data-ng-class="toggleFilterClasses[id][1]">
             <div class="search--filter-dropdown-inner">
-              <div class="search--filter-dropdown-header" data-ng-click="openFilter(id)">{{ filter.name }} <a href="#" class="search--filter-dropdown-header-close"><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkJz48c3ZnIGhlaWdodD0iNTEycHgiIGlkPSJMYXllcl8xIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1MTIgNTEyOyIgdmVyc2lvbj0iMS4xIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgd2lkdGg9IjUxMnB4IiB4bWw6c3BhY2U9InByZXNlcnZlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj48cGF0aCBkPSJNNDM3LjUsMzg2LjZMMzA2LjksMjU2bDEzMC42LTEzMC42YzE0LjEtMTQuMSwxNC4xLTM2LjgsMC01MC45Yy0xNC4xLTE0LjEtMzYuOC0xNC4xLTUwLjksMEwyNTYsMjA1LjFMMTI1LjQsNzQuNSAgYy0xNC4xLTE0LjEtMzYuOC0xNC4xLTUwLjksMGMtMTQuMSwxNC4xLTE0LjEsMzYuOCwwLDUwLjlMMjA1LjEsMjU2TDc0LjUsMzg2LjZjLTE0LjEsMTQuMS0xNC4xLDM2LjgsMCw1MC45ICBjMTQuMSwxNC4xLDM2LjgsMTQuMSw1MC45LDBMMjU2LDMwNi45bDEzMC42LDEzMC42YzE0LjEsMTQuMSwzNi44LDE0LjEsNTAuOSwwQzQ1MS41LDQyMy40LDQ1MS41LDQwMC42LDQzNy41LDM4Ni42eiIvPjwvc3ZnPg=="></a></div>
+              <div class="search--filter-dropdown-header"
+                   data-ng-click="openFilter(id)">{{ filter.name }} <a href="#"
+                                                                       class="search--filter-dropdown-header-close"><img
+                  src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkJz48c3ZnIGhlaWdodD0iNTEycHgiIGlkPSJMYXllcl8xIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1MTIgNTEyOyIgdmVyc2lvbj0iMS4xIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgd2lkdGg9IjUxMnB4IiB4bWw6c3BhY2U9InByZXNlcnZlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj48cGF0aCBkPSJNNDM3LjUsMzg2LjZMMzA2LjksMjU2bDEzMC42LTEzMC42YzE0LjEtMTQuMSwxNC4xLTM2LjgsMC01MC45Yy0xNC4xLTE0LjEtMzYuOC0xNC4xLTUwLjksMEwyNTYsMjA1LjFMMTI1LjQsNzQuNSAgYy0xNC4xLTE0LjEtMzYuOC0xNC4xLTUwLjksMGMtMTQuMSwxNC4xLTE0LjEsMzYuOCwwLDUwLjlMMjA1LjEsMjU2TDc0LjUsMzg2LjZjLTE0LjEsMTQuMS0xNC4xLDM2LjgsMCw1MC45ICBjMTQuMSwxNC4xLDM2LjgsMTQuMSw1MC45LDBMMjU2LDMwNi45bDEzMC42LDEzMC42YzE0LjEsMTQuMSwzNi44LDE0LjEsNTAuOSwwQzQ1MS41LDQyMy40LDQ1MS41LDQwMC42LDQzNy41LDM4Ni42eiIvPjwvc3ZnPg=="></a>
+              </div>
               <div class="search--filter-dropdown-content">
                 <div data-ng-repeat="(key, item) in filter.items">
-                  <input id="{{ key }}" data-ng-disabled="!item.count" type="checkbox" data-ng-model="query.filters[id][key]" data-ng-click="searchClicked()">
-                  <label data-ng-class="{ disabled: !item.count }" for="{{ key }}">{{ item.value }}</label>
+                  <input id="{{ key }}" data-ng-disabled="!item.count"
+                         data-ng-click="searchClicked()" type="checkbox"
+                         data-ng-model="query.filters[id][key]">
+                  <label data-ng-class="{ disabled: !item.count }"
+                         for="{{ key }}">{{ item.value }}</label>
                 </div>
               </div>
-              <a href="#" class="search--filter-dropdown-submit">Anvend</a>
+              <div class="search--filter-dropdown-submit"
+                   data-ng-click="openFilter(id)">Anvend
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
 
+  </div>
+
+  <!-- Selected filters -->
+  <div class="search--widget-selected">
+    <div class="search--widget-selected-inner">
+      <div data-ng-repeat="(field, filters) in selectedFilters">
+        <div class="search--widget-selected-item"
+             data-ng-repeat="filter in filters"
+             data-ng-click="removeFilter(field, filter)">{{ filter }}
+        </div>
+      </div>
+    </div>
   </div>
 </div>
