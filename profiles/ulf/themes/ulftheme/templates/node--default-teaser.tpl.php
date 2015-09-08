@@ -84,13 +84,13 @@
     <?php if ($content['field_free']['#items']['0']['value'] == 1) : ?>
       <div class="ribbon-wrapper left">
         <div class="ribbon">
-          <a href="node/<?php print $nid; ?>"><?php print t('Free'); ?></a>
+          <a href="/node/<?php print $nid; ?>"><?php print t('Free'); ?></a>
         </div>
       </div>
     <?php endif;?>
   <?php endif;?>
   <header>
-    <h2 class="teaser--header"><a href="node/<?php print $nid; ?>"><?php print render($title); ?></a></h2>
+    <h2 class="teaser--header"><a href="/node/<?php print $nid; ?>"><?php print render($title); ?></a></h2>
     <?php if ($type == 'course') : ?>
       <?php if ($content['field_period_full_year']['#items']['0']['value'] == 1) : ?>
         <p class="teaser--type"><?php print t('Period'); ?>: <?php print t('All year'); ?></p>
@@ -99,12 +99,12 @@
       <?php endif; ?>
     <?php endif;?>
     <p><?php print $teaser_content; ?></p>
-    <p class="teaser--type"><?php print t('Organizer'); ?>: <a href="user/<?php print $uid; ?>"><?php print $profile_name; ?></a></p>
+    <p class="teaser--type"><?php print t('Organizer'); ?>: <a href="/user/<?php print $uid; ?>"><?php print $profile_name; ?></a></p>
     <?php if ($type == 'course') : ?>
       <?php if (isset($content['field_subject'])) : ?>
         <p class="teaser--type"><?php print t('Subject'); ?>: <?php print render($content['field_subject']); ?></p>
       <?php endif;?>
     <?php endif;?>
   </header>
-  <figure><a href="node/<?php print $nid; ?>"><?php print render($content['field_image']); ?></a></figure>
+  <figure><a href="/node/<?php print $nid; ?>"><?php print render($content['field_image']); ?></a></figure>
 </article>
