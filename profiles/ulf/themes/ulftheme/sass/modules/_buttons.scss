@@ -48,6 +48,7 @@
   border: 1px solid $dark-blue;
   color: $white;
 
+  @include strip-link-styles($white);
   @include text-shadow(.025em .025em .1em darken($dark-blue, 10%));
 
   &:hover {

@@ -22,3 +22,79 @@
   width: 100%;
   text-transform: capitalize;
 }
+
+
+%teaser--wrapper {
+  @include display-flex;
+  @include flex-flow(row nowrap);
+
+  border-bottom: solid;
+  border-width: 6px;
+  box-sizing: border-box;
+  margin-bottom: 2em;
+  padding: $boxlist-padding;
+
+  &.is-dagtilbud {
+    background-color: transparentize($green, .9);
+    border-color: $green;
+  }
+
+  &.is-grundskole {
+    background-color: transparentize($purple, .9);
+    border-color: $purple;
+  }
+
+  &.is-ungdomsuddannelse {
+    background-color: transparentize($orange, .9);
+    border-color: $orange;
+  }
+
+  &.is-course {
+    background-color: transparentize($yellow, .9);
+    border-color: $yellow;
+  }
+
+  header,
+  figure {
+    width: 100%;
+  }
+
+  header {
+    @include order(2);
+
+    padding: $boxlist-padding;
+  }
+
+  figure {
+    @include order(1);
+
+    display: block;
+    margin-bottom: 0;
+
+    @include flex-basis(120px);
+    @include flex-grow(0);
+  }
+
+  @media only screen and (min-width: 30em) {
+    figure {
+      @include flex-basis(200px);
+    }
+  }
+}
+
+%teaser--header {
+  margin-top: 0;
+  margin-bottom: .5em;
+
+  a {
+    @include strip-link-styles();
+  }
+}
+
+%teaser--type {
+  color: transparentize($boxlist-font-color, .5);
+}
+
+%teaser--type-last-child {
+  margin-bottom: 0;
+}
