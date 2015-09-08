@@ -8,10 +8,11 @@
  */
 ?>
 <?php if (!empty($title)): ?>
-  <h3 class="teaser--content-header"><?php print $title; ?></h3>
+  <h3><?php print $title; ?></h3>
 <?php endif; ?>
 <div class="teaser--list is-side-by-side">
   <?php foreach ($rows as $id => $row): ?>
     <?php print $row; ?>
   <?php endforeach; ?>
 </div>
+<a href="/news" class="teaser--list-button"><?php print t('View all news');?></a>

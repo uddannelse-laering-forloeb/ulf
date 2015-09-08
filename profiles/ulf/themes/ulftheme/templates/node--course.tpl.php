@@ -117,7 +117,6 @@
                   <?php print render($content['field_background_knowledge']); ?>
                   <?php print render($content['field_post_work']); ?>
                   <?php print render($content['field_material_suggestions']); ?>
-
                 </div>
               </div>
             </div>
@@ -140,14 +139,13 @@
               </div>
               <div class="block--field-wrapper is-inline">
                 <?php print render($content['field_offer_type']); ?>
-                <?php print render($content['field_special_needs']); ?>
                 <?php print render($content['field_target_group_sub']); ?>
                 <?php print render($content['field_count']); ?>
               </div>
-              <?php if (!empty($field_special_needs) && $field_special_needs['und']['0']['value'] == 1  ) : ?>
-              <div class="block--field-wrapper">
-                <div class="block--field-label"><?php print t('This course supports children and youth with special needs.');?></div>
-              </div>
+              <?php if (!empty($content['field_special_needs']) && $content['field_special_needs']['#items']['0']['value'] == 1 ) : ?>
+                <div class="block--field-wrapper">
+                  <div class="block--field-label"><?php print t('This course supports children and youth with special needs.');?></div>
+                </div>
               <?php endif; ?>
               <?php /* If any of the fields in this wrapper contain data */ ?>
               <?php if ($field_duration || $field_period_full_year['0']['value'] == 0 || $field_collection_price || $field_free['0']['value'] == 1 || $field_period_info || $field_price_info) : ?>
@@ -207,6 +205,7 @@
       </div>
       <?php
       // We hide the comments and links now so that we can render them later.
+      hide($content['field_special_needs']);
       hide($content['field_period']);
       hide($content['field_collection_price']);
       hide($content['field_free']);

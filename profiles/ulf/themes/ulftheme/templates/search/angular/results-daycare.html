@@ -1,0 +1,22 @@
+<div data-ng-if="hits.hits" class="search-results-header">
+  <h2><strong>{{ hits.hits }}</strong> resultater
+</div>
+<div class="search-results">
+  <article class="search-results--result is-dagtilbud" data-ng-repeat="hit in hits.results">
+    <header>
+      <a href="node/{{ hit.nid }}">
+        <h2 class="search-results--header">{{ hit.title }}</h2>
+      </a>
+      <p data-ng-bind-html="hit['field_full_description:value'] | trimWordBoundary:512"></p>
+      <p class="search-results--type">Emne: <a data-ng-repeat="subject in hit.field_subject" href="#">{{ subject }}</a></p>
+    </header>
+    <figure><img data-ng-src="{{ hit['field_image:file'] }}" src="#"/></figure>
+  </article>
+
+  <!-- No results -->
+  <div class="no-results" data-ng-if="!hits.hits">No results found.</div>
+
+  <!-- Search pager if the provider supports it -->
+  <search-pager></search-pager>
+</div>
+

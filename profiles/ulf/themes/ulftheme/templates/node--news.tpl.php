@@ -99,11 +99,11 @@
         <div class="content--meta">
           <div class="block--default">
             <h2 class="block--header">
-              <?php print t('News'); ?>
+              <?php print t('Latest news'); ?>
             </h2>
             <div class="block--content">
               <div class="block--field-text">
-
+                <?php print render($latest_news_titles['content']); ?>
               </div>
             </div>
           </div>

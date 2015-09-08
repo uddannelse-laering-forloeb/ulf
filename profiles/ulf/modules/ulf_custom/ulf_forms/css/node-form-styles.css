@@ -8,6 +8,13 @@
     background-color: rgba(0,0,0,.6);
 }
 
+.fieldset-wrapper > .form-wrapper {
+    clear: left;
+}
+
+.fieldset-wrapper > .field-name-field-duration-unit {
+    clear: none;
+}
 
 .field-name-field-price,
 .field-name-field-unit-price,

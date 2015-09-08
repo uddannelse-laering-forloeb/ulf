@@ -99,78 +99,59 @@
   }
 }
 
-/* Teaser representing a content element. */
-.teaser--content {
-  margin-bottom: $spacing;
-  height: 160px;
+
+// Teaser display
+.teaser {
+  @extend %teaser--wrapper;
+
+  background: $white;
+  position: relative;
+}
+
+
+.teaser--header {
+  @extend %teaser--header;
+}
+
+
+.teaser--type {
+  @extend %teaser--type;
+}
+
+
+.teaser--content-header {
+  margin: 0 $spacing / 2 $spacing;
+  border-bottom: 2px solid black;
   width: 100%;
+  padding-bottom: $spacing / 2;
+}
 
-  @include breakpoint(450px) {
-    width: 50%;
-  }
 
-  @include breakpoint(800px) {
-    width: 25%;
-  }
+// Show 2 columns side by side
+.teaser--list.is-side-by-side {
+  margin: 0 $spacing / 2 2em;
 
-  &-header {
-    @extend %content--header-grouping;
-  }
+  // Stack until there is enough space to display them side by side
+  @media only screen and (min-width: 60em) {
+    @include display-flex;
+    @include flex-flow(row wrap);
+    @include justify-content(space-between);
 
-  &-inner {
-    @extend %teaser--inner;
-    @include strip-link-styles($black);
+    .teaser {
+      margin-bottom: 1em;
+      max-width: 49%;
 
-    // Change text background transparency when hovering on the teaser.
-    &:hover .teaser--content-text {
-      &.is-dagtilbud {
-        @include background-set-color('green', 1);
+      &:last-child {
+        margin-right: 0;
       }
-
-      &.is-grundskole {
-        @include background-set-color('purple', 1);
-      }
-
-      &.is-ungdomsuddannelse {
-        @include background-set-color('orange', 1);
-      }
-
-      &.is-course {
-        @include background-set-color('yellow', 1);
-      }
-    }
-  }
-
-  &-field {
-    height: 100%;
-  }
-
-  &-text {
-    @extend %content--header;
-    @include background-set-color('white', 0.7);
-
-    border-bottom: solid;
-    border-width: 4px;
-    padding-top: .8em;
-
-    &.is-dagtilbud {
-      border-color: $green;
-    }
-
-    &.is-grundskole {
-      border-color: $purple;
-    }
-
-    &.is-ungdomsuddannelse {
-      border-color: $orange;
-    }
-
-    &.is-course {
-      border-color: $yellow;
-    }
-
-    &-inner {
-      position: relative;
     }
   }
 }
+
+
+.teaser--list-button {
+  @extend .button;
+
+  margin: 0 auto;
+}
+

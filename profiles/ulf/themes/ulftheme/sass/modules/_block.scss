@@ -62,6 +62,10 @@
     float: left;
     margin-right: .5em;
   }
+
+  &.is-full-width {
+    width: 100%;
+  }
 }
 
 .block--field-text {
@@ -165,6 +169,10 @@
   .form-item {
     margin: 0 $spacing;
   }
+}
+
+.block--news-title-item {
+  width: 100%;
 }
 
 

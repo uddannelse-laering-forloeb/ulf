@@ -1,53 +1,19 @@
 <?php
+/**
+ * @file
+ * Adds the javascript need to search the sites content.
+ */
 
 /**
- * Implements hook_theme().
+ * Implements hook_preprocess_HOOK().
+ *
+ * Overrides/adds new Angular JS controller for the search field.
  */
-function ulf_search_theme() {
-  return array(
-    'search_widget' => array(
-      'variables' => array(),
-      'template' => 'templates/search-widget',
-    ),
-    'search_results' => array(
-      'variables' => array(),
-      'template' => 'templates/search-results',
-    ),
+function ulf_search_preprocess_search_node_page_search_box(&$variables) {
+  drupal_add_js(drupal_get_path('module', 'ulf_search') . '/js/search_box_controller.js', array(
+      'type' => 'file',
+      'scope' => 'footer',
+      'weight' => 7,
+    )
   );
-}
-
-
-/**
- * Implements hook_block_info().
- */
-function ulf_search_block_info() {
-  $blocks = array();
-  $blocks['search_widget'] = array(
-    'info' => t('ULF search widget'),
-  );
-  $blocks['search_results'] = array(
-    'info' => t('ULF search results'),
-  );
-
-  return $blocks;
-}
-
-
-/**
- * Implements hook_block_view().
- */
-function ulf_search_block_view($delta = '') {
-  $block = array();
-
-  switch($delta) {
-    case 'search_widget' :
-      $variables = array();
-      $block['content'] = theme('search_widget', $variables);
-      break;
-    case 'search_results' :
-      $variables = array();
-      $block['content'] = theme('search_results', $variables);
-      break;
-  }
-  return $block;
 }

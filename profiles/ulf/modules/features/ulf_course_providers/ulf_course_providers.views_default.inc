@@ -22,7 +22,7 @@ function ulf_course_providers_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'All organizers';
+  $handler->display->display_options['title'] = 'All courses';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -65,6 +65,12 @@ function ulf_course_providers_views_default_views() {
   $handler->display->display_options['fields']['field_profile_name']['label'] = '';
   $handler->display->display_options['fields']['field_profile_name']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_profile_name']['element_label_colon'] = FALSE;
+  /* Felt: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = 'Titel';
+  $handler->display->display_options['fields']['title']['exclude'] = TRUE;
   /* Felt: Content: Rendered Node */
   $handler->display->display_options['fields']['rendered_entity']['id'] = 'rendered_entity';
   $handler->display->display_options['fields']['rendered_entity']['table'] = 'views_entity_node';
@@ -95,13 +101,33 @@ function ulf_course_providers_views_default_views() {
     'course_educators' => 'course_educators',
     'course' => 'course',
   );
+  /* Filterkriterie: Global: Combine fields filter */
+  $handler->display->display_options['filters']['combine']['id'] = 'combine';
+  $handler->display->display_options['filters']['combine']['table'] = 'views';
+  $handler->display->display_options['filters']['combine']['field'] = 'combine';
+  $handler->display->display_options['filters']['combine']['operator'] = 'contains';
+  $handler->display->display_options['filters']['combine']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['combine']['expose']['operator_id'] = 'combine_op';
+  $handler->display->display_options['filters']['combine']['expose']['label'] = 'Søg på titel eller afsender';
+  $handler->display->display_options['filters']['combine']['expose']['operator'] = 'combine_op';
+  $handler->display->display_options['filters']['combine']['expose']['identifier'] = 'combine';
+  $handler->display->display_options['filters']['combine']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+  );
+  $handler->display->display_options['filters']['combine']['fields'] = array(
+    'field_profile_name' => 'field_profile_name',
+    'title' => 'title',
+  );
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'organizers';
   $translatables['ulf_all_organizers'] = array(
     t('Master'),
-    t('All organizers'),
+    t('All courses'),
     t('more'),
     t('Apply'),
     t('Reset'),
@@ -116,6 +142,8 @@ function ulf_course_providers_views_default_views() {
     t('næste ›'),
     t('sidste »'),
     t('forfatter'),
+    t('Titel'),
+    t('Søg på titel eller afsender'),
     t('Page'),
   );
   $export['ulf_all_organizers'] = $view;
@@ -139,7 +167,7 @@ function ulf_course_providers_views_default_views() {
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'some';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '4';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '0';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['style_options']['row_class'] = 'teaser--content';
