@@ -115,19 +115,6 @@
                 </div>
               <?php endif; ?>
               <?php /* If any of the fields in this wrapper contain data */ ?>
-              <?php if ($field_period_full_year['0']['value'] == 0 || $field_price || $field_free['0']['value'] == 1) : ?>
-              <div class="block--field-wrapper">
-                <?php if ($field_period_full_year['0']['value'] == 0 ) : ?>
-                  <?php print render($content['field_period']); ?>
-                <?php endif;?>
-                <?php if ($field_free['0']['value'] == 0 ) : ?>
-                  <div class="block--field-label"><?php print t('Price');?></div>
-                  <?php print render($content['field_price']); ?>
-                <?php else : ?>
-                  <div class="block--field-label"><?php print t('This course is free.');?></div>
-                <?php endif;?>
-              </div>
-              <?php endif;?>
               <?php if ($field_relevance_primary_school || $field_relevance_upper_school || $field_relevance_educators) : ?>
                 <div class="block--field-wrapper">
                   <?php print render($content['field_relevance_primary_school']); ?>
