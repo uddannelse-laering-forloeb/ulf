@@ -67,6 +67,12 @@ class UlfCoursesMigration extends DrupalNode7Migration {
     $this->addFieldMapping('field_purpose:format')
       ->defaultValue('editor');
 
+    $this->addFieldMapping('field_period')
+      ->defaultValue(time());
+    $this->addFieldMapping('field_period:to')
+      ->defaultValue(1893456000);
+
+
     $this->addSimpleMappings(array(
       'field_activities',
       'field_activities:format',
