@@ -92,6 +92,7 @@
   @include flex-direction(row);
 }
 
+
 .footer--eu-compliance-text {
   color: $white;
   text-align: left;
@@ -113,5 +114,37 @@
   .button {
     margin: $spacing /2;
     padding: .2em .8em;
+  }
+}
+
+
+// Sometimes the template is not rendered so we style the module html as well.
+// Horrible nesting.
+#sliding-popup {
+
+  .popup-content {
+    max-width: $layout-max-width;
+    padding: 0 $spacing;
+    box-sizing: border-box;
+
+    #popup-text {
+      padding-top: 1em;
+    }
+
+    #popup-buttons {
+      padding: 1em 0;
+
+      button {
+        background: $dark-blue;
+        border: 0;
+        box-shadow: none;
+        color: $white;
+        text-shadow: none;
+
+        &:hover {
+          background: $dark-blue;
+        }
+      }
+    }
   }
 }

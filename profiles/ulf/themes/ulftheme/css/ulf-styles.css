@@ -995,6 +995,23 @@ body {
     margin: 8px;
     padding: .2em .8em; }
 
+#sliding-popup .popup-content {
+  max-width: 1000px;
+  padding: 0 16px;
+  box-sizing: border-box; }
+  #sliding-popup .popup-content #popup-text {
+    padding-top: 1em; }
+  #sliding-popup .popup-content #popup-buttons {
+    padding: 1em 0; }
+    #sliding-popup .popup-content #popup-buttons button {
+      background: #17858c;
+      border: 0;
+      box-shadow: none;
+      color: #fff;
+      text-shadow: none; }
+      #sliding-popup .popup-content #popup-buttons button:hover {
+        background: #17858c; }
+
 /**
  *
  * Field module.
