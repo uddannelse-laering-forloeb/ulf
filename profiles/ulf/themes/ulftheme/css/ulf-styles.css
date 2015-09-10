@@ -592,7 +592,8 @@ textarea {
   -ms-flex-pack: justify;
   -webkit-justify-content: space-between;
   -moz-justify-content: space-between;
-  justify-content: space-between; }
+  justify-content: space-between;
+  min-width: 0px; }
 
 .teaser, .search-results--result {
   display: -webkit-box;
