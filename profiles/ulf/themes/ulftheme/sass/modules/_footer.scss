@@ -15,6 +15,7 @@
   color: $white;
   min-height: 15em;
 
+
   &--inner {
     margin: 0 auto;
     max-width: $layout-max-width;
@@ -23,6 +24,7 @@
     @include flex-wrap(wrap);
     @include flex-direction(row);
   }
+
 
   &--block {
     padding: 2em 0;
@@ -34,13 +36,14 @@
     }
   }
 
+
   &--block-inner {
     overflow: hidden;
     padding: 0 $spacing / 2;
   }
 
-  // Content elements in footer is editable by editors. We set some defaults.
 
+  // Content elements in footer is editable by editors. We set some defaults.
   hr {
     border-color: $white;
   }
@@ -66,6 +69,7 @@
   th {
     padding: .5em 1em;
   }
+
 
   &--eu-compliance {
     height: 150px;

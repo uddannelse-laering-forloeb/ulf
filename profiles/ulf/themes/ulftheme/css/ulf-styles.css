@@ -425,8 +425,6 @@ textarea {
  * "We can't stop here. This is bat country!!"
  *
  */
-/* Placholders, variables and mixins related to this document only.
-================================================================================================================== */
 /* Styles.
 ================================================================================================================== */
 .tabs {
@@ -488,8 +486,6 @@ textarea {
  * "We can't stop here. This is bat country!!"
  *
  */
-/* Placholders, variables and mixins related to this document only.
-================================================================================================================== */
 /* Styles.
 ================================================================================================================== */
 .pager {
@@ -561,8 +557,13 @@ textarea {
 /* Styles
    ========================================================================== */
 /**
- * Contains global placeholders for use across the site
+ * Global patters.
+ *
+ * Contains global patterns for use across the site
+ *
  */
+/* Styles
+   ========================================================================== */
 .field--title, .teaser--group-text {
   bottom: 0;
   box-sizing: border-box;
@@ -610,11 +611,11 @@ textarea {
   -ms-flex: 0 1 100%;
   flex: 0 1 100%;
   min-width: 0;
-  border-bottom: solid;
-  border-width: 6px;
   box-sizing: border-box;
+  padding: 1em;
   margin-bottom: 2em;
-  padding: 1em; }
+  border-bottom: solid;
+  border-width: 6px; }
   .is-dagtilbud.teaser, .is-dagtilbud.search-results--result {
     background-color: rgba(164, 218, 32, 0.1);
     border-color: #a4da20; }
@@ -636,8 +637,6 @@ textarea {
       -ms-flex: 0 1 49%;
       flex: 0 1 49%; } }
   .teaser header, .search-results--result header {
-    padding: 0 16px 16px;
-    box-sizing: border-box;
     -webkit-box-ordinal-group: 3;
     -webkit-order: 2;
     -moz-order: 2;
@@ -648,7 +647,9 @@ textarea {
     -moz-box-flex: 0;
     -moz-flex: 0 1 auto;
     -ms-flex: 0 1 auto;
-    flex: 0 1 auto; }
+    flex: 0 1 auto;
+    padding: 0 16px 16px;
+    box-sizing: border-box; }
   .teaser figure, .search-results--result figure {
     min-width: 0px;
     -webkit-box-ordinal-group: 2;
@@ -1097,7 +1098,7 @@ body {
 /* Styles.
 ================================================================================================================== */
 .field {
-  /* Display: of node title. */
+  /* Display of node title. */
   /* Display of field collections in main content. */
   /* Video display. */ }
   .field--title {
@@ -1225,7 +1226,7 @@ body {
     width: 100%; }
 
 .teaser--content-header {
-  background-color: #ededed;
+  background-color: #b3b3b3;
   margin: 0 0 16px;
   padding: 1em 8px;
   text-transform: capitalize;

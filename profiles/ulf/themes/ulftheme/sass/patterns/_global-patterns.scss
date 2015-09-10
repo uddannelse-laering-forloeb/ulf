@@ -1,8 +1,13 @@
 /**
- * Contains global placeholders for use across the site
+ * Global patters.
+ *
+ * Contains global patterns for use across the site
+ *
  */
 
 
+/* Styles
+   ========================================================================== */
 
 // Header used for content and teasers
 %content--header {
@@ -24,13 +29,14 @@
 }
 
 
+// Teaser styles
 %teaser--list {
   @include flexbox;
   @include flex-flow(row wrap);
   @include justify-content(space-between);
 }
 
-// Teaser styles
+
 %teaser--wrapper {
   @include flexbox;
   @include flex-flow(row nowrap);
@@ -38,12 +44,12 @@
   @include flex(0 1 100%);
 
   min-width: 0; // To allow image shrink.
+  box-sizing: border-box;
+  padding: $boxlist-padding;
+  margin-bottom: 2em;
 
   border-bottom: solid;
   border-width: 6px;
-  box-sizing: border-box;
-  margin-bottom: 2em;
-  padding: $boxlist-padding;
 
 
   &.is-dagtilbud {
@@ -71,11 +77,11 @@
   }
 
   header {
-    padding: 0 $spacing $spacing;
-    box-sizing: border-box;
-
     @include order(2);
     @include flex(0 1 auto);
+
+    padding: 0 $spacing $spacing;
+    box-sizing: border-box;
   }
 
   figure {

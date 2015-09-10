@@ -391,7 +391,7 @@ function ulf_item_list($variables) {
     }
     $output .= "</$type>";
   }
-  
+
   return $output;
 }
 
