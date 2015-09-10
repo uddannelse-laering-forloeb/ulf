@@ -81,6 +81,7 @@ function ulf_search_settings_default_page_manager_pages() {
       'override_title_text' => '',
       'override_title_heading' => 'h2',
       'search_node' => array(
+        'id' => '1441278884',
         'server' => 'search_node',
         'index' => 'courses',
         'options' => array(
@@ -233,6 +234,7 @@ function ulf_search_settings_default_page_manager_pages() {
     $pane->access = array();
     $pane->configuration = array(
       'search_node' => array(
+        'id' => '1441278867',
         'server' => 'search_node',
         'index' => 'courses',
         'options' => array(
@@ -253,21 +255,32 @@ function ulf_search_settings_default_page_manager_pages() {
           ),
           'filters' => array(
             'field_educational_goals' => 'field_educational_goals',
+            'field_offer_type' => 'field_offer_type',
+            'field_subject' => 'field_subject',
             'field_subjects_primary_school' => 'field_subjects_primary_school',
             'field_subjects_youth' => 'field_subjects_youth',
+            'field_target_group' => 'field_target_group',
             'field_target_group_sub' => 'field_target_group_sub',
-            'field_offer_type' => 0,
-            'field_subject' => 0,
-            'field_target_group' => 0,
+          ),
+        ),
+        'intervals' => array(
+          'fields' => array(
+            'created' => 'created',
+            'field_period:value' => 'field_period:value',
+            'changed' => 0,
+            'field_free' => 0,
+            'field_full_description:value' => 0,
+            'field_image:file' => 0,
+            'field_price' => 0,
+            'nid' => 0,
+            'search_api_language' => 0,
+            'title' => 0,
+            'type' => 0,
           ),
         ),
         'forces' => array(
-          'field' => 'field_target_group',
-          'selected' => array(
-            'Grundskole' => 'Grundskole',
-            'Ungdomsuddannelse' => 0,
-            'Dagtilbud' => 0,
-          ),
+          'field' => '_none_',
+          'selected' => array(),
         ),
         'templates' => array(
           'box' => '/profiles/ulf/themes/ulftheme/templates/search/angular/search-school.html',
