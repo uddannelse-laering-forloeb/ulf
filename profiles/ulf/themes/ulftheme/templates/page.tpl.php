@@ -114,7 +114,7 @@
       <?php print render($page['content']); ?>
     <?php else: ?>
       <div class="page--header">
-        <h1><?php print $title; ?></h1>
+        <h1><?php print t($title); ?></h1>
       </div>
       <div class="page--content">
         <?php if ($tabs): ?>
