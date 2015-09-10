@@ -89,6 +89,7 @@
           <?php print render($content['field_image']); ?>
         </div>
         <div class="content--main">
+          <p class="teaser--type">d. <?php print format_date($created, 'dmy'); ?></p>
           <?php
           // We hide the comments and links now so that we can render them later.
           hide($content['comments']);

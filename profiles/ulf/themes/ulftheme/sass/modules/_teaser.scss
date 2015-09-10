@@ -100,7 +100,22 @@
 }
 
 
-// Teaser display
+// Header above a list of teaser.
+.teaser--content-header {
+  background-color: #ededed;
+  margin: 0 0 $spacing;
+  padding: 1em $spacing / 2;
+  text-transform: capitalize;
+  width: 100%;
+}
+
+
+.teaser--list {
+  @extend %teaser--list;
+}
+
+
+// Teaser display.
 .teaser {
   @extend %teaser--wrapper;
 
@@ -119,35 +134,6 @@
 }
 
 
-.teaser--content-header {
-  background-color: #ededed;
-  margin: 0 $spacing / 2 $spacing;
-  padding: 1em $spacing / 2;
-  text-transform: capitalize;
-  width: 100%;
-}
-
-
-// Show 2 columns side by side
-.teaser--list.is-side-by-side {
-  margin: 0 $spacing / 2 2em;
-
-  // Stack until there is enough space to display them side by side
-  @media only screen and (min-width: 60em) {
-    @include display-flex;
-    @include flex-flow(row wrap);
-    @include justify-content(space-between);
-
-    .teaser {
-      margin-bottom: 1em;
-      max-width: 49%;
-
-      &:last-child {
-        margin-right: 0;
-      }
-    }
-  }
-}
 
 
 .teaser--list-button {

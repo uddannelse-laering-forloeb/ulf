@@ -10,7 +10,7 @@
 <?php if (!empty($title)): ?>
   <h3 class="teaser--content-header"><?php print $title; ?></h3>
 <?php endif; ?>
-<div class="teaser--list is-side-by-side">
+<div class="teaser--list">
   <?php foreach ($rows as $id => $row): ?>
     <?php print $row; ?>
   <?php endforeach; ?>

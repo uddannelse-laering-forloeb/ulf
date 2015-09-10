@@ -83,6 +83,7 @@ function ulf_preprocess_node(&$variables) {
     // Set teaser text.
     if ($variables['type'] == 'news') {
       $variables['teaser_content'] = ulf_teaser_filter($variables['content']['field_teaser']['0']['#markup']);
+      $variables['theme_hook_suggestions'][] = 'node__news_teaser';
     }
     else {
       $variables['teaser_content'] = ulf_teaser_filter($variables['content']['field_full_description']['0']['#markup']);
@@ -102,10 +103,12 @@ function ulf_preprocess_node(&$variables) {
           $term = $variables['field_target_group']['und']['0']['tid'];
         }
         else {
-          $term = $variables['field_target_group']['0']['taxonomy_term'];
+          if (isset($variables['field_target_group']['0'])) {
+            $term = $variables['field_target_group']['0']['taxonomy_term'];
+          }
         }
 
-        if ($term) {
+        if (isset($term)) {
           $term_wrapper = entity_metadata_wrapper('taxonomy_term', $term);
           $variables['group_type'] = strtolower($term_wrapper->name->value());
         }
