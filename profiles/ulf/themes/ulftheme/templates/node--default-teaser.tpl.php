@@ -81,21 +81,25 @@
 ?>
 <article class="teaser is-<?php print $group_type; ?>">
   <?php if ($type == 'course') : ?>
-    <?php if ($content['field_free']['#items']['0']['value'] == 1) : ?>
-      <div class="ribbon-wrapper left">
-        <div class="ribbon">
-          <a href="/node/<?php print $nid; ?>"><?php print t('Free'); ?></a>
+    <?php if (isset($content['field_free'])) : ?>
+      <?php if ($content['field_free']['#items']['0']['value'] == 1) : ?>
+        <div class="ribbon-wrapper left">
+          <div class="ribbon">
+            <a href="/node/<?php print $nid; ?>"><?php print t('Free'); ?></a>
+          </div>
         </div>
-      </div>
+      <?php endif;?>
     <?php endif;?>
   <?php endif;?>
   <header>
     <h2 class="teaser--header"><a href="/node/<?php print $nid; ?>"><?php print render($title); ?></a></h2>
     <?php if ($type == 'course') : ?>
-      <?php if ($content['field_period_full_year']['#items']['0']['value'] == 1) : ?>
+      <?php if (isset($content['field_period_full_year']) && $content['field_period_full_year']['#items']['0']['value'] == 1) : ?>
         <p class="teaser--type"><?php print t('Period'); ?>: <?php print t('All year'); ?></p>
       <?php else : ?>
-        <p class="teaser--type"><?php print t('Period'); ?>:<?php print render($content['field_period']); ?></p>
+        <?php if (isset($content['field_period_full_year'])) : ?>
+          <p class="teaser--type"><?php print t('Period'); ?>:<?php print render($content['field_period']); ?></p>
+        <?php endif; ?>
       <?php endif; ?>
     <?php endif;?>
     <p><?php print $teaser_content; ?></p>
