@@ -5,7 +5,13 @@
 
 
 /* Compass */
-@import "compass/css3";
+@import "compass/css3/box-sizing";
+@import "compass/css3/border-radius";
+@import "compass/css3/animation";
+@import "compass/css3/transform";
+@import "compass/css3/box-shadow";
+@import "compass/css3/text-shadow";
+
 
 
 // Override with theme vars
@@ -19,6 +25,12 @@
 @import "base/_form";
 
 
+// Theme
+@import "theme/_flexbox";
+@import "theme/_tabs";
+@import "theme/_pager";
+@import "theme/_fonts";
+
 
 // Placeholder and mixins
 @import "patterns/_global-mixins";
@@ -27,10 +39,6 @@
 
 
 
-// Theme
-@import "theme/_tabs";
-@import "theme/_pager";
-@import "theme/_fonts";
 
 
 // Layout
@@ -38,6 +46,7 @@
 
 
 // Module
+@import "modules/_flexbox-example";
 @import "modules/_header";
 @import "modules/_footer";
 @import "modules/_field";

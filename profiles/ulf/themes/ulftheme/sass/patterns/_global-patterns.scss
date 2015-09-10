@@ -25,7 +25,7 @@
 
 
 %teaser--wrapper {
-  @include display-flex;
+  @include flexbox;
   @include flex-flow(row nowrap);
 
   border-bottom: solid;
@@ -56,11 +56,13 @@
 
   header,
   figure {
-    width: 100%;
+    width: auto;
   }
 
   header {
     @include order(2);
+
+    @include flex-shrink(1);
 
     padding: $boxlist-padding;
   }
@@ -71,13 +73,17 @@
     display: block;
     margin-bottom: 0;
 
-    @include flex-basis(120px);
+    min-width: 80px;
+
+    @include flex-basis(80px);
     @include flex-grow(0);
   }
 
   @media only screen and (min-width: 30em) {
     figure {
-      @include flex-basis(200px);
+      min-width: 120px;
+
+      @include flex-basis(120px);
     }
   }
 }

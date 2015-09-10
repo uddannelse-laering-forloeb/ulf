@@ -19,7 +19,7 @@
     margin: 0 auto;
     max-width: $layout-max-width;
 
-    @include display-flex;
+    @include flexbox;
     @include flex-wrap(wrap);
     @include flex-direction(row);
   }
@@ -86,7 +86,7 @@
 
   @include vertical-center();
 
-  @include display-flex;
+  @include flexbox;
   @include justify-content(space-between);
   @include flex-wrap(wrap);
   @include flex-direction(row);

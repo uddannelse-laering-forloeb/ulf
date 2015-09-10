@@ -419,222 +419,6 @@ textarea {
 
 /**
  *
- * Global mixins.
- *
- * Contains global mixins for use across the site.
- *
- */
-/* Styles
-   ========================================================================== */
-/**
- * Contains global placeholders for use across the site
- */
-.field--title, .teaser--group-text {
-  bottom: 0;
-  box-sizing: border-box;
-  font-size: 1.45em;
-  padding: 0 .5em;
-  position: absolute;
-  width: 100%; }
-
-.content--header-grouping {
-  border-bottom: 1px solid #000;
-  margin: 16px 8px 16px;
-  width: 100%;
-  text-transform: capitalize; }
-
-.teaser, .search-results--result {
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-flow: row nowrap;
-  flex-flow: row nowrap;
-  border-bottom: solid;
-  border-width: 6px;
-  box-sizing: border-box;
-  margin-bottom: 2em;
-  padding: 1em; }
-  .is-dagtilbud.teaser, .is-dagtilbud.search-results--result {
-    background-color: rgba(164, 218, 32, 0.1);
-    border-color: #a4da20; }
-  .is-grundskole.teaser, .is-grundskole.search-results--result {
-    background-color: rgba(144, 29, 124, 0.1);
-    border-color: #901d7c; }
-  .is-ungdomsuddannelse.teaser, .is-ungdomsuddannelse.search-results--result {
-    background-color: rgba(255, 104, 0, 0.1);
-    border-color: #ff6800; }
-  .is-course.teaser, .is-course.search-results--result {
-    background-color: rgba(237, 215, 28, 0.1);
-    border-color: #edd71c; }
-  .teaser header, .search-results--result header,
-  .teaser figure,
-  .search-results--result figure {
-    width: 100%; }
-  .teaser header, .search-results--result header {
-    -webkit-order: 2;
-    order: 2;
-    padding: 1em; }
-  .teaser figure, .search-results--result figure {
-    -webkit-order: 1;
-    order: 1;
-    display: block;
-    margin-bottom: 0;
-    -webkit-flex-basis: 120px;
-    flex-basis: 120px;
-    -webkit-flex-grow: 0;
-    flex-grow: 0; }
-  @media only screen and (min-width: 30em) {
-    .teaser figure, .search-results--result figure {
-      -webkit-flex-basis: 200px;
-      flex-basis: 200px; } }
-
-.teaser--header, .search-results--header {
-  margin-top: 0;
-  margin-bottom: .5em; }
-  .teaser--header a:link, .search-results--header a:link {
-    color: inherit;
-    text-decoration: none; }
-  .teaser--header a:visited, .search-results--header a:visited {
-    color: inherit;
-    text-decoration: none; }
-  .teaser--header a:hover, .search-results--header a:hover {
-    color: inherit;
-    text-decoration: none; }
-  .teaser--header a:focus, .search-results--header a:focus {
-    color: inherit;
-    text-decoration: none; }
-
-.teaser--type, .search-results--type {
-  color: rgba(0, 0, 0, 0.5); }
-
-.search-results--type:last-child {
-  margin-bottom: 0; }
-
-/**
- *
- * Ribbon module.
- *
- * http://simonwhitaker.github.io/ribbon-css/
- * Slightly modified for ulf
- *
- */
-/* Styles
-================================================================================================================== */
-.is-dagtilbud .ribbon {
-  background: #a4da20; }
-
-.is-grundskole .ribbon {
-  background: #901d7c; }
-
-.is-ungdomsuddannelse .ribbon {
-  background: #ff6800; }
-
-/* Left will inherit from right (so we don't need to duplicate code) */
-.ribbon {
-  /* The right and left classes determine the side we attach our banner to */
-  position: absolute;
-  /* Add a bit of padding to give some substance outside the "stitching" */
-  padding: 2px 0;
-  /* Set a gradient: transparent black at the top to almost-transparent black at the bottom */
-  background-image: -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(0, 0, 0, 0.15)));
-  background-image: -webkit-linear-gradient(top, transparent, rgba(0, 0, 0, 0.15));
-  background-image: -moz-linear-gradient(top, transparent, rgba(0, 0, 0, 0.15));
-  background-image: -ms-linear-gradient(top, transparent, rgba(0, 0, 0, 0.15));
-  background-image: -o-linear-gradient(top, transparent, rgba(0, 0, 0, 0.15));
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.15));
-  /* Add a drop shadow */
-  -webkit-box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.5);
-  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.5);
-  z-index: 1;
-  pointer-events: auto; }
-
-.ribbon a,
-.ribbon a:hover {
-  /* Set the text properties */
-  color: #fff;
-  text-decoration: none;
-  text-align: center;
-  /* Set the geometry. If you fiddle with these you'll also need
-     to tweak the top and right values in .ribbon. */
-  width: 200px;
-  line-height: 20px;
-  /* Set the layout properties */
-  display: inline-block;
-  padding: 2px 0;
-  /* Add "stitching" effect */
-  border-width: 1px 0;
-  border-style: dotted;
-  border-color: #fff;
-  border-color: rgba(255, 255, 255, 0.7); }
-
-.ribbon-wrapper {
-  width: 150px;
-  height: 150px;
-  position: absolute;
-  overflow: hidden;
-  top: 0;
-  z-index: 1;
-  pointer-events: none; }
-
-.ribbon-wrapper.fixed {
-  position: fixed; }
-
-.ribbon-wrapper.left {
-  left: 0; }
-
-.ribbon-wrapper.right {
-  right: 0; }
-
-.ribbon-wrapper.left-bottom {
-  position: fixed;
-  top: inherit;
-  bottom: 0;
-  left: 0; }
-
-.ribbon-wrapper.right-bottom {
-  position: fixed;
-  top: inherit;
-  bottom: 0;
-  right: 0; }
-
-.ribbon-wrapper.right .ribbon {
-  top: 42px;
-  right: -43px;
-  -webkit-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  -o-transform: rotate(45deg);
-  transform: rotate(45deg); }
-
-.ribbon-wrapper.left .ribbon {
-  top: 22px;
-  left: -63px;
-  -webkit-transform: rotate(-45deg);
-  -moz-transform: rotate(-45deg);
-  -ms-transform: rotate(-45deg);
-  -o-transform: rotate(-45deg);
-  transform: rotate(-45deg); }
-
-.ribbon-wrapper.left-bottom .ribbon {
-  top: 80px;
-  left: -43px;
-  -webkit-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  -o-transform: rotate(45deg);
-  transform: rotate(45deg); }
-
-.ribbon-wrapper.right-bottom .ribbon {
-  top: 80px;
-  right: -43px;
-  -webkit-transform: rotate(-45deg);
-  -moz-transform: rotate(-45deg);
-  -ms-transform: rotate(-45deg);
-  -o-transform: rotate(-45deg);
-  transform: rotate(-45deg); }
-
-/**
- *
  * Tabs
  *
  * Tabs use Drupals default html, thus we nest the list items and links here.
@@ -743,6 +527,9 @@ textarea {
     cursor: default;
     text-decoration: none; }
 
+.element-invisible {
+  display: none; }
+
 /**
  *
  * Font definitions
@@ -764,6 +551,246 @@ textarea {
   src: url("../fonts/Asap-Italic.ttf");
   /* Pretty Modern Browsers */
   font-style: italic; }
+/**
+ *
+ * Global mixins.
+ *
+ * Contains global mixins for use across the site.
+ *
+ */
+/* Styles
+   ========================================================================== */
+/**
+ * Contains global placeholders for use across the site
+ */
+.field--title, .teaser--group-text {
+  bottom: 0;
+  box-sizing: border-box;
+  font-size: 1.45em;
+  padding: 0 .5em;
+  position: absolute;
+  width: 100%; }
+
+.content--header-grouping {
+  border-bottom: 1px solid #000;
+  margin: 16px 8px 16px;
+  width: 100%;
+  text-transform: capitalize; }
+
+.teaser, .search-results--result {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row nowrap;
+  -moz-flex-flow: row nowrap;
+  -ms-flex-flow: row nowrap;
+  flex-flow: row nowrap;
+  border-bottom: solid;
+  border-width: 6px;
+  box-sizing: border-box;
+  margin-bottom: 2em;
+  padding: 1em; }
+  .is-dagtilbud.teaser, .is-dagtilbud.search-results--result {
+    background-color: rgba(164, 218, 32, 0.1);
+    border-color: #a4da20; }
+  .is-grundskole.teaser, .is-grundskole.search-results--result {
+    background-color: rgba(144, 29, 124, 0.1);
+    border-color: #901d7c; }
+  .is-ungdomsuddannelse.teaser, .is-ungdomsuddannelse.search-results--result {
+    background-color: rgba(255, 104, 0, 0.1);
+    border-color: #ff6800; }
+  .is-course.teaser, .is-course.search-results--result {
+    background-color: rgba(237, 215, 28, 0.1);
+    border-color: #edd71c; }
+  .teaser header, .search-results--result header,
+  .teaser figure,
+  .search-results--result figure {
+    width: auto; }
+  .teaser header, .search-results--result header {
+    -webkit-box-ordinal-group: 3;
+    -webkit-order: 2;
+    -moz-order: 2;
+    -ms-flex-order: 2;
+    order: 2;
+    -webkit-flex-shrink: 1;
+    -moz-flex-shrink: 1;
+    -ms-flex-negative: 1;
+    flex-shrink: 1;
+    padding: 1em; }
+  .teaser figure, .search-results--result figure {
+    -webkit-box-ordinal-group: 2;
+    -webkit-order: 1;
+    -moz-order: 1;
+    -ms-flex-order: 1;
+    order: 1;
+    display: block;
+    margin-bottom: 0;
+    min-width: 80px;
+    -webkit-flex-basis: 80px;
+    -moz-flex-basis: 80px;
+    -ms-flex-preferred-size: 80px;
+    flex-basis: 80px;
+    -webkit-box-flex: 0;
+    -webkit-flex-grow: 0;
+    -moz-flex-grow: 0;
+    -ms-flex-positive: 0;
+    flex-grow: 0; }
+  @media only screen and (min-width: 30em) {
+    .teaser figure, .search-results--result figure {
+      min-width: 120px;
+      -webkit-flex-basis: 120px;
+      -moz-flex-basis: 120px;
+      -ms-flex-preferred-size: 120px;
+      flex-basis: 120px; } }
+
+.teaser--header, .search-results--header {
+  margin-top: 0;
+  margin-bottom: .5em; }
+  .teaser--header a:link, .search-results--header a:link {
+    color: inherit;
+    text-decoration: none; }
+  .teaser--header a:visited, .search-results--header a:visited {
+    color: inherit;
+    text-decoration: none; }
+  .teaser--header a:hover, .search-results--header a:hover {
+    color: inherit;
+    text-decoration: none; }
+  .teaser--header a:focus, .search-results--header a:focus {
+    color: inherit;
+    text-decoration: none; }
+
+.teaser--type, .search-results--type {
+  color: rgba(0, 0, 0, 0.5); }
+
+.search-results--type:last-child {
+  margin-bottom: 0; }
+
+/**
+ *
+ * Ribbon module.
+ *
+ * http://simonwhitaker.github.io/ribbon-css/
+ * Slightly modified for ulf
+ *
+ */
+/* Styles
+================================================================================================================== */
+.is-dagtilbud .ribbon {
+  background: #a4da20; }
+
+.is-grundskole .ribbon {
+  background: #901d7c; }
+
+.is-ungdomsuddannelse .ribbon {
+  background: #ff6800; }
+
+/* Left will inherit from right (so we don't need to duplicate code) */
+.ribbon {
+  /* The right and left classes determine the side we attach our banner to */
+  position: absolute;
+  /* Add a bit of padding to give some substance outside the "stitching" */
+  padding: 2px 0;
+  /* Set a gradient: transparent black at the top to almost-transparent black at the bottom */
+  background-image: -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(0, 0, 0, 0.15)));
+  background-image: -webkit-linear-gradient(top, transparent, rgba(0, 0, 0, 0.15));
+  background-image: -moz-linear-gradient(top, transparent, rgba(0, 0, 0, 0.15));
+  background-image: -ms-linear-gradient(top, transparent, rgba(0, 0, 0, 0.15));
+  background-image: -o-linear-gradient(top, transparent, rgba(0, 0, 0, 0.15));
+  background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.15));
+  /* Add a drop shadow */
+  -webkit-box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.5);
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  pointer-events: auto; }
+
+.ribbon a,
+.ribbon a:hover {
+  /* Set the text properties */
+  color: #fff;
+  text-decoration: none;
+  text-align: center;
+  /* Set the geometry. If you fiddle with these you'll also need
+     to tweak the top and right values in .ribbon. */
+  width: 200px;
+  line-height: 20px;
+  /* Set the layout properties */
+  display: inline-block;
+  padding: 2px 0;
+  /* Add "stitching" effect */
+  border-width: 1px 0;
+  border-style: dotted;
+  border-color: #fff;
+  border-color: rgba(255, 255, 255, 0.7); }
+
+.ribbon-wrapper {
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  z-index: 1;
+  pointer-events: none; }
+
+.ribbon-wrapper.fixed {
+  position: fixed; }
+
+.ribbon-wrapper.left {
+  left: 0; }
+
+.ribbon-wrapper.right {
+  right: 0; }
+
+.ribbon-wrapper.left-bottom {
+  position: fixed;
+  top: inherit;
+  bottom: 0;
+  left: 0; }
+
+.ribbon-wrapper.right-bottom {
+  position: fixed;
+  top: inherit;
+  bottom: 0;
+  right: 0; }
+
+.ribbon-wrapper.right .ribbon {
+  top: 42px;
+  right: -43px;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg); }
+
+.ribbon-wrapper.left .ribbon {
+  top: 22px;
+  left: -63px;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg); }
+
+.ribbon-wrapper.left-bottom .ribbon {
+  top: 80px;
+  left: -43px;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg); }
+
+.ribbon-wrapper.right-bottom .ribbon {
+  top: 80px;
+  right: -43px;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg); }
+
 /**
  *
  * Layouts
@@ -795,11 +822,20 @@ textarea {
   padding: 2em 0;
   position: relative;
   width: 100%;
+  display: -webkit-box;
   display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
   display: flex;
   -webkit-flex-wrap: wrap;
+  -moz-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: horizontal;
   -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  -ms-flex-direction: row;
   flex-direction: row; }
 
 /* Body
@@ -838,6 +874,68 @@ body {
 
 .layout-view-page .layout-element-alpha-inner {
   padding: 0; }
+
+.example--wrapper {
+  background: white;
+  max-width: 1000px;
+  margin: 0 auto; }
+
+.a {
+  background: red;
+  margin-bottom: 1em;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  -moz-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  -webkit-justify-content: space-between;
+  -moz-justify-content: space-between;
+  justify-content: space-between; }
+
+.b {
+  background: blue;
+  margin-bottom: 1em;
+  min-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  -moz-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  -webkit-justify-content: space-between;
+  -moz-justify-content: space-between;
+  justify-content: space-between;
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 1 33%;
+  -moz-box-flex: 0;
+  -moz-flex: 0 1 33%;
+  -ms-flex: 0 1 33%;
+  flex: 0 1 33%; }
+
+.c {
+  background: black;
+  box-sizing: border-box;
+  display: block;
+  margin-bottom: 1em;
+  min-width: 0;
+  padding: .5em;
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 1 33%;
+  -moz-box-flex: 0;
+  -moz-flex: 0 1 33%;
+  -ms-flex: 0 1 33%;
+  flex: 0 1 33%; }
 
 /**
  *
@@ -913,11 +1011,20 @@ body {
   .footer--inner {
     margin: 0 auto;
     max-width: 1000px;
+    display: -webkit-box;
     display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
     display: flex;
     -webkit-flex-wrap: wrap;
+    -moz-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: horizontal;
     -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    -ms-flex-direction: row;
     flex-direction: row; }
   .footer--block {
     padding: 2em 0;
@@ -969,13 +1076,25 @@ body {
   -ms-transform: translateY(-50%);
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
+  display: -webkit-box;
   display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   -webkit-justify-content: space-between;
+  -moz-justify-content: space-between;
   justify-content: space-between;
   -webkit-flex-wrap: wrap;
+  -moz-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: horizontal;
   -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  -ms-flex-direction: row;
   flex-direction: row; }
 
 .footer--eu-compliance-text {
@@ -1149,8 +1268,14 @@ body {
   .teaser--group-field img {
     width: 100%; }
 
+.teaser--wrapper {
+  display: block;
+  margin-bottom: 16px;
+  width: 49%; }
+
 .teaser {
   background: #fff;
+  height: 100%;
   position: relative; }
 
 .teaser--content-header {
@@ -1160,21 +1285,27 @@ body {
   text-transform: capitalize;
   width: 100%; }
 
-.teaser--list.is-side-by-side {
-  margin: 0 8px 2em; }
+.teaser--list {
+  margin: 0 8px 2em;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  -moz-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  -webkit-justify-content: space-between;
+  -moz-justify-content: space-between;
+  justify-content: space-between; }
   @media only screen and (min-width: 60em) {
-    .teaser--list.is-side-by-side {
-      display: -webkit-flex;
-      display: flex;
-      -webkit-flex-flow: row wrap;
-      flex-flow: row wrap;
-      -webkit-justify-content: space-between;
-      justify-content: space-between; }
-      .teaser--list.is-side-by-side .teaser {
-        margin-bottom: 1em;
-        max-width: 49%; }
-        .teaser--list.is-side-by-side .teaser:last-child {
-          margin-right: 0; } }
+    .teaser--list .teaser {
+      margin-bottom: 1em; }
+      .teaser--list .teaser:last-child {
+        margin-right: 0; } }
 
 .teaser--list-button {
   margin: 0 auto; }
@@ -1211,11 +1342,20 @@ body {
     border: 0;
     margin-bottom: 0; }
   .block--field-wrapper.is-inline {
+    display: -webkit-box;
     display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
     display: flex;
     -webkit-flex-wrap: wrap;
+    -moz-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: horizontal;
     -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    -ms-flex-direction: row;
     flex-direction: row; }
     .block--field-wrapper.is-inline .block--field-label,
     .block--field-wrapper.is-inline .block--field-text {
@@ -1282,7 +1422,10 @@ body {
     font-size: 1em; }
 
 .block--newsletter {
+  display: -webkit-box;
   display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
   display: flex;
   width: 100%; }
   @media only screen and (min-width: 650px) {
@@ -1516,13 +1659,25 @@ body {
 .content {
   margin: 0 8px;
   width: 100%;
+  display: -webkit-box;
   display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
   display: flex;
   -webkit-flex-wrap: wrap;
+  -moz-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: horizontal;
   -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  -ms-flex-direction: row;
   flex-direction: row;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   -webkit-justify-content: space-between;
+  -moz-justify-content: space-between;
   justify-content: space-between; }
   .content--image {
     margin-bottom: 32px;
@@ -1703,15 +1858,29 @@ body {
     max-width: 1000px;
     position: relative;
     z-index: 2;
+    display: -webkit-box;
     display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
     display: flex;
     -webkit-flex-wrap: wrap;
+    -moz-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: horizontal;
     -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    -ms-flex-direction: row;
     flex-direction: row;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     -webkit-justify-content: center;
+    -moz-justify-content: center;
     justify-content: center;
     -webkit-align-content: stretch;
+    -moz-align-content: stretch;
+    -ms-flex-line-pack: stretch;
     align-content: stretch; }
   .search--lock-overlay {
     display: none;
@@ -1743,14 +1912,28 @@ body {
       z-index: 2; }
   .search--filter-wrapper-inner {
     -webkit-align-content: stretch;
+    -moz-align-content: stretch;
+    -ms-flex-line-pack: stretch;
     align-content: stretch;
+    display: -webkit-box;
     display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
     display: flex;
     -webkit-flex-wrap: wrap;
+    -moz-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: horizontal;
     -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    -ms-flex-direction: row;
     flex-direction: row;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
     -webkit-justify-content: space-between;
+    -moz-justify-content: space-between;
     justify-content: space-between;
     background: rgba(0, 0, 0, 0.15);
     box-sizing: border-box;
@@ -1779,13 +1962,25 @@ body {
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%); }
   .search--filter-span {
+    display: -webkit-box;
     display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
     display: flex;
     -webkit-flex-wrap: wrap;
+    -moz-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: horizontal;
     -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    -ms-flex-direction: row;
     flex-direction: row;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
     -webkit-justify-content: space-between;
+    -moz-justify-content: space-between;
     justify-content: space-between;
     margin: 0 16px; }
     .search--filter-span-wrapper {
@@ -1917,11 +2112,19 @@ body {
 
 @media only screen and (min-width: 60em) {
   .search-results.is-side-by-side {
+    display: -webkit-box;
     display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
     display: flex;
     -webkit-flex-flow: row wrap;
+    -moz-flex-flow: row wrap;
+    -ms-flex-flow: row wrap;
     flex-flow: row wrap;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
     -webkit-justify-content: space-between;
+    -moz-justify-content: space-between;
     justify-content: space-between; }
     .search-results.is-side-by-side .search-results--result {
       margin-bottom: 1em;

@@ -14,7 +14,7 @@
   margin: 0 $spacing / 2;
   width: 100%;
 
-  @include display-flex;
+  @include flexbox;
   @include flex-wrap(wrap);
   @include flex-direction(row);
   @include justify-content(space-between);

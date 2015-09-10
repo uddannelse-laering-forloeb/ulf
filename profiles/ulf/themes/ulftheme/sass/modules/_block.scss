@@ -43,7 +43,7 @@
   }
 
   &.is-inline {
-    @include display-flex;
+    @include flexbox;
     @include flex-wrap(wrap);
     @include flex-direction(row);
 
@@ -124,7 +124,7 @@
 
 
 .block--newsletter {
-  @include display-flex;
+  @include flexbox;
 
   width: 100%;
 

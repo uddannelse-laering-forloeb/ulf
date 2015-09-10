@@ -55,7 +55,7 @@
     position: relative;
     z-index: 2;
 
-    @include display-flex;
+    @include flexbox;
     @include flex-wrap(wrap);
     @include flex-direction(row);
     @include justify-content(center);
@@ -110,7 +110,7 @@
   &--filter-wrapper-inner {
     // Display individual elements as flexboxes as well.
     @include align-content(stretch);
-    @include display-flex;
+    @include flexbox;
     @include flex-wrap(wrap);
     @include flex-direction(row);
     @include justify-content(space-between);
@@ -155,7 +155,7 @@
 
   // The span filter. Two text fields to span a value.
   &--filter-span {
-    @include display-flex;
+    @include flexbox;
     @include flex-wrap(wrap);
     @include flex-direction(row);
     @include justify-content(space-between);
@@ -337,7 +337,7 @@
 .search-results.is-side-by-side {
   // Stack until there is enough space to display them side by side
   @media only screen and (min-width: 60em) {
-    @include display-flex;
+    @include flexbox;
     @include flex-flow(row wrap);
     @include justify-content(space-between);
 
