@@ -78,12 +78,15 @@ class UlfCoursesEducationMigration extends DrupalNode7Migration {
 
     $this->addFieldMapping('field_course_contact_mail', 'field_contact_mail');
 
+
+    $this->addFieldMapping('field_full_description:format')->defaultValue('editor');
+    $this->addFieldMapping('field_full_description', 'field_full_description');
+
+
     $this->addSimpleMappings(array(
       'field_catering',
       'field_catering:format',
       'field_course_contact_name',
-      'field_full_description',
-      'field_full_description:format',
     ));
 
     $this->addUnmigratedDestinations(array(
@@ -110,6 +113,7 @@ class UlfCoursesEducationMigration extends DrupalNode7Migration {
       'field_image_media:width',
       'field_image_media:height',
       'field_image_media:language',
+      'field_full_description:language',
     ));
   }
 

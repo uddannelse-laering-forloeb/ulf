@@ -49,7 +49,6 @@ class UlfStaticMigration extends DrupalNode7Migration {
     $this->addFieldMapping('field_image:title', 'field_image_banner:title');
 
     $this->addFieldMapping('field_content:format')->defaultValue('editor');
-
     $this->addFieldMapping('field_content', 'body');
 
     $this->addUnmigratedSources(array(
