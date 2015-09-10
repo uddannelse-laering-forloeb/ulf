@@ -119,8 +119,8 @@
 .teaser {
   @extend %teaser--wrapper;
 
-  background: $white;
-  position: relative;
+  background: $white; // For news.
+  position: relative; // For ribbon to position correct.
 }
 
 
@@ -134,11 +134,9 @@
 }
 
 
-
-
 .teaser--list-button {
   @extend .button;
 
-  margin: 0 auto;
+  margin: 0 auto; // Center buttons.
 }
 

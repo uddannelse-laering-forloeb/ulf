@@ -34,8 +34,10 @@
 %teaser--wrapper {
   @include flexbox;
   @include flex-flow(row nowrap);
+
   @include flex(0 1 100%);
-  min-width: 0;
+
+  min-width: 0; // To allow image shrink.
 
   border-bottom: solid;
   border-width: 6px;
