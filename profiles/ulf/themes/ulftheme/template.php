@@ -2,6 +2,9 @@
 
 /**
  * Implements hook_preprocess_page().
+ *
+ * @param $variables
+ *   Available variables.
  */
 function ulf_preprocess_page(&$variables) {
   // Provide main menu as block for all pages.
@@ -11,6 +14,9 @@ function ulf_preprocess_page(&$variables) {
 
 /**
  * Implements hook_preprocess_layout().
+ *
+ * @param $variables
+ *   Available variables.
  */
 function ulf_preprocess_front_page(&$variables) {
   // Provide newsletter block for front page.
@@ -20,6 +26,12 @@ function ulf_preprocess_front_page(&$variables) {
 
 /**
  * Implements theme_menu_tree().
+ *
+ * @param $variables
+ *   Available variables.
+ *
+ * @return array
+ *  The menu tree array.
  */
 function ulf_menu_tree__main_menu ($variables) {
   // Strip default main menu tree of wrappers.
@@ -28,6 +40,12 @@ function ulf_menu_tree__main_menu ($variables) {
 
 /**
  * Implements theme_menu_tree().
+ *
+ * @param $variables
+ *   Available variables.
+ *
+ * @return array
+ *  The menu tree array.
  */
 function ulf_menu_tree__menu_about_ulf ($variables) {
   // Strip default main menu tree of wrappers.
@@ -38,6 +56,12 @@ function ulf_menu_tree__menu_about_ulf ($variables) {
 
 /**
  * Implements theme_menu_link().
+ *
+ * @param $variables
+ *  Available variables.
+ *
+ * @return string
+ *  HTML string for a list item.
  */
 function ulf_menu_link__main_menu($variables){
   $element = $variables['element'];
@@ -58,6 +82,7 @@ function ulf_menu_link__main_menu($variables){
       $element['#localized_options']['attributes']['class'][] = 'is-course';
       break;
     case 'Om ULF':
+      // Make Om ULF a dropdown.
       $menu_array = module_invoke('menu', 'block_view', 'menu-about-ulf');
       $element['#attributes']['class'][] = 'js-toggle-about';
       $sub_menu = '<div class="nav--sub js-about-menu is-hidden"><ul class="nav--static-pages is-menu">' . render($menu_array['content']) . '</ul></div>';
@@ -74,23 +99,26 @@ function ulf_menu_link__main_menu($variables){
 
 /**
  * Implements hook_preprocess_node().
+ *
+ * @param $variables
+ *   Available variables.
  */
 function ulf_preprocess_node(&$variables) {
   // Set default node teaser template.
   if ($variables['view_mode'] == 'teaser') {
     $variables['theme_hook_suggestions'][] = 'node__default_teaser';
 
-    // Set teaser text.
+    // Set teaser text and new teaser template suggestion for news.
     if ($variables['type'] == 'news') {
-      $variables['teaser_content'] = ulf_teaser_filter($variables['content']['field_teaser']['0']['#markup']);
+      $variables['teaser_content'] = _ulf_teaser_filter($variables['content']['field_teaser']['0']['#markup']);
       $variables['theme_hook_suggestions'][] = 'node__news_teaser';
     }
     else {
-      $variables['teaser_content'] = ulf_teaser_filter($variables['content']['field_full_description']['0']['#markup']);
+      $variables['teaser_content'] = _ulf_teaser_filter($variables['content']['field_full_description']['0']['#markup']);
     }
   }
 
-  // Set default group type.
+  // Set a default group type.
   $variables['group_type'] = 'course';
 
   // Provide variables for use in the different templates.
@@ -141,7 +169,7 @@ function ulf_preprocess_node(&$variables) {
   $author_wrapper = entity_metadata_wrapper('user', $variables['author']);
   $variables['profile_name'] = $author_wrapper->field_profile_name->value();
 
-  // Display author meta data on courses.
+  // Display author meta data for courses.
   if (($variables['type'] == 'course'|| $variables['type'] == 'course_educators') && ($variables['view_mode'] == 'full' || $variables['view_mode'] == 'print')) {
     $variables['profile_address'] = $author_wrapper->field_profile_address->value();
     $variables['profile_postal_code'] = $author_wrapper->field_profile_postal_code->value();
@@ -153,6 +181,9 @@ function ulf_preprocess_node(&$variables) {
 
 /**
  * Implements hook_preprocess_user_profile().
+ *
+ * @param $variables
+ *   Available variables.
  */
 function ulf_preprocess_user_profile(&$variables) {
   // Enable a view for user profile templates.
@@ -161,7 +192,10 @@ function ulf_preprocess_user_profile(&$variables) {
 
 
 /**
- * Override or insert variables into the field template.
+ * Implements hook_preprocess_field().
+ *
+ * @param $variables
+ *   Available variables.
  */
 function ulf_preprocess_field(&$variables) {
   // Some fields need all their html stripped, and want only the field value shown. We add a template for that.
@@ -178,10 +212,10 @@ function ulf_preprocess_field(&$variables) {
     $stripped_template[] = 'field_period';
   }
 
+  // Provide template suggestion for stripped fields.
   if (in_array($variables['element']['#field_name'], $stripped_template)) {
     $variables['theme_hook_suggestions'][] = 'field__stripped';
   }
-
 
   // Some fields should be displayed with label and content inline.
   $inline_template = array(
@@ -209,8 +243,10 @@ function ulf_preprocess_field(&$variables) {
 
 
 /**
- * Override or insert variables into the panel pane template.
+ * Implements hook_preprocess_panels_pane().
  *
+ * @param $variables
+ *   Available variables.
  */
 function ulf_preprocess_panels_pane(&$variables) {
   // Suggestions based on sub-type.
@@ -234,16 +270,29 @@ function ulf_preprocess_panels_pane(&$variables) {
  * Implements theme_panels_default_style_render_region().
  *
  * Remove the panel separator from the default rendering method.
+ *
+ * @param $variables
+ *   Available variables.
+ *
+ * @return string
+ *  A panel region without seperator.
  */
 function ulf_panels_default_style_render_region($variables) {
   $output = '';
   $output .= implode('', $variables['panes']);
+
   return $output;
 }
 
 
 /**
  * Implements theme_links().
+ *
+ * @param $variables
+ *   Available variables.
+ *
+ * @return string
+ *  An altered html of main menu links.
  */
 function ulf_links__system_main_menu($variables) {
   $html = '';
@@ -256,8 +305,15 @@ function ulf_links__system_main_menu($variables) {
   return $html;
 }
 
+
 /**
  * Implements theme_links().
+ *
+ * @param $variables
+ *   Available variables.
+ *
+ * @return string
+ *  An altered html of about ulf menu links.
  */
 function ulf_menu_link__menu_about_ulf($variables) {
   $element = $variables ['element'];
@@ -268,12 +324,19 @@ function ulf_menu_link__menu_about_ulf($variables) {
     $sub_menu = drupal_render($element ['#below']);
   }
   $output = l($element ['#title'], $element ['#href'], $element ['#localized_options']);
+
   return '<li' . drupal_attributes($element ['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
 }
 
 
 /**
  * Implements theme_item_list().
+ *
+ * @param $variables
+ *   Available variables.
+ *
+ * @return string
+ *  The html of default item lists.
  */
 function ulf_item_list($variables) {
   $items = $variables ['items'];
@@ -328,9 +391,20 @@ function ulf_item_list($variables) {
     }
     $output .= "</$type>";
   }
+  
   return $output;
 }
 
+
+/**
+ * Implements hook_file_link().
+ *
+ * @param $variables
+ *   Available variables.
+ *
+ * @return string
+ *  The html of a file link.
+ */
 function ulf_file_link($variables) {
   $file = $variables['file'];
   $icon_directory = $variables['icon_directory'];
@@ -360,16 +434,24 @@ function ulf_file_link($variables) {
 }
 
 
-function ulf_teaser_filter($str) {
+/**
+ * A custom function for striping html for node teasers
+ *
+ * @param $str
+ *   The string to strip.
+ *
+ * @return string
+ *  The stripped string.
+ */
+function _ulf_teaser_filter($str) {
   // Clean out headlines.
   $str = strip_tags($str);
 
+  // Trim string to word boundry.
+  $trimmed = substr($str, 0, 100);
+  if (strlen($str) > 100) {
+    $trimmed = $trimmed . '...';
+  }
 
-    // Trim string to word boundry.
-    $trimmed = substr($str, 0, 100);
-    if (strlen($str) > 100) {
-      $trimmed = $trimmed . '...';
-    }
-
-    return $trimmed;
+  return $trimmed;
 }
