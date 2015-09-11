@@ -1,8 +1,0 @@
-[submodule "search_node_page"]
-  path = profiles/ulf/modules/search_node_page
-  url = git@github.com:search-node/search_node_page.git
-
-[submodule "search_node_page"]
-  path = profiles/ulf/modules/search_api_search_node
-  url = git@github.com:search-node/search_api_search_node.git
-
