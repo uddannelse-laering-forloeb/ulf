@@ -105,9 +105,24 @@ function ulf_search_settings_default_page_manager_pages() {
             'field_offer_type' => 'field_offer_type',
             'field_subject' => 'field_subject',
             'field_subjects_primary_school' => 'field_subjects_primary_school',
+            'field_target_group' => 'field_target_group',
             'field_subjects_youth' => 0,
-            'field_target_group' => 0,
             'field_target_group_sub' => 0,
+          ),
+        ),
+        'intervals' => array(
+          'fields' => array(
+            'changed' => 0,
+            'created' => 0,
+            'field_free' => 0,
+            'field_full_description:value' => 0,
+            'field_image:file' => 0,
+            'field_period:value' => 0,
+            'field_price' => 0,
+            'nid' => 0,
+            'search_api_language' => 0,
+            'title' => 0,
+            'type' => 0,
           ),
         ),
         'forces' => array(
@@ -259,8 +274,8 @@ function ulf_search_settings_default_page_manager_pages() {
             'field_subject' => 'field_subject',
             'field_subjects_primary_school' => 'field_subjects_primary_school',
             'field_subjects_youth' => 'field_subjects_youth',
-            'field_target_group' => 'field_target_group',
             'field_target_group_sub' => 'field_target_group_sub',
+            'field_target_group' => 0,
           ),
         ),
         'intervals' => array(
@@ -279,8 +294,12 @@ function ulf_search_settings_default_page_manager_pages() {
           ),
         ),
         'forces' => array(
-          'field' => '_none_',
-          'selected' => array(),
+          'field' => 'field_target_group',
+          'selected' => array(
+            'Grundskole' => 'Grundskole',
+            'Ungdomsuddannelse' => 0,
+            'Dagtilbud' => 0,
+          ),
         ),
         'templates' => array(
           'box' => '/profiles/ulf/themes/ulftheme/templates/search/angular/search-school.html',
@@ -331,6 +350,177 @@ function ulf_search_settings_default_page_manager_pages() {
   $handler->conf['display'] = $display;
   $page->default_handlers[$handler->name] = $handler;
   $pages['search_elementary_school'] = $page;
+
+  $page = new stdClass();
+  $page->disabled = FALSE; /* Edit this to true to make a default page disabled initially */
+  $page->api_version = 1;
+  $page->name = 'search_youth';
+  $page->task = 'page';
+  $page->admin_title = 'Search - youth';
+  $page->admin_description = '';
+  $page->path = 'ungdomsuddannelse';
+  $page->access = array();
+  $page->menu = array(
+    'type' => 'normal',
+    'title' => 'Ungdomsuddannelse',
+    'name' => 'main-menu',
+    'weight' => '0',
+    'parent' => array(
+      'type' => 'none',
+      'title' => '',
+      'name' => 'navigation',
+      'weight' => '0',
+    ),
+  );
+  $page->arguments = array();
+  $page->conf = array(
+    'admin_paths' => FALSE,
+  );
+  $page->default_handlers = array();
+  $handler = new stdClass();
+  $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
+  $handler->api_version = 1;
+  $handler->name = 'page_search_youth__panel';
+  $handler->task = 'page';
+  $handler->subtask = 'search_youth';
+  $handler->handler = 'panel_context';
+  $handler->weight = 0;
+  $handler->conf = array(
+    'title' => 'Panel',
+    'no_blocks' => 0,
+    'pipeline' => 'standard',
+    'body_classes_to_remove' => '',
+    'body_classes_to_add' => '',
+    'css_id' => '',
+    'css' => '',
+    'contexts' => array(),
+    'relationships' => array(),
+    'name' => 'panel',
+  );
+  $display = new panels_display();
+  $display->layout = 'onecol';
+  $display->layout_settings = array();
+  $display->panel_settings = array(
+    'style_settings' => array(
+      'default' => NULL,
+      'middle' => NULL,
+    ),
+  );
+  $display->cache = array();
+  $display->title = '';
+  $display->uuid = '18f053fb-58e2-4179-aa39-b7cd3636fd09';
+  $display->content = array();
+  $display->panels = array();
+    $pane = new stdClass();
+    $pane->pid = 'new-19a1cbde-32f9-4961-913b-e912a8686148';
+    $pane->panel = 'middle';
+    $pane->type = 'search_box';
+    $pane->subtype = 'search_box';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'search_node' => array(
+        'id' => '1441950013',
+        'server' => 'search_node',
+        'index' => 'courses',
+        'options' => array(
+          'cache_expire' => '30',
+          'size' => '8',
+          'fields' => array(
+            'field_full_description:value' => 'field_full_description:value',
+            'title' => 'title',
+            'changed' => 0,
+            'created' => 0,
+            'field_free' => 0,
+            'field_image:file' => 0,
+            'field_period:value' => 0,
+            'field_price' => 0,
+            'nid' => 0,
+            'search_api_language' => 0,
+            'type' => 0,
+          ),
+          'filters' => array(
+            'field_educational_goals' => 'field_educational_goals',
+            'field_offer_type' => 'field_offer_type',
+            'field_subjects_primary_school' => 'field_subjects_primary_school',
+            'field_subjects_youth' => 'field_subjects_youth',
+            'field_subject' => 0,
+            'field_target_group' => 0,
+            'field_target_group_sub' => 0,
+          ),
+        ),
+        'intervals' => array(
+          'fields' => array(
+            'field_period:value' => 'field_period:value',
+            'changed' => 0,
+            'created' => 0,
+            'field_free' => 0,
+            'field_full_description:value' => 0,
+            'field_image:file' => 0,
+            'field_price' => 0,
+            'nid' => 0,
+            'search_api_language' => 0,
+            'title' => 0,
+            'type' => 0,
+          ),
+        ),
+        'forces' => array(
+          'field' => 'field_target_group',
+          'selected' => array(
+            'Ungdomsuddannelse' => 'Ungdomsuddannelse',
+            'Dagtilbud' => 0,
+            'Grundskole' => 0,
+          ),
+        ),
+        'templates' => array(
+          'box' => '/profiles/ulf/themes/ulftheme/templates/search/angular/search-youth.html',
+          'result' => '/profiles/ulf/themes/ulftheme/templates/search/angular/results-youth.html',
+          'pager' => '/profiles/ulf/themes/ulftheme/templates/search/angular/pager.html',
+        ),
+      ),
+      'override_title' => 0,
+      'override_title_text' => '',
+      'override_title_heading' => 'h2',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $pane->uuid = '19a1cbde-32f9-4961-913b-e912a8686148';
+    $display->content['new-19a1cbde-32f9-4961-913b-e912a8686148'] = $pane;
+    $display->panels['middle'][0] = 'new-19a1cbde-32f9-4961-913b-e912a8686148';
+    $pane = new stdClass();
+    $pane->pid = 'new-9d653cc5-9b10-4c19-9884-7da0e70281b7';
+    $pane->panel = 'middle';
+    $pane->type = 'search_result';
+    $pane->subtype = 'search_result';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_title' => 0,
+      'override_title_text' => '',
+      'override_title_heading' => 'h2',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 1;
+    $pane->locks = array();
+    $pane->uuid = '9d653cc5-9b10-4c19-9884-7da0e70281b7';
+    $display->content['new-9d653cc5-9b10-4c19-9884-7da0e70281b7'] = $pane;
+    $display->panels['middle'][1] = 'new-9d653cc5-9b10-4c19-9884-7da0e70281b7';
+  $display->hide_title = PANELS_TITLE_NONE;
+  $display->title_pane = 'new-19a1cbde-32f9-4961-913b-e912a8686148';
+  $handler->conf['display'] = $display;
+  $page->default_handlers[$handler->name] = $handler;
+  $pages['search_youth'] = $page;
 
   return $pages;
 
