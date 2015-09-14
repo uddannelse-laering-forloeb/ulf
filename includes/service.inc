@@ -247,7 +247,7 @@ class SearchApiSearchNodeService extends SearchApiAbstractService {
    * @return array
    *   The names of the tids given.
    */
-  private function addTaxonomyNames($tids) {
+  private function addTaxonomyNames(array $tids) {
     $terms = array();
     foreach ($tids as $tid) {
       $term = taxonomy_term_load($tid);
@@ -295,7 +295,8 @@ class SearchApiSearchNodeService extends SearchApiAbstractService {
       $type = isset($field['entity_type']) ? $field['entity_type'] : $field['type'];
       switch ($type) {
         case 'taxonomy_term':
-          $item[$key] = $this->addTaxonomyNames($field['value']);
+          $tids = is_array($field['value']) ? $field['value'] : array($field['value']);
+          $item[$key] = $this->addTaxonomyNames($tids);
           break;
 
         case 'file':
