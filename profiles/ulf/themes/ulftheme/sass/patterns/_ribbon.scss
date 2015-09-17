@@ -52,7 +52,6 @@
   -moz-box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.5);
   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.5);
 
-  z-index: 1;
   pointer-events: auto;
 }
 
@@ -85,7 +84,6 @@
   position: absolute;
   overflow: hidden;
   top: 0;
-  z-index: 1;
   pointer-events: none;
 }
 

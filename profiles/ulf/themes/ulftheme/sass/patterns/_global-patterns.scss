@@ -48,6 +48,7 @@
   min-width: 0; // To allow image shrink.
   box-sizing: border-box;
   padding: $boxlist-padding;
+  position: relative;
   margin-bottom: 2em;
 
   border-bottom: solid;

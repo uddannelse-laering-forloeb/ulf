@@ -489,6 +489,20 @@ textarea {
 /* Styles.
 ================================================================================================================== */
 .pager {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  -moz-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  justify-content: center;
   border-top: 1px dashed #b3b3b3;
   margin-top: 2em;
   padding-top: 2em;
@@ -496,13 +510,18 @@ textarea {
   text-align: center;
   width: 100%; }
   .pager li {
-    display: inline-block;
-    margin-left: -4px;
-    margin-right: 1em; }
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 1 42px;
+    -moz-box-flex: 0;
+    -moz-flex: 0 1 42px;
+    -ms-flex: 0 1 42px;
+    flex: 0 1 42px;
+    cursor: pointer;
+    margin: 4px; }
   .pager .pager-current,
   .pager a,
   .pager span {
-    display: inline-block;
+    display: block;
     padding-top: .5em;
     padding-right: 1em;
     padding-bottom: .4em;
@@ -580,7 +599,7 @@ textarea {
   width: 100%;
   text-transform: capitalize; }
 
-.teaser--list {
+.teaser--list, .search-results {
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-flex;
@@ -616,6 +635,7 @@ textarea {
   min-width: 0;
   box-sizing: border-box;
   padding: 1em;
+  position: relative;
   margin-bottom: 2em;
   border-bottom: solid;
   border-width: 6px; }
@@ -725,7 +745,6 @@ textarea {
   -webkit-box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.5);
   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.5);
-  z-index: 1;
   pointer-events: auto; }
 
 .ribbon a,
@@ -753,7 +772,6 @@ textarea {
   position: absolute;
   overflow: hidden;
   top: 0;
-  z-index: 1;
   pointer-events: none; }
 
 .ribbon-wrapper.fixed {
@@ -1236,8 +1254,7 @@ body {
   width: 100%; }
 
 .teaser {
-  background: #fff;
-  position: relative; }
+  background: #fff; }
 
 .teaser--list-button {
   margin: 0 auto; }
@@ -1923,7 +1940,7 @@ body {
     -webkit-justify-content: space-between;
     -moz-justify-content: space-between;
     justify-content: space-between;
-    margin: 0 16px; }
+    margin: 4px 16px; }
     .search--filter-span-wrapper {
       max-width: 49%; }
     .search--filter-span-text[type="text"] {
@@ -1934,6 +1951,7 @@ body {
     width: 100%; }
   .search--filter-label {
     background: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDQ4IDQ4IiB3aWR0aD0iNDgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTE0IDIwbDEwIDEwIDEwLTEweiIvPjxwYXRoIGQ9Ik0wIDBoNDh2NDhoLTQ4eiIgZmlsbD0ibm9uZSIvPjwvc3ZnPg==") no-repeat right -10px;
+    cursor: pointer;
     margin: 2px 16px;
     position: absolute;
     left: 0;
@@ -1962,7 +1980,10 @@ body {
     position: relative;
     width: 100%;
     z-index: 1;
-    font-size: 1.3em; }
+    font-size: 1.3em;
+    -moz-box-shadow: 3px 3px 6px gray;
+    -webkit-box-shadow: 3px 3px 6px gray;
+    box-shadow: 3px 3px 6px gray; }
     @media only screen and (min-width: 650px) {
       .search--filter-dropdown {
         position: absolute; } }
@@ -1976,6 +1997,7 @@ body {
       padding: 28px 0 16px;
       position: relative; }
     .search--filter-dropdown-header-close {
+      cursor: pointer;
       position: absolute;
       right: 13px;
       width: 25px;
@@ -2044,29 +2066,7 @@ body {
   padding-top: 1em; }
 
 .search-results {
-  margin: 0 8px 2em; }
-
-@media only screen and (min-width: 60em) {
-  .search-results.is-side-by-side {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-flex-flow: row wrap;
-    -moz-flex-flow: row wrap;
-    -ms-flex-flow: row wrap;
-    flex-flow: row wrap;
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
-    -webkit-justify-content: space-between;
-    -moz-justify-content: space-between;
-    justify-content: space-between; }
-    .search-results.is-side-by-side .search-results--result {
-      margin-bottom: 1em;
-      max-width: 49%; }
-      .search-results.is-side-by-side .search-results--result:last-child {
-        margin-right: 0; } }
+  margin: 0 0 2em; }
 
 /**
  *

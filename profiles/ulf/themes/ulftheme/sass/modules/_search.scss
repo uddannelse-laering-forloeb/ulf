@@ -185,7 +185,7 @@
     @include flex-direction(row);
     @include justify-content(space-between);
 
-    margin: 0 $spacing;
+    margin: 4px $spacing;
 
     &-wrapper {
       max-width: 49%;
@@ -207,6 +207,7 @@
 
   &--filter-label {
     background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDQ4IDQ4IiB3aWR0aD0iNDgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTE0IDIwbDEwIDEwIDEwLTEweiIvPjxwYXRoIGQ9Ik0wIDBoNDh2NDhoLTQ4eiIgZmlsbD0ibm9uZSIvPjwvc3ZnPg==') no-repeat right -10px;
+    cursor: pointer;
     margin: 2px $spacing;
     position: absolute;
     left: 0;
@@ -230,6 +231,7 @@
 
     font-size: 1.3em;
 
+    @include box-shadow(3px 3px 6px $gray-dark);
     @include breakpoint(650px) {
       position: absolute;
     }
@@ -250,6 +252,7 @@
     }
 
     &-header-close {
+      cursor: pointer;
       position: absolute;
       right: 13px;
 
@@ -346,8 +349,11 @@
   padding-top: 1em;
 }
 
+
 .search-results {
-  margin: 0 $spacing / 2 2em;
+  @extend %teaser--list;
+
+  margin: 0 0 2em;
 
   &--result {
     @extend %teaser--wrapper;
@@ -365,23 +371,3 @@
     @extend %teaser--type-last-child;
   }
 }
-
-// Show 2 columns side by side
-.search-results.is-side-by-side {
-  // Stack until there is enough space to display them side by side
-  @media only screen and (min-width: 60em) {
-    @include flexbox;
-    @include flex-flow(row wrap);
-    @include justify-content(space-between);
-
-    .search-results--result {
-      margin-bottom: 1em;
-      max-width: 49%;
-
-      &:last-child {
-        margin-right: 0;
-      }
-    }
-  }
-}
-
