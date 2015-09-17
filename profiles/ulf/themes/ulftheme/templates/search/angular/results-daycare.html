@@ -12,12 +12,19 @@
       <a href="/node/{{ hit.nid }}">
         <h2 class="search-results--header">{{ hit.title }}</h2>
       </a>
-      <div data-ng-if="hit.field_period:value !== undefined">
-        <p class="teaser--type">Periode: <span class="date-display-start"> 00.00.00 </span> - <span class="date-display-end">00.00.00</span></p>
+      <div data-ng-if="hit.field_period_full_year == false">
+        <p class="teaser--type">Periode: <span class="date-display-start"> {{ hit['field_period:value'] * 1000 | date:'dd.MM.yyyy' }} </span> - <span class="date-display-end"> {{ hit['field_period:value2'] * 1000 | date:'dd.MM.yyyy' }} </span></p>
+      </div>
+      <div data-ng-if="hit.field_period_full_year == true">
+        <p class="teaser--type">Periode: Hele året</p>
       </div>
       <p data-ng-bind-html="hit['field_full_description:value'] | trimWordBoundary:100"></p>
-      <p class="teaser--type">Afsender: <a href="/user/uid">NAVN NAVNSEN</a></p>
-      <p class="search-results--type">Emne: <a data-ng-repeat="subject in hit.field_subject" href="#">{{ subject }}</a></p>
+      <p class="teaser--type">Afsender: <a href="/user/{{ hit.author}}">{{ hit['author:field_profile_name'] }}</a></p>
+      <p class="search-results--type">Emne:
+        <span data-ng-repeat="subject in hit.field_subject track by $index">
+          <a href="/taxonomy/term/{{ hit['field_subject:tid'][$index] }}">{{ subject }}</a>,
+        </span>
+      </p>
     </header>
     <figure><img data-ng-src="{{ hit['field_image:file'] }}" src="#"/></figure>
   </article>

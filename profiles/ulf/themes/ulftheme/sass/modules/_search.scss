@@ -326,6 +326,10 @@
     padding: $spacing $spacing / 2;
   }
 
+  &--widget-selected-item-wrapper {
+    margin-right: -4px;
+  }
+
   &--widget-selected-item {
     @extend %button;
 
@@ -336,6 +340,7 @@
     font-size: .9em;
     padding: .1em 3em .1em 2em;
     margin-bottom: 4px;
+    margin-right: 4px;
     text-shadow: none;
   }
 }

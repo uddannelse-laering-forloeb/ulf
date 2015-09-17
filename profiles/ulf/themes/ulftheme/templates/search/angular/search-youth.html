@@ -77,12 +77,12 @@
   <!-- Selected filters -->
   <div class="search--widget-selected">
     <div class="search--widget-selected-inner">
-      <div data-ng-repeat="(field, filters) in selectedFilters">
-        <div class="search--widget-selected-item"
+      <span data-ng-repeat="(field, filters) in selectedFilters" class="search--widget-selected-item-wrapper">
+        <span class="search--widget-selected-item"
              data-ng-repeat="filter in filters"
              data-ng-click="removeFilter(field, filter)">{{ filter }}
-        </div>
-      </div>
+        </span>
+      </span>
     </div>
   </div>
 </div>
