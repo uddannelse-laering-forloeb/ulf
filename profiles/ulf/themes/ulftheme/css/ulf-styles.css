@@ -518,7 +518,13 @@ textarea {
     flex: 0 1 42px;
     cursor: pointer;
     margin: 4px; }
-  .pager .pager-current,
+    .pager li.pager-first, .pager li.pager-previous, .pager li.pager-next, .pager li.pager-last {
+      -webkit-box-flex: 0;
+      -webkit-flex: 0 1 84px;
+      -moz-box-flex: 0;
+      -moz-flex: 0 1 84px;
+      -ms-flex: 0 1 84px;
+      flex: 0 1 84px; }
   .pager a,
   .pager span {
     display: block;
@@ -528,14 +534,20 @@ textarea {
     padding-left: 1em;
     background-color: #e6e6e6;
     text-decoration: none; }
-    .pager .pager-current:hover,
     .pager a:hover,
     .pager span:hover {
       background-color: #d9d9d9;
       text-decoration: none; }
   .pager .pager-current {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
     background-color: #b3b3b3;
-    color: #fff; }
+    color: #fff;
+    justify-content: center;
+    align-items: center; }
     .pager .pager-current:hover {
       background-color: #a6a6a6; }
   .pager .disabled {
@@ -614,6 +626,12 @@ textarea {
   -webkit-justify-content: space-between;
   -moz-justify-content: space-between;
   justify-content: space-between;
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 1 100%;
+  -moz-box-flex: 0;
+  -moz-flex: 0 1 100%;
+  -ms-flex: 0 1 100%;
+  flex: 0 1 100%;
   min-width: 0px; }
 
 .teaser, .search-results--result {
@@ -1255,6 +1273,31 @@ body {
 
 .teaser {
   background: #fff; }
+
+.teaser--filter .views-exposed-widgets {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  -moz-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  -webkit-justify-content: space-between;
+  -moz-justify-content: space-between;
+  justify-content: space-between; }
+  .teaser--filter .views-exposed-widgets .views-widget-filter-combine {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 1 60%;
+    -moz-box-flex: 0;
+    -moz-flex: 0 1 60%;
+    -ms-flex: 0 1 60%;
+    flex: 0 1 60%; }
+  .teaser--filter .views-exposed-widgets .views-submit-button {
+    margin-top: 2.4em; }
 
 .teaser--list-button {
   margin: 0 auto; }
@@ -1950,7 +1993,7 @@ body {
     position: relative;
     width: 100%; }
   .search--filter-label {
-    background: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDQ4IDQ4IiB3aWR0aD0iNDgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTE0IDIwbDEwIDEwIDEwLTEweiIvPjxwYXRoIGQ9Ik0wIDBoNDh2NDhoLTQ4eiIgZmlsbD0ibm9uZSIvPjwvc3ZnPg==") no-repeat right -10px;
+    background: url(../images/arrow.svg) no-repeat right 0;
     cursor: pointer;
     margin: 2px 16px;
     position: absolute;
@@ -1999,7 +2042,8 @@ body {
     .search--filter-dropdown-header-close {
       cursor: pointer;
       position: absolute;
-      right: 13px;
+      right: 0;
+      top: 23px;
       width: 25px;
       height: 25px; }
     .search--filter-dropdown-content {
@@ -2052,7 +2096,7 @@ body {
   .search--widget-selected-item-wrapper {
     margin-right: -4px; }
   .search--widget-selected-item {
-    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkJz48c3ZnIGhlaWdodD0iMTZweCIgaWQ9IkxheWVyXzEiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUxMiA1MTI7ZmlsbDojZmZmOyIgdmVyc2lvbj0iMS4xIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgd2lkdGg9IjE2cHgiIHhtbDpzcGFjZT0icHJlc2VydmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjxwYXRoIGQ9Ik00MzcuNSwzODYuNkwzMDYuOSwyNTZsMTMwLjYtMTMwLjZjMTQuMS0xNC4xLDE0LjEtMzYuOCwwLTUwLjljLTE0LjEtMTQuMS0zNi44LTE0LjEtNTAuOSwwTDI1NiwyMDUuMUwxMjUuNCw3NC41ICBjLTE0LjEtMTQuMS0zNi44LTE0LjEtNTAuOSwwYy0xNC4xLDE0LjEtMTQuMSwzNi44LDAsNTAuOUwyMDUuMSwyNTZMNzQuNSwzODYuNmMtMTQuMSwxNC4xLTE0LjEsMzYuOCwwLDUwLjkgIGMxNC4xLDE0LjEsMzYuOCwxNC4xLDUwLjksMEwyNTYsMzA2LjlsMTMwLjYsMTMwLjZjMTQuMSwxNC4xLDM2LjgsMTQuMSw1MC45LDBDNDUxLjUsNDIzLjQsNDUxLjUsNDAwLjYsNDM3LjUsMzg2LjZ6Ii8+PC9zdmc+) no-repeat 95% center;
+    background: url(../images/close-small.svg) no-repeat 95% center;
     background-color: rgba(255, 255, 255, 0.85);
     border-color: rgba(255, 255, 255, 0.85);
     color: gray;

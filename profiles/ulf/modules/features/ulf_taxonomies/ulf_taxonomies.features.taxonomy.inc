@@ -25,6 +25,14 @@ function ulf_taxonomies_taxonomy_default_vocabularies() {
       'module' => 'taxonomy',
       'weight' => 0,
     ),
+    'elementary_school' => array(
+      'name' => 'Grundskole',
+      'machine_name' => 'elementary_school',
+      'description' => '',
+      'hierarchy' => 0,
+      'module' => 'taxonomy',
+      'weight' => -10,
+    ),
     'offer_type' => array(
       'name' => 'Tilbudstype',
       'machine_name' => 'offer_type',
@@ -32,6 +40,14 @@ function ulf_taxonomies_taxonomy_default_vocabularies() {
       'hierarchy' => 0,
       'module' => 'taxonomy',
       'weight' => 0,
+    ),
+    'primary_school' => array(
+      'name' => 'Undgomdsuddannelser',
+      'machine_name' => 'primary_school',
+      'description' => '',
+      'hierarchy' => 0,
+      'module' => 'taxonomy',
+      'weight' => -10,
     ),
     'subjects_primary_school' => array(
       'name' => 'Fag (Skole)',
@@ -76,22 +92,6 @@ function ulf_taxonomies_taxonomy_default_vocabularies() {
     'topic' => array(
       'name' => 'Emneområde',
       'machine_name' => 'topic',
-      'description' => '',
-      'hierarchy' => 0,
-      'module' => 'taxonomy',
-      'weight' => -10,
-    ),
-    'primary_school' => array(
-      'name' => 'Undgomdsuddannelser',
-      'machine_name' => 'primary_school',
-      'description' => '',
-      'hierarchy' => 0,
-      'module' => 'taxonomy',
-      'weight' => -10,
-    ),
-    'elementary_school' => array(
-      'name' => 'Grundskole',
-      'machine_name' => 'elementary_school',
       'description' => '',
       'hierarchy' => 0,
       'module' => 'taxonomy',

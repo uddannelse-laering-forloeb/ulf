@@ -35,6 +35,8 @@
   @include flex-flow(row wrap);
   @include justify-content(space-between);
 
+  @include flex(0 1 100%);
+
   min-width: 0px; // To allow image shrink.
 }
 

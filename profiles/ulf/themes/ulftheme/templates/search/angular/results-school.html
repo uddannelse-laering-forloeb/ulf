@@ -20,7 +20,11 @@
       </div>
       <p data-ng-bind-html="hit['field_full_description:value'] | trimWordBoundary:100"></p>
       <p class="teaser--type">Afsender: <a href="/user/{{ hit.author}}">{{ hit['author:field_profile_name'] }}</a></p>
-      <p class="search-results--type">Emne: <a data-ng-repeat="subject in hit.field_subject" href="#">{{ subject }}</a></p>
+      <p class="search-results--type">Emne:
+        <span data-ng-repeat="subject in hit.field_subject track by $index">
+          <a href="/taxonomy/term/{{ hit['field_subject:tid'][$index] }}">{{ subject }}</a>,
+        </span>
+      </p>
     </header>
     <figure><img data-ng-src="{{ hit['field_image:file'] }}" src="#"/></figure>
   </article>
@@ -31,4 +35,3 @@
   <!-- Search pager if the provider supports it -->
   <search-pager></search-pager>
 </div>
-
