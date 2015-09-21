@@ -394,6 +394,27 @@ function search_node_page_configuration_form($form, array &$form_state = array()
     '#required' => TRUE,
   );
 
+  $form['search_node']['options']['initial_query_enable'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Enable initial query text'),
+    '#description' => t('Enable a default/initial search query to perform when the search is loaded.'),
+    '#default_value' => isset($defaults['options']['initial_query_enable']) ? $defaults['options']['initial_query_enable'] : array(),
+    '#required' => FALSE,
+  );
+
+  $form['search_node']['options']['initial_query_text'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Initial query text'),
+    '#description' => t('Search string to perform when the search is loaded.'),
+    '#default_value' => isset($defaults['options']['initial_query_text']) ? $defaults['options']['initial_query_text'] : '',
+    '#required' => FALSE,
+    '#states' => array(
+      'visible' => array(
+        ':input[id="edit-search-node-options-initial-query-enable"]' => array('checked' => TRUE),
+      ),
+    ),
+  );
+
   $search_fields = array();
   $form['search_node']['options']['fields'] = array(
     '#type' => 'checkboxes',
@@ -618,6 +639,11 @@ function search_node_page_build_search_box($configuration = array()) {
         'cacheExpire' => (int) $configuration['options']['cache_expire'],
       ),
     );
+
+    // Add initial query search string.
+    if (isset($configuration['options']['initial_query_enable']) && $configuration['options']['initial_query_enable']) {
+      $conf['initialQueryText'] = $configuration['options']['initial_query_text'];
+    }
 
     // Build filters.
     if (!empty($configuration['options']['filters'])) {
