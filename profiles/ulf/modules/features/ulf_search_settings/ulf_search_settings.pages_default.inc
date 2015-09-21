@@ -87,6 +87,8 @@ function ulf_search_settings_default_page_manager_pages() {
         'options' => array(
           'cache_expire' => '30',
           'size' => '14',
+          'initial_query_enable' => 1,
+          'initial_query_text' => '',
           'fields' => array(
             'author:field_profile_name' => 'author:field_profile_name',
             'field_full_description:value' => 'field_full_description:value',
@@ -100,6 +102,7 @@ function ulf_search_settings_default_page_manager_pages() {
             'field_period:value2' => 0,
             'field_period_full_year' => 0,
             'field_price' => 0,
+            'field_subject:tid' => 0,
             'nid' => 0,
             'search_api_language' => 0,
             'type' => 0,
@@ -127,6 +130,7 @@ function ulf_search_settings_default_page_manager_pages() {
             'field_period:value2' => 0,
             'field_period_full_year' => 0,
             'field_price' => 0,
+            'field_subject:tid' => 0,
             'nid' => 0,
             'search_api_language' => 0,
             'title' => 0,
@@ -263,6 +267,8 @@ function ulf_search_settings_default_page_manager_pages() {
         'options' => array(
           'cache_expire' => '30',
           'size' => '14',
+          'initial_query_enable' => 1,
+          'initial_query_text' => '',
           'fields' => array(
             'author:field_profile_name' => 'author:field_profile_name',
             'field_full_description:value' => 'field_full_description:value',
@@ -276,6 +282,7 @@ function ulf_search_settings_default_page_manager_pages() {
             'field_period:value2' => 0,
             'field_period_full_year' => 0,
             'field_price' => 0,
+            'field_subject:tid' => 0,
             'nid' => 0,
             'search_api_language' => 0,
             'type' => 0,
@@ -303,6 +310,7 @@ function ulf_search_settings_default_page_manager_pages() {
             'field_period:value2' => 0,
             'field_period_full_year' => 0,
             'field_price' => 0,
+            'field_subject:tid' => 0,
             'nid' => 0,
             'search_api_language' => 0,
             'title' => 0,
@@ -442,6 +450,8 @@ function ulf_search_settings_default_page_manager_pages() {
         'options' => array(
           'cache_expire' => '30',
           'size' => '14',
+          'initial_query_enable' => 1,
+          'initial_query_text' => '',
           'fields' => array(
             'author:field_profile_name' => 'author:field_profile_name',
             'field_full_description:value' => 'field_full_description:value',
@@ -455,6 +465,7 @@ function ulf_search_settings_default_page_manager_pages() {
             'field_period:value2' => 0,
             'field_period_full_year' => 0,
             'field_price' => 0,
+            'field_subject:tid' => 0,
             'nid' => 0,
             'search_api_language' => 0,
             'type' => 0,
@@ -482,6 +493,7 @@ function ulf_search_settings_default_page_manager_pages() {
             'field_period:value2' => 0,
             'field_period_full_year' => 0,
             'field_price' => 0,
+            'field_subject:tid' => 0,
             'nid' => 0,
             'search_api_language' => 0,
             'title' => 0,
