@@ -155,6 +155,7 @@
   }
 
   & .nav--static-pages-item {
+    width: auto;
 
     a {
       @include strip-link-styles($white);
