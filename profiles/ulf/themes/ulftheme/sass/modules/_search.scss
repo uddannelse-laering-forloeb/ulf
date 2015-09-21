@@ -238,6 +238,7 @@
 
     &-inner {
       background: rgba(255,255,255, .85);
+      padding-bottom: 1px;
       height: 100%;
     }
 
@@ -327,9 +328,6 @@
     padding: $spacing $spacing / 2;
   }
 
-  &--widget-selected-item-wrapper {
-    margin-right: -4px;
-  }
 
   &--widget-selected-item {
     @extend %button;

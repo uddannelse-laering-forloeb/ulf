@@ -550,6 +550,10 @@ textarea {
     align-items: center; }
     .pager .pager-current:hover {
       background-color: #a6a6a6; }
+    .pager .pager-current span {
+      background-color: #b3b3b3; }
+      .pager .pager-current span:hover {
+        background-color: #b3b3b3; }
   .pager .disabled {
     background-color: #f2f2f2; }
   .pager .disabled a:hover {
@@ -2032,6 +2036,7 @@ body {
         position: absolute; } }
     .search--filter-dropdown-inner {
       background: rgba(255, 255, 255, 0.85);
+      padding-bottom: 1px;
       height: 100%; }
     .search--filter-dropdown.is-visible {
       display: block; }
@@ -2093,8 +2098,6 @@ body {
     margin: 0 auto;
     max-width: 1000px;
     padding: 16px 8px; }
-  .search--widget-selected-item-wrapper {
-    margin-right: -4px; }
   .search--widget-selected-item {
     background: url(../images/close-small.svg) no-repeat 95% center;
     background-color: rgba(255, 255, 255, 0.85);
