@@ -1582,7 +1582,7 @@ body {
   min-width: 0; }
   @media only screen and (min-width: 45em) {
     .nav .nav--static-pages {
-      min-width: 200px; } }
+      min-width: 240px; } }
 .nav .nav--static-pages-item {
   width: auto; }
   .nav .nav--static-pages-item a {
