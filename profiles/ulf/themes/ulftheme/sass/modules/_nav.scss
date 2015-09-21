@@ -90,7 +90,7 @@
     @include breakpoint(45em) {
       position: absolute;
 
-      z-index: 1;
+      z-index: 2;
       right: 0;
 
       background: $gray-dark;
