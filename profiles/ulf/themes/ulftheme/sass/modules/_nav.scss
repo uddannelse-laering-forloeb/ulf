@@ -183,7 +183,7 @@
     a {
       @include strip-link-styles($white);
 
-      display: inline;
+      display: block;
       margin-left: 1em;
 
       &.active {

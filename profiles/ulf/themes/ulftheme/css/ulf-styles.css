@@ -1610,7 +1610,7 @@ body {
   border-top: 1px solid #fff;
   padding: 1em; }
   .nav--mobile .nav--static-pages-item a {
-    display: inline;
+    display: block;
     margin-left: 1em; }
     .nav--mobile .nav--static-pages-item a:link {
       color: #fff;
