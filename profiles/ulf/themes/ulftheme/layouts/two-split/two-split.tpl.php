@@ -24,7 +24,7 @@
  *   - $content['delta']: Fourth element
  */
 ?>
-<div class="layout-two-split">
+<div class="layout-node">
   <div class="layout-inner">
     <?php if(!empty ($content['alpha'])) : ?>
       <div class="layout-element-alpha">
