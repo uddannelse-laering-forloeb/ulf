@@ -258,6 +258,11 @@ function ulf_preprocess_panels_pane(&$variables) {
     $variables['theme_hook_suggestions'][] = 'panels_pane__front';
   }
 
+  // Two split panes.
+  if ($variables['display']->layout == 'two_split') {
+    $variables['theme_hook_suggestions'][] = 'panels_pane__' . $variables['display']->layout . '__' .str_replace("-", "_", $variables['pane']->subtype);
+  }
+
   // We only want to use the class provided from the ui.
   $variables['provided_class'] = '';
   if(!empty($variables['pane']->css['css_class'])) {

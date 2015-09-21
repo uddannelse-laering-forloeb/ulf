@@ -1816,11 +1816,13 @@ body {
   background: #fff; }
 
 .page--header {
+  box-sizing: border-box;
   padding: 16px 16px 0;
   margin: 0 auto;
   max-width: 1000px; }
 
 .page--content {
+  box-sizing: border-box;
   margin: 16px auto 16px;
   max-width: 1000px;
   padding: 0 16px; }
