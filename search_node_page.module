@@ -394,6 +394,27 @@ function search_node_page_configuration_form($form, array &$form_state = array()
     '#required' => TRUE,
   );
 
+  $form['search_node']['options']['initial_query_enable'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Enable initial query text'),
+    '#description' => t('Enable a default/initial search query to perform when the search is loaded.'),
+    '#default_value' => isset($defaults['options']['initial_query_enable']) ? $defaults['options']['initial_query_enable'] : array(),
+    '#required' => FALSE,
+  );
+
+  $form['search_node']['options']['initial_query_text'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Initial query text'),
+    '#description' => t('Search string to perform when the search is loaded.'),
+    '#default_value' => isset($defaults['options']['initial_query_text']) ? $defaults['options']['initial_query_text'] : '',
+    '#required' => FALSE,
+    '#states' => array(
+      'visible' => array(
+        ':input[id="edit-search-node-options-initial-query-enable"]' => array('checked' => TRUE),
+      ),
+    ),
+  );
+
   $search_fields = array();
   $form['search_node']['options']['fields'] = array(
     '#type' => 'checkboxes',
@@ -412,7 +433,6 @@ function search_node_page_configuration_form($form, array &$form_state = array()
     '#options' => $filters,
     '#default_value' => isset($defaults['options']['filters']) ? $defaults['options']['filters'] : array(),
   );
-
 
   $form['search_node']['intervals'] = array(
     '#type' => 'fieldset',
@@ -561,11 +581,13 @@ function search_node_page_block_view($delta='') {
 }
 
 /**
- * @TODO: Added description.
+ * Builds the angular configuration and injects it into the page.
  *
  * @param array $configuration
+ *   The configutaion for this search box.
  *
  * @return array
+ *   Render array to display the search box placeholder.
  */
 function search_node_page_build_search_box($configuration = array()) {
   if (empty($configuration)) {
@@ -584,6 +606,17 @@ function search_node_page_build_search_box($configuration = array()) {
     // Load index.
     $index = search_api_index_load($configuration['index']);
 
+    // Load boost for the fields.
+    $boost = array();
+    $fields = array_filter($configuration['options']['fields']);
+    $fieldsOptions = array_intersect_key($index->options['fields'], $fields);
+    foreach ($fieldsOptions as $field => $fieldOption) {
+      if (!empty($fieldOption['boost'])) {
+        $boost[$field] = $fieldOption['boost'];
+      }
+    }
+
+
     // Build array to convert to json configuration.
     $conf = array(
       'id' => $configuration['id'],
@@ -597,7 +630,8 @@ function search_node_page_build_search_box($configuration = array()) {
         'host' => $server->options['host'],
         'auth' => '/search_node/api/' . $server->machine_name . '/auth',
         'index' => $index->options['search_node_indexes'],
-        'fields' => array_keys(array_filter($configuration['options']['fields'])),
+        'fields' => array_values($fields),
+        'boost' => $boost,
         'pager' => array(
           'size' => (int) $configuration['options']['size'],
           'page' => 0
@@ -605,6 +639,11 @@ function search_node_page_build_search_box($configuration = array()) {
         'cacheExpire' => (int) $configuration['options']['cache_expire'],
       ),
     );
+
+    // Add initial query search string.
+    if (isset($configuration['options']['initial_query_enable']) && $configuration['options']['initial_query_enable']) {
+      $conf['initialQueryText'] = $configuration['options']['initial_query_text'];
+    }
 
     // Build filters.
     if (!empty($configuration['options']['filters'])) {
