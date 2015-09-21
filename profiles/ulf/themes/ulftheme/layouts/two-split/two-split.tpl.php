@@ -24,21 +24,23 @@
  *   - $content['delta']: Fourth element
  */
 ?>
-<div class="layout-node">
+<div class="layout-newsletter-archive">
   <div class="layout-inner">
-    <?php if(!empty ($content['alpha'])) : ?>
-      <div class="layout-element-alpha">
-        <div class="layout-element-alpha-inner">
-          <?php print $content['alpha']; ?>
+    <div class="layout-element-alpha">
+      <div class="layout-element-alpha-inner">
+        <div class="content">
+          <div class="content---main">
+            <?php if(!empty ($content['alpha'])) : ?>
+              <?php print $content['alpha']; ?>
+            <?php endif;?>
+          </div>
+          <div class="content--meta">
+            <?php if(!empty ($content['beta'])) : ?>
+              <?php print $content['beta']; ?>
+            <?php endif;?>
+          </div>
         </div>
       </div>
-    <?php endif;?>
-    <?php if(!empty ($content['beta'])) : ?>
-      <div class="layout-element-beta">
-        <div class="layout-element-beta-inner">
-          <?php print $content['beta']; ?>
-        </div>
-      </div>
-    <?php endif;?>
+    </div>
   </div>
 </div>

@@ -862,6 +862,10 @@ textarea {
  */
 /* Placeholders, variables and mixins related to this document only.
 ================================================================================================================== */
+.layout-newsletter-archive .layout-element-alpha-inner,
+.layout-newsletter-archive .layout-element-beta-inner,
+.layout-newsletter-archive .layout-element-gamma-inner,
+.layout-newsletter-archive .layout-element-delta-inner,
 .layout-view-page .layout-element-alpha-inner,
 .layout-view-page .layout-element-beta-inner,
 .layout-view-page .layout-element-gamma-inner,
@@ -913,21 +917,25 @@ body {
   padding: 0 8px;
   width: 100%; }
 
+.layout-newsletter-archive .layout-element-alpha,
 .layout-view-page .layout-element-alpha,
 .layout-node .layout-element-alpha,
 .layout-frontpage .layout-element-alpha,
 .layout-profile .layout-element-alpha {
   background: #fff; }
+.layout-newsletter-archive .layout-element-beta,
 .layout-view-page .layout-element-beta,
 .layout-node .layout-element-beta,
 .layout-frontpage .layout-element-beta,
 .layout-profile .layout-element-beta {
   background: #f2f2f2; }
+.layout-newsletter-archive .layout-element-gamma,
 .layout-view-page .layout-element-gamma,
 .layout-node .layout-element-gamma,
 .layout-frontpage .layout-element-gamma,
 .layout-profile .layout-element-gamma {
   background: #f2f2f2; }
+.layout-newsletter-archive .layout-element-delta,
 .layout-view-page .layout-element-delta,
 .layout-node .layout-element-delta,
 .layout-frontpage .layout-element-delta,
