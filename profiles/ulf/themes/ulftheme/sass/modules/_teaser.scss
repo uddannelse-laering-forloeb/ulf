@@ -120,7 +120,6 @@
   @extend %teaser--wrapper;
 
   background: $white; // For news.
-  position: relative; // For ribbon to position correct.
 }
 
 
@@ -132,6 +131,24 @@
 .teaser--type {
   @extend %teaser--type;
 }
+
+
+.teaser--filter {
+  .views-exposed-widgets {
+    @include flexbox;
+    @include flex-flow(row wrap);
+    @include justify-content(space-between);
+
+    .views-widget-filter-combine {
+      @include flex(0 1 60%);
+    }
+
+    .views-submit-button {
+      margin-top: 2.4em;
+    }
+  }
+}
+
 
 
 .teaser--list-button {

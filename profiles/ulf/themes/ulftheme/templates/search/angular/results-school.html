@@ -1,14 +1,30 @@
 <div data-ng-if="hits.hits" class="search-results-header">
-  <h2><strong>{{ hits.hits }}</strong> resultater
+  <h2><strong>{{ hits.hits }}</strong> resultater.
 </div>
 <div class="search-results">
-  <article class="search-results--result is-dagtilbud" data-ng-repeat="hit in hits.results">
+  <article class="search-results--result is-grundskole" data-ng-repeat="hit in hits.results">
+    <div class="ribbon-wrapper left" data-ng-if="hit.field_free == true">
+      <div class="ribbon">
+        <a href="/node/{{ hit.nid }}">Gratis</a>
+      </div>
+    </div>
     <header>
-      <a href="node/{{ hit.nid }}">
+      <a href="/node/{{ hit.nid }}">
         <h2 class="search-results--header">{{ hit.title }}</h2>
       </a>
-      <p data-ng-bind-html="hit['field_full_description:value'] | trimWordBoundary:512"></p>
-      <p class="search-results--type">Emne: <a data-ng-repeat="subject in hit.field_subject" href="#">{{ subject }}</a></p>
+      <div data-ng-if="hit.field_period_full_year == false">
+        <p class="teaser--type">Periode: <span class="date-display-start"> {{ hit['field_period:value'] * 1000 | date:'dd.MM.yyyy' }} </span> - <span class="date-display-end"> {{ hit['field_period:value2'] * 1000 | date:'dd.MM.yyyy' }} </span></p>
+      </div>
+      <div data-ng-if="hit.field_period_full_year == true">
+        <p class="teaser--type">Periode: Hele året</p>
+      </div>
+      <p data-ng-bind-html="hit['field_full_description:value'] | trimWordBoundary:100"></p>
+      <p class="teaser--type">Afsender: <a href="/user/{{ hit.author}}">{{ hit['author:field_profile_name'] }}</a></p>
+      <p class="search-results--type">Emne:
+        <span data-ng-repeat="subject in hit.field_subject track by $index">
+          <a href="/taxonomy/term/{{ hit['field_subject:tid'][$index] }}">{{ subject }}</a>,
+        </span>
+      </p>
     </header>
     <figure><img data-ng-src="{{ hit['field_image:file'] }}" src="#"/></figure>
   </article>
@@ -19,4 +35,3 @@
   <!-- Search pager if the provider supports it -->
   <search-pager></search-pager>
 </div>
-

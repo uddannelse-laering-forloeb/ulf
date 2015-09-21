@@ -15,36 +15,49 @@
   // Widget display.
   &--widget {
     background: $gray-lightest;
+    color: rgba(0, 0, 0, 0.5);
     margin-bottom: $spacing;
     position: relative;
     z-index: 1;
 
-    @include box-shadow(0 5px 5px transparentize($black, .75));
-
     &.is-daycare,
-    &.is-daycare .search--filter-dropdown {
+    &.is-daycare .search--filter-dropdown,
+    &.is-daycare .search--filter-dropdown-submit,
+    &.is-daycare .search--widget-selected,
+    &.is-daycare .search--filter-search-submit {
       @include background-set-color('green', $transparency: 1);
+
+      border-color: $green;
     }
 
     &.is-school,
-    &.is-school .search--filter-dropdown {
+    &.is-school .search--filter-dropdown,
+    &.is-school .search--filter-dropdown-submit,
+    &.is-school .search--widget-selected,
+    &.is-school .search--filter-search-submit {
       @include background-set-color('purple', $transparency: 1);
 
-      color: $white;
-
-      a {
-        color: $white;
-      }
+      border-color: $purple;
     }
 
     &.is-youth,
-    &.is-youth .search--filter-dropdown {
+    &.is-youth .search--filter-dropdown,
+    &.is-youth .search--filter-dropdown-submit,
+    &.is-youth .search--widget-selected,
+    &.is-youth .search--filter-search-submit {
       @include background-set-color('orange', $transparency: 1);
+
+      border-color: $orange;
     }
 
     &.is-course,
-    &.is-course .search--filter-dropdown {
+    &.is-course .search--filter-dropdown,
+    &.is-course .search--filter-dropdown-submit,
+    &.is-course .search--widget-selected,
+    &.is-course .search--filter-search-submit {
       @include background-set-color('yellow', $transparency: 1);
+
+      border-color: $yellow;
     }
   }
 
@@ -79,25 +92,36 @@
   // Wrapper for each filter
   &--filter-wrapper {
     box-sizing: border-box;
+    padding-bottom: 2px;
     position: relative;
     z-index: 0;
     width: 100%;
-
-    padding-bottom: 1px;
-    padding-right: 1px;
 
     @include breakpoint(650px) {
       width: 50%;
     }
 
     @include breakpoint(1000px) {
+      padding-bottom: 2px;
+      padding-right: 2px;
       width: 33%;
     }
+
+    // Splitting to two blocks per line, means we should remove right spacing
+    &:nth-child(1),
+    &:nth-child(3),
+    &:nth-child(5){
+      @include breakpoint(650px) {
+        padding-right: 2px;
+      }
+    }
+
 
     // Splitting to three blocks per line, means we need the middle ones to take 1% extra for full width.
     &:nth-child(3),
     &:nth-child(6) {
-     @include breakpoint(1000px) {
+      @include breakpoint(1000px) {
+        padding-right: 0;
         width: 34%;
       }
     }
@@ -115,7 +139,7 @@
     @include flex-direction(row);
     @include justify-content(space-between);
 
-    background: rgba(0,0,0, .15);
+    background: rgba(255,255,255, .85);
     box-sizing: border-box;
     min-height: 5.5em;
   }
@@ -133,6 +157,7 @@
   }
 
   &--filter-search-text[type="text"] {
+    border: 1px solid $gray-light;
     max-width: 63%;
     padding: .4em;
     position: absolute;
@@ -160,13 +185,14 @@
     @include flex-direction(row);
     @include justify-content(space-between);
 
-    margin: 0 $spacing;
+    margin: 4px $spacing;
 
     &-wrapper {
       max-width: 49%;
     }
 
     &-text[type="text"] {
+      border: 1px solid $gray-light;
       padding: .4em;
     }
   }
@@ -180,8 +206,9 @@
   }
 
   &--filter-label {
-    background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDQ4IDQ4IiB3aWR0aD0iNDgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTE0IDIwbDEwIDEwIDEwLTEweiIvPjxwYXRoIGQ9Ik0wIDBoNDh2NDhoLTQ4eiIgZmlsbD0ibm9uZSIvPjwvc3ZnPg==') no-repeat right -10px;
-    margin: 0 $spacing;
+    background: url(../images/arrow.svg) no-repeat right 0;
+    cursor: pointer;
+    margin: 2px $spacing;
     position: absolute;
     left: 0;
     right: 0;
@@ -191,7 +218,7 @@
     display: block;
     font-size: 1.3em;
 
-    @include strip-link-styles($black);
+    @include strip-link-styles(rgba(0, 0, 0, 0.5));
   }
 
 
@@ -204,12 +231,13 @@
 
     font-size: 1.3em;
 
+    @include box-shadow(3px 3px 6px $gray-dark);
     @include breakpoint(650px) {
       position: absolute;
     }
 
     &-inner {
-      background: rgba(0,0,0, .15);
+      background: rgba(255,255,255, .85);
       height: 100%;
     }
 
@@ -224,8 +252,10 @@
     }
 
     &-header-close {
+      cursor: pointer;
       position: absolute;
       right: 0;
+      top: 23px;
 
       width: 25px;
       height: 25px;
@@ -235,6 +265,7 @@
       font-size: .9em;
       margin: 0 $spacing;
     }
+
 
     &-submit {
       @extend %button;
@@ -250,6 +281,10 @@
     input[type="checkbox"] {
       margin-bottom: $spacing;
       margin-right: $spacing / 2;
+    }
+
+    .disabled {
+      color: rgba(0, 0, 0, 0.2);
     }
   }
 
@@ -292,15 +327,22 @@
     padding: $spacing $spacing / 2;
   }
 
+  &--widget-selected-item-wrapper {
+    margin-right: -4px;
+  }
+
   &--widget-selected-item {
     @extend %button;
 
-    background: $dark-blue url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkJz48c3ZnIGhlaWdodD0iMTZweCIgaWQ9IkxheWVyXzEiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUxMiA1MTI7ZmlsbDojZmZmOyIgdmVyc2lvbj0iMS4xIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgd2lkdGg9IjE2cHgiIHhtbDpzcGFjZT0icHJlc2VydmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjxwYXRoIGQ9Ik00MzcuNSwzODYuNkwzMDYuOSwyNTZsMTMwLjYtMTMwLjZjMTQuMS0xNC4xLDE0LjEtMzYuOCwwLTUwLjljLTE0LjEtMTQuMS0zNi44LTE0LjEtNTAuOSwwTDI1NiwyMDUuMUwxMjUuNCw3NC41ICBjLTE0LjEtMTQuMS0zNi44LTE0LjEtNTAuOSwwYy0xNC4xLDE0LjEtMTQuMSwzNi44LDAsNTAuOUwyMDUuMSwyNTZMNzQuNSwzODYuNmMtMTQuMSwxNC4xLTE0LjEsMzYuOCwwLDUwLjkgIGMxNC4xLDE0LjEsMzYuOCwxNC4xLDUwLjksMEwyNTYsMzA2LjlsMTMwLjYsMTMwLjZjMTQuMSwxNC4xLDM2LjgsMTQuMSw1MC45LDBDNDUxLjUsNDIzLjQsNDUxLjUsNDAwLjYsNDM3LjUsMzg2LjZ6Ii8+PC9zdmc+) no-repeat 95% center;
+    background: url(../images/close-small.svg) no-repeat 95% center;
+    background-color: rgba(255, 255, 255, .85);
+    border-color: rgba(255, 255, 255, .85);
+    color: $gray-dark;
     font-size: .9em;
     padding: .1em 3em .1em 2em;
     margin-bottom: 4px;
-
-    @include strip-link-styles($white);
+    margin-right: 4px;
+    text-shadow: none;
   }
 }
 
@@ -313,8 +355,11 @@
   padding-top: 1em;
 }
 
+
 .search-results {
-  margin: 0 $spacing / 2 2em;
+  @extend %teaser--list;
+
+  margin: 0 0 2em;
 
   &--result {
     @extend %teaser--wrapper;
@@ -332,23 +377,3 @@
     @extend %teaser--type-last-child;
   }
 }
-
-// Show 2 columns side by side
-.search-results.is-side-by-side {
-  // Stack until there is enough space to display them side by side
-  @media only screen and (min-width: 60em) {
-    @include flexbox;
-    @include flex-flow(row wrap);
-    @include justify-content(space-between);
-
-    .search-results--result {
-      margin-bottom: 1em;
-      max-width: 49%;
-
-      &:last-child {
-        margin-right: 0;
-      }
-    }
-  }
-}
-
