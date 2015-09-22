@@ -59,17 +59,36 @@ class SearchNodeClient {
           array(
             'apikey' => $this->apikey,
           )
-        )
+        ),
+        'timeout' => 5,
       ));
 
-      if ($request->code == 200) {
-        $this->token = json_decode($request->data)->token;
+      switch ($request->code) {
+        case 0:
+          $responses = array(
+            'status' => 500,
+            'message' => t('Error communicating with the search node server'),
+          );
+          break;
+
+        case 200:
+          // Store token.
+          $this->token = json_decode($request->data)->token;
+          $responses = array(
+            'status' => $request->code,
+            'message' => $request->status_message . ' - ' . $request->data,
+          );
+          break;
+
+        default:
+          $responses = array(
+            'status' => $request->code,
+            'message' => $request->status_message . ' - ' . $request->data,
+          );
+          break;
       }
 
-      return array(
-        'status' => $request->code,
-        'message' => $request->status_message . ' - ' . $request->data,
-      );
+      return $responses;
     }
     else {
       return array(
