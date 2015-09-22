@@ -36,7 +36,7 @@ function ulf_search_preprocess_search_node_page_search_box(&$variables) {
 /**
  * Implements hook_search_node_filtered_item_alter
  */
-function ulf_search_search_node_filtered_item_alter($filteredItem) {
+function ulf_search_search_node_filtered_item_alter(&$filteredItem) {
   if (!empty($filteredItem['field_image:file'])) {
     $file = file_load($filteredItem['field_image:file']['fid']);
     $filteredItem['field_image:file']['url'] = file_create_url(image_style_path('teaser_display', $file->uri));
