@@ -238,6 +238,7 @@
 
     &-inner {
       background: rgba(255,255,255, .85);
+      padding-bottom: 1px;
       height: 100%;
     }
 
@@ -324,12 +325,9 @@
     box-sizing: border-box;
     margin: 0 auto;
     max-width: $layout-max-width;
-    padding: $spacing $spacing / 2;
+    padding: 0px 8px 6px;
   }
 
-  &--widget-selected-item-wrapper {
-    margin-right: -4px;
-  }
 
   &--widget-selected-item {
     @extend %button;
@@ -340,7 +338,7 @@
     color: $gray-dark;
     font-size: .9em;
     padding: .1em 3em .1em 2em;
-    margin-bottom: 4px;
+    margin-top: 4px;
     margin-right: 4px;
     text-shadow: none;
   }

@@ -90,7 +90,7 @@
     @include breakpoint(45em) {
       position: absolute;
 
-      z-index: 1;
+      z-index: 2;
       right: 0;
 
       background: $gray-dark;
@@ -150,11 +150,12 @@
     min-width: 0;
 
     @include breakpoint(45em) {
-      min-width: 200px;
+      min-width: 240px;
     }
   }
 
   & .nav--static-pages-item {
+    width: auto;
 
     a {
       @include strip-link-styles($white);
@@ -182,7 +183,7 @@
     a {
       @include strip-link-styles($white);
 
-      display: inline;
+      display: block;
       margin-left: 1em;
 
       &.active {
