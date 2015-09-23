@@ -137,6 +137,9 @@ class SearchApiSearchNodeService extends SearchApiAbstractService {
           $filteredItem['type'] = 'entity';
         }
 
+        // Allow others to alter the filtered values.
+        drupal_alter('search_node_filtered_item', $filteredItem);
+
         // Add it to the index
         if ($this->connection->add($search_node_index, $filteredItem['type'], $id, json_encode($filteredItem))){
           // Mark the content as indexed.
@@ -269,13 +272,16 @@ class SearchApiSearchNodeService extends SearchApiAbstractService {
    * @return string
    */
   private function addFileUrl($fids) {
-    $url = '';
+    $files = '';
     if (!empty($fids)) {
-      $file = file_load($fids[0]);
-      $url = file_create_url($file->uri);
+      $file = file_load(reset($fids));
+      $files = array(
+        'fid' => reset($fids),
+        'url' => file_create_url($file->uri),
+      );
     }
 
-    return $url;
+    return $files;
   }
 
   /**
