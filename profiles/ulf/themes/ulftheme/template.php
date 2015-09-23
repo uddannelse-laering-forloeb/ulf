@@ -9,6 +9,11 @@
 function ulf_preprocess_page(&$variables) {
   // Provide main menu as block for all pages.
   $variables['main_menu_block'] = module_invoke('system', 'block_view', 'main-menu');
+
+  // Hide login tabs for user profiles (see ulf_course_providers module)
+  if (arg(0) == 'user' && is_numeric(arg(1))) {
+    unset($variables['tabs']['#primary']);
+  }
 }
 
 
