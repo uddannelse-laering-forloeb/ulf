@@ -553,6 +553,173 @@ function ulf_search_settings_default_page_manager_pages() {
   $page = new stdClass();
   $page->disabled = FALSE; /* Edit this to true to make a default page disabled initially */
   $page->api_version = 1;
+  $page->name = 'search_users';
+  $page->task = 'page';
+  $page->admin_title = 'Search - users';
+  $page->admin_description = '';
+  $page->path = 'udbydere';
+  $page->access = array();
+  $page->menu = array(
+    'type' => 'normal',
+    'title' => 'Udbydere',
+    'name' => 'main-menu',
+    'weight' => '0',
+    'parent' => array(
+      'type' => 'none',
+      'title' => '',
+      'name' => 'navigation',
+      'weight' => '0',
+    ),
+  );
+  $page->arguments = array();
+  $page->conf = array(
+    'admin_paths' => FALSE,
+  );
+  $page->default_handlers = array();
+  $handler = new stdClass();
+  $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
+  $handler->api_version = 1;
+  $handler->name = 'page_search_users__panel';
+  $handler->task = 'page';
+  $handler->subtask = 'search_users';
+  $handler->handler = 'panel_context';
+  $handler->weight = 0;
+  $handler->conf = array(
+    'title' => 'Panel',
+    'no_blocks' => 0,
+    'pipeline' => 'standard',
+    'body_classes_to_remove' => '',
+    'body_classes_to_add' => '',
+    'css_id' => '',
+    'css' => '',
+    'contexts' => array(),
+    'relationships' => array(),
+    'name' => 'panel',
+  );
+  $display = new panels_display();
+  $display->layout = 'onecol';
+  $display->layout_settings = array();
+  $display->panel_settings = array(
+    'style_settings' => array(
+      'default' => NULL,
+      'middle' => NULL,
+    ),
+  );
+  $display->cache = array();
+  $display->title = '';
+  $display->uuid = '4f9c8e83-df13-485e-93a4-1100a46f8175';
+  $display->content = array();
+  $display->panels = array();
+    $pane = new stdClass();
+    $pane->pid = 'new-e528991d-a754-4b7d-a8f6-c9e0ab408e90';
+    $pane->panel = 'middle';
+    $pane->type = 'search_box';
+    $pane->subtype = 'search_box';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'search_node' => array(
+        'id' => '1443443194',
+        'server' => 'search_node',
+        'index' => 'users',
+        'options' => array(
+          'cache_expire' => '30',
+          'size' => '8',
+          'initial_query_enable' => 1,
+          'initial_query_text' => '',
+          'fields' => array(
+            'field_profile_name' => 'field_profile_name',
+            'created' => 0,
+            'field_image:file' => 0,
+            'field_profile_address' => 0,
+            'field_profile_city' => 0,
+            'field_profile_contact' => 0,
+            'field_profile_description:value' => 0,
+            'field_profile_entry' => 0,
+            'field_profile_mail' => 0,
+            'field_profile_phone' => 0,
+            'field_profile_postal_code' => 0,
+            'roles' => 0,
+            'search_api_language' => 0,
+            'uid' => 0,
+          ),
+          'filters' => array(),
+        ),
+        'intervals' => array(
+          'fields' => array(
+            'created' => 0,
+            'field_image:file' => 0,
+            'field_profile_address' => 0,
+            'field_profile_city' => 0,
+            'field_profile_contact' => 0,
+            'field_profile_description:value' => 0,
+            'field_profile_entry' => 0,
+            'field_profile_mail' => 0,
+            'field_profile_name' => 0,
+            'field_profile_phone' => 0,
+            'field_profile_postal_code' => 0,
+            'roles' => 0,
+            'search_api_language' => 0,
+            'uid' => 0,
+          ),
+        ),
+        'forces' => array(
+          'field' => '_none_',
+          'selected' => array(),
+        ),
+        'templates' => array(
+          'box' => '/profiles/ulf/themes/ulftheme/templates/search/angular/search-users.html',
+          'result' => '/profiles/ulf/themes/ulftheme/templates/search/angular/results-users.html',
+          'pager' => '/profiles/ulf/themes/ulftheme/templates/search/angular/pager.html',
+        ),
+      ),
+      'override_title' => 0,
+      'override_title_text' => '',
+      'override_title_heading' => 'h2',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $pane->uuid = 'e528991d-a754-4b7d-a8f6-c9e0ab408e90';
+    $display->content['new-e528991d-a754-4b7d-a8f6-c9e0ab408e90'] = $pane;
+    $display->panels['middle'][0] = 'new-e528991d-a754-4b7d-a8f6-c9e0ab408e90';
+    $pane = new stdClass();
+    $pane->pid = 'new-f596440d-6462-4d03-847c-00398f872783';
+    $pane->panel = 'middle';
+    $pane->type = 'search_result';
+    $pane->subtype = 'search_result';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_title' => 0,
+      'override_title_text' => '',
+      'override_title_heading' => 'h2',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 1;
+    $pane->locks = array();
+    $pane->uuid = 'f596440d-6462-4d03-847c-00398f872783';
+    $display->content['new-f596440d-6462-4d03-847c-00398f872783'] = $pane;
+    $display->panels['middle'][1] = 'new-f596440d-6462-4d03-847c-00398f872783';
+  $display->hide_title = PANELS_TITLE_FIXED;
+  $display->title_pane = 'new-e528991d-a754-4b7d-a8f6-c9e0ab408e90';
+  $handler->conf['display'] = $display;
+  $page->default_handlers[$handler->name] = $handler;
+  $pages['search_users'] = $page;
+
+  $page = new stdClass();
+  $page->disabled = FALSE; /* Edit this to true to make a default page disabled initially */
+  $page->api_version = 1;
   $page->name = 'search_youth';
   $page->task = 'page';
   $page->admin_title = 'Search - youth';
