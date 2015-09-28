@@ -14,4 +14,15 @@
 .teaser--group,
 .teaser {
     float: left;
+    max-width: 49%;
+}
+
+.teaser header {
+    float: right;
+    max-width: 65%;
+}
+
+.teaser figure {
+    float: left;
+    max-width: 30%;
 }
