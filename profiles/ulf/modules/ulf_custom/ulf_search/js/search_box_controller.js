@@ -14,6 +14,11 @@ angular.module('searchResultApp').filter('trimWordBoundary', function () {
   "use strict";
 
   return function (str, len) {
+    // Ensure that the string is defined and it's larger than required length.
+    if (str === undefined || str.length === 0 || str.length < len) {
+      return;
+    }
+
     // Clean out headlines.
     str = str.replace(/(<h\d>).+(<\/h\d>)/gi, '');
 

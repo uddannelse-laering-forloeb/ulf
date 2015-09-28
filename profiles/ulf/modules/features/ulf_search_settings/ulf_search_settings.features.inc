@@ -250,6 +250,143 @@ function ulf_search_settings_default_search_api_index() {
     "enabled" : "1",
     "read_only" : "0"
   }');
+  $items['users'] = entity_import('search_api_index', '{
+    "name" : "Users",
+    "machine_name" : "users",
+    "description" : null,
+    "server" : "search_node",
+    "item_type" : "user",
+    "options" : {
+      "index_directly" : 0,
+      "cron_limit" : "50",
+      "search_node_indexes" : "81f32f94d4cdf81bb8c673eed20ee84f",
+      "fields" : {
+        "created" : { "type" : "date" },
+        "field_image:file" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "file" },
+        "field_profile_address" : { "type" : "text" },
+        "field_profile_city" : { "type" : "text" },
+        "field_profile_contact" : {
+          "type" : "list\\u003Cinteger\\u003E",
+          "entity_type" : "field_collection_item"
+        },
+        "field_profile_description:value" : { "type" : "text" },
+        "field_profile_entry" : { "type" : "text" },
+        "field_profile_mail" : { "type" : "text" },
+        "field_profile_name" : { "type" : "text" },
+        "field_profile_phone" : { "type" : "text" },
+        "field_profile_postal_code" : { "type" : "integer" },
+        "roles" : { "type" : "list\\u003Cstring\\u003E" },
+        "search_api_language" : { "type" : "string" },
+        "uid" : { "type" : "integer" }
+      },
+      "data_alter_callbacks" : {
+        "search_api_alter_role_filter" : {
+          "status" : 1,
+          "weight" : "-10",
+          "settings" : { "default" : "0", "roles" : { "15" : "15" } }
+        },
+        "search_api_alter_language_control" : {
+          "status" : 0,
+          "weight" : "0",
+          "settings" : { "lang_field" : "", "languages" : [] }
+        },
+        "search_api_alter_add_viewed_entity" : { "status" : 0, "weight" : "0", "settings" : { "mode" : "full" } },
+        "search_api_alter_add_aggregation" : { "status" : 0, "weight" : "0", "settings" : [] },
+        "search_api_alter_add_url" : { "status" : 0, "weight" : "0", "settings" : [] }
+      },
+      "processors" : {
+        "search_api_case_ignore" : {
+          "status" : 0,
+          "weight" : "0",
+          "settings" : { "fields" : {
+              "field_profile_address" : true,
+              "field_profile_city" : true,
+              "field_profile_entry" : true,
+              "field_profile_name" : true,
+              "field_profile_phone" : true,
+              "field_profile_mail" : true
+            }
+          }
+        },
+        "search_api_html_filter" : {
+          "status" : 0,
+          "weight" : "10",
+          "settings" : {
+            "fields" : {
+              "field_profile_address" : true,
+              "field_profile_city" : true,
+              "field_profile_entry" : true,
+              "field_profile_name" : true,
+              "field_profile_phone" : true,
+              "field_profile_mail" : true
+            },
+            "title" : 0,
+            "alt" : 1,
+            "tags" : "h1 = 5\\r\\nh2 = 3\\r\\nh3 = 2\\r\\nstrong = 2\\r\\nb = 2\\r\\nem = 1.5\\r\\nu = 1.5"
+          }
+        },
+        "search_api_transliteration" : {
+          "status" : 0,
+          "weight" : "15",
+          "settings" : { "fields" : {
+              "field_profile_address" : true,
+              "field_profile_city" : true,
+              "field_profile_entry" : true,
+              "field_profile_name" : true,
+              "field_profile_phone" : true,
+              "field_profile_mail" : true
+            }
+          }
+        },
+        "search_api_tokenizer" : {
+          "status" : 0,
+          "weight" : "20",
+          "settings" : {
+            "fields" : {
+              "field_profile_address" : true,
+              "field_profile_city" : true,
+              "field_profile_entry" : true,
+              "field_profile_name" : true,
+              "field_profile_phone" : true,
+              "field_profile_mail" : true
+            },
+            "spaces" : "[^[:alnum:]]",
+            "ignorable" : "[\\u0027]"
+          }
+        },
+        "search_api_stopwords" : {
+          "status" : 0,
+          "weight" : "30",
+          "settings" : {
+            "fields" : {
+              "field_profile_address" : true,
+              "field_profile_city" : true,
+              "field_profile_entry" : true,
+              "field_profile_name" : true,
+              "field_profile_phone" : true,
+              "field_profile_mail" : true
+            },
+            "file" : "",
+            "stopwords" : "but\\r\\ndid\\r\\nthe this that those\\r\\netc"
+          }
+        },
+        "search_api_highlighting" : {
+          "status" : 0,
+          "weight" : "35",
+          "settings" : {
+            "prefix" : "\\u003Cstrong\\u003E",
+            "suffix" : "\\u003C\\/strong\\u003E",
+            "excerpt" : 1,
+            "excerpt_length" : "256",
+            "exclude_fields" : [],
+            "highlight" : "always"
+          }
+        }
+      }
+    },
+    "enabled" : "1",
+    "read_only" : "0"
+  }');
   return $items;
 }
 
