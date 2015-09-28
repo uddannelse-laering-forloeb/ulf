@@ -1,10 +1,17 @@
 /**
  * IE 9 specific styles
- */
-/* Page
  *
-   ================================================================================================================== */
-/* line 13, ../sass/ie9.scss */
-.nav--mobile {
-  display: none;
+ *  ================================================================================================================== */
+
+.layout-element-alpha-inner,
+.layout-element-beta-inner,
+.layout-element-gamma-inner,
+.layout-element-delta-inner,
+.teaser--list {
+    overflow: hidden;
+}
+
+.teaser--group,
+.teaser {
+    float: left;
 }
