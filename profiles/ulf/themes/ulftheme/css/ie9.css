@@ -23,10 +23,10 @@
 
 .teaser header {
     float: right;
-    max-width: 65%;
+    width: 65%;
 }
 
 .teaser figure {
     float: left;
-    max-width: 30%;
+    width: 30%;
 }
