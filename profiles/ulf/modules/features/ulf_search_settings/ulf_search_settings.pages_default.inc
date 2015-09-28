@@ -11,6 +11,160 @@ function ulf_search_settings_default_page_manager_pages() {
   $page = new stdClass();
   $page->disabled = FALSE; /* Edit this to true to make a default page disabled initially */
   $page->api_version = 1;
+  $page->name = 'search_courses';
+  $page->task = 'page';
+  $page->admin_title = 'Search - courses';
+  $page->admin_description = '';
+  $page->path = 'kurser';
+  $page->access = array();
+  $page->menu = array();
+  $page->arguments = array();
+  $page->conf = array(
+    'admin_paths' => FALSE,
+  );
+  $page->default_handlers = array();
+  $handler = new stdClass();
+  $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
+  $handler->api_version = 1;
+  $handler->name = 'page_search_courses__panel';
+  $handler->task = 'page';
+  $handler->subtask = 'search_courses';
+  $handler->handler = 'panel_context';
+  $handler->weight = 0;
+  $handler->conf = array(
+    'title' => 'Panel',
+    'no_blocks' => 0,
+    'pipeline' => 'standard',
+    'body_classes_to_remove' => '',
+    'body_classes_to_add' => '',
+    'css_id' => '',
+    'css' => '',
+    'contexts' => array(),
+    'relationships' => array(),
+    'name' => 'panel',
+  );
+  $display = new panels_display();
+  $display->layout = 'onecol';
+  $display->layout_settings = array();
+  $display->panel_settings = array(
+    'style_settings' => array(
+      'default' => NULL,
+      'middle' => NULL,
+    ),
+  );
+  $display->cache = array();
+  $display->title = '';
+  $display->uuid = '638248a9-b3be-42cc-b840-e4e1e62f0114';
+  $display->content = array();
+  $display->panels = array();
+    $pane = new stdClass();
+    $pane->pid = 'new-4e4e009d-a620-453a-acb5-98f13a7bbeb1';
+    $pane->panel = 'middle';
+    $pane->type = 'search_box';
+    $pane->subtype = 'search_box';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'search_node' => array(
+        'id' => '1443436570',
+        'server' => 'search_node',
+        'index' => 'educators',
+        'options' => array(
+          'cache_expire' => '30',
+          'size' => '8',
+          'initial_query_enable' => 1,
+          'initial_query_text' => '',
+          'fields' => array(
+            'field_teaser' => 'field_teaser',
+            'title' => 'title',
+            'field_collection_price' => 0,
+            'field_price' => 0,
+            'nid' => 0,
+            'search_api_language' => 0,
+            'type' => 0,
+          ),
+          'filters' => array(
+            'field_educational_goals' => 0,
+            'field_offer_type' => 0,
+            'field_relevance_educators' => 0,
+            'field_relevance_primary_school' => 0,
+            'field_relevance_upper_school' => 0,
+            'field_subject' => 0,
+            'field_subjects_primary_school' => 0,
+            'field_subjects_youth' => 0,
+            'field_tags' => 0,
+            'field_target_group' => 0,
+            'field_target_group_sub' => 0,
+          ),
+        ),
+        'intervals' => array(
+          'fields' => array(
+            'field_collection_price' => 0,
+            'field_price' => 0,
+            'field_teaser' => 0,
+            'nid' => 0,
+            'search_api_language' => 0,
+            'title' => 0,
+            'type' => 0,
+          ),
+        ),
+        'forces' => array(
+          'field' => '_none_',
+          'selected' => array(),
+        ),
+        'templates' => array(
+          'box' => '/profiles/ulf/modules/search_node_page/templates/angular/search.html',
+          'result' => '/profiles/ulf/modules/search_node_page/templates/angular/result.html',
+          'pager' => '/profiles/ulf/modules/search_node_page/templates/angular/pager.html',
+        ),
+      ),
+      'override_title' => 0,
+      'override_title_text' => '',
+      'override_title_heading' => 'h2',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $pane->uuid = '4e4e009d-a620-453a-acb5-98f13a7bbeb1';
+    $display->content['new-4e4e009d-a620-453a-acb5-98f13a7bbeb1'] = $pane;
+    $display->panels['middle'][0] = 'new-4e4e009d-a620-453a-acb5-98f13a7bbeb1';
+    $pane = new stdClass();
+    $pane->pid = 'new-6289d997-fcad-46e2-9e66-d34b03470b96';
+    $pane->panel = 'middle';
+    $pane->type = 'search_result';
+    $pane->subtype = 'search_result';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_title' => 0,
+      'override_title_text' => '',
+      'override_title_heading' => 'h2',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 1;
+    $pane->locks = array();
+    $pane->uuid = '6289d997-fcad-46e2-9e66-d34b03470b96';
+    $display->content['new-6289d997-fcad-46e2-9e66-d34b03470b96'] = $pane;
+    $display->panels['middle'][1] = 'new-6289d997-fcad-46e2-9e66-d34b03470b96';
+  $display->hide_title = PANELS_TITLE_FIXED;
+  $display->title_pane = '0';
+  $handler->conf['display'] = $display;
+  $page->default_handlers[$handler->name] = $handler;
+  $pages['search_courses'] = $page;
+
+  $page = new stdClass();
+  $page->disabled = FALSE; /* Edit this to true to make a default page disabled initially */
+  $page->api_version = 1;
   $page->name = 'search_day_care';
   $page->task = 'page';
   $page->admin_title = 'Search - day care';

@@ -44,29 +44,11 @@ function ulf_search_settings_menu_default_menu_links() {
     'weight' => -49,
     'customized' => 1,
   );
-  // Exported menu link: main-menu_ungdomsuddannelse:ungdomsuddannelse
-  $menu_links['main-menu_ungdomsuddannelse:ungdomsuddannelse'] = array(
-    'menu_name' => 'main-menu',
-    'link_path' => 'ungdomsuddannelse',
-    'router_path' => 'ungdomsuddannelse',
-    'link_title' => 'Ungdomsuddannelse',
-    'options' => array(
-      'identifier' => 'main-menu_ungdomsuddannelse:ungdomsuddannelse',
-    ),
-    'module' => 'system',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => 0,
-    'customized' => 0,
-  );
 
   // Translatables
   // Included for use with string extractors like potx.
   t('Dagtilbud');
   t('Grundskole');
-  t('Ungdomsuddannelse');
 
   return $menu_links;
 }
