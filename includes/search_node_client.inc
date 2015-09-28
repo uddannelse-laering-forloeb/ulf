@@ -81,10 +81,19 @@ class SearchNodeClient {
           break;
 
         default:
-          $responses = array(
-            'status' => $request->code,
-            'message' => $request->status_message . ' - ' . $request->data,
-          );
+          watchdog('search_node', 'Unknown response from client: %code', array('%code' => $request->code), WATCHDOG_CRITICAL);
+          if (isset($request->status_message)) {
+            $responses = array(
+              'status' => $request->code,
+              'message' => $request->status_message . ' - ' . $request->data,
+            );
+          }
+          else {
+            $responses = array(
+              'status' => $request->code,
+              'message' => t('Unknown search error.'),
+            );
+          }
           break;
       }
 
