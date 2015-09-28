@@ -30,6 +30,10 @@
 }
 
 
+.search--filter-wrapper-inner {
+    height: 5.5em;
+}
+
 .search--filter-list {
     height: 100%;
     display: block;
