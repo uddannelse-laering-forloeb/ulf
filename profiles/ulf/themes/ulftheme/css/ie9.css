@@ -19,7 +19,7 @@
 .search-results--result {
     float: left;
     max-width: 49%;
-    height: 255px;
+    height: 5.5em;
 }
 
 .search--filter-wrapper {
