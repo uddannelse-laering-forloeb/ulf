@@ -15,6 +15,7 @@
 
 .teaser--group,
 .teaser,
+.search--filter-wrapper,
 .search-results--result {
     float: left;
     max-width: 49%;
