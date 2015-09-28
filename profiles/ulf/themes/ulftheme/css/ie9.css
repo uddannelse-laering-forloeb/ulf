@@ -9,6 +9,7 @@
 .layout-element-delta-inner,
 .teaser--list,
 .page--content,
+.search--widget-inner,
 .search-results {
     overflow: hidden;
 }
@@ -23,6 +24,7 @@
 
 .search--filter-wrapper {
     float: left;
+    height: 100px;
 }
 
 .search-results--result:nth-child(odd),
