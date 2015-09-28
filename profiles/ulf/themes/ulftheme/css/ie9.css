@@ -14,6 +14,7 @@
     overflow: hidden;
 }
 
+
 .teaser--group,
 .teaser,
 .search-results--result {
@@ -22,21 +23,26 @@
     height: 255px;
 }
 
+
+.search--filter-label,
 .search--filter-wrapper {
     float: left;
     height: 5.5em;
 }
+
 
 .search-results--result:nth-child(odd),
 .teaser:nth-child(odd) {
     margin-right: 2%;
 }
 
+
 .search-results--result header,
 .teaser header {
     float: right;
     width: 65%;
 }
+
 
 .search-results--result figure,
 .teaser figure {
