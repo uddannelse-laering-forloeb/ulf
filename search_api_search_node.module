@@ -18,6 +18,20 @@ function search_api_search_node_search_api_service_info() {
 }
 
 /**
+ * Implements hook_search_api_alter_callback_info().
+ */
+function search_api_search_node_search_api_alter_callback_info() {
+  return array(
+    'exclude' => array(
+      'name' => t('Exclude items'),
+      'description' => t('Exclude items from index based field and pattern.'),
+      'class' => 'SearchNodeExcludeItemsFilter',
+      'weight' => 100,
+    ),
+  );
+}
+
+/**
  * Implements hook_from_HOOK_alter().
  *
  * @see search_api_search_node_form_search_api_admin_index_edit_alter.
