@@ -17,6 +17,11 @@
     max-width: 49%;
 }
 
+.teaser--group:nth-child(odd),
+.teaser:nth-child(odd) {
+    margin-right: 2%;
+}
+
 .teaser header {
     float: right;
     max-width: 65%;
