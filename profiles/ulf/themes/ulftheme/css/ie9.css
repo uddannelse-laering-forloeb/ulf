@@ -7,26 +7,32 @@
 .layout-element-beta-inner,
 .layout-element-gamma-inner,
 .layout-element-delta-inner,
-.teaser--list {
+.teaser--list,
+.page--content,
+.search-results {
     overflow: hidden;
 }
 
 .teaser--group,
-.teaser {
+.teaser,
+.search-results--result {
     float: left;
     max-width: 49%;
-    height: 270px;
+    height: 255px;
 }
 
+.search-results--result:nth-child(odd),
 .teaser:nth-child(odd) {
     margin-right: 2%;
 }
 
+.search-results--result header,
 .teaser header {
     float: right;
     width: 65%;
 }
 
+.search-results--result figure,
 .teaser figure {
     float: left;
     width: 30%;
