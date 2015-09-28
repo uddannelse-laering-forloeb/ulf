@@ -52,7 +52,7 @@
             <div class="search--filter-dropdown-inner">
               <div class="search--filter-dropdown-header"
                    data-ng-click="openFilter(id)">{{ filter.name }} <span class="search--filter-dropdown-header-close"><img
-                src="profiles/ulf/themes/ulftheme/images/close.svg"></span>
+                src="/profiles/ulf/themes/ulftheme/images/close.svg"></span>
               </div>
               <div class="search--filter-dropdown-content">
                 <div data-ng-repeat="(key, item) in filter.items">
@@ -63,9 +63,7 @@
                          for="{{ key }}">{{ item.value }}</label>
                 </div>
               </div>
-              <div class="search--filter-dropdown-submit"
-                   data-ng-click="openFilter(id)">Anvend
-              </div>
+              <div class="search--filter-dropdown-submit" data-ng-click="openFilter(id)">Anvend</div>
             </div>
           </div>
         </div>
