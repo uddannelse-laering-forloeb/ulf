@@ -30,6 +30,12 @@
 }
 
 
+.search--filter-list {
+    height: 100%;
+    display: block;
+    position: relative;
+}
+
 .search-results--result:nth-child(odd),
 .teaser:nth-child(odd) {
     margin-right: 2%;
