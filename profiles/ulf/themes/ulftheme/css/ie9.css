@@ -15,6 +15,7 @@
 .teaser {
     float: left;
     max-width: 49%;
+    height: 270px;
 }
 
 .teaser:nth-child(odd) {
