@@ -1,10 +1,33 @@
 /**
  * IE 9 specific styles
- */
-/* Page
  *
-   ================================================================================================================== */
-/* line 13, ../sass/ie9.scss */
-.nav--mobile {
-  display: none;
+ *  ================================================================================================================== */
+
+.layout-element-alpha-inner,
+.layout-element-beta-inner,
+.layout-element-gamma-inner,
+.layout-element-delta-inner,
+.teaser--list {
+    overflow: hidden;
+}
+
+.teaser--group,
+.teaser {
+    float: left;
+    max-width: 49%;
+    height: 270px;
+}
+
+.teaser:nth-child(odd) {
+    margin-right: 2%;
+}
+
+.teaser header {
+    float: right;
+    width: 65%;
+}
+
+.teaser figure {
+    float: left;
+    width: 30%;
 }
