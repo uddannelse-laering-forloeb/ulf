@@ -17,7 +17,18 @@ function ulf_search_settings_default_page_manager_pages() {
   $page->admin_description = '';
   $page->path = 'kurser';
   $page->access = array();
-  $page->menu = array();
+  $page->menu = array(
+    'type' => 'normal',
+    'title' => 'Kurser',
+    'name' => 'main-menu',
+    'weight' => '0',
+    'parent' => array(
+      'type' => 'none',
+      'title' => '',
+      'name' => 'navigation',
+      'weight' => '0',
+    ),
+  );
   $page->arguments = array();
   $page->conf = array(
     'admin_paths' => FALSE,
@@ -77,19 +88,23 @@ function ulf_search_settings_default_page_manager_pages() {
           'fields' => array(
             'field_teaser' => 'field_teaser',
             'title' => 'title',
-            'field_collection_price' => 0,
+            'author:field_profile_name' => 0,
+            'author:uid' => 0,
+            'changed' => 0,
+            'created' => 0,
+            'field_period:value' => 0,
             'field_price' => 0,
             'nid' => 0,
             'search_api_language' => 0,
             'type' => 0,
           ),
           'filters' => array(
+            'field_subject' => 'field_subject',
             'field_educational_goals' => 0,
             'field_offer_type' => 0,
             'field_relevance_educators' => 0,
             'field_relevance_primary_school' => 0,
             'field_relevance_upper_school' => 0,
-            'field_subject' => 0,
             'field_subjects_primary_school' => 0,
             'field_subjects_youth' => 0,
             'field_tags' => 0,
@@ -99,7 +114,11 @@ function ulf_search_settings_default_page_manager_pages() {
         ),
         'intervals' => array(
           'fields' => array(
-            'field_collection_price' => 0,
+            'field_period:value' => 'field_period:value',
+            'author:field_profile_name' => 0,
+            'author:uid' => 0,
+            'changed' => 0,
+            'created' => 0,
             'field_price' => 0,
             'field_teaser' => 0,
             'nid' => 0,
@@ -113,8 +132,8 @@ function ulf_search_settings_default_page_manager_pages() {
           'selected' => array(),
         ),
         'templates' => array(
-          'box' => '/profiles/ulf/modules/search_node_page/templates/angular/search.html',
-          'result' => '/profiles/ulf/modules/search_node_page/templates/angular/result.html',
+          'box' => '/profiles/ulf/themes/ulftheme/templates/search/angular/search-course.html',
+          'result' => '/profiles/ulf/themes/ulftheme/templates/search/angular/results-course.html',
           'pager' => '/profiles/ulf/modules/search_node_page/templates/angular/pager.html',
         ),
       ),
@@ -156,7 +175,7 @@ function ulf_search_settings_default_page_manager_pages() {
     $pane->uuid = '6289d997-fcad-46e2-9e66-d34b03470b96';
     $display->content['new-6289d997-fcad-46e2-9e66-d34b03470b96'] = $pane;
     $display->panels['middle'][1] = 'new-6289d997-fcad-46e2-9e66-d34b03470b96';
-  $display->hide_title = PANELS_TITLE_FIXED;
+  $display->hide_title = PANELS_TITLE_NONE;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
   $page->default_handlers[$handler->name] = $handler;

@@ -157,12 +157,13 @@ function ulf_search_settings_default_search_api_index() {
       "cron_limit" : "50",
       "search_node_indexes" : "f8fba18f511d352f1514e86b00ac1499",
       "fields" : {
-        "field_collection_price" : {
-          "type" : "list\\u003Cinteger\\u003E",
-          "entity_type" : "field_collection_item"
-        },
+        "author:field_profile_name" : { "type" : "text" },
+        "author:uid" : { "type" : "integer" },
+        "changed" : { "type" : "date" },
+        "created" : { "type" : "date" },
         "field_educational_goals" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_offer_type" : { "type" : "integer", "entity_type" : "taxonomy_term" },
+        "field_period:value" : { "type" : "date" },
         "field_price" : { "type" : "decimal" },
         "field_relevance_educators" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_relevance_primary_school" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
