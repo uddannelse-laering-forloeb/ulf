@@ -19,12 +19,12 @@
 .search-results--result {
     float: left;
     max-width: 49%;
-    height: 5.5em;
+    height: 255px;
 }
 
 .search--filter-wrapper {
     float: left;
-    height: 100px;
+    height: 5.5em;
 }
 
 .search-results--result:nth-child(odd),
