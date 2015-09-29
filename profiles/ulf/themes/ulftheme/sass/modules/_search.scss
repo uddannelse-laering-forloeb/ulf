@@ -132,6 +132,7 @@
 
 
   &--filter-wrapper-user {
+    background: $gray-darker;
     width: 100%;
   }
 
@@ -321,7 +322,7 @@
 
   // Selected facets
   &--widget-selected {
-    background: $gray-lighter;
+    background: $white;
     overflow: hidden;
     position: relative;
     z-index: 1;
@@ -342,7 +343,7 @@
     background: url(../images/close-small.svg) no-repeat 95% center;
     background-color: rgba(255, 255, 255, .85);
     border-color: rgba(255, 255, 255, .85);
-    color: $gray-dark;
+    color: $gray;
     font-size: .9em;
     padding: .1em 3em .1em 2em;
     margin-top: 4px;
@@ -388,4 +389,12 @@
   &--type:last-child {
     @extend %teaser--type-last-child;
   }
+}
+
+
+// Specific texts need dark color.
+.is-course .search--reset,
+.is-daycare .search--reset,
+.is-users .search--reset {
+  color: $gray-darker;
 }
