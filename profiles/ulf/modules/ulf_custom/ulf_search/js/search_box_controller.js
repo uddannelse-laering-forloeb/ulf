@@ -261,6 +261,40 @@ angular.module('searchBoxApp').controller('UlfBoxController', ['CONFIG', 'commun
       }
     };
 
+    /**
+     * Resets the current search to default.
+     */
+    $scope.reset = function reset() {
+      // Reset filters
+      $scope.query.filters = {};
+      $scope.selectedFilters = {};
+
+      // Reset intervals.
+      if (CONFIG.provider.hasOwnProperty('intervals')) {
+        $scope.intervals = CONFIG.provider.intervals;
+        $scope.query.intervals = {};
+      }
+
+      // Reset pager.
+      if (CONFIG.provider.hasOwnProperty('pager')) {
+        $scope.query.pager = angular.copy(CONFIG.provider.pager);
+      }
+
+      // Check if initail query exists.
+      if (CONFIG.hasOwnProperty('initialQueryText')) {
+        $scope.query.text = angular.copy(CONFIG.initialQueryText);
+
+        search();
+      }
+      else {
+        // No initial query.
+        $scope.query.query = '';
+
+        // Remove hits.
+        communicatorService.$emit('hits', {"hits" : {}});
+      }
+    };
+
     // Get set show on the road.
     init();
   }
