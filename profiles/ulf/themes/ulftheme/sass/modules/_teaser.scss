@@ -132,6 +132,16 @@
   @extend %teaser--type;
 }
 
+.teaser--type-read-more {
+  @extend %teaser--type;
+
+  a {
+    padding-left: 1em;
+    background: transparent url("../images/arrow-right-icon.svg") no-repeat scroll left 2px;
+    background-size: .8em;
+  }
+}
+
 
 .teaser--filter {
   .views-exposed-widgets {

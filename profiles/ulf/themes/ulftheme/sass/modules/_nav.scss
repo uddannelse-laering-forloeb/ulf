@@ -199,7 +199,8 @@
 
   & .nav--static-pages-item {
     border-bottom: 1px solid $white;
-    padding: 1em 0;
+    padding: .5em 0;
+    font-weight: bold;
 
     &:last-child {
       border-bottom: 0;
@@ -207,10 +208,6 @@
 
     a {
       @include strip-link-styles($dark-blue);
-
-      &.active {
-        font-weight: bold;
-      }
     }
   }
 }

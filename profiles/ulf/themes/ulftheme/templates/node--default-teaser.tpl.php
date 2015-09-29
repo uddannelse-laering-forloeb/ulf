@@ -102,13 +102,13 @@
         <?php endif; ?>
       <?php endif; ?>
     <?php endif;?>
-    <p><?php print $teaser_content; ?></p>
     <p class="teaser--type"><?php print t('Organizer'); ?>: <a href="/user/<?php print $uid; ?>"><?php print $profile_name; ?></a></p>
     <?php if ($type == 'course') : ?>
       <?php if (isset($content['field_subject'])) : ?>
         <p class="teaser--type"><?php print t('Subject'); ?>: <?php print render($content['field_subject']); ?></p>
       <?php endif;?>
     <?php endif;?>
+    <p class="teaser--type-read-more"><a href="/node/<?php print $nid; ?>"><?php print t('Read more'); ?></a></p>
   </header>
   <figure><a href="/node/<?php print $nid; ?>"><?php print render($content['field_image']); ?></a></figure>
 </article>
