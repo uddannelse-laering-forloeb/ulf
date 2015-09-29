@@ -29,6 +29,14 @@
     <div class="layout-element-alpha">
       <div class="layout-element-alpha-inner">
         <div class="content">
+          <div class="content--image">
+            <div class="field--title"><?php print t('Newsletter archive');?></div>
+            <div class="field--image">
+              <div class="field--image-items">
+                <img src="/profiles/ulf/themes/ulftheme/images/ulf_default_fallback.jpg" alt="">
+              </div>
+            </div>
+          </div>
           <div class="content---main">
             <?php if(!empty ($content['alpha'])) : ?>
               <?php print $content['alpha']; ?>
