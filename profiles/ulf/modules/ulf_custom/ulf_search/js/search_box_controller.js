@@ -295,6 +295,35 @@ angular.module('searchBoxApp').controller('UlfBoxController', ['CONFIG', 'commun
       }
     };
 
+    /**
+     * Check that a given interval is valid and search.
+     *
+     * Use on change on the input fields.
+     *
+     * @param interval
+     *   The name of the interval.
+     */
+    $scope.intervalCheck = function intervalCheck(interval) {
+      var current = $scope.query.intervals[interval];
+
+      // Check that from and to exists.
+      if (!current.hasOwnProperty('from') || current.from === '') {
+        return;
+      }
+
+      if (!current.hasOwnProperty('to') || current.to === '') {
+        return;
+      }
+
+      // Test that from is smaller than to.
+      if (current.from > current.to) {
+        return;
+      }
+
+      // Update search result.
+      search();
+    };
+
     // Get set show on the road.
     init();
   }
