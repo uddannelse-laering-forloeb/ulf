@@ -5,17 +5,17 @@
   <article class="search-results--result is-users" data-ng-repeat="hit in hits.results">
     <div class="ribbon-wrapper left" data-ng-if="hit.field_free == true">
       <div class="ribbon">
-        <a href="/node/{{ hit.nid }}">Gratis</a>
+        <a href="/user/{{ hit.uid }}">Gratis</a>
       </div>
     </div>
     <header>
-      <a href="/node/{{ hit.nid }}">
-        <h2 class="search-results--header">{{ hit.title }}</h2>
+      <a href="/user/{{ hit.nid }}">
+        <h2 class="search-results--header">{{ hit.field_profile_name }}</h2>
       </a>
-      <p data-ng-bind-html="hit['field_profile_description:value'] | trimWordBoundary:100"></p>
-      <p class="teaser--type">Afsender: <a href="/user/{{ hit.uid }}">{{ hit.field_profile_name }}</a></p>
+      <p data-ng-bind-html="hit['field_profile_description:value'] | trimWordBoundary:110"></p>
+      <p class="teaser--type-read-more"><a href="/user/{{ hit.uid }}">Se hele profilen</a></p>
     </header>
-    <figure><a href="/node/{{ hit.nid }}"><img data-ng-src="{{ hit['field_image:file'].url }}" src="#"/></a></figure>
+    <figure><a href="/user/{{ hit.uid }}"><img data-ng-src="{{ hit['field_image:file'].url }}" src="#"/></a></figure>
   </article>
 
   <!-- No results -->

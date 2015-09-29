@@ -116,7 +116,6 @@
       }
     }
 
-
     // Splitting to three blocks per line, means we need the middle ones to take 1% extra for full width.
     &:nth-child(3),
     &:nth-child(6) {
@@ -130,6 +129,12 @@
       z-index: 2;
     }
   }
+
+
+  &--filter-wrapper-user {
+    width: 100%;
+  }
+
 
   &--filter-wrapper-inner {
     // Display individual elements as flexboxes as well.
@@ -317,14 +322,16 @@
   // Selected facets
   &--widget-selected {
     background: $gray-lighter;
+    overflow: hidden;
     position: relative;
     z-index: 1;
   }
 
   &--widget-selected-inner {
     box-sizing: border-box;
+    float: left;
     margin: 0 auto;
-    max-width: $layout-max-width;
+    max-width: 855px;
     padding: 0px 8px 6px;
   }
 
@@ -341,6 +348,13 @@
     margin-top: 4px;
     margin-right: 4px;
     text-shadow: none;
+  }
+
+  &--reset {
+    color: $white;
+    padding: 8px;
+    text-decoration: underline;
+    float: right;
   }
 }
 

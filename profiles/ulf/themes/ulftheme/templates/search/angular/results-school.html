@@ -18,13 +18,13 @@
       <div data-ng-if="hit.field_period_full_year == true">
         <p class="teaser--type">Periode: Hele året</p>
       </div>
-      <p data-ng-bind-html="hit['field_full_description:value'] | trimWordBoundary:100"></p>
       <p class="teaser--type">Afsender: <a href="/user/{{ hit.author}}">{{ hit['author:field_profile_name'] }}</a></p>
       <p class="search-results--type">Emne:
         <span data-ng-repeat="subject in hit.field_subject track by $index">
           <a href="/taxonomy/term/{{ hit['field_subject:tid'][$index] }}">{{ subject }}</a>,
         </span>
       </p>
+      <p class="teaser--type-read-more"><a href="/node/{{ hit.nid }}">Se hele forløbet</a></p>
     </header>
     <figure><a href="/node/{{ hit.nid }}"><img data-ng-src="{{ hit['field_image:file'].url }}" src="#"/></a></figure>
   </article>
