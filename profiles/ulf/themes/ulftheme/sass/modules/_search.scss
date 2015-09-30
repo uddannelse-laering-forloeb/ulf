@@ -271,7 +271,7 @@
     &-content {
       font-size: .9em;
       margin: 0 $spacing;
-      max-height: 700px;
+      max-height: 750px;
       overflow-y: auto;
     }
 
@@ -355,6 +355,7 @@
 
   &--reset {
     color: $white;
+    cursor: pointer;
     padding: 8px;
     text-decoration: underline;
     float: right;

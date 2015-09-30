@@ -87,7 +87,11 @@
     min-width: 0px; // To allow image shrink.
 
     @include order(1);
-    @include flex(0 0 200px);
+    @include flex(0 0 100px);
+
+    @include breakpoint(500px) {
+      @include flex(0 0 200px);
+    }
   }
 }
 
