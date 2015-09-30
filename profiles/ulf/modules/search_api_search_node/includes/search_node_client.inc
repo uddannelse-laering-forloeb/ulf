@@ -67,7 +67,7 @@ class SearchNodeClient {
         case 0:
           $responses = array(
             'status' => 500,
-            'message' => t('Error communicating with the search node server'),
+            'message' => $request->error,
           );
           break;
 
