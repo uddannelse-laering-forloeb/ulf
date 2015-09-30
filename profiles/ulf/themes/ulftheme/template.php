@@ -1,6 +1,19 @@
 <?php
 
 /**
+ * Implements hook_preprocess_html().
+ *
+ * @param $variables
+ *   Available variables.
+ */
+function ulf_preprocess_html(&$variables) {
+  if (isset($variables['page']['content']['system_main']['field_profile_name']['0']['#markup'])) {
+    $variables['head_title'] = $variables['page']['content']['system_main']['field_profile_name']['0']['#markup'] . ' | ' . $variables['head_title_array']['name'];
+  }
+}
+
+
+/**
  * Implements hook_preprocess_page().
  *
  * @param $variables

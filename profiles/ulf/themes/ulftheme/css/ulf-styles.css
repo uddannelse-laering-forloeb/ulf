@@ -1381,6 +1381,10 @@ body {
   margin-bottom: 8px; }
 
 .block--field-logo {
+  border: 1px solid #b3b3b3;
+  margin-left: -16px;
+  margin-right: -16px;
+  padding: 16px;
   text-align: center; }
 
 .block--list-item {
