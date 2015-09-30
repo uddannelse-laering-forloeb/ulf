@@ -130,14 +130,19 @@
 
 
       // When "Full year" is unchecked show field group for duration.
+      // And set some default values.
       $('.field-name-field-period-full-year .form-checkbox').click(function () {
         if ($(this).is(':checked')) {
           $('#node_course_form_group_period').hide();
           $('.field-name-field-period').hide();
+          $('.field-name-field-period .start-date-wrapper input').val(start_time);
+          $('.field-name-field-period .end-date-wrapper input').val('01/01/2030');
         }
         else {
           $('#node_course_form_group_period').show();
           $('.field-name-field-period').show();
+          $('.field-name-field-period .start-date-wrapper input').val('');
+          $('.field-name-field-period .end-date-wrapper input').val('');
         }
       });
 
@@ -156,6 +161,12 @@
 
 
       /// ------ Stuff that happens when the form is first loaded.
+
+      // Get current date for field_period start time.
+      var fullDate = new Date();
+      var twoDigitMonth = fullDate.getMonth()+"";if(twoDigitMonth.length==1)	twoDigitMonth="0" +twoDigitMonth;
+      var twoDigitDate = fullDate.getDate()+"";if(twoDigitDate.length==1)	twoDigitDate="0" +twoDigitDate;
+      var start_time = twoDigitDate + "/" + twoDigitMonth + "/" + fullDate.getFullYear();
 
       // Fill the subgroup array.
       $('.field-name-field-target-group-sub .option').each(function () {
@@ -197,6 +208,8 @@
         if ($(this).is(':checked')) {
           $('#node_course_form_group_period').hide();
           $('.field-name-field-period').hide();
+          $('.field-name-field-period .start-date-wrapper input').val(start_time);
+          $('.field-name-field-period .end-date-wrapper input').val('01/01/2030');
         }
         else {
           $('#node_course_form_group_period').show();

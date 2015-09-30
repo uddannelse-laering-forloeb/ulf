@@ -124,7 +124,7 @@
           <?php print render($content['field_educational_material']); ?>
           <?php print render($content['field_inspirational_material']); ?>
           <div class="block--pdf">
-            <a class="block--pdf-link" target="_blank" href="/printpdf/<?php print $node->nid; ?>"><?php print t('Print this offer as pdf'); ?></a>
+            <a class="block--pdf-link" target="_blank" href="/printpdf/<?php print $node->nid; ?>"><?php print t('Save this offer as pdf'); ?></a>
           </div>
         </div>
         <div class="content--meta">
@@ -152,6 +152,9 @@
               <div class="block--field-wrapper">
                 <?php if ($field_period_full_year['0']['value'] == 0 ) : ?>
                   <?php print render($content['field_period']); ?>
+                <?php else : ?>
+                  <div class="block--field-label"><?php print t('Periode');?></div>
+                  <div class="block--field-text"><?php print t('All year');?></div>
                 <?php endif;?>
                 <?php print render($content['field_period_info']); ?>
                 <?php if ($field_duration) : ?>
@@ -196,7 +199,7 @@
               <div class="block--field-text"><?php print $profile_address; ?></div>
               <div class="block--field-text"><?php print $profile_postal_code; ?> <?php print $profile_city; ?></div>
               </br>
-              <div class="block--field-text"><strong><?php print t('Phone')?></strong> <?php print $profile_phone; ?></div>
+              <div class="block--field-text"><?php print t('Phone')?> <?php print $profile_phone; ?></div>
               </br>
               <a href="/user/<?php print $uid ?>"><?php print t('View organizer profile'); ?></a>
             </div>

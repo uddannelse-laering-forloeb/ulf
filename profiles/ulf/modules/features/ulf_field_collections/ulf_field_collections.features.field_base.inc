@@ -246,6 +246,7 @@ function ulf_field_collections_field_default_field_bases() {
         'per_class' => 'pr. klasse',
         'per_course' => 'pr. forløb',
         'per_group' => 'pr. gruppe',
+        'per_show' => 'pr. forestilling',
       ),
       'allowed_values_function' => '',
     ),

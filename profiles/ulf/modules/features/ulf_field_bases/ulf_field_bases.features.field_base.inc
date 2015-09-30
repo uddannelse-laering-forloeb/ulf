@@ -175,9 +175,13 @@ function ulf_field_bases_field_default_field_bases() {
     'indexes' => array(),
     'locked' => 0,
     'module' => 'number',
-    'settings' => array(),
+    'settings' => array(
+      'decimal_separator' => ',',
+      'precision' => 10,
+      'scale' => 2,
+    ),
     'translatable' => 0,
-    'type' => 'number_integer',
+    'type' => 'number_decimal',
   );
 
   // Exported field_base: 'field_duration_unit'
@@ -196,8 +200,9 @@ function ulf_field_bases_field_default_field_bases() {
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
-        'hours' => 'Timer',
-        'lessons' => 'Lektioner',
+        'hours' => 'timer',
+        'lessons' => 'lektioner',
+        'minutes' => 'minutter',
       ),
       'allowed_values_function' => '',
     ),
