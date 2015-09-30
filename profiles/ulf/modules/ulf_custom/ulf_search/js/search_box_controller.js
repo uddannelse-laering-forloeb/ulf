@@ -261,6 +261,69 @@ angular.module('searchBoxApp').controller('UlfBoxController', ['CONFIG', 'commun
       }
     };
 
+    /**
+     * Resets the current search to default.
+     */
+    $scope.reset = function reset() {
+      // Reset filters
+      $scope.query.filters = {};
+      $scope.selectedFilters = {};
+
+      // Reset intervals.
+      if (CONFIG.provider.hasOwnProperty('intervals')) {
+        $scope.intervals = CONFIG.provider.intervals;
+        $scope.query.intervals = {};
+      }
+
+      // Reset pager.
+      if (CONFIG.provider.hasOwnProperty('pager')) {
+        $scope.query.pager = angular.copy(CONFIG.provider.pager);
+      }
+
+      // Check if initail query exists.
+      if (CONFIG.hasOwnProperty('initialQueryText')) {
+        $scope.query.text = angular.copy(CONFIG.initialQueryText);
+
+        search();
+      }
+      else {
+        // No initial query.
+        $scope.query.query = '';
+
+        // Remove hits.
+        communicatorService.$emit('hits', {"hits" : {}});
+      }
+    };
+
+    /**
+     * Check that a given interval is valid and search.
+     *
+     * Use on change on the input fields.
+     *
+     * @param interval
+     *   The name of the interval.
+     */
+    $scope.intervalCheck = function intervalCheck(interval) {
+      var current = $scope.query.intervals[interval];
+
+      // Check that from and to exists.
+      if (!current.hasOwnProperty('from') || current.from === '') {
+        return;
+      }
+
+      if (!current.hasOwnProperty('to') || current.to === '') {
+        return;
+      }
+
+      // Test that from is smaller than to.
+      if (current.from > current.to) {
+        return;
+      }
+
+      // Update search result.
+      search();
+    };
+
     // Get set show on the road.
     init();
   }

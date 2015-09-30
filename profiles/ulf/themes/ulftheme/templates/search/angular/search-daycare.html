@@ -25,14 +25,14 @@
                    for="interval-from">From</label>
             <input type="text" id="interval-from" data-datetime-picker="d/m/y" data-angular-format="dd/MM/yy"
                    data-ng-model="query.intervals[interval].from" value=""
-                   size="60" maxlength="128" class="search--filter-span-text">
+                   size="60" maxlength="128" class="search--filter-span-text" data-ng-change="intervalCheck(interval)">
           </div>
           <div class="search--filter-span-wrapper">
             <label class="search--filter-span-label"
                    for="interval-to">To</label>
             <input type="text" id="interval-to" data-datetime-picker="d/m/y" data-angular-format="dd/MM/yy"
                    data-ng-model="query.intervals[interval].to" value=""
-                   size="60" maxlength="128" class="search--filter-span-text">
+                   size="60" maxlength="128" class="search--filter-span-text" data-ng-change="intervalCheck(interval)">
           </div>
         </div>
       </div>
@@ -81,6 +81,6 @@
         </span>
       </span>
     </div>
-    <div class="search--reset">Nulstil søgning</div>
+    <div class="search--reset" data-ng-click="reset()">Nulstil søgning</div>
   </div>
 </div>
