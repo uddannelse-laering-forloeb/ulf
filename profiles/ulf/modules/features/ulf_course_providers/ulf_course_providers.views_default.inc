@@ -125,27 +125,6 @@ function ulf_course_providers_views_default_views() {
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'organizers';
-  $translatables['ulf_all_organizers'] = array(
-    t('Master'),
-    t('All courses'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Antal elementer'),
-    t('- Alle -'),
-    t('Forskydning'),
-    t('« første'),
-    t('‹ forrige'),
-    t('næste ›'),
-    t('sidste »'),
-    t('forfatter'),
-    t('Titel'),
-    t('Søg på titel eller afsender'),
-    t('Page'),
-  );
   $export['ulf_all_organizers'] = $view;
 
   $view = new view();
@@ -226,20 +205,6 @@ function ulf_course_providers_views_default_views() {
 
   /* Display: Blok */
   $handler = $view->new_display('block', 'Blok', 'block_1');
-  $translatables['ulf_content_by_user'] = array(
-    t('Master'),
-    t('Content by user'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('<div class="content--empty">This profile has no courses to offer.</div>'),
-    t('Alle'),
-    t('Block'),
-    t('Blok'),
-  );
   $export['ulf_content_by_user'] = $view;
 
   return $export;

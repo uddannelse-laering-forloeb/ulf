@@ -177,7 +177,7 @@ function ulf_search_settings_default_page_manager_pages() {
     $pane->uuid = '6289d997-fcad-46e2-9e66-d34b03470b96';
     $display->content['new-6289d997-fcad-46e2-9e66-d34b03470b96'] = $pane;
     $display->panels['middle'][1] = 'new-6289d997-fcad-46e2-9e66-d34b03470b96';
-  $display->hide_title = PANELS_TITLE_NONE;
+  $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
   $page->default_handlers[$handler->name] = $handler;
@@ -361,7 +361,7 @@ function ulf_search_settings_default_page_manager_pages() {
     $pane->uuid = '485b89b0-43a3-4592-8e8e-d0f5160a9288';
     $display->content['new-485b89b0-43a3-4592-8e8e-d0f5160a9288'] = $pane;
     $display->panels['middle'][1] = 'new-485b89b0-43a3-4592-8e8e-d0f5160a9288';
-  $display->hide_title = PANELS_TITLE_NONE;
+  $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
   $page->default_handlers[$handler->name] = $handler;
@@ -544,7 +544,7 @@ function ulf_search_settings_default_page_manager_pages() {
     $pane->uuid = '8baed29e-d0f0-406c-80b5-9b8e61858e9c';
     $display->content['new-8baed29e-d0f0-406c-80b5-9b8e61858e9c'] = $pane;
     $display->panels['middle'][1] = 'new-8baed29e-d0f0-406c-80b5-9b8e61858e9c';
-  $display->hide_title = PANELS_TITLE_NONE;
+  $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = 'new-a7e8be04-63a1-4381-a371-5a09951f34fe';
   $handler->conf['display'] = $display;
   $page->default_handlers[$handler->name] = $handler;
@@ -894,7 +894,7 @@ function ulf_search_settings_default_page_manager_pages() {
     $pane->uuid = '9d653cc5-9b10-4c19-9884-7da0e70281b7';
     $display->content['new-9d653cc5-9b10-4c19-9884-7da0e70281b7'] = $pane;
     $display->panels['middle'][1] = 'new-9d653cc5-9b10-4c19-9884-7da0e70281b7';
-  $display->hide_title = PANELS_TITLE_NONE;
+  $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = 'new-19a1cbde-32f9-4961-913b-e912a8686148';
   $handler->conf['display'] = $display;
   $page->default_handlers[$handler->name] = $handler;

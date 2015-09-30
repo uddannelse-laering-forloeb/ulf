@@ -469,7 +469,7 @@ function ulf_course_field_default_field_instances() {
     'bundle' => 'course',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Hvilke faciliteter kan I tilbyde?',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -500,7 +500,7 @@ function ulf_course_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_facilities',
-    'label' => 'Hvilke faciliteter kan I tilbyde?',
+    'label' => 'Faciliteter',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -1457,7 +1457,7 @@ At opnå kendskab til...
     ),
     'entity_type' => 'node',
     'field_name' => 'field_subjects_primary_school',
-    'label' => 'Fag - Grundskole',
+    'label' => 'Fag',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -1465,9 +1465,7 @@ At opnå kendskab til...
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-      ),
+      'settings' => array(),
       'type' => 'options_buttons',
       'weight' => 22,
     ),
@@ -1509,7 +1507,7 @@ At opnå kendskab til...
     ),
     'entity_type' => 'node',
     'field_name' => 'field_subjects_youth',
-    'label' => 'Fag - Ungdomsuddannelse',
+    'label' => 'Fag',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -1517,9 +1515,7 @@ At opnå kendskab til...
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-      ),
+      'settings' => array(),
       'type' => 'options_buttons',
       'weight' => 23,
     ),
@@ -1644,7 +1640,7 @@ At opnå kendskab til...
         'weight' => 36,
       ),
       'full' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'video_embed_field',
         'settings' => array(
           'description' => 1,
@@ -1669,7 +1665,7 @@ At opnå kendskab til...
     ),
     'entity_type' => 'node',
     'field_name' => 'field_video',
-    'label' => 'VIdeo',
+    'label' => 'Video',
     'required' => 0,
     'settings' => array(
       'allowed_providers' => array(
@@ -1724,8 +1720,8 @@ At opnå kendskab til...
   t('Emneområde');
   t('Er der inspirationsmateriale tilknyttet besøget/forløbet? Her kan du uploade materialet.');
   t('Er der undervisningsmateriale tilknyttet besøget/forløbet? Her kan du uploade materialet');
-  t('Fag - Grundskole');
-  t('Fag - Ungdomsuddannelse');
+  t('Faciliteter');
+  t('Fag');
   t('Forløb for børn og unge med særlige behov');
   t('Formål');
   t('Forslag til forberedelse og/eller efterbehandling i daginstitutionen');
@@ -1742,8 +1738,8 @@ At opnå kendskab til...
   t('Tilbudstype');
   t('Undervisningsmateriale');
   t('Upload et billede/illustration');
-  t('VIdeo');
   t('Varighed');
+  t('Video');
   t('Vælg enhed');
   t('Yderligere oplysninger til faciliteter');
   t('Yderligere oplysninger til periode');

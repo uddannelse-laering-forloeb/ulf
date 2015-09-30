@@ -213,7 +213,7 @@ function ulf_course_views_default_views() {
   );
   $handler->display->display_options['row_options']['hide_empty'] = TRUE;
   $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
-  /* Felt: Content: Hvilke faciliteter kan I tilbyde? */
+  /* Felt: Content: Faciliteter */
   $handler->display->display_options['fields']['field_facilities']['id'] = 'field_facilities';
   $handler->display->display_options['fields']['field_facilities']['table'] = 'field_data_field_facilities';
   $handler->display->display_options['fields']['field_facilities']['field'] = 'field_facilities';
@@ -341,7 +341,7 @@ function ulf_course_views_default_views() {
   $handler->display->display_options['relationships']['vid']['id'] = 'vid';
   $handler->display->display_options['relationships']['vid']['table'] = 'node_revision';
   $handler->display->display_options['relationships']['vid']['field'] = 'vid';
-  /* Felt: Content (historical data): Hvilke faciliteter kan I tilbyde? */
+  /* Felt: Content (historical data): Faciliteter */
   $handler->display->display_options['fields']['field_facilities-revision_id']['id'] = 'field_facilities-revision_id';
   $handler->display->display_options['fields']['field_facilities-revision_id']['table'] = 'field_revision_field_facilities';
   $handler->display->display_options['fields']['field_facilities-revision_id']['field'] = 'field_facilities-revision_id';
