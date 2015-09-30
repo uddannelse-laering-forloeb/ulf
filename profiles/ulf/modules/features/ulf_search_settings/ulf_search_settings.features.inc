@@ -279,19 +279,24 @@ function ulf_search_settings_default_search_api_index() {
         "uid" : { "type" : "integer" }
       },
       "data_alter_callbacks" : {
+        "exclude" : {
+          "status" : 0,
+          "weight" : "-50",
+          "settings" : { "fields" : { "name" : "", "values" : "" } }
+        },
         "search_api_alter_role_filter" : {
           "status" : 1,
           "weight" : "-10",
-          "settings" : { "default" : "0", "roles" : { "15" : "15" } }
+          "settings" : { "default" : "0", "roles" : { "18" : "18" } }
         },
         "search_api_alter_language_control" : {
           "status" : 0,
           "weight" : "0",
           "settings" : { "lang_field" : "", "languages" : [] }
         },
-        "search_api_alter_add_viewed_entity" : { "status" : 0, "weight" : "0", "settings" : { "mode" : "full" } },
         "search_api_alter_add_aggregation" : { "status" : 0, "weight" : "0", "settings" : [] },
-        "search_api_alter_add_url" : { "status" : 0, "weight" : "0", "settings" : [] }
+        "search_api_alter_add_url" : { "status" : 0, "weight" : "0", "settings" : [] },
+        "search_api_alter_add_viewed_entity" : { "status" : 0, "weight" : "0", "settings" : { "mode" : "full" } }
       },
       "processors" : {
         "search_api_case_ignore" : {
