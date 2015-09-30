@@ -165,44 +165,6 @@ function ulf_course_views_default_views() {
   $handler->display->display_options['allow']['title_override'] = 'title_override';
   $handler->display->display_options['allow']['exposed_form'] = 0;
   $handler->display->display_options['allow']['fields_override'] = 0;
-  $translatables['ulf_node_contact'] = array(
-    t('Master'),
-    t('mere'),
-    t('Udfør'),
-    t('Gendan'),
-    t('Sortér efter'),
-    t('Stigende'),
-    t('Faldende'),
-    t('Antal elementer'),
-    t('- Alle -'),
-    t('Forskydning'),
-    t('« første'),
-    t('‹ forrige'),
-    t('næste ›'),
-    t('sidste »'),
-    t('author'),
-    t('Adresse'),
-    t('Hjemmeside'),
-    t('Telefon'),
-    t('<div class="block-module--content">
-  <h3><a href="/user/[uid]">[field_profile_name]</a></h3>
-  <div class="block-module--field-wrapper">
-    <div class="block-module--field-label">Adresse</div>
-    <div class="block-module--field-text--no-space">[field_profile_address]</div> 
-    <div class="block-module--field-text">[field_profile_postal_code] [field_profile_city]</div>
-  </div>
-  <div class="block-module--field-wrapper">
-    <div class="block-module--field-label">Kontaktinformation</div>
-    <div class="block-module--field-text--no-space">Telefon: [field_profile_phone]</div> 
-    <div class="block-module--field-text">Hjemmeside: [field_profile_home_page]</div>
-  </div>
-</div>
-'),
-    t('Alle'),
-    t('Content pane'),
-    t('more'),
-    t('View panes'),
-  );
   $export['ulf_node_contact'] = $view;
 
   $view = new view();
@@ -333,29 +295,6 @@ function ulf_course_views_default_views() {
       'label' => 'Content revision: Vid',
     ),
   );
-  $translatables['ulf_useful_info'] = array(
-    t('Master'),
-    t('Nyttigt'),
-    t('mere'),
-    t('Udfør'),
-    t('Gendan'),
-    t('Sortér efter'),
-    t('Stigende'),
-    t('Faldende'),
-    t('Antal elementer'),
-    t('- Alle -'),
-    t('Forskydning'),
-    t('« første'),
-    t('‹ forrige'),
-    t('næste ›'),
-    t('sidste »'),
-    t('<li class="block--list-item">Gratis</li>'),
-    t('<li class="block--list-item">Tilgængeligt hele året</li>'),
-    t('Alle'),
-    t('Ulf useful information'),
-    t('more'),
-    t('View panes'),
-  );
   $export['ulf_useful_info'] = $view;
 
   $view = new view();
@@ -468,30 +407,6 @@ function ulf_course_views_default_views() {
       'fixed' => '',
       'label' => 'Content revision: Vid',
     ),
-  );
-  $translatables['ulf_useful_info_moderation'] = array(
-    t('Master'),
-    t('Nyttigt'),
-    t('mere'),
-    t('Udfør'),
-    t('Gendan'),
-    t('Sortér efter'),
-    t('Stigende'),
-    t('Faldende'),
-    t('Antal elementer'),
-    t('- Alle -'),
-    t('Forskydning'),
-    t('« første'),
-    t('‹ forrige'),
-    t('næste ›'),
-    t('sidste »'),
-    t('Get the actual content from a content revision.'),
-    t('<li class="block--list-item">Gratis</li>'),
-    t('<li class="block--list-item">Hele året</li>'),
-    t('Alle'),
-    t('Content pane'),
-    t('more'),
-    t('View panes'),
   );
   $export['ulf_useful_info_moderation'] = $view;
 

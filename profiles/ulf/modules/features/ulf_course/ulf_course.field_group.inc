@@ -91,10 +91,10 @@ function ulf_course_field_group_info() {
     'weight' => '2',
     'children' => array(
       0 => 'field_collection_price',
-      1 => 'field_duration',
-      2 => 'field_duration_unit',
-      3 => 'field_free',
-      4 => 'field_price_info',
+      1 => 'field_duration_unit',
+      2 => 'field_free',
+      3 => 'field_price_info',
+      4 => 'field_duration',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -207,7 +207,7 @@ function ulf_course_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Periode',
-    'weight' => '4',
+    'weight' => '3',
     'children' => array(
       0 => 'field_period',
       1 => 'field_period_full_year',
