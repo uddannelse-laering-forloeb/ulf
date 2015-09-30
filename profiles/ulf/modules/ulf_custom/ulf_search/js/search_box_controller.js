@@ -93,6 +93,10 @@ angular.module('searchBoxApp').controller('UlfBoxController', ['CONFIG', 'commun
      * Execute the search and emit the results.
      */
     function search() {
+      // Send info to restults that a new search have started.
+      communicatorService.$emit('searching', {});
+
+      // Start the search request.
       searchProxy.search($scope.query).then(
         function (data) {
           // Updated filters.

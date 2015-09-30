@@ -30,7 +30,12 @@
   </article>
 
   <!-- No results -->
-  <div class="no-results" data-ng-if="!hits.hits">No results found.</div>
+  <div class="no-results" data-ng-if="!hits.hits && !searching">
+    No results found.
+  </div>
+  <div class="search-spinner" data-ng-if="searching">
+    <img src="/profiles/ulf/themes/ulftheme/images/spinner.gif" />
+  </div>
 
   <!-- Search pager if the provider supports it -->
   <search-pager></search-pager>
