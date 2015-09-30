@@ -64,24 +64,11 @@
   &--list-link {
     @extend %nav--list-link;
 
-    &:hover {
+    &.active {
       background: $gray-dark;
     }
-
-    &.is-daycare:hover {
-      @include background-set-color('green', $transparency: 1);
-    }
-
-    &.is-school:hover {
-      @include background-set-color('purple', $transparency: 1);
-    }
-
-    &.is-youth:hover {
-      @include background-set-color('orange', $transparency: 1);
-    }
-
-    &.is-course:hover {
-      @include background-set-color('yellow', $transparency: 1);
+    &:hover {
+      background: $gray-darker;
     }
   }
 

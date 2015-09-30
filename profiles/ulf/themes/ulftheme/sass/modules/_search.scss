@@ -271,6 +271,8 @@
     &-content {
       font-size: .9em;
       margin: 0 $spacing;
+      max-height: 700px;
+      overflow-y: auto;
     }
 
 
@@ -393,7 +395,6 @@
 
 
 // Specific texts need dark color.
-.is-course .search--reset,
 .is-daycare .search--reset,
 .is-users .search--reset {
   color: $gray-darker;

@@ -149,25 +149,25 @@
               <?php endif; ?>
               <?php /* If any of the fields in this wrapper contain data */ ?>
               <?php if ($field_duration || $field_period_full_year['0']['value'] == 0 || $field_collection_price || $field_free['0']['value'] == 1 || $field_period_info || $field_price_info) : ?>
-              <div class="block--field-wrapper">
-                <?php if ($field_period_full_year['0']['value'] == 0 ) : ?>
-                  <?php print render($content['field_period']); ?>
-                <?php else : ?>
-                  <div class="block--field-label"><?php print t('Periode');?></div>
-                  <div class="block--field-text"><?php print t('All year');?></div>
-                <?php endif;?>
-                <?php print render($content['field_period_info']); ?>
-                <?php if ($field_duration) : ?>
-                  <div class="block--field-label"><?php print t('Duration');?></div>
-                  <div class="block--field-text"><?php print render($content['field_duration']); ?><?php print render($content['field_duration_unit']); ?></div>
-                <?php endif;?>
-                <?php if ($field_free['0']['value'] == 0 ) : ?>
-                  <?php print render($content['field_collection_price']); ?>
-                <?php else : ?>
-                  <div class="block--field-label"><?php print t('This course is free.');?></div>
-                <?php endif;?>
-                <?php print render($content['field_price_info']); ?>
-              </div>
+                <div class="block--field-wrapper">
+                  <?php if ($field_period_full_year['0']['value'] == 0 ) : ?>
+                    <?php print render($content['field_period']); ?>
+                  <?php else : ?>
+                    <div class="block--field-label"><?php print t('Periode');?></div>
+                    <div class="block--field-text"><?php print t('All year');?></div>
+                  <?php endif;?>
+                  <?php print render($content['field_period_info']); ?>
+                  <?php if ($field_duration) : ?>
+                    <div class="block--field-label"><?php print t('Duration');?></div>
+                    <div class="block--field-text"><?php print render($content['field_duration']); ?><?php print render($content['field_duration_unit']); ?></div>
+                  <?php endif;?>
+                  <?php if ($field_free['0']['value'] == 0 ) : ?>
+                    <?php print render($content['field_collection_price']); ?>
+                  <?php else : ?>
+                    <div class="block--field-label"><?php print t('This course is free.');?></div>
+                  <?php endif;?>
+                  <?php print render($content['field_price_info']); ?>
+                </div>
               <?php endif;?>
               <?php /* If any of the fields in this wrapper contain data */ ?>
               <?php if ($field_subject) : ?>

@@ -150,23 +150,21 @@
   }
 
   &-header {
-    padding: $spacing;
+    padding: $spacing / 2 $spacing;
   }
 
   // Nesting the styles rather than messing with the drupal forms.
   form {
     width: 100%;
-
-    @include breakpoint(850px){
-      position: absolute;
-
-      @include vertical-center();
-    }
   }
 
   &.is-front {
-    .form-type-checkboxes {
-      display: none;
+    .form-type-emailfield {
+      padding: 0;
+
+      & > label {
+        display: none;
+      }
     }
   }
 

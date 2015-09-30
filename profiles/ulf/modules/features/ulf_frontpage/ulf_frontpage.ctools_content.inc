@@ -21,7 +21,7 @@ function ulf_frontpage_default_ctools_custom_content() {
     'admin_title' => '',
     'title' => '',
     'body' => '<article class="teaser--group is-course">
-<a class="teaser--group-inner" href="/">
+<a class="teaser--group-inner" href="/kurser">
 <div class="teaser--group-field">
 <img src="/profiles/ulf/themes/ulftheme/images/frontpage-course.jpg">
 </div>

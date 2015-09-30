@@ -1445,19 +1445,13 @@ body {
     width: 100%;
     background: #f2f2f2; }
   .block--newsletter-header {
-    padding: 16px; }
+    padding: 8px 16px; }
   .block--newsletter form {
     width: 100%; }
-    @media only screen and (min-width: 850px) {
-      .block--newsletter form {
-        position: absolute;
-        top: 50%;
-        -moz-transform: translateY(-50%);
-        -ms-transform: translateY(-50%);
-        -webkit-transform: translateY(-50%);
-        transform: translateY(-50%); } }
-  .block--newsletter.is-front .form-type-checkboxes {
-    display: none; }
+  .block--newsletter.is-front .form-type-emailfield {
+    padding: 0; }
+    .block--newsletter.is-front .form-type-emailfield > label {
+      display: none; }
   .block--newsletter .form-submit,
   .block--newsletter .form-item {
     margin: 0 16px; }
@@ -1544,16 +1538,10 @@ body {
     width: 100%; }
   .nav--dropdown-item {
     display: none; }
-  .nav--list-dropdown-link:hover, .nav--list-link:hover {
+  .nav--list-dropdown-link.active, .nav--list-link.active {
     background: gray; }
-  .nav--list-dropdown-link.is-daycare:hover, .nav--list-link.is-daycare:hover {
-    background: #a4da20; }
-  .nav--list-dropdown-link.is-school:hover, .nav--list-link.is-school:hover {
-    background: #901d7c; }
-  .nav--list-dropdown-link.is-youth:hover, .nav--list-link.is-youth:hover {
-    background: #ff6800; }
-  .nav--list-dropdown-link.is-course:hover, .nav--list-link.is-course:hover {
-    background: #edd71c; }
+  .nav--list-dropdown-link:hover, .nav--list-link:hover {
+    background: #666666; }
   @media only screen and (min-width: 45em) {
     .nav--sub {
       position: absolute;
@@ -2066,7 +2054,9 @@ body {
       height: 25px; }
     .search--filter-dropdown-content {
       font-size: .9em;
-      margin: 0 16px; }
+      margin: 0 16px;
+      max-height: 700px;
+      overflow-y: auto; }
     .search--filter-dropdown-submit {
       display: block;
       margin: 16px;
@@ -2138,7 +2128,6 @@ body {
 .search-results {
   margin: 0 0 2em; }
 
-.is-course .search--reset,
 .is-daycare .search--reset,
 .is-users .search--reset {
   color: #666666; }
