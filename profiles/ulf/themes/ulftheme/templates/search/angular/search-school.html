@@ -38,24 +38,21 @@
       </div>
     </div>
 
-    <!-- Search filters -->
-    <div id={{id}} data-ng-class="toggleFilterClasses[id][0]"
-         class="search--filter-wrapper"
-         data-ng-repeat="(id, filter) in filters">
+    <!--
+      - Search filters -- START
+      -->
+
+    <div id={{id}} data-ng-class="toggleFilterClasses[id][0]" class="search--filter-wrapper"
+         data-ng-repeat="id in ['field_offer_type', 'field_subject', 'field_subjects_primary_school']">
       <div class="search--filter-wrapper-inner">
         <div class="search--filter-list">
-          <div href="#" class="search--filter-label"
-               data-ng-click="openFilter(id)">{{ filter.name }}
-          </div>
-          <div class="search--filter-dropdown"
-               data-ng-class="toggleFilterClasses[id][1]">
+          <div class="search--filter-label" data-ng-click="openFilter(id)">{{ filters[id].name }}</div>
+          <div class="search--filter-dropdown" data-ng-class="toggleFilterClasses[id][1]">
             <div class="search--filter-dropdown-inner">
-              <div class="search--filter-dropdown-header"
-                   data-ng-click="openFilter(id)">{{ filter.name }} <span class="search--filter-dropdown-header-close"><img
-                src="/profiles/ulf/themes/ulftheme/images/close.svg"></span>
+              <div class="search--filter-dropdown-header" data-ng-click="openFilter(id)">{{ filters[id].name }} <span class="search--filter-dropdown-header-close"><img src="/profiles/ulf/themes/ulftheme/images/close.svg"></span>
               </div>
               <div class="search--filter-dropdown-content">
-                <div data-ng-repeat="(key, item) in filter.items">
+                <div data-ng-repeat="(key, item) in filters[id].items">
                   <input id="{{ key }}" data-ng-disabled="!item.count"
                          data-ng-click="searchClicked()" type="checkbox"
                          data-ng-model="query.filters[id][key]">
@@ -69,6 +66,34 @@
         </div>
       </div>
     </div>
+
+    <!-- field_target_group_sub -->
+    <div id="field_target_group_sub" data-ng-class="toggleFilterClasses.field_target_group_sub[0]" class="search--filter-wrapper">
+      <div class="search--filter-wrapper-inner">
+        <div class="search--filter-list">
+          <div class="search--filter-label" data-ng-click="openFilter('field_target_group_sub')">{{ filters.field_target_group_sub.name }}</div>
+          <div class="search--filter-dropdown" data-ng-class="toggleFilterClasses.field_target_group_sub[1]">
+            <div class="search--filter-dropdown-inner">
+              <div class="search--filter-dropdown-header" data-ng-click="openFilter('field_target_group_sub')">{{ filters.field_target_group_sub.name }} <span class="search--filter-dropdown-header-close"><img src="/profiles/ulf/themes/ulftheme/images/close.svg"></span>
+              </div>
+              <div class="search--filter-dropdown-content">
+                <div data-ng-repeat="key in ['0. klasse', '1. klasse', '2. klasse', '3. klasse', '4. klasse', '5. klasse', '6. klasse', '7. klasse', '8. klasse', '9. klasse','10. klasse']">
+                  <input id="{{ key }}" data-ng-disabled="!filters.field_target_group_sub.items[key].count"
+                         data-ng-click="searchClicked()" type="checkbox"
+                         data-ng-model="query.filters['field_target_group_sub'][key]">
+                  <label data-ng-class="{ disabled: !filters.field_target_group_sub.items[key].count }"
+                         for="{{ key }}">{{ filters.field_target_group_sub.items[key].value }}</label>
+                </div>
+              <div class="search--filter-dropdown-submit" data-ng-click="openFilter('field_target_group_sub')">Anvend</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--
+      - Search filters -- END
+      -->
 
   </div>
 
