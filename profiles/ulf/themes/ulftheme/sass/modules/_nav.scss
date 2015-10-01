@@ -65,10 +65,11 @@
 
   .nav--list-item:last-child {
     background-image: url('/profiles/ulf/themes/ulftheme/images/arrow-white.svg');
-    background-position: 75px center;
+    background-position: 90px center;
     background-repeat: no-repeat;
-    background-size: 12px;
-    padding-right: 14px;
+    background-size: 15px;
+    padding-right: 20px;
+    padding-left: 10px;
   }
 
   &--dropdown-item {
