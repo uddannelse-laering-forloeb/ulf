@@ -272,7 +272,12 @@ class SearchApiSearchNodeService extends SearchApiAbstractService {
    * @return string
    */
   private function addFileUrl($fids) {
-    $files = '';
+    // Search node would expect and object as default for files.
+    $files = array(
+      'fid' => '',
+      'url' => '',
+    );
+
     if (!empty($fids)) {
       $file = file_load(reset($fids));
       $files = array(
