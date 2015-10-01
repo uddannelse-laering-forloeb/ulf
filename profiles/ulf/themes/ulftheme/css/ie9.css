@@ -35,10 +35,16 @@
     height: 5.5em;
 }
 
+.search--filter-span,
+.search--filter-text,
 .search--filter-list {
     height: 100%;
     display: block;
     position: relative;
+}
+
+.search--filter-span-wrapper {
+    float: left;
 }
 
 .search-results--result:nth-child(odd),
@@ -66,6 +72,7 @@
 }
 
 .content--meta {
+    margin-right: 8px;
     float: right;
     width: 35%;
 }
