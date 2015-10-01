@@ -18,6 +18,10 @@
     height: 200px;
 }
 
+.is-course {
+    height: auto;
+}
+
 .search--widget-selected {
     min-height: 40px;
     width: 100%;
