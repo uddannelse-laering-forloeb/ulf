@@ -334,7 +334,7 @@
     box-sizing: border-box;
     float: left;
     margin: 0 auto;
-    max-width: 855px;
+    width: 855px;
     padding: 0px 8px 6px;
   }
 
@@ -396,7 +396,19 @@
 
 
 // Specific texts need dark color.
+.is-course .search--filter-search-submit,
+.is-daycare .search--filter-search-submit,
+.is-course .search--reset,
 .is-daycare .search--reset,
 .is-users .search--reset {
-  color: $gray-darker;
+  color: $gray-darkest;
+  text-shadow: none;
+}
+
+  /* Spinner
+  ================================================================================================================== */
+
+.search-spinner {
+  text-align: center;
+  width: 100%;
 }
