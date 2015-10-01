@@ -9,6 +9,7 @@
 .layout-element-delta-inner,
 .teaser--list,
 .page--content,
+.content,
 .search--widget-inner,
 .search-results {
     overflow: hidden;
@@ -57,4 +58,14 @@
 .teaser figure {
     float: left;
     width: 30%;
+}
+
+.content--main {
+    float: left;
+    width: 60%;
+}
+
+.content--meta {
+    float: right;
+    width: 35%;
 }
