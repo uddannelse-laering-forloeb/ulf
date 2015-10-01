@@ -76,3 +76,12 @@
     float: right;
     width: 35%;
 }
+
+.pager {
+    overflow: hidden;
+}
+
+.pager > li {
+    float: left;
+    display: block;
+}
