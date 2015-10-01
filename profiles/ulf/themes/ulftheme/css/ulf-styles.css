@@ -1548,12 +1548,19 @@ body {
     max-width: 1000px;
     position: relative;
     width: 100%; }
+  .nav--list-dropdown-item.active-trail, .nav--list-item.active-trail {
+    background-color: gray; }
+  .nav--list-dropdown-item:hover, .nav--list-item:hover {
+    background-color: #666666; }
+  .nav .nav--list-item:last-child {
+    background-image: url("/profiles/ulf/themes/ulftheme/images/arrow-white.svg");
+    background-position: 90px center;
+    background-repeat: no-repeat;
+    background-size: 15px;
+    padding-right: 20px;
+    padding-left: 10px; }
   .nav--dropdown-item {
     display: none; }
-  .nav--list-dropdown-link.active, .nav--list-link.active {
-    background: gray; }
-  .nav--list-dropdown-link:hover, .nav--list-link:hover {
-    background: #666666; }
   .nav--sub {
     border-left: 1px solid #e6e6e6;
     border-right: 1px solid #e6e6e6;
