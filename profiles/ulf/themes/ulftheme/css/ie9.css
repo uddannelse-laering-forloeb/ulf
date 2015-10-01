@@ -18,7 +18,7 @@
     height: 200px;
 }
 
-.is-course {
+.is-course .search--widget-inner {
     height: auto;
 }
 
