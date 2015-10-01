@@ -159,7 +159,7 @@
                   <?php print render($content['field_period_info']); ?>
                   <?php if ($field_duration) : ?>
                     <div class="block--field-label"><?php print t('Duration');?></div>
-                    <div class="block--field-text"><?php print render($content['field_duration']); ?><?php print render($content['field_duration_unit']); ?></div>
+                    <div class="block--field-text"><?php print $stripped_duration; ?><?php print render($content['field_duration_unit']); ?></div>
                   <?php endif;?>
                   <?php if ($field_free['0']['value'] == 0 ) : ?>
                     <?php print render($content['field_collection_price']); ?>

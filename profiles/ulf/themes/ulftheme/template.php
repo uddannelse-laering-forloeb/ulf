@@ -159,6 +159,12 @@ function ulf_preprocess_node(&$variables) {
           $variables['group_type'] = strtolower($term_wrapper->name->value());
         }
       }
+
+      // Display of duration remove 0's in decimal.
+      if (isset($variables['content']['field_duration']['0']['#markup'])) {
+        $variables['stripped_duration'] = preg_replace('/,?0+$/','', $variables['content']['field_duration']['0']['#markup']);
+      }
+
       break;
     case 'static_page':
       // Provide menu block for static page nodes.

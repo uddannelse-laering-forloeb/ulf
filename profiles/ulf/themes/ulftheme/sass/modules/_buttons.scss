@@ -19,12 +19,12 @@
 
   border: 1px solid $dark-blue;
   display: inline-block;
-  padding: .5em 1.5em;
+  padding: .4em 1.5em;
 
   background-color: $dark-blue;
   color: $white;
   cursor: pointer;
-  font-size: 125%;
+  font-size: 100%;
   text-align: center;
 
   @include text-shadow(.025em .025em .1em darken($dark-blue, 10%));

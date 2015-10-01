@@ -1121,8 +1121,8 @@ body {
     .footer--eu-compliance-buttons {
       width: 45%; } }
   .footer--eu-compliance-buttons .button, .footer--eu-compliance-buttons .teaser--list-button {
-    margin: 8px;
-    padding: .2em .8em; }
+    padding: .4em .8em;
+    font-size: 1em; }
 
 #sliding-popup .popup-content {
   max-width: 1000px;
@@ -1554,14 +1554,18 @@ body {
     background: gray; }
   .nav--list-dropdown-link:hover, .nav--list-link:hover {
     background: #666666; }
-  @media only screen and (min-width: 45em) {
-    .nav--sub {
-      position: absolute;
-      z-index: 2;
-      right: 0;
-      background: gray; }
-      .nav--sub.is-hidden {
-        display: none; } }
+  .nav--sub {
+    border-left: 1px solid #e6e6e6;
+    border-right: 1px solid #e6e6e6;
+    border-bottom: 1px solid #e6e6e6; }
+    @media only screen and (min-width: 45em) {
+      .nav--sub {
+        position: absolute;
+        z-index: 2;
+        right: 0;
+        background: #fff; }
+        .nav--sub.is-hidden {
+          display: none; } }
 
 /* Mobile navigation
  *
@@ -1591,28 +1595,36 @@ body {
     .nav .nav--static-pages {
       min-width: 240px; } }
 .nav .nav--static-pages-item {
+  border-bottom: 1px solid #e6e6e6;
+  margin: 0 1em;
   width: auto; }
   .nav .nav--static-pages-item a {
-    border-top: 1px solid #fff;
     display: block;
     padding: 1em; }
     .nav .nav--static-pages-item a:link {
-      color: #fff;
+      color: #999999;
       text-decoration: none; }
     .nav .nav--static-pages-item a:visited {
-      color: #fff;
+      color: #999999;
       text-decoration: none; }
     .nav .nav--static-pages-item a:hover {
-      color: #fff;
+      color: #999999;
       text-decoration: none; }
     .nav .nav--static-pages-item a:focus {
-      color: #fff;
+      color: #999999;
       text-decoration: none; }
-    .nav .nav--static-pages-item a:hover {
-      background: #999999; }
     .nav .nav--static-pages-item a.active {
       font-weight: bold; }
+    .nav .nav--static-pages-item a:hover {
+      text-decoration: underline; }
+  .nav .nav--static-pages-item:last-child {
+    border: 0; }
 
+.nav--mobile .nav--list-link.active {
+  background: inherit; }
+.nav--mobile .nav--sub {
+  border-left: 0;
+  border-right: 0; }
 .nav--mobile .nav--static-pages-item {
   border-top: 1px solid #fff;
   padding: 1em; }
@@ -1743,11 +1755,11 @@ body {
   position: relative;
   border: 1px solid #17858c;
   display: inline-block;
-  padding: .5em 1.5em;
+  padding: .4em 1.5em;
   background-color: #17858c;
   color: #fff;
   cursor: pointer;
-  font-size: 125%;
+  font-size: 100%;
   text-align: center;
   text-shadow: 0.025em 0.025em 0.1em #105b60; }
   .block--pdf-link:focus, .form-submit:focus,
@@ -1970,7 +1982,7 @@ body {
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%); }
   .search--filter-search-submit[type="submit"] {
-    padding: .1em 1.5em;
+    padding: .4em 1.5em;
     max-width: 35%;
     position: absolute;
     right: 0;
@@ -2113,7 +2125,7 @@ body {
     box-sizing: border-box;
     float: left;
     margin: 0 auto;
-    max-width: 855px;
+    width: 855px;
     padding: 0px 8px 6px; }
   .search--widget-selected-item {
     background: url(../images/close-small.svg) no-repeat 95% center;
@@ -2141,9 +2153,19 @@ body {
 .search-results {
   margin: 0 0 2em; }
 
+.is-course .search--filter-search-submit,
+.is-daycare .search--filter-search-submit,
+.is-course .search--reset,
 .is-daycare .search--reset,
 .is-users .search--reset {
-  color: #666666; }
+  color: #4d4d4d;
+  text-shadow: none; }
+
+/* Spinner
+================================================================================================================== */
+.search-spinner {
+  text-align: center;
+  width: 100%; }
 
 /**
  *

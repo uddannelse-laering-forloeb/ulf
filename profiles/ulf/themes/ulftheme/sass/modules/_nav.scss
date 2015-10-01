@@ -73,6 +73,9 @@
   }
 
   &--sub {
+    border-left: 1px solid $gray-lighter;
+    border-right: 1px solid $gray-lighter;
+    border-bottom: 1px solid $gray-lighter;
 
     @include breakpoint(45em) {
       position: absolute;
@@ -80,7 +83,7 @@
       z-index: 2;
       right: 0;
 
-      background: $gray-dark;
+      background: $white;
 
       &.is-hidden {
         display: none;
@@ -142,27 +145,43 @@
   }
 
   & .nav--static-pages-item {
+    border-bottom: 1px solid $gray-lighter;
+    margin: 0 1em;
     width: auto;
 
     a {
-      @include strip-link-styles($white);
-      border-top: 1px solid $white;
+      @include strip-link-styles($gray);
+      
       display: block;
       padding: 1em;
-
-      &:hover {
-        background: $gray;
-      }
 
       &.active {
         font-weight: bold;
       }
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    
+    &:last-child {
+      border: 0;
     }
   }
 }
 
 
+// Reuse the main menu html but neest once to override styles.
 .nav--mobile {
+  &  .nav--list-link.active {
+    background: inherit;
+  }
+
+  & .nav--sub {
+    border-left: 0;
+    border-right: 0;
+  }
+
   & .nav--static-pages-item {
     border-top: 1px solid $white;
     padding: 1em;
