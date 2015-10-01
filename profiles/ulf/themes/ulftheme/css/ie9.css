@@ -14,6 +14,9 @@
     overflow: hidden;
 }
 
+.search--widget-inner {
+    height: 200px;
+}
 
 .teaser--group,
 .teaser,
