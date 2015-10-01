@@ -1,6 +1,6 @@
 <ul data-ng-hide="pager.max == 0" class="pager">
   <li data-ng-click="prevPage()" data-ng-class="{ 'is-disabled': pager.page == 0 }" class="pager-previous">
-    <span class="pager--search-item-inner">&#10094;</span>
+    <span class="pager--search-item-inner">&#171;</span>
   </li>
 
   <li data-ng-repeat="i in pager.pages" data-ng-click="changePage(i)" data-ng-class="{ 'pager-current': pager.page == i }"  class="pager-item">
@@ -8,6 +8,6 @@
   </li>
 
   <li data-ng-click="nextPage()" data-ng-class="{ 'is-disabled': pager.page == pager.max - 1 }" class="pager-next">
-    <span class="pager--search-item-inner">&#10095;</span>
+    <span class="pager--search-item-inner">&#187;</span>
   </li>
 </ul>
