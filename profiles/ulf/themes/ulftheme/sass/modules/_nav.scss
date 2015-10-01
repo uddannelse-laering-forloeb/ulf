@@ -54,6 +54,21 @@
   &--list-dropdown-item,
   &--list-item {
     @extend %nav--list-item;
+
+    &.active-trail {
+      background-color: $gray-dark;
+    }
+    &:hover {
+      background-color: $gray-darker;
+    }
+  }
+
+  .nav--list-item:last-child {
+    background-image: url('/profiles/ulf/themes/ulftheme/images/arrow-white.svg');
+    background-position: 75px center;
+    background-repeat: no-repeat;
+    background-size: 12px;
+    padding-right: 14px;
   }
 
   &--dropdown-item {
@@ -63,13 +78,6 @@
   &--list-dropdown-link,
   &--list-link {
     @extend %nav--list-link;
-
-    &.active {
-      background: $gray-dark;
-    }
-    &:hover {
-      background: $gray-darker;
-    }
   }
 
   &--sub {
