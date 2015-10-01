@@ -32,6 +32,7 @@ function ulf_search_settings_default_search_api_index() {
       "fields" : {
         "author" : { "type" : "integer", "entity_type" : "user" },
         "author:field_profile_name" : { "type" : "text" },
+        "author:url" : { "type" : "uri" },
         "changed" : { "type" : "date" },
         "created" : { "type" : "date" },
         "field_educational_goals" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
@@ -52,7 +53,8 @@ function ulf_search_settings_default_search_api_index() {
         "nid" : { "type" : "integer" },
         "search_api_language" : { "type" : "string" },
         "title" : { "type" : "text" },
-        "type" : { "type" : "string" }
+        "type" : { "type" : "string" },
+        "url" : { "type" : "uri" }
       },
       "data_alter_callbacks" : {
         "search_api_alter_node_access" : { "status" : 0, "weight" : "0", "settings" : [] },
@@ -159,6 +161,7 @@ function ulf_search_settings_default_search_api_index() {
       "fields" : {
         "author:field_profile_name" : { "type" : "text" },
         "author:uid" : { "type" : "integer" },
+        "author:url" : { "type" : "uri" },
         "changed" : { "type" : "date" },
         "created" : { "type" : "date" },
         "field_educational_goals" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
@@ -178,7 +181,8 @@ function ulf_search_settings_default_search_api_index() {
         "nid" : { "type" : "integer" },
         "search_api_language" : { "type" : "string" },
         "title" : { "type" : "text", "boost" : "8.0" },
-        "type" : { "type" : "string" }
+        "type" : { "type" : "string" },
+        "url" : { "type" : "uri" }
       },
       "data_alter_callbacks" : {
         "search_api_alter_node_access" : { "status" : 0, "weight" : "0", "settings" : [] },
@@ -276,7 +280,8 @@ function ulf_search_settings_default_search_api_index() {
         "field_profile_postal_code" : { "type" : "integer" },
         "roles" : { "type" : "list\\u003Cstring\\u003E" },
         "search_api_language" : { "type" : "string" },
-        "uid" : { "type" : "integer" }
+        "uid" : { "type" : "integer" },
+        "url" : { "type" : "uri" }
       },
       "data_alter_callbacks" : {
         "exclude" : {

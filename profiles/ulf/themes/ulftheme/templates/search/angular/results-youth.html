@@ -5,11 +5,11 @@
   <article class="search-results--result is-ungdomsuddannelse" data-ng-repeat="hit in hits.results">
     <div class="ribbon-wrapper left" data-ng-if="hit.field_free == true">
       <div class="ribbon">
-        <a href="/node/{{ hit.nid }}">Gratis</a>
+        <a href="{{ hit.url }}">Gratis</a>
       </div>
     </div>
     <header>
-      <a href="/node/{{ hit.nid }}">
+      <a href="{{ hit.url }}">
         <h2 class="search-results--header">{{ hit.title }}</h2>
       </a>
       <div data-ng-if="hit.field_period_full_year == false">
@@ -18,19 +18,24 @@
       <div data-ng-if="hit.field_period_full_year == true">
         <p class="teaser--type">Periode: Hele året</p>
       </div>
-      <p class="teaser--type">Afsender: <a href="/user/{{ hit.author}}">{{ hit['author:field_profile_name'] }}</a></p>
+      <p class="teaser--type">Afsender: <a href="{{ hit['author:url'] }}">{{ hit['author:field_profile_name'] }}</a></p>
       <p class="search-results--type">Emne:
         <span data-ng-repeat="subject in hit.field_subject track by $index">
           <a href="/taxonomy/term/{{ hit['field_subject:tid'][$index] }}">{{ subject }}</a>,
         </span>
       </p>
-      <p class="teaser--type-read-more"><a href="/node/{{ hit.nid }}">Se hele forløbet</a></p>
+      <p class="teaser--type-read-more"><a href="{{ hit.url }}">Se hele forløbet</a></p>
     </header>
-    <figure><a href="/node/{{ hit.nid }}"><img data-ng-src="{{ hit['field_image:file'].url }}" src="#"/></a></figure>
+    <figure><a href="{{ hit.url }}"><img data-ng-src="{{ hit['field_image:file'].url }}" src="#"/></a></figure>
   </article>
 
   <!-- No results -->
-  <div class="no-results" data-ng-if="!hits.hits">No results found.</div>
+  <div class="no-results" data-ng-if="!hits.hits && !searching">
+    No results found.
+  </div>
+  <div class="search-spinner" data-ng-if="searching">
+    <img src="/profiles/ulf/themes/ulftheme/images/spinner.gif" />
+  </div>
 
   <!-- Search pager if the provider supports it -->
   <search-pager></search-pager>
