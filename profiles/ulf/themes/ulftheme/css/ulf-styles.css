@@ -2014,7 +2014,7 @@ body {
     justify-content: space-between;
     margin: 4px 16px; }
     .search--filter-span-wrapper {
-      max-width: 49%; }
+      width: 49%; }
     .search--filter-span-text[type="text"] {
       border: 1px solid #b3b3b3;
       padding: .4em; }
