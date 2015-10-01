@@ -18,6 +18,11 @@
     height: 200px;
 }
 
+.search--widget-selected {
+    min-height: 40px;
+    width: 100%;
+}
+
 .teaser--group,
 .teaser,
 .search-results--result {
