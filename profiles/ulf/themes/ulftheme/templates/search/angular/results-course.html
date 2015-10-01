@@ -22,7 +22,7 @@
       <p class="teaser--type">Afsender: <a href="{{ hit['author:url'] }}">{{ hit['author:field_profile_name'] }}</a></p>
       <p class="search-results--type">Emne:
         <span data-ng-repeat="subject in hit.field_subject track by $index">
-          <a href="/taxonomy/term/{{ hit['field_subject:tid'][$index] }}">{{ subject }}</a>,
+          <a href="{{ hit['field_subject:url'][$index] }}">{{ subject }}</a>,
         </span>
       </p>
       <p class="teaser--type-read-more"><a href="{{ hit.url }}">Se hele kurset</a></p>
