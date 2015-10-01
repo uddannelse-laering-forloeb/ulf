@@ -1121,8 +1121,8 @@ body {
     .footer--eu-compliance-buttons {
       width: 45%; } }
   .footer--eu-compliance-buttons .button, .footer--eu-compliance-buttons .teaser--list-button {
-    margin: 8px;
-    padding: .2em .8em; }
+    padding: .4em .8em;
+    font-size: 1em; }
 
 #sliding-popup .popup-content {
   max-width: 1000px;
@@ -1755,11 +1755,11 @@ body {
   position: relative;
   border: 1px solid #17858c;
   display: inline-block;
-  padding: .5em 1.5em;
+  padding: .4em 1.5em;
   background-color: #17858c;
   color: #fff;
   cursor: pointer;
-  font-size: 125%;
+  font-size: 100%;
   text-align: center;
   text-shadow: 0.025em 0.025em 0.1em #105b60; }
   .block--pdf-link:focus, .form-submit:focus,
@@ -1982,7 +1982,7 @@ body {
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%); }
   .search--filter-search-submit[type="submit"] {
-    padding: .1em 1.5em;
+    padding: .4em 1.5em;
     max-width: 35%;
     position: absolute;
     right: 0;
