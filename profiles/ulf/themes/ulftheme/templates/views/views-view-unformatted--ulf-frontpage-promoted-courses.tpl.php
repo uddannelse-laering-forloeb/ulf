@@ -10,8 +10,9 @@
 <?php if (!empty($title)): ?>
   <h3><?php print $title; ?></h3>
 <?php endif; ?>
-<?php foreach ($rows as $id => $row): ?>
-  <article class="teaser--content">
+<div class="teaser--list">
+  <?php foreach ($rows as $id => $row): ?>
     <?php print $row; ?>
-  </article>
-<?php endforeach; ?>
+  <?php endforeach; ?>
+</div>
+<a href="/organizers" class="teaser--list-button"><?php print t('View all courses');?></a>

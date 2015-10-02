@@ -1,0 +1,44 @@
+<?php
+/**
+ * @file
+ * Adds the javascript need to search the sites content.
+ */
+
+/**
+ * Implements hook_preprocess_HOOK().
+ *
+ * Overrides/adds new Angular JS controller for the search field.
+ */
+function ulf_search_preprocess_search_node_page_search_box(&$variables) {
+  $path = drupal_get_path('module', 'ulf_search');
+
+  // Add date picker.
+  drupal_add_js($path . '/js/jquery.datetimepicker.js', array(
+    'type' => 'file',
+    'scope' => 'footer',
+    'weight' => 0,
+  ));
+
+  // Add styel for date picker.
+  drupal_add_css($path . '/css/jquery.datetimepicker.css', array(
+    'type' => 'file',
+    'group' => 'CSS_THEME',
+  ));
+
+  // Add the search controller.
+  drupal_add_js($path . '/js/search_box_controller.js', array(
+    'type' => 'file',
+    'scope' => 'footer',
+    'weight' => 7,
+  ));
+}
+
+/**
+ * Implements hook_search_node_filtered_item_alter
+ */
+function ulf_search_search_node_filtered_item_alter(&$filteredItem) {
+  if (!empty($filteredItem['field_image:file'])) {
+    $file = file_load($filteredItem['field_image:file']['fid']);
+    $filteredItem['field_image:file']['url'] = image_style_url('teaser_display', $file->uri);
+  }
+}

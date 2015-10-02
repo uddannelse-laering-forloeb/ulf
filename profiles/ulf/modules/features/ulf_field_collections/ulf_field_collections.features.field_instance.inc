@@ -79,9 +79,7 @@ function ulf_field_collections_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-      ),
+      'settings' => array(),
       'type' => 'options_select',
       'weight' => 33,
     ),
@@ -148,7 +146,7 @@ function ulf_field_collections_field_default_field_instances() {
     'settings' => array(
       'description_field' => 0,
       'file_directory' => 'material',
-      'file_extensions' => 'txt',
+      'file_extensions' => 'txt pdf doc docx',
       'max_filesize' => '',
       'user_register_form' => FALSE,
     ),
@@ -310,7 +308,7 @@ function ulf_field_collections_field_default_field_instances() {
     'settings' => array(
       'description_field' => 0,
       'file_directory' => 'material',
-      'file_extensions' => 'txt',
+      'file_extensions' => 'txt pdf doc docx',
       'max_filesize' => '',
       'user_register_form' => FALSE,
     ),
@@ -480,6 +478,43 @@ function ulf_field_collections_field_default_field_instances() {
   );
 
   // Exported field_instance:
+  // 'field_collection_item-field_profile_contact-field_contact_office_hours'
+  $field_instances['field_collection_item-field_profile_contact-field_contact_office_hours'] = array(
+    'bundle' => 'field_profile_contact',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'inline',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 4,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'field_name' => 'field_contact_office_hours',
+    'label' => 'Træffetid',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'maxlength_js' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 5,
+    ),
+  );
+
+  // Exported field_instance:
   // 'field_collection_item-field_profile_contact-field_contact_phone'
   $field_instances['field_collection_item-field_profile_contact-field_contact_phone'] = array(
     'bundle' => 'field_profile_contact',
@@ -512,6 +547,43 @@ function ulf_field_collections_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance:
+  // 'field_collection_item-field_profile_contact-field_contact_title'
+  $field_instances['field_collection_item-field_profile_contact-field_contact_title'] = array(
+    'bundle' => 'field_profile_contact',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 1,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'field_name' => 'field_contact_title',
+    'label' => 'Titel/Beskrivelse',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'maxlength_js' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 2,
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Afregningsenhed');
@@ -523,6 +595,8 @@ function ulf_field_collections_field_default_field_instances() {
   t('Navn');
   t('Pris');
   t('Telefon');
+  t('Titel/Beskrivelse');
+  t('Træffetid');
 
   return $field_instances;
 }

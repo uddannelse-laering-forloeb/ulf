@@ -38,7 +38,7 @@ function ulf_course_providers_field_default_field_instances() {
       'file_extensions' => 'png gif jpg jpeg',
       'max_filesize' => '',
       'max_resolution' => '',
-      'min_resolution' => '',
+      'min_resolution' => '1000x550',
       'title_field' => 0,
       'user_register_form' => 0,
     ),
@@ -57,7 +57,6 @@ function ulf_course_providers_field_default_field_instances() {
         'manualcrop_require_cropping' => array(),
         'manualcrop_styles_list' => array(
           'node_display' => 'node_display',
-          'teaser_display' => 'teaser_display',
         ),
         'manualcrop_styles_mode' => 'include',
         'manualcrop_thumblist' => 0,
@@ -190,7 +189,7 @@ function ulf_course_providers_field_default_field_instances() {
     'label' => 'Kort præsentation af forløbsudbyder',
     'required' => 1,
     'settings' => array(
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => 1,
     ),
     'widget' => array(
@@ -235,6 +234,10 @@ function ulf_course_providers_field_default_field_instances() {
       'active' => 1,
       'module' => 'text',
       'settings' => array(
+        'maxlength_js' => '',
+        'maxlength_js_enforce' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'maxlength_js_truncate_html' => 0,
         'rows' => 5,
       ),
       'type' => 'text_textarea',
@@ -281,7 +284,7 @@ function ulf_course_providers_field_default_field_instances() {
     'bundle' => 'user',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Husk at inkludere http:// i webadressen',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -299,6 +302,7 @@ function ulf_course_providers_field_default_field_instances() {
       'absolute_url' => 1,
       'attributes' => array(
         'class' => '',
+        'configurable_class' => 0,
         'configurable_title' => 0,
         'rel' => '',
         'target' => '_blank',
@@ -310,7 +314,7 @@ function ulf_course_providers_field_default_field_instances() {
       'enable_tokens' => 0,
       'rel_remove' => 'default',
       'title' => 'none',
-      'title_label_use_field_label' => FALSE,
+      'title_label_use_field_label' => 0,
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 0,
@@ -379,6 +383,38 @@ function ulf_course_providers_field_default_field_instances() {
       ),
       'type' => 'image_image',
       'weight' => 7,
+    ),
+  );
+
+  // Exported field_instance: 'user-user-field_profile_mail'
+  $field_instances['user-user-field_profile_mail'] = array(
+    'bundle' => 'user',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 13,
+      ),
+    ),
+    'entity_type' => 'user',
+    'field_name' => 'field_profile_mail',
+    'label' => 'Mail',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => 0,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'html5_tools',
+      'settings' => array(),
+      'type' => 'emailwidget',
+      'weight' => 13,
     ),
   );
 
@@ -496,9 +532,11 @@ function ulf_course_providers_field_default_field_instances() {
   t('By');
   t('Entré');
   t('Hjemmeside');
+  t('Husk at inkludere http:// i webadressen');
   t('Kontakt');
   t('Kort præsentation af forløbsudbyder');
   t('Logo');
+  t('Mail');
   t('Navn');
   t('Postnr.');
   t('Pædagogisk profil');

@@ -51,12 +51,13 @@
     <?php print $scripts; ?>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
-    <link href="//fonts.googleapis.com/css?family=Asap:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-    <!--[if lt IE 9]>
+    <!--<link href="//fonts.googleapis.com/css?family=Asap:400,700,400italic,700italic" rel="stylesheet" type="text/css">-->
+    <!--[if lt IE 10]>
     <script type="text/javascript" src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <link rel="stylesheet" href="/profiles/ulf/themes/ulftheme/css/ie9.css" media="all">
     <![endif]-->
   </head>
-  <body>
+  <body class="<?php print $classes; ?>">
     <?php print $page_top; ?>
     <?php print $page; ?>
     <?php print $page_bottom; ?>

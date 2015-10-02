@@ -5,3 +5,42 @@
  */
 
 include_once 'ulf_course_providers.features.inc';
+
+/**
+ * Implements hook_menu_alter()
+ *
+ * @param $items
+ */
+function ulf_course_providers_menu_alter(&$items) {
+  $items['user/%user'] = array(
+    'access callback' => '_ulf_course_providers_profile_access',
+    'page callback' => '_ulf_course_providers_profile_view',
+    'page arguments' => array(1),
+    'type' => MENU_LOCAL_TASK,
+  );
+}
+
+/**
+ * Custom access callback for user profiles.
+ *
+ * @return bool
+ */
+function _ulf_course_providers_profile_access() {
+  if (user_access('access content')) {
+    return TRUE;
+  }
+  else {
+    return FALSE;
+  }
+}
+
+/**
+ * Custom page callback for user profiles.
+ *
+ * @param $account
+ * @return array
+ */
+function _ulf_course_providers_profile_view($account) {
+  include_once(drupal_get_path('module', 'user').'/user.pages.inc');
+  return user_view($account);
+}

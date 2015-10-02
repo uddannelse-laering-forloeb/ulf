@@ -52,10 +52,10 @@ function ulf_course_educators_field_group_info() {
     'weight' => '0',
     'children' => array(
       0 => 'field_full_description',
-      1 => 'field_subject',
-      2 => 'field_relevance_upper_school',
-      3 => 'field_relevance_primary_school',
-      4 => 'field_relevance_educators',
+      1 => 'field_relevance_educators',
+      2 => 'field_relevance_primary_school',
+      3 => 'field_relevance_upper_school',
+      4 => 'field_subject',
       5 => 'title',
     ),
     'format_type' => 'fieldset',
@@ -146,6 +146,7 @@ function ulf_course_educators_field_group_info() {
     'weight' => '2',
     'children' => array(
       0 => 'field_image',
+      1 => 'field_video',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
