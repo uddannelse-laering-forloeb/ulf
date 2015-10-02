@@ -3,3 +3,47 @@
     border: 2px dotted white;
     box-sizing: border-box;
 }
+
+.imgareaselect-outer{
+    background-color: rgba(0,0,0,.6);
+}
+
+.fieldset-wrapper > .form-wrapper {
+    clear: left;
+}
+
+.fieldset-wrapper > .field-name-field-duration-unit {
+    clear: none;
+}
+
+.field-name-field-price,
+.field-name-field-unit-price,
+.field-name-field-duration,
+.field-name-field-duration-unit {
+    float: left;
+    padding-right: 3em;
+}
+
+.field-name-field-collection-price .form-submit {
+    float: left;
+    margin-top: 1em;
+}
+
+.field-name-field-free {
+    clear: left;
+}
+
+.container-inline-date {
+    float: left;
+    padding-right: 3em;
+    clear: none;
+    width: auto;
+    position: relative;
+}
+
+
+.end-date-wrapper > .form-item > label {
+    position: absolute;
+    left: -34px;
+    top: 32px;
+}

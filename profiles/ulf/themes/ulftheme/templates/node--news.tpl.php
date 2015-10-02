@@ -89,6 +89,7 @@
           <?php print render($content['field_image']); ?>
         </div>
         <div class="content--main">
+          <p class="teaser--type"><?php print format_date($created, 'dmy'); ?></p>
           <?php
           // We hide the comments and links now so that we can render them later.
           hide($content['comments']);
@@ -99,18 +100,18 @@
         <div class="content--meta">
           <div class="block--default">
             <h2 class="block--header">
-              <?php print t('News'); ?>
+              <?php print t('Latest news'); ?>
             </h2>
             <div class="block--content">
               <div class="block--field-text">
-
+                <?php print render($latest_news_titles['content']); ?>
               </div>
             </div>
           </div>
           <?php if($newsletter_block) : ?>
             <div class="block--light">
               <h2 class="block--header">
-                <?php print t('Newsletter'); ?>
+                <?php print t('Signup to newsletter'); ?>
               </h2>
               <div class="block--content">
                 <ul class="block--field-text">

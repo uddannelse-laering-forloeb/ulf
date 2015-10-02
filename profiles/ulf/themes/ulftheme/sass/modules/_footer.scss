@@ -15,14 +15,16 @@
   color: $white;
   min-height: 15em;
 
+
   &--inner {
     margin: 0 auto;
     max-width: $layout-max-width;
 
-    @include display-flex;
+    @include flexbox;
     @include flex-wrap(wrap);
     @include flex-direction(row);
   }
+
 
   &--block {
     padding: 2em 0;
@@ -34,13 +36,14 @@
     }
   }
 
+
   &--block-inner {
     overflow: hidden;
     padding: 0 $spacing / 2;
   }
 
-  // Content elements in footer is editable by editors. We set some defaults.
 
+  // Content elements in footer is editable by editors. We set some defaults.
   hr {
     border-color: $white;
   }
@@ -67,6 +70,7 @@
     padding: .5em 1em;
   }
 
+
   &--eu-compliance {
     height: 150px;
     padding: $spacing / 2;
@@ -86,11 +90,12 @@
 
   @include vertical-center();
 
-  @include display-flex;
+  @include flexbox;
   @include justify-content(space-between);
   @include flex-wrap(wrap);
   @include flex-direction(row);
 }
+
 
 .footer--eu-compliance-text {
   color: $white;
@@ -111,7 +116,39 @@
   }
 
   .button {
-    margin: $spacing /2;
-    padding: .2em .8em;
+    padding: .4em .8em;
+    font-size: 1em;
+  }
+}
+
+
+// Sometimes the template is not rendered so we style the module html as well.
+// Horrible nesting.
+#sliding-popup {
+
+  .popup-content {
+    max-width: $layout-max-width;
+    padding: 0 $spacing;
+    box-sizing: border-box;
+
+    #popup-text {
+      padding-top: 1em;
+    }
+
+    #popup-buttons {
+      padding: 1em 0;
+
+      button {
+        background: $dark-blue;
+        border: 0;
+        box-shadow: none;
+        color: $white;
+        text-shadow: none;
+
+        &:hover {
+          background: $dark-blue;
+        }
+      }
+    }
   }
 }

@@ -45,12 +45,12 @@
  */
 ?>
 <?php if (!$label_hidden): ?>
-  <div class="block--field-label"<?php print $title_attributes; ?>><?php print $label ?>:&nbsp;</div>
+  <div class="block--field-label"<?php print $title_attributes; ?>><?php print $label ?></div>
 <?php endif; ?>
 <div class="block--field-text"<?php print $content_attributes; ?>>
   <?php foreach ($items as $delta => $item): ?>
     <?php if(count($items) != $delta + 1) : ?>
-      <?php print render($item) . ','; ?>
+      <?php print render($item) . '</br>'; ?>
       <?php else : ?>
         <?php print render($item); ?>
     <?php endif; ?>

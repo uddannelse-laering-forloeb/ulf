@@ -79,12 +79,36 @@
  * @ingroup themeable
  */
 ?>
-<?php hide($content['links']);?>
-<a class="teaser--content-inner" href="<?php echo $node_url;?>">
-  <div class="teaser--content-field">
-    <?php print render($content['field_image']);?>
-  </div>
-  <div class="teaser--content-text is-<?php print $group_type;?>">
-    <div class="teaser--content-text-inner"><?php print render($title);?></div>
-  </div>
-</a>
+<article class="teaser is-<?php print $group_type; ?>">
+  <?php if ($type == 'course') : ?>
+    <?php if (isset($content['field_free'])) : ?>
+      <?php if ($content['field_free']['#items']['0']['value'] == 1) : ?>
+        <div class="ribbon-wrapper left">
+          <div class="ribbon">
+            <a href="/node/<?php print $nid; ?>"><?php print t('Free'); ?></a>
+          </div>
+        </div>
+      <?php endif;?>
+    <?php endif;?>
+  <?php endif;?>
+  <header>
+    <h2 class="teaser--header"><a href="/node/<?php print $nid; ?>"><?php print render($title); ?></a></h2>
+    <?php if ($type == 'course') : ?>
+      <?php if (isset($content['field_period_full_year']) && $content['field_period_full_year']['#items']['0']['value'] == 1) : ?>
+        <p class="teaser--type"><?php print t('Period'); ?>: <?php print t('All year'); ?></p>
+      <?php else : ?>
+        <?php if (isset($content['field_period_full_year'])) : ?>
+          <p class="teaser--type"><?php print t('Period'); ?>:<?php print render($content['field_period']); ?></p>
+        <?php endif; ?>
+      <?php endif; ?>
+    <?php endif;?>
+    <p class="teaser--type"><?php print t('Organizer'); ?>: <a href="/user/<?php print $uid; ?>"><?php print $profile_name; ?></a></p>
+    <?php if ($type == 'course') : ?>
+      <?php if (isset($content['field_subject'])) : ?>
+        <p class="teaser--type"><?php print t('Subject'); ?>: <?php print render($content['field_subject']); ?></p>
+      <?php endif;?>
+    <?php endif;?>
+    <p class="teaser--type-read-more"><a href="/node/<?php print $nid; ?>"><?php print t('Read more'); ?></a></p>
+  </header>
+  <figure><a href="/node/<?php print $nid; ?>"><?php print render($content['field_image']); ?></a></figure>
+</article>
