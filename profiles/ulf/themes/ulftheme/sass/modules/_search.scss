@@ -366,12 +366,6 @@
   /* Display search results.
   ================================================================================================================== */
 
-.search-results-header {
-  margin-bottom: 2em;
-  padding-top: 1em;
-}
-
-
 .search-results {
   @extend %teaser--list;
 
@@ -382,6 +376,8 @@
   }
 
   &--header {
+    @include strip-link-styles();
+
     @extend %teaser--header;
   }
 

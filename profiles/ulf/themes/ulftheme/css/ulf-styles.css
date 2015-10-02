@@ -2153,12 +2153,20 @@ body {
 
 /* Display search results.
 ================================================================================================================== */
-.search-results-header {
-  margin-bottom: 2em;
-  padding-top: 1em; }
-
 .search-results {
   margin: 0 0 2em; }
+  .search-results--header:link {
+    color: inherit;
+    text-decoration: none; }
+  .search-results--header:visited {
+    color: inherit;
+    text-decoration: none; }
+  .search-results--header:hover {
+    color: inherit;
+    text-decoration: none; }
+  .search-results--header:focus {
+    color: inherit;
+    text-decoration: none; }
 
 .is-course .search--filter-search-submit,
 .is-daycare .search--filter-search-submit,
