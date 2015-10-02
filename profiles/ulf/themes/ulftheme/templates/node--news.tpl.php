@@ -111,7 +111,7 @@
           <?php if($newsletter_block) : ?>
             <div class="block--light">
               <h2 class="block--header">
-                <?php print t('Newsletter'); ?>
+                <?php print t('Signup to newsletter'); ?>
               </h2>
               <div class="block--content">
                 <ul class="block--field-text">
