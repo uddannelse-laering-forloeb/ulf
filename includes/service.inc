@@ -184,7 +184,6 @@ class SearchApiSearchNodeService extends SearchApiAbstractService {
             // All types tried, so check if it was delete.
             if (!$deleted) {
               watchdog('search_api_db', 'Unable to delete item with %id and type %type.', array('%id' => $id, '%type' => $type), WATCHDOG_WARNING);
-              throw new SearchApiException('Unable to delete item.');
             }
           }
         }
