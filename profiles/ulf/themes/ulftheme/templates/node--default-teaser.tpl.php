@@ -103,7 +103,7 @@
       <?php endif; ?>
     <?php endif;?>
     <p class="teaser--type"><?php print t('Organizer'); ?>: <a href="/user/<?php print $uid; ?>"><?php print $profile_name; ?></a></p>
-    <?php if ($type == 'course') : ?>
+    <?php if ($type == 'course' || $type == 'course_educators') : ?>
       <?php if (isset($content['field_subject'])) : ?>
         <p class="teaser--type"><?php print t('Subject'); ?>: <?php print render($content['field_subject']); ?></p>
       <?php endif;?>
