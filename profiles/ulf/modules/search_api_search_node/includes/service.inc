@@ -168,13 +168,23 @@ class SearchApiSearchNodeService extends SearchApiAbstractService {
           $this->connection->flush($search_node_index);
         }
         else {
-          foreach ($index->options['datasource']['bundles'] as $type) {
-            // The $ids will be an array when delete items.
-            foreach ($ids as $id) {
-              if (!$this->connection->remove($search_node_index, $type, $id)) {
-                watchdog('search_api_db', 'Unable to delete item with %id and type %type.', array('%id' => $id, '%type' => $type), WATCHDOG_WARNING);
-                throw new SearchApiException('Unable to delete item.');
+          // The $ids will be an array when delete items.
+          foreach ($ids as $id) {
+            $deleted = FALSE;
+            // As search api don't provides an entity during deletion, we need
+            // to try them all.
+            foreach ($index->options['datasource']['bundles'] as $type) {
+              $deleted = $this->connection->remove($search_node_index, $type, $id);
+              if ($deleted) {
+                // No need to try and delete with other types.
+                break;
               }
+            }
+
+            // All types tried, so check if it was delete.
+            if (!$deleted) {
+              watchdog('search_api_db', 'Unable to delete item with %id and type %type.', array('%id' => $id, '%type' => $type), WATCHDOG_WARNING);
+              throw new SearchApiException('Unable to delete item.');
             }
           }
         }
