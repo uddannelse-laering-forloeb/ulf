@@ -2155,18 +2155,6 @@ body {
 ================================================================================================================== */
 .search-results {
   margin: 0 0 2em; }
-  .search-results--header:link {
-    color: inherit;
-    text-decoration: none; }
-  .search-results--header:visited {
-    color: inherit;
-    text-decoration: none; }
-  .search-results--header:hover {
-    color: inherit;
-    text-decoration: none; }
-  .search-results--header:focus {
-    color: inherit;
-    text-decoration: none; }
 
 .is-course .search--filter-search-submit,
 .is-daycare .search--filter-search-submit,

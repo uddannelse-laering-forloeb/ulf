@@ -9,9 +9,9 @@
       </div>
     </div>
     <header>
-      <a href="{{ hit.url }}">
-        <h2 class="search-results--header">{{ hit.field_profile_name }}</h2>
-      </a>
+      <h2 class="search-results--header">
+        <a href="{{ hit.url }}">{{ hit.field_profile_name }}</a>
+      </h2>
       <p data-ng-bind-html="hit['field_profile_description:value'] | trimWordBoundary:110"></p>
       <p class="teaser--type-read-more"><a href="{{ hit.url }}">Se hele profilen</a></p>
     </header>

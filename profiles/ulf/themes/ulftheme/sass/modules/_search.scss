@@ -376,8 +376,6 @@
   }
 
   &--header {
-    @include strip-link-styles();
-
     @extend %teaser--header;
   }
 

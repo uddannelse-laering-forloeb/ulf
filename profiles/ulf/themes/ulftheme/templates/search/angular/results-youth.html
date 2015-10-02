@@ -9,9 +9,9 @@
       </div>
     </div>
     <header>
-      <a href="{{ hit.url }}">
-        <h2 class="search-results--header">{{ hit.title }}</h2>
-      </a>
+      <h2 class="search-results--header">
+        <a href="{{ hit.url }}">{{ hit.title }}</a>
+      </h2>
       <div data-ng-if="hit.field_period_full_year == false">
         <p class="teaser--type">Periode: <span class="date-display-start"> {{ hit['field_period:value'] * 1000 | date:'dd.MM.yyyy' }} </span> - <span class="date-display-end"> {{ hit['field_period:value2'] * 1000 | date:'dd.MM.yyyy' }} </span></p>
       </div>
