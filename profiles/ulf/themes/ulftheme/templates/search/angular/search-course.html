@@ -38,6 +38,28 @@
       </div>
     </div>
 
+    <!-- Dates search fields -->
+    <div class="search--filter-wrapper" data-ng-repeat="(id, date) in dates">
+      <div class="search--filter-wrapper-inner">
+        <div class="search--filter-span">
+          <div class="search--filter-span-wrapper">
+            <label class="search--filter-span-label"
+                   for="{{ id }}-form">Fra</label>
+            <input type="text" id="{{ id }}-form" data-datetime-picker="d/m/y" data-angular-format="dd/MM/yy"
+                   data-ng-model="query.dates[id].from" value=""
+                   size="60" maxlength="8" class="search--filter-span-text">
+          </div>
+          <div class="search--filter-span-wrapper">
+            <label class="search--filter-span-label"
+                   for="{{ id }}-to">Til</label>
+            <input type="text" id="{{ id }}-to" data-datetime-picker="d/m/y" data-angular-format="dd/MM/yy"
+                   data-ng-model="query.dates[id].to" value=""
+                   size="60" maxlength="8" class="search--filter-span-text">
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Search filters -->
     <div id={{id}} data-ng-class="toggleFilterClasses[id][0]"
          class="search--filter-wrapper"
