@@ -47,14 +47,14 @@
                    for="{{ id }}-form">Fra</label>
             <input type="text" id="{{ id }}-form" data-datetime-picker="d/m/y" data-angular-format="dd/MM/yy"
                    data-ng-model="query.dates[id].from" value=""
-                   size="60" maxlength="8" class="search--filter-span-text">
+                   size="60" maxlength="8" class="search--filter-span-text" data-ng-change="dateCheck(date)">
           </div>
           <div class="search--filter-span-wrapper">
             <label class="search--filter-span-label"
                    for="{{ id }}-to">Til</label>
             <input type="text" id="{{ id }}-to" data-datetime-picker="d/m/y" data-angular-format="dd/MM/yy"
                    data-ng-model="query.dates[id].to" value=""
-                   size="60" maxlength="8" class="search--filter-span-text">
+                   size="60" maxlength="8" class="search--filter-span-text" data-ng-change="dateCheck(date)">
           </div>
         </div>
       </div>
