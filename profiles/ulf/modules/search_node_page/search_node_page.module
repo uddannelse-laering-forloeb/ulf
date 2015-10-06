@@ -271,20 +271,34 @@ function search_node_page_form_search_node_page_search_box_content_type_edit_for
 
     // Build field and filter selection.
     $fields = array();
+    $dates = array();
     $filters = array();
     $selected_index = !empty($form_state['input']['search_node']['index']) ? $form_state['input']['search_node']['index'] : $form['search_node']['index']['#default_value'];
     $index = search_api_index_load($selected_index);
     foreach ($index->options['fields'] as $field => $options) {
-      if (isset($options['entity_type']) && $options['entity_type'] == 'taxonomy_term') {
-        // Load field.
-        $info = field_info_field($field);
-        $vocab = taxonomy_vocabulary_machine_name_load($info['settings']['allowed_values'][0]['vocabulary']);
-        $filters[$field] = $vocab->name . ' (' . $field .')';
-      }
-      else {
-        // The index save some fields with ":".
-        $name = explode(':', $field);
-        $fields[$field] = array_shift($name) . ' (' . $field .')';
+      $type = isset($options['entity_type']) ? $options['entity_type'] : $options['type'];
+      switch ($type) {
+        case 'taxonomy_term':
+          // Load field.
+          $info = field_info_field($field);
+          $vocab = taxonomy_vocabulary_machine_name_load($info['settings']['allowed_values'][0]['vocabulary']);
+          $filters[$field] = $vocab->name . ' (' . $field .')';
+          break;
+
+        case 'date':
+          // Check if date has an value2 in the index to indicate a to date.
+          if (isset($index->options['fields'][$field . '2'])) {
+            $name = explode(':', $field);
+            $dates[$field] = array_shift($name) . ' (' . $field .')';
+            break;
+          }
+          // Fall through to default.
+
+        default:
+          // The index save some fields with ":".
+          $name = explode(':', $field);
+          $fields[$field] = array_shift($name) . ' (' . $field .')';
+          break;
       }
     }
     $form['search_node']['options']['fields']['#options'] = $fields;
@@ -292,6 +306,9 @@ function search_node_page_form_search_node_page_search_box_content_type_edit_for
 
     // Updater interval fields.
     $form['search_node']['intervals']['fields']['#options'] = $fields;
+
+    // Update dates intervals.
+    $form['search_node']['dates']['fields']['#options'] = $dates;
 
     // Update force filters with the options.
     $form['search_node']['forces']['field']['#options'] = array('_none_' => t('Select field')) + $filters;
@@ -432,6 +449,23 @@ function search_node_page_configuration_form($form, array &$form_state = array()
     '#description' => t('Select the filters to use'),
     '#options' => $filters,
     '#default_value' => isset($defaults['options']['filters']) ? $defaults['options']['filters'] : array(),
+  );
+
+  $form['search_node']['dates'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Search dates'),
+    '#description' => t('Search items with both start and end dates.'),
+    '#tree' => TRUE,
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+  );
+
+  $search_fields = array();
+  $form['search_node']['dates']['fields'] = array(
+    '#type' => 'checkboxes',
+    '#title' => t('Date fields'),
+    '#options' => $search_fields,
+    '#default_value' => isset($defaults['dates']['fields']) ? $defaults['dates']['fields'] : array(),
   );
 
   $form['search_node']['intervals'] = array(
@@ -678,6 +712,21 @@ function search_node_page_build_search_box($configuration = array()) {
     if (!empty($configuration['intervals']['fields'])) {
       $intervals = array_filter($configuration['intervals']['fields']);
       $conf['provider']['intervals'] = array_values($intervals);
+    }
+
+    // Add dates to the configuration.
+    if (!empty($configuration['dates']['fields'])) {
+      $conf['provider']['dates'] = array();
+      $dates = array_values(array_filter($configuration['dates']['fields']));
+      foreach ($dates as $date) {
+        $name = explode(':', $date);
+        // @TODO: Find a better way to handle value2.
+        $conf['provider']['dates'][array_shift($name)] = array(
+          'label' => $name,
+          'from' => $date,
+          'to' => $date . '2',
+        );
+      }
     }
 
     // Check if any filters have been forced.

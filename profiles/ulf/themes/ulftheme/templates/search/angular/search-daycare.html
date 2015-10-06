@@ -10,7 +10,7 @@
                  data-code="13" data-key-code="searchClicked()"
                  data-ng-model="query.text">
           <input class="search--filter-search-submit" type="submit"
-                 id="search-submit" name="search-submit" value="Search"
+                 id="search-submit" name="search-submit" value="Søg"
                  data-ng-click="searchClicked()">
         </div>
       </div>
@@ -22,17 +22,39 @@
         <div class="search--filter-span">
           <div class="search--filter-span-wrapper">
             <label class="search--filter-span-label"
-                   for="interval-from">From</label>
+                   for="interval-from">Fra</label>
             <input type="text" id="interval-from" data-datetime-picker="d/m/y" data-angular-format="dd/MM/yy"
                    data-ng-model="query.intervals[interval].from" value=""
                    size="60" maxlength="128" class="search--filter-span-text" data-ng-change="intervalCheck(interval)">
           </div>
           <div class="search--filter-span-wrapper">
             <label class="search--filter-span-label"
-                   for="interval-to">To</label>
+                   for="interval-to">Til</label>
             <input type="text" id="interval-to" data-datetime-picker="d/m/y" data-angular-format="dd/MM/yy"
                    data-ng-model="query.intervals[interval].to" value=""
                    size="60" maxlength="128" class="search--filter-span-text" data-ng-change="intervalCheck(interval)">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dates search fields -->
+    <div class="search--filter-wrapper" data-ng-repeat="(id, date) in dates">
+      <div class="search--filter-wrapper-inner">
+        <div class="search--filter-span">
+          <div class="search--filter-span-wrapper">
+            <label class="search--filter-span-label"
+                   for="{{ id }}-form">Fra</label>
+            <input type="text" id="{{ id }}-form" data-datetime-picker="d/m/y" data-angular-format="dd/MM/yy"
+                   data-ng-model="query.dates[id].from" value=""
+                   size="60" maxlength="8" class="search--filter-span-text">
+          </div>
+          <div class="search--filter-span-wrapper">
+            <label class="search--filter-span-label"
+                   for="{{ id }}-to">Til</label>
+            <input type="text" id="{{ id }}-to" data-datetime-picker="d/m/y" data-angular-format="dd/MM/yy"
+                   data-ng-model="query.dates[id].to" value=""
+                   size="60" maxlength="8" class="search--filter-span-text">
           </div>
         </div>
       </div>
