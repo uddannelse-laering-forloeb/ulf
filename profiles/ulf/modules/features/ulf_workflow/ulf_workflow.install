@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Set weight of the ulf_forms module to 999.
  */
@@ -20,3 +21,24 @@ function ulf_workflow_update_7200() {
     ->execute();
 }
 
+
+/**
+ * Set variable for checking to send mail.
+ */
+function ulf_workflow_update_7300() {
+  variable_set('workflow_send_mail', FALSE);
+}
+
+/**
+ * Set variable for checking to send mail.
+ */
+function ulf_workflow_update_7400() {
+  variable_set('ulf_workflow_send_mail', FALSE);
+}
+
+/**
+ * Set variable for checking to send mail.
+ */
+function ulf_workflow_update_7500() {
+  variable_set('ulf_workflow_send_mail', 0);
+}

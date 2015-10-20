@@ -68,7 +68,6 @@ dependencies[] = ulf_practical_information_moderation
 dependencies[] = ulf_structures
 dependencies[] = ulf_static_page
 dependencies[] = ulf_taxonomies
-dependencies[] = ulf_taxonomy_terms
 dependencies[] = ulf_workflow
 dependencies[] = uuid
 dependencies[] = uuid_features
