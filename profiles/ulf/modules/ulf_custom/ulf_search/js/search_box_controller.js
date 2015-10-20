@@ -85,8 +85,8 @@ angular.module('searchBoxApp').directive('datetimePicker', ['$filter',
 /**
  * Overrides the default searchBoxApp controller.
  */
-angular.module('searchBoxApp').controller('UlfBoxController', ['CONFIG', 'communicatorService', 'searchProxy', '$scope',
-  function (CONFIG, communicatorService, searchProxy, $scope) {
+angular.module('searchBoxApp').controller('UlfBoxController', ['CONFIG', 'communicatorService', 'searchProxyService', '$scope',
+  function (CONFIG, communicatorService, searchProxyService, $scope) {
     'use strict';
 
     /**
@@ -97,10 +97,10 @@ angular.module('searchBoxApp').controller('UlfBoxController', ['CONFIG', 'commun
       communicatorService.$emit('searching', {});
 
       // Start the search request.
-      searchProxy.search($scope.query).then(
+      searchProxyService.search($scope.query).then(
         function (data) {
           // Updated filters.
-          searchProxy.getFilters().then(
+          searchProxyService.getFilters().then(
             function (filters) {
               $scope.filters = filters;
             },
@@ -136,7 +136,7 @@ angular.module('searchBoxApp').controller('UlfBoxController', ['CONFIG', 'commun
      */
     function init() {
       // Get state from pervious searches.
-      var state = searchProxy.init();
+      var state = searchProxyService.init();
 
       // Get filters.
       $scope.filters = state.filters;
@@ -187,7 +187,7 @@ angular.module('searchBoxApp').controller('UlfBoxController', ['CONFIG', 'commun
         }
         else {
           // Get filters based on search content (maybe slow).
-          searchProxy.getFilters().then(
+          searchProxyService.getFilters().then(
             function (filters) {
               $scope.filters = filters;
             },
@@ -329,7 +329,35 @@ angular.module('searchBoxApp').controller('UlfBoxController', ['CONFIG', 'commun
       }
 
       // Test that from is smaller than to.
-      if (current.from > current.to) {
+      if (current.from >= current.to) {
+        return;
+      }
+
+      // Update search result.
+      search();
+    };
+
+    /**
+     * Check that a given interval is valid and search.
+     *
+     * Use on change on the input fields.
+     *
+     * @param date
+     *   The name of the date.
+     */
+    $scope.dateCheck = function dateCheck(date) {
+
+      // Check that from and to exists.
+      if (!date.hasOwnProperty('from') || date.from === '') {
+        return;
+      }
+
+      if (!date.hasOwnProperty('to') || date.to === '') {
+        return;
+      }
+
+      // Test that from is smaller than to.
+      if (date.from > date.to) {
         return;
       }
 
