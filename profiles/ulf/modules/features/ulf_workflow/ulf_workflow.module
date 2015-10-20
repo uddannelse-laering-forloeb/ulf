@@ -29,6 +29,46 @@ function ulf_workflow_preprocess_page(&$variables) {
   }
 }
 
+/**
+ * Implements hook_menu().
+ *
+ * @return array.
+ */
+function ulf_workflow_menu() {
+
+  $items = array();
+
+  $items['admin/settings/ulf_workflow'] = array(
+    'title' => 'ULF workflow settings',
+    'description' => 'Settings related to ulf workflow module',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('_ulf_workflow_admin'),
+    'access arguments' => array('administer site configuration'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  return $items;
+}
+
+/**
+ * Implements custom admin page.,
+ *
+ * @return array.
+ */
+function _ulf_workflow_admin() {
+  $active = array(0 => t('Email deactivated'), 1 => t('Email activated'));
+  $form = array();
+
+  $form['ulf_workflow_send_mail'] = array(
+    '#type' => 'radios',
+    '#title' => t('Email active'),
+    '#default_value' => variable_get('ulf_workflow_send_mail'),
+    '#options' => $active,
+    '#description' => t("Allow ULF workflow module to send emails"),
+  );
+
+  return system_settings_form($form);
+}
 
 
 /**
@@ -237,13 +277,19 @@ function ulf_workflow_course_node_form_draft_submit($form, &$form_state) {
  * This will save the node and publish the changes.
  */
 function ulf_workflow_course_node_form_publish_submit($form, &$form_state) {
+  $workflow_send_mail = variable_get('ulf_workflow_send_mail');
   // Set the moderation form state to published.
   $form_state['values']['workbench_moderation_state_new'] = 'published';
 
   // Tell the end user what is happening.
   $_GET['destination'] = 'node/' . $form['nid']['#value'];
   drupal_set_message(t('The content has been published'));
-  _send_published_mail($form['#node']);
+
+  if ($workflow_send_mail > 0) {
+    _send_published_mail($form['#node']);
+  } else {
+    drupal_set_message(t('No mail sent. Mail functionality is disabled.'), 'warning');
+  }
 }
 
 
@@ -253,8 +299,13 @@ function ulf_workflow_course_node_form_publish_submit($form, &$form_state) {
  * This will save the node and send to revision by admin.
  */
 function ulf_workflow_course_node_form_send_to_revision($form, &$form_state) {
+  $workflow_send_mail = variable_get('ulf_workflow_send_mail');
   // Send mail when content is ready for revision.
-  _send_revision_ready_mail($form['#node']);
+  if ($workflow_send_mail > 0) {
+    _send_revision_ready_mail($form['#node']);
+  } else {
+    drupal_set_message(t('No mail sent. Mail functionality is disabled.'), 'warning');
+  }
 }
 
 
@@ -266,10 +317,15 @@ function ulf_workflow_course_node_form_send_to_revision($form, &$form_state) {
  * @param $category
  */
 function ulf_workflow_user_update(&$edit, $account, $category) {
+  $workflow_send_mail = variable_get('ulf_workflow_send_mail');
   global $user;
   // Send user edited mails to site mail when a user is changed.
   if (!in_array('editor',$user->roles)) {
-    _send_user_edited_mail($account);
+    if ($workflow_send_mail > 0) {
+      _send_user_edited_mail($account);
+    } else {
+      drupal_set_message(t('No mail sent. Mail functionality is disabled.'), 'warning');
+    }
   }
 }
 
