@@ -200,7 +200,9 @@ function ulf_field_bases_field_default_field_bases() {
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
+        'hour' => 'time',
         'hours' => 'timer',
+        'lesson' => 'lektion',
         'lessons' => 'lektioner',
         'minutes' => 'minutter',
       ),

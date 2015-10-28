@@ -199,7 +199,12 @@
               <div class="block--field-text"><?php print $profile_address; ?></div>
               <div class="block--field-text"><?php print $profile_postal_code; ?> <?php print $profile_city; ?></div>
               </br>
-              <div class="block--field-text"><?php print t('Phone')?> <?php print $profile_phone; ?></div>
+              <?php if (isset($profile_phone)) : ?>
+                <div class="block--field-text"><?php print t('Phone')?> <?php print $profile_phone; ?></div>
+              <?php endif; ?>
+              <?php if (isset($profile_home_page)) : ?>
+                <div class="block--field-text"><a href="<?php print $profile_home_page; ?>" target="_blank"><?php print t('Website');?></a></div>
+              <?php endif; ?>
               </br>
               <a href="/user/<?php print $uid ?>"><?php print t('View organizer profile'); ?></a>
             </div>

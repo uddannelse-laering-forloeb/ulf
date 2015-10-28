@@ -199,6 +199,7 @@ function ulf_preprocess_node(&$variables) {
     $variables['profile_postal_code'] = $author_wrapper->field_profile_postal_code->value();
     $variables['profile_city'] = $author_wrapper->field_profile_city->value();
     $variables['profile_phone'] = $author_wrapper->field_profile_phone->value();
+    $variables['profile_home_page'] = $author_wrapper->field_profile_home_page->value()['url'];
   }
 }
 
