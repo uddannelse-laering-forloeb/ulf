@@ -42,7 +42,7 @@ function ulf_taxonomies_taxonomy_default_vocabularies() {
       'weight' => 0,
     ),
     'primary_school' => array(
-      'name' => 'Undgomdsuddannelser',
+      'name' => 'Ungdomsuddannelser',
       'machine_name' => 'primary_school',
       'description' => '',
       'hierarchy' => 0,

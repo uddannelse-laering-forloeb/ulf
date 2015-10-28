@@ -16,7 +16,10 @@ function ulf_search_settings_default_page_manager_pages() {
   $page->admin_title = 'Search - courses';
   $page->admin_description = '';
   $page->path = 'kurser';
-  $page->access = array();
+  $page->access = array(
+    'type' => 'none',
+    'settings' => NULL,
+  );
   $page->menu = array(
     'type' => 'normal',
     'title' => 'Kurser',
@@ -201,7 +204,10 @@ function ulf_search_settings_default_page_manager_pages() {
   $page->admin_title = 'Search - day care';
   $page->admin_description = '';
   $page->path = 'dagtilbud';
-  $page->access = array();
+  $page->access = array(
+    'type' => 'none',
+    'settings' => NULL,
+  );
   $page->menu = array(
     'type' => 'normal',
     'title' => 'Dagtilbud',
@@ -392,7 +398,10 @@ function ulf_search_settings_default_page_manager_pages() {
   $page->admin_title = 'Search - school';
   $page->admin_description = '';
   $page->path = 'grundskole';
-  $page->access = array();
+  $page->access = array(
+    'type' => 'none',
+    'settings' => NULL,
+  );
   $page->menu = array(
     'type' => 'normal',
     'title' => 'Grundskole',
@@ -582,7 +591,10 @@ function ulf_search_settings_default_page_manager_pages() {
   $page->admin_title = 'Search - users';
   $page->admin_description = '';
   $page->path = 'udbydere';
-  $page->access = array();
+  $page->access = array(
+    'type' => 'none',
+    'settings' => NULL,
+  );
   $page->menu = array(
     'type' => 'normal',
     'title' => 'Udbydere',
@@ -749,7 +761,10 @@ function ulf_search_settings_default_page_manager_pages() {
   $page->admin_title = 'Search - youth';
   $page->admin_description = '';
   $page->path = 'ungdomsuddannelse';
-  $page->access = array();
+  $page->access = array(
+    'type' => 'none',
+    'settings' => NULL,
+  );
   $page->menu = array(
     'type' => 'normal',
     'title' => 'Ungdomsuddannelse',
