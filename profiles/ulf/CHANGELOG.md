@@ -2,6 +2,18 @@
 
 #In development
 
+#v2.1.0
+
+##Hotfix v1-errorfixes:
+* Fixed HTML validation
+* Added IE11 fixes
+* Added linkchecker contrib module including config
+* Removed custom blocks from feature
+
+#v2.0.0
+
+* Added transliteration module
+* Added fixes to search
 
 #v1.0.0 - Beta2
 
@@ -10,7 +22,6 @@
 * Added newsletter signup page /newsletter/signup
 * Added styling for login
 * Added newsletter archive page /newsletter/archive
-
 
 
 #v1.0.0 - Beta1
