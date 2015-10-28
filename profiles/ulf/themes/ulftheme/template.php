@@ -230,6 +230,8 @@ function ulf_preprocess_field(&$variables) {
     'field_profile_postal_code',
     'field_profile_city',
     'field_unit_price',
+    'field_price_description',
+    'field_duration_description'
   );
 
   // Strip teaser fields.
