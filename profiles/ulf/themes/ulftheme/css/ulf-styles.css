@@ -1195,10 +1195,8 @@ body {
     padding: 16px; }
   .field--collection-description, .field--collection-file, .field--collection-link, .field--collection-litt {
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 4px;
     width: 100%; }
-  .field--collection-description {
-    font-weight: bold; }
   .field--video {
     margin-bottom: 16px; }
   .field--video-player {
@@ -1731,6 +1729,12 @@ body {
     @media only screen and (min-width: 55em) {
       .content--main {
         width: 60%; } }
+    .content--main h2:not(.block--field-label) {
+      font-size: 1.2em;
+      font-weight: bold; }
+    .content--main h3 {
+      font-size: 1.1em;
+      font-weight: bold; }
     .content--main ul {
       list-style-type: disc;
       padding-left: 16px; }
