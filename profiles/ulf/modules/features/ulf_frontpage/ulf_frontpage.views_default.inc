@@ -181,6 +181,21 @@ function ulf_frontpage_views_default_views() {
   );
   $handler->display->display_options['filters']['tid']['type'] = 'select';
   $handler->display->display_options['filters']['tid']['vocabulary'] = 'target_group';
+  $translatables['frontpage_target_groups'] = array(
+    t('Master'),
+    t('Dagtilbudsforløb'),
+    t('mere'),
+    t('Udfør'),
+    t('Gendan'),
+    t('Sortér efter'),
+    t('Stigende'),
+    t('Faldende'),
+    t('term from field_target_group'),
+    t('more'),
+    t('View panes'),
+    t('Grundskoleforløb'),
+    t('Ungdomsuddannelsesforløb'),
+  );
   $export['frontpage_target_groups'] = $view;
 
   $view = new view();
@@ -276,6 +291,20 @@ function ulf_frontpage_views_default_views() {
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = '<p></p>';
   $handler->display->display_options['empty']['area']['format'] = 'editor';
+  $translatables['ulf_frontpage_promoted_courses'] = array(
+    t('Master'),
+    t('Promoted courses'),
+    t('mere'),
+    t('Udfør'),
+    t('Gendan'),
+    t('Sortér efter'),
+    t('Stigende'),
+    t('Faldende'),
+    t('Overordnet målgruppe'),
+    t('more'),
+    t('<p></p>'),
+    t('View panes'),
+  );
   $export['ulf_frontpage_promoted_courses'] = $view;
 
   return $export;

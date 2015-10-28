@@ -75,10 +75,10 @@
 <a class="nav--overlay js-toggle-mobile-nav js-overlay"></a>
 <div class="page--wrapper js-page-wrapper">
   <div class="page--inner">
-    <header class="header" role="banner">
+    <header class="header">
       <div class="header--inner">
         <div class="header--nav-wrapper">
-          <a href="#" class="header--toggle-mobile-nav js-toggle-mobile-nav"><img src="/<?php echo $directory; ?>/images/icon-menu.png"></a>
+          <a href="#" class="header--toggle-mobile-nav js-toggle-mobile-nav"><img src="/<?php echo $directory; ?>/images/icon-menu.png" alt="Menu icon"></a>
           <?php if ($logo): ?>
             <a class="header--logo" href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo">
               <img class="header--logo-image" src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
@@ -88,11 +88,11 @@
       </div>
     </header>
     <nav class="nav--mobile js-mobile-nav">
-      <div class="nav--inner">
+      <ul class="nav--inner">
         <?php if ($main_menu_block) : ?>
           <?php print render($main_menu_block['content']); ?>
         <?php endif; ?>
-      </div>
+      </ul>
     </nav>
     <nav class="nav">
       <ul class="nav--inner">
