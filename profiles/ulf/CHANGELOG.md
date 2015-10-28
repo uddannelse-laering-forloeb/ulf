@@ -6,6 +6,7 @@
 
 ###Hotfix Users
 * Added link to author homepage on courses
+* Added h2 and h3 to content filter and wysiwyg (ulf_wysiwyg module)
 
 ###Hotfix Users
 * Added link on user logo
@@ -13,11 +14,11 @@
 * Added padding to contact box
 * Removed phone label if no phone number is added
 * Reduced field spacing in blocks from 8px to 4px
-* Added website address in user creation form
+* Added website address in user creation form (ulf_course_educators module)
 * Changed description label to presentation
 
 ###Hotfix News
-* Changed path to news archive
+* Changed path to news archive (ulf_news module)
 
 ###Hotfix Header-footer
 * Changed width of footer blocks
@@ -25,8 +26,8 @@
 ###Hotfix v1-errorfixes:
 * Fixed HTML validation
 * Added IE11 fixes
-* Added linkchecker contrib module including config
-* Removed custom blocks from feature
+* Added linkchecker contrib module including config (linkchecker module)
+* Removed custom blocks from feature (ulf_footer module)
 
 
 #v2.0.0
