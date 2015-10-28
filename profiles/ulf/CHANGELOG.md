@@ -4,13 +4,22 @@
 
 #v2.1.0
 
-##Hotfix News
+###Hotfix Users
+* Added link on user logo
+* Removed bold from office hours
+* Added padding to contact box
+* Removed phone label if no phone number is added
+* Reduced field spacing in blocks from 8px to 4px
+* Added website address in user creation form
+* Changed description label to presentation
+
+###Hotfix News
 * Changed path to news archive
 
-##Hotfix Header-footer
+###Hotfix Header-footer
 * Changed width of footer blocks
 
-##Hotfix v1-errorfixes:
+###Hotfix v1-errorfixes:
 * Fixed HTML validation
 * Added IE11 fixes
 * Added linkchecker contrib module including config

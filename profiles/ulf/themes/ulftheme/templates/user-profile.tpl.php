@@ -40,11 +40,13 @@
       <div class="layout-element-alpha-inner">
         <div class="content">
           <div class="content--image">
-            <div class="field--title is-profile"><?php print render($user_profile['field_profile_name']); ?></div>
+            <div class="field--title is-profile">
+              <?php print render($user_profile['field_profile_name']); ?>
+            </div>
             <?php print render($user_profile['field_image']); ?>
           </div>
           <div class="content--main">
-            <h2 class="block--field-label"><?php print t('Description');?></h2>
+            <h2 class="block--field-label"><?php print t('Presentation');?></h2>
             <?php print render($user_profile['field_profile_description']); ?>
             <?php if (isset($user_profile['field_profile_educat_profi'])) : ?>
               <h2 class="block--field-label"><?php print t('Educational profile');?></h2>
@@ -58,13 +60,19 @@
           </div>
           <div class="content--meta">
             <?php if (isset($user_profile['field_profile_logo'])) :?>
-            <div class="block">
-              <div class="block--content">
-                <div class="block--field-logo">
-                  <?php print render($user_profile['field_profile_logo']); ?>
+              <div class="block">
+                <div class="block--content">
+                  <div class="block--field-logo">
+                    <?php if (isset($field_profile_home_page['0']['url'] )) :?>
+                      <a href="<?php print $field_profile_home_page['0']['url'];?>" target="_blank">
+                        <?php print render($user_profile['field_profile_logo']); ?>
+                      </a>
+                    <?php else : ?>
+                      <?php print render($user_profile['field_profile_logo']); ?>
+                    <?php endif; ?>
+                  </div>
                 </div>
               </div>
-            </div>
             <?php endif; ?>
             <div class="block--dark">
               <h2 class="block--header">
@@ -75,7 +83,9 @@
                 <div class="block--field-text"><?php print render($user_profile['field_profile_address']); ?></div>
                 <div class="block--field-text"><?php print render($user_profile['field_profile_postal_code']); ?> <?php print render($user_profile['field_profile_city']); ?></div>
                 </br>
-                <div class="block--field-text"><?php print t('Phone')?> <?php print render($user_profile['field_profile_phone']); ?></div>
+                <?php if (isset($user_profile['field_profile_phone'])) : ?>
+                  <div class="block--field-text"><?php print t('Phone')?> <?php print render($user_profile['field_profile_phone']); ?></div>
+                <?php endif;?>
                 <div class="block--field-text"><?php print render($user_profile['field_profile_mail']); ?></div>
                 <div class="block--field-text"><?php print render($user_profile['field_profile_home_page']); ?></div>
               </div>
