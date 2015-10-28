@@ -4,6 +4,9 @@
 
 #v2.1.0
 
+##Hotfix News
+* Changed path to news archive
+
 ##Hotfix Header-footer
 * Changed width of footer blocks
 
