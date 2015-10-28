@@ -5,7 +5,11 @@
 #v2.1.0
 
 ###Hotfix Courses
-* Added singularity for duration unit
+* Added view for locating and moving price and duration content (ulf_workflow)
+* Seperated Notes for price and duration into two fields (ulf_field_bases, ulf_course modules)
+* Added cropping for teaser image (ulf_base, ulf_course, ulf_news,
+ulf_static_page, ulf_course_educators, ulf_course_providers modules)
+* Added singularity for duration unit (ulf_course module)
 * Added target _blank for links to external matererials (ulf_field_collections module)
 * Fixed bug in courses for educators, removed check for non existing duration field
 * Added link to author homepage on courses
