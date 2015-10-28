@@ -1195,10 +1195,8 @@ body {
     padding: 16px; }
   .field--collection-description, .field--collection-file, .field--collection-link, .field--collection-litt {
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 4px;
     width: 100%; }
-  .field--collection-description {
-    font-weight: bold; }
   .field--video {
     margin-bottom: 16px; }
   .field--video-player {
