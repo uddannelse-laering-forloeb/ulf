@@ -166,7 +166,10 @@
                   <?php else : ?>
                     <div class="block--field-label"><?php print t('This course is free.');?></div>
                   <?php endif;?>
-                  <?php print render($content['field_price_info']); ?>
+                  <div class="block--field-text">
+                    <?php print render($content['field_price_description']); ?>
+                    <?php print render($content['field_duration_description']); ?>
+                  </div>
                 </div>
               <?php endif;?>
               <?php /* If any of the fields in this wrapper contain data */ ?>
@@ -213,6 +216,7 @@
       </div>
       <?php
       // We hide the comments and links now so that we can render them later.
+      hide($content['field_price_info']);
       hide($content['field_special_needs']);
       hide($content['field_duration']);
       hide($content['field_period']);
