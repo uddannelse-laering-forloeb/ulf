@@ -19,6 +19,15 @@ function ulf_base_user_default_permissions() {
     'module' => 'system',
   );
 
+  // Exported permission: 'access broken links report'.
+  $permissions['access broken links report'] = array(
+    'name' => 'access broken links report',
+    'roles' => array(
+      'editor' => 'editor',
+    ),
+    'module' => 'linkchecker',
+  );
+
   // Exported permission: 'access content'.
   $permissions['access content'] = array(
     'name' => 'access content',
@@ -55,6 +64,15 @@ function ulf_base_user_default_permissions() {
       'editor' => 'editor',
     ),
     'module' => 'mailchimp_signup',
+  );
+
+  // Exported permission: 'access own broken links report'.
+  $permissions['access own broken links report'] = array(
+    'name' => 'access own broken links report',
+    'roles' => array(
+      'editor' => 'editor',
+    ),
+    'module' => 'linkchecker',
   );
 
   // Exported permission: 'access site in maintenance mode'.
@@ -124,6 +142,13 @@ function ulf_base_user_default_permissions() {
     'name' => 'administer languages',
     'roles' => array(),
     'module' => 'locale',
+  );
+
+  // Exported permission: 'administer linkchecker'.
+  $permissions['administer linkchecker'] = array(
+    'name' => 'administer linkchecker',
+    'roles' => array(),
+    'module' => 'linkchecker',
   );
 
   // Exported permission: 'administer mailchimp'.
@@ -334,6 +359,13 @@ function ulf_base_user_default_permissions() {
       'editor' => 'editor',
     ),
     'module' => 'taxonomy',
+  );
+
+  // Exported permission: 'edit link settings'.
+  $permissions['edit link settings'] = array(
+    'name' => 'edit link settings',
+    'roles' => array(),
+    'module' => 'linkchecker',
   );
 
   // Exported permission: 'edit terms in course_relevancy_educators'.
