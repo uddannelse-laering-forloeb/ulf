@@ -40,7 +40,9 @@
       <div class="layout-element-alpha-inner">
         <div class="content">
           <div class="content--image">
-            <div class="field--title is-profile"><?php print render($user_profile['field_profile_name']); ?></div>
+            <div class="field--title is-profile">
+              <?php print render($user_profile['field_profile_name']); ?>
+            </div>
             <?php print render($user_profile['field_image']); ?>
           </div>
           <div class="content--main">
@@ -58,13 +60,19 @@
           </div>
           <div class="content--meta">
             <?php if (isset($user_profile['field_profile_logo'])) :?>
-            <div class="block">
-              <div class="block--content">
-                <div class="block--field-logo">
-                  <?php print render($user_profile['field_profile_logo']); ?>
+              <div class="block">
+                <div class="block--content">
+                  <div class="block--field-logo">
+                    <?php if (isset($field_profile_home_page['0']['url'] )) :?>
+                      <a href="<?php print $field_profile_home_page['0']['url'];?>" target="_blank">
+                        <?php print render($user_profile['field_profile_logo']); ?>
+                      </a>
+                    <?php else : ?>
+                      <?php print render($user_profile['field_profile_logo']); ?>
+                    <?php endif; ?>
+                  </div>
                 </div>
               </div>
-            </div>
             <?php endif; ?>
             <div class="block--dark">
               <h2 class="block--header">

@@ -4,13 +4,17 @@
 
 #v2.1.0
 
-##Hotfix News
+###Hotfix Users
+* Added link on user logo
+
+
+###Hotfix News
 * Changed path to news archive
 
-##Hotfix Header-footer
+###Hotfix Header-footer
 * Changed width of footer blocks
 
-##Hotfix v1-errorfixes:
+###Hotfix v1-errorfixes:
 * Fixed HTML validation
 * Added IE11 fixes
 * Added linkchecker contrib module including config

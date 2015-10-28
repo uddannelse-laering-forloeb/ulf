@@ -1181,7 +1181,8 @@ body {
         padding: 0 .5em;
         position: absolute; } }
   .field--collection-wrapper {
-    margin-bottom: 16px; }
+    margin-bottom: 16px;
+    padding-top: 16px; }
   .field--collection-label {
     color: #fff;
     background: #17858c;
