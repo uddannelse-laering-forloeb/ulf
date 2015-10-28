@@ -245,7 +245,6 @@ function ulf_preprocess_field(&$variables) {
   $inline_template = array(
     'field_contact_phone',
     'field_profile_mail',
-    'field_contact_office_hours',
   );
 
   $variables['display_type'] = 'is-block';
