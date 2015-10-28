@@ -146,29 +146,7 @@ function ulf_taxonomies_views_default_views() {
     'page' => 'page',
     'default' => 0,
   );
-  $translatables['ulf_taxonomy_term'] = array(
-    t('Master'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('« first'),
-    t('‹ previous'),
-    t('next ›'),
-    t('last »'),
-    t('forfatter'),
-    t('Titel'),
-    t('All'),
-    t('%1'),
-    t('Søg på titel eller afsender'),
-    t('Page'),
-    t('Feed'),
-  );
+
   $export['ulf_taxonomy_term'] = $view;
 
   return $export;
