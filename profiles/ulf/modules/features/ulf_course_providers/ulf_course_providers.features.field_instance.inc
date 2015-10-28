@@ -318,7 +318,7 @@ function ulf_course_providers_field_default_field_instances() {
       'title_maxlength' => 128,
       'title_value' => '',
       'url' => 0,
-      'user_register_form' => 0,
+      'user_register_form' => 1,
       'validate_url' => 1,
     ),
     'widget' => array(

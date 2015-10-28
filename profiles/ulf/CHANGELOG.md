@@ -6,7 +6,11 @@
 
 ###Hotfix Users
 * Added link on user logo
-
+* Removed bold from office hours
+* Added padding to contact box
+* Removed phone label if no phone number is added
+* Reduced field spacing in blocks from 8px to 4px
+* Added website address in user creation form
 
 ###Hotfix News
 * Changed path to news archive
