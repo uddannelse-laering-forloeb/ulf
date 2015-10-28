@@ -5,6 +5,7 @@
 #v2.1.0
 
 ###Hotfix Courses
+* Added singularity for duration unit
 * Added target _blank for links to external matererials (ulf_field_collections module)
 * Fixed bug in courses for educators, removed check for non existing duration field
 * Added link to author homepage on courses
