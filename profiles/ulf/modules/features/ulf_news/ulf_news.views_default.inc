@@ -279,7 +279,7 @@ function ulf_news_views_default_views() {
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
-  $handler->display->display_options['path'] = 'news';
+  $handler->display->display_options['path'] = 'nyheder';
 
   /* Display: Latest news titles */
   $handler = $view->new_display('block', 'Latest news titles', 'block_1');
