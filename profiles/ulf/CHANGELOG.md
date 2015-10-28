@@ -4,11 +4,15 @@
 
 #v2.1.0
 
+##Hotfix Header-footer
+* Changed width of footer blocks
+
 ##Hotfix v1-errorfixes:
 * Fixed HTML validation
 * Added IE11 fixes
 * Added linkchecker contrib module including config
 * Removed custom blocks from feature
+
 
 #v2.0.0
 
