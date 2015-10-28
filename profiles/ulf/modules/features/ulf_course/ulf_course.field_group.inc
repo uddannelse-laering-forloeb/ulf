@@ -95,6 +95,8 @@ function ulf_course_field_group_info() {
       2 => 'field_free',
       3 => 'field_price_info',
       4 => 'field_duration',
+      5 => 'field_price_description',
+      6 => 'field_duration_description',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
