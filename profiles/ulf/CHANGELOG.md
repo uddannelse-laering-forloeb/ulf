@@ -5,6 +5,9 @@
 #v2.1.0
 
 ###Hotfix Users
+* Added link to author homepage on courses
+
+###Hotfix Users
 * Added link on user logo
 * Removed bold from office hours
 * Added padding to contact box
