@@ -51,13 +51,17 @@ function ulf_base_image_default_styles() {
   $styles['teaser_display'] = array(
     'label' => 'Teaser display',
     'effects' => array(
-      11 => array(
-        'name' => 'image_scale_and_crop',
+      3 => array(
+        'name' => 'manualcrop_crop_and_scale',
         'data' => array(
-          'width' => 550,
-          'height' => 550,
+          'width' => 300,
+          'height' => 300,
+          'upscale' => 1,
+          'respectminimum' => 1,
+          'onlyscaleifcrop' => 0,
+          'style_name' => 'teaser_display',
         ),
-        'weight' => 2,
+        'weight' => 1,
       ),
     ),
   );

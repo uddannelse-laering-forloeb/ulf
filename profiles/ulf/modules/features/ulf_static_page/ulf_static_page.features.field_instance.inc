@@ -92,7 +92,7 @@ function ulf_static_page_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'alt_field' => 1,
-      'default_image' => 49,
+      'default_image' => 0,
       'file_directory' => 'static_pages_images',
       'file_extensions' => 'png gif jpg jpeg',
       'max_filesize' => '',
@@ -116,6 +116,7 @@ function ulf_static_page_field_default_field_instances() {
         'manualcrop_require_cropping' => array(),
         'manualcrop_styles_list' => array(
           'node_display' => 'node_display',
+          'teaser_display' => 'teaser_display',
         ),
         'manualcrop_styles_mode' => 'include',
         'manualcrop_thumblist' => 0,
