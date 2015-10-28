@@ -128,17 +128,13 @@
                   <?php print render($content['field_subject']); ?>
                 </div>
               <?php endif;?>
-              <?php if ($field_duration || $field_period_full_year['0']['value'] == 0 || $field_price || $field_free['0']['value'] == 1) : ?>
+              <?php if ($field_period_full_year['0']['value'] == 0 || $field_price || $field_free['0']['value'] == 1) : ?>
                 <div class="block--field-wrapper">
                   <?php if ($field_period_full_year['0']['value'] == 0 ) : ?>
                     <?php print render($content['field_period']); ?>
                   <?php else : ?>
                     <div class="block--field-label"><?php print t('Periode');?></div>
                     <div class="block--field-text"><?php print t('All year');?></div>
-                  <?php endif;?>
-                  <?php if ($field_duration) : ?>
-                    <div class="block--field-label"><?php print t('Duration');?></div>
-                    <div class="block--field-text"><?php print $stripped_duration; ?><?php print render($content['field_duration_unit']); ?></div>
                   <?php endif;?>
                   <?php if ($field_free['0']['value'] == 0 ) : ?>
                     <div class="block--field-label"><?php print t('Price');?></div>

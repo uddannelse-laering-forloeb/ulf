@@ -4,9 +4,11 @@
 
 #v2.1.0
 
-###Hotfix Users
+###Hotfix Courses
+* Fixed bug in courses for educators, removed check for non existing duration field
 * Added link to author homepage on courses
 * Added h2 and h3 to content filter and wysiwyg (ulf_wysiwyg module)
+* Removed bold on materials and other field collections
 
 ###Hotfix Users
 * Added link on user logo
