@@ -11,6 +11,7 @@
 * Removed phone label if no phone number is added
 * Reduced field spacing in blocks from 8px to 4px
 * Added website address in user creation form
+* Changed description label to presentation
 
 ###Hotfix News
 * Changed path to news archive

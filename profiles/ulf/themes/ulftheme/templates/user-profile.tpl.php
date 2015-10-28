@@ -46,7 +46,7 @@
             <?php print render($user_profile['field_image']); ?>
           </div>
           <div class="content--main">
-            <h2 class="block--field-label"><?php print t('Description');?></h2>
+            <h2 class="block--field-label"><?php print t('Presentation');?></h2>
             <?php print render($user_profile['field_profile_description']); ?>
             <?php if (isset($user_profile['field_profile_educat_profi'])) : ?>
               <h2 class="block--field-label"><?php print t('Educational profile');?></h2>
