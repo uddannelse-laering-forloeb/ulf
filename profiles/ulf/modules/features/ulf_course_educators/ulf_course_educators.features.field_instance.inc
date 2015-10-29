@@ -24,12 +24,6 @@ function ulf_course_educators_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 2,
       ),
-      'node_display' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -70,12 +64,6 @@ function ulf_course_educators_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 5,
       ),
-      'node_display' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -113,12 +101,6 @@ function ulf_course_educators_field_default_field_instances() {
         'settings' => array(),
         'type' => 'text_default',
         'weight' => 4,
-      ),
-      'node_display' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -163,12 +145,6 @@ function ulf_course_educators_field_default_field_instances() {
         'type' => 'field_collection_fields',
         'weight' => 3,
       ),
-      'node_display' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -210,12 +186,6 @@ function ulf_course_educators_field_default_field_instances() {
         'type' => 'list_default',
         'weight' => 13,
       ),
-      'node_display' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -254,12 +224,6 @@ function ulf_course_educators_field_default_field_instances() {
         'settings' => array(),
         'type' => 'text_default',
         'weight' => 1,
-      ),
-      'node_display' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -303,12 +267,6 @@ function ulf_course_educators_field_default_field_instances() {
           'image_style' => 'node_display',
         ),
         'type' => 'image',
-        'weight' => 0,
-      ),
-      'node_display' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
         'weight' => 0,
       ),
       'teaser' => array(
@@ -373,15 +331,16 @@ function ulf_course_educators_field_default_field_instances() {
       'default' => array(
         'label' => 'above',
         'module' => 'date',
-        'settings' => array(),
-        'type' => 'date_plain',
+        'settings' => array(
+          'format_type' => 'simple_date',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+          'show_remaining_days' => 0,
+        ),
+        'type' => 'date_default',
         'weight' => 11,
-      ),
-      'node_display' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -431,12 +390,6 @@ function ulf_course_educators_field_default_field_instances() {
         'type' => 'list_default',
         'weight' => 10,
       ),
-      'node_display' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -484,12 +437,6 @@ function ulf_course_educators_field_default_field_instances() {
         'type' => 'number_decimal',
         'weight' => 12,
       ),
-      'node_display' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -531,12 +478,6 @@ function ulf_course_educators_field_default_field_instances() {
         'type' => 'taxonomy_term_reference_link',
         'weight' => 7,
       ),
-      'node_display' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -574,12 +515,6 @@ function ulf_course_educators_field_default_field_instances() {
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
         'weight' => 8,
-      ),
-      'node_display' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -619,12 +554,6 @@ function ulf_course_educators_field_default_field_instances() {
         'type' => 'taxonomy_term_reference_link',
         'weight' => 9,
       ),
-      'node_display' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -661,12 +590,6 @@ function ulf_course_educators_field_default_field_instances() {
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
         'weight' => 6,
-      ),
-      'node_display' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -709,12 +632,6 @@ function ulf_course_educators_field_default_field_instances() {
         ),
         'type' => 'video_embed_field',
         'weight' => 14,
-      ),
-      'node_display' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',

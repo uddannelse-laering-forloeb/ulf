@@ -17,16 +17,16 @@ Existing content should manually be moved from the old field to one of the new f
 * Link checker module has been added to locate dead links see Reports/broken links.
 
 ###Hotfix Drupal updates
-Drupal core 7.39 -> 7.41 (Security update)
-Mailchimp 7.x-3.4 -> 7.x-3.6
-Pathauto 7.x-1.2 -> 7.x-1.3
-Video Embed Field 7.x-2.0-beta10 -> 7.x-2.0-beta11
-Features 7.x-2.6 -> 7.x-2.7
-Field collection 7.x-1.0-beta8+11-dev -> 7.x-1.0-beta10
-JQuery update 7.x-3.0-alpha2 -> 7.x-3.0-alpha3
-Localization update 7.x-1.1+1-dev -> 7.x-1.2
-Universally unique identifier 7.x-1.0-alpha6 -> 7.x-1.0-beta1
-Date 7.x-2.8 -> 7.x-2.9
+* Drupal core 7.39 -> 7.41 (Security update)
+* Mailchimp 7.x-3.4 -> 7.x-3.6
+* Pathauto 7.x-1.2 -> 7.x-1.3
+* Video Embed Field 7.x-2.0-beta10 -> 7.x-2.0-beta11
+* Features 7.x-2.6 -> 7.x-2.7
+* Field collection 7.x-1.0-beta8+11-dev -> 7.x-1.0-beta10
+* JQuery update 7.x-3.0-alpha2 -> 7.x-3.0-alpha3
+* Localization update 7.x-1.1+1-dev -> 7.x-1.2
+* Universally unique identifier 7.x-1.0-alpha6 -> 7.x-1.0-beta1
+* Date 7.x-2.8 -> 7.x-2.9
 
 ###Hotfix Courses
 * Added view for locating and moving price and duration content (ulf_workflow)
