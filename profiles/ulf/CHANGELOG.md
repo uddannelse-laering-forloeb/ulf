@@ -4,6 +4,10 @@
 
 #v2.1.0
 
+##Release notes
+* Uninstall ulf_pages (Deprecated)
+* Uninstall ulf_structures (Deprecated)
+
 ###Hotfix Courses
 * Added view for locating and moving price and duration content (ulf_workflow)
 * Seperated Notes for price and duration into two fields (ulf_field_bases, ulf_course modules)
@@ -42,6 +46,7 @@ ulf_static_page, ulf_course_educators, ulf_course_providers modules)
 
 * Added transliteration module
 * Added fixes to search
+
 
 #v1.0.0 - Beta2
 

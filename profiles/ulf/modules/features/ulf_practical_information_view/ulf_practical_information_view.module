@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the Ulf practical information view feature.
- */
-
-include_once 'ulf_practical_information_view.features.inc';

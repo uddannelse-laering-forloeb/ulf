@@ -1,5 +1,5 @@
 name = Ulf footer
-description = Containing footer blocks for ulf
+description = Containing configuration for EU compliance module
 core = 7.x
 package = Ulf base
 dependencies[] = ctools
