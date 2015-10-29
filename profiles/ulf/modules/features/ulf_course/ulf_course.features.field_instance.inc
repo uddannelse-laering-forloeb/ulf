@@ -10,7 +10,7 @@
 function ulf_course_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-course-field_activities'
+  // Exported field_instance: 'node-course-field_activities'.
   $field_instances['node-course-field_activities'] = array(
     'bundle' => 'course',
     'default_value' => NULL,
@@ -67,7 +67,7 @@ function ulf_course_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-course-field_background_knowledge'
+  // Exported field_instance: 'node-course-field_background_knowledge'.
   $field_instances['node-course-field_background_knowledge'] = array(
     'bundle' => 'course',
     'default_value' => NULL,
@@ -124,7 +124,7 @@ function ulf_course_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-course-field_collection_price'
+  // Exported field_instance: 'node-course-field_collection_price'.
   $field_instances['node-course-field_collection_price'] = array(
     'bundle' => 'course',
     'default_value' => NULL,
@@ -178,7 +178,7 @@ function ulf_course_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-course-field_count'
+  // Exported field_instance: 'node-course-field_count'.
   $field_instances['node-course-field_count'] = array(
     'bundle' => 'course',
     'default_value' => array(
@@ -246,7 +246,7 @@ function ulf_course_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-course-field_duration'
+  // Exported field_instance: 'node-course-field_duration'.
   $field_instances['node-course-field_duration'] = array(
     'bundle' => 'course',
     'default_value' => NULL,
@@ -310,7 +310,7 @@ function ulf_course_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-course-field_duration_description'
+  // Exported field_instance: 'node-course-field_duration_description'.
   $field_instances['node-course-field_duration_description'] = array(
     'bundle' => 'course',
     'default_value' => NULL,
@@ -367,7 +367,7 @@ function ulf_course_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-course-field_duration_unit'
+  // Exported field_instance: 'node-course-field_duration_unit'.
   $field_instances['node-course-field_duration_unit'] = array(
     'bundle' => 'course',
     'default_value' => NULL,
@@ -417,7 +417,7 @@ function ulf_course_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-course-field_educational_goals'
+  // Exported field_instance: 'node-course-field_educational_goals'.
   $field_instances['node-course-field_educational_goals'] = array(
     'bundle' => 'course',
     'default_value' => NULL,
@@ -467,7 +467,7 @@ function ulf_course_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-course-field_educational_material'
+  // Exported field_instance: 'node-course-field_educational_material'.
   $field_instances['node-course-field_educational_material'] = array(
     'bundle' => 'course',
     'default_value' => NULL,
@@ -521,7 +521,7 @@ function ulf_course_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-course-field_facilities'
+  // Exported field_instance: 'node-course-field_facilities'.
   $field_instances['node-course-field_facilities'] = array(
     'bundle' => 'course',
     'default_value' => NULL,
@@ -571,7 +571,7 @@ function ulf_course_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-course-field_facilities_info'
+  // Exported field_instance: 'node-course-field_facilities_info'.
   $field_instances['node-course-field_facilities_info'] = array(
     'bundle' => 'course',
     'default_value' => NULL,
@@ -628,7 +628,7 @@ function ulf_course_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-course-field_free'
+  // Exported field_instance: 'node-course-field_free'.
   $field_instances['node-course-field_free'] = array(
     'bundle' => 'course',
     'default_value' => array(
@@ -685,7 +685,7 @@ function ulf_course_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-course-field_full_description'
+  // Exported field_instance: 'node-course-field_full_description'.
   $field_instances['node-course-field_full_description'] = array(
     'bundle' => 'course',
     'default_value' => NULL,
@@ -745,7 +745,7 @@ function ulf_course_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-course-field_image'
+  // Exported field_instance: 'node-course-field_image'.
   $field_instances['node-course-field_image'] = array(
     'bundle' => 'course',
     'deleted' => 0,
@@ -835,7 +835,7 @@ function ulf_course_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-course-field_inspirational_material'
+  // Exported field_instance: 'node-course-field_inspirational_material'.
   $field_instances['node-course-field_inspirational_material'] = array(
     'bundle' => 'course',
     'default_value' => NULL,
@@ -889,7 +889,7 @@ function ulf_course_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-course-field_material_suggestions'
+  // Exported field_instance: 'node-course-field_material_suggestions'.
   $field_instances['node-course-field_material_suggestions'] = array(
     'bundle' => 'course',
     'default_value' => NULL,
@@ -946,7 +946,7 @@ function ulf_course_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-course-field_offer_type'
+  // Exported field_instance: 'node-course-field_offer_type'.
   $field_instances['node-course-field_offer_type'] = array(
     'bundle' => 'course',
     'default_value' => NULL,
@@ -998,7 +998,7 @@ function ulf_course_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-course-field_period'
+  // Exported field_instance: 'node-course-field_period'.
   $field_instances['node-course-field_period'] = array(
     'bundle' => 'course',
     'deleted' => 0,
@@ -1013,6 +1013,7 @@ function ulf_course_field_default_field_instances() {
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
+          'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
         'weight' => 28,
@@ -1026,6 +1027,7 @@ function ulf_course_field_default_field_instances() {
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
+          'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
         'weight' => 12,
@@ -1040,11 +1042,12 @@ function ulf_course_field_default_field_instances() {
         'label' => 'above',
         'module' => 'date',
         'settings' => array(
-          'format_type' => 'dmy',
+          'format_type' => 'simple_date',
           'fromto' => 'both',
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
+          'show_remaining_days' => 0,
         ),
         'type' => 'date_default',
         'weight' => 4,
@@ -1077,7 +1080,7 @@ function ulf_course_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-course-field_period_full_year'
+  // Exported field_instance: 'node-course-field_period_full_year'.
   $field_instances['node-course-field_period_full_year'] = array(
     'bundle' => 'course',
     'default_value' => array(
@@ -1134,7 +1137,7 @@ function ulf_course_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-course-field_period_info'
+  // Exported field_instance: 'node-course-field_period_info'.
   $field_instances['node-course-field_period_info'] = array(
     'bundle' => 'course',
     'default_value' => NULL,
@@ -1191,7 +1194,7 @@ function ulf_course_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-course-field_post_work'
+  // Exported field_instance: 'node-course-field_post_work'.
   $field_instances['node-course-field_post_work'] = array(
     'bundle' => 'course',
     'default_value' => NULL,
@@ -1248,7 +1251,7 @@ function ulf_course_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-course-field_price_description'
+  // Exported field_instance: 'node-course-field_price_description'.
   $field_instances['node-course-field_price_description'] = array(
     'bundle' => 'course',
     'default_value' => NULL,
@@ -1305,7 +1308,7 @@ function ulf_course_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-course-field_price_info'
+  // Exported field_instance: 'node-course-field_price_info'.
   $field_instances['node-course-field_price_info'] = array(
     'bundle' => 'course',
     'default_value' => NULL,
@@ -1362,7 +1365,7 @@ function ulf_course_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-course-field_purpose'
+  // Exported field_instance: 'node-course-field_purpose'.
   $field_instances['node-course-field_purpose'] = array(
     'bundle' => 'course',
     'default_value' => NULL,
@@ -1429,7 +1432,7 @@ At opnå kendskab til...
     ),
   );
 
-  // Exported field_instance: 'node-course-field_special_needs'
+  // Exported field_instance: 'node-course-field_special_needs'.
   $field_instances['node-course-field_special_needs'] = array(
     'bundle' => 'course',
     'default_value' => array(
@@ -1485,7 +1488,7 @@ At opnå kendskab til...
     ),
   );
 
-  // Exported field_instance: 'node-course-field_subject'
+  // Exported field_instance: 'node-course-field_subject'.
   $field_instances['node-course-field_subject'] = array(
     'bundle' => 'course',
     'default_value' => NULL,
@@ -1536,7 +1539,7 @@ At opnå kendskab til...
     ),
   );
 
-  // Exported field_instance: 'node-course-field_subjects_primary_school'
+  // Exported field_instance: 'node-course-field_subjects_primary_school'.
   $field_instances['node-course-field_subjects_primary_school'] = array(
     'bundle' => 'course',
     'default_value' => NULL,
@@ -1586,7 +1589,7 @@ At opnå kendskab til...
     ),
   );
 
-  // Exported field_instance: 'node-course-field_subjects_youth'
+  // Exported field_instance: 'node-course-field_subjects_youth'.
   $field_instances['node-course-field_subjects_youth'] = array(
     'bundle' => 'course',
     'default_value' => NULL,
@@ -1636,7 +1639,7 @@ At opnå kendskab til...
     ),
   );
 
-  // Exported field_instance: 'node-course-field_target_group'
+  // Exported field_instance: 'node-course-field_target_group'.
   $field_instances['node-course-field_target_group'] = array(
     'bundle' => 'course',
     'default_value' => NULL,
@@ -1686,7 +1689,7 @@ At opnå kendskab til...
     ),
   );
 
-  // Exported field_instance: 'node-course-field_target_group_sub'
+  // Exported field_instance: 'node-course-field_target_group_sub'.
   $field_instances['node-course-field_target_group_sub'] = array(
     'bundle' => 'course',
     'default_value' => NULL,
@@ -1736,7 +1739,7 @@ At opnå kendskab til...
     ),
   );
 
-  // Exported field_instance: 'node-course-field_video'
+  // Exported field_instance: 'node-course-field_video'.
   $field_instances['node-course-field_video'] = array(
     'bundle' => 'course',
     'default_value' => NULL,
