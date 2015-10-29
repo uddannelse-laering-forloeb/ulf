@@ -85,12 +85,7 @@ function ulf_base_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'entity_view_modes';
   $strongarm->value = array(
-    'node' => array(
-      'node_display' => array(
-        'label' => 'Node display',
-        'custom settings' => 1,
-      ),
-    ),
+    'node' => array(),
   );
   $export['entity_view_modes'] = $strongarm;
 

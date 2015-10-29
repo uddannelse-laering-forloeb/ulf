@@ -10,7 +10,7 @@
 function ulf_news_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-news-field_content'
+  // Exported field_instance: 'node-news-field_content'.
   $field_instances['node-news-field_content'] = array(
     'bundle' => 'news',
     'default_value' => NULL,
@@ -26,13 +26,6 @@ function ulf_news_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 2,
-      ),
-      'node_display' => array(
-        'label' => 'above',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
@@ -65,7 +58,7 @@ function ulf_news_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-news-field_image'
+  // Exported field_instance: 'node-news-field_image'.
   $field_instances['node-news-field_image'] = array(
     'bundle' => 'news',
     'deleted' => 0,
@@ -90,16 +83,6 @@ function ulf_news_field_default_field_instances() {
         ),
         'type' => 'image',
         'weight' => 0,
-      ),
-      'node_display' => array(
-        'label' => 'above',
-        'module' => 'image',
-        'settings' => array(
-          'image_link' => '',
-          'image_style' => 'node_display',
-        ),
-        'type' => 'image',
-        'weight' => 1,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -154,7 +137,7 @@ function ulf_news_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-news-field_teaser'
+  // Exported field_instance: 'node-news-field_teaser'.
   $field_instances['node-news-field_teaser'] = array(
     'bundle' => 'news',
     'default_value' => NULL,
@@ -174,13 +157,6 @@ function ulf_news_field_default_field_instances() {
         'settings' => array(),
         'type' => 'text_default',
         'weight' => 1,
-      ),
-      'node_display' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
