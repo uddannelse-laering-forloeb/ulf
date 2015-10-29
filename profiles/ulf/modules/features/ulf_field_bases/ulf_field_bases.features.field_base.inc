@@ -184,6 +184,25 @@ function ulf_field_bases_field_default_field_bases() {
     'type' => 'number_decimal',
   );
 
+  // Exported field_base: 'field_duration_description'
+  $field_bases['field_duration_description'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_duration_description',
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'text_long',
+  );
+
   // Exported field_base: 'field_duration_unit'
   $field_bases['field_duration_unit'] = array(
     'active' => 1,
@@ -200,7 +219,9 @@ function ulf_field_bases_field_default_field_bases() {
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
+        'hour' => 'time',
         'hours' => 'timer',
+        'lesson' => 'lektion',
         'lessons' => 'lektioner',
         'minutes' => 'minutter',
       ),
@@ -362,7 +383,7 @@ function ulf_field_bases_field_default_field_bases() {
     'locked' => 0,
     'module' => 'image',
     'settings' => array(
-      'default_image' => 30,
+      'default_image' => 0,
       'uri_scheme' => 'public',
     ),
     'translatable' => 0,
@@ -516,6 +537,25 @@ function ulf_field_bases_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_post_work',
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'text_long',
+  );
+
+  // Exported field_base: 'field_price_description'
+  $field_bases['field_price_description'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_price_description',
     'indexes' => array(
       'format' => array(
         0 => 'format',

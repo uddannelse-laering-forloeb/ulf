@@ -32,7 +32,13 @@
     width: 100%;
 
     @include breakpoint(45em) {
-      width: 33%;
+      width: 25%;
+    }
+
+    &:last-child {
+      @include breakpoint(45em) {
+        width: 50%;
+      }
     }
   }
 

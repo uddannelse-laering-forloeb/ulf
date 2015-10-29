@@ -199,6 +199,7 @@ function ulf_preprocess_node(&$variables) {
     $variables['profile_postal_code'] = $author_wrapper->field_profile_postal_code->value();
     $variables['profile_city'] = $author_wrapper->field_profile_city->value();
     $variables['profile_phone'] = $author_wrapper->field_profile_phone->value();
+    $variables['profile_home_page'] = $author_wrapper->field_profile_home_page->value()['url'];
   }
 }
 
@@ -229,6 +230,8 @@ function ulf_preprocess_field(&$variables) {
     'field_profile_postal_code',
     'field_profile_city',
     'field_unit_price',
+    'field_price_description',
+    'field_duration_description'
   );
 
   // Strip teaser fields.
@@ -245,7 +248,6 @@ function ulf_preprocess_field(&$variables) {
   $inline_template = array(
     'field_contact_phone',
     'field_profile_mail',
-    'field_contact_office_hours',
   );
 
   $variables['display_type'] = 'is-block';

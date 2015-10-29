@@ -15,4 +15,4 @@
     <?php print $row; ?>
   <?php endforeach; ?>
 </div>
-<a href="/news" class="teaser--list-button"><?php print t('View all news');?></a>
+<a href="/nyheder" class="teaser--list-button"><?php print t('View all news');?></a>
