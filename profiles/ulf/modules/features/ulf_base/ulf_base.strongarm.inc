@@ -434,8 +434,10 @@ example.org';
   $strongarm->name = 'linkchecker_ignore_response_codes';
   $strongarm->value = '200
 206
+301
 302
 304
+307
 401
 403';
   $export['linkchecker_ignore_response_codes'] = $strongarm;
