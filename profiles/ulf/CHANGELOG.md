@@ -5,7 +5,8 @@
 #v2.1.0
 
 ##Release notes
-* Uninstall ulf_pages
+* Uninstall ulf_pages (Deprecated)
+* Uninstall ulf_structures (Deprecated)
 
 ###Hotfix Courses
 * Added view for locating and moving price and duration content (ulf_workflow)
