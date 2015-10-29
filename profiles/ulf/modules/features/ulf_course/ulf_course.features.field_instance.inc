@@ -31,12 +31,6 @@ function ulf_course_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 3,
       ),
-      'node_display' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 16,
-      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -87,12 +81,6 @@ function ulf_course_field_default_field_instances() {
         'settings' => array(),
         'type' => 'text_default',
         'weight' => 4,
-      ),
-      'node_display' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 15,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -148,12 +136,6 @@ function ulf_course_field_default_field_instances() {
         ),
         'type' => 'field_collection_fields',
         'weight' => 15,
-      ),
-      'node_display' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 21,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -213,12 +195,6 @@ function ulf_course_field_default_field_instances() {
         'type' => 'number_integer',
         'weight' => 11,
       ),
-      'node_display' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 20,
-      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -277,12 +253,6 @@ function ulf_course_field_default_field_instances() {
         'type' => 'number_decimal',
         'weight' => 28,
       ),
-      'node_display' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -330,12 +300,6 @@ function ulf_course_field_default_field_instances() {
         'settings' => array(),
         'type' => 'text_default',
         'weight' => 29,
-      ),
-      'node_display' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -388,12 +352,6 @@ function ulf_course_field_default_field_instances() {
         'type' => 'list_default',
         'weight' => 14,
       ),
-      'node_display' => array(
-        'label' => 'hidden',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 25,
-      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -437,12 +395,6 @@ function ulf_course_field_default_field_instances() {
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
         'weight' => 20,
-      ),
-      'node_display' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -492,12 +444,6 @@ function ulf_course_field_default_field_instances() {
         'type' => 'field_collection_fields',
         'weight' => 7,
       ),
-      'node_display' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 10,
-      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -542,12 +488,6 @@ function ulf_course_field_default_field_instances() {
         'type' => 'list_default',
         'weight' => 21,
       ),
-      'node_display' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 4,
-      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -591,12 +531,6 @@ function ulf_course_field_default_field_instances() {
         'settings' => array(),
         'type' => 'text_default',
         'weight' => 22,
-      ),
-      'node_display' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 5,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -653,12 +587,6 @@ function ulf_course_field_default_field_instances() {
         'type' => 'list_default',
         'weight' => 24,
       ),
-      'node_display' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 9,
-      ),
       'teaser' => array(
         'label' => 'above',
         'module' => 'list',
@@ -706,13 +634,6 @@ function ulf_course_field_default_field_instances() {
         'settings' => array(),
         'type' => 'text_default',
         'weight' => 2,
-      ),
-      'node_display' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 1,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -764,16 +685,6 @@ function ulf_course_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'above',
-        'module' => 'image',
-        'settings' => array(
-          'image_link' => '',
-          'image_style' => 'node_display',
-        ),
-        'type' => 'image',
-        'weight' => 0,
-      ),
-      'node_display' => array(
-        'label' => 'hidden',
         'module' => 'image',
         'settings' => array(
           'image_link' => '',
@@ -860,12 +771,6 @@ function ulf_course_field_default_field_instances() {
         'type' => 'field_collection_fields',
         'weight' => 8,
       ),
-      'node_display' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 14,
-      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -909,12 +814,6 @@ function ulf_course_field_default_field_instances() {
         'settings' => array(),
         'type' => 'text_default',
         'weight' => 6,
-      ),
-      'node_display' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 7,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -968,12 +867,6 @@ function ulf_course_field_default_field_instances() {
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
         'weight' => 9,
-      ),
-      'node_display' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 18,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -1031,12 +924,6 @@ function ulf_course_field_default_field_instances() {
         ),
         'type' => 'date_default',
         'weight' => 12,
-      ),
-      'node_display' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 13,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1105,12 +992,6 @@ function ulf_course_field_default_field_instances() {
         'type' => 'list_default',
         'weight' => 23,
       ),
-      'node_display' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 11,
-      ),
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'list',
@@ -1157,12 +1038,6 @@ function ulf_course_field_default_field_instances() {
         'settings' => array(),
         'type' => 'text_default',
         'weight' => 13,
-      ),
-      'node_display' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 12,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1215,12 +1090,6 @@ function ulf_course_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 5,
       ),
-      'node_display' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 8,
-      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1272,12 +1141,6 @@ function ulf_course_field_default_field_instances() {
         'type' => 'text_default',
         'weight' => 30,
       ),
-      'node_display' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1328,12 +1191,6 @@ function ulf_course_field_default_field_instances() {
         'settings' => array(),
         'type' => 'text_default',
         'weight' => 16,
-      ),
-      'node_display' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 23,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1396,12 +1253,6 @@ At opnå kendskab til...
         'type' => 'text_default',
         'weight' => 1,
       ),
-      'node_display' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 17,
-      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1457,12 +1308,6 @@ At opnå kendskab til...
         'type' => 'list_default',
         'weight' => 27,
       ),
-      'node_display' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1509,12 +1354,6 @@ At opnå kendskab til...
         'type' => 'taxonomy_term_reference_link',
         'weight' => 17,
       ),
-      'node_display' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 19,
-      ),
       'teaser' => array(
         'label' => 'hidden',
         'module' => 'taxonomy',
@@ -1560,12 +1399,6 @@ At opnå kendskab til...
         'type' => 'taxonomy_term_reference_link',
         'weight' => 18,
       ),
-      'node_display' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1610,12 +1443,6 @@ At opnå kendskab til...
         'type' => 'taxonomy_term_reference_link',
         'weight' => 19,
       ),
-      'node_display' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
       'teaser' => array(
         'label' => 'above',
         'settings' => array(),
@@ -1657,12 +1484,6 @@ At opnå kendskab til...
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
-        'weight' => 26,
-      ),
-      'node_display' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
         'weight' => 26,
       ),
       'teaser' => array(
@@ -1709,12 +1530,6 @@ At opnå kendskab til...
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
         'weight' => 10,
-      ),
-      'node_display' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 22,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1767,12 +1582,6 @@ At opnå kendskab til...
         ),
         'type' => 'video_embed_field',
         'weight' => 25,
-      ),
-      'node_display' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
