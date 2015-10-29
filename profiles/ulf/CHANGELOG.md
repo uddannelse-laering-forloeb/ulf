@@ -10,6 +10,7 @@
 * Uninstall Flag module (Unused)
 * Uninstall Mimemail action (Unused)
 * Uninstall rules (Unused)
+* Uninstall trigger (Unused)
 
 ###Editors:
 * Shared field for price and duration description has been separated into two fields.
