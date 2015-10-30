@@ -12,10 +12,10 @@
 * Uninstall rules (Unused)
 * Uninstall trigger (Unused)
 
-###Editors:
+###Notes for endusers:
 * Shared field for price and duration description has been separated into two fields.
 Existing content should manually be moved from the old field to one of the new fields, a view has been provided to help this migration "Content overview"-tab
-* Link checker module has been added to locate dead links see Reports/broken links.
+* Link checker module has been added to locate dead links see admin/reports/linkchecker page.
 
 ###Hotfix Drupal updates
 * Drupal core 7.39 -> 7.41 (Security update)
@@ -28,6 +28,9 @@ Existing content should manually be moved from the old field to one of the new f
 * Localization update 7.x-1.1+1-dev -> 7.x-1.2
 * Universally unique identifier 7.x-1.0-alpha6 -> 7.x-1.0-beta1
 * Date 7.x-2.8 -> 7.x-2.9
+
+###Hotfix Search
+* Changed headers in search widgets for "læringsmål" and "tilbudstype" - This change will affect all uses of these terms.
 
 ###Hotfix Courses
 * Added view for locating and moving price and duration content (ulf_workflow)
