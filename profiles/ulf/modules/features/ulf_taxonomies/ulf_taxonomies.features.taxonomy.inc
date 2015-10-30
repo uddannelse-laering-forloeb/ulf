@@ -18,7 +18,7 @@ function ulf_taxonomies_taxonomy_default_vocabularies() {
       'weight' => 0,
     ),
     'educational_goals' => array(
-      'name' => 'Læringsmål',
+      'name' => 'Læreplanstemaer',
       'machine_name' => 'educational_goals',
       'description' => '',
       'hierarchy' => 0,
@@ -34,7 +34,7 @@ function ulf_taxonomies_taxonomy_default_vocabularies() {
       'weight' => -10,
     ),
     'offer_type' => array(
-      'name' => 'Tilbudstype',
+      'name' => 'Forløbstype',
       'machine_name' => 'offer_type',
       'description' => '',
       'hierarchy' => 0,
