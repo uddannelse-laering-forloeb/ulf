@@ -41,11 +41,11 @@ ulf_static_page, ulf_course_educators, ulf_course_providers modules)
 * Added singularity for duration unit (ulf_course module)
 * Added target _blank for links to external matererials (ulf_field_collections module)
 * Fixed bug in courses for educators, removed check for non existing duration field
-* Added link to author homepage on courses
 * Added h2 and h3 to content filter and wysiwyg (ulf_wysiwyg module)
-* Removed bold on materials and other field collections
+* Removed bold on materials and other field collections (Except contact name)
 
 ###Hotfix Users
+* Added link to contact information
 * Added link on user logo
 * Removed bold from office hours
 * Added padding to contact box
