@@ -295,7 +295,7 @@ function ulf_course_field_default_field_instances() {
         'weight' => 40,
       ),
       'full' => array(
-        'label' => 'hidden',
+        'label' => 'above',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
@@ -1135,7 +1135,7 @@ function ulf_course_field_default_field_instances() {
         'weight' => 39,
       ),
       'full' => array(
-        'label' => 'hidden',
+        'label' => 'above',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
