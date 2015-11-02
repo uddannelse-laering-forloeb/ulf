@@ -26,9 +26,6 @@ function ulf_news_strongarm() {
       'teaser' => array(
         'custom_settings' => TRUE,
       ),
-      'node_display' => array(
-        'custom_settings' => TRUE,
-      ),
       'full' => array(
         'custom_settings' => FALSE,
       ),

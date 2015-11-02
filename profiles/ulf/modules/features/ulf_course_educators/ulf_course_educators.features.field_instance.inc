@@ -10,7 +10,7 @@
 function ulf_course_educators_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-course_educators-field_catering'
+  // Exported field_instance: 'node-course_educators-field_catering'.
   $field_instances['node-course_educators-field_catering'] = array(
     'bundle' => 'course_educators',
     'default_value' => NULL,
@@ -23,12 +23,6 @@ function ulf_course_educators_field_default_field_instances() {
         'settings' => array(),
         'type' => 'text_default',
         'weight' => 2,
-      ),
-      'node_display' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -56,7 +50,7 @@ function ulf_course_educators_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-course_educators-field_course_contact_mail'
+  // Exported field_instance: 'node-course_educators-field_course_contact_mail'.
   $field_instances['node-course_educators-field_course_contact_mail'] = array(
     'bundle' => 'course_educators',
     'default_value' => NULL,
@@ -69,12 +63,6 @@ function ulf_course_educators_field_default_field_instances() {
         'settings' => array(),
         'type' => 'text_default',
         'weight' => 5,
-      ),
-      'node_display' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -100,7 +88,7 @@ function ulf_course_educators_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-course_educators-field_course_contact_name'
+  // Exported field_instance: 'node-course_educators-field_course_contact_name'.
   $field_instances['node-course_educators-field_course_contact_name'] = array(
     'bundle' => 'course_educators',
     'default_value' => NULL,
@@ -113,12 +101,6 @@ function ulf_course_educators_field_default_field_instances() {
         'settings' => array(),
         'type' => 'text_default',
         'weight' => 4,
-      ),
-      'node_display' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -146,7 +128,8 @@ function ulf_course_educators_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-course_educators-field_educational_material'
+  // Exported field_instance:
+  // 'node-course_educators-field_educational_material'.
   $field_instances['node-course_educators-field_educational_material'] = array(
     'bundle' => 'course_educators',
     'default_value' => NULL,
@@ -161,12 +144,6 @@ function ulf_course_educators_field_default_field_instances() {
         ),
         'type' => 'field_collection_fields',
         'weight' => 3,
-      ),
-      'node_display' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -191,7 +168,7 @@ function ulf_course_educators_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-course_educators-field_free'
+  // Exported field_instance: 'node-course_educators-field_free'.
   $field_instances['node-course_educators-field_free'] = array(
     'bundle' => 'course_educators',
     'default_value' => array(
@@ -208,12 +185,6 @@ function ulf_course_educators_field_default_field_instances() {
         'settings' => array(),
         'type' => 'list_default',
         'weight' => 13,
-      ),
-      'node_display' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -240,7 +211,7 @@ function ulf_course_educators_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-course_educators-field_full_description'
+  // Exported field_instance: 'node-course_educators-field_full_description'.
   $field_instances['node-course_educators-field_full_description'] = array(
     'bundle' => 'course_educators',
     'default_value' => NULL,
@@ -253,12 +224,6 @@ function ulf_course_educators_field_default_field_instances() {
         'settings' => array(),
         'type' => 'text_default',
         'weight' => 1,
-      ),
-      'node_display' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -287,7 +252,7 @@ function ulf_course_educators_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-course_educators-field_image'
+  // Exported field_instance: 'node-course_educators-field_image'.
   $field_instances['node-course_educators-field_image'] = array(
     'bundle' => 'course_educators',
     'deleted' => 0,
@@ -302,12 +267,6 @@ function ulf_course_educators_field_default_field_instances() {
           'image_style' => 'node_display',
         ),
         'type' => 'image',
-        'weight' => 0,
-      ),
-      'node_display' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
         'weight' => 0,
       ),
       'teaser' => array(
@@ -363,7 +322,7 @@ function ulf_course_educators_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-course_educators-field_period'
+  // Exported field_instance: 'node-course_educators-field_period'.
   $field_instances['node-course_educators-field_period'] = array(
     'bundle' => 'course_educators',
     'deleted' => 0,
@@ -373,20 +332,15 @@ function ulf_course_educators_field_default_field_instances() {
         'label' => 'above',
         'module' => 'date',
         'settings' => array(
-          'format_type' => 'dmy',
+          'format_type' => 'simple_date',
           'fromto' => 'both',
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
+          'show_remaining_days' => 0,
         ),
         'type' => 'date_default',
         'weight' => 11,
-      ),
-      'node_display' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -422,7 +376,7 @@ function ulf_course_educators_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-course_educators-field_period_full_year'
+  // Exported field_instance: 'node-course_educators-field_period_full_year'.
   $field_instances['node-course_educators-field_period_full_year'] = array(
     'bundle' => 'course_educators',
     'default_value' => NULL,
@@ -435,12 +389,6 @@ function ulf_course_educators_field_default_field_instances() {
         'settings' => array(),
         'type' => 'list_default',
         'weight' => 10,
-      ),
-      'node_display' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -466,7 +414,7 @@ function ulf_course_educators_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-course_educators-field_price'
+  // Exported field_instance: 'node-course_educators-field_price'.
   $field_instances['node-course_educators-field_price'] = array(
     'bundle' => 'course_educators',
     'default_value' => array(
@@ -488,12 +436,6 @@ function ulf_course_educators_field_default_field_instances() {
         ),
         'type' => 'number_decimal',
         'weight' => 12,
-      ),
-      'node_display' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -522,7 +464,7 @@ function ulf_course_educators_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-course_educators-field_relevance_educators'
+  // Exported field_instance: 'node-course_educators-field_relevance_educators'.
   $field_instances['node-course_educators-field_relevance_educators'] = array(
     'bundle' => 'course_educators',
     'default_value' => NULL,
@@ -535,12 +477,6 @@ function ulf_course_educators_field_default_field_instances() {
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
         'weight' => 7,
-      ),
-      'node_display' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -566,7 +502,7 @@ function ulf_course_educators_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-course_educators-field_relevance_primary_school'
+  // 'node-course_educators-field_relevance_primary_school'.
   $field_instances['node-course_educators-field_relevance_primary_school'] = array(
     'bundle' => 'course_educators',
     'default_value' => NULL,
@@ -579,12 +515,6 @@ function ulf_course_educators_field_default_field_instances() {
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
         'weight' => 8,
-      ),
-      'node_display' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -610,7 +540,7 @@ function ulf_course_educators_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'node-course_educators-field_relevance_upper_school'
+  // 'node-course_educators-field_relevance_upper_school'.
   $field_instances['node-course_educators-field_relevance_upper_school'] = array(
     'bundle' => 'course_educators',
     'default_value' => NULL,
@@ -623,12 +553,6 @@ function ulf_course_educators_field_default_field_instances() {
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
         'weight' => 9,
-      ),
-      'node_display' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -653,7 +577,7 @@ function ulf_course_educators_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-course_educators-field_subject'
+  // Exported field_instance: 'node-course_educators-field_subject'.
   $field_instances['node-course_educators-field_subject'] = array(
     'bundle' => 'course_educators',
     'default_value' => NULL,
@@ -666,12 +590,6 @@ function ulf_course_educators_field_default_field_instances() {
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
         'weight' => 6,
-      ),
-      'node_display' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -697,7 +615,7 @@ function ulf_course_educators_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-course_educators-field_video'
+  // Exported field_instance: 'node-course_educators-field_video'.
   $field_instances['node-course_educators-field_video'] = array(
     'bundle' => 'course_educators',
     'default_value' => NULL,
@@ -714,12 +632,6 @@ function ulf_course_educators_field_default_field_instances() {
         ),
         'type' => 'video_embed_field',
         'weight' => 14,
-      ),
-      'node_display' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -784,4 +696,3 @@ function ulf_course_educators_field_default_field_instances() {
 
   return $field_instances;
 }
-

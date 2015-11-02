@@ -76,14 +76,16 @@ function ulf_base_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'date_format_simple_date';
+  $strongarm->value = 'd.m.Y';
+  $export['date_format_simple_date'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'entity_view_modes';
   $strongarm->value = array(
-    'node' => array(
-      'node_display' => array(
-        'label' => 'Node display',
-        'custom settings' => 1,
-      ),
-    ),
+    'node' => array(),
   );
   $export['entity_view_modes'] = $strongarm;
 
@@ -434,8 +436,10 @@ example.org';
   $strongarm->name = 'linkchecker_ignore_response_codes';
   $strongarm->value = '200
 206
+301
 302
 304
+307
 401
 403';
   $export['linkchecker_ignore_response_codes'] = $strongarm;

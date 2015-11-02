@@ -105,6 +105,7 @@ features[variable][] = date_format_html5_tools_iso8601
 features[variable][] = date_format_long
 features[variable][] = date_format_medium
 features[variable][] = date_format_short
+features[variable][] = date_format_simple_date
 features[variable][] = entity_view_modes
 features[variable][] = googleanalytics_account
 features[variable][] = googleanalytics_cache

@@ -44,9 +44,6 @@ function ulf_course_strongarm() {
   $strongarm->name = 'field_bundle_settings_node__course';
   $strongarm->value = array(
     'view_modes' => array(
-      'node_display' => array(
-        'custom_settings' => TRUE,
-      ),
       'full' => array(
         'custom_settings' => TRUE,
       ),

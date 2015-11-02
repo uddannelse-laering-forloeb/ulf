@@ -44,9 +44,6 @@ function ulf_course_educators_strongarm() {
   $strongarm->name = 'field_bundle_settings_node__course_educators';
   $strongarm->value = array(
     'view_modes' => array(
-      'node_display' => array(
-        'custom_settings' => TRUE,
-      ),
       'teaser' => array(
         'custom_settings' => TRUE,
       ),
@@ -60,6 +57,9 @@ function ulf_course_educators_strongarm() {
         'custom_settings' => FALSE,
       ),
       'token' => array(
+        'custom_settings' => FALSE,
+      ),
+      'print' => array(
         'custom_settings' => FALSE,
       ),
     ),

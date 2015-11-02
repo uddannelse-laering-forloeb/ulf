@@ -16,6 +16,7 @@ dependencies[] = options
 dependencies[] = strongarm
 dependencies[] = taxonomy
 dependencies[] = text
+dependencies[] = ulf_base
 dependencies[] = ulf_field_bases
 dependencies[] = ulf_field_collections
 dependencies[] = uuid

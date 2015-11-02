@@ -10,7 +10,7 @@
 function ulf_course_providers_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'user-user-field_image'
+  // Exported field_instance: 'user-user-field_image'.
   $field_instances['user-user-field_image'] = array(
     'bundle' => 'user',
     'deleted' => 0,
@@ -69,7 +69,7 @@ function ulf_course_providers_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'user-user-field_profile_address'
+  // Exported field_instance: 'user-user-field_profile_address'.
   $field_instances['user-user-field_profile_address'] = array(
     'bundle' => 'user',
     'default_value' => NULL,
@@ -103,7 +103,7 @@ function ulf_course_providers_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'user-user-field_profile_city'
+  // Exported field_instance: 'user-user-field_profile_city'.
   $field_instances['user-user-field_profile_city'] = array(
     'bundle' => 'user',
     'default_value' => NULL,
@@ -137,7 +137,7 @@ function ulf_course_providers_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'user-user-field_profile_contact'
+  // Exported field_instance: 'user-user-field_profile_contact'.
   $field_instances['user-user-field_profile_contact'] = array(
     'bundle' => 'user',
     'default_value' => NULL,
@@ -170,7 +170,7 @@ function ulf_course_providers_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'user-user-field_profile_description'
+  // Exported field_instance: 'user-user-field_profile_description'.
   $field_instances['user-user-field_profile_description'] = array(
     'bundle' => 'user',
     'default_value' => NULL,
@@ -208,7 +208,7 @@ function ulf_course_providers_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'user-user-field_profile_educat_profi'
+  // Exported field_instance: 'user-user-field_profile_educat_profi'.
   $field_instances['user-user-field_profile_educat_profi'] = array(
     'bundle' => 'user',
     'default_value' => NULL,
@@ -246,7 +246,7 @@ function ulf_course_providers_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'user-user-field_profile_entry'
+  // Exported field_instance: 'user-user-field_profile_entry'.
   $field_instances['user-user-field_profile_entry'] = array(
     'bundle' => 'user',
     'default_value' => NULL,
@@ -280,7 +280,7 @@ function ulf_course_providers_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'user-user-field_profile_home_page'
+  // Exported field_instance: 'user-user-field_profile_home_page'.
   $field_instances['user-user-field_profile_home_page'] = array(
     'bundle' => 'user',
     'default_value' => NULL,
@@ -331,7 +331,7 @@ function ulf_course_providers_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'user-user-field_profile_logo'
+  // Exported field_instance: 'user-user-field_profile_logo'.
   $field_instances['user-user-field_profile_logo'] = array(
     'bundle' => 'user',
     'deleted' => 0,
@@ -387,7 +387,7 @@ function ulf_course_providers_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'user-user-field_profile_mail'
+  // Exported field_instance: 'user-user-field_profile_mail'.
   $field_instances['user-user-field_profile_mail'] = array(
     'bundle' => 'user',
     'default_value' => NULL,
@@ -419,7 +419,7 @@ function ulf_course_providers_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'user-user-field_profile_name'
+  // Exported field_instance: 'user-user-field_profile_name'.
   $field_instances['user-user-field_profile_name'] = array(
     'bundle' => 'user',
     'default_value' => NULL,
@@ -455,7 +455,7 @@ function ulf_course_providers_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'user-user-field_profile_phone'
+  // Exported field_instance: 'user-user-field_profile_phone'.
   $field_instances['user-user-field_profile_phone'] = array(
     'bundle' => 'user',
     'default_value' => NULL,
@@ -487,7 +487,7 @@ function ulf_course_providers_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'user-user-field_profile_postal_code'
+  // Exported field_instance: 'user-user-field_profile_postal_code'.
   $field_instances['user-user-field_profile_postal_code'] = array(
     'bundle' => 'user',
     'default_value' => NULL,

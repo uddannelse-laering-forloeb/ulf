@@ -47,9 +47,6 @@ function ulf_static_page_strongarm() {
       'teaser' => array(
         'custom_settings' => TRUE,
       ),
-      'node_display' => array(
-        'custom_settings' => TRUE,
-      ),
       'full' => array(
         'custom_settings' => FALSE,
       ),
