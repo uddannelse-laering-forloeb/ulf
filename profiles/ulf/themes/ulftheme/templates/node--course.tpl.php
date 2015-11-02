@@ -148,7 +148,7 @@
                 </div>
               <?php endif; ?>
               <?php /* If any of the fields in this wrapper contain data */ ?>
-              <?php if ($field_duration || $field_period_full_year['0']['value'] == 0 || $field_collection_price || $field_free['0']['value'] == 1 || $field_period_info || $field_price_info) : ?>
+              <?php if ($field_duration || $field_period_full_year['0']['value'] == 0 || $field_collection_price || $field_free['0']['value'] == 1 || $field_price_description || $field_duration_description) : ?>
                 <div class="block--field-wrapper">
                   <?php if ($field_period_full_year['0']['value'] == 0 ) : ?>
                     <?php print render($content['field_period']); ?>
@@ -167,8 +167,14 @@
                     <div class="block--field-label"><?php print t('This course is free.');?></div>
                   <?php endif;?>
                   <div class="block--field-text">
-                    <?php print render($content['field_price_description']); ?>
-                    <?php print render($content['field_duration_description']); ?>
+                    <?php if ($field_price_description) : ?>
+                      <div class="block--field-label"><?php print t('About price');?></div>
+                      <?php print render($content['field_price_description']); ?>
+                    <?php endif; ?>
+                    <?php if ($field_duration_description) : ?>
+                      <div class="block--field-label"><?php print t('About duration');?></div>
+                      <?php print render($content['field_duration_description']); ?>
+                    <?php endif; ?>
                   </div>
                 </div>
               <?php endif;?>
@@ -204,9 +210,6 @@
               </br>
               <?php if (isset($profile_phone)) : ?>
                 <div class="block--field-text"><?php print t('Phone')?> <?php print $profile_phone; ?></div>
-              <?php endif; ?>
-              <?php if (isset($profile_home_page)) : ?>
-                <div class="block--field-text"><a href="<?php print $profile_home_page; ?>" target="_blank"><?php print t('Website');?></a></div>
               <?php endif; ?>
               </br>
               <a href="/user/<?php print $uid ?>"><?php print t('View organizer profile'); ?></a>

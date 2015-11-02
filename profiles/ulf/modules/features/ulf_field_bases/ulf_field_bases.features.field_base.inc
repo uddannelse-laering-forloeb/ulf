@@ -10,7 +10,7 @@
 function ulf_field_bases_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_activities'
+  // Exported field_base: 'field_activities'.
   $field_bases['field_activities'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -29,7 +29,7 @@ function ulf_field_bases_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_background_knowledge'
+  // Exported field_base: 'field_background_knowledge'.
   $field_bases['field_background_knowledge'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -48,7 +48,7 @@ function ulf_field_bases_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_catering'
+  // Exported field_base: 'field_catering'.
   $field_bases['field_catering'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -67,7 +67,7 @@ function ulf_field_bases_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_collection_price'
+  // Exported field_base: 'field_collection_price'.
   $field_bases['field_collection_price'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -89,7 +89,36 @@ function ulf_field_bases_field_default_field_bases() {
     'type' => 'field_collection',
   );
 
-  // Exported field_base: 'field_content'
+  // Exported field_base: 'field_contact_home_page'.
+  $field_bases['field_contact_home_page'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_contact_home_page',
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'link',
+    'settings' => array(
+      'attributes' => array(
+        'class' => '',
+        'rel' => '',
+        'target' => 'default',
+      ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 1,
+      'title' => 'optional',
+      'title_maxlength' => 128,
+      'title_value' => '',
+      'url' => 0,
+    ),
+    'translatable' => 0,
+    'type' => 'link_field',
+  );
+
+  // Exported field_base: 'field_content'.
   $field_bases['field_content'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -108,7 +137,7 @@ function ulf_field_bases_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_count'
+  // Exported field_base: 'field_count'.
   $field_bases['field_count'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -123,7 +152,7 @@ function ulf_field_bases_field_default_field_bases() {
     'type' => 'number_integer',
   );
 
-  // Exported field_base: 'field_course_contact_mail'
+  // Exported field_base: 'field_course_contact_mail'.
   $field_bases['field_course_contact_mail'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -144,7 +173,7 @@ function ulf_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_course_contact_name'
+  // Exported field_base: 'field_course_contact_name'.
   $field_bases['field_course_contact_name'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -165,7 +194,7 @@ function ulf_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_duration'
+  // Exported field_base: 'field_duration'.
   $field_bases['field_duration'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -184,7 +213,7 @@ function ulf_field_bases_field_default_field_bases() {
     'type' => 'number_decimal',
   );
 
-  // Exported field_base: 'field_duration_description'
+  // Exported field_base: 'field_duration_description'.
   $field_bases['field_duration_description'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -203,7 +232,7 @@ function ulf_field_bases_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_duration_unit'
+  // Exported field_base: 'field_duration_unit'.
   $field_bases['field_duration_unit'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -231,7 +260,7 @@ function ulf_field_bases_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_educational_goals'
+  // Exported field_base: 'field_educational_goals'.
   $field_bases['field_educational_goals'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -257,7 +286,7 @@ function ulf_field_bases_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_educational_material'
+  // Exported field_base: 'field_educational_material'.
   $field_bases['field_educational_material'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -279,7 +308,7 @@ function ulf_field_bases_field_default_field_bases() {
     'type' => 'field_collection',
   );
 
-  // Exported field_base: 'field_facilities'
+  // Exported field_base: 'field_facilities'.
   $field_bases['field_facilities'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -305,7 +334,7 @@ function ulf_field_bases_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_facilities_info'
+  // Exported field_base: 'field_facilities_info'.
   $field_bases['field_facilities_info'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -324,7 +353,7 @@ function ulf_field_bases_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_free'
+  // Exported field_base: 'field_free'.
   $field_bases['field_free'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -349,7 +378,7 @@ function ulf_field_bases_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_full_description'
+  // Exported field_base: 'field_full_description'.
   $field_bases['field_full_description'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -368,7 +397,7 @@ function ulf_field_bases_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_image'
+  // Exported field_base: 'field_image'.
   $field_bases['field_image'] = array(
     'active' => 1,
     'cardinality' => 3,
@@ -390,7 +419,7 @@ function ulf_field_bases_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_inspirational_material'
+  // Exported field_base: 'field_inspirational_material'.
   $field_bases['field_inspirational_material'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -412,7 +441,7 @@ function ulf_field_bases_field_default_field_bases() {
     'type' => 'field_collection',
   );
 
-  // Exported field_base: 'field_material_suggestions'
+  // Exported field_base: 'field_material_suggestions'.
   $field_bases['field_material_suggestions'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -431,7 +460,7 @@ function ulf_field_bases_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_offer_type'
+  // Exported field_base: 'field_offer_type'.
   $field_bases['field_offer_type'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -457,7 +486,7 @@ function ulf_field_bases_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_period'
+  // Exported field_base: 'field_period'.
   $field_bases['field_period'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -486,7 +515,7 @@ function ulf_field_bases_field_default_field_bases() {
     'type' => 'datestamp',
   );
 
-  // Exported field_base: 'field_period_full_year'
+  // Exported field_base: 'field_period_full_year'.
   $field_bases['field_period_full_year'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -511,7 +540,7 @@ function ulf_field_bases_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_period_info'
+  // Exported field_base: 'field_period_info'.
   $field_bases['field_period_info'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -530,7 +559,7 @@ function ulf_field_bases_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_post_work'
+  // Exported field_base: 'field_post_work'.
   $field_bases['field_post_work'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -549,7 +578,7 @@ function ulf_field_bases_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_price_description'
+  // Exported field_base: 'field_price_description'.
   $field_bases['field_price_description'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -568,7 +597,7 @@ function ulf_field_bases_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_price_info'
+  // Exported field_base: 'field_price_info'.
   $field_bases['field_price_info'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -587,7 +616,7 @@ function ulf_field_bases_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_profile_address'
+  // Exported field_base: 'field_profile_address'.
   $field_bases['field_profile_address'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -608,7 +637,7 @@ function ulf_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_profile_city'
+  // Exported field_base: 'field_profile_city'.
   $field_bases['field_profile_city'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -629,7 +658,7 @@ function ulf_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_profile_contact'
+  // Exported field_base: 'field_profile_contact'.
   $field_bases['field_profile_contact'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -651,7 +680,7 @@ function ulf_field_bases_field_default_field_bases() {
     'type' => 'field_collection',
   );
 
-  // Exported field_base: 'field_profile_description'
+  // Exported field_base: 'field_profile_description'.
   $field_bases['field_profile_description'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -670,7 +699,7 @@ function ulf_field_bases_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_profile_educat_profi'
+  // Exported field_base: 'field_profile_educat_profi'.
   $field_bases['field_profile_educat_profi'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -689,7 +718,7 @@ function ulf_field_bases_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_profile_entry'
+  // Exported field_base: 'field_profile_entry'.
   $field_bases['field_profile_entry'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -708,7 +737,7 @@ function ulf_field_bases_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_profile_home_page'
+  // Exported field_base: 'field_profile_home_page'.
   $field_bases['field_profile_home_page'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -737,7 +766,7 @@ function ulf_field_bases_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-  // Exported field_base: 'field_profile_logo'
+  // Exported field_base: 'field_profile_logo'.
   $field_bases['field_profile_logo'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -759,7 +788,7 @@ function ulf_field_bases_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_profile_mail'
+  // Exported field_base: 'field_profile_mail'.
   $field_bases['field_profile_mail'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -780,7 +809,7 @@ function ulf_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_profile_name'
+  // Exported field_base: 'field_profile_name'.
   $field_bases['field_profile_name'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -801,7 +830,7 @@ function ulf_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_profile_phone'
+  // Exported field_base: 'field_profile_phone'.
   $field_bases['field_profile_phone'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -822,7 +851,7 @@ function ulf_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_profile_postal_code'
+  // Exported field_base: 'field_profile_postal_code'.
   $field_bases['field_profile_postal_code'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -837,7 +866,7 @@ function ulf_field_bases_field_default_field_bases() {
     'type' => 'number_integer',
   );
 
-  // Exported field_base: 'field_purpose'
+  // Exported field_base: 'field_purpose'.
   $field_bases['field_purpose'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -856,7 +885,7 @@ function ulf_field_bases_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_relevance_educators'
+  // Exported field_base: 'field_relevance_educators'.
   $field_bases['field_relevance_educators'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -882,7 +911,7 @@ function ulf_field_bases_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_relevance_primary_school'
+  // Exported field_base: 'field_relevance_primary_school'.
   $field_bases['field_relevance_primary_school'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -908,7 +937,7 @@ function ulf_field_bases_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_relevance_upper_school'
+  // Exported field_base: 'field_relevance_upper_school'.
   $field_bases['field_relevance_upper_school'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -934,7 +963,7 @@ function ulf_field_bases_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_special_needs'
+  // Exported field_base: 'field_special_needs'.
   $field_bases['field_special_needs'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -959,7 +988,7 @@ function ulf_field_bases_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_subject'
+  // Exported field_base: 'field_subject'.
   $field_bases['field_subject'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -985,7 +1014,7 @@ function ulf_field_bases_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_subjects_primary_school'
+  // Exported field_base: 'field_subjects_primary_school'.
   $field_bases['field_subjects_primary_school'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -1011,7 +1040,7 @@ function ulf_field_bases_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_subjects_youth'
+  // Exported field_base: 'field_subjects_youth'.
   $field_bases['field_subjects_youth'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -1037,7 +1066,7 @@ function ulf_field_bases_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_target_group'
+  // Exported field_base: 'field_target_group'.
   $field_bases['field_target_group'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1063,7 +1092,7 @@ function ulf_field_bases_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_target_group_sub'
+  // Exported field_base: 'field_target_group_sub'.
   $field_bases['field_target_group_sub'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -1089,7 +1118,7 @@ function ulf_field_bases_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_teaser'
+  // Exported field_base: 'field_teaser'.
   $field_bases['field_teaser'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1108,7 +1137,7 @@ function ulf_field_bases_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_video'
+  // Exported field_base: 'field_video'.
   $field_bases['field_video'] = array(
     'active' => 1,
     'cardinality' => 1,

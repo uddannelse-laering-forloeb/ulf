@@ -1197,6 +1197,8 @@ body {
     display: block;
     margin-bottom: 4px;
     width: 100%; }
+    .field--collection-description.is-bold, .field--collection-file.is-bold, .field--collection-link.is-bold, .field--collection-litt.is-bold {
+      font-weight: bold; }
   .field--video {
     margin-bottom: 16px; }
   .field--video-player {

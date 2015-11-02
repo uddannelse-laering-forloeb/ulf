@@ -11,7 +11,7 @@ function ulf_field_collections_field_default_field_instances() {
   $field_instances = array();
 
   // Exported field_instance:
-  // 'field_collection_item-field_collection_price-field_price'
+  // 'field_collection_item-field_collection_price-field_price'.
   $field_instances['field_collection_item-field_collection_price-field_price'] = array(
     'bundle' => 'field_collection_price',
     'default_value' => NULL,
@@ -54,7 +54,7 @@ function ulf_field_collections_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'field_collection_item-field_collection_price-field_unit_price'
+  // 'field_collection_item-field_collection_price-field_unit_price'.
   $field_instances['field_collection_item-field_collection_price-field_unit_price'] = array(
     'bundle' => 'field_collection_price',
     'default_value' => NULL,
@@ -86,7 +86,7 @@ function ulf_field_collections_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'field_collection_item-field_educational_material-field_material_description'
+  // 'field_collection_item-field_educational_material-field_material_description'.
   $field_instances['field_collection_item-field_educational_material-field_material_description'] = array(
     'bundle' => 'field_educational_material',
     'default_value' => NULL,
@@ -125,7 +125,7 @@ function ulf_field_collections_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'field_collection_item-field_educational_material-field_material_file'
+  // 'field_collection_item-field_educational_material-field_material_file'.
   $field_instances['field_collection_item-field_educational_material-field_material_file'] = array(
     'bundle' => 'field_educational_material',
     'deleted' => 0,
@@ -162,7 +162,7 @@ function ulf_field_collections_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'field_collection_item-field_educational_material-field_material_link'
+  // 'field_collection_item-field_educational_material-field_material_link'.
   $field_instances['field_collection_item-field_educational_material-field_material_link'] = array(
     'bundle' => 'field_educational_material',
     'default_value' => NULL,
@@ -214,7 +214,7 @@ function ulf_field_collections_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'field_collection_item-field_educational_material-field_material_litt'
+  // 'field_collection_item-field_educational_material-field_material_litt'.
   $field_instances['field_collection_item-field_educational_material-field_material_litt'] = array(
     'bundle' => 'field_educational_material',
     'default_value' => NULL,
@@ -249,7 +249,7 @@ function ulf_field_collections_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'field_collection_item-field_inspirational_material-field_material_description'
+  // 'field_collection_item-field_inspirational_material-field_material_description'.
   $field_instances['field_collection_item-field_inspirational_material-field_material_description'] = array(
     'bundle' => 'field_inspirational_material',
     'default_value' => NULL,
@@ -288,7 +288,7 @@ function ulf_field_collections_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'field_collection_item-field_inspirational_material-field_material_file'
+  // 'field_collection_item-field_inspirational_material-field_material_file'.
   $field_instances['field_collection_item-field_inspirational_material-field_material_file'] = array(
     'bundle' => 'field_inspirational_material',
     'deleted' => 0,
@@ -325,7 +325,7 @@ function ulf_field_collections_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'field_collection_item-field_inspirational_material-field_material_link'
+  // 'field_collection_item-field_inspirational_material-field_material_link'.
   $field_instances['field_collection_item-field_inspirational_material-field_material_link'] = array(
     'bundle' => 'field_inspirational_material',
     'default_value' => NULL,
@@ -377,7 +377,7 @@ function ulf_field_collections_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'field_collection_item-field_inspirational_material-field_material_litt'
+  // 'field_collection_item-field_inspirational_material-field_material_litt'.
   $field_instances['field_collection_item-field_inspirational_material-field_material_litt'] = array(
     'bundle' => 'field_inspirational_material',
     'default_value' => NULL,
@@ -412,7 +412,7 @@ function ulf_field_collections_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'field_collection_item-field_profile_contact-field_contact_email'
+  // 'field_collection_item-field_profile_contact-field_contact_email'.
   $field_instances['field_collection_item-field_profile_contact-field_contact_email'] = array(
     'bundle' => 'field_profile_contact',
     'default_value' => NULL,
@@ -445,7 +445,59 @@ function ulf_field_collections_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'field_collection_item-field_profile_contact-field_contact_name'
+  // 'field_collection_item-field_profile_contact-field_contact_home_page'.
+  $field_instances['field_collection_item-field_profile_contact-field_contact_home_page'] = array(
+    'bundle' => 'field_profile_contact',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_default',
+        'weight' => 5,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'field_name' => 'field_contact_home_page',
+    'label' => 'Hjemmeside',
+    'required' => 0,
+    'settings' => array(
+      'absolute_url' => 1,
+      'attributes' => array(
+        'class' => '',
+        'configurable_class' => 0,
+        'configurable_title' => 0,
+        'rel' => '',
+        'target' => '_blank',
+        'title' => '',
+      ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 1,
+      'rel_remove' => 'default',
+      'title' => 'none',
+      'title_label_use_field_label' => 0,
+      'title_maxlength' => 128,
+      'title_value' => '',
+      'url' => 0,
+      'user_register_form' => FALSE,
+      'validate_url' => 1,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'link',
+      'settings' => array(),
+      'type' => 'link_field',
+      'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'field_collection_item-field_profile_contact-field_contact_name'.
   $field_instances['field_collection_item-field_profile_contact-field_contact_name'] = array(
     'bundle' => 'field_profile_contact',
     'default_value' => NULL,
@@ -480,7 +532,7 @@ function ulf_field_collections_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'field_collection_item-field_profile_contact-field_contact_office_hours'
+  // 'field_collection_item-field_profile_contact-field_contact_office_hours'.
   $field_instances['field_collection_item-field_profile_contact-field_contact_office_hours'] = array(
     'bundle' => 'field_profile_contact',
     'default_value' => NULL,
@@ -517,7 +569,7 @@ function ulf_field_collections_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'field_collection_item-field_profile_contact-field_contact_phone'
+  // 'field_collection_item-field_profile_contact-field_contact_phone'.
   $field_instances['field_collection_item-field_profile_contact-field_contact_phone'] = array(
     'bundle' => 'field_profile_contact',
     'default_value' => NULL,
@@ -550,7 +602,7 @@ function ulf_field_collections_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'field_collection_item-field_profile_contact-field_contact_title'
+  // 'field_collection_item-field_profile_contact-field_contact_title'.
   $field_instances['field_collection_item-field_profile_contact-field_contact_title'] = array(
     'bundle' => 'field_profile_contact',
     'default_value' => NULL,
@@ -592,6 +644,7 @@ function ulf_field_collections_field_default_field_instances() {
   t('Beskrivelse');
   t('Email');
   t('Fil');
+  t('Hjemmeside');
   t('Link');
   t('Litteraturforslag');
   t('Navn');
