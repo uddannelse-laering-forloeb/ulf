@@ -10,7 +10,7 @@
 function ulf_field_collections_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_contact_email'
+  // Exported field_base: 'field_contact_email'.
   $field_bases['field_contact_email'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -31,7 +31,7 @@ function ulf_field_collections_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_contact_name'
+  // Exported field_base: 'field_contact_name'.
   $field_bases['field_contact_name'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -52,7 +52,7 @@ function ulf_field_collections_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_contact_office_hours'
+  // Exported field_base: 'field_contact_office_hours'.
   $field_bases['field_contact_office_hours'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -73,7 +73,7 @@ function ulf_field_collections_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_contact_phone'
+  // Exported field_base: 'field_contact_phone'.
   $field_bases['field_contact_phone'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -94,7 +94,7 @@ function ulf_field_collections_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_contact_title'
+  // Exported field_base: 'field_contact_title'.
   $field_bases['field_contact_title'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -115,7 +115,7 @@ function ulf_field_collections_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_material_description'
+  // Exported field_base: 'field_material_description'.
   $field_bases['field_material_description'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -134,7 +134,7 @@ function ulf_field_collections_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_material_file'
+  // Exported field_base: 'field_material_file'.
   $field_bases['field_material_file'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -157,7 +157,7 @@ function ulf_field_collections_field_default_field_bases() {
     'type' => 'file',
   );
 
-  // Exported field_base: 'field_material_link'
+  // Exported field_base: 'field_material_link'.
   $field_bases['field_material_link'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -186,7 +186,7 @@ function ulf_field_collections_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-  // Exported field_base: 'field_material_litt'
+  // Exported field_base: 'field_material_litt'.
   $field_bases['field_material_litt'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -207,7 +207,7 @@ function ulf_field_collections_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_price'
+  // Exported field_base: 'field_price'.
   $field_bases['field_price'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -226,7 +226,7 @@ function ulf_field_collections_field_default_field_bases() {
     'type' => 'number_decimal',
   );
 
-  // Exported field_base: 'field_unit_price'
+  // Exported field_base: 'field_unit_price'.
   $field_bases['field_unit_price'] = array(
     'active' => 1,
     'cardinality' => 1,

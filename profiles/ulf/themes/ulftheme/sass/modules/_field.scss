@@ -81,6 +81,10 @@
     display: block;
     margin-bottom: $spacing / 4;
     width: 100%;
+
+    &.is-bold {
+      font-weight: bold;
+    }
   }
 
 

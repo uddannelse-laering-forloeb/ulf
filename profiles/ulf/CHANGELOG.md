@@ -31,6 +31,7 @@ Existing content should manually be moved from the old field to one of the new f
 
 ###Hotfix Search
 * Changed headers in search widgets for "læringsmål" and "tilbudstype" - This change will affect all uses of these terms.
+* Changed server settings to fix Internet explorer error on some search results.
 
 ###Hotfix Courses
 * Added view for locating and moving price and duration content (ulf_workflow)
