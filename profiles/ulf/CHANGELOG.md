@@ -2,6 +2,20 @@
 
 #In development
 
+#v2.1.1
+
+##Release notes
+* Enable ulf_scheduler_notify module
+
+###Feature auto unpublish
+* Fixed error on login form
+* Added unpublish button for authors and editors
+* Added automated unpublishing based on period end date field
+* Added mail sending to author/admin on unpublishing action
+* Added mail sending one week prior to unpublishing content to author/admin
+* Cleaned up l10n module (Caused error after update 2.1.0)
+
+
 #v2.1.0
 
 ##Release notes

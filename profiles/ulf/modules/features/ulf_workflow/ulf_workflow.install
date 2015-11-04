@@ -42,3 +42,10 @@ function ulf_workflow_update_7400() {
 function ulf_workflow_update_7500() {
   variable_set('ulf_workflow_send_mail', 0);
 }
+
+/**
+ * Set variable for checking recipient email.
+ */
+function ulf_workflow_update_7600() {
+  variable_set('ulf_workflow_local_recipient', 1);
+}
