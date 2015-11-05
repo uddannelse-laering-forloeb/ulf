@@ -1,0 +1,38 @@
+<?php
+/**
+* Implements hook_install().
+*/
+function ulf_scheduler_notify_schema() {
+  $schema['scheduler_notify'] = array (
+    'description' => 'Mails to send a week prior to scheduled unpublishing.',
+    'fields' => array (
+      'nid' => array (
+        'description' => 'The node to be unpublished',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE
+      ),
+      'uid' => array (
+        'description' => 'The user id to send the mail to',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE
+      ),
+      'send_mail_on' => array(
+        'description' => 'The UNIX UTC timestamp when to send the mail',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'job_id' => array (
+        'description' => 'The job id to identify this job',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+    ),
+    'primary key' => array('job_id'),
+  );
+
+  return $schema;
+}

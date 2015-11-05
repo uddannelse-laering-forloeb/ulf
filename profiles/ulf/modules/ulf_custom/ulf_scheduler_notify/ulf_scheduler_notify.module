@@ -1,0 +1,89 @@
+<?php
+/**
+* Implements hook_cron().
+*/
+function ulf_scheduler_notify_cron() {
+  $now = time();
+  $workflow_send_mail = variable_get('ulf_workflow_send_mail');
+  $site_mail_recipient = variable_get('ulf_workflow_local_recipient');
+
+  // Get comment related to this order profile.
+  $query = db_select('scheduler_notify', 's');
+  $query->fields('s');
+  $query ->condition('s.send_mail_on', $now, '<');
+  $result = $query->execute();
+
+  foreach ($result as $job) {
+    $nid = $job->nid;
+    $uid = $job->uid;
+    $jobid = $job->job_id;
+
+    $node = node_load($nid);
+    $user = user_load($uid);
+
+    $to = $user->mail;
+
+    // If site mail recipient is active override receiving email address.
+    if ($site_mail_recipient > 0) {
+      $site_mail_recipient = variable_get('mimemail_mail');
+      $to = $site_mail_recipient;
+    }
+
+    // Provide additional parameters.
+    $params['user'] = $user;
+    $params['node'] = $node;
+
+    if ($workflow_send_mail > 0) {
+      drupal_mail('ulf_scheduler_notify', 'week_prior_unpublishing', $to, language_default(), $params);
+    }
+    // Remove entry so we don't send more mails.
+    db_delete('scheduler_notify')
+      ->condition('job_id', $jobid)
+      ->execute();
+  }
+}
+
+
+/**
+ * Implements hook_mailkeys().
+ *
+ * @return array
+ */
+function ulf_scheduler_notify_mailkeys() {
+  return array(
+    'week_prior_unpublishing' => t('Mail sent to author a week prior to unpublishing it.'),
+  );
+}
+
+
+/**
+ * Implements hook_mail_edit_text().
+ *
+ * @param string $mailkey
+ * @param object $language
+ *
+ * @return array
+ */
+function ulf_scheduler_notify_mail_edit_text($mailkey, $language) {
+  $return = array();
+  if ($mailkey = 'week_prior_unpublishing') {
+    $return['subject'] = 'Some of your content is about to be unpublished on [site:name]';
+    $return['body'] =
+      'The content "[node:title]" will be unpublished in seven days.
+
+This is an automated message created by [site:name].';
+    return $return;
+  }
+}
+
+
+/**
+ * Implements hook_mail_edit_token_types().
+ *
+ * @param string $mailkey
+ *
+ * @return array
+ */
+function ulf_scheduler_notify_mail_edit_token_types($mailkey) {
+  return user_mail_edit_token_types($mailkey);
+}

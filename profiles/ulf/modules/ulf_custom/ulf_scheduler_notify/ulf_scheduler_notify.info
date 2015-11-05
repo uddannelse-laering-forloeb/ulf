@@ -1,0 +1,8 @@
+name = Ulf scheduler notify
+description = Notify a week prior to unpublishing.
+dependencies[] = scheduler
+dependencies[] = mail_edit
+dependencies[] = ulf_workflow
+dependencies[] = mimemail
+package = ULF Base
+core = 7.x
