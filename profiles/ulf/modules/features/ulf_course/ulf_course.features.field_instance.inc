@@ -1171,57 +1171,6 @@ function ulf_course_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-course-field_price_info'.
-  $field_instances['node-course-field_price_info'] = array(
-    'bundle' => 'course',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 12,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 16,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 25,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_price_info',
-    'label' => 'Yderligere oplysninger til varighed og pris',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 1,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'maxlength_js' => 700,
-        'maxlength_js_enforce' => 1,
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'maxlength_js_truncate_html' => 1,
-        'rows' => 3,
-      ),
-      'type' => 'text_textarea',
-      'weight' => 13,
-    ),
-  );
-
   // Exported field_instance: 'node-course-field_purpose'.
   $field_instances['node-course-field_purpose'] = array(
     'bundle' => 'course',
@@ -1672,7 +1621,6 @@ At opnå kendskab til...
   t('Vælg enhed');
   t('Yderligere oplysninger til faciliteter');
   t('Yderligere oplysninger til periode');
-  t('Yderligere oplysninger til varighed og pris');
 
   return $field_instances;
 }

@@ -6,6 +6,13 @@
 
 ##Release notes
 * Enable ulf_scheduler_notify module
+* Run update
+
+###Hotfix Setup duration and price
+* Restructured template directory
+* Rearranged duration and price to be grouped together
+* Removed old combined duration and price info field
+* Changed content overview view to look for duration content
 
 ###Feature auto unpublish
 * Fixed error on login form
