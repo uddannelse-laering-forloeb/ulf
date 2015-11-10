@@ -597,25 +597,6 @@ function ulf_field_bases_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_price_info'.
-  $field_bases['field_price_info'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_price_info',
-    'indexes' => array(
-      'format' => array(
-        0 => 'format',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'text',
-    'settings' => array(),
-    'translatable' => 0,
-    'type' => 'text_long',
-  );
-
   // Exported field_base: 'field_profile_address'.
   $field_bases['field_profile_address'] = array(
     'active' => 1,
