@@ -166,6 +166,7 @@ function ulf_preprocess_node(&$variables) {
       }
 
       break;
+
     case 'static_page':
       // Provide menu block for static page nodes.
       $variables['static_page_menu'] = module_invoke('menu', 'block_view', 'menu-about-ulf');
@@ -175,16 +176,18 @@ function ulf_preprocess_node(&$variables) {
       break;
 
     case 'news':
-      // Provide newsletter block for static pages.
+      // Provide newsletter block for news pages.
       $variables['newsletter_block'] = module_invoke('mailchimp_signup', 'block_view', 'signup_to_newsletter');
       $variables['latest_news_titles'] = module_invoke('views', 'block_view', 'ulf_news_archive-block_1');
       $variables['group_type'] = 'news';
       break;
   }
 
+  // Add publishing action
   if (user_access('moderate content from needs_review to published') && arg(2) == 'draft') {
     $variables['display_workflow_actions'] =  TRUE;
-  } else {
+  }
+  else {
     $variables['display_workflow_actions'] =  FALSE;
   }
 

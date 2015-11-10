@@ -160,22 +160,20 @@
                   <?php if ($field_duration) : ?>
                     <div class="block--field-label"><?php print t('Duration');?></div>
                     <div class="block--field-text"><?php print $stripped_duration; ?><?php print render($content['field_duration_unit']); ?></div>
+                    <?php if ($field_duration_description) : ?>
+                      <div class="block--field-label"><?php print t('About duration');?></div>
+                      <div class="block--field-text"><?php print render($content['field_duration_description']); ?></div>
+                    <?php endif; ?>
                   <?php endif;?>
                   <?php if ($field_free['0']['value'] == 0 ) : ?>
                     <?php print render($content['field_collection_price']); ?>
                   <?php else : ?>
                     <div class="block--field-label"><?php print t('This course is free.');?></div>
                   <?php endif;?>
-                  <div class="block--field-text">
-                    <?php if ($field_price_description) : ?>
-                      <div class="block--field-label"><?php print t('About price');?></div>
-                      <?php print render($content['field_price_description']); ?>
-                    <?php endif; ?>
-                    <?php if ($field_duration_description) : ?>
-                      <div class="block--field-label"><?php print t('About duration');?></div>
-                      <?php print render($content['field_duration_description']); ?>
-                    <?php endif; ?>
-                  </div>
+                  <?php if ($field_price_description) : ?>
+                    <div class="block--field-label"><?php print t('About price');?></div>
+                    <div class="block--field-text"><?php print render($content['field_price_description']); ?></div>
+                  <?php endif; ?>
                 </div>
               <?php endif;?>
               <?php /* If any of the fields in this wrapper contain data */ ?>
@@ -219,7 +217,6 @@
       </div>
       <?php
       // We hide the comments and links now so that we can render them later.
-      hide($content['field_price_info']);
       hide($content['field_special_needs']);
       hide($content['field_duration']);
       hide($content['field_period']);

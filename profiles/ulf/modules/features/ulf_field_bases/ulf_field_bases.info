@@ -45,7 +45,6 @@ features[field_base][] = field_period_full_year
 features[field_base][] = field_period_info
 features[field_base][] = field_post_work
 features[field_base][] = field_price_description
-features[field_base][] = field_price_info
 features[field_base][] = field_profile_address
 features[field_base][] = field_profile_city
 features[field_base][] = field_profile_contact

@@ -1,0 +1,9 @@
+<?php
+/**
+ * Delete field_price_info
+ */
+function ulf_field_bases_update_7001() {
+  field_delete_field('field_price_info');
+  field_purge_batch(1);
+}
+

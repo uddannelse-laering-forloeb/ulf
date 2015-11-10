@@ -38,13 +38,47 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['pager']['options']['id'] = '0';
   $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'title' => 'title',
+    'field_duration' => 'field_duration',
+    'field_duration_unit' => 'field_duration_unit',
+    'edit_node' => 'edit_node',
+  );
+  $handler->display->display_options['style_options']['default'] = 'field_duration';
+  $handler->display->display_options['style_options']['info'] = array(
+    'title' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_duration' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_duration_unit' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'edit_node' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
   /* Header: Global: Text area */
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
-  $handler->display->display_options['header']['area']['content'] = 'Viser indhold hvor "Yderligere oplysninger til varighed og pris" eller de nye felter "Beskrivelse til pris" og "Beskrivelse til varighed" er blevet fyldt ud.
-
-Indhold hvor "Yderligere oplysninger til varighed og pris" er udfyldt ligger øverst i listen';
+  $handler->display->display_options['header']['area']['content'] = 'Viser indhold hvor "Varighed" eller "Varighed enhed".
+Sorteret efter varighed';
   $handler->display->display_options['header']['area']['format'] = 'editor';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
@@ -52,52 +86,37 @@ Indhold hvor "Yderligere oplysninger til varighed og pris" er udfyldt ligger øv
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Field: Content: Yderligere oplysninger til varighed og pris */
-  $handler->display->display_options['fields']['field_price_info']['id'] = 'field_price_info';
-  $handler->display->display_options['fields']['field_price_info']['table'] = 'field_data_field_price_info';
-  $handler->display->display_options['fields']['field_price_info']['field'] = 'field_price_info';
-  /* Field: Content: Beskrivelse til pris */
-  $handler->display->display_options['fields']['field_price_description']['id'] = 'field_price_description';
-  $handler->display->display_options['fields']['field_price_description']['table'] = 'field_data_field_price_description';
-  $handler->display->display_options['fields']['field_price_description']['field'] = 'field_price_description';
-  /* Field: Content: Beskrivlese til varighed */
-  $handler->display->display_options['fields']['field_duration_description']['id'] = 'field_duration_description';
-  $handler->display->display_options['fields']['field_duration_description']['table'] = 'field_data_field_duration_description';
-  $handler->display->display_options['fields']['field_duration_description']['field'] = 'field_duration_description';
+  /* Field: Content: Varighed */
+  $handler->display->display_options['fields']['field_duration']['id'] = 'field_duration';
+  $handler->display->display_options['fields']['field_duration']['table'] = 'field_data_field_duration';
+  $handler->display->display_options['fields']['field_duration']['field'] = 'field_duration';
+  $handler->display->display_options['fields']['field_duration']['settings'] = array(
+    'thousand_separator' => '',
+    'decimal_separator' => '.',
+    'scale' => '2',
+    'prefix_suffix' => 1,
+  );
+  /* Field: Content: Vælg enhed */
+  $handler->display->display_options['fields']['field_duration_unit']['id'] = 'field_duration_unit';
+  $handler->display->display_options['fields']['field_duration_unit']['table'] = 'field_data_field_duration_unit';
+  $handler->display->display_options['fields']['field_duration_unit']['field'] = 'field_duration_unit';
   /* Field: Content: Edit link */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
-  /* Sort criterion: Content: Yderligere oplysninger til varighed og pris (field_price_info:format) */
-  $handler->display->display_options['sorts']['field_price_info_format']['id'] = 'field_price_info_format';
-  $handler->display->display_options['sorts']['field_price_info_format']['table'] = 'field_data_field_price_info';
-  $handler->display->display_options['sorts']['field_price_info_format']['field'] = 'field_price_info_format';
-  $handler->display->display_options['sorts']['field_price_info_format']['order'] = 'DESC';
   $handler->display->display_options['filter_groups']['groups'] = array(
     1 => 'OR',
   );
-  /* Filter criterion: Content: Yderligere oplysninger til varighed og pris (field_price_info) */
-  $handler->display->display_options['filters']['field_price_info_value']['id'] = 'field_price_info_value';
-  $handler->display->display_options['filters']['field_price_info_value']['table'] = 'field_data_field_price_info';
-  $handler->display->display_options['filters']['field_price_info_value']['field'] = 'field_price_info_value';
-  $handler->display->display_options['filters']['field_price_info_value']['operator'] = 'not empty';
-  $handler->display->display_options['filters']['field_price_info_value']['group'] = 1;
-  $handler->display->display_options['filters']['field_price_info_value']['expose']['operator_id'] = 'field_price_info_value_op';
-  $handler->display->display_options['filters']['field_price_info_value']['expose']['label'] = 'Yderligere oplysninger til varighed og pris (field_price_info)';
-  $handler->display->display_options['filters']['field_price_info_value']['expose']['operator'] = 'field_price_info_value_op';
-  $handler->display->display_options['filters']['field_price_info_value']['expose']['identifier'] = 'field_price_info_value';
-  /* Filter criterion: Content: Beskrivelse til pris (field_price_description) */
-  $handler->display->display_options['filters']['field_price_description_value']['id'] = 'field_price_description_value';
-  $handler->display->display_options['filters']['field_price_description_value']['table'] = 'field_data_field_price_description';
-  $handler->display->display_options['filters']['field_price_description_value']['field'] = 'field_price_description_value';
-  $handler->display->display_options['filters']['field_price_description_value']['operator'] = 'not empty';
-  $handler->display->display_options['filters']['field_price_description_value']['group'] = 1;
-  /* Filter criterion: Content: Beskrivlese til varighed (field_duration_description) */
-  $handler->display->display_options['filters']['field_duration_description_value']['id'] = 'field_duration_description_value';
-  $handler->display->display_options['filters']['field_duration_description_value']['table'] = 'field_data_field_duration_description';
-  $handler->display->display_options['filters']['field_duration_description_value']['field'] = 'field_duration_description_value';
-  $handler->display->display_options['filters']['field_duration_description_value']['operator'] = 'not empty';
-  $handler->display->display_options['filters']['field_duration_description_value']['group'] = 1;
+  /* Filter criterion: Content: Varighed (field_duration) */
+  $handler->display->display_options['filters']['field_duration_value']['id'] = 'field_duration_value';
+  $handler->display->display_options['filters']['field_duration_value']['table'] = 'field_data_field_duration';
+  $handler->display->display_options['filters']['field_duration_value']['field'] = 'field_duration_value';
+  $handler->display->display_options['filters']['field_duration_value']['operator'] = 'not empty';
+  /* Filter criterion: Content: Vælg enhed (field_duration_unit) */
+  $handler->display->display_options['filters']['field_duration_unit_value']['id'] = 'field_duration_unit_value';
+  $handler->display->display_options['filters']['field_duration_unit_value']['table'] = 'field_data_field_duration_unit';
+  $handler->display->display_options['filters']['field_duration_unit_value']['field'] = 'field_duration_unit_value';
+  $handler->display->display_options['filters']['field_duration_unit_value']['operator'] = 'not empty';
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
@@ -124,15 +143,12 @@ Indhold hvor "Yderligere oplysninger til varighed og pris" er udfyldt ligger øv
     t('‹ previous'),
     t('next ›'),
     t('last »'),
-    t('Viser indhold hvor "Yderligere oplysninger til varighed og pris" eller de nye felter "Beskrivelse til pris" og "Beskrivelse til varighed" er blevet fyldt ud.
-
-Indhold hvor "Yderligere oplysninger til varighed og pris" er udfyldt ligger øverst i listen'),
+    t('Viser indhold hvor "Varighed" eller "Varighed enhed".
+Sorteret efter varighed'),
     t('Title'),
-    t('Yderligere oplysninger til varighed og pris'),
-    t('Beskrivelse til pris'),
-    t('Beskrivlese til varighed'),
+    t('Varighed'),
+    t('Vælg enhed'),
     t('Edit link'),
-    t('Yderligere oplysninger til varighed og pris (field_price_info)'),
     t('Page'),
   );
   $export['ulf_editor_tool'] = $view;
