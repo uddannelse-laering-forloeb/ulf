@@ -22,8 +22,9 @@ class SearchApiSearchNodeService extends SearchApiAbstractService {
 
     // Get connection to the client.
     if (isset($this->options['host'])) {
-      // Check for overriden api-key for setttings.php
+      // Check for overridden api-key and host from settings.php
       $apikey = variable_get('search_api_' . $server->machine_name . '_apikey', $this->options['apikey']);
+      $host = variable_get('search_api_' . $server->machine_name . '_host', $this->options['host']);
       $this->connection = new SearchNodeClient($this->options['host'], $apikey);
       $this->connection->authenticate();
     }
