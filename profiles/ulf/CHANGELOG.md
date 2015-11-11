@@ -8,6 +8,7 @@
 * Enable ulf_scheduler_notify module
 * Run update
 * Update search node configuration (raw multi-field) - JK
+* Revert setting feature for search and re-index data.
 
 ###Hotfix Setup duration and price
 * Restructured template directory
@@ -25,6 +26,7 @@
 
 ### Feature search filters
 * Added support for raw multi-field in search filters.
+* Updated settings for panels and search API.
 
 #v2.1.0
 
