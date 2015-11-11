@@ -283,6 +283,9 @@ function search_node_page_form_search_node_page_search_box_content_type_edit_for
           $info = field_info_field($field);
           $vocab = taxonomy_vocabulary_machine_name_load($info['settings']['allowed_values'][0]['vocabulary']);
           $filters[$field] = $vocab->name . ' (' . $field .')';
+
+          // Also add it to searchable fields.
+          $fields[$field] = $vocab->name . ' (' . $field .')';
           break;
 
         case 'date':
