@@ -7,6 +7,7 @@
 ##Release notes
 * Enable ulf_scheduler_notify module
 * Run update
+* Update search node configuration (raw multi-field) - JK
 
 ###Hotfix Setup duration and price
 * Restructured template directory
@@ -22,6 +23,8 @@
 * Added mail sending one week prior to unpublishing content to author/admin
 * Cleaned up l10n module (Caused error after update 2.1.0)
 
+### Feature search filters
+* Added support for raw multi-field in search filters.
 
 #v2.1.0
 
