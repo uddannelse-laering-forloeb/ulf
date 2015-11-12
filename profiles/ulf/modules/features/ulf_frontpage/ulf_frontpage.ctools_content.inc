@@ -20,7 +20,7 @@ function ulf_frontpage_default_ctools_custom_content() {
   $content->settings = array(
     'admin_title' => '',
     'title' => '',
-    'body' => '<article class="teaser--group is-course">
+    'body' => '<div class="teaser--group is-course">
 <a class="teaser--group-inner" href="/kurser">
 <div class="teaser--group-field">
 <img src="/profiles/ulf/themes/ulftheme/images/frontpage-course.jpg" alt="Kursus">
@@ -29,7 +29,7 @@ function ulf_frontpage_default_ctools_custom_content() {
 <div class="teaser--group-text-inner">Kurser</div>
 </div>
 </a>
-</article>',
+</div>',
     'format' => 'full_html',
     'substitute' => 1,
   );
@@ -45,7 +45,7 @@ function ulf_frontpage_default_ctools_custom_content() {
   $content->settings = array(
     'admin_title' => '',
     'title' => '',
-    'body' => '<article class="teaser--group">
+    'body' => '<div class="teaser--group">
 <a class="teaser--group-inner" href="/dagtilbud">
 <div class="teaser--group-field">
 <img src="/profiles/ulf/themes/ulftheme/images/frontpage-dagtilbud.jpg" alt="Dagtilbud">
@@ -54,7 +54,7 @@ function ulf_frontpage_default_ctools_custom_content() {
 <div class="teaser--group-text-inner">Dagtilbud</div>
 </div>
 </a>
-</article>',
+</div>',
     'format' => 'full_html',
     'substitute' => 1,
   );
@@ -70,7 +70,7 @@ function ulf_frontpage_default_ctools_custom_content() {
   $content->settings = array(
     'admin_title' => '',
     'title' => '',
-    'body' => '<article class="teaser--group">
+    'body' => '<div class="teaser--group">
 <a class="teaser--group-inner" href="/grundskole">
 <div class="teaser--group-field">
 <img src="/profiles/ulf/themes/ulftheme/images/frontpage-grundskole.jpg" alt="Grundskole">
@@ -79,7 +79,7 @@ function ulf_frontpage_default_ctools_custom_content() {
 <div class="teaser--group-text-inner">Grundskolen</div>
 </div>
 </a>
-</article>',
+</div>',
     'format' => 'full_html',
     'substitute' => 1,
   );
@@ -95,7 +95,7 @@ function ulf_frontpage_default_ctools_custom_content() {
   $content->settings = array(
     'admin_title' => '',
     'title' => '',
-    'body' => '<article class="teaser--group">
+    'body' => '<div class="teaser--group">
 <a class="teaser--group-inner" href="/ungdomsuddannelse">
 <div class="teaser--group-field">
 <img src="/profiles/ulf/themes/ulftheme/images/frontpage-ungdomsudd.jpg" alt="Ungdomsuddannelse">
@@ -104,7 +104,7 @@ function ulf_frontpage_default_ctools_custom_content() {
 <div class="teaser--group-text-inner">Ungdomsuddannelser</div>
 </div>
 </a>
-</article>',
+</div>',
     'format' => 'full_html',
     'substitute' => 1,
   );
