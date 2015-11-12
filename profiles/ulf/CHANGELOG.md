@@ -14,6 +14,7 @@
 
 #Other
 * Added script for unpublishing
+* Fixed bug in unpublished content admin view
 
 ###Hotfix Setup duration and price
 * Restructured template directory
