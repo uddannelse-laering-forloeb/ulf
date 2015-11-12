@@ -9,6 +9,10 @@
 * Run update
 * Update search node configuration (raw multi-field) - JK
 * Revert setting feature for search and re-index data.
+* Run drush ulf-su (ulf-set-unpublish) to set unpublishing date for courses and courses for educators
+
+#Other
+* Added script for unpublishing
 
 ###Hotfix Setup duration and price
 * Restructured template directory
