@@ -120,7 +120,7 @@ function ulf_course_field_default_field_instances() {
     'description' => 'Angiv beløbet efterfulgt af afregningsenhed eller vælg \'gratis\'',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'field_collection',
         'settings' => array(
           'view_mode' => 'full',
@@ -129,7 +129,7 @@ function ulf_course_field_default_field_instances() {
         'weight' => 11,
       ),
       'full' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'field_collection',
         'settings' => array(
           'view_mode' => 'full',
