@@ -26,7 +26,7 @@ function ulf_frontpage_default_page_manager_pages() {
   $handler = new stdClass();
   $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
   $handler->api_version = 1;
-  $handler->name = 'page_front_panel_context';
+  $handler->name = 'page_front__panel_context_c65e2e76-874a-4cef-80fd-a7843cba6a9a';
   $handler->task = 'page';
   $handler->subtask = 'front';
   $handler->handler = 'panel_context';
@@ -41,6 +41,7 @@ function ulf_frontpage_default_page_manager_pages() {
     'css' => '',
     'contexts' => array(),
     'relationships' => array(),
+    'name' => '',
   );
   $display = new panels_display();
   $display->layout = 'front_page';
@@ -207,7 +208,7 @@ function ulf_frontpage_default_page_manager_pages() {
     $pane->uuid = '611d291a-2e89-467d-b6e0-dd791e94b058';
     $display->content['new-611d291a-2e89-467d-b6e0-dd791e94b058'] = $pane;
     $display->panels['gamma'][0] = 'new-611d291a-2e89-467d-b6e0-dd791e94b058';
-  $display->hide_title = PANELS_TITLE_FIXED;
+  $display->hide_title = PANELS_TITLE_NONE;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
   $page->default_handlers[$handler->name] = $handler;
