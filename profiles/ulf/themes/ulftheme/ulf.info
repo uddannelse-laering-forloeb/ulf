@@ -11,6 +11,7 @@ stylesheets[all][] = icons/ulf-icons.css
 
 scripts[] = scripts/min/mobile-nav-min.js
 scripts[] = scripts/min/toggle-sub-menu-min.js
+scripts[] = scripts/min/siteimprove-min.js
 
 ; Disable stylesheets
 stylesheets[all][] = system.theme.css

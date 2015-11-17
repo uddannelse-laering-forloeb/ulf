@@ -167,6 +167,7 @@
                     <?php endif; ?>
                   <?php endif;?>
                   <?php if ($field_free['0']['value'] == 0 ) : ?>
+                    <div class="block--field-label"><?php print t('Price');?></div>
                     <?php print render($content['field_collection_price']); ?>
                   <?php else : ?>
                     <div class="block--field-label"><?php print t('This course is free.');?></div>
