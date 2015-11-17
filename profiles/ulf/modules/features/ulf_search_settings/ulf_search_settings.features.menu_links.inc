@@ -10,7 +10,7 @@
 function ulf_search_settings_menu_default_menu_links() {
   $menu_links = array();
 
-  // Exported menu link: main-menu_dagtilbud:dagtilbud
+  // Exported menu link: main-menu_dagtilbud:dagtilbud.
   $menu_links['main-menu_dagtilbud:dagtilbud'] = array(
     'menu_name' => 'main-menu',
     'link_path' => 'dagtilbud',
@@ -27,7 +27,7 @@ function ulf_search_settings_menu_default_menu_links() {
     'weight' => -50,
     'customized' => 1,
   );
-  // Exported menu link: main-menu_grundskole:grundskole
+  // Exported menu link: main-menu_grundskole:grundskole.
   $menu_links['main-menu_grundskole:grundskole'] = array(
     'menu_name' => 'main-menu',
     'link_path' => 'grundskole',

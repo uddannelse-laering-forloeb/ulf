@@ -157,21 +157,22 @@
                     <div class="block--field-text"><?php print t('All year');?></div>
                   <?php endif;?>
                   <?php print render($content['field_period_info']); ?>
-                  <?php if ($field_duration) : ?>
+                  <?php if ($field_duration || $field_duration_description) : ?>
                     <div class="block--field-label"><?php print t('Duration');?></div>
-                    <div class="block--field-text"><?php print $stripped_duration; ?><?php print render($content['field_duration_unit']); ?></div>
+                    <?php if ($field_duration) : ?>
+                      <div class="block--field-text"><?php print $stripped_duration; ?><?php print render($content['field_duration_unit']); ?></div>
+                    <?php endif; ?>
                     <?php if ($field_duration_description) : ?>
-                      <div class="block--field-label"><?php print t('About duration');?></div>
                       <div class="block--field-text"><?php print render($content['field_duration_description']); ?></div>
                     <?php endif; ?>
                   <?php endif;?>
                   <?php if ($field_free['0']['value'] == 0 ) : ?>
+                    <div class="block--field-label"><?php print t('Price');?></div>
                     <?php print render($content['field_collection_price']); ?>
                   <?php else : ?>
                     <div class="block--field-label"><?php print t('This course is free.');?></div>
                   <?php endif;?>
                   <?php if ($field_price_description) : ?>
-                    <div class="block--field-label"><?php print t('About price');?></div>
                     <div class="block--field-text"><?php print render($content['field_price_description']); ?></div>
                   <?php endif; ?>
                 </div>

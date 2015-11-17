@@ -283,6 +283,9 @@ function search_node_page_form_search_node_page_search_box_content_type_edit_for
           $info = field_info_field($field);
           $vocab = taxonomy_vocabulary_machine_name_load($info['settings']['allowed_values'][0]['vocabulary']);
           $filters[$field] = $vocab->name . ' (' . $field .')';
+
+          // Also add it to searchable fields.
+          $fields[$field] = $vocab->name . ' (' . $field .')';
           break;
 
         case 'date':
@@ -650,6 +653,8 @@ function search_node_page_build_search_box($configuration = array()) {
       }
     }
 
+    // Check for host override in settings.php.
+    $host = variable_get('search_api_' . $server->machine_name . '_host', $server->options['host']);
 
     // Build array to convert to json configuration.
     $conf = array(
@@ -661,7 +666,7 @@ function search_node_page_build_search_box($configuration = array()) {
       ),
       'provider' => array(
         'service' => 'searchNodeProvider',
-        'host' => $server->options['host'],
+        'host' => $host,
         'auth' => '/search_node/api/' . $server->machine_name . '/auth',
         'index' => $index->options['search_node_indexes'],
         'fields' => array_values($fields),

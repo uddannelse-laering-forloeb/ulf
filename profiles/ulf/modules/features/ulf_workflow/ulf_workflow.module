@@ -225,7 +225,7 @@ function ulf_workflow_form_node_form_alter(&$form, &$form_state, $form_id) {
 /**
  * Custom submit handler/function to the course & course_educators form.
  *
- * Changes done to the node regardless of action selected for saving.
+ * Contains changes done to the node regardless of action selected for saving.
  */
 function ulf_workflow_global_submit($form, &$form_state) {
   // Get to date is set.
