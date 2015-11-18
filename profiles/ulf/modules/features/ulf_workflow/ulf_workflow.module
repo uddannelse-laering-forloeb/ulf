@@ -228,8 +228,8 @@ function ulf_workflow_form_node_form_alter(&$form, &$form_state, $form_id) {
  * Contains changes done to the node regardless of action selected for saving.
  */
 function ulf_workflow_global_submit($form, &$form_state) {
-  // Get to date is set.
-  if (isset($form_state['values']['field_period']['und']['0']['value2'])) {
+  // If "to date" and we are editing existing node(has nid) set scheduling options.
+  if (isset($form_state['values']['field_period']['und']['0']['value2']) && isset($form_state['values']['nid'])) {
     // Get to date from period field.
     $period_timestamp_to_date = $form_state['values']['field_period']['und']['0']['value2'];
 
@@ -367,6 +367,47 @@ function ulf_workflow_user_update(&$edit, $account, $category) {
 function ulf_workflow_node_insert($node) {
   if (($node->type == 'course' || $node->type == 'course_educators')) {
     $_GET['destination'] = 'node/' . $node->nid . '/edit';
+
+
+    // Set scheduler date (We need to do this for newly created nodes after they have been assigned a nid.)
+    // Existing nodes are assigned unscheduling in ulf_workflow_global_submit() function.
+    if (isset($node->field_period['und']['0']['value2'])) {
+      // Get to date from period field.
+      $period_timestamp_to_date = $node->field_period['und']['0']['value2'];
+
+      // Register timestamp a week prior for sending email.
+      $week_prior = $period_timestamp_to_date - 604800;
+
+      // Remove old nid entry element.
+      if (db_table_exists('scheduler')) {
+        db_delete('scheduler')
+          ->condition('nid', $node->nid)
+          ->execute();
+
+        // Create new entry from nid.
+        db_insert('scheduler')
+          ->fields(array(
+            'nid' => $node->nid,
+            'publish_on' => 0,
+            'unpublish_on' => $period_timestamp_to_date,
+          ))
+          ->execute();
+      }
+
+      // Remove old node entry from scheduled notifications so we don't create more entries for sending "a week prior mail".
+      db_delete('scheduler_notify')
+        ->condition('nid', $node->nid)
+        ->execute();
+
+      // Create new entry from form state.
+      db_insert('scheduler_notify')
+        ->fields(array(
+          'nid' => $node->nid,
+          'uid' => $node->uid,
+          'send_mail_on' => $week_prior,
+        ))
+        ->execute();
+    }
   }
 }
 
@@ -383,7 +424,7 @@ function ulf_workflow_node_presave($node) {
     global $user;
     $get_parameters = drupal_get_query_parameters();
 
-    // If attached parameter is unpublished or we asume running cron (current path and user check)
+    // If attached parameter is unpublished or we assume running cron (current path and user check)
     if (array_key_exists('unpublish', $get_parameters) || ($_GET['q'] == 'front' && $user->uid == 0)) {
 
       // Presave is also run for each revision, we only want to act when we are saving the actual node.
