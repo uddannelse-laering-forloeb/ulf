@@ -2,6 +2,11 @@
 
 #In development
 
+#v2.1.2
+
+###Hotfix Node creation error
+* Fixed fatal error when creating new nodes
+
 #v2.1.1
 
 ##Release notes
