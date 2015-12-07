@@ -1,6 +1,7 @@
 #ULF changelog
 
-#In development
+#v2.2.0
+* Updated install profile to reflect ULF version 2.0.0
 
 #v2.1.2
 

@@ -6,6 +6,7 @@
 *
 * Perform actions to set up the site for this profile.
 */
+/*
 function ulf_install() {
 // Disable and enable the themes.
   $enable = array(
@@ -26,42 +27,4 @@ function ulf_install() {
   // Use administration theme on nodes
   variable_set('node_admin_theme', '1');
 }
-
-/**
- * Implements hook_update_N().
- *
- * Enable new modules for profile, disable old ones.
- */
-function ulf_update_7001(){
-  $modules_disable = array(
-    'facetapi',
-    'facetapi_bonus',
-    'ulf_search',
-    'ulf_practical_information_view',
-    'ulf_practical_information_moderation'
-  );
-
-  $modules_enable = array(
-    'mailchimp',
-    'mailchimp_signup',
-    'eu_cookie_compliance',
-    'ulf_footer'
-  );
-
-  module_disable($modules_disable);
-  module_enable($modules_enable);
-}
-
-/**
- * Implements hook_update_N().
- *
- * Enable new modules for profile, disable old ones.
- */
-function ulf_update_7002(){
-  $modules_enable = array(
-    'views_ui',
-    'manualcrop',
-  );
-
-  module_enable($modules_enable);
-}
+*/
