@@ -37,6 +37,7 @@ dependencies[] = ulf_search
 dependencies[] = ulf_search_settings
 
 ; Contrib modules (Not enabled by ulf setup).
+dependencies[] = user
 dependencies[] = date_popup
 dependencies[] = entity_token
 dependencies[] = fe_block

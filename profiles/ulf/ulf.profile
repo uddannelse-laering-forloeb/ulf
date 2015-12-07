@@ -33,6 +33,28 @@ if (!function_exists("system_form_install_select_profile_form_alter")) {
   }
 }
 
+/**
+ * Implements hook_form_alter().
+ *
+ * Remove #required attribute for form elements in the installer
+ * as they prevent the install profile from being run using drush
+ * site-install.
+ *
+ * These elements will usually be added by modules implementing
+ * hook_ding_install_tasks and passing a default administration form. While
+ * setting elements as required in the administration is reasonable, during
+ * the installation we may present the users with required form elements
+ * they do not know how to handle and thus prevent them from completing the
+ * installation.
+ */
+function ulf_form_alter(&$form, &$form_state, $form_id) {
+  // Process all forms during installation except the Drupal default
+  // configuration form.
+  if (defined('MAINTENANCE_MODE') && MAINTENANCE_MODE == 'install' &&
+    $form_id != 'install_configure_form') {
+    array_walk_recursive($form, '_ulf_remove_form_requirements');
+  }
+}
 
 /**
  * Implements hook_install_tasks().
@@ -42,7 +64,8 @@ if (!function_exists("system_form_install_select_profile_form_alter")) {
  */
 function ulf_install_tasks(&$install_state) {
   $tasks = variable_get('ulf_install_tasks', array());
-
+  //print_r($install_state);
+  //print_r($tasks);
   if (!empty($tasks)) {
     // Allow task callbacks to be located in an include file.
     foreach ($tasks as $task) {
@@ -59,7 +82,9 @@ function ulf_install_tasks(&$install_state) {
 
   include_once 'libraries/profiler/profiler_api.inc';
 
+  /*
   $ret = array(
+
     // Add task to select provider and extra ulf modules.
     'ulf_module_selection_form' => array(
       'display_name' => st('Module selection'),
@@ -95,7 +120,19 @@ function ulf_install_tasks(&$install_state) {
     ),
   ) + $tasks + array('profiler_install_profile_complete' => array());
 
+  */
+
+  $ret = array(
+    // Add task to select provider and extra ulf modules.
+    'ulf_theme_selection_form' => array(
+      'display_name' => st('Theme selection'),
+      'display' => TRUE,
+      'type' => 'form',
+      'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
+    ),
+  );
   return $ret;
+
 }
 
 
@@ -172,6 +209,21 @@ function _ulf_remove_form_requirements(&$value, $key) {
     $value = FALSE;
   }
 }
+
+function ulf_theme_selection_form($form, &$form_state) {
+  $themes = list_themes();
+  $a = 1;
+  $form['themes'] = array(
+    // Title left empty to create more space in the ui.
+    '#title' => '',
+    '#type' => 'checkboxes',
+    '#options' => $themes,
+    '#default_value' => array(
+      'ulf_pdf',
+    ),
+  );
+}
+
 
 /**
  * Installation task that handle selection of provider and modules.
