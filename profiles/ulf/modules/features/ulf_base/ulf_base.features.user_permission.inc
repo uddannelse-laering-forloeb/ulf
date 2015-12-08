@@ -273,18 +273,14 @@ function ulf_base_user_default_permissions() {
   // Exported permission: 'delete terms in course_relevancy_educators'.
   $permissions['delete terms in course_relevancy_educators'] = array(
     'name' => 'delete terms in course_relevancy_educators',
-    'roles' => array(
-      'editor' => 'editor',
-    ),
+    'roles' => array(),
     'module' => 'taxonomy',
   );
 
   // Exported permission: 'delete terms in educational_goals'.
   $permissions['delete terms in educational_goals'] = array(
     'name' => 'delete terms in educational_goals',
-    'roles' => array(
-      'editor' => 'editor',
-    ),
+    'roles' => array(),
     'module' => 'taxonomy',
   );
 
@@ -298,9 +294,7 @@ function ulf_base_user_default_permissions() {
   // Exported permission: 'delete terms in offer_type'.
   $permissions['delete terms in offer_type'] = array(
     'name' => 'delete terms in offer_type',
-    'roles' => array(
-      'editor' => 'editor',
-    ),
+    'roles' => array(),
     'module' => 'taxonomy',
   );
 
@@ -314,18 +308,14 @@ function ulf_base_user_default_permissions() {
   // Exported permission: 'delete terms in subjects_primary_school'.
   $permissions['delete terms in subjects_primary_school'] = array(
     'name' => 'delete terms in subjects_primary_school',
-    'roles' => array(
-      'editor' => 'editor',
-    ),
+    'roles' => array(),
     'module' => 'taxonomy',
   );
 
   // Exported permission: 'delete terms in subjects_youth'.
   $permissions['delete terms in subjects_youth'] = array(
     'name' => 'delete terms in subjects_youth',
-    'roles' => array(
-      'editor' => 'editor',
-    ),
+    'roles' => array(),
     'module' => 'taxonomy',
   );
 
@@ -346,18 +336,14 @@ function ulf_base_user_default_permissions() {
   // Exported permission: 'delete terms in target_group_sub'.
   $permissions['delete terms in target_group_sub'] = array(
     'name' => 'delete terms in target_group_sub',
-    'roles' => array(
-      'editor' => 'editor',
-    ),
+    'roles' => array(),
     'module' => 'taxonomy',
   );
 
   // Exported permission: 'delete terms in topic'.
   $permissions['delete terms in topic'] = array(
     'name' => 'delete terms in topic',
-    'roles' => array(
-      'editor' => 'editor',
-    ),
+    'roles' => array(),
     'module' => 'taxonomy',
   );
 
@@ -371,18 +357,14 @@ function ulf_base_user_default_permissions() {
   // Exported permission: 'edit terms in course_relevancy_educators'.
   $permissions['edit terms in course_relevancy_educators'] = array(
     'name' => 'edit terms in course_relevancy_educators',
-    'roles' => array(
-      'editor' => 'editor',
-    ),
+    'roles' => array(),
     'module' => 'taxonomy',
   );
 
   // Exported permission: 'edit terms in educational_goals'.
   $permissions['edit terms in educational_goals'] = array(
     'name' => 'edit terms in educational_goals',
-    'roles' => array(
-      'editor' => 'editor',
-    ),
+    'roles' => array(),
     'module' => 'taxonomy',
   );
 
@@ -396,9 +378,7 @@ function ulf_base_user_default_permissions() {
   // Exported permission: 'edit terms in offer_type'.
   $permissions['edit terms in offer_type'] = array(
     'name' => 'edit terms in offer_type',
-    'roles' => array(
-      'editor' => 'editor',
-    ),
+    'roles' => array(),
     'module' => 'taxonomy',
   );
 
@@ -412,18 +392,14 @@ function ulf_base_user_default_permissions() {
   // Exported permission: 'edit terms in subjects_primary_school'.
   $permissions['edit terms in subjects_primary_school'] = array(
     'name' => 'edit terms in subjects_primary_school',
-    'roles' => array(
-      'editor' => 'editor',
-    ),
+    'roles' => array(),
     'module' => 'taxonomy',
   );
 
   // Exported permission: 'edit terms in subjects_youth'.
   $permissions['edit terms in subjects_youth'] = array(
     'name' => 'edit terms in subjects_youth',
-    'roles' => array(
-      'editor' => 'editor',
-    ),
+    'roles' => array(),
     'module' => 'taxonomy',
   );
 
@@ -444,18 +420,14 @@ function ulf_base_user_default_permissions() {
   // Exported permission: 'edit terms in target_group_sub'.
   $permissions['edit terms in target_group_sub'] = array(
     'name' => 'edit terms in target_group_sub',
-    'roles' => array(
-      'editor' => 'editor',
-    ),
+    'roles' => array(),
     'module' => 'taxonomy',
   );
 
   // Exported permission: 'edit terms in topic'.
   $permissions['edit terms in topic'] = array(
     'name' => 'edit terms in topic',
-    'roles' => array(
-      'editor' => 'editor',
-    ),
+    'roles' => array(),
     'module' => 'taxonomy',
   );
 
@@ -513,9 +485,7 @@ function ulf_base_user_default_permissions() {
   // Exported permission: 'use text format full_html'.
   $permissions['use text format full_html'] = array(
     'name' => 'use text format full_html',
-    'roles' => array(
-      'editor' => 'editor',
-    ),
+    'roles' => array(),
     'module' => 'filter',
   );
 

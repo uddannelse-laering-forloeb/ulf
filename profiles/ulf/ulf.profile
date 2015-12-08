@@ -82,8 +82,16 @@ function ulf_install_tasks(&$install_state) {
 
   include_once 'libraries/profiler/profiler_api.inc';
 
-  /*
+
   $ret = array(
+
+    // Add task to select provider and extra ulf modules.
+    'ulf_theme_selection_form' => array(
+      'display_name' => st('Theme selection'),
+      'display' => TRUE,
+      'type' => 'form',
+      'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
+    ),
 
     // Add task to select provider and extra ulf modules.
     'ulf_module_selection_form' => array(
@@ -100,74 +108,32 @@ function ulf_install_tasks(&$install_state) {
       'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
       'type' => 'batch',
     ),
+    /*
+        // Import ulf translations.
+        'ulf_import_ulf_translations' => array(
+          'display_name' => st('Import translations'),
+          'display' => TRUE,
+          'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
+          'type' => 'batch',
+        ),
 
-    // Import ulf translations.
-    'ulf_import_ulf_translations' => array(
-      'display_name' => st('Import translations'),
-      'display' => TRUE,
-      'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
-      'type' => 'batch',
-    ),
+        // Add extra tasks based on hook_ulf_install_task, which may be provided by
+        // the selection task above.
+        'ulf_fetch_ulf_install_tasks' => array(
+          'display_name' => 'Configure ulf...',
+          // This task should be skipped and hidden when ulf install tasks
+          // have been fetched. Fetched tasks will appear instead.
+          'run' => empty($tasks) ? INSTALL_TASK_RUN_IF_REACHED : INSTALL_TASK_SKIP,
+          'display' => empty($tasks),
+        ),
+      ) + $tasks + array('profiler_install_profile_complete' => array());
 
-    // Add extra tasks based on hook_ulf_install_task, which may be provided by
-    // the selection task above.
-    'ulf_fetch_ulf_install_tasks' => array(
-      'display_name' => 'Configure ulf...',
-      // This task should be skipped and hidden when ulf install tasks
-      // have been fetched. Fetched tasks will appear instead.
-      'run' => empty($tasks) ? INSTALL_TASK_RUN_IF_REACHED : INSTALL_TASK_SKIP,
-      'display' => empty($tasks),
-    ),
-  ) + $tasks + array('profiler_install_profile_complete' => array());
-
-  */
-
-  $ret = array(
-    // Add task to select provider and extra ulf modules.
-    'ulf_theme_selection_form' => array(
-      'display_name' => st('Theme selection'),
-      'display' => TRUE,
-      'type' => 'form',
-      'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
-    ),
+      */
   );
   return $ret;
 
 }
 
-
-/**
- * Translation callback.
- *
- * @param string $install_state
- *   An array of information about the current installation state.
- *
- * @return array
- *   List of batches.
- */
-function ulf_import_ulf_translations(&$install_state) {
-  // Enable danish language.
-  include_once DRUPAL_ROOT . '/includes/locale.inc';
-  locale_add_language('da', NULL, NULL, NULL, '', NULL, TRUE, FALSE);
-
-  // Add import of ulf translations.
-  $operations = array();
-  $operations[] = array(
-    '_ulf_insert_translation',
-    array(
-      'default',
-      '/profiles/ulf/translations/da.po',
-    ),
-  );
-
-  $batch = array(
-    'title' => st('Installing ulf translations'),
-    'operations' => $operations,
-    'file' => drupal_get_path('profile', 'ulf') . '/ulf.install_callbacks.inc',
-  );
-
-  return $batch;
-}
 
 /**
  * Implements hook_install_tasks_alter().
@@ -183,12 +149,14 @@ function ulf_install_tasks_alter(&$tasks, $install_state) {
   $tasks['install_select_locale']['function'] = 'ulf_locale_selection';
 }
 
+
 /**
  * Set default language to english.
  */
 function ulf_locale_selection(&$install_state) {
   $install_state['parameters']['locale'] = 'en';
 }
+
 
 /**
  * Fetch ulf install tasks from modules implementing hook_ulf_install_tasks().
@@ -200,6 +168,7 @@ function ulf_fetch_ulf_install_tasks(&$install_state) {
   variable_set('ulf_install_tasks', $ulf_tasks);
 }
 
+
 /**
  * Function to remove all required attributes from a form element array.
  */
@@ -210,18 +179,70 @@ function _ulf_remove_form_requirements(&$value, $key) {
   }
 }
 
+
 function ulf_theme_selection_form($form, &$form_state) {
   $themes = list_themes();
-  $a = 1;
+  $theme_select = array();
+  foreach($themes as $key => $value){
+    $theme_select[$value->name] = $value->info['name'];
+  }
+
   $form['themes'] = array(
+    '#title' => st('Select your Ulf theme'),
+    '#type' => 'fieldset',
+    '#description' => st('Select the theme you want to use.'),
+  );
+
+  $form['themes']['theme_selection'] = array(
     // Title left empty to create more space in the ui.
     '#title' => '',
-    '#type' => 'checkboxes',
-    '#options' => $themes,
-    '#default_value' => array(
-      'ulf_pdf',
-    ),
+    '#type' => 'radios',
+    '#options' => $theme_select,
+    '#default_value' => isset($theme_select['ulf']) ? $theme_select['ulf'] : 1,
   );
+
+  // Submit the selections.
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => st('Select theme'),
+  );
+
+  return $form;
+}
+
+
+/**
+ * Submit handler that selects a theme for ulf.
+ */
+function ulf_theme_selection_form_submit($form, &$form_state) {
+  // Get form values.
+  $values = $form_state['values'];
+
+  // Disable all themes.
+  $themes = list_themes();
+  $disable_themes = array();
+  foreach($themes as $key => $value){
+    $disable_themes[] = $value->name;
+  }
+
+  theme_disable($disable_themes);
+
+
+  // Disable and enable the themes.
+  $enable = array(
+    'theme_default' => $values['theme_selection'],
+    'admin_theme' => 'seven',
+  );
+  theme_enable($enable);
+
+  foreach ($enable as $var => $theme) {
+    if (!is_numeric($var)) {
+      variable_set($var, $theme);
+    }
+  }
+
+  // Use administration theme on nodes
+  variable_set('node_admin_theme', '1');
 }
 
 
@@ -229,9 +250,7 @@ function ulf_theme_selection_form($form, &$form_state) {
  * Installation task that handle selection of provider and modules.
  */
 function ulf_module_selection_form($form, &$form_state) {
-  //
   // Optional modules.
-  //
   $modules = array(
     'ulf_pdf' => st('PDF module'),
   );
@@ -252,9 +271,7 @@ function ulf_module_selection_form($form, &$form_state) {
     ),
   );
 
-  //
   // Favicon, logo & iOS icon upload.
-  //
   // Logo settings.
   $form['logo'] = array(
     '#type' => 'fieldset',
@@ -369,9 +386,7 @@ function ulf_module_selection_form($form, &$form_state) {
     '#default_value' => '',
   );
 
-  //
   // Submit the selections.
-  //
   $form['submit'] = array(
     '#type' => 'submit',
     '#value' => st('Enable modules'),
@@ -383,6 +398,7 @@ function ulf_module_selection_form($form, &$form_state) {
 
   return $form;
 }
+
 
 /**
  * Validate handler for ulf_module_selection_form().
@@ -416,6 +432,7 @@ function ulf_module_selection_form_validate($form, &$form_state) {
     }
   }
 }
+
 
 /**
  * Submit handler that enables the modules.
@@ -461,8 +478,9 @@ function ulf_module_selection_form_submit($form, &$form_state) {
   variable_set('ulf_module_selected', $module_list);
 }
 
+
 /**
- * Builds an batch module enable operations list based on module list.
+ * Builds a batch module enable operations list based on module list.
  *
  * @param array $module_list
  *   List of module names to change to operations.
@@ -505,6 +523,7 @@ function ulf_module_list_as_operations($module_list) {
   return $operations;
 }
 
+
 /**
  * Enable selected ulf modules as a batch process.
  */
@@ -523,6 +542,41 @@ function ulf_module_enable(&$install_state) {
 
   return $batch;
 }
+
+
+/**
+ * Translation callback.
+ *
+ * @param string $install_state
+ *   An array of information about the current installation state.
+ *
+ * @return array
+ *   List of batches.
+ */
+function ulf_import_ulf_translations(&$install_state) {
+  // Enable danish language.
+  include_once DRUPAL_ROOT . '/includes/locale.inc';
+  locale_add_language('da', NULL, NULL, NULL, '', NULL, TRUE, FALSE);
+
+  // Add import of ulf translations.
+  $operations = array();
+  $operations[] = array(
+    '_ulf_insert_translation',
+    array(
+      'default',
+      '/profiles/ulf/translations/da.po',
+    ),
+  );
+
+  $batch = array(
+    'title' => st('Installing ulf translations'),
+    'operations' => $operations,
+    'file' => drupal_get_path('profile', 'ulf') . '/ulf.install_callbacks.inc',
+  );
+
+  return $batch;
+}
+
 
 /**
  * Helper function to filter out already enabled modules.
