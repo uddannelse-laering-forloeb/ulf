@@ -1,18 +1,19 @@
-profile
-=======
+#Install profile setup
 
-Installation profile.
+##The setup
 
-From your intended document root run:
+###Changelog
+* CHANGELOG.md located at /htdocs/profiles/ulf
+* Logs ITK changes made to the dokk1 project.
 
-drush make --concurrency=1 --working-copy --contrib-destination=profiles/ulf/ http://raw.github.com/uddannelse-laering-forloeb/ulf/development/drupal.make -y
+##Install guide
+* 1) Run vagrant up
+* 2) Run ./install.sh
+* 3) Run vagrant ssh
+* 4) Clone your theme rep into /htdocs/profiles/ulf/themes. 
+* 5) Run site_setup.sh
+* You should now have an empty ulf installation.
 
 
-------------------------------
-
-
-To export your panel pages after changing panes or other panel content run:
-
-drush ctex ulf_pages --subdir=../../../profiles/ulf/modules/ulf_custom --remove --tables="page_manager_handlers","page_manager_pages"
-
-Select "Export everything".
+###Patches
+* https://www.drupal.org/files/1093420-22.patch (Used by profiler module during site install)

@@ -27,14 +27,12 @@ dependencies[] = ulf_forms
 dependencies[] = ulf_frontpage
 dependencies[] = ulf_moderations
 dependencies[] = ulf_node_clone
-;dependencies[] = ulf_pdf
 dependencies[] = ulf_scheduler_notify
 dependencies[] = ulf_workflow
 dependencies[] = ulf_wysiwyg
 
 ; ULF Search.
 dependencies[] = ulf_search
-dependencies[] = ulf_search_settings
 
 ; Contrib modules (Not enabled by ulf setup).
 dependencies[] = user

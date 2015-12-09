@@ -1,12 +1,10 @@
 name = Ulf taxonomies
-description = Holds taxonomies and their terms, includes taxonomy view.
+description = Holds taxonomies, includes taxonomy view.
 core = 7.x
 package = Ulf entity definitions
 dependencies[] = features
 dependencies[] = taxonomy
 dependencies[] = ulf_base
-dependencies[] = uuid
-dependencies[] = uuid_features
 dependencies[] = views
 features[ctools][] = strongarm:strongarm:1
 features[ctools][] = views:views_default:3.0

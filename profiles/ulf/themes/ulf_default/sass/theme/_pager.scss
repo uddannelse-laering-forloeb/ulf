@@ -1,0 +1,89 @@
+/**
+ *
+ * Pager
+ *
+ * The pager uses Drupals default html. Thus we nest to style elements within.
+ * "We can't stop here. This is bat country!!"
+ *
+ */
+
+
+/* Styles.
+================================================================================================================== */
+
+.pager {
+  @include flexbox;
+  @include flex-flow(row wrap);
+  @include justify-content(center);
+
+  border-top: 1px dashed $gray-light;
+  margin-top: 2em;
+  padding-top: 2em;
+  padding-left: 0;
+  text-align: center;
+  width: 100%;
+
+  li {
+    @include flex(0 1 42px);
+
+    cursor: pointer;
+    margin: 4px;
+
+    &.pager-first,
+    &.pager-previous,
+    &.pager-next,
+    &.pager-last {
+      @include flex(0 1 84px);
+    }
+  }
+
+  a,
+  span {
+    display: block;
+    padding-top: .5em;
+    padding-right: 1em;
+    padding-bottom: .4em;
+    padding-left: 1em;
+    background-color: $gray-lighter;
+    text-decoration: none;
+
+    &:hover {
+      background-color: darken($gray-lighter, 5%);
+      text-decoration: none;
+    }
+  }
+
+  .pager-current {
+    @include flexbox;
+
+    background-color: $gray-light;
+    color: $white;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+      background-color: darken($gray-light, 5%);
+    }
+
+    span {
+      background-color: $gray-light;
+
+      &:hover {
+        background-color: $gray-light;
+      }
+    }
+  }
+
+  .disabled {
+    background-color: $gray-lightest;
+  }
+  .disabled a:hover {
+    cursor: default;
+    text-decoration: none;
+  }
+}
+
+// Hide invisible element completely.
+.element-invisible {
+  display: none;
+}

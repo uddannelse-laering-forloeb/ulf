@@ -84,7 +84,6 @@ function ulf_install_tasks(&$install_state) {
 
 
   $ret = array(
-
     // Add task to select provider and extra ulf modules.
     'ulf_theme_selection_form' => array(
       'display_name' => st('Theme selection'),
@@ -108,30 +107,33 @@ function ulf_install_tasks(&$install_state) {
       'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
       'type' => 'batch',
     ),
-    /*
-        // Import ulf translations.
-        'ulf_import_ulf_translations' => array(
-          'display_name' => st('Import translations'),
-          'display' => TRUE,
-          'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
-          'type' => 'batch',
-        ),
 
-        // Add extra tasks based on hook_ulf_install_task, which may be provided by
-        // the selection task above.
-        'ulf_fetch_ulf_install_tasks' => array(
-          'display_name' => 'Configure ulf...',
-          // This task should be skipped and hidden when ulf install tasks
-          // have been fetched. Fetched tasks will appear instead.
-          'run' => empty($tasks) ? INSTALL_TASK_RUN_IF_REACHED : INSTALL_TASK_SKIP,
-          'display' => empty($tasks),
-        ),
-      ) + $tasks + array('profiler_install_profile_complete' => array());
+    // Setup taxonomies.
+    'ulf_fetch_terms' => array(
+      'display_name' => st('Setup taxonomies'),
+      'display' => TRUE,
+      'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
+      'type' => 'batch',
+    ),
 
-      */
-  );
+    // Import ulf translations.
+    'ulf_import_ulf_translations' => array(
+      'display_name' => st('Import translations'),
+      'display' => TRUE,
+      'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
+      'type' => 'batch',
+    ),
+
+    // Import ulf translations.
+    'ulf_create_basic_content' => array(
+      'display_name' => st('Create basic content'),
+      'display' => TRUE,
+      'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
+      'type' => 'batch',
+    ),
+  ) + $tasks + array('profiler_install_profile_complete' => array());
+
   return $ret;
-
 }
 
 
@@ -228,7 +230,7 @@ function ulf_theme_selection_form_submit($form, &$form_state) {
   theme_disable($disable_themes);
 
 
-  // Disable and enable the themes.
+  // Enable desired themes themes and set seven as admin.
   $enable = array(
     'theme_default' => $values['theme_selection'],
     'admin_theme' => 'seven',
@@ -253,6 +255,9 @@ function ulf_module_selection_form($form, &$form_state) {
   // Optional modules.
   $modules = array(
     'ulf_pdf' => st('PDF module'),
+    'ulf_cookie_compliance' => st('ULF cookie compliance module'),
+    'googleanalytics' => st('Google analytics'),
+    'mailchimp' => st('Mailchimp'),
   );
 
   $form['modules'] = array(
@@ -269,6 +274,13 @@ function ulf_module_selection_form($form, &$form_state) {
     '#default_value' => array(
       'ulf_pdf',
     ),
+  );
+
+  $form['modules']['terms'] = array(
+    '#title' => st('Use ULF default terms'),
+    '#type' => 'checkbox',
+    '#default_value' => TRUE,
+    '#description' => st('The default terms include target groups, subjects, ages, classes, etc.'),
   );
 
   // Favicon, logo & iOS icon upload.
@@ -476,6 +488,63 @@ function ulf_module_selection_form_submit($form, &$form_state) {
 
   // Store selection to batch them in the next task.
   variable_set('ulf_module_selected', $module_list);
+
+  // Set whether to import default terms or not.
+  if (!empty($values['terms'])) {
+    variable_set('ulf_import_terms', $values['terms']);
+  }
+}
+
+
+/**
+ * Enable selected ulf modules as a batch process.
+ */
+function ulf_module_enable(&$install_state) {
+  $modules = variable_get('ulf_module_selected', array());
+
+  $operations = ulf_module_list_as_operations($modules);
+
+  $batch = array(
+    'title' => st('Installing additional functionality'),
+    'operations' => $operations,
+    'file' => drupal_get_path('profile', 'ulf') . '/ulf.install_callbacks.inc',
+  );
+
+  variable_del('ulf_module_selected');
+
+  return $batch;
+}
+
+
+/**
+ * Enable selected ulf modules as a batch process.
+ */
+  function ulf_fetch_terms(&$install_state) {
+  $import_terms = variable_get('ulf_import_terms');
+  // Return if we don't want default terms.
+  if(!$import_terms) {
+    return FALSE;
+  }
+
+  // Add import of ulf translations.
+  $operations = array();
+  $operations[] = array('_ulf_import_tax_topic', array());
+  $operations[] = array('_ulf_import_tax_target_group', array());
+  $operations[] = array('_ulf_import_tax_target_group_sub', array());
+  $operations[] = array('_ulf_import_tax_subjects_primary_school', array());
+  $operations[] = array('_ulf_import_tax_subjects_youth', array());
+  $operations[] = array('_ulf_import_tax_offer_type', array());
+  $operations[] = array('_ulf_import_tax_course_relevancy_educators', array());
+  $operations[] = array('_ulf_import_tax_educational_goals', array());
+
+  $batch = array(
+    'title' => st('Importing default terms'),
+    'operations' => $operations,
+    'file' => drupal_get_path('profile', 'ulf') . '/ulf.install_callbacks.inc',
+  );
+
+  variable_del('ulf_import_terms');
+  return $batch;
 }
 
 
@@ -525,26 +594,6 @@ function ulf_module_list_as_operations($module_list) {
 
 
 /**
- * Enable selected ulf modules as a batch process.
- */
-function ulf_module_enable(&$install_state) {
-  $modules = variable_get('ulf_module_selected', array());
-
-  $operations = ulf_module_list_as_operations($modules);
-
-  $batch = array(
-    'title' => st('Installing additional functionality'),
-    'operations' => $operations,
-    'file' => drupal_get_path('profile', 'ulf') . '/ulf.install_callbacks.inc',
-  );
-
-  variable_del('ulf_module_selected');
-
-  return $batch;
-}
-
-
-/**
  * Translation callback.
  *
  * @param string $install_state
@@ -560,8 +609,7 @@ function ulf_import_ulf_translations(&$install_state) {
 
   // Add import of ulf translations.
   $operations = array();
-  $operations[] = array(
-    '_ulf_insert_translation',
+  $operations[] = array('_ulf_insert_translation',
     array(
       'default',
       '/profiles/ulf/translations/da.po',
@@ -570,6 +618,32 @@ function ulf_import_ulf_translations(&$install_state) {
 
   $batch = array(
     'title' => st('Installing ulf translations'),
+    'operations' => $operations,
+    'file' => drupal_get_path('profile', 'ulf') . '/ulf.install_callbacks.inc',
+  );
+
+  return $batch;
+}
+
+
+
+/**
+ * Create some basic pages.
+ *
+ * @param string $install_state
+ *   An array of information about the current installation state.
+ *
+ * @return array
+ *   List of batches.
+ */
+function ulf_create_basic_content(&$install_state) {
+
+  // Add import of ulf translations.
+  $operations = array();
+  $operations[] = array('_ulf_create_basic_content', array());
+
+  $batch = array(
+    'title' => st('Creating basic content'),
     'operations' => $operations,
     'file' => drupal_get_path('profile', 'ulf') . '/ulf.install_callbacks.inc',
   );

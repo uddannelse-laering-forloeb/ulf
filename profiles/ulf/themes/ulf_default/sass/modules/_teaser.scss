@@ -1,0 +1,169 @@
+/**
+ *
+ * Teaser module.
+ *
+ * Display of list items (Ie. Frontpage and search results.)
+ *
+ */
+
+
+/* Placeholders, variables and mixins related to this document only.
+================================================================================================================== */
+
+// General teaser styles.
+%teaser--inner {
+  display: block;
+  height: 100%;
+  overflow: hidden;
+  margin: 0 $spacing / 2;
+  position: relative;
+}
+
+
+/* Styles.
+================================================================================================================== */
+
+/* Teaser representing a target group. */
+.teaser--group {
+  margin-bottom: $spacing;
+  width: 100%;
+
+  @include breakpoint(650px) {
+    margin-bottom: 0;
+    width: 33.33%;
+  }
+
+  &.is-course {
+    @include breakpoint(650px) {
+      width: 50%;
+    }
+  }
+
+  &-inner {
+    @extend %teaser--inner;
+
+    @include strip-link-styles($white);
+
+    // Change text background transparency when hovering on the teaser.
+    // State class names are fetched from taxonomy terms, thus Danish ...
+    &:hover .teaser--group-text {
+      &.is-dagtilbud {
+        @include background-set-color('green', 1);
+      }
+
+      &.is-grundskole {
+        @include background-set-color('purple', 1);
+      }
+
+      &.is-ungdomsuddannelse {
+        @include background-set-color('orange', 1);
+      }
+
+      &.is-course {
+        @include background-set-color('yellow', 1);
+      }
+    }
+  }
+
+  &-text {
+    @extend %content--header;
+
+    height: 90px;
+
+    &.is-dagtilbud {
+      @include background-set-color('green', 0.7);
+    }
+
+    &.is-grundskole {
+      @include background-set-color('purple', 0.7);
+    }
+
+    &.is-ungdomsuddannelse {
+      @include background-set-color('orange', 0.7);
+    }
+
+    &.is-course {
+      @include background-set-color('yellow', 0.7);
+    }
+
+    &-inner {
+      position: relative;
+      top: 70%;
+
+      @include transform(translateY(-50%));
+    }
+  }
+
+  &-field img{
+    width: 100%;
+  }
+}
+
+
+// Header above a list of teaser.
+.teaser--content-header {
+  background-color: $gray-lightest;
+  margin: 0 0 $spacing;
+  padding: 1em $spacing / 2;
+  text-transform: capitalize;
+  width: 100%;
+}
+
+
+.teaser--list {
+  @extend %teaser--list;
+}
+
+
+// Teaser display.
+.teaser {
+  @extend %teaser--wrapper;
+
+  background: $white; // For news.
+}
+
+
+.teaser--header {
+  @extend %teaser--header;
+}
+
+
+.teaser--type {
+  @extend %teaser--type;
+}
+
+.teaser--type-read-more {
+  @extend %teaser--type;
+
+  a {
+    padding-left: 1em;
+    background: transparent url("../images/arrow-right-icon.svg") no-repeat scroll left 2px;
+    background-size: .8em;
+  }
+}
+
+
+.teaser--filter {
+  .views-exposed-widgets {
+    @include flexbox;
+    @include flex-flow(row wrap);
+    @include justify-content(space-between);
+
+    .views-widget-filter-combine {
+      @include flex(0 1 60%);
+    }
+
+    .views-submit-button {
+      margin-top: 2.4em;
+    }
+  }
+}
+
+
+
+.teaser--list-button {
+  @extend .button;
+
+  margin: 0 auto; // Center buttons.
+}
+

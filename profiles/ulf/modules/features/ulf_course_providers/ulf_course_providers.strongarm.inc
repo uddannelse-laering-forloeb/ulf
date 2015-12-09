@@ -28,9 +28,6 @@ function ulf_course_providers_strongarm() {
     ),
     'extra_fields' => array(
       'form' => array(
-        'googleanalytics' => array(
-          'weight' => '12',
-        ),
         'redirect' => array(
           'weight' => '11',
         ),
