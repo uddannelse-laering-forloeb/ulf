@@ -40,7 +40,7 @@ function _ulf_insert_translation($type, $translation_file, &$context) {
 
 
 /**
- * Import default terms into the database.
+ * Import default terms into the database. (Topic taxonomy).
  */
 function _ulf_import_tax_topic(&$context) {
   $name = 'topic';
@@ -60,6 +60,9 @@ function _ulf_import_tax_topic(&$context) {
 }
 
 
+/**
+ * Import default terms into the database. (Target group taxonomy).
+ */
 function _ulf_import_tax_target_group(&$context) {
   $name = 'target_group';
   $taxonomy_terms = array(
@@ -72,6 +75,9 @@ function _ulf_import_tax_target_group(&$context) {
 }
 
 
+/**
+ * Import default terms into the database. (Target group sub taxonomy).
+ */
 function _ulf_import_tax_target_group_sub(&$context) {
   $name = 'target_group_sub';
   $taxonomy_terms = array(
@@ -103,6 +109,9 @@ function _ulf_import_tax_target_group_sub(&$context) {
 }
 
 
+/**
+ * Import default terms into the database. (Primary school taxonomy).
+ */
 function _ulf_import_tax_subjects_primary_school(&$context) {
   $name = 'subjects_primary_school';
   $taxonomy_terms = array(
@@ -133,7 +142,11 @@ function _ulf_import_tax_subjects_primary_school(&$context) {
 }
 
 
-function _ulf_import_tax_subjects_youth(&$context) {
+/**
+ * Import default terms into the database. (Youth subjects taxonomy).
+ * Divided into two steps to avoid timeout. (Step one)
+ */
+function _ulf_import_tax_subjects_youth_one(&$context) {
   $name = 'subjects_youth';
   $taxonomy_terms = array(
     'Afsætning',
@@ -167,6 +180,19 @@ function _ulf_import_tax_subjects_youth(&$context) {
     'Innovation',
     'International teknologi og kultur',
     'International økonomi',
+  );
+  _ulf_create_taxonomy_terms($name, $taxonomy_terms);
+  $context['message'] = st('Added youth education terms step one.');
+}
+
+
+/**
+ * Import default terms into the database. (Youth subjects taxonomy).
+ * Divided into two steps to avoid timeout. (Step two)
+ */
+function _ulf_import_tax_subjects_youth_two(&$context) {
+  $name = 'subjects_youth';
+  $taxonomy_terms = array(
     'It',
     'Italiensk',
     'Japansk',
@@ -207,10 +233,13 @@ function _ulf_import_tax_subjects_youth(&$context) {
     'Virksomhedsøkonomi',
   );
   _ulf_create_taxonomy_terms($name, $taxonomy_terms);
-  $context['message'] = st('Added youth education terms.');
+  $context['message'] = st('Added youth education terms step two.');
 }
 
 
+/**
+ * Import default terms into the database. (Offer type taxonomy).
+ */
 function _ulf_import_tax_offer_type(&$context) {
   $name = 'offer_type';
   $taxonomy_terms = array(
@@ -223,6 +252,9 @@ function _ulf_import_tax_offer_type(&$context) {
 }
 
 
+/**
+ * Import default terms into the database. (Educator relevance taxonomy).
+ */
 function _ulf_import_tax_course_relevancy_educators(&$context) {
   $name = 'course_relevancy_educators';
   $taxonomy_terms = array(
@@ -240,7 +272,9 @@ function _ulf_import_tax_course_relevancy_educators(&$context) {
   $context['message'] = st('Added course relevancy terms.');
 }
 
-
+/**
+ * Import default terms into the database. (Educational goals taxonomy).
+ */
 function _ulf_import_tax_educational_goals(&$context) {
   $name = 'educational_goals';
   $taxonomy_terms = array(
@@ -256,13 +290,12 @@ function _ulf_import_tax_educational_goals(&$context) {
 }
 
 
-function _ulf_create_basic_content(&$context) {
-  _ulf_create_basic_page();
-  $context['message'] = st('Added base content.');
-}
-
 /**
  * Create a taxonomy term and return the tid.
+ * @param
+ *  $name - String
+ *  $terms - Array
+ *
  */
 function _ulf_create_taxonomy_terms($name, $terms) {
   $taxonomy_obj = taxonomy_vocabulary_machine_name_load($name);
@@ -279,14 +312,66 @@ function _ulf_create_taxonomy_terms($name, $terms) {
 /**
  * Create a basic page node.
  */
-function _ulf_create_basic_page() {
+function _ulf_create_basic_pages(&$context) {
+  $node_definitions = array(
+    'om-os' => array(
+      'type' => 'static_page',
+      'title' => 'Om os',
+      'path' => 'om-os',
+      'content' => 'Lorem ipsum',
+      'menu' => 'main-menu'
+    ),
+    'kontakt' => array(
+      'type' => 'static_page',
+      'title' => 'Kontakt',
+      'path' => 'kontakt',
+      'content' => 'Lorem ipsum',
+      'menu' => 'menu-about-ulf'
+    ),
+  );
+
+  foreach($node_definitions as $node_arr) {
+    // Create a node.
+    _ulf_create_node($node_arr);
+
+    // Get latest created nid (The one above.)
+    $last_node = node_get_recent(1);
+    $nid = key($last_node);
+    // Create a menu link.
+    _ulf_create_menu_link($nid, $node_arr['menu'], $last_node[$nid]->title);
+  }
+
+  $context['message'] = st('Added basis page content.');
+}
+
+
+/**
+ * Create menu link.
+ */
+function _ulf_create_menu_link($id, $menu_name, $title) {
+  $item = array(
+    'link_path' => 'node/' . $id,
+    'link_title' => $title,
+    'menu_name' => $menu_name,
+    'module' => 'ulf',
+    'weight' => 10,
+    'expanded' => 1,
+    'customized' => 1,
+  );
+  menu_link_save($item);
+}
+
+/**
+ * Create a node.
+ */
+function _ulf_create_node($attributes) {
   $node = new stdClass();
-  $node->type = 'static_page';
+  $node->type = $attributes['type'];
   $node->language = LANGUAGE_NONE;
   node_object_prepare($node);
 
   // Settings.
-  $node->title = 'Om ud og lær Silkeborg';
+  $node->title = $attributes['title'];
   $node->status = 1;
   $node->promote = 1;
   $node->sticky = 0;
@@ -296,12 +381,14 @@ function _ulf_create_basic_page() {
   $node->created = strtotime('basic_page_post_date');
 
   // Path.
-  $path = 'om-ud-og-laer-silkeborg';
+  $path = $attributes['path'];
   $node->path = array('alias' => $path);
 
-  // Fields.
-  $node->field_content[LANGUAGE_NONE][0]['value'] = 'Lorem ipsum om Ud og Lær Silkeborg';
-  $node->field_content[LANGUAGE_NONE][0]['format'] = 'full_html';
+  if ($attributes['type'] == 'static_page' ) {
+    // Fields.
+    $node->field_content[LANGUAGE_NONE][0]['value'] = $attributes['content'];
+    $node->field_content[LANGUAGE_NONE][0]['format'] = 'editor';
+  }
 
   // Save the node.
   node_save($node);

@@ -124,7 +124,7 @@ function ulf_install_tasks(&$install_state) {
       'type' => 'batch',
     ),
 
-    // Import ulf translations.
+    // Add content.
     'ulf_create_basic_content' => array(
       'display_name' => st('Create basic content'),
       'display' => TRUE,
@@ -532,7 +532,8 @@ function ulf_module_enable(&$install_state) {
   $operations[] = array('_ulf_import_tax_target_group', array());
   $operations[] = array('_ulf_import_tax_target_group_sub', array());
   $operations[] = array('_ulf_import_tax_subjects_primary_school', array());
-  $operations[] = array('_ulf_import_tax_subjects_youth', array());
+  $operations[] = array('_ulf_import_tax_subjects_youth_one', array());
+  $operations[] = array('_ulf_import_tax_subjects_youth_two', array());
   $operations[] = array('_ulf_import_tax_offer_type', array());
   $operations[] = array('_ulf_import_tax_course_relevancy_educators', array());
   $operations[] = array('_ulf_import_tax_educational_goals', array());
@@ -640,7 +641,7 @@ function ulf_create_basic_content(&$install_state) {
 
   // Add import of ulf translations.
   $operations = array();
-  $operations[] = array('_ulf_create_basic_content', array());
+  $operations[] = array('_ulf_create_basic_pages', array());
 
   $batch = array(
     'title' => st('Creating basic content'),
