@@ -1,0 +1,33 @@
+<div data-ng-if="hits.hits" class="search-results-header">
+  <h2><strong>{{ hits.hits }}</strong> resultater</h2>
+</div>
+<div class="search-results">
+  <article class="search-results--result is-users" data-ng-repeat="hit in hits.results">
+    <div class="ribbon-wrapper left" data-ng-if="hit.field_free == true">
+      <div class="ribbon">
+        <a href="{{ hit.url }}">Gratis</a>
+      </div>
+    </div>
+    <header>
+      <h2 class="search-results--header">
+        <a href="{{ hit.url }}">{{ hit.field_profile_name }}</a>
+      </h2>
+      <p data-ng-bind-html="hit['field_profile_description:value'] | trimWordBoundary:110"></p>
+      <p class="teaser--type-read-more"><a href="{{ hit.url }}">Se hele profilen</a></p>
+    </header>
+    <figure><a href="{{ hit.url }}"><img data-ng-src="{{ hit['field_image:file'].url }}" src="#"/></a></figure>
+  </article>
+
+  <!-- No results -->
+  <div class="no-results" data-ng-if="!hits.hits && !searching">
+    Beklager, vi fandt intet indhold. Prøv evt. at søge igen.
+  </div>
+
+  <!-- Searching spinner -->
+  <div class="search-spinner" data-ng-if="searching">
+    <img src="/profiles/ulf/themes/ulftheme/images/spinner.gif" />
+  </div>
+
+  <!-- Search pager if the provider supports it -->
+  <search-pager></search-pager>
+</div>

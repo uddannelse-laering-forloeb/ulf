@@ -6,77 +6,49 @@ core = 7.x
 php_memory_limit = 128M
 exclusive = TRUE
 
-dependencies[] = bulk_export
-dependencies[] = block
-dependencies[] = contextual
-dependencies[] = ctools
-dependencies[] = ctools_custom_content
-dependencies[] = ckeditor_link
-dependencies[] = date
-dependencies[] = date_api
-dependencies[] = date_popup
-dependencies[] = entity
-dependencies[] = diff
-dependencies[] = elements
-dependencies[] = entity_view_mode
-dependencies[] = features
-dependencies[] = field_group
-dependencies[] = field_collection
-dependencies[] = field_ui
-dependencies[] = flag
-dependencies[] = jquery_update
-dependencies[] = globalredirect
-dependencies[] = googleanalytics
-dependencies[] = html5_tools
-dependencies[] = image
-dependencies[] = l10n_update
-dependencies[] = libraries
-dependencies[] = link
-dependencies[] = list
-dependencies[] = menu
-dependencies[] = maxlength
-dependencies[] = module_filter
-dependencies[] = number
-dependencies[] = openid
-dependencies[] = pathauto
-dependencies[] = page_manager
-dependencies[] = panels
-dependencies[] = panels_ipe
-dependencies[] = redirect
-dependencies[] = rules
-dependencies[] = strongarm
-dependencies[] = shortcut
-dependencies[] = taxonomy
-dependencies[] = token
-dependencies[] = toolbar
-dependencies[] = transliteration
+; ULF required Modules.
+; The basic setup for ULF.
 dependencies[] = ulf_base
+
+; Fields.
+dependencies[] = ulf_field_bases
+
+; Entities.
 dependencies[] = ulf_course
 dependencies[] = ulf_course_educators
 dependencies[] = ulf_course_providers
 dependencies[] = ulf_field_collections
-dependencies[] = ulf_field_bases
-dependencies[] = ulf_forms
-dependencies[] = ulf_frontpage
-dependencies[] = ulf_mails
-dependencies[] = ulf_moderations
 dependencies[] = ulf_news
-dependencies[] = ulf_pages
-dependencies[] = ulf_pdf
-dependencies[] = ulf_practical_information_view
-dependencies[] = ulf_practical_information_moderation
-dependencies[] = ulf_structures
 dependencies[] = ulf_static_page
 dependencies[] = ulf_taxonomies
+
+; Configuration.
+dependencies[] = ulf_forms
+dependencies[] = ulf_frontpage
+dependencies[] = ulf_moderations
+dependencies[] = ulf_node_clone
+dependencies[] = ulf_scheduler_notify
 dependencies[] = ulf_workflow
-dependencies[] = uuid
-dependencies[] = uuid_features
-dependencies[] = toolbar
+dependencies[] = ulf_wysiwyg
+
+; ULF Search.
+dependencies[] = ulf_search
+
+; Contrib modules (Not enabled by ulf setup).
+dependencies[] = user
+dependencies[] = date_popup
+dependencies[] = entity_token
+dependencies[] = fe_block
+dependencies[] = field
+dependencies[] = field_sql_storage
+dependencies[] = globalredirect
+dependencies[] = jquery_update
+dependencies[] = l10n_update
+dependencies[] = manualcrop
+dependencies[] = module_filter
+dependencies[] = pathauto
+dependencies[] = print_ui
+dependencies[] = redirect
 dependencies[] = transliteration
-dependencies[] = video_embed_field
-dependencies[] = views
-dependencies[] = views_content
 dependencies[] = views_ui
-dependencies[] = workbench
-dependencies[] = workbench_moderation
-dependencies[] = wysiwyg
+dependencies[] = print_pdf_wkhtmltopdf
