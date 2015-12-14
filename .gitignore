@@ -7,4 +7,4 @@ sites/*/private
 
 * Ignore external themes
 profiles/ulf/themes/ulf_silkeborg
-profiles/ulf/modules/ulf_silkeborg_search_settings
+profiles/ulf/modules/features/ulf_silkeborg_search_settings
