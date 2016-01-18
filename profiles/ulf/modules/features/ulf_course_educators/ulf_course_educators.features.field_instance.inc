@@ -447,7 +447,7 @@ function ulf_course_educators_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_price',
     'label' => 'Pris',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'max' => '',
       'min' => '',
