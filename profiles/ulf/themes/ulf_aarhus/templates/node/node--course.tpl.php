@@ -101,6 +101,13 @@
       <?php endif; ?>
       <div class="content is-<?php print $group_type; ?>">
         <div class="content--image">
+          <?php if ($field_free['0']['value'] == 1) : ?>
+            <div class="ribbon-wrapper left">
+              <div class="ribbon">
+                <div class="ribbon--course"><?php print t('Free'); ?></div>
+              </div>
+            </div>
+          <?php endif;?>
           <div class="field--title is-<?php print $group_type; ?>"><?php print render($title); ?></div>
           <?php print render($content['field_image']); ?>
         </div>
