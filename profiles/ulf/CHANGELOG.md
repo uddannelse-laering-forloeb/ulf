@@ -11,6 +11,8 @@
 * Changed label of "Læringsmål"
 * Added free label to courses
 * Removed required from courses
+* Removed "special needs" field
+* Removed links to taxonomy terms on course, and course_educator content types
 
 
 #v2.1.2
