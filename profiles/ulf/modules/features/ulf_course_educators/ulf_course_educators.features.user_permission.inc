@@ -33,6 +33,7 @@ function ulf_course_educators_user_default_permissions() {
   $permissions['delete own course_educators content'] = array(
     'name' => 'delete own course_educators content',
     'roles' => array(
+      'course provider' => 'course provider',
       'editor' => 'editor',
     ),
     'module' => 'node',

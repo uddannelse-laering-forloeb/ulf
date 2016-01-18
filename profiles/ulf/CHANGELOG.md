@@ -6,6 +6,9 @@
 * Added a base theme as a copy of ulf i aarhus
 * Added editor access to url aliases
 * Added gulp
+* Fixed bug where filters would overflow
+* Added permission for course provider to delete own content
+
 
 #v2.1.2
 
