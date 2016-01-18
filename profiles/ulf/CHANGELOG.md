@@ -5,6 +5,7 @@
 * Added Silkeborg theme
 * Added a base theme as a copy of ulf i aarhus
 * Added editor access to url aliases
+* Added gulp
 
 #v2.1.2
 

@@ -109,7 +109,7 @@
             </h2>
             <div class="block--content">
               <?php if ($field_course_contact_mail || $field_course_contact_name) : ?>
-                <div class="block--field-wrapper is-inline">
+                <div class="block--field-wrapper">
                   <?php print render($content['field_course_contact_name']); ?>
                   <?php print render($content['field_course_contact_mail']); ?>
                 </div>

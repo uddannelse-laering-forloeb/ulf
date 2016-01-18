@@ -133,7 +133,7 @@
               <?php print t('Practical information'); ?>
             </h2>
             <div class="block--content">
-              <div class="block--field-wrapper is-inline">
+              <div class="block--field-wrapper">
                 <div class="block--field-label"><?php print t('Contact');?></div>
                 <a href="/user/<?php print $uid; ?>"><?php print $profile_name; ?></a>
               </div>
