@@ -59,7 +59,6 @@ features[field_instance][] = node-course-field_period_info
 features[field_instance][] = node-course-field_post_work
 features[field_instance][] = node-course-field_price_description
 features[field_instance][] = node-course-field_purpose
-features[field_instance][] = node-course-field_special_needs
 features[field_instance][] = node-course-field_subject
 features[field_instance][] = node-course-field_subjects_primary_school
 features[field_instance][] = node-course-field_subjects_youth

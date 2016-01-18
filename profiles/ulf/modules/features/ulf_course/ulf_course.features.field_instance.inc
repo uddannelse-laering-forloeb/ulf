@@ -877,7 +877,7 @@ function ulf_course_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_offer_type',
-    'label' => 'Tilbudstype',
+    'label' => 'Forløbstype',
     'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -1232,56 +1232,6 @@ At opnå kendskab til...
     ),
   );
 
-  // Exported field_instance: 'node-course-field_special_needs'.
-  $field_instances['node-course-field_special_needs'] = array(
-    'bundle' => 'course',
-    'default_value' => array(
-      0 => array(
-        'value' => 0,
-      ),
-    ),
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 37,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 27,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 10,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_special_needs',
-    'label' => 'Forløb for børn og unge med særlige behov',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'display_label' => 1,
-      ),
-      'type' => 'options_onoff',
-      'weight' => 20,
-    ),
-  );
-
   // Exported field_instance: 'node-course-field_subject'.
   $field_instances['node-course-field_subject'] = array(
     'bundle' => 'course',
@@ -1600,7 +1550,7 @@ At opnå kendskab til...
   t('Er der undervisningsmateriale tilknyttet besøget/forløbet? Her kan du uploade materialet');
   t('Faciliteter');
   t('Fag');
-  t('Forløb for børn og unge med særlige behov');
+  t('Forløbstype');
   t('Formål');
   t('Forslag til forberedelse og/eller efterbehandling i daginstitutionen');
   t('Gratis');
@@ -1613,7 +1563,6 @@ At opnå kendskab til...
   t('Periode');
   t('Pris');
   t('Sæt kryds i alle de aldre, som besøget/forløbet er relevant for.');
-  t('Tilbudstype');
   t('Undervisningsmateriale');
   t('Upload et billede/illustration');
   t('Varighed');
