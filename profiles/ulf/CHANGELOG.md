@@ -3,6 +3,8 @@
 #v2.2.0
 * Updated install profile to reflect ULF version 2.0.0
 * Added Silkeborg theme
+* Added a base theme as a copy of ulf i aarhus
+* Added editor access to url aliases
 
 #v2.1.2
 

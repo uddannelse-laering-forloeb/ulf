@@ -6,7 +6,7 @@
  * @param $variables
  *   Available variables.
  */
-function ulf_preprocess_html(&$variables) {
+function ulf_aarhus_preprocess_html(&$variables) {
   if (isset($variables['page']['content']['system_main']['field_profile_name']['0']['#markup'])) {
     $variables['head_title'] = $variables['page']['content']['system_main']['field_profile_name']['0']['#markup'] . ' | ' . $variables['head_title_array']['name'];
   }
@@ -19,7 +19,7 @@ function ulf_preprocess_html(&$variables) {
  * @param $variables
  *   Available variables.
  */
-function ulf_preprocess_page(&$variables) {
+function ulf_aarhus_preprocess_page(&$variables) {
   // Provide main menu as block for all pages.
   $variables['main_menu_block'] = module_invoke('system', 'block_view', 'main-menu');
 
@@ -36,7 +36,7 @@ function ulf_preprocess_page(&$variables) {
  * @param $variables
  *   Available variables.
  */
-function ulf_preprocess_front_page(&$variables) {
+function ulf_aarhus_preprocess_front_page(&$variables) {
   // Provide newsletter block for front page.
   $variables['newsletter_block'] = module_invoke('mailchimp_signup', 'block_view', 'signup_to_newsletter');
 }
@@ -51,7 +51,7 @@ function ulf_preprocess_front_page(&$variables) {
  * @return array
  *  The menu tree array.
  */
-function ulf_menu_tree__main_menu ($variables) {
+function ulf_aarhus_menu_tree__main_menu ($variables) {
   // Strip default main menu tree of wrappers.
   return $variables['tree'];
 }
@@ -65,7 +65,7 @@ function ulf_menu_tree__main_menu ($variables) {
  * @return array
  *  The menu tree array.
  */
-function ulf_menu_tree__menu_about_ulf ($variables) {
+function ulf_aarhus_menu_tree__menu_about_ulf ($variables) {
   // Strip default main menu tree of wrappers.
   return $variables['tree'];
 }
@@ -81,7 +81,7 @@ function ulf_menu_tree__menu_about_ulf ($variables) {
  * @return string
  *  HTML string for a list item.
  */
-function ulf_menu_link__main_menu($variables){
+function ulf_aarhus_menu_link__main_menu($variables){
   $element = $variables['element'];
   $sub_menu = '';
 
@@ -121,18 +121,18 @@ function ulf_menu_link__main_menu($variables){
  * @param $variables
  *   Available variables.
  */
-function ulf_preprocess_node(&$variables) {
+function ulf_aarhus_preprocess_node(&$variables) {
   // Set default node teaser template.
   if ($variables['view_mode'] == 'teaser') {
     $variables['theme_hook_suggestions'][] = 'node__default_teaser';
 
     // Set teaser text and new teaser template suggestion for news.
     if ($variables['type'] == 'news') {
-      $variables['teaser_content'] = _ulf_teaser_filter($variables['content']['field_teaser']['0']['#markup']);
+      $variables['teaser_content'] = _ulf_aarhus_teaser_filter($variables['content']['field_teaser']['0']['#markup']);
       $variables['theme_hook_suggestions'][] = 'node__news_teaser';
     }
     else {
-      $variables['teaser_content'] = _ulf_teaser_filter($variables['content']['field_full_description']['0']['#markup']);
+      $variables['teaser_content'] = _ulf_aarhus_teaser_filter($variables['content']['field_full_description']['0']['#markup']);
     }
   }
 
@@ -213,7 +213,7 @@ function ulf_preprocess_node(&$variables) {
  * @param $variables
  *   Available variables.
  */
-function ulf_preprocess_user_profile(&$variables) {
+function ulf_aarhus_preprocess_user_profile(&$variables) {
   // Enable a view for user profile templates.
   $variables['content_by_user'] = views_embed_view('ulf_content_by_user', 'block_1');
 }
@@ -225,7 +225,7 @@ function ulf_preprocess_user_profile(&$variables) {
  * @param $variables
  *   Available variables.
  */
-function ulf_preprocess_field(&$variables) {
+function ulf_aarhus_preprocess_field(&$variables) {
   // Some fields need all their html stripped, and want only the field value shown. We add a template for that.
   $stripped_template = array(
     'field_duration',
@@ -277,7 +277,7 @@ function ulf_preprocess_field(&$variables) {
  * @param $variables
  *   Available variables.
  */
-function ulf_preprocess_panels_pane(&$variables) {
+function ulf_aarhus_preprocess_panels_pane(&$variables) {
   // Suggestions based on sub-type.
   $variables['theme_hook_suggestions'][] = 'panels_pane__' . str_replace('-', '__', $variables['pane']->subtype);
   $variables['theme_hook_suggestions'][] = 'panels_pane__'  . $variables['pane']->panel . '__' . str_replace('-', '__', $variables['pane']->subtype);
@@ -311,7 +311,7 @@ function ulf_preprocess_panels_pane(&$variables) {
  * @return string
  *  A panel region without seperator.
  */
-function ulf_panels_default_style_render_region($variables) {
+function ulf_aarhus_panels_default_style_render_region($variables) {
   $output = '';
   $output .= implode('', $variables['panes']);
 
@@ -328,7 +328,7 @@ function ulf_panels_default_style_render_region($variables) {
  * @return string
  *  An altered html of main menu links.
  */
-function ulf_links__system_main_menu($variables) {
+function ulf_aarhus_links__system_main_menu($variables) {
   $html = '';
 
   foreach ($variables['links'] as $link) {
@@ -349,7 +349,7 @@ function ulf_links__system_main_menu($variables) {
  * @return string
  *  An altered html of about ulf menu links.
  */
-function ulf_menu_link__menu_about_ulf($variables) {
+function ulf_aarhus_menu_link__menu_about_ulf($variables) {
   $element = $variables ['element'];
   $sub_menu = '';
   $element['#attributes']['class'] = 'nav--static-pages-item';
@@ -372,7 +372,7 @@ function ulf_menu_link__menu_about_ulf($variables) {
  * @return string
  *  The html of default item lists.
  */
-function ulf_item_list($variables) {
+function ulf_aarhus_item_list($variables) {
   $items = $variables ['items'];
   $title = $variables ['title'];
   $type = $variables ['type'];
@@ -438,7 +438,7 @@ function ulf_item_list($variables) {
  * @return string
  *  The html of a date range
  */
-function ulf_date_display_range($variables) {
+function ulf_aarhus_date_display_range($variables) {
   $date1 = $variables['date1'];
   $date2 = $variables['date2'];
   $timezone = $variables['timezone'];
@@ -476,7 +476,7 @@ function ulf_date_display_range($variables) {
  * @return string
  *  The html of a file link.
  */
-function ulf_file_link($variables) {
+function ulf_aarhus_file_link($variables) {
   $file = $variables['file'];
   $icon_directory = $variables['icon_directory'];
 
@@ -514,7 +514,7 @@ function ulf_file_link($variables) {
  * @return string
  *  The stripped string.
  */
-function _ulf_teaser_filter($str) {
+function _ulf_aarhus_teaser_filter($str) {
   // Clean out headlines.
   $str = strip_tags($str);
 
