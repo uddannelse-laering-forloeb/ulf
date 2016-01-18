@@ -24,7 +24,7 @@ function ulf_search_settings_default_page_manager_pages() {
     'type' => 'normal',
     'title' => 'Kurser',
     'name' => 'main-menu',
-    'weight' => '0',
+    'weight' => '4',
     'parent' => array(
       'type' => 'none',
       'title' => '',
@@ -212,7 +212,7 @@ function ulf_search_settings_default_page_manager_pages() {
     'type' => 'normal',
     'title' => 'Dagtilbud',
     'name' => 'main-menu',
-    'weight' => '-10',
+    'weight' => '1',
     'parent' => array(
       'type' => 'none',
       'title' => '',
@@ -420,7 +420,7 @@ function ulf_search_settings_default_page_manager_pages() {
     'type' => 'normal',
     'title' => 'Grundskole',
     'name' => 'main-menu',
-    'weight' => '-5',
+    'weight' => '2',
     'parent' => array(
       'type' => 'none',
       'title' => '',
@@ -627,7 +627,7 @@ function ulf_search_settings_default_page_manager_pages() {
     'type' => 'normal',
     'title' => 'Udbydere',
     'name' => 'main-menu',
-    'weight' => '0',
+    'weight' => '5',
     'parent' => array(
       'type' => 'none',
       'title' => '',
@@ -797,7 +797,7 @@ function ulf_search_settings_default_page_manager_pages() {
     'type' => 'normal',
     'title' => 'Ungdomsuddannelse',
     'name' => 'main-menu',
-    'weight' => '0',
+    'weight' => '3',
     'parent' => array(
       'type' => 'none',
       'title' => '',

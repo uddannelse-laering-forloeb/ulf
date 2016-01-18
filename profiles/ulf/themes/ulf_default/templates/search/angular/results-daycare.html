@@ -1,0 +1,44 @@
+<div data-ng-if="hits.hits" class="search-results-header">
+  <h2><strong>{{ hits.hits }}</strong> resultater</h2>
+</div>
+<div class="search-results">
+  <article class="search-results--result is-dagtilbud" data-ng-repeat="hit in hits.results">
+    <div class="ribbon-wrapper left" data-ng-if="hit.field_free == true">
+      <div class="ribbon">
+        <a href="{{ hit.url }}">Gratis</a>
+      </div>
+    </div>
+    <header>
+      <h2 class="search-results--header">
+        <a href="{{ hit.url }}">{{ hit.title }}</a>
+      </h2>
+      <div data-ng-if="hit.field_period_full_year == false">
+        <p class="teaser--type">Periode: <span class="date-display-start"> {{ hit['field_period:value'] * 1000 | date:'dd.MM.yyyy' }} </span> - <span class="date-display-end"> {{ hit['field_period:value2'] * 1000 | date:'dd.MM.yyyy' }} </span></p>
+      </div>
+      <div data-ng-if="hit.field_period_full_year == true">
+        <p class="teaser--type">Periode: Hele året</p>
+      </div>
+      <p class="teaser--type">Afsender: <a href="{{ hit['author:url'] }}">{{ hit['author:field_profile_name'] }}</a></p>
+      <p class="search-results--type">Emne:
+        <span data-ng-repeat="subject in hit.field_subject track by $index">
+          <a href="{{ hit['field_subject:url'][$index] }}">{{ subject }}</a>,
+        </span>
+      </p>
+      <p class="teaser--type-read-more"><a href="{{ hit.url }}">Se hele forløbet</a></p>
+    </header>
+    <figure><a href="{{ hit.url }}"><img data-ng-src="{{ hit['field_image:file'].url }}" src="#"/></a></figure>
+  </article>
+
+  <!-- No results -->
+  <div class="no-results" data-ng-if="!hits.hits && !searching">
+    Beklager, vi fandt intet indhold. Prøv evt. at søge igen.
+  </div>
+
+  <!-- Searching spinner -->
+  <div class="search-spinner" data-ng-if="searching">
+    <img src="/profiles/ulf/themes/ulftheme/images/spinner.gif" />
+  </div>
+
+  <!-- Search pager if the provider supports it -->
+  <search-pager></search-pager>
+</div>

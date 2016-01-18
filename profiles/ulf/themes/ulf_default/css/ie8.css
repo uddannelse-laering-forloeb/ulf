@@ -1,0 +1,43 @@
+/**
+ * IE 8 specific styles
+ */
+/* Page
+ *
+   ================================================================================================================== */
+/* line 13, ../sass/ie9.scss */
+.page-wrapper.is-moved-left .page-inner {
+  left: 76%;
+}
+
+/* Mobile navigation
+ *
+   ================================================================================================================== */
+/* line 24, ../sass/ie9.scss */
+.nav--mobile {
+  left: -76%;
+}
+
+/* line 33, ../sass/ie9.scss */
+.teaser-module--youth img,
+.teaser-module--primary-school img,
+.teaser-module--daycare img,
+.teaser-module--promoted.is-odd img,
+.teaser-module--promoted.is-even img {
+  height: 255px;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+/* line 40, ../sass/ie9.scss */
+.teaser-module--text {
+  background-color: #269eD9;
+}
+/* line 43, ../sass/ie9.scss */
+.teaser-module--text a {
+  color: #fff;
+}
+
+/* line 48, ../sass/ie9.scss */
+img {
+  max-width: none;
+}

@@ -21,3 +21,4 @@ features[variable][] = ckeditor_link_autocomplete_vocabularies
 features[variable][] = ckeditor_link_limit
 features[variable][] = ckeditor_link_type_name
 features[variable][] = ckeditor_link_type_selected
+features[wysiwyg][] = editor

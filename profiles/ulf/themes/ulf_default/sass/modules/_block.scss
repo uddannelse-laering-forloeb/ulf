@@ -1,0 +1,212 @@
+/**
+ *
+ * Block module.
+ *
+ * Contains styles related to blocks.
+ *
+ */
+
+
+/* Placeholders, variables and mixins related to this document only.
+================================================================================================================== */
+%block {
+  margin-bottom: $spacing;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+
+/* Styles.
+================================================================================================================== */
+
+.block--header {
+  font-weight: bold;
+  margin: 0;
+  padding: $spacing $spacing 0;
+}
+
+.block--content {
+  padding: $spacing;
+}
+
+
+.block--field-wrapper {
+  border-bottom: 1px solid $white;
+  margin-bottom: $spacing / 2;
+  padding-bottom: $spacing / 2;
+
+  &:last-child {
+    border:0;
+    margin-bottom: 0;
+  }
+
+  &.is-inline {
+    @include flexbox;
+    @include flex-wrap(wrap);
+    @include flex-direction(row);
+
+    .block--field-label,
+    .block--field-text {
+      width: 50%;
+    }
+  }
+}
+
+.block--field-label {
+  font-weight: bold;
+  margin-bottom: $spacing / 4;
+
+  &.is-inline {
+    float: left;
+    margin-right: .5em;
+  }
+
+  &.is-full-width {
+    width: 100%;
+  }
+}
+
+.block--field-text {
+  margin-bottom: $spacing / 4;
+}
+
+.block--field-teaser {
+  font-weight: bold;
+  margin-bottom: $spacing / 2;
+}
+
+.block--field-logo {
+  border: 1px solid $gray-light;
+  margin-left: -16px;
+  margin-right: -16px;
+  padding: 16px;
+  text-align: center;
+}
+
+.block--list-item {
+  display: block;
+}
+
+
+/* Block types */
+.block--dark {
+  @extend %block;
+
+  background: $dark-blue;
+  color: $white;
+
+  a {
+    @include strip-link-styles($white, underline);
+  }
+}
+
+
+.block--light {
+  @extend %block;
+
+  background: $light-blue;
+
+  a {
+    @include strip-link-styles($link-color, underline);
+  }
+}
+
+
+.block--default {
+  @extend %block;
+
+  background: $gray-lighter;
+  margin: 0 auto $spacing;
+  max-width: $layout-max-width;
+
+  // Workbench moderation block (Top of draft content)
+  // We use the html and classes provided by workbench module.
+  .workbench-info-block {
+    background: inherit;
+    border-color: inherit;
+    color: inherit;
+    font-size: 1em;
+  }
+}
+
+
+.block--newsletter {
+  @include flexbox;
+
+  width: 100%;
+
+  // Use a breakpoint on frontpage.
+  &.is-front {
+    @include breakpoint(650px){
+      width: 50%;
+    };
+  }
+
+  &-inner {
+    box-sizing: border-box;
+    margin: 0 $spacing / 2;
+    position: relative;
+    width: 100%;
+
+    background: $gray-lightest;
+  }
+
+  &-header {
+    padding: $spacing / 2 $spacing;
+  }
+
+  // Nesting the styles rather than messing with the drupal forms.
+  form {
+    width: 100%;
+  }
+
+  &.is-front {
+    .form-type-emailfield {
+      padding: 0;
+
+      & > label {
+        display: none;
+      }
+    }
+  }
+
+  .form-submit,
+  .form-item {
+    margin: 0 $spacing;
+  }
+}
+
+.block--news-title-item {
+  width: 100%;
+}
+
+
+.block--pdf {
+  margin: 2 * $spacing 0;
+
+  &-link {
+    @extend %button;
+
+    @include strip-link-styles($white);
+  }
+}
+
+
+.block--workflow {
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: $spacing / 2;
+  width: 1000px;
+
+  &-inner {
+    background: $light-blue;
+    box-sizing: border-box;
+    padding: $spacing;
+  }
+
+  & .button {
+    font-size: .8em;
+  }
+}

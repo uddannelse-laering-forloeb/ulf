@@ -1,0 +1,14 @@
+name = Ulf cookie compliance
+description = Containing configuration for EU compliance module
+core = 7.x
+package = Ulf base
+dependencies[] = ctools
+dependencies[] = eu_cookie_compliance
+dependencies[] = features
+dependencies[] = strongarm
+features[ctools][] = strongarm:strongarm:1
+features[features_api][] = api:2
+features[user_permission][] = administer EU Cookie Compliance popup
+features[user_permission][] = display EU Cookie Compliance popup
+features[variable][] = eu_cookie_compliance_da
+features[variable][] = eu_cookie_compliance_domain
