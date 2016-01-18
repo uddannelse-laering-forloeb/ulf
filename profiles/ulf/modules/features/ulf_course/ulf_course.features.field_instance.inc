@@ -405,7 +405,7 @@ function ulf_course_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_educational_goals',
-    'label' => 'Læringsmål',
+    'label' => 'Læreplanstemaer',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -1607,7 +1607,7 @@ At opnå kendskab til...
   t('Hele året');
   t('Hvilke faciliteter kan I tilbyde?');
   t('Inspirationsmateriale');
-  t('Læringsmål');
+  t('Læreplanstemaer');
   t('Målgruppe');
   t('Overordnet målgruppe');
   t('Periode');

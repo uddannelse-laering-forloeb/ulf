@@ -8,6 +8,7 @@
 * Added gulp
 * Fixed bug where filters would overflow
 * Added permission for course provider to delete own content
+* Changed label of "Læringsmål"
 
 
 #v2.1.2
