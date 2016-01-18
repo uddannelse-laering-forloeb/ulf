@@ -1,0 +1,12 @@
+<?php
+
+/**
+ * Enable ulf_admin module.
+ */
+function ulf_base_update_7001() {
+  $module_enable = array(
+    'ulf_admin'
+  );
+  
+  module_enable($module_enable);
+}
