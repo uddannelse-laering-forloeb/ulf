@@ -185,6 +185,15 @@ function ulf_base_user_default_permissions() {
     'module' => 'taxonomy',
   );
 
+  // Exported permission: 'administer url aliases'.
+  $permissions['administer url aliases'] = array(
+    'name' => 'administer url aliases',
+    'roles' => array(
+      'editor' => 'editor',
+    ),
+    'module' => 'path',
+  );
+
   // Exported permission: 'administer users'.
   $permissions['administer users'] = array(
     'name' => 'administer users',
@@ -225,6 +234,15 @@ function ulf_base_user_default_permissions() {
       'editor' => 'editor',
     ),
     'module' => 'user',
+  );
+
+  // Exported permission: 'create url aliases'.
+  $permissions['create url aliases'] = array(
+    'name' => 'create url aliases',
+    'roles' => array(
+      'editor' => 'editor',
+    ),
+    'module' => 'path',
   );
 
   // Exported permission: 'customize shortcut links'.
