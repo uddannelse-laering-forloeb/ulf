@@ -7,6 +7,6 @@ function ulf_base_update_7001() {
   $module_enable = array(
     'ulf_admin'
   );
-  
+
   module_enable($module_enable);
 }
