@@ -9,6 +9,8 @@
 * Fixed bug where filters would overflow
 * Added permission for course provider to delete own content
 * Changed label of "Læringsmål"
+* Added free label to courses
+* Removed required from courses
 
 
 #v2.1.2
