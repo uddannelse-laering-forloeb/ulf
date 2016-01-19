@@ -210,7 +210,7 @@ function ulf_frontpage_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Promoted courses';
+  $handler->display->display_options['title'] = 'Inspiration';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['use_more_text'] = 'mere';
   $handler->display->display_options['access']['type'] = 'perm';
@@ -293,7 +293,7 @@ function ulf_frontpage_views_default_views() {
   $handler->display->display_options['empty']['area']['format'] = 'editor';
   $translatables['ulf_frontpage_promoted_courses'] = array(
     t('Master'),
-    t('Promoted courses'),
+    t('Inspiration'),
     t('mere'),
     t('Udfør'),
     t('Gendan'),
@@ -301,6 +301,7 @@ function ulf_frontpage_views_default_views() {
     t('Stigende'),
     t('Faldende'),
     t('Overordnet målgruppe'),
+    t('Promoted courses'),
     t('more'),
     t('<p></p>'),
     t('View panes'),
