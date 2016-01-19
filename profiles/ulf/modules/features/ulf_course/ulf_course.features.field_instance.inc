@@ -1074,7 +1074,7 @@ function ulf_course_field_default_field_instances() {
     'bundle' => 'course',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Dette felt kan anvendes hvis sted er forskelligt fra udbyderadresse',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1592,6 +1592,7 @@ At opnå kendskab til...
   t('Beskrivelse');
   t('Beskrivelse til pris');
   t('Beskrivlese til varighed');
+  t('Dette felt kan anvendes hvis sted er forskelligt fra udbyderadresse');
   t('Efterbehandling');
   t('Eksempeltekst (bør skiftes, så målgruppen afspejles): Skovene omkring Gl. Rye gemmer på mange spor af tidligere tiders udnyttelse af skoven - skoven gav og giver stadig menneskene såvel materialer som oplevelser. Vi hører om fortidens brug af skoven fra bondestenalderens svedjebrug til middelalderens munke.');
   t('Eksempeltekst (bør skiftes, så målgruppen afspejles): Spørg i familien om nogen har gamle ”Himmelbjerg-souvenirs” og lav en lille udstilling i klassen med dem.');

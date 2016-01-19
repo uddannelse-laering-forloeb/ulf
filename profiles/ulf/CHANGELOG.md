@@ -13,7 +13,8 @@
 * Removed required from courses
 * Removed "special needs" field
 * Removed links to taxonomy terms on course, and course_educator content types
-
+* Changed order of courses on profile
+* Added "place field" on courses
 
 #v2.1.2
 
