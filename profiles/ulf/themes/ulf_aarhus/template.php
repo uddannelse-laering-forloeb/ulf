@@ -208,18 +208,6 @@ function ulf_aarhus_preprocess_node(&$variables) {
 
 
 /**
- * Implements hook_preprocess_user_profile().
- *
- * @param $variables
- *   Available variables.
- */
-function ulf_aarhus_preprocess_user_profile(&$variables) {
-  // Enable a view for user profile templates.
-  $variables['content_by_user'] = views_embed_view('ulf_content_by_user', 'block_1');
-}
-
-
-/**
  * Implements hook_preprocess_field().
  *
  * @param $variables

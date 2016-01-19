@@ -5,7 +5,8 @@
  */
 function ulf_base_update_7001() {
   $module_enable = array(
-    'ulf_admin'
+    'ulf_admin',
+    'ulf_theme_mods'
   );
 
   module_enable($module_enable);

@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * Default theme implementation to display the basic html structure of a single
@@ -42,7 +41,8 @@
  *
  * @ingroup themeable
  */
-?><!DOCTYPE html>
+?>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="<?php print $language->language; ?>" xml:lang="<?php print $language->language; ?>" dir="<?php print $language->dir; ?>"<?php print $rdf_namespaces; ?>>
   <head>
     <?php print $head; ?>

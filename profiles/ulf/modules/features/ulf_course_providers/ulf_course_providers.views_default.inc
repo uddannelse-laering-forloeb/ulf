@@ -170,11 +170,17 @@ function ulf_course_providers_views_default_views() {
   $handler->display->display_options['pager']['options']['items_per_page'] = '0';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['style_options']['grouping'] = array(
+    0 => array(
+      'field' => 'field_target_group',
+      'rendered' => 0,
+      'rendered_strip' => 0,
+    ),
+  );
   $handler->display->display_options['style_options']['row_class'] = 'teaser--content';
   $handler->display->display_options['style_options']['default_row_class'] = FALSE;
   $handler->display->display_options['style_options']['row_class_special'] = FALSE;
-  $handler->display->display_options['row_plugin'] = 'entity';
-  $handler->display->display_options['row_options']['view_mode'] = 'teaser';
+  $handler->display->display_options['row_plugin'] = 'fields';
   /* No results behavior: Global: Text area */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
@@ -182,13 +188,32 @@ function ulf_course_providers_views_default_views() {
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = '<div class="content--empty">This profile has no courses to offer.</div>';
   $handler->display->display_options['empty']['area']['format'] = 'full_html';
-  /* Field: Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Field: Content: Overordnet målgruppe */
+  $handler->display->display_options['fields']['field_target_group']['id'] = 'field_target_group';
+  $handler->display->display_options['fields']['field_target_group']['table'] = 'field_data_field_target_group';
+  $handler->display->display_options['fields']['field_target_group']['field'] = 'field_target_group';
+  $handler->display->display_options['fields']['field_target_group']['label'] = '';
+  $handler->display->display_options['fields']['field_target_group']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_target_group']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_target_group']['type'] = 'taxonomy_term_reference_plain';
+  /* Field: Content: Rendered Node */
+  $handler->display->display_options['fields']['rendered_entity']['id'] = 'rendered_entity';
+  $handler->display->display_options['fields']['rendered_entity']['table'] = 'views_entity_node';
+  $handler->display->display_options['fields']['rendered_entity']['field'] = 'rendered_entity';
+  $handler->display->display_options['fields']['rendered_entity']['label'] = '';
+  $handler->display->display_options['fields']['rendered_entity']['element_type'] = '0';
+  $handler->display->display_options['fields']['rendered_entity']['element_label_type'] = '0';
+  $handler->display->display_options['fields']['rendered_entity']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['rendered_entity']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['rendered_entity']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['rendered_entity']['link_to_entity'] = 1;
+  $handler->display->display_options['fields']['rendered_entity']['display'] = 'view';
+  $handler->display->display_options['fields']['rendered_entity']['view_mode'] = 'teaser';
+  $handler->display->display_options['fields']['rendered_entity']['bypass_access'] = 0;
+  /* Sort criterion: Content: Title */
+  $handler->display->display_options['sorts']['title']['id'] = 'title';
+  $handler->display->display_options['sorts']['title']['table'] = 'node';
+  $handler->display->display_options['sorts']['title']['field'] = 'title';
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
@@ -210,7 +235,6 @@ function ulf_course_providers_views_default_views() {
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
-    'course_educators' => 'course_educators',
     'course' => 'course',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
@@ -223,8 +247,48 @@ function ulf_course_providers_views_default_views() {
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block');
 
-  /* Display: Blok */
-  $handler = $view->new_display('block', 'Blok', 'block_1');
+  /* Display: Forløb */
+  $handler = $view->new_display('block', 'Forløb', 'block_1');
+
+  /* Display: Kursus */
+  $handler = $view->new_display('block', 'Kursus', 'block_2');
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['content'] = '<h3 class="teaser--content-header">Kursus</h3>';
+  $handler->display->display_options['header']['area']['format'] = 'editor';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Rendered Node */
+  $handler->display->display_options['fields']['rendered_entity']['id'] = 'rendered_entity';
+  $handler->display->display_options['fields']['rendered_entity']['table'] = 'views_entity_node';
+  $handler->display->display_options['fields']['rendered_entity']['field'] = 'rendered_entity';
+  $handler->display->display_options['fields']['rendered_entity']['label'] = '';
+  $handler->display->display_options['fields']['rendered_entity']['element_type'] = '0';
+  $handler->display->display_options['fields']['rendered_entity']['element_label_type'] = '0';
+  $handler->display->display_options['fields']['rendered_entity']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['rendered_entity']['element_wrapper_type'] = '0';
+  $handler->display->display_options['fields']['rendered_entity']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['rendered_entity']['link_to_entity'] = 1;
+  $handler->display->display_options['fields']['rendered_entity']['display'] = 'view';
+  $handler->display->display_options['fields']['rendered_entity']['view_mode'] = 'teaser';
+  $handler->display->display_options['fields']['rendered_entity']['bypass_access'] = 0;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'course_educators' => 'course_educators',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = '1';
   $translatables['ulf_content_by_user'] = array(
     t('Master'),
     t('Content by user'),
@@ -237,7 +301,9 @@ function ulf_course_providers_views_default_views() {
     t('<div class="content--empty">This profile has no courses to offer.</div>'),
     t('Alle'),
     t('Block'),
-    t('Blok'),
+    t('Forløb'),
+    t('Kursus'),
+    t('<h3 class="teaser--content-header">Kursus</h3>'),
   );
   $export['ulf_content_by_user'] = $view;
 

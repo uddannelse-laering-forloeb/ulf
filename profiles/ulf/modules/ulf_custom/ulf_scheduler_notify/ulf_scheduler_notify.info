@@ -4,5 +4,5 @@ dependencies[] = scheduler
 dependencies[] = mail_edit
 dependencies[] = ulf_workflow
 dependencies[] = mimemail
-package = ULF Base
+package = Ulf base
 core = 7.x

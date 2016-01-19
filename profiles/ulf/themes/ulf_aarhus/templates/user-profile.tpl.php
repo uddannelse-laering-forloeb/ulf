@@ -98,6 +98,7 @@
       <div class="layout-element-beta-inner">
         <h2 class="layout--element-header"><?php print t('Offers from') . ' ' . $field_profile_name['0']['value'] ;?></h2>
         <?php print $content_by_user; ?>
+        <?php print $content_by_user_courses; ?>
       </div>
     </div>
   </div>
