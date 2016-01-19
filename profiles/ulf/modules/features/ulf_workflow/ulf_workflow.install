@@ -49,3 +49,14 @@ function ulf_workflow_update_7500() {
 function ulf_workflow_update_7600() {
   variable_set('ulf_workflow_local_recipient', 1);
 }
+
+/**
+ * Enable View bulk operation.
+ */
+function ulf_workflow_update_7601() {
+  $module_enable = array(
+    'views_bulk_operations',
+  );
+
+  module_enable($module_enable);
+}
