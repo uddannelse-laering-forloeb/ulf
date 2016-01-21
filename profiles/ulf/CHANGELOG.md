@@ -15,6 +15,12 @@
 * Removed links to taxonomy terms on course, and course_educator content types
 * Changed order of courses on profile
 * Added "place field" on courses
+* Fixed a bug where all unpublished content were saved as "sent to revision" rather that "draft"
+* Fixed a bug where changed date did not always update when changing workflow state
+* Fixed a bug where save as darft in some cases changed state to "send to revision"
+* Added Target group in admin views
+* Added search input for all admin views
+* Changed display of admin workbench interface
 
 #v2.1.2
 

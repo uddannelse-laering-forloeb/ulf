@@ -135,6 +135,18 @@ function ulf_workflow_menu_local_tasks_alter(&$data) {
       }
     }
   }
+
+  // Default workbench tab not used by editors.
+  if (in_array('editor', $user->roles)) {
+    if ($data['tabs']) {
+      $tabs = $data['tabs']['0']['output'];
+      foreach($tabs as $key => $tab) {
+        if ($tab['#link']['path'] == 'admin/workbench/content') {
+          unset($data['tabs']['0']['output'][$key]);
+        }
+      }
+    }
+  }
 }
 
 
@@ -183,24 +195,40 @@ function ulf_workflow_form_node_form_alter(&$form, &$form_state, $form_id) {
       ),
     );
 
-    // Add an unpublish action button.
-    $form['actions']['unpublish'] = array (
-      '#type' => 'submit',
-      '#access' => user_access('view own unpublished content'),
-      '#value' => t('Unpublish'),
-      '#weight' => 9,
-      '#submit' => array(
-        'node_form_submit',
-        'ulf_workflow_course_node_form_unpublish_submit',
-      ),
-    );
 
-    // Change default submit to "Send to revision" or "Save" (Editor).
+    // -- Modify form if node is published. -- //
+    // Add unpublish button.
+    if (isset($form['#node']->workbench_moderation)) {
+      if ($form['#node']->workbench_moderation['current']->state == 'published') {
+        $form['actions']['unpublish'] = array (
+          '#type' => 'submit',
+          '#access' => user_access('view own unpublished content'),
+          '#value' => t('Unpublish'),
+          '#weight' => 9,
+          '#submit' => array(
+            'node_form_submit',
+            'ulf_workflow_course_node_form_unpublish_submit',
+          ),
+        );
+
+        // Hide save as draft.
+        $form['actions']['submit']['#access'] = FALSE;
+
+        // Change the label of "Save and publish to "Save"
+        $form['actions']['publish']['#value'] = t('Save');
+      }
+    }
+
+
+    // -- Additional submit handlers -- //
+    // Change default submit to "Send to revision" or "Save as draft" (Editor).
     if (user_access('moderate content from needs_review to published')) {
-      $form['actions']['submit']['#value'] = t('Save');
+      $form['actions']['submit']['#value'] = t('Save as draft');
     }
     else {
       $form['actions']['submit']['#value'] = t('Send to revision');
+
+      // Add send to revision submit handler.
       $form['actions']['submit']['#submit'][] = 'ulf_workflow_course_node_form_send_to_revision';
     }
 
@@ -211,13 +239,6 @@ function ulf_workflow_form_node_form_alter(&$form, &$form_state, $form_id) {
 
     // Add a submit handler to the form that is unrelated to the save action selected on that form.
     $form['#submit'][] = 'ulf_workflow_global_submit';
-
-    // Hide save as draft after the content is first published.
-    if (property_exists($form_state['node'], 'workbench_moderation')) {
-      if (array_key_exists('published', $form_state['node']->workbench_moderation)) {
-        $form['actions']['save']['#access'] = FALSE;
-      }
-    }
   }
 }
 
@@ -226,6 +247,7 @@ function ulf_workflow_form_node_form_alter(&$form, &$form_state, $form_id) {
  * Custom submit handler/function to the course & course_educators form.
  *
  * Contains changes done to the node regardless of action selected for saving.
+ * This function is called before custom submit handlers.
  */
 function ulf_workflow_global_submit($form, &$form_state) {
   // If "to date" and we are editing existing node(has nid) set scheduling options.
@@ -256,6 +278,29 @@ function ulf_workflow_global_submit($form, &$form_state) {
       ))
       ->execute();
   }
+
+  // Set the moderation form state depending on which button is clicked.
+  switch ($form_state['clicked_button']['#id']) {
+    // Save button.
+    case 'edit-submit':
+      global $user;
+      // Send user edited mails to site mail when a user is   changed.
+      if (in_array('editor', $user->roles)) {
+        $form_state['values']['workbench_moderation_state_new'] = 'draft';
+        $_GET['unpublish'] = TRUE;
+      }
+      break;
+
+    // Unpublish button.
+    case 'edit-unpublish':
+      $form_state['values']['workbench_moderation_state_new'] = 'draft';
+      break;
+
+    // Publish button
+    case "edit-publish":
+      $form_state['values']['workbench_moderation_state_new'] = 'published';
+      break;
+  }
 }
 
 
@@ -265,8 +310,6 @@ function ulf_workflow_global_submit($form, &$form_state) {
  * This will save the node as a draft.
  */
 function ulf_workflow_course_node_form_draft_submit($form, &$form_state) {
-  // Set the moderation form state to draft.
-  $form_state['values']['workbench_moderation_state_new'] = 'draft';
 
   // Tell the end user what is happening.
   drupal_set_message(t('The content has been saved as a draft. REMEMBER: ULF will not publish the content before it is sent to revision'));
@@ -280,9 +323,6 @@ function ulf_workflow_course_node_form_draft_submit($form, &$form_state) {
  */
 function ulf_workflow_course_node_form_publish_submit($form, &$form_state) {
   $workflow_send_mail = variable_get('ulf_workflow_send_mail');
-
-  // Set the moderation form state to published.
-  $form_state['values']['workbench_moderation_state_new'] = 'published';
 
   // Tell the end user what is happening.
   $_GET['destination'] = 'node/' . $form['nid']['#value'];
@@ -301,7 +341,7 @@ function ulf_workflow_course_node_form_publish_submit($form, &$form_state) {
 /**
  * Custom submit handler/function to the course & course_educators form.
  *
- * This will save the node and publish the changes.
+ * This will save the node unpublish the node and set the modereation state to draft.
  */
 function ulf_workflow_course_node_form_unpublish_submit($form, &$form_state) {
   // Provide unpublish parameter. (See node presave).
@@ -435,10 +475,8 @@ function ulf_workflow_node_presave($node) {
         // Set status to unpublished.
         $node->status = 0;
 
-        // If send mail is active.
-        if ($workflow_send_mail > 0 && $node->status == 0) {
-          _send_unpublished_mail($node);
-        }
+        // Update changed timestamp.
+        $node->changed = REQUEST_TIME;
       }
     }
   }

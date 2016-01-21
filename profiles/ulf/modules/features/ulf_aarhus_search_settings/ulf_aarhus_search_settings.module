@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the ULF search_settings feature.
- */
-
-include_once 'ulf_aarhus_search_settings.features.inc';

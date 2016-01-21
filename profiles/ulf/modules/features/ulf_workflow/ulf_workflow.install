@@ -51,10 +51,11 @@ function ulf_workflow_update_7600() {
 }
 
 /**
- * Enable View bulk operation.
+ * Enable View bulk operation adn page_manager_redirect.
  */
 function ulf_workflow_update_7601() {
   $module_enable = array(
+    'page_manager_redirect',
     'views_bulk_operations',
   );
 
