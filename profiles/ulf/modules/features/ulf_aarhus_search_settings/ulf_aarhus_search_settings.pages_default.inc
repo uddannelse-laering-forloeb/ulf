@@ -7,7 +7,7 @@
 /**
  * Implements hook_default_page_manager_pages().
  */
-function ulf_search_settings_default_page_manager_pages() {
+function ulf_aarhus_search_settings_default_page_manager_pages() {
   $page = new stdClass();
   $page->disabled = FALSE; /* Edit this to true to make a default page disabled initially */
   $page->api_version = 1;
@@ -147,9 +147,9 @@ function ulf_search_settings_default_page_manager_pages() {
           'selected' => array(),
         ),
         'templates' => array(
-          'box' => '/profiles/ulf/themes/ulf_default/templates/search/angular/search-course.html',
-          'result' => '/profiles/ulf/themes/ulf_default/templates/search/angular/results-course.html',
-          'pager' => '/profiles/ulf/themes/ulf_default/templates/search/angular/pager.html',
+          'box' => '/profiles/ulf/themes/ulf_aarhus/templates/search/angular/search-course.html',
+          'result' => '/profiles/ulf/themes/ulf_aarhus/templates/search/angular/results-course.html',
+          'pager' => '/profiles/ulf/themes/ulf_aarhus/templates/search/angular/pager.html',
         ),
       ),
       'override_title' => 0,
@@ -358,9 +358,9 @@ function ulf_search_settings_default_page_manager_pages() {
           ),
         ),
         'templates' => array(
-          'box' => '/profiles/ulf/themes/ulf_default/templates/search/angular/search-daycare.html',
-          'result' => '/profiles/ulf/themes/ulf_default/templates/search/angular/results-daycare.html',
-          'pager' => '/profiles/ulf/themes/ulf_default/templates/search/angular/pager.html',
+          'box' => '/profiles/ulf/themes/ulf_aarhus/templates/search/angular/search-daycare.html',
+          'result' => '/profiles/ulf/themes/ulf_aarhus/templates/search/angular/results-daycare.html',
+          'pager' => '/profiles/ulf/themes/ulf_aarhus/templates/search/angular/pager.html',
         ),
       ),
     );
@@ -562,9 +562,9 @@ function ulf_search_settings_default_page_manager_pages() {
           ),
         ),
         'templates' => array(
-          'box' => '/profiles/ulf/themes/ulf_default/templates/search/angular/search-school.html',
-          'result' => '/profiles/ulf/themes/ulf_default/templates/search/angular/results-school.html',
-          'pager' => '/profiles/ulf/themes/ulf_default/templates/search/angular/pager.html',
+          'box' => '/profiles/ulf/themes/ulf_aarhus/templates/search/angular/search-school.html',
+          'result' => '/profiles/ulf/themes/ulf_aarhus/templates/search/angular/results-school.html',
+          'pager' => '/profiles/ulf/themes/ulf_aarhus/templates/search/angular/pager.html',
         ),
       ),
       'override_title' => 0,
@@ -732,9 +732,9 @@ function ulf_search_settings_default_page_manager_pages() {
           'selected' => array(),
         ),
         'templates' => array(
-          'box' => '/profiles/ulf/themes/ulf_default/templates/search/angular/search-users.html',
-          'result' => '/profiles/ulf/themes/ulf_default/templates/search/angular/results-users.html',
-          'pager' => '/profiles/ulf/themes/ulf_default/templates/search/angular/pager.html',
+          'box' => '/profiles/ulf/themes/ulf_aarhus/templates/search/angular/search-users.html',
+          'result' => '/profiles/ulf/themes/ulf_aarhus/templates/search/angular/results-users.html',
+          'pager' => '/profiles/ulf/themes/ulf_aarhus/templates/search/angular/pager.html',
         ),
       ),
       'override_title' => 0,
@@ -939,9 +939,9 @@ function ulf_search_settings_default_page_manager_pages() {
           ),
         ),
         'templates' => array(
-          'box' => '/profiles/ulf/themes/ulf_default/templates/search/angular/search-youth.html',
-          'result' => '/profiles/ulf/themes/ulf_default/templates/search/angular/results-youth.html',
-          'pager' => '/profiles/ulf/themes/ulf_default/templates/search/angular/pager.html',
+          'box' => '/profiles/ulf/themes/ulf_aarhus/templates/search/angular/search-youth.html',
+          'result' => '/profiles/ulf/themes/ulf_aarhus/templates/search/angular/results-youth.html',
+          'pager' => '/profiles/ulf/themes/ulf_aarhus/templates/search/angular/pager.html',
         ),
       ),
       'override_title' => 0,
