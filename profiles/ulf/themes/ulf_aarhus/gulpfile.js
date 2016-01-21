@@ -18,8 +18,8 @@ var compass = require('gulp-compass');
 
 var browserSync = require('browser-sync').create();
 browserSync.init({
-  proxy: "ulf_profile.vm",
-  host: "ulf_profile.vm"
+  proxy: "ulf.vm",
+  host: "ulf.vm"
 });
 
 

@@ -181,13 +181,6 @@ function ulf_course_providers_views_default_views() {
   $handler->display->display_options['style_options']['default_row_class'] = FALSE;
   $handler->display->display_options['style_options']['row_class_special'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* No results behavior: Global: Text area */
-  $handler->display->display_options['empty']['area']['id'] = 'area';
-  $handler->display->display_options['empty']['area']['table'] = 'views';
-  $handler->display->display_options['empty']['area']['field'] = 'area';
-  $handler->display->display_options['empty']['area']['empty'] = TRUE;
-  $handler->display->display_options['empty']['area']['content'] = '<div class="content--empty">This profile has no courses to offer.</div>';
-  $handler->display->display_options['empty']['area']['format'] = 'full_html';
   /* Field: Content: Overordnet målgruppe */
   $handler->display->display_options['fields']['field_target_group']['id'] = 'field_target_group';
   $handler->display->display_options['fields']['field_target_group']['table'] = 'field_data_field_target_group';
@@ -298,7 +291,6 @@ function ulf_course_providers_views_default_views() {
     t('Sort by'),
     t('Asc'),
     t('Desc'),
-    t('<div class="content--empty">This profile has no courses to offer.</div>'),
     t('Alle'),
     t('Block'),
     t('Forløb'),
