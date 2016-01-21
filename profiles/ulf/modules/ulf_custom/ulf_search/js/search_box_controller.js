@@ -90,6 +90,33 @@ angular.module('searchBoxApp').controller('UlfBoxController', ['CONFIG', 'commun
     'use strict';
 
     /**
+     * Find the currently select filters/facets.
+     *
+     * @param filters
+     *   The selected filters return from search.
+     *
+     * @returns {{}}
+     *   The filter with correct names indexed by field name.
+     */
+    function getSelectedFilters(filters) {
+      console.log(filters);
+      if (filters.hasOwnProperty('taxonomy')) {
+        var taxonomies = filters.taxonomy;
+        var selectedFilters = {};
+        for (var field in taxonomies) {
+          selectedFilters[field] = []
+          for (var key in taxonomies[field]) {
+            if (taxonomies[field][key]) {
+              selectedFilters[field].push(key);
+            }
+          }
+        }
+      }
+
+      return selectedFilters;
+    }
+
+    /**
      * Execute the search and emit the results.
      */
     function search() {
@@ -110,17 +137,10 @@ angular.module('searchBoxApp').controller('UlfBoxController', ['CONFIG', 'commun
           );
 
           // Updated selected filters base on search query.
-          var filters = angular.copy($scope.query.filters);
-          var selectedFilters = {};
-          for (var field in filters) {
-            selectedFilters[field] = []
-            for (var key in filters[field]) {
-              if (filters[field][key]) {
-                selectedFilters[field].push(key);
-              }
-            }
+          if ($scope.query.hasOwnProperty('filters')) {
+            var filters = angular.copy($scope.query.filters);
+            $scope.selectedFilters = getSelectedFilters(filters);
           }
-          $scope.selectedFilters = selectedFilters;
 
           // Send results.
           communicatorService.$emit('hits', {"hits" : data});
@@ -136,7 +156,7 @@ angular.module('searchBoxApp').controller('UlfBoxController', ['CONFIG', 'commun
      */
     function init() {
       // Get state from pervious searches.
-      var state = searchProxyService.init();
+      var state = searchProxyService.getState();
 
       // Get filters.
       $scope.filters = state.filters;
@@ -262,9 +282,9 @@ angular.module('searchBoxApp').controller('UlfBoxController', ['CONFIG', 'commun
      *   The filter word its self.
      */
     $scope.removeFilter = function removeFilter(field, filter) {
-      if ($scope.query.filters[field].hasOwnProperty(filter)) {
+      if ($scope.query.filters.taxonomy[field].hasOwnProperty(filter)) {
         // Remove the filter for current query.
-        delete $scope.query.filters[field][filter];
+        delete $scope.query.filters.taxonomy[field][filter];
 
         // Update search.
         search();
