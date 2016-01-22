@@ -168,6 +168,7 @@ function ulf_search_settings_default_search_api_index() {
         "field_image:file" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "file" },
         "field_offer_type" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_period:value" : { "type" : "date" },
+        "field_period:value2" : { "type" : "date" },
         "field_price" : { "type" : "decimal" },
         "field_relevance_educators" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_relevance_primary_school" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
