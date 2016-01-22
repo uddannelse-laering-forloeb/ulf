@@ -43,6 +43,7 @@ features[field_base][] = field_offer_type
 features[field_base][] = field_period
 features[field_base][] = field_period_full_year
 features[field_base][] = field_period_info
+features[field_base][] = field_place
 features[field_base][] = field_post_work
 features[field_base][] = field_price_description
 features[field_base][] = field_profile_address

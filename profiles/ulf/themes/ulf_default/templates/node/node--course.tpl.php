@@ -101,6 +101,13 @@
       <?php endif; ?>
       <div class="content is-<?php print $group_type; ?>">
         <div class="content--image">
+          <?php if ($field_free['0']['value'] == 1) : ?>
+            <div class="ribbon-wrapper left">
+              <div class="ribbon">
+                <div class="ribbon--course"><?php print t('Free'); ?></div>
+              </div>
+            </div>
+          <?php endif;?>
           <div class="field--title is-<?php print $group_type; ?>"><?php print render($title); ?></div>
           <?php print render($content['field_image']); ?>
         </div>
@@ -133,7 +140,7 @@
               <?php print t('Practical information'); ?>
             </h2>
             <div class="block--content">
-              <div class="block--field-wrapper is-inline">
+              <div class="block--field-wrapper">
                 <div class="block--field-label"><?php print t('Contact');?></div>
                 <a href="/user/<?php print $uid; ?>"><?php print $profile_name; ?></a>
               </div>
@@ -142,11 +149,6 @@
                 <?php print render($content['field_target_group_sub']); ?>
                 <?php print render($content['field_count']); ?>
               </div>
-              <?php if (!empty($content['field_special_needs']) && $content['field_special_needs']['#items']['0']['value'] == 1 ) : ?>
-                <div class="block--field-wrapper">
-                  <div class="block--field-label"><?php print t('This course supports children and youth with special needs.');?></div>
-                </div>
-              <?php endif; ?>
               <?php /* If any of the fields in this wrapper contain data */ ?>
               <?php if ($field_duration || $field_period_full_year['0']['value'] == 0 || $field_collection_price || $field_free['0']['value'] == 1 || $field_price_description || $field_duration_description) : ?>
                 <div class="block--field-wrapper">
@@ -196,6 +198,11 @@
                   <?php print render($content['field_facilities_info']); ?>
                 </div>
               <?php endif; ?>
+              <?php if ($field_place) : ?>
+                <div class="block--field-wrapper">
+                  <?php print render($content['field_place']); ?>
+                </div>
+              <?php endif; ?>
             </div>
           </div>
           <div class="block--dark">
@@ -218,7 +225,6 @@
       </div>
       <?php
       // We hide the comments and links now so that we can render them later.
-      hide($content['field_special_needs']);
       hide($content['field_duration']);
       hide($content['field_period']);
       hide($content['field_collection_price']);

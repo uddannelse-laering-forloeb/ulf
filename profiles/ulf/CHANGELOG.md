@@ -1,6 +1,13 @@
 #ULF changelog
 
 #v2.2.0
+
+##Release notes
+Clone ulf_aarhus (Theme)
+Clone ulf_aarhus_settings (Custom module)
+Clone ulf_aarhus_search_settings (Feature)
+
+##Changes
 * Updated install profile to reflect ULF version 2.0.0
 * Added Silkeborg theme
 * Added a base theme as a copy of ulf i aarhus
