@@ -326,7 +326,7 @@ function search_node_page_form_search_node_page_search_box_content_type_edit_for
     $form['search_node']['options']['filters']['boolean']['#options'] = $filters['boolean'];
 
     // Update sort fields.
-    $form['search_node']['sorting']['field']['#options'] = $fields;
+    $form['search_node']['sorting']['field']['#options'] = array('_none_' => t('None')) + $fields;
 
     // Updater interval fields.
     $form['search_node']['intervals']['fields']['#options'] = $fields;
@@ -805,7 +805,7 @@ function search_node_page_build_search_box($configuration = array()) {
     }
 
     // Add sorting configuration.
-    if (!empty($configuration['sorting']['field'])) {
+    if (!empty($configuration['sorting']['field']) && $configuration['sorting']['field'] != '_none_') {
       $conf['provider']['sorting'] = array(
         'field' => $configuration['sorting']['field'],
         'order' => $configuration['sorting']['order'],
