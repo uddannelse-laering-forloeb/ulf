@@ -325,6 +325,9 @@ function search_node_page_form_search_node_page_search_box_content_type_edit_for
     $form['search_node']['options']['filters']['taxonomy']['#options'] = $filters['taxonomy'];
     $form['search_node']['options']['filters']['boolean']['#options'] = $filters['boolean'];
 
+    // Update sort fields.
+    $form['search_node']['sorting']['field']['#options'] = $fields;
+
     // Updater interval fields.
     $form['search_node']['intervals']['fields']['#options'] = $fields;
 
@@ -481,6 +484,33 @@ function search_node_page_configuration_form($form, array &$form_state = array()
     '#default_value' => isset($defaults['options']['filters']['boolean']) ? $defaults['options']['filters']['boolean'] : array(),
   );
 
+  $form['search_node']['sorting'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Sorting'),
+    '#description' => t('Sorting the search result.'),
+    '#tree' => TRUE,
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+  );
+
+  $selected = array();
+  $form['search_node']['sorting']['field'] = array(
+    '#type' => 'radios',
+    '#title' => t('Date fields'),
+    '#options' => $selected,
+    '#default_value' => isset($defaults['sorting']['field']) ? $defaults['sorting']['field'] : array(),
+  );
+
+  $form['search_node']['sorting']['order'] = array(
+    '#type' => 'radios',
+    '#title' => t('Sort direction'),
+    '#options' => array(
+      'asc' => t('Ascending'),
+      'desc' => t('Descending'),
+    ),
+    '#default_value' => isset($defaults['sorting']['order']) ? $defaults['sorting']['order'] : array(),
+  );
+
   $form['search_node']['dates'] = array(
     '#type' => 'fieldset',
     '#title' => t('Search dates'),
@@ -526,7 +556,7 @@ function search_node_page_configuration_form($form, array &$form_state = array()
   );
 
   /**
-   * @TOOO: Added support for more than one field.
+   * @TODO: Added support for more than one field.
    */
   $form['search_node']['forces']['field'] = array(
     '#type' => 'select',
@@ -772,6 +802,14 @@ function search_node_page_build_search_box($configuration = array()) {
     if (!empty($configuration['intervals']['fields'])) {
       $intervals = array_filter($configuration['intervals']['fields']);
       $conf['provider']['intervals'] = array_values($intervals);
+    }
+
+    // Add sorting configuration.
+    if (!empty($configuration['sorting']['field'])) {
+      $conf['provider']['sorting'] = array(
+        'field' => $configuration['sorting']['field'],
+        'order' => $configuration['sorting']['order'],
+      );
     }
 
     // Add dates to the configuration.
