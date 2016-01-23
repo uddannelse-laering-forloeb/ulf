@@ -1,12 +1,14 @@
 <?php
 
 /**
- * Enable ulf_admin module.
+ * Enable ulf_aarhus settings module if it exists.
  */
 function ulf_base_update_7001() {
-  $module_enable = array(
-    'ulf_admin',
-  );
+  $module_enable = array();
+  $aarhus_path = drupal_get_path('module', 'ulf_aarhus_settings');
+  if (file_exists($aarhus_path . '/ulf_aarhus_settings.module')){
+    $module_enable[] = 'ulf_aarhus_settings';
+  }
 
   module_enable($module_enable);
 }

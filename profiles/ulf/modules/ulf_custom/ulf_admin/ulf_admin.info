@@ -1,4 +1,0 @@
-name = Ulf admin
-description = Holds admin settings and global update hooks
-package = Ulf base
-core = 7.x
