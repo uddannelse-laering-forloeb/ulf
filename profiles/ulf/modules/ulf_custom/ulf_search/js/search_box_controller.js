@@ -123,6 +123,12 @@ angular.module('searchBoxApp').controller('UlfBoxController', ['CONFIG', 'commun
       // Send info to restults that a new search have started.
       communicatorService.$emit('searching', {});
 
+      // Add sorting to the search query.
+      if (CONFIG.provider.hasOwnProperty('sorting')) {
+        $scope.query.sort = {};
+        $scope.query.sort[CONFIG.provider.sorting.field] = CONFIG.provider.sorting.order;
+      }
+
       // Start the search request.
       searchProxyService.search($scope.query).then(
         function (data) {
