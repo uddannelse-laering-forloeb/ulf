@@ -99,7 +99,6 @@ angular.module('searchBoxApp').controller('UlfBoxController', ['CONFIG', 'commun
      *   The filter with correct names indexed by field name.
      */
     function getSelectedFilters(filters) {
-      console.log(filters);
       if (filters.hasOwnProperty('taxonomy')) {
         var taxonomies = filters.taxonomy;
         var selectedFilters = {};
