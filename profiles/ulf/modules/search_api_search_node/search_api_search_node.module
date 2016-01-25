@@ -81,8 +81,12 @@ function search_api_search_node_form_search_api_admin_index_edit_alter(&$form, &
 
   // Check if this is a search node server.
   if (isset($server) && $server->class == 'search_api_search_node_service') {
+    // Check for overridden api-key and host from settings.php
+    $apikey = variable_get('search_api_' . $server->machine_name . '_apikey', $server->options['apikey']);
+    $host = variable_get('search_api_' . $server->machine_name . '_host', $server->options['host']);
+
     // Get connection to the client.
-    $client = new SearchNodeClient($server->options['host'], $server->options['apikey']);
+    $client = new SearchNodeClient($host, $apikey);
 
     // Authenticate and get indexes.
     $options = array();
