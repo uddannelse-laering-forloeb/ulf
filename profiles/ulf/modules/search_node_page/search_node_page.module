@@ -68,7 +68,11 @@ function search_node_page_ctools_plugin_directory($module, $plugin) {
 function search_node_page_authenticate($search_server) {
   $server = search_api_server_load($search_server);
   if ($server) {
-    $search_node = new SearchNodeClient($server->options['host'], $server->options['apikey_readonly']);
+    // Check for overridden api-key and host from settings.php
+    $apikey = variable_get('search_api_' . $server->machine_name . '_apikey_readonly', $server->options['apikey_readonly']);
+    $host = variable_get('search_api_' . $server->machine_name . '_host', $server->options['host']);
+
+    $search_node = new SearchNodeClient($host, $apikey);
     $auth = $search_node->authenticate();
     if ($auth['status'] == 200) {
       drupal_json_output(array(
