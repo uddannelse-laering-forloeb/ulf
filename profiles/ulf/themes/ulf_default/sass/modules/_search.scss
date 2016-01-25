@@ -329,13 +329,14 @@
     overflow: hidden;
     position: relative;
     z-index: 1;
+    width: 100%;
   }
 
   &--widget-selected-inner {
     box-sizing: border-box;
     float: left;
     margin: 0 auto;
-    width: 855px;
+    width: 100%;
     padding: 0px 8px 6px;
   }
 
