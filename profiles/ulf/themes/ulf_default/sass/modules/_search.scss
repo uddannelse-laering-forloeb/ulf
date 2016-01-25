@@ -354,8 +354,18 @@
     text-shadow: none;
   }
 
+  &--widget-extras {
+    width: 100%;
+    padding: 0 1em;
+    background: rgba(255,255,255,0.85);
+  }
+
+  &--widget-free {
+    margin: 1em 0;
+  }
+
   &--reset {
-    color: $white;
+    color: $gray-darkest;
     cursor: pointer;
     padding: 8px;
     text-decoration: underline;
@@ -392,10 +402,7 @@
 
 // Specific texts need dark color.
 .is-course .search--filter-search-submit,
-.is-daycare .search--filter-search-submit,
-.is-course .search--reset,
-.is-daycare .search--reset,
-.is-users .search--reset {
+.is-daycare .search--filter-search-submit {
   color: $gray-darkest;
   text-shadow: none;
 }

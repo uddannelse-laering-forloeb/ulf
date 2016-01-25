@@ -91,8 +91,8 @@
   </div>
 
   <!-- Boolean filters -->
-  <div class="large-6 columns" data-ng-repeat="(id, field) in filters.boolean">
-    <input id="{{ id }}" data-ng-disabled="!field.count" type="checkbox" data-ng-model="query.filters['boolean'][id]" data-ng-click="searchClicked()">
+  <div class="search--widget-extras" data-ng-repeat="(id, field) in filters.boolean">
+    <input class="search--widget-free" id="{{ id }}" data-ng-disabled="!field.count" type="checkbox" data-ng-model="query.filters['boolean'][id]" data-ng-click="searchClicked()">
     <label data-ng-class="{ disabled: !field.count }" for="{{ key }}">{{ field.name }}</label>
   </div>
 
