@@ -84,7 +84,7 @@ function ulf_search_settings_default_page_manager_pages() {
         'server' => 'search_node',
         'index' => 'educators',
         'options' => array(
-          'cache_expire' => '30',
+          'cache_expire' => '300',
           'size' => '8',
           'initial_query_enable' => 1,
           'initial_query_text' => '',
@@ -130,6 +130,10 @@ function ulf_search_settings_default_page_manager_pages() {
             ),
             'boolean' => array(),
           ),
+        ),
+        'sorting' => array(
+          'field' => 'title',
+          'order' => 'asc',
         ),
         'dates' => array(
           'fields' => array(
@@ -299,7 +303,7 @@ function ulf_search_settings_default_page_manager_pages() {
         'server' => 'search_node',
         'index' => 'courses',
         'options' => array(
-          'cache_expire' => '30',
+          'cache_expire' => '300',
           'size' => '14',
           'initial_query_enable' => 1,
           'initial_query_text' => '',
@@ -342,6 +346,10 @@ function ulf_search_settings_default_page_manager_pages() {
               'field_period_full_year' => 0,
             ),
           ),
+        ),
+        'sorting' => array(
+          'field' => 'title',
+          'order' => 'asc',
         ),
         'dates' => array(
           'fields' => array(
@@ -505,7 +513,7 @@ function ulf_search_settings_default_page_manager_pages() {
         'server' => 'search_node',
         'index' => 'courses',
         'options' => array(
-          'cache_expire' => '30',
+          'cache_expire' => '300',
           'size' => '14',
           'initial_query_enable' => 1,
           'initial_query_text' => '',
@@ -548,6 +556,10 @@ function ulf_search_settings_default_page_manager_pages() {
               'field_period_full_year' => 0,
             ),
           ),
+        ),
+        'sorting' => array(
+          'field' => 'title',
+          'order' => 'asc',
         ),
         'dates' => array(
           'fields' => array(
@@ -714,7 +726,7 @@ function ulf_search_settings_default_page_manager_pages() {
         'server' => 'search_node',
         'index' => 'users',
         'options' => array(
-          'cache_expire' => '30',
+          'cache_expire' => '300',
           'size' => '8',
           'initial_query_enable' => 1,
           'initial_query_text' => '',
@@ -739,6 +751,10 @@ function ulf_search_settings_default_page_manager_pages() {
             'taxonomy' => array(),
             'boolean' => array(),
           ),
+        ),
+        'sorting' => array(
+          'field' => 'field_profile_name',
+          'order' => 'asc',
         ),
         'dates' => array(
           'fields' => array(),
@@ -892,7 +908,7 @@ function ulf_search_settings_default_page_manager_pages() {
         'server' => 'search_node',
         'index' => 'courses',
         'options' => array(
-          'cache_expire' => '30',
+          'cache_expire' => '300',
           'size' => '14',
           'initial_query_enable' => 1,
           'initial_query_text' => '',
@@ -935,6 +951,10 @@ function ulf_search_settings_default_page_manager_pages() {
               'field_period_full_year' => 0,
             ),
           ),
+        ),
+        'sorting' => array(
+          'field' => 'title',
+          'order' => 'asc',
         ),
         'dates' => array(
           'fields' => array(
