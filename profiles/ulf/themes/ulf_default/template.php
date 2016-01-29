@@ -216,6 +216,7 @@ function ulf_default_preprocess_node(&$variables) {
 function ulf_default_preprocess_user_profile(&$variables) {
   // Enable a view for user profile templates.
   $variables['content_by_user'] = views_embed_view('ulf_content_by_user', 'block_1');
+  $variables['content_by_user_courses'] = views_embed_view('ulf_content_by_user', 'block_2');
 }
 
 

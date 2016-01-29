@@ -34,7 +34,7 @@ function ulf_taxonomies_taxonomy_default_vocabularies() {
       'weight' => 0,
     ),
     'subjects_primary_school' => array(
-      'name' => 'Fag (Skole)',
+      'name' => 'Fag',
       'machine_name' => 'subjects_primary_school',
       'description' => '',
       'hierarchy' => 0,
@@ -42,7 +42,7 @@ function ulf_taxonomies_taxonomy_default_vocabularies() {
       'weight' => 0,
     ),
     'subjects_youth' => array(
-      'name' => 'Fag (Ungdomsuddannelse)',
+      'name' => 'Fag',
       'machine_name' => 'subjects_youth',
       'description' => '',
       'hierarchy' => 0,
