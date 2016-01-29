@@ -128,21 +128,23 @@
                   <?php print render($content['field_subject']); ?>
                 </div>
               <?php endif;?>
-              <?php if ($field_period_full_year['0']['value'] == 0 || $field_price || $field_free['0']['value'] == 1) : ?>
-                <div class="block--field-wrapper">
-                  <?php if ($field_period_full_year['0']['value'] == 0 ) : ?>
-                    <?php print render($content['field_period']); ?>
-                  <?php else : ?>
-                    <div class="block--field-label"><?php print t('Periode');?></div>
-                    <div class="block--field-text"><?php print t('All year');?></div>
-                  <?php endif;?>
-                  <?php if ($field_free['0']['value'] == 0 ) : ?>
-                    <div class="block--field-label"><?php print t('Price');?></div>
-                    <?php print render($content['field_price']); ?>
-                  <?php else : ?>
-                    <div class="block--field-label"><?php print t('This course is free.');?></div>
-                  <?php endif;?>
-                </div>
+              <?php if (isset($field_period_full_year['0']) || isset($field_price) || isset($field_free['0'])) : ?>
+                <?php if ($field_period_full_year['0']['value'] == 0 || $field_price || $field_free['0']['value'] == 1) : ?>
+                  <div class="block--field-wrapper">
+                    <?php if ($field_period_full_year['0']['value'] == 0 ) : ?>
+                      <?php print render($content['field_period']); ?>
+                    <?php else : ?>
+                      <div class="block--field-label"><?php print t('Periode');?></div>
+                      <div class="block--field-text"><?php print t('All year');?></div>
+                    <?php endif;?>
+                    <?php if ($field_free['0']['value'] == 0 ) : ?>
+                      <div class="block--field-label"><?php print t('Price');?></div>
+                      <?php print render($content['field_price']); ?>
+                    <?php else : ?>
+                      <div class="block--field-label"><?php print t('This course is free.');?></div>
+                    <?php endif;?>
+                  </div>
+                <?php endif;?>
               <?php endif;?>
             </div>
           </div>
