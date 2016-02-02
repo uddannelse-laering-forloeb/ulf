@@ -1,6 +1,4 @@
 name = ULF
-project = ULF
-distribution_name = "ULF install profile"
 description = "ULF install profile"
 core = 7.x
 
