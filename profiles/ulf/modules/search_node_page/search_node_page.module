@@ -68,7 +68,11 @@ function search_node_page_ctools_plugin_directory($module, $plugin) {
 function search_node_page_authenticate($search_server) {
   $server = search_api_server_load($search_server);
   if ($server) {
-    $search_node = new SearchNodeClient($server->options['host'], $server->options['apikey_readonly']);
+    // Check for overridden api-key and host from settings.php
+    $apikey = variable_get('search_api_' . $server->machine_name . '_apikey_readonly', $server->options['apikey_readonly']);
+    $host = variable_get('search_api_' . $server->machine_name . '_host', $server->options['host']);
+
+    $search_node = new SearchNodeClient($host, $apikey);
     $auth = $search_node->authenticate();
     if ($auth['status'] == 200) {
       drupal_json_output(array(
@@ -241,8 +245,8 @@ function search_node_page_form_block_admin_configure_alter(&$form, &$form_state,
 /**
  * Implements hook_form_HOOK_alter().
  *
- * @TODO: Merge the two alter functions, they differe in the way they access
- *        the form elemenets.
+ * @TODO: Merge the two alter functions, they differ in the way they access
+ *        the form elements.
  *
  * Change the panes configuration form to support ajax updates.
  */
@@ -272,7 +276,10 @@ function search_node_page_form_search_node_page_search_box_content_type_edit_for
     // Build field and filter selection.
     $fields = array();
     $dates = array();
-    $filters = array();
+    $filters = array(
+      'taxonomy' => array(),
+      'boolean' => array(),
+    );
     $selected_index = !empty($form_state['input']['search_node']['index']) ? $form_state['input']['search_node']['index'] : $form['search_node']['index']['#default_value'];
     $index = search_api_index_load($selected_index);
     foreach ($index->options['fields'] as $field => $options) {
@@ -282,17 +289,31 @@ function search_node_page_form_search_node_page_search_box_content_type_edit_for
           // Load field.
           $info = field_info_field($field);
           $vocab = taxonomy_vocabulary_machine_name_load($info['settings']['allowed_values'][0]['vocabulary']);
-          $filters[$field] = $vocab->name . ' (' . $field .')';
+          $filters['taxonomy'][$field] = $vocab->name . ' (' . $field .')';
 
           // Also add it to searchable fields.
           $fields[$field] = $vocab->name . ' (' . $field .')';
           break;
 
+        case 'boolean':
+          $info = field_info_field($field);
+          $bundles = array_keys($info['bundles']);
+          $entity_type = reset($bundles);
+          $bundle_name = reset($info['bundles'])[0];
+          $info = field_info_instance($entity_type, $field, $bundle_name);
+          $filters['boolean'][$field] = t($info['label']) . ' (' . $field .')';;
+          break;
+
         case 'date':
           // Check if date has an value2 in the index to indicate a to date.
           if (isset($index->options['fields'][$field . '2'])) {
-            $name = explode(':', $field);
-            $dates[$field] = array_shift($name) . ' (' . $field .')';
+            $field_name = explode(':', $field)[0];
+            $info = field_info_field($field_name);
+            $bundles = array_keys($info['bundles']);
+            $entity_type = reset($bundles);
+            $bundle_name = reset($info['bundles'])[0];
+            $info = field_info_instance($entity_type, $field_name, $bundle_name);
+            $dates[$field] = t($info['label']) . ' (' . $field_name .')';
             break;
           }
           // Fall through to default.
@@ -305,7 +326,11 @@ function search_node_page_form_search_node_page_search_box_content_type_edit_for
       }
     }
     $form['search_node']['options']['fields']['#options'] = $fields;
-    $form['search_node']['options']['filters']['#options'] = $filters;
+    $form['search_node']['options']['filters']['taxonomy']['#options'] = $filters['taxonomy'];
+    $form['search_node']['options']['filters']['boolean']['#options'] = $filters['boolean'];
+
+    // Update sort fields.
+    $form['search_node']['sorting']['field']['#options'] = array('_none_' => t('None')) + $fields;
 
     // Updater interval fields.
     $form['search_node']['intervals']['fields']['#options'] = $fields;
@@ -314,7 +339,7 @@ function search_node_page_form_search_node_page_search_box_content_type_edit_for
     $form['search_node']['dates']['fields']['#options'] = $dates;
 
     // Update force filters with the options.
-    $form['search_node']['forces']['field']['#options'] = array('_none_' => t('Select field')) + $filters;
+    $form['search_node']['forces']['field']['#options'] = array('_none_' => t('Select field')) + $filters['taxonomy'];
 
     // Load taxonomy based on selected field.
     $field = !empty($form_state['input']['search_node']['forces']['field']) ? $form_state['input']['search_node']['forces']['field'] : $form['search_node']['forces']['field']['#default_value'];
@@ -446,12 +471,48 @@ function search_node_page_configuration_form($form, array &$form_state = array()
   );
 
   $filters = array();
-  $form['search_node']['options']['filters'] = array(
+  $form['search_node']['options']['filters']['taxonomy'] = array(
     '#type' => 'checkboxes',
     '#title' => t('Search filters'),
     '#description' => t('Select the filters to use'),
     '#options' => $filters,
-    '#default_value' => isset($defaults['options']['filters']) ? $defaults['options']['filters'] : array(),
+    '#default_value' => isset($defaults['options']['filters']['taxonomy']) ? $defaults['options']['filters']['taxonomy'] : array(),
+  );
+
+  $filters = array();
+  $form['search_node']['options']['filters']['boolean'] = array(
+    '#type' => 'checkboxes',
+    '#title' => t('Search filters (boolean)'),
+    '#description' => t('Select the filters to use as true/false filters'),
+    '#options' => $filters,
+    '#default_value' => isset($defaults['options']['filters']['boolean']) ? $defaults['options']['filters']['boolean'] : array(),
+  );
+
+  $form['search_node']['sorting'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Sorting'),
+    '#description' => t('Sorting the search result.'),
+    '#tree' => TRUE,
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+  );
+
+  $selected = array();
+  $form['search_node']['sorting']['field'] = array(
+    '#type' => 'radios',
+    '#title' => t('Date fields'),
+    '#options' => $selected,
+    '#default_value' => isset($defaults['sorting']['field']) ? $defaults['sorting']['field'] : array(),
+  );
+
+  $form['search_node']['sorting']['order'] = array(
+    '#type' => 'radios',
+    '#title' => t('Sort direction'),
+    '#options' => array(
+      'asc' => t('Ascending'),
+      'desc' => t('Descending'),
+    ),
+    '#default_value' => isset($defaults['sorting']['order']) ? $defaults['sorting']['order'] : array(),
   );
 
   $form['search_node']['dates'] = array(
@@ -499,7 +560,7 @@ function search_node_page_configuration_form($form, array &$form_state = array()
   );
 
   /**
-   * @TOOO: Added support for more than one field.
+   * @TODO: Added support for more than one field.
    */
   $form['search_node']['forces']['field'] = array(
     '#type' => 'select',
@@ -621,7 +682,7 @@ function search_node_page_block_view($delta='') {
  * Builds the angular configuration and injects it into the page.
  *
  * @param array $configuration
- *   The configutaion for this search box.
+ *   The configuration for this search box.
  *
  * @return array
  *   Render array to display the search box placeholder.
@@ -684,10 +745,10 @@ function search_node_page_build_search_box($configuration = array()) {
       $conf['initialQueryText'] = $configuration['options']['initial_query_text'];
     }
 
-    // Build filters.
-    if (!empty($configuration['options']['filters'])) {
+    // Build taxonomy filters.
+    if (!empty($configuration['options']['filters']['taxonomy'])) {
       $filters = array();
-      foreach (array_filter($configuration['options']['filters']) as $field) {
+      foreach (array_filter($configuration['options']['filters']['taxonomy']) as $field) {
         $info = field_info_field($field);
         $vocab = taxonomy_vocabulary_machine_name_load($info['settings']['allowed_values'][0]['vocabulary']);
 
@@ -697,6 +758,7 @@ function search_node_page_build_search_box($configuration = array()) {
             'value' => $term->name,
           );
         }
+
         /**
          * @TODO: Fix type, so it's not hardcoded.
          */
@@ -710,13 +772,48 @@ function search_node_page_build_search_box($configuration = array()) {
       }
 
       // Add the filters.
-      $conf['provider']['filters'] = $filters;
+      $conf['provider']['filters'] = array(
+        'taxonomy' => $filters,
+      );
+    }
+
+    // Build boolean filters.
+    if (!empty($configuration['options']['filters']['boolean'])) {
+      $filters = array();
+      foreach (array_filter($configuration['options']['filters']['boolean']) as $field) {
+        $info = field_info_field($field);
+        $bundles = array_keys($info['bundles']);
+        $entity_type = reset($bundles);
+        $bundle_name = reset($info['bundles'])[0];
+        $info = field_info_instance($entity_type, $field, $bundle_name);
+
+        // Add filters.
+        $filters[] = array(
+          'field' => $field,
+          'name' => $info['label'],
+          'type' => 'and',
+        );
+      }
+
+      // Add the filters.
+      if (!isset($conf['provider']['filters'])) {
+        $conf['provider']['filters'] = array();
+      }
+      $conf['provider']['filters']['boolean'] = $filters;
     }
 
     // Add intervals to the configuration.
     if (!empty($configuration['intervals']['fields'])) {
       $intervals = array_filter($configuration['intervals']['fields']);
       $conf['provider']['intervals'] = array_values($intervals);
+    }
+
+    // Add sorting configuration.
+    if (!empty($configuration['sorting']['field']) && $configuration['sorting']['field'] != '_none_') {
+      $conf['provider']['sorting'] = array(
+        'field' => $configuration['sorting']['field'],
+        'order' => $configuration['sorting']['order'],
+      );
     }
 
     // Add dates to the configuration.
@@ -739,6 +836,7 @@ function search_node_page_build_search_box($configuration = array()) {
       $conf['provider']['force'] = array(
         array(
           'field' => $configuration['forces']['field'],
+          'type' => 'taxonomy',
           'values' => array_filter($configuration['forces']['selected']),
         ),
       );

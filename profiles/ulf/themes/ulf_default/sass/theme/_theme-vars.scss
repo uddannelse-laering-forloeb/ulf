@@ -1,0 +1,68 @@
+/**
+ * Variables
+ *
+ * Theme specific variables
+ *
+ */
+
+
+
+/* Layout
+   ================================================================================================================== */
+
+$layout-max-width:    1000px;
+$node-breakpoint:     55em; //@todo px
+
+/* Colors
+   ================================================================================================================== */
+$white:            #fff;
+$black:            #000;
+
+$white-off:        lighten($black, 95%);
+$gray-lightest:    lighten($black, 90%);
+$gray-lighter:     lighten($black, 85%);
+$gray-light:       lighten($black, 70%);
+$gray:             lighten($black, 60%);
+$gray-dark:        lighten($black, 50%);
+$gray-darker:      lighten($black, 40%);
+$gray-darkest:     lighten($black, 30%);
+
+$light-blue:       #deeced;  // Block bg color.
+$dark-blue:        #17858c;  // Block bg color.
+$green:            rgb(164, 218, 32);  // Daycare color.
+$purple:           rgb(144, 29, 124); // School color.
+$orange:           rgb(255, 104, 0);  // Youth color.
+$yellow:           rgb(237, 215, 28); // Course color.
+
+
+/* Typography
+   ================================================================================================================== */
+
+$font:             14px/1.3 "Asap", sans-serif;
+
+
+/* Link colors
+   ================================================================================================================== */
+
+$link-color:       $dark-blue;
+$link-color-hover: darken($link-color, 10%);
+
+
+/* Spacing
+   ================================================================================================================== */
+
+$spacing:          16px;
+
+
+/* Border radius
+   ================================================================================================================== */
+
+$border-radius:    5px;
+
+
+/* Boxlist
+   ================================================================================================================== */
+
+$boxlist-font-color:    #000;
+$boxlist-border-color:  $green;
+$boxlist-padding:       1em;

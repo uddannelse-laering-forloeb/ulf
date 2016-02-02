@@ -1,6 +1,33 @@
 #ULF changelog
 
-#In development
+#v2.2.0
+
+##Release notes
+Clone ulf_aarhus (Theme)
+Clone ulf_aarhus_settings (Custom module)
+Clone ulf_aarhus_search_settings (Feature)
+
+##Changes
+* Updated install profile to reflect ULF version 2.0.0
+* Added Silkeborg theme
+* Added a base theme as a copy of ulf i aarhus
+* Added editor access to url aliases
+* Added gulp
+* Fixed bug where filters would overflow
+* Added permission for course provider to delete own content
+* Changed label of "Læringsmål"
+* Added free label to courses
+* Removed required from courses
+* Removed "special needs" field
+* Removed links to taxonomy terms on course, and course_educator content types
+* Changed order of courses on profile
+* Added "place field" on courses
+* Fixed a bug where all unpublished content were saved as "sent to revision" rather that "draft"
+* Fixed a bug where changed date did not always update when changing workflow state
+* Fixed a bug where save as darft in some cases changed state to "send to revision"
+* Added Target group in admin views
+* Added search input for all admin views
+* Changed display of admin workbench interface
 
 #v2.1.2
 

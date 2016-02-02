@@ -4,3 +4,10 @@ sites/*/settings*.php
 # Ignore paths that contain user-generated content.
 sites/*/files
 sites/*/private
+
+* Ignore external themes and modules
+profiles/ulf/themes/ulf_silkeborg
+profiles/ulf/themes/ulf_aarhus
+profiles/ulf/modules/features/ulf_silkeborg_search_settings
+profiles/ulf/modules/features/ulf_aarhus_search_settings
+profiles/ulf/modules/ulf_custom/ulf_aarhus_settings

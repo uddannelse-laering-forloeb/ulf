@@ -1,0 +1,9 @@
+<?php
+
+/**
+ * Remove special needs field. Part of taxonomy instead.
+ */
+function ulf_course_update_7001 () {
+  field_delete_field('field_special_needs');
+  field_purge_batch(5);
+}

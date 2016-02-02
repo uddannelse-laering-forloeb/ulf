@@ -93,10 +93,9 @@ function ulf_course_field_group_info() {
       0 => 'field_collection_price',
       1 => 'field_duration_unit',
       2 => 'field_free',
-      3 => 'field_price_info',
-      4 => 'field_duration',
+      3 => 'field_duration',
+      4 => 'field_duration_description',
       5 => 'field_price_description',
-      6 => 'field_duration_description',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -248,7 +247,7 @@ function ulf_course_field_group_info() {
       4 => 'field_subjects_primary_school',
       5 => 'field_subjects_youth',
       6 => 'field_target_group_sub',
-      7 => 'field_special_needs',
+      7 => 'field_place',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

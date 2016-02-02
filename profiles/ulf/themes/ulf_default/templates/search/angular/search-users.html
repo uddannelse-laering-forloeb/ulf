@@ -1,0 +1,110 @@
+<div class="search--widget is-users">
+  <div class="search--widget-inner">
+
+    <!-- Search field -->
+    <div class="search--filter-wrapper-user">
+      <div class="search--filter-wrapper-inner">
+        <div class="search--filter-text">
+          <input type="text" id="search" name="search" value="" size="60"
+                 maxlength="128" class="search--filter-search-text"
+                 data-code="13" data-key-code="searchClicked()"
+                 data-ng-model="query.text">
+          <input class="search--filter-search-submit" type="submit"
+                 id="search-submit" name="search-submit" value="Søg"
+                 data-ng-click="searchClicked()">
+        </div>
+      </div>
+    </div>
+
+    <!-- Interval search fields -->
+    <div class="search--filter-wrapper" data-ng-repeat="interval in intervals">
+      <div class="search--filter-wrapper-inner">
+        <div class="search--filter-span">
+          <div class="search--filter-span-wrapper">
+            <label class="search--filter-span-label"
+                   for="interval-from">Fra</label>
+            <input type="text" id="interval-from" data-datetime-picker="d/m/y" data-angular-format="dd/MM/yy"
+                   data-ng-model="query.intervals[interval].from" value=""
+                   size="60" maxlength="128" class="search--filter-span-text" data-ng-change="intervalCheck(interval)">
+          </div>
+          <div class="search--filter-span-wrapper">
+            <label class="search--filter-span-label"
+                   for="interval-to">Til</label>
+            <input type="text" id="interval-to" data-datetime-picker="d/m/y" data-angular-format="dd/MM/yy"
+                   data-ng-model="query.intervals[interval].to" value=""
+                   size="60" maxlength="128" class="search--filter-span-text" data-ng-change="intervalCheck(interval)">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dates search fields -->
+    <div class="search--filter-wrapper" data-ng-repeat="(id, date) in dates">
+      <div class="search--filter-wrapper-inner">
+        <div class="search--filter-span">
+          <div class="search--filter-span-wrapper">
+            <label class="search--filter-span-label"
+                   for="{{ id }}-form">Fra</label>
+            <input type="text" id="{{ id }}-form" data-datetime-picker="d/m/y" data-angular-format="dd/MM/yy"
+                   data-ng-model="query.dates[id].from" value=""
+                   size="60" maxlength="8" class="search--filter-span-text" data-ng-change="dateCheck(date)">
+          </div>
+          <div class="search--filter-span-wrapper">
+            <label class="search--filter-span-label"
+                   for="{{ id }}-to">Til</label>
+            <input type="text" id="{{ id }}-to" data-datetime-picker="d/m/y" data-angular-format="dd/MM/yy"
+                   data-ng-model="query.dates[id].to" value=""
+                   size="60" maxlength="8" class="search--filter-span-text" data-ng-change="dateCheck(date)">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Search filters -->
+    <div id={{id}} data-ng-class="toggleFilterClasses[id][0]"
+         class="search--filter-wrapper"
+         data-ng-repeat="(id, filter) in filters.taxonomy">
+      <div class="search--filter-wrapper-inner">
+        <div class="search--filter-list">
+          <div class="search--filter-label" data-ng-click="openFilter(id)">{{ filter.name }}</div>
+          <div class="search--filter-dropdown"
+               data-ng-class="toggleFilterClasses[id][1]">
+            <div class="search--filter-dropdown-inner">
+              <div class="search--filter-dropdown-header" data-ng-click="openFilter(id)">{{ filter.name }} <span class="search--filter-dropdown-header-close"><img src="/profiles/ulf/themes/ulf_default/images/close.svg"></span>
+              </div>
+              <div class="search--filter-dropdown-content">
+                <div data-ng-repeat="(key, item) in filter.items">
+                  <input id="{{ key }}" data-ng-disabled="!item.count"
+                         data-ng-click="searchClicked()" type="checkbox"
+                         data-ng-model="query.filters.taxonomy[id][key]">
+                  <label data-ng-class="{ disabled: !item.count }"
+                         for="{{ key }}">{{ item.value }}</label>
+                </div>
+              </div>
+              <div class="search--filter-dropdown-submit" data-ng-click="openFilter(id)">Anvend</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Boolean filters -->
+  <div class="search--widget-extras" data-ng-repeat="(id, field) in filters.boolean">
+    <input id="{{ id }}" data-ng-disabled="!field.count" type="checkbox" data-ng-model="query.filters['boolean'][id]" data-ng-click="searchClicked()">
+    <label data-ng-class="{ disabled: !field.count }" for="{{ key }}">{{ field.name }}</label>
+  </div>
+
+  <!-- Selected filters -->
+  <div class="search--widget-selected">
+    <div class="search--widget-selected-inner">
+      <span data-ng-repeat="(field, filters) in selectedFilters" class="search--widget-selected-item-wrapper">
+        <span class="search--widget-selected-item"
+             data-ng-repeat="filter in filters"
+             data-ng-click="removeFilter(field, filter)">{{ filter }}
+        </span>
+      </span>
+    </div>
+    <div class="search--reset" data-ng-click="reset()">Nulstil søgning</div>
+  </div>
+</div>

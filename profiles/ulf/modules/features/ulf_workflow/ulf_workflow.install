@@ -49,3 +49,15 @@ function ulf_workflow_update_7500() {
 function ulf_workflow_update_7600() {
   variable_set('ulf_workflow_local_recipient', 1);
 }
+
+/**
+ * Enable View bulk operation adn page_manager_redirect.
+ */
+function ulf_workflow_update_7601() {
+  $module_enable = array(
+    'page_manager_redirect',
+    'views_bulk_operations',
+  );
+
+  module_enable($module_enable);
+}

@@ -1,4 +1,4 @@
 name = ulf_search
 description = Search module providing blocks with search and results
-package = ULF Base
+package = Ulf base
 core = 7.x
