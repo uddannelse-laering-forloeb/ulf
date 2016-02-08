@@ -12,3 +12,17 @@ function ulf_base_update_7001() {
 
   module_enable($module_enable);
 }
+
+
+/**
+ * Enable ulf_base settings module if it exists.
+ */
+function ulf_base_update_7002() {
+  $module_enable = array();
+  $silkeborg_path = drupal_get_path('module', 'ulf_silkeborg_settings');
+  if (file_exists($silkeborg_path . '/ulf_silkeborg_settings.module')){
+    $module_enable[] = 'ulf_silkeborg_settings';
+  }
+
+  module_enable($module_enable);
+}
