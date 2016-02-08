@@ -6,7 +6,7 @@ sites/*/files
 sites/*/private
 
 * Ignore external themes and modules
-profiles/ulf/themes/ulf_silkeborg
+profiles/ulf/themes/ud_og_laer
 profiles/ulf/themes/ulf_aarhus
 profiles/ulf/modules/features/ulf_silkeborg_search_settings
 profiles/ulf/modules/features/ulf_aarhus_search_settings
