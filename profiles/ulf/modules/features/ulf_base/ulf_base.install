@@ -15,7 +15,7 @@ function ulf_base_update_7001() {
 
 
 /**
- * Enable ulf_base settings module if it exists.
+ * Enable ulf_silkeborg settings module if it exists.
  */
 function ulf_base_update_7002() {
   $module_enable = array();
