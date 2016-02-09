@@ -61,8 +61,8 @@ textarea {
   }
 }
 
-input[type="checkbox"]
-input[type="checkbox"] + label {
+input[disabled][type="checkbox"]
+input[disabled][type="checkbox"] + label {
   @include opacity(.3);
   opacity: .3;
 }
