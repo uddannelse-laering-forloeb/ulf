@@ -26,7 +26,6 @@ features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:2
 features[image][] = node_display
 features[image][] = teaser_display
-features[mailchimp_signup][] = signup_to_newsletter
 features[menu_custom][] = main-menu
 features[menu_custom][] = menu-about-ulf
 features[user_permission][] = access administration pages
