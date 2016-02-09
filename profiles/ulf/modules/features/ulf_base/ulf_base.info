@@ -21,6 +21,7 @@ dependencies[] = strongarm
 dependencies[] = system
 dependencies[] = taxonomy
 dependencies[] = toolbar
+dependencies[] = token_filter
 dependencies[] = user
 features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:2
