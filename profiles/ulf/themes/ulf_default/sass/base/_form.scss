@@ -60,3 +60,9 @@ textarea {
     padding: 0;
   }
 }
+
+input[type="checkbox"]
+input[type="checkbox"] + label {
+  @include opacity(.3);
+  opacity: .3;
+}
