@@ -18,7 +18,7 @@
       <div data-ng-if="hit.field_period_full_year == true">
         <p class="teaser--type">Periode: Hele året</p>
       </div>
-      <p class="teaser--type">Afsender: <a href="{{ hit['author:url'] }}">{{ hit['author:field_profile_name'] }}</a></p>
+      <p class="teaser--type">Udbyder: <a href="{{ hit['author:url'] }}">{{ hit['author:field_profile_name'] }}</a></p>
       <p class="search-results--type">Emne:
         <span data-ng-repeat="subject in hit.field_subject track by $index">
           <a href="{{ hit['field_subject:url'][$index] }}">{{ subject }}</a>,
