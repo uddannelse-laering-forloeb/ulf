@@ -26,14 +26,17 @@
         </span>
       </p>
       <p class="search-results--type">Målgruppe:
-        <span data-ng-repeat="target_group in hit.field_relevance_primary_school track by $index">
+        <span data-ng-repeat="target_group in hit.field_relevance_primary_school|limitTo:2 track by $index">
           <a href="{{ hit['field_relevance_primary_school:url'][$index] }}">{{ target_group }}</a>,
         </span>
-        <span data-ng-repeat="target_group in hit.field_relevance_upper_school track by $index">
+        <span data-ng-repeat="target_group in hit.field_relevance_upper_school|limitTo:2 track by $index">
           <a href="{{ hit['field_relevance_upper_school:url'][$index] }}">{{ target_group }}</a>,
         </span>
-        <span data-ng-repeat="target_group in hit.field_relevance_educators track by $index">
+        <span data-ng-repeat="target_group in hit.field_relevance_educators|limitTo:2 track by $index">
           <a href="{{ hit['field_relevance_educators:url'][$index] }}">{{ target_group }}</a>,
+        </span>
+        <span data-ng-if="hit.field_relevance_primary_school.length > 2 || hit.field_relevance_upper_school.length > 2 || hit.field_relevance_educators.length > 2">
+          (...)
         </span>
       </p>
       <p class="teaser--type-read-more"><a href="{{ hit.url }}">Se hele kurset</a></p>
