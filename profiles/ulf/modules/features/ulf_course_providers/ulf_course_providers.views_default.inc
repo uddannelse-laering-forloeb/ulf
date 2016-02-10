@@ -307,15 +307,6 @@ function ulf_course_providers_views_default_views() {
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = '1';
-  /* Filter criterion: Content: Overordnet målgruppe (field_target_group) */
-  $handler->display->display_options['filters']['field_target_group_tid']['id'] = 'field_target_group_tid';
-  $handler->display->display_options['filters']['field_target_group_tid']['table'] = 'field_data_field_target_group';
-  $handler->display->display_options['filters']['field_target_group_tid']['field'] = 'field_target_group_tid';
-  $handler->display->display_options['filters']['field_target_group_tid']['value'] = array(
-    11 => '11',
-  );
-  $handler->display->display_options['filters']['field_target_group_tid']['type'] = 'select';
-  $handler->display->display_options['filters']['field_target_group_tid']['vocabulary'] = 'target_group';
   /* Filter criterion: Taxonomy term: Name */
   $handler->display->display_options['filters']['name']['id'] = 'name';
   $handler->display->display_options['filters']['name']['table'] = 'taxonomy_term_data';
