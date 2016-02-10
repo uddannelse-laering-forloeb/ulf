@@ -181,6 +181,10 @@ function ulf_course_providers_views_default_views() {
   $handler->display->display_options['style_options']['default_row_class'] = FALSE;
   $handler->display->display_options['style_options']['row_class_special'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
+  /* Relationship: Content: Overordnet målgruppe (field_target_group) */
+  $handler->display->display_options['relationships']['field_target_group_tid']['id'] = 'field_target_group_tid';
+  $handler->display->display_options['relationships']['field_target_group_tid']['table'] = 'field_data_field_target_group';
+  $handler->display->display_options['relationships']['field_target_group_tid']['field'] = 'field_target_group_tid';
   /* Field: Content: Overordnet målgruppe */
   $handler->display->display_options['fields']['field_target_group']['id'] = 'field_target_group';
   $handler->display->display_options['fields']['field_target_group']['table'] = 'field_data_field_target_group';
@@ -236,15 +240,12 @@ function ulf_course_providers_views_default_views() {
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = '1';
-  /* Filter criterion: Content: Overordnet målgruppe (field_target_group) */
-  $handler->display->display_options['filters']['field_target_group_tid']['id'] = 'field_target_group_tid';
-  $handler->display->display_options['filters']['field_target_group_tid']['table'] = 'field_data_field_target_group';
-  $handler->display->display_options['filters']['field_target_group_tid']['field'] = 'field_target_group_tid';
-  $handler->display->display_options['filters']['field_target_group_tid']['value'] = array(
-    10 => '10',
-  );
-  $handler->display->display_options['filters']['field_target_group_tid']['type'] = 'select';
-  $handler->display->display_options['filters']['field_target_group_tid']['vocabulary'] = 'target_group';
+  /* Filter criterion: Taxonomy term: Name */
+  $handler->display->display_options['filters']['name']['id'] = 'name';
+  $handler->display->display_options['filters']['name']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['filters']['name']['field'] = 'name';
+  $handler->display->display_options['filters']['name']['relationship'] = 'field_target_group_tid';
+  $handler->display->display_options['filters']['name']['value'] = 'Dagtilbud';
 
   /* Display: Kursus */
   $handler = $view->new_display('block', 'Kursus', 'block_2');
@@ -315,6 +316,12 @@ function ulf_course_providers_views_default_views() {
   );
   $handler->display->display_options['filters']['field_target_group_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_target_group_tid']['vocabulary'] = 'target_group';
+  /* Filter criterion: Taxonomy term: Name */
+  $handler->display->display_options['filters']['name']['id'] = 'name';
+  $handler->display->display_options['filters']['name']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['filters']['name']['field'] = 'name';
+  $handler->display->display_options['filters']['name']['relationship'] = 'field_target_group_tid';
+  $handler->display->display_options['filters']['name']['value'] = 'Grundskole';
 
   /* Display: Forløb - Ungdomsuddannelse */
   $handler = $view->new_display('block', 'Forløb - Ungdomsuddannelse', 'block_1');
@@ -333,15 +340,12 @@ function ulf_course_providers_views_default_views() {
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['value'] = '1';
-  /* Filter criterion: Content: Overordnet målgruppe (field_target_group) */
-  $handler->display->display_options['filters']['field_target_group_tid']['id'] = 'field_target_group_tid';
-  $handler->display->display_options['filters']['field_target_group_tid']['table'] = 'field_data_field_target_group';
-  $handler->display->display_options['filters']['field_target_group_tid']['field'] = 'field_target_group_tid';
-  $handler->display->display_options['filters']['field_target_group_tid']['value'] = array(
-    12 => '12',
-  );
-  $handler->display->display_options['filters']['field_target_group_tid']['type'] = 'select';
-  $handler->display->display_options['filters']['field_target_group_tid']['vocabulary'] = 'target_group';
+  /* Filter criterion: Taxonomy term: Name */
+  $handler->display->display_options['filters']['name']['id'] = 'name';
+  $handler->display->display_options['filters']['name']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['filters']['name']['field'] = 'name';
+  $handler->display->display_options['filters']['name']['relationship'] = 'field_target_group_tid';
+  $handler->display->display_options['filters']['name']['value'] = 'Ungdomsuddannelse';
 
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block');
@@ -369,6 +373,7 @@ function ulf_course_providers_views_default_views() {
     t('Sort by'),
     t('Asc'),
     t('Desc'),
+    t('term from field_target_group'),
     t('Alle'),
     t('Kursus'),
     t('<h3 class="teaser--content-header">Kursus</h3>'),
