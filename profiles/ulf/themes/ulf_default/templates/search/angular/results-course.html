@@ -25,6 +25,17 @@
           <a href="{{ hit['field_subject:url'][$index] }}">{{ subject }}</a>,
         </span>
       </p>
+      <p class="search-results--type">Målgruppe:
+        <span data-ng-repeat="target_group in hit.field_relevance_primary_school track by $index">
+          <a href="{{ hit['field_relevance_primary_school:url'][$index] }}">{{ target_group }}</a>,
+        </span>
+        <span data-ng-repeat="target_group in hit.field_relevance_upper_school track by $index">
+          <a href="{{ hit['field_relevance_upper_school:url'][$index] }}">{{ target_group }}</a>,
+        </span>
+        <span data-ng-repeat="target_group in hit.field_relevance_educators track by $index">
+          <a href="{{ hit['field_relevance_educators:url'][$index] }}">{{ target_group }}</a>,
+        </span>
+      </p>
       <p class="teaser--type-read-more"><a href="{{ hit.url }}">Se hele kurset</a></p>
     </header>
     <figure><a href="{{ hit.url }}"><img data-ng-src="{{ hit['field_image:file'].url }}" src="#"/></a></figure>
