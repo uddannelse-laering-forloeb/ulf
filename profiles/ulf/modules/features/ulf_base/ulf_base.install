@@ -52,7 +52,7 @@ function ulf_base_update_7004() {
   );
 
   variable_set('secure_permissions_disable_forms', 1);
-  variable_set('secure_permissions_use_default', 1);
+  variable_set('secure_permissions_active', 1);
 
   module_enable($module_enable);
 }
