@@ -11,7 +11,7 @@
  * Create a secure_permissions_data module directory and place this function
  * in secure_permissions_data.module.
  *
- * @return array
+ * @return
  *   An array defining all the roles for the site.
  */
 function secure_permissions_data_secure_permissions_roles() {
@@ -32,7 +32,7 @@ function secure_permissions_data_secure_permissions_roles() {
  * @param $role
  *   The role for which the permissions are being requested.
  *
- * @return array
+ * @return
  *   An array defining all the permissions for the site.
  */
 function secure_permissions_data_secure_permissions($role) {
@@ -41,12 +41,14 @@ function secure_permissions_data_secure_permissions($role) {
       'access content',
       'access PDF version',
       'access user profiles',
+      'display EU Cookie Compliance popup',
       'use manualcrop',
     ),
     'authenticated user' => array(
       'access content',
       'access PDF version',
       'access user profiles',
+      'display EU Cookie Compliance popup',
       'edit mimemail user settings',
       'use manualcrop',
     ),
@@ -82,7 +84,9 @@ function secure_permissions_data_secure_permissions($role) {
       'access workbench',
       'administer blocks',
       'administer custom content',
+      'administer EU Cookie Compliance popup',
       'administer mail templates',
+      'administer mailchimp',
       'administer menu',
       'administer nodes',
       'administer path metatags',
