@@ -219,7 +219,10 @@ function ulf_frontpage_views_default_views() {
   $handler->display->display_options['pager']['options']['items_per_page'] = '4';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['style_options']['default_row_class'] = FALSE;
+  $handler->display->display_options['style_options']['row_class_special'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
   /* Relationship: Nodequeue: Queue */
   $handler->display->display_options['relationships']['nodequeue_rel']['id'] = 'nodequeue_rel';
   $handler->display->display_options['relationships']['nodequeue_rel']['table'] = 'node';
@@ -228,13 +231,14 @@ function ulf_frontpage_views_default_views() {
   $handler->display->display_options['relationships']['nodequeue_rel']['names'] = array(
     'frontpage_html_blocks' => 0,
   );
-  /* Field: Content: Title */
-  $handler->display->display_options['fields']['title']['id'] = 'title';
-  $handler->display->display_options['fields']['title']['table'] = 'node';
-  $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = '';
-  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
-  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Field: Content: HTML kode */
+  $handler->display->display_options['fields']['field_html_code']['id'] = 'field_html_code';
+  $handler->display->display_options['fields']['field_html_code']['table'] = 'field_data_field_html_code';
+  $handler->display->display_options['fields']['field_html_code']['field'] = 'field_html_code';
+  $handler->display->display_options['fields']['field_html_code']['label'] = '';
+  $handler->display->display_options['fields']['field_html_code']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_html_code']['element_default_classes'] = FALSE;
+  $handler->display->display_options['fields']['field_html_code']['field_api_classes'] = TRUE;
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
