@@ -1,0 +1,18 @@
+<?php
+/**
+ * @file
+ * Code for the Ulf html blocks feature.
+ */
+
+include_once 'ulf_html_blocks.features.inc';
+
+/**
+ * Implements hook_form_FORMID_form_alter.
+ *
+ * @param $form
+ * @param $form_state
+ * @param $form_id
+ */
+function ulf_html_blocks_form_html_block_node_form_alter(&$form, &$form_state, $form_id) {
+  $form['field_html_code'][LANGUAGE_NONE]['0']['#format'] = 'full_html';
+}

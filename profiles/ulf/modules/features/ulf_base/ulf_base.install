@@ -56,3 +56,15 @@ function ulf_base_update_7004() {
 
   module_enable($module_enable);
 }
+
+/**
+ * Enable nodequeue module.
+ */
+function ulf_base_update_7005() {
+  $module_enable = array(
+    'nodequeue',
+    'ulf_html_blocks'
+  );
+
+  module_enable($module_enable);
+}

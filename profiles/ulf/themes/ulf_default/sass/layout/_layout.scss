@@ -57,17 +57,22 @@ body {
   }
 
   .layout-element-gamma {
-    background: $gray-lightest;
+    background: $gray-lighter;
   }
 
   .layout-element-delta {
-    background: $gray-lighter;
+    background: $gray-light;
+  }
+
+  .layout-element-epsilon {
+    background: $gray;
   }
 
   .layout-element-alpha,
   .layout-element-beta,
   .layout-element-gamma,
-  .layout-element-delta {
+  .layout-element-delta,
+  .layout-element-epsilon {
     &-inner {
       @extend %layout--element-inner;
     }

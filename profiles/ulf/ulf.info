@@ -17,6 +17,7 @@ dependencies[] = ulf_field_collections
 dependencies[] = ulf_news
 dependencies[] = ulf_static_page
 dependencies[] = ulf_taxonomies
+dependencies[] = ulf_html_blocks
 
 ; Configuration.
 dependencies[] = ulf_forms
@@ -51,3 +52,4 @@ dependencies[] = metatag
 dependencies[] = secure_permissions
 dependencies[] = token_filter
 dependencies[] = print_pdf_wkhtmltopdf
+dependencies[] = nodequeue

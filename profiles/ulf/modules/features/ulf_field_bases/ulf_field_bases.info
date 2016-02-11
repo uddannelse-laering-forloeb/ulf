@@ -36,6 +36,7 @@ features[field_base][] = field_facilities
 features[field_base][] = field_facilities_info
 features[field_base][] = field_free
 features[field_base][] = field_full_description
+features[field_base][] = field_html_code
 features[field_base][] = field_image
 features[field_base][] = field_inspirational_material
 features[field_base][] = field_material_suggestions
