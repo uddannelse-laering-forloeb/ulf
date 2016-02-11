@@ -47,4 +47,7 @@ dependencies[] = print_ui
 dependencies[] = redirect
 dependencies[] = transliteration
 dependencies[] = views_ui
+dependencies[] = metatag
+dependencies[] = secure_permissions
+dependencies[] = token_filter
 dependencies[] = print_pdf_wkhtmltopdf
