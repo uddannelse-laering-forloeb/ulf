@@ -20,6 +20,16 @@ function ulf_default_preprocess_html(&$variables) {
  *   Available variables.
  */
 function ulf_default_preprocess_page(&$variables) {
+  // Check theme.
+  if (isset($GLOBALS['theme_info']->base_theme) && $GLOBALS['theme_info']->base_theme == 'ulf_default') {
+    $variables['theme_overridden'] = TRUE;
+    $variables['active_theme'] = $GLOBALS['theme_info']->name;
+    $variables['base_theme'] = $GLOBALS['theme_info']->base_theme;
+  }
+
+  // Hamburger icon.
+  $variables['hamburger_icon_path'] = $variables['directory'];
+
   // Provide main menu as block for all pages.
   $variables['main_menu_block'] = module_invoke('system', 'block_view', 'main-menu');
 
