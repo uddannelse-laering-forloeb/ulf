@@ -47,7 +47,7 @@ function ulf_static_page_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 33,
+      'weight' => 1,
     ),
   );
 
@@ -112,7 +112,7 @@ function ulf_static_page_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 32,
+      'weight' => 2,
     ),
   );
 

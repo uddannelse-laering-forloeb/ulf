@@ -10,6 +10,7 @@ dependencies[] = strongarm
 dependencies[] = text
 dependencies[] = ulf_base
 dependencies[] = ulf_field_bases
+dependencies[] = ulf_field_collections
 features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:2
 features[field_instance][] = node-static_page-field_content

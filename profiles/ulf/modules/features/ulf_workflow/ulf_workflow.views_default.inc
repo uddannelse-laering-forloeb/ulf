@@ -419,37 +419,18 @@ Sorteret efter varighed';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Field: Content: Varighed */
-  $handler->display->display_options['fields']['field_duration']['id'] = 'field_duration';
-  $handler->display->display_options['fields']['field_duration']['table'] = 'field_data_field_duration';
-  $handler->display->display_options['fields']['field_duration']['field'] = 'field_duration';
-  $handler->display->display_options['fields']['field_duration']['settings'] = array(
-    'thousand_separator' => '',
-    'decimal_separator' => '.',
-    'scale' => '2',
-    'prefix_suffix' => 1,
-  );
-  /* Field: Content: Vælg enhed */
-  $handler->display->display_options['fields']['field_duration_unit']['id'] = 'field_duration_unit';
-  $handler->display->display_options['fields']['field_duration_unit']['table'] = 'field_data_field_duration_unit';
-  $handler->display->display_options['fields']['field_duration_unit']['field'] = 'field_duration_unit';
-  /* Field: Content: Edit link */
-  $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
-  $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
-  $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
+  /* Field: Content: Baggrundsviden */
+  $handler->display->display_options['fields']['field_background_knowledge']['id'] = 'field_background_knowledge';
+  $handler->display->display_options['fields']['field_background_knowledge']['table'] = 'field_data_field_background_knowledge';
+  $handler->display->display_options['fields']['field_background_knowledge']['field'] = 'field_background_knowledge';
   $handler->display->display_options['filter_groups']['groups'] = array(
     1 => 'OR',
   );
-  /* Filter criterion: Content: Varighed (field_duration) */
-  $handler->display->display_options['filters']['field_duration_value']['id'] = 'field_duration_value';
-  $handler->display->display_options['filters']['field_duration_value']['table'] = 'field_data_field_duration';
-  $handler->display->display_options['filters']['field_duration_value']['field'] = 'field_duration_value';
-  $handler->display->display_options['filters']['field_duration_value']['operator'] = 'not empty';
-  /* Filter criterion: Content: Vælg enhed (field_duration_unit) */
-  $handler->display->display_options['filters']['field_duration_unit_value']['id'] = 'field_duration_unit_value';
-  $handler->display->display_options['filters']['field_duration_unit_value']['table'] = 'field_data_field_duration_unit';
-  $handler->display->display_options['filters']['field_duration_unit_value']['field'] = 'field_duration_unit_value';
-  $handler->display->display_options['filters']['field_duration_unit_value']['operator'] = 'not empty';
+  /* Filter criterion: Content: Baggrundsviden (field_background_knowledge) */
+  $handler->display->display_options['filters']['field_background_knowledge_value']['id'] = 'field_background_knowledge_value';
+  $handler->display->display_options['filters']['field_background_knowledge_value']['table'] = 'field_data_field_background_knowledge';
+  $handler->display->display_options['filters']['field_background_knowledge_value']['field'] = 'field_background_knowledge_value';
+  $handler->display->display_options['filters']['field_background_knowledge_value']['operator'] = 'not empty';
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
@@ -479,9 +460,7 @@ Sorteret efter varighed';
     t('Viser indhold hvor "Varighed" eller "Varighed enhed".
 Sorteret efter varighed'),
     t('Title'),
-    t('Varighed'),
-    t('Vælg enhed'),
-    t('Edit link'),
+    t('Baggrundsviden'),
     t('Page'),
   );
   $export['ulf_editor_tool'] = $view;
