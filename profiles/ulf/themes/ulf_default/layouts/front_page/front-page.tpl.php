@@ -56,6 +56,7 @@
     <?php endif;?>
     <div class="layout-element-epsilon">
       <div class="layout-element-epsilon-inner">
+        <!--
         <?php if(!empty ($content['epsilon'])) : ?>
           <?php print $content['epsilon']; ?>
         <?php endif;?>
@@ -63,10 +64,11 @@
           <div class="block--newsletter is-front">
             <div class="block--newsletter-inner">
               <h2 class="block--newsletter-header"><?php print t('Newsletter signup'); ?></h2>
-              <!--<?php print render($newsletter_block['content']); ?>-->
+              <?php print render($newsletter_block['content']); ?>
             </div>
           </div>
         <?php endif;?>
+        -->
       </div>
     </div>
   </div>
