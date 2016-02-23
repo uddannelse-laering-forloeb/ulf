@@ -42,6 +42,7 @@ function secure_permissions_data_secure_permissions($role) {
       'access PDF version',
       'access user profiles',
       'display EU Cookie Compliance popup',
+      'search content',
       'use manualcrop',
     ),
     'authenticated user' => array(
@@ -49,6 +50,7 @@ function secure_permissions_data_secure_permissions($role) {
       'access PDF version',
       'access user profiles',
       'display EU Cookie Compliance popup',
+      'search content',
       'edit mimemail user settings',
       'use manualcrop',
     ),
