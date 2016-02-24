@@ -51,6 +51,7 @@
       <div class="layout-element-delta">
         <div class="layout-element-delta-inner">
           <?php print $content['delta']; ?>
+          <!--
           <?php if(!empty ($newsletter_block)) : ?>
             <div class="block--newsletter is-front">
               <div class="block--newsletter-inner">
@@ -59,6 +60,7 @@
               </div>
             </div>
           <?php endif;?>
+          -->
         </div>
       </div>
     <?php endif;?>
