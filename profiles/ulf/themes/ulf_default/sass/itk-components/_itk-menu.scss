@@ -92,11 +92,11 @@ $itk--menu-position-inverted:     auto;   // Inverted variable must be defined, 
   /* States */
 
   &.is-visible {
-    @include animation(toggle-nav-open $itk--menu-animation-speed ease 1 forwards);
+    @include animation(toggle-nav-open, $itk--menu-animation-speed, ease, 1, forwards);
   }
 
   &.is-hidden {
-    @include animation(toggle-nav-close $itk--menu-animation-speed ease 1 forwards);
+    @include animation(toggle-nav-close, $itk--menu-animation-speed, ease, 1, forwards);
   }
 }
 
@@ -117,7 +117,7 @@ $itk--menu-position-inverted:     auto;   // Inverted variable must be defined, 
     display: block;
     width: 100%;
 
-    @include animation(toggle-nav-overlay .75s linear 1 forwards);
+    @include animation(toggle-nav-overlay, .75s, linear, 1, forwards);
   }
 }
 

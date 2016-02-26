@@ -318,6 +318,13 @@ example.org';
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'nodequeue_links';
+  $strongarm->value = FALSE;
+  $export['nodequeue_links'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'page_manager_search_disabled_apachesolr_search';
   $strongarm->value = TRUE;
   $export['page_manager_search_disabled_apachesolr_search'] = $strongarm;

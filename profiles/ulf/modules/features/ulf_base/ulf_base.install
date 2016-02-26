@@ -12,3 +12,59 @@ function ulf_base_update_7001() {
 
   module_enable($module_enable);
 }
+
+
+/**
+ * Enable ulf_silkeborg settings module if it exists.
+ */
+function ulf_base_update_7002() {
+  $module_enable = array();
+  $silkeborg_path = drupal_get_path('module', 'ulf_silkeborg_settings');
+  if (file_exists($silkeborg_path . '/ulf_silkeborg_settings.module')){
+    $module_enable[] = 'ulf_silkeborg_settings';
+  }
+
+  module_enable($module_enable);
+}
+
+
+/**
+ * Enable token filter module.
+ */
+function ulf_base_update_7003() {
+  $module_enable = array(
+    'token_filter'
+  );
+
+  module_enable($module_enable);
+}
+
+
+/**
+ * Enable metatag and secure permissions modules.
+ */
+function ulf_base_update_7004() {
+  $module_enable = array(
+    'path_metatags',
+    'path_metatags_ui',
+    'secure_permissions',
+    'secure_permissions_data',
+  );
+
+  variable_set('secure_permissions_disable_forms', 1);
+  variable_set('secure_permissions_active', 1);
+
+  module_enable($module_enable);
+}
+
+/**
+ * Enable nodequeue module.
+ */
+function ulf_base_update_7005() {
+  $module_enable = array(
+    'nodequeue',
+    'ulf_html_blocks'
+  );
+
+  module_enable($module_enable);
+}

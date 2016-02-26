@@ -120,6 +120,11 @@
   @extend %teaser--wrapper;
 
   background: $white; // For news.
+
+  &.is-custom {
+    border: 0;
+    background: inherit;
+  }
 }
 
 

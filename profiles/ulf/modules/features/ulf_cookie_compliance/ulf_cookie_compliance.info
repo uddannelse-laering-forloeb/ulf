@@ -8,7 +8,5 @@ dependencies[] = features
 dependencies[] = strongarm
 features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:2
-features[user_permission][] = administer EU Cookie Compliance popup
-features[user_permission][] = display EU Cookie Compliance popup
 features[variable][] = eu_cookie_compliance_da
 features[variable][] = eu_cookie_compliance_domain

@@ -175,13 +175,17 @@ class SearchApiSearchNodeService extends SearchApiAbstractService {
           // The $ids will be an array when delete items.
           foreach ($ids as $id) {
             $deleted = FALSE;
+            $type = 'unknown';
+
             // As search api don't provides an entity during deletion, we need
             // to try them all.
-            foreach ($index->options['datasource']['bundles'] as $type) {
-              $deleted = $this->connection->remove($search_node_index, $type, $id);
-              if ($deleted) {
-                // No need to try and delete with other types.
-                break;
+            if (isset($index->options['datasource'])) {
+              foreach ($index->options['datasource']['bundles'] as $type) {
+                $deleted = $this->connection->remove($search_node_index, $type, $id);
+                if ($deleted) {
+                  // No need to try and delete with other types.
+                  break;
+                }
               }
             }
 

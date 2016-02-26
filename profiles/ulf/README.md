@@ -17,3 +17,4 @@
 
 ###Patches
 * https://www.drupal.org/files/1093420-22.patch (Used by profiler module during site install)
+* https://www.drupal.org/files/issues/translate_role_names-2205581-1.patch

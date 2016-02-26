@@ -16,7 +16,10 @@ function ulf_frontpage_default_page_manager_pages() {
   $page->admin_title = 'Front';
   $page->admin_description = '';
   $page->path = 'front';
-  $page->access = array();
+  $page->access = array(
+    'type' => 'none',
+    'settings' => NULL,
+  );
   $page->menu = array();
   $page->arguments = array();
   $page->conf = array(
@@ -162,8 +165,30 @@ function ulf_frontpage_default_page_manager_pages() {
     $display->content['new-b3960982-6674-462a-beed-faccfdf4ce89'] = $pane;
     $display->panels['beta'][0] = 'new-b3960982-6674-462a-beed-faccfdf4ce89';
     $pane = new stdClass();
-    $pane->pid = 'new-db2e483d-133c-4f55-b8da-0739c50c8739';
+    $pane->pid = 'new-611d291a-2e89-467d-b6e0-dd791e94b058';
     $pane->panel = 'delta';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'ulf_frontpage_news-panel_pane_1';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array();
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => '',
+    );
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $pane->uuid = '611d291a-2e89-467d-b6e0-dd791e94b058';
+    $display->content['new-611d291a-2e89-467d-b6e0-dd791e94b058'] = $pane;
+    $display->panels['delta'][0] = 'new-611d291a-2e89-467d-b6e0-dd791e94b058';
+    $pane = new stdClass();
+    $pane->pid = 'new-db2e483d-133c-4f55-b8da-0739c50c8739';
+    $pane->panel = 'epsilon';
     $pane->type = 'custom';
     $pane->subtype = 'group_course';
     $pane->shown = TRUE;
@@ -185,12 +210,12 @@ function ulf_frontpage_default_page_manager_pages() {
     $pane->locks = array();
     $pane->uuid = 'db2e483d-133c-4f55-b8da-0739c50c8739';
     $display->content['new-db2e483d-133c-4f55-b8da-0739c50c8739'] = $pane;
-    $display->panels['delta'][0] = 'new-db2e483d-133c-4f55-b8da-0739c50c8739';
+    $display->panels['epsilon'][0] = 'new-db2e483d-133c-4f55-b8da-0739c50c8739';
     $pane = new stdClass();
-    $pane->pid = 'new-611d291a-2e89-467d-b6e0-dd791e94b058';
+    $pane->pid = 'new-d94eb83a-57bc-4b44-bb52-bda29e9bfc2f';
     $pane->panel = 'gamma';
     $pane->type = 'views_panes';
-    $pane->subtype = 'ulf_frontpage_news-panel_pane_1';
+    $pane->subtype = 'ulf_frontpage_html-panel_pane_1';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array();
@@ -198,16 +223,13 @@ function ulf_frontpage_default_page_manager_pages() {
     $pane->style = array(
       'settings' => NULL,
     );
-    $pane->css = array(
-      'css_id' => '',
-      'css_class' => '',
-    );
+    $pane->css = array();
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $pane->uuid = '611d291a-2e89-467d-b6e0-dd791e94b058';
-    $display->content['new-611d291a-2e89-467d-b6e0-dd791e94b058'] = $pane;
-    $display->panels['gamma'][0] = 'new-611d291a-2e89-467d-b6e0-dd791e94b058';
+    $pane->uuid = 'd94eb83a-57bc-4b44-bb52-bda29e9bfc2f';
+    $display->content['new-d94eb83a-57bc-4b44-bb52-bda29e9bfc2f'] = $pane;
+    $display->panels['gamma'][0] = 'new-d94eb83a-57bc-4b44-bb52-bda29e9bfc2f';
   $display->hide_title = PANELS_TITLE_NONE;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;

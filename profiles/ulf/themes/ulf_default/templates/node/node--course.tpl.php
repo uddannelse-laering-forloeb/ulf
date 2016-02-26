@@ -115,6 +115,16 @@
           <?php print render($content['field_full_description']); ?>
           <?php print render($content['field_purpose']); ?>
           <?php print render($content['field_video']); ?>
+          <?php if ($field_place) : ?>
+            <div class="field--collection-wrapper">
+              <div class="field--collection-label"><?php print t('Place');?></div>
+              <div class="field--collection-content">
+                <div class="field--collection-item">
+                  <?php print render($content['field_place']); ?>
+                </div>
+              </div>
+            </div>
+          <?php endif; ?>
           <?php if ($field_activities || $field_background_knowledge || $field_post_work || $field_material_suggestions) : ?>
             <div class="field--collection-wrapper">
               <div class="field--collection-label"><?php print t('Yderligere information');?></div>
@@ -196,11 +206,6 @@
                 <div class="block--field-wrapper">
                   <?php print render($content['field_facilities']); ?>
                   <?php print render($content['field_facilities_info']); ?>
-                </div>
-              <?php endif; ?>
-              <?php if ($field_place) : ?>
-                <div class="block--field-wrapper">
-                  <?php print render($content['field_place']); ?>
                 </div>
               <?php endif; ?>
             </div>
