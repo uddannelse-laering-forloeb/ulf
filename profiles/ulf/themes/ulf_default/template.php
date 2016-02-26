@@ -20,6 +20,16 @@ function ulf_default_preprocess_html(&$variables) {
  *   Available variables.
  */
 function ulf_default_preprocess_page(&$variables) {
+  // Check theme.
+  if (isset($GLOBALS['theme_info']->base_theme) && $GLOBALS['theme_info']->base_theme == 'ulf_default') {
+    $variables['theme_overridden'] = TRUE;
+    $variables['active_theme'] = $GLOBALS['theme_info']->name;
+    $variables['base_theme'] = $GLOBALS['theme_info']->base_theme;
+  }
+
+  // Hamburger icon.
+  $variables['hamburger_icon_path'] = $variables['directory'];
+
   // Provide main menu as block for all pages.
   $variables['main_menu_block'] = module_invoke('system', 'block_view', 'main-menu');
 
@@ -38,7 +48,7 @@ function ulf_default_preprocess_page(&$variables) {
  */
 function ulf_default_preprocess_front_page(&$variables) {
   // Provide newsletter block for front page.
-  $variables['newsletter_block'] = module_invoke('mailchimp_signup', 'block_view', 'signup_to_newsletter');
+  //$variables['newsletter_block'] = module_invoke('mailchimp_signup', 'block_view', 'signup_to_newsletter');
 }
 
 
@@ -215,7 +225,9 @@ function ulf_default_preprocess_node(&$variables) {
  */
 function ulf_default_preprocess_user_profile(&$variables) {
   // Enable a view for user profile templates.
-  $variables['content_by_user'] = views_embed_view('ulf_content_by_user', 'block_1');
+  $variables['content_by_user_daycare'] = views_embed_view('ulf_content_by_user', 'block_4');
+  $variables['content_by_user_school'] = views_embed_view('ulf_content_by_user', 'block_3');
+  $variables['content_by_user_youth'] = views_embed_view('ulf_content_by_user', 'block_1');
   $variables['content_by_user_courses'] = views_embed_view('ulf_content_by_user', 'block_2');
 }
 

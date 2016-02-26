@@ -8,7 +8,6 @@ dependencies[] = print_pdf
 dependencies[] = strongarm
 features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:2
-features[user_permission][] = access PDF version
 features[variable][] = print_comments
 features[variable][] = print_css
 features[variable][] = print_footer_options
