@@ -48,7 +48,7 @@ function ulf_default_preprocess_page(&$variables) {
  */
 function ulf_default_preprocess_front_page(&$variables) {
   // Provide newsletter block for front page.
-  //$variables['newsletter_block'] = module_invoke('mailchimp_signup', 'block_view', 'signup_to_newsletter');
+  $variables['newsletter_block'] = module_invoke('mailchimp_signup', 'block_view', 'signup_to_newsletter');
 }
 
 

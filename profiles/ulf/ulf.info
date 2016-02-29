@@ -53,3 +53,4 @@ dependencies[] = secure_permissions
 dependencies[] = token_filter
 dependencies[] = print_pdf_wkhtmltopdf
 dependencies[] = nodequeue
+dependencies[] = path_metatags
