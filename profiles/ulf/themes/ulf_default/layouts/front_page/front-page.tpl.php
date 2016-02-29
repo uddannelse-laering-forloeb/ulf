@@ -56,7 +56,6 @@
     <?php endif;?>
     <div class="layout-element-epsilon">
       <div class="layout-element-epsilon-inner">
-        <!--
         <?php if(!empty ($content['epsilon'])) : ?>
           <?php print $content['epsilon']; ?>
         <?php endif;?>
@@ -68,7 +67,6 @@
             </div>
           </div>
         <?php endif;?>
-        -->
       </div>
     </div>
   </div>
