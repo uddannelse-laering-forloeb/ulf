@@ -12,8 +12,12 @@ profiles/ulf/themes/ulf_viborg
 
 profiles/ulf/modules/features/ulf_silkeborg_search_settings
 profiles/ulf/modules/features/ulf_aarhus_search_settings
+<<<<<<< HEAD
+profiles/ulf/modules/ulf_custom/ulf_aarhus_settings
+=======
 profiles/ulf/modules/features/ulf_viborg_search_settings
 
 profiles/ulf/modules/ulf_custom/ulf_aarhus_settings
 profiles/ulf/modules/ulf_custom/ulf_silkeborg_settings
 profiles/ulf/modules/ulf_custom/ulf_viborg_settings
+>>>>>>> development

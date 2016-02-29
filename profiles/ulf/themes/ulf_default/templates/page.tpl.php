@@ -102,7 +102,7 @@
       </ul>
     </nav>
     <div class="page--messages">
-      <?php print $messages; ?>
+      <!--<?php print $messages; ?>-->
     </div>
 
     <?php if ($is_front || isset($node) || (arg(0) == 'user' && is_numeric(arg(1)))) : ?>
