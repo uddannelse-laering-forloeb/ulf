@@ -15,7 +15,8 @@ function ulf_html_blocks_field_default_field_instances() {
     'bundle' => 'html_block',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Tilføj html koden her.',
+    'description' => 'Tilføj html koden her.
+Hvis billeder anvendes som fuld bredde, giver en minimumsbredde på 650px det bedste resultat.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -57,7 +58,8 @@ function ulf_html_blocks_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('HTML kode');
-  t('Tilføj html koden her.');
+  t('Tilføj html koden her.
+Hvis billeder anvendes som fuld bredde, giver en minimumsbredde på 650px det bedste resultat.');
 
   return $field_instances;
 }
