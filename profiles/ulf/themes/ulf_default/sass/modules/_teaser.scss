@@ -124,15 +124,14 @@
   &.is-custom {
     border: 0;
     background: inherit;
+    
+    @include breakpoint(650px) {
+      @include flex(0 1 49%);
+    }
   }
 
   &--inner {
     width: 100%;
-  }
-
-
-  @include breakpoint(650px) {
-    @include flex(0 1 49%);
   }
 }
 
