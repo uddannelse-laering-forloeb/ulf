@@ -131,7 +131,7 @@
   }
 
 
-  @include breakpoint($node-breakpoint) {
+  @include breakpoint(650px) {
     @include flex(0 1 100%);
   }
 }
