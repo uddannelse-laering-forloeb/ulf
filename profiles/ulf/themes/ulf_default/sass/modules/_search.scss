@@ -337,7 +337,7 @@
     float: left;
     margin: 0 auto;
     width: 100%;
-    padding: 0px 8px 6px;
+    padding-bottom: 2px;
   }
 
 
@@ -350,8 +350,7 @@
     color: $gray;
     font-size: .9em;
     padding: .1em 3em .1em 2em;
-    margin-top: 4px;
-    margin-right: 4px;
+    margin: 4px 4px 3px;
     text-shadow: none;
   }
 
@@ -368,7 +367,7 @@
   &--reset {
     color: $gray-darkest;
     cursor: pointer;
-    padding: 8px;
+    padding: 11px 0 11px 5px;
     text-decoration: underline;
     float: right;
   }
