@@ -129,6 +129,11 @@
   &--inner {
     width: 100%;
   }
+
+
+  @include breakpoint($node-breakpoint) {
+    @include flex(0 1 100%);
+  }
 }
 
 
