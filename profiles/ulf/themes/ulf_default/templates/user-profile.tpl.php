@@ -108,6 +108,5 @@
   </div>
 </div>
 <?php hide($user_profile['summary']); ?>
-<?php hide($user_profile['summary']); ?>
 <?php hide($user_profile['mimemail']); ?>
 <?php print render($user_profile); ?>

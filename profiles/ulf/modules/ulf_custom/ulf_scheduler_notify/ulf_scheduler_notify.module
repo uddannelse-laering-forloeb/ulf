@@ -34,7 +34,7 @@ function ulf_scheduler_notify_cron() {
     $params['node'] = $node;
 
     if ($workflow_send_mail > 0) {
-      drupal_mail('ulf_scheduler_notify', 'week_prior_unpublishing', $to, language_default(), $params);
+      drupal_mail('ulf_scheduler_notify', 'week_prior_unpublishing', $to, 'da', $params);
     }
     // Remove entry so we don't send more mails.
     db_delete('scheduler_notify')

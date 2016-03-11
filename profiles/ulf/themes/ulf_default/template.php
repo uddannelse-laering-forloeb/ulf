@@ -35,7 +35,7 @@ function ulf_default_preprocess_page(&$variables) {
 
   // Hide login tabs for user profiles (see ulf_course_providers module)
   if (arg(0) == 'user' && is_numeric(arg(1))) {
-    unset($variables['tabs']['#primary']);
+    //unset($variables['tabs']['#primary']);
   }
 }
 
