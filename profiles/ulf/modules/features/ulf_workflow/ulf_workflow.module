@@ -216,6 +216,13 @@ function ulf_workflow_form_node_form_alter(&$form, &$form_state, $form_id) {
 
         // Change the label of "Save and publish to "Save"
         $form['actions']['publish']['#value'] = t('Save');
+
+        //Don't run publishing submit function when resaving published content.
+        foreach($form['actions']['publish']['#submit'] as $key => $value) {
+          if ($form['actions']['publish']['#submit'][$key] == 'ulf_workflow_course_node_form_publish_submit') {
+            unset($form['actions']['publish']['#submit'][$key]);
+          }
+        }
       }
     }
 
@@ -344,12 +351,22 @@ function ulf_workflow_course_node_form_publish_submit($form, &$form_state) {
  * This will save the node unpublish the node and set the modereation state to draft.
  */
 function ulf_workflow_course_node_form_unpublish_submit($form, &$form_state) {
+  $workflow_send_mail = variable_get('ulf_workflow_send_mail');
+
   // Provide unpublish parameter. (See node presave).
   // We bypass workbench moderation module workflow by unpublishing in presave function instead.
   $_GET['unpublish'] = TRUE;
 
   // Tell the end user what is happening.
   drupal_set_message(t('The content has been unpublished'));
+
+  // If send mail is active.
+  if ($workflow_send_mail > 0) {
+    _send_unpublished_mail($form['#node']);
+  }
+  else {
+    drupal_set_message(t('No mail sent. Mail functionality is disabled.'), 'warning');
+  }
 }
 
 
@@ -464,19 +481,25 @@ function ulf_workflow_node_presave($node) {
     global $user;
     $get_parameters = drupal_get_query_parameters();
 
-    // If attached parameter is unpublished or we assume running cron (current path and user check)
-    if (array_key_exists('unpublish', $get_parameters) || ($_GET['q'] == 'front' && $user->uid == 0)) {
+    // If attached parameter is unpublish or we assume running cron (User check)
+    if (array_key_exists('unpublish', $get_parameters) || ($user->uid == 0)) {
 
       // Presave is also run for each revision, we only want to act when we are saving the actual node.
-      if ($node->revision == 0) {
+      if (!isset($node->revision)) {
         // Get send_mail variable.
         $workflow_send_mail = variable_get('ulf_workflow_send_mail');
 
         // Set status to unpublished.
         $node->status = 0;
+        $node->workbench_moderation_state_new = 'draft';
 
         // Update changed timestamp.
         $node->changed = REQUEST_TIME;
+
+        // Send unpublished mail.
+        if ($workflow_send_mail > 0) {
+          _send_unpublished_mail($node);
+        }
       }
     }
   }
@@ -520,7 +543,7 @@ function _send_published_mail($node) {
 
   // Provide additional parameters.
   $params['user'] = $user;
-  drupal_mail($module, $key, $to, language_default(), $params);
+  drupal_mail($module, $key, $to, 'da', $params);
 }
 
 
@@ -539,7 +562,7 @@ function _send_unpublished_mail($node) {
   $to = $user->mail;
   $key = 'unpublished_mail_author';
 
-  $lang = language_default();
+  $lang = 'da';
 
   // If site mail recipient is active override receiving email address.
   $site_mail_recipient = variable_get('ulf_workflow_local_recipient');
@@ -550,6 +573,7 @@ function _send_unpublished_mail($node) {
 
   // Provide additional parameters.
   $params['user'] = $user;
+
   drupal_mail($module, $key, $to, $lang, $params);
 }
 
@@ -572,7 +596,7 @@ function _send_revision_ready_mail($node) {
 
   // Provide additional parameters.
   $params['user'] = $user;
-  drupal_mail($module, $key, $to, language_default(), $params);
+  drupal_mail($module, $key, $to, 'da', $params);
 }
 
 
@@ -591,7 +615,7 @@ function _send_user_edited_mail($user) {
 
   // Provide additional parameters.
   $params['user'] = $user;
-  drupal_mail($module, $key, $to, language_default(), $params);
+  drupal_mail($module, $key, $to, 'da', $params);
 }
 
 

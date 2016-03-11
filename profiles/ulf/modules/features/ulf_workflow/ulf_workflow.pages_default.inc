@@ -17,7 +17,7 @@ function ulf_workflow_default_page_manager_handlers() {
   $handler->task = 'myworkbench';
   $handler->subtask = '';
   $handler->handler = 'panel_context';
-  $handler->weight = -29;
+  $handler->weight = -28;
   $handler->conf = array(
     'title' => 'Others',
     'no_blocks' => 0,
@@ -199,6 +199,25 @@ function ulf_workflow_default_page_manager_handlers() {
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
   $export['myworkbench__panel_context_d4523189-c8b5-4d33-b532-de17adacbccc'] = $handler;
+
+  $handler = new stdClass();
+  $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
+  $handler->api_version = 1;
+  $handler->name = 'myworkbench__redirect_context_7c623ade-2ac9-437d-ab42-5823046c0914';
+  $handler->task = 'myworkbench';
+  $handler->subtask = '';
+  $handler->handler = 'redirect_context';
+  $handler->weight = -29;
+  $handler->conf = array(
+    'title' => 'Redirect',
+    'contexts' => array(),
+    'relationships' => array(),
+    'path' => 'admin/workbench/awaiting-revision',
+    'query' => '',
+    'fragment' => '',
+    'name' => '',
+  );
+  $export['myworkbench__redirect_context_7c623ade-2ac9-437d-ab42-5823046c0914'] = $handler;
 
   return $export;
 }
