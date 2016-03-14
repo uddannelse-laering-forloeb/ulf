@@ -87,6 +87,13 @@ function ulf_maps_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'location_defaultnum_course_educators';
+  $strongarm->value = '1';
+  $export['location_defaultnum_course_educators'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'location_default_country';
   $strongarm->value = 'dk';
   $export['location_default_country'] = $strongarm;
@@ -1895,6 +1902,13 @@ function ulf_maps_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'location_maxnum_course_educators';
+  $strongarm->value = '1';
+  $export['location_maxnum_course_educators'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'location_settings_node_course';
   $strongarm->value = array(
     'multiple' => array(
@@ -1973,6 +1987,88 @@ function ulf_maps_strongarm() {
     ),
   );
   $export['location_settings_node_course'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'location_settings_node_course_educators';
+  $strongarm->value = array(
+    'multiple' => array(
+      'min' => '0',
+      'max' => '1',
+      'add' => '1',
+    ),
+    'form' => array(
+      'weight' => '0',
+      'collapsible' => 1,
+      'collapsed' => 1,
+      'fields' => array(
+        'name' => array(
+          'collect' => '0',
+          'default' => '',
+          'weight' => '-100',
+        ),
+        'street' => array(
+          'collect' => '1',
+          'default' => '',
+          'weight' => '-99',
+        ),
+        'additional' => array(
+          'collect' => '1',
+          'default' => '',
+          'weight' => '-98',
+        ),
+        'postal_code' => array(
+          'collect' => '1',
+          'default' => '',
+          'weight' => '-97',
+        ),
+        'city' => array(
+          'collect' => '1',
+          'default' => '',
+          'weight' => '-96',
+        ),
+        'province' => array(
+          'collect' => '0',
+          'widget' => 'autocomplete',
+          'default' => '',
+          'weight' => '-95',
+        ),
+        'country' => array(
+          'collect' => '4',
+          'default' => 'dk',
+          'weight' => '-94',
+        ),
+        'locpick' => array(
+          'collect' => '1',
+          'weight' => '-93',
+        ),
+      ),
+    ),
+    'display' => array(
+      'weight' => '0',
+      'hide' => array(
+        'name' => 0,
+        'street' => 0,
+        'additional' => 0,
+        'city' => 0,
+        'province' => 0,
+        'postal_code' => 0,
+        'country' => 0,
+        'locpick' => 0,
+        'province_name' => 0,
+        'country_name' => 0,
+        'map_link' => 0,
+        'coords' => 0,
+      ),
+      'teaser' => 0,
+      'full' => 0,
+    ),
+    'rss' => array(
+      'mode' => 'none',
+    ),
+  );
+  $export['location_settings_node_course_educators'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
