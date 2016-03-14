@@ -35,7 +35,7 @@ function ulf_course_providers_strongarm() {
           'weight' => '0',
         ),
         'timezone' => array(
-          'weight' => '13',
+          'weight' => '12',
         ),
         'locale' => array(
           'weight' => '10',
@@ -45,6 +45,9 @@ function ulf_course_providers_strongarm() {
         ),
         'mimemail' => array(
           'weight' => '8',
+        ),
+        'googleanalytics' => array(
+          'weight' => '13',
         ),
       ),
       'display' => array(
