@@ -28,6 +28,12 @@ function search_api_search_node_search_api_alter_callback_info() {
       'class' => 'SearchNodeExcludeItemsFilter',
       'weight' => 100,
     ),
+    'location' => array(
+      'name' => t('Location'),
+      'description' => t('Include location information from the location modules.'),
+      'class' => 'SearchNodeLocationFilter',
+      'weight' => 101,
+    )
   );
 }
 
