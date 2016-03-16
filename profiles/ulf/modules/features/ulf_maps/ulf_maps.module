@@ -5,3 +5,105 @@
  */
 
 include_once 'ulf_maps.features.inc';
+
+/**
+ * Implements hook_form_alter()
+ *
+ * @param $form
+ * @param $form_state
+ * @param $form_id
+ */
+function ulf_maps_form_alter(&$form, &$form_state, $form_id) {
+  // If user profile or node.
+  if ($form_id == 'user_profile_form' ||  $form_id == 'course_node_form' ||  $form_id == 'course_educators_node_form' ) {
+    // If location modules are set up.
+    if(isset($form['locations'])) {
+      // Attach js to the form.
+      $form['#attached']['js'][] = drupal_get_path('module', 'ulf_maps') . '/js/show-map.js';
+
+      // Add reset button if all required address fields are filled out.
+      if (!empty($form['locations']['0']['#default_value']['street']) && !empty($form['locations']['0']['#default_value']['postal_code']) && !empty($form['locations']['0']['#default_value']['city'])) {
+        $form['locations']['0']['reset'] = array(
+          '#weight' => '-94',
+          '#type' => 'submit',
+          '#value' => t('Change address'),
+          '#submit' => array(
+            'ulf_maps_reset_coordinates',
+          ),
+        );
+      }
+
+      // Add map button.
+      $form['locations']['0']['submit'] = array(
+        '#weight' => '-95',
+        '#type' => 'submit',
+        '#value' => t('Specify entrance on map'),
+        '#submit' => array(
+          'ulf_maps_save_address',
+        ),
+      );
+    }
+  }
+}
+
+/**
+ * Implements custom submit handler for saving an address.
+ *
+ * Saving the address allows for the map to locate the address and allowing to specify an entrance.
+ *
+ * @param $form
+ * @param $form_state
+ */
+function ulf_maps_save_address($form, &$form_state) {
+  $_GET['destination'] = $_GET['q'] . '?map=true&#edit-locations-0';
+
+  if (isset($form['#user_edit_form'])) {
+    $account = $form_state['user'];
+    $category = $form['#user_category'];
+    // Remove unneeded values.
+    form_state_values_clean($form_state);
+
+    // Before updating the account entity, keep an unchanged copy for use with
+    // user_save() later. This is necessary for modules implementing the user
+    // hooks to be able to react on changes by comparing the values of $account
+    // and $edit.
+    $account_unchanged = clone $account;
+
+    entity_form_submit_build_entity('user', $account, $form, $form_state);
+
+    // Populate $edit with the properties of $account, which have been edited on
+    // this form by taking over all values, which appear in the form values too.
+    $edit = array_intersect_key((array) $account, $form_state['values']);
+
+    user_save($account_unchanged, $edit, $category);
+    $form_state['values']['uid'] = $account->uid;
+
+    if ($category == 'account' && !empty($edit['pass'])) {
+      // Remove the password reset tag since a new password was saved.
+      unset($_SESSION['pass_reset_'. $account->uid]);
+    }
+  }
+
+  if (isset($form['#node_edit_form'])) {
+    $node = node_form_submit_build_node($form, $form_state);
+    node_save($node);
+  }
+}
+
+/**
+ * Implements custom submit handler for clearing address fields.
+ *
+ * Removing the address allows for a reset in map display.
+ *
+ * @param $form
+ * @param $form_state
+ */
+function ulf_maps_reset_coordinates($form, &$form_state) {
+  $lid = $form['locations']['0']['lid']['#value'];
+  $locations = array();
+  $criteria = array('lid' => $lid);
+  $_GET['destination'] = $_GET['q'] . '#edit-locations-0';
+
+  // Save empty locations
+  location_save_locations($locations, $criteria);
+}

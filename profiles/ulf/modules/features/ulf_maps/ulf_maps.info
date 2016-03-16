@@ -7,7 +7,6 @@ dependencies[] = gmap
 dependencies[] = gmap_location
 dependencies[] = location
 dependencies[] = location_cck
-dependencies[] = location_gmap_find_address
 dependencies[] = location_node
 dependencies[] = location_user
 dependencies[] = strongarm

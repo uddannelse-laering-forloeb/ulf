@@ -80,7 +80,6 @@ function ulf_base_update_7006() {
     'location',
     'location_user',
     'location_node',
-    'location_gmap_find_address',
     'ulf_maps'
   );
 

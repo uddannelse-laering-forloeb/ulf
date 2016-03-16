@@ -102,7 +102,7 @@ function ulf_maps_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'location_display_location';
-  $strongarm->value = '1';
+  $strongarm->value = '0';
   $export['location_display_location'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -1918,8 +1918,8 @@ function ulf_maps_strongarm() {
     ),
     'form' => array(
       'weight' => '0',
-      'collapsible' => 1,
-      'collapsed' => 1,
+      'collapsible' => 0,
+      'collapsed' => 0,
       'fields' => array(
         'name' => array(
           'collect' => '0',
