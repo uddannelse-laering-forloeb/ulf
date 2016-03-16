@@ -6,3 +6,4 @@ package = Search
 files[] = includes/service.inc
 files[] = includes/search_node_client.inc
 files[] = includes/callback_exclude_items_filter.inc
+files[] = includes/callback_location_filter.inc

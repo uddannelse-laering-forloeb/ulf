@@ -173,16 +173,37 @@ class SearchNodeClient {
       )
     ));
 
-    if ($request->code == 201) {
-      // Created.
-      return TRUE;
-    }
-    else if ($request->code == 200) {
-      // Updated (reindex with new version).
-      return TRUE;
+    $res = array(
+      'success' => TRUE,
+      'code' => 200,
+      'message' => '',
+    );
+    switch ($request->code) {
+      case 201:
+        // Created.
+        $res['message'] = t('Content with %id have been added to the index.', array('%id' => $id));
+        break;
+
+      case 200:
+        // Updated (reindex with new version).
+        $res['message'] = t('Content with %id have been updated.', array('%id' => $id));
+        break;
+
+      case 500:
+        $json = json_decode($request->data);
+        $res['message'] = t($json->error);
+        $res['success'] = FALSE;
+        $res['code'] = 500;
+        break;
+
+      default:
+        $res['message'] = t('Unknown error: content was not indexed.');
+        $res['success'] = FALSE;
+        $res['code'] = 500;
+        break;
     }
 
-    return FALSE;
+    return $res;
   }
 
   /**
