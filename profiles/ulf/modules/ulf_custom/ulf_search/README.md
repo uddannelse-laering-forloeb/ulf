@@ -1,3 +1,6 @@
+# sub tree
+git subtree pull --prefix profiles/ulf/modules/search_api_search_node git@github.com:search-node/search_api_search_node 7.x-1.x
+
 
 # Search node mappings
 
