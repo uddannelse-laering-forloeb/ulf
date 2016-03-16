@@ -2000,8 +2000,8 @@ function ulf_maps_strongarm() {
     ),
     'form' => array(
       'weight' => '0',
-      'collapsible' => 1,
-      'collapsed' => 1,
+      'collapsible' => 0,
+      'collapsed' => 0,
       'fields' => array(
         'name' => array(
           'collect' => '0',

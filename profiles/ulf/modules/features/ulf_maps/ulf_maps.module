@@ -57,7 +57,7 @@ function ulf_maps_form_alter(&$form, &$form_state, $form_id) {
 function ulf_maps_save_address($form, &$form_state) {
   $_GET['destination'] = $_GET['q'] . '?map=true&#edit-locations-0';
 
-  if (isset($form['#user_edit_form'])) {
+  if ($form['#form_id'] == 'user_profile_form') {
     $account = $form_state['user'];
     $category = $form['#user_category'];
     // Remove unneeded values.
@@ -84,7 +84,7 @@ function ulf_maps_save_address($form, &$form_state) {
     }
   }
 
-  if (isset($form['#node_edit_form'])) {
+  if ($form['#form_id'] == 'course_node_form' || $form['#form_id'] == 'course_educators_node_form') {
     $node = node_form_submit_build_node($form, $form_state);
     node_save($node);
   }
