@@ -20,28 +20,24 @@ function ulf_maps_form_alter(&$form, &$form_state, $form_id) {
   if (in_array($form_id, $form_ids)) {
     // If location modules are set up.
     if (isset($form['locations'])) {
-
       // Attach js to the form.
       $form['#attached']['js'][] = drupal_get_path('module', 'ulf_maps') . '/js/show-map.admin.js';
 
-      // Add reset button if all required address fields are filled out.
-      $location = isset($form['locations'][0]['#default_value']) ? $form['locations']['0']['#default_value'] : array();
-      if (!empty($location['street']) && !empty($location['postal_code']) && !empty($location['city'])) {
-        $form['locations'][0]['reset'] = array(
-          '#weight' => '-94',
-          '#type' => 'submit',
-          '#value' => t('Change address'),
-          '#attributes' => array(
-            'class' => array('js-change-address'),
-          ),
-          '#ajax' => array(
-            'callback' => 'ulf_maps_reset_coordinates',
-            'wrapper' => 'location-wrapper',
-            'method' => 'replace',
-            'effect' => 'fade',
-          ),
-        );
-      }
+      // Add change location button.
+      $form['locations'][0]['reset'] = array(
+        '#weight' => '-94',
+        '#type' => 'submit',
+        '#value' => t('Change address'),
+        '#attributes' => array(
+          'class' => array('js-change-address'),
+        ),
+        '#ajax' => array(
+          'callback' => 'ulf_maps_reset_coordinates',
+          'wrapper' => 'location-wrapper',
+          'method' => 'replace',
+          'effect' => 'fade',
+        ),
+      );
 
       // Add specify on the map button, which change the map location pointer
       // based on the entered address.
