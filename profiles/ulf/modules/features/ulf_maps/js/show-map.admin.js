@@ -45,7 +45,7 @@
       if ($street.val() == '' || $postal.val() == '' || $city.val() == '' ) {
         $('.js-specify-on-map', $location).hide();
         $('.js-change-address', $location).hide();
-        
+
         // Needs to be remove as it may have been set before.
         $('.location-wrapper').removeClass('form-disabled');
       }

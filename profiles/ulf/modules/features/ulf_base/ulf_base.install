@@ -1,9 +1,13 @@
 <?php
+/**
+ * @file
+ * Handle update function for the feature.
+ */
 
 /**
  * Enable ulf_aarhus settings module if it exists.
  */
-function ulf_base_update_7001() {
+function ulf_base_update_7001(&$sandbox) {
   $module_enable = array();
   $aarhus_path = drupal_get_path('module', 'ulf_aarhus_settings');
   if (file_exists($aarhus_path . '/ulf_aarhus_settings.module')){
@@ -13,11 +17,10 @@ function ulf_base_update_7001() {
   module_enable($module_enable);
 }
 
-
 /**
  * Enable ulf_silkeborg settings module if it exists.
  */
-function ulf_base_update_7002() {
+function ulf_base_update_7002(&$sandbox) {
   $module_enable = array();
   $silkeborg_path = drupal_get_path('module', 'ulf_silkeborg_settings');
   if (file_exists($silkeborg_path . '/ulf_silkeborg_settings.module')){
@@ -27,11 +30,10 @@ function ulf_base_update_7002() {
   module_enable($module_enable);
 }
 
-
 /**
  * Enable token filter module.
  */
-function ulf_base_update_7003() {
+function ulf_base_update_7003(&$sandbox) {
   $module_enable = array(
     'token_filter'
   );
@@ -39,11 +41,10 @@ function ulf_base_update_7003() {
   module_enable($module_enable);
 }
 
-
 /**
  * Enable metatag and secure permissions modules.
  */
-function ulf_base_update_7004() {
+function ulf_base_update_7004(&$sandbox) {
   $module_enable = array(
     'path_metatags',
     'path_metatags_ui',
@@ -60,7 +61,7 @@ function ulf_base_update_7004() {
 /**
  * Enable nodequeue module.
  */
-function ulf_base_update_7005() {
+function ulf_base_update_7005(&$sandbox) {
   $module_enable = array(
     'nodequeue',
     'ulf_html_blocks'
@@ -69,11 +70,10 @@ function ulf_base_update_7005() {
   module_enable($module_enable);
 }
 
-
 /**
  * Enable location modules.
  */
-function ulf_base_update_7006() {
+function ulf_base_update_7006(&$sandbox) {
   $module_enable = array(
     'gmap',
     'gmap_location',
@@ -85,3 +85,52 @@ function ulf_base_update_7006() {
 
   module_enable($module_enable);
 }
+
+/**
+ * Move address on users into location fields.
+ */
+function ulf_base_update_7007(&$sandbox) {
+  $uids = db_select('users', 'u')
+    ->fields('u', array('uid'))
+    ->execute()
+    ->fetchCol();
+
+  foreach ($uids as $uid) {
+    $user = user_load($uid);
+
+    // Get location information form the users profile.
+    $wrapper = entity_metadata_wrapper('user', $user);
+    $street = $wrapper->field_profile_address->value();
+    $postal = $wrapper->field_profile_postal_code->value();
+    $city = $wrapper->field_profile_city->value();
+
+    // Create location array base on the information.
+    if (!empty($street) && !empty($postal) && !empty($city)) {
+      $location = array(
+        array(
+          'street' => $street,
+          'additional' => '',
+          'city' => $city,
+          'postal_code' => $postal,
+          'country' => 'dk',
+          'locoick' => array(
+            'user_latitude' => '',
+            'user_longitude' => '',
+          ),
+        ),
+      );
+
+      // Add location to the current user.
+      location_save_locations($location, array('uid' => $user->uid));
+    }
+  }
+}
+
+/**
+ * Add locations to all courses.
+ */
+//function ulf_base_update_7008(&$sandbox) {
+//  // Find all node with type "course".
+//
+//
+//}
