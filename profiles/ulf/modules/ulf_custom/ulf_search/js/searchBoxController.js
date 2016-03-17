@@ -91,7 +91,6 @@ angular.module('searchBoxApp').controller('UlfBoxController', ['CONFIG', 'commun
       if (CONFIG.provider.hasOwnProperty('map')) {
         var query = angular.copy($scope.query);
         if (CONFIG.provider.hasOwnProperty('pager')) {
-          delete query.pager.page;
           query.pager.size = CONFIG.provider.map.points;
         }
         searchProxyService.search(query).then(
