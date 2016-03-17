@@ -6,83 +6,6 @@
  */
 
 /**
- * Create filter that pads a number with zero's.
- *
- * @TODO: Move this back to the main angular library, when it's perfect.
- */
-angular.module('searchResultApp').filter('trimWordBoundary', function () {
-  "use strict";
-
-  return function (str, len) {
-    // Ensure that the string is defined and it's larger than required length.
-    if (str === undefined || str.length === 0 || str.length < len) {
-      return;
-    }
-
-    // Clean out headlines.
-    str = str.replace(/(<h\d>).+(<\/h\d>)/gi, '');
-
-    // Clean out HTML.
-    str = str.replace(/(<([^>]+)>)/gi, '');
-
-    // Trim string to word boundery.
-    var trimmedString = str.substr(0, len);
-    str = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(" ")));
-
-    return str + '...';
-  };
-});
-
-/**
- * Derective to get timepicker avaiable in Angular.
- */
-angular.module('searchBoxApp').directive('datetimePicker', ['$filter',
-  function ($filter) {
-    return {
-      restrict: 'A',
-      require: '^ngModel',
-      link: function(scope, el, attrs, ctrl) {
-        var angularFormat = attrs.angularFormat;
-        var dateFormat = attrs.datetimePicker;
-        var lastUnixTime = undefined;
-        el.datetimepicker({
-          timepicker: false,
-          lang: 'da',
-          format: dateFormat,
-          onChangeDateTime:function(dp, $input){
-            if (dp) {
-              lastUnixTime = Math.floor(dp.getTime() / 1000);
-            }
-          }
-        });
-
-        /**
-         * Used to format the input (unixtime) to selected format.
-         */
-        ctrl.$formatters.unshift(function(value) {
-          if (value !== undefined) {
-            return $filter('date')(value * 1000, angularFormat);
-          }
-
-          return '';
-        });
-
-        /**
-         * Return the lastest timestamp to the model.
-         */
-        ctrl.$parsers.unshift(function (viewValue) {
-          if (lastUnixTime !== undefined) {
-            return lastUnixTime;
-          }
-
-          return 'test';
-        });
-      }
-    }
-  }
-]);
-
-/**
  * Overrides the default searchBoxApp controller.
  */
 angular.module('searchBoxApp').controller('UlfBoxController', ['CONFIG', 'communicatorService', 'searchProxyService', '$scope',
@@ -103,7 +26,7 @@ angular.module('searchBoxApp').controller('UlfBoxController', ['CONFIG', 'commun
         var taxonomies = filters.taxonomy;
         var selectedFilters = {};
         for (var field in taxonomies) {
-          selectedFilters[field] = []
+          selectedFilters[field] = [];
           for (var key in taxonomies[field]) {
             if (taxonomies[field][key]) {
               selectedFilters[field].push(key);
@@ -119,7 +42,7 @@ angular.module('searchBoxApp').controller('UlfBoxController', ['CONFIG', 'commun
      * Execute the search and emit the results.
      */
     function search() {
-      // Send info to restults that a new search have started.
+      // Send info to results that a new search have started.
       communicatorService.$emit('searching', {});
 
       // Add sorting to the search query.
@@ -160,7 +83,7 @@ angular.module('searchBoxApp').controller('UlfBoxController', ['CONFIG', 'commun
      * Init the contoller.
      */
     function init() {
-      // Get state from pervious searches.
+      // Get state from previous searches.
       var state = searchProxyService.getState();
 
       // Get filters.
@@ -207,7 +130,7 @@ angular.module('searchBoxApp').controller('UlfBoxController', ['CONFIG', 'commun
         if (CONFIG.hasOwnProperty('initialQueryText')) {
           $scope.query.text = angular.copy(CONFIG.initialQueryText);
 
-          // Execture the search.
+          // Execute the search.
           search();
         }
         else {
@@ -239,7 +162,7 @@ angular.module('searchBoxApp').controller('UlfBoxController', ['CONFIG', 'commun
     });
 
     /**
-     * Click hanlder for searches.
+     * Click handel for searches.
      */
     $scope.searchClicked = function searchClicked() {
       // Reset pager.

@@ -19,10 +19,38 @@ function ulf_search_preprocess_search_node_page_search_box(&$variables) {
     'weight' => 0,
   ));
 
-  // Add styel for date picker.
+  // Add style for date picker.
   drupal_add_css($path . '/css/jquery.datetimepicker.css', array(
     'type' => 'file',
     'group' => 'CSS_THEME',
+  ));
+
+  drupal_add_js($path . '/js/datetimePickerDirective.js', array(
+    'type' => 'file',
+    'scope' => 'footer',
+    'weight' => 7,
+  ));
+
+  drupal_add_js($path . '/js/mapDirective.js', array(
+    'type' => 'file',
+    'scope' => 'footer',
+    'weight' => 7,
+  ));
+
+  drupal_add_js($path . '/js/leaflet.min.js', array(
+    'type' => 'file',
+    'scope' => 'footer',
+    'weight' => 7,
+  ));
+  drupal_add_css($path . '/css/leaflet.css', array(
+    'type' => 'file',
+    'group' => 'CSS_THEME',
+  ));
+
+  drupal_add_js($path . '/js/trimWordBoundaryFilter.js', array(
+    'type' => 'file',
+    'scope' => 'footer',
+    'weight' => 7,
   ));
 
   // Add the search controller.
