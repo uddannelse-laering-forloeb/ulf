@@ -60,10 +60,11 @@ angular.module('searchResultApp').directive('searchMap', [ '$timeout', '$templat
             $content.fadeIn();
           });
 
-
+          // Add marker to the map.
           marker.bindPopup(div);
-          markers.push(marker);
           marker.addTo(map);
+
+          markers.push(marker);
         });
       }
     }
@@ -72,7 +73,6 @@ angular.module('searchResultApp').directive('searchMap', [ '$timeout', '$templat
       restrict: 'E',
       scope: {},
       link: function (scope, element, attrs) {
-        console.log('test');
         // Initialize map container.
         var map = L.map('search-map', { zoomControl:false });
 
@@ -86,7 +86,8 @@ angular.module('searchResultApp').directive('searchMap', [ '$timeout', '$templat
         map.addLayer(osm);
 
         // Watch for changes in hits
-        communicatorService.$on('mapHits', function onMapHits(event, hits) {
+        communicatorService.$on('mapSearchHits', function onMapHits(event, hits) {
+          scope.mapHits = hits;
           // Remove all markers before populating with new markers.
           for (var i in markers) {
             map.removeLayer(markers[i]);
@@ -98,6 +99,9 @@ angular.module('searchResultApp').directive('searchMap', [ '$timeout', '$templat
             addMarker(map,  hits.results[hit], scope);
           }
         });
+
+        // Request search results for the map.
+        communicatorService.$emit('requestMapSearch');
       }
     };
   }

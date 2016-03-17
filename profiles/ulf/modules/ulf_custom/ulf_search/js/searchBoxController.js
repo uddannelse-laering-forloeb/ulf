@@ -78,17 +78,26 @@ angular.module('searchBoxApp').controller('UlfBoxController', ['CONFIG', 'commun
         }
       );
 
-      // Search results for map.
+      // Update map search results.
+      mapSearch();
+    }
+
+    /**
+     * Search for results to be displayed on maps.
+     *
+     * Mainly used because maps don't need data limited by pager.
+     */
+    function mapSearch() {
       if (CONFIG.provider.hasOwnProperty('map')) {
         var query = angular.copy($scope.query);
         if (CONFIG.provider.hasOwnProperty('pager')) {
-          //delete query.pager;
+          delete query.pager.page;
           query.pager.size = CONFIG.provider.map.points;
         }
         searchProxyService.search(query).then(
           function (data) {
             // Send results.
-            communicatorService.$emit('mapHits', data);
+            communicatorService.$emit('mapSearchHits', data);
           },
           function (reason) {
             console.error(reason);
@@ -177,6 +186,13 @@ angular.module('searchBoxApp').controller('UlfBoxController', ['CONFIG', 'commun
         'page': data.page
       };
       search();
+    });
+
+    /**
+     * Handle pager updated from the search result application.
+     */
+    communicatorService.$on('requestMapSearch', function (event, data) {
+      mapSearch();
     });
 
     /**

@@ -60,7 +60,7 @@ function ulf_search_preprocess_search_node_page_search_box(&$variables) {
   ));
 
   // Add the search controller.
-  drupal_add_js($path . '/js/search_box_controller.js', array(
+  drupal_add_js($path . '/js/searchBoxController.js', array(
     'type' => 'file',
     'scope' => 'footer',
     'weight' => 7,
@@ -84,7 +84,7 @@ function ulf_search_search_node_filtered_item_alter(&$filteredItem) {
  */
 function ulf_search_search_node_page_configuration_alter(&$config) {
   $config['provider']['map'] = array(
-    'points' => 15,
+    'points' => 50,
   );
   $config['templates']['popup'] = '/profiles/ulf/themes/ulf_default/templates/search/angular/popup.html';
 
