@@ -26,7 +26,7 @@ function ulf_maps_form_alter(&$form, &$form_state, $form_id) {
       // Add change location button.
       $form['locations'][0]['reset'] = array(
         '#weight' => '-94',
-        '#type' => 'submit',
+        '#type' => 'button',
         '#value' => t('Change address'),
         '#attributes' => array(
           'class' => array('js-change-address'),
@@ -36,7 +36,13 @@ function ulf_maps_form_alter(&$form, &$form_state, $form_id) {
           'wrapper' => 'location-wrapper',
           'method' => 'replace',
           'effect' => 'fade',
+          // Prevent the form from being submitted, hence prevent changes to the
+          // database on existing node and users.
+          'prevent' => 'submit click mousedown',
         ),
+        // The next two is need to remove required fields validation error.
+        '#limit_validation_errors' => array(),
+        '#submit' => array('ulf_maps_ajax_submit'),
       );
 
       // Add specify on the map button, which change the map location pointer
@@ -45,7 +51,7 @@ function ulf_maps_form_alter(&$form, &$form_state, $form_id) {
       $form['locations'][0]['#suffix'] = '</div>';
       $form['locations'][0]['submit'] = array(
         '#weight' => '-95',
-        '#type' => 'submit',
+        '#type' => 'button',
         '#value' => t('Specify entrance on map'),
         '#attributes' => array(
           'class' => array('js-specify-on-map'),
@@ -55,10 +61,25 @@ function ulf_maps_form_alter(&$form, &$form_state, $form_id) {
           'wrapper' => 'location-wrapper',
           'method' => 'replace',
           'effect' => 'fade',
+          // Prevent the form from being submitted, hence prevent changes to the
+          // database on existing node and users.
+          'prevent' => 'submit click mousedown',
         ),
+        // The next two is need to remove required fields validation error.
+        '#limit_validation_errors' => array(),
+        '#submit' => array('ulf_maps_ajax_submit'),
       );
     }
   }
+}
+
+/**
+ * Submit handler.
+ *
+ * It's empty.
+ */
+function ulf_maps_ajax_submit() {
+
 }
 
 /**

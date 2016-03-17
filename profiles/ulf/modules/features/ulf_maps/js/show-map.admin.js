@@ -44,6 +44,10 @@
       // Hide "specify entrance" button if address fields are missing.
       if ($street.val() == '' || $postal.val() == '' || $city.val() == '' ) {
         $('.js-specify-on-map', $location).hide();
+        $('.js-change-address', $location).hide();
+        
+        // Needs to be remove as it may have been set before.
+        $('.location-wrapper').removeClass('form-disabled');
       }
       else if (!$('.js-enable-address', $location).length) {
         // Disable input fields.
@@ -51,6 +55,7 @@
         $street.attr('disabled','disabled');
         $postal.attr('disabled','disabled');
         $city.attr('disabled','disabled');
+        $('.js-change-address', $location).show();
       }
       else {
         // Needs to be remove as it may have been set before.
@@ -65,6 +70,7 @@
         }
         else {
           $('.js-specify-on-map', $location).show();
+          $('.js-change-address', $location).show();
         }
       });
     }
