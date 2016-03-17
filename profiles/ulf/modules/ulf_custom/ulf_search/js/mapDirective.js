@@ -2,15 +2,13 @@
  * @file
  *
  */
-angular.module('searchResultApp').directive('searchMap', [ 'CONFIG',
-  function (CONFIG) {
+angular.module('searchResultApp').directive('searchMap', [ 'CONFIG', 'communicatorService',
+  function (CONFIG, communicatorService) {
     "use strict";
 
     return {
       restrict: 'E',
-      scope: {
-        hits: "="
-      },
+      scope: {},
       link: function (scope, element, attrs) {
         // Initialize map container.
         var map = L.map('search-map', { zoomControl:false });
@@ -27,7 +25,7 @@ angular.module('searchResultApp').directive('searchMap', [ 'CONFIG',
 
         // Watch for changes in hits
         var markers = [];
-        scope.$watch('hits', function(hits, old) {
+        communicatorService.$on('mapHits', function onMapHits(event, hits) {
           // Remove all markers before populating with new markers.
           for (var i in markers) {
             map.removeLayer(markers[i]);
@@ -37,9 +35,11 @@ angular.module('searchResultApp').directive('searchMap', [ 'CONFIG',
           // Add all results to the map.
           for (var hit in hits.results) {
             var location = hits.results[hit].field_location;
-            var marker = L.marker([location.lat, location.lon]);
-            markers.push(marker);
-            marker.addTo(map);
+            if (location !== null) {
+              var marker = L.marker([location.lat, location.lon]);
+              markers.push(marker);
+              marker.addTo(map);
+            }
           }
         });
       }

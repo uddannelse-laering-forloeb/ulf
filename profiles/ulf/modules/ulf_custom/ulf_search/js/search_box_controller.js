@@ -77,6 +77,24 @@ angular.module('searchBoxApp').controller('UlfBoxController', ['CONFIG', 'commun
           console.error(reason);
         }
       );
+
+      // Search results for map.
+      if (CONFIG.provider.hasOwnProperty('map')) {
+        var query = angular.copy($scope.query);
+        if (CONFIG.provider.hasOwnProperty('pager')) {
+          //delete query.pager;
+          query.pager.size = CONFIG.provider.map.points;
+        }
+        searchProxyService.search(query).then(
+          function (data) {
+            // Send results.
+            communicatorService.$emit('mapHits', data);
+          },
+          function (reason) {
+            console.error(reason);
+          }
+        );
+      }
     }
 
     /**
