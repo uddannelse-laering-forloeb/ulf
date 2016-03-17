@@ -31,6 +31,12 @@ function ulf_search_preprocess_search_node_page_search_box(&$variables) {
     'weight' => 7,
   ));
 
+  drupal_add_js($path . '/js/switchDirective.js', array(
+    'type' => 'file',
+    'scope' => 'footer',
+    'weight' => 7,
+  ));
+
   drupal_add_js($path . '/js/mapDirective.js', array(
     'type' => 'file',
     'scope' => 'footer',
@@ -69,4 +75,17 @@ function ulf_search_search_node_filtered_item_alter(&$filteredItem) {
     $file = file_load($filteredItem['field_image:file']['fid']);
     $filteredItem['field_image:file']['url'] = image_style_url('teaser_display', $file->uri);
   }
+}
+
+/**
+ * Alter configuration to set "maps" parameteres.
+ *
+ * @TODO: This should be added to edit forms via alters.
+ */
+function ulf_search_search_node_page_configuration_alter(&$config) {
+  $config['provider']['map'] = array(
+    'points' => 15,
+  );
+  $config['templates']['popup'] = '/profiles/ulf/themes/ulf_default/templates/search/angular/popup.html';
+
 }
