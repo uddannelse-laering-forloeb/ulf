@@ -40,9 +40,6 @@ function ulf_maps_form_alter(&$form, &$form_state, $form_id) {
           // database on existing node and users.
           'prevent' => 'submit click mousedown',
         ),
-        // The next two is need to remove required fields validation error.
-        '#limit_validation_errors' => array(),
-        '#submit' => array('ulf_maps_ajax_submit'),
       );
 
       // Add specify on the map button, which change the map location pointer
@@ -65,21 +62,9 @@ function ulf_maps_form_alter(&$form, &$form_state, $form_id) {
           // database on existing node and users.
           'prevent' => 'submit click mousedown',
         ),
-        // The next two is need to remove required fields validation error.
-        '#limit_validation_errors' => array(),
-        '#submit' => array('ulf_maps_ajax_submit'),
       );
     }
   }
-}
-
-/**
- * Submit handler.
- *
- * It's empty.
- */
-function ulf_maps_ajax_submit() {
-
 }
 
 /**
@@ -115,7 +100,10 @@ function ulf_maps_update_location($form, &$form_state) {
     'js-show-map',
   );
 
-  return $form['locations'];
+  // Render the from an remove messages.
+  $element = render($form['locations']);
+  drupal_get_messages();
+  return $element;
 }
 
 /**
@@ -148,5 +136,8 @@ function ulf_maps_reset_coordinates($form, &$form_state) {
     'js-enable-address',
   );
 
-  return $form['locations'];
+  // Render the from an remove messages.
+  $element = render($form['locations']);
+  drupal_get_messages();
+  return $element;
 }
