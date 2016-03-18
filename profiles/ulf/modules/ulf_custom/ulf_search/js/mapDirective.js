@@ -56,7 +56,7 @@ angular.module('searchResultApp').directive('searchMap', [ '$timeout', '$templat
           $q.when(loadTemplate(CONFIG.templates.popup)).then(function (template) {
             $templateCache.put(CONFIG.templates.popup, template);
 
-            var div = L.DomUtil.create('div', 'test');
+            var div = L.DomUtil.create('div', 'leaflet-popup-container');
             var $content = angular.element(div);
 
             // Create new scope for the popup content.

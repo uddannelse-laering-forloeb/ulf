@@ -1,0 +1,26 @@
+/**
+ *
+ * Leaflet module.
+ *
+ * Contains styles related to leaflet.
+ *
+ * We won't modify the html as it is provided by the leaflet javascript.
+ */
+
+
+/* Styles
+========================================================================== */
+
+.leaflet-popup-content-wrapper {
+  border-radius: 0;
+}
+
+
+.leaflet-popup-content {
+  margin: 0;
+  width: auto!important; // Override inline css provided by js.
+}
+
+.leaflet-container a.leaflet-popup-close-button {
+  z-index: 1;
+}

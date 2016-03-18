@@ -374,6 +374,22 @@
 }
 
 
+  /* Map results switch
+  ================================================================================================================== */
+
+.search--display-switch {
+  @extend %itk--tabs;
+
+  text-align: right;
+
+  &-tab {
+    @extend %itk--tabs-item;
+
+    font-size: .9rem;
+  }
+}
+
+
   /* Display search results.
   ================================================================================================================== */
 
@@ -384,6 +400,22 @@
 
   &--result {
     @extend %teaser--wrapper;
+
+    // Map display.
+    &.is-popup {
+      border: 0;
+      flex: 0 1 auto;
+      margin-bottom: 0;
+      width: 350px;
+
+      figure {
+        flex: 0 0 140px;
+      }
+
+      img {
+        max-width: 100%!important;
+      }
+    }
   }
 
   &--header {
@@ -397,6 +429,7 @@
   &--type:last-child {
     @extend %teaser--type-last-child;
   }
+
 }
 
 

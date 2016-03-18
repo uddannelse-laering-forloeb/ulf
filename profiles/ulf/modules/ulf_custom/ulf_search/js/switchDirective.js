@@ -12,12 +12,16 @@ angular.module('searchResultApp').directive('searchSwitch', [ 'CONFIG',
     return {
       restrict: 'A',
       link: function (scope, element, attrs) {
-        scope.showMap = false;
+        scope.displayMap = false;
 
-        scope.switch = function () {
-          // Switch state.
-          scope.showMap = !scope.showMap;
+        scope.showMap = function showMap() {
+          scope.displayMap = true;
         };
+
+        scope.hideMap = function hideMap() {
+          scope.displayMap = false;
+        };
+
       }
     };
   }
