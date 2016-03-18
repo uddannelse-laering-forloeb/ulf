@@ -25,6 +25,14 @@ class SearchNodeLocationFilter extends SearchApiAbstractAlterCallback {
     foreach ($items as $item) {
       if (isset($item->locations) && count($item->locations)) {
         $location = reset($item->locations);
+
+        // Check if location is valid.
+        if ($location['latitude'] == '0.000000' && $location['longitude'] == '0.000000') {
+          // This is normally because geo-encoding have failed. So just go to
+          // the next one.
+          continue;
+        }
+
         $name = $this->options['field_name'];
         $item->$name = array(
           'lat' => $location['latitude'],

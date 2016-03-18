@@ -91,7 +91,7 @@ angular.module('searchResultApp').directive('searchMap', [ '$timeout', '$templat
         var map = L.map('search-map', { zoomControl:true });
 
         // Set default path to marker images.
-        L.Icon.Default.imagePath = '/profiles/ulf/themes/ulf_default/images/leaflet/';
+        L.Icon.Default.imagePath = CONFIG.provider.map.markers;
 
         // Add open street map as base layer.
         var osm_url='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';

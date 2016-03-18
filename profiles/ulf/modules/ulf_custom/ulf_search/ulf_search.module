@@ -107,6 +107,15 @@ function ulf_search_form_search_node_page_search_box_content_type_edit_form_alte
     '#default_value' => isset($default['map']['points']) ? $default['map']['points'] : 50,
     '#required' => TRUE,
   );
+
+  $form['search_node']['map']['markers'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Markers'),
+    '#description' => t('The location of the marker images.'),
+    '#default_value' => isset($default['map']['markers']) ? $default['map']['markers'] : '/profiles/ulf/themes/ulf_default/images/leaflet/',
+    '#required' => TRUE,
+  );
+
 }
 
 /**
@@ -117,6 +126,7 @@ function ulf_search_form_search_node_page_search_box_content_type_edit_form_alte
 function ulf_search_search_node_page_configuration_alter(&$conf, $configuration) {
   $conf['provider']['map'] = array(
     'points' => isset($configuration['map']['points']) ? $configuration['map']['points'] : 50,
+    'markers' => isset($default['map']['markers']) ? $default['map']['markers'] : '/profiles/ulf/themes/ulf_default/images/leaflet/',
   );
   $conf['templates']['popup'] = isset($configuration['templates']['popup']) ? $configuration['templates']['popup'] : '/profiles/ulf/themes/ulf_default/templates/search/angular/popup.html';
 }
