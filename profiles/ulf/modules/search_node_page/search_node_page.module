@@ -842,6 +842,9 @@ function search_node_page_build_search_box($configuration = array()) {
       );
     }
 
+    // Allow other module to change the configuration.
+    drupal_alter('search_node_page_configuration', $conf, $configuration);
+
     // Add the configuration to the page.
     drupal_add_js("angular.module('searchAppConfig', []).constant('CONFIG', " . json_encode($conf). ");", array(
         'type' => 'inline',
