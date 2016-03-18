@@ -36,11 +36,8 @@ angular.module('searchResultApp').directive('searchMap', [ '$timeout', '$templat
     /**
      * Add marker to the map with "hit" information.
      *
-     * It's wrapper in a promise to enable events when all markers have been set
-     * on the map.
+     * It's wrapper in a promise to enable events when all markers created.
      *
-     * @param map
-     *   Leaflet map object.
      * @param data
      *   The data for the current "hit".
      * @param scope
@@ -49,7 +46,7 @@ angular.module('searchResultApp').directive('searchMap', [ '$timeout', '$templat
      * @returns {*}
      *   Promise to set the marker.
      */
-    function addMarker(map, data, scope) {
+    function addMarker(data, scope) {
       return $q(function(resolve, reject) {
         var location = data.field_location;
 
@@ -112,7 +109,7 @@ angular.module('searchResultApp').directive('searchMap', [ '$timeout', '$templat
           // Add all results to the map.
           var promises = [];
           for (var hit in hits.results) {
-            promises.push(addMarker(map,  hits.results[hit], scope));
+            promises.push(addMarker(hits.results[hit], scope));
           }
 
           // When all markers are set change the map view to fit the markers.
