@@ -93,7 +93,7 @@ angular.module('searchBoxApp').controller('UlfBoxController', ['CONFIG', 'commun
         if (CONFIG.provider.hasOwnProperty('pager')) {
           query.pager.size = CONFIG.provider.map.points;
         }
-        searchProxyService.search(query).then(
+        searchProxyService.search(query, true).then(
           function (data) {
             // Send results.
             communicatorService.$emit('mapSearchHits', data);
