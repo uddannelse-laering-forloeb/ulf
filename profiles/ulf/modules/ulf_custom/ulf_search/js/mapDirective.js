@@ -90,13 +90,10 @@ angular.module('searchResultApp').directive('searchMap', [ '$timeout', '$templat
         // Initialize map container.
         var map = L.map('search-map', { zoomControl:true });
 
-        // @TODO: Make this configurable.
-        map.setView(new L.LatLng(56.15331, 10.19651), 10);
-
         // Add open street map as base layer.
         var osm_url='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
         var osm_copy='Map data © <a href="http://openstreetmap.org">OpenStreetMap</a>';
-        var osm = new L.TileLayer(osm_url, {minZoom: 1, maxZoom: 15, attribution: osm_copy});
+        var osm = new L.TileLayer(osm_url, {minZoom: 3, maxZoom: 15, attribution: osm_copy});
         map.addLayer(osm);
 
         // Bookkeeper for the currently placed markers.

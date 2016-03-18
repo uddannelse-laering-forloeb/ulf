@@ -78,14 +78,45 @@ function ulf_search_search_node_filtered_item_alter(&$filteredItem) {
 }
 
 /**
- * Alter configuration to set "maps" parameteres.
+ * Implements hook_from_FORM_ID_alter().
  *
- * @TODO: This should be added to edit forms via alters.
+ * Add search map configuration options to panels edit form.
  */
-function ulf_search_search_node_page_configuration_alter(&$config) {
-  $config['provider']['map'] = array(
-    'points' => 50,
+function ulf_search_form_search_node_page_search_box_content_type_edit_form_alter(&$form, &$form_state, $form_id) {
+  $default = $form_state['conf']['search_node'];
+  $form['search_node']['templates']['popup'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Maps popup'),
+    '#default_value' => isset($default['templates']['popup']) ? $default['templates']['popup'] : '/profiles/ulf/themes/ulf_default/templates/search/angular/popup.html',
+    '#required' => TRUE,
   );
-  $config['templates']['popup'] = '/profiles/ulf/themes/ulf_default/templates/search/angular/popup.html';
 
+  $form['search_node']['map'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Search Map'),
+    '#description' => t('Search map settings, if enabled in the templates.'),
+    '#tree' => TRUE,
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+  );
+
+  $form['search_node']['map']['points'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Points'),
+    '#description' => t('The maximum number of markers (points) to display on a single map.'),
+    '#default_value' => isset($default['map']['points']) ? $default['map']['points'] : 50,
+    '#required' => TRUE,
+  );
+}
+
+/**
+ * Implements hook_search_node_page_configuration_alter().
+ *
+ * Add maps configuration for AngularJS.
+ */
+function ulf_search_search_node_page_configuration_alter(&$conf, $configuration) {
+  $conf['provider']['map'] = array(
+    'points' => isset($configuration['map']['points']) ? $configuration['map']['points'] : 50,
+  );
+  $conf['templates']['popup'] = isset($configuration['templates']['popup']) ? $configuration['templates']['popup'] : '/profiles/ulf/themes/ulf_default/templates/search/angular/popup.html';
 }
