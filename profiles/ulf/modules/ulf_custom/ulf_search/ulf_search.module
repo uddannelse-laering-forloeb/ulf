@@ -115,7 +115,6 @@ function ulf_search_form_search_node_page_search_box_content_type_edit_form_alte
     '#default_value' => isset($default['map']['markers']) ? $default['map']['markers'] : '/profiles/ulf/themes/ulf_default/images/leaflet/',
     '#required' => TRUE,
   );
-
 }
 
 /**
