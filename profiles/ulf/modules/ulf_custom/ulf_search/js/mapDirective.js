@@ -100,7 +100,9 @@ angular.module('searchResultApp').directive('searchMap', [ '$timeout', '$templat
         map.addLayer(osm);
 
         // Bookkeeper for the currently placed markers.
-        var markers = new L.featureGroup();
+        var cluster = new L.markerClusterGroup({
+          showCoverageOnHover: false
+        });
 
         // Watch for changes in hits
         communicatorService.$on('mapSearchHits', function onMapHits(event, hits) {
@@ -116,21 +118,24 @@ angular.module('searchResultApp').directive('searchMap', [ '$timeout', '$templat
           if (promises.length) {
             $q.all(promises).then(function (data) {
               // Remove all markers before populating with new markers.
-              map.removeLayer(markers);
+              map.removeLayer(cluster);
+
+              // Create new cluser group layer.
+              cluster = new L.markerClusterGroup({
+                showCoverageOnHover: false
+              });
 
               // Clean out resolved markers as some are without lat/lon and is
               // undefined in the array.
-              var features = [];
               for (var i = 0; i < data.length; i++) {
                 if (data[i] !== undefined) {
-                  features.push(data[i]);
+                  cluster.addLayer(data[i]);
                 }
               }
 
-              // Add marker to the map.
-              markers = new L.featureGroup(features);
-              markers.addTo(map);
-              map.fitBounds(markers.getBounds());
+              // Add marker clusters to the map.
+              map.addLayer(cluster);
+              map.fitBounds(cluster.getBounds());
             });
           }
         });
