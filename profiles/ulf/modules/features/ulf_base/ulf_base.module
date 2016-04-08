@@ -24,3 +24,12 @@ function ulf_base_menu_block_blocks() {
     ),
   );
 }
+
+/**
+ * Implement hook_pathauto_alias_alter().
+ *
+ * Change language to none.
+ */
+function ulf_base_pathauto_alias_alter(&$alias, array &$context) {
+  $context['language'] = LANGUAGE_NONE;
+}
