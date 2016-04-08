@@ -85,8 +85,9 @@ angular.module('searchResultApp').directive('searchMap', [ '$timeout', '$templat
 
     return {
       restrict: 'E',
-      scope: {},
       link: function (scope, element, attrs) {
+        scope.hitCount = 0;
+
         // Initialize map container.
         var map = L.map('search-map', { zoomControl:true });
 
@@ -127,11 +128,16 @@ angular.module('searchResultApp').directive('searchMap', [ '$timeout', '$templat
 
               // Clean out resolved markers as some are without lat/lon and is
               // undefined in the array.
+              var hitCount = 0;
               for (var i = 0; i < data.length; i++) {
                 if (data[i] !== undefined) {
+                  hitCount++;
                   cluster.addLayer(data[i]);
                 }
               }
+
+              // Update hit counter.
+              scope.hitCount = hitCount;
 
               // Add marker clusters to the map.
               map.addLayer(cluster);
