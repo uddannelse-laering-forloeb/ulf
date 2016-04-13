@@ -30,7 +30,7 @@ function ulf_course_providers_field_default_field_instances() {
     'entity_type' => 'user',
     'field_name' => 'field_image',
     'label' => 'Upload et billede/illustration',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'alt_field' => 0,
       'default_image' => 0,
@@ -40,7 +40,7 @@ function ulf_course_providers_field_default_field_instances() {
       'max_resolution' => '',
       'min_resolution' => '1000x550',
       'title_field' => 0,
-      'user_register_form' => 1,
+      'user_register_form' => 0,
     ),
     'widget' => array(
       'active' => 1,

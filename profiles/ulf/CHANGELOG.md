@@ -1,5 +1,23 @@
 #ULF changelog
 
+#v2.2.4
+* Removed impage dependency on profile
+* Added image dependency on courses
+
+#v2.3.2
+* Added image dependency on profile
+* Added url pattern
+
+#v2.3.1
+* Added frontpage blocks
+* Added nodequeue
+
+#v2.3.0
+* Added free checkbox to search
+* Changed display of courses on course provider
+* Added media display on news and static pages
+* Updated Drupal core
+
 #v2.2.0
 
 ##Release notes
