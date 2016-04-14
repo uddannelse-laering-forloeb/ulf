@@ -198,6 +198,7 @@ function search_node_page_form_block_admin_configure_alter(&$form, &$form_state,
         $indexes[$index->machine_name] = $index->name . ' (' . $index->options['search_node_indexes'] . ')';
       }
       $form['settings']['search_node']['index']['#options'] = $indexes;
+      $form['settings']['search_node']['autocomplete']['index']['#options'] = $indexes;
 
       // Build field and filter selection.
       $fields = array();
@@ -230,7 +231,7 @@ function search_node_page_form_block_admin_configure_alter(&$form, &$form_state,
       $form['settings']['search_node']['forces']['field']['#options'] = array('_none_' => t('Select field')) + $filters;
 
       // Load taxonomy based on selected field.
-      $field = !empty($form_state['values']['search_node']['forces']['field']) ? $form_state['values']['search_node']['forces']['field'] : $form['search_node']['forces']['field']['#default_value'];
+      $field = !empty($form_state['values']['search_node']['forces']['field']) ? $form_state['values']['search_node']['forces']['field'] : $form['settings']['search_node']['forces']['field']['#default_value'];
       $info = field_info_field($field);
       $vocab = taxonomy_vocabulary_machine_name_load($info['settings']['allowed_values'][0]['vocabulary']);
       $terms = array();
@@ -238,6 +239,25 @@ function search_node_page_form_block_admin_configure_alter(&$form, &$form_state,
         $terms[$term->name] = $term->name;
       }
       $form['settings']['search_node']['forces']['selected']['#options'] = $terms;
+
+      $fields = array();
+      $selected_index = !empty($form_state['values']['search_node']['autocomplete']['index']) ? $form_state['values']['search_node']['autocomplete']['index'] : $form['settings']['search_node']['autocomplete']['index']['#default_value'];
+      $index = search_api_index_load($selected_index);
+      foreach ($index->options['fields'] as $field => $options) {
+        if (isset($options['entity_type']) && $options['entity_type'] == 'taxonomy_term') {
+          // Load field.
+          $info = field_info_field($field);
+          $vocab = taxonomy_vocabulary_machine_name_load($info['settings']['allowed_values'][0]['vocabulary']);
+          $filters[$field] = $vocab->name . ' (' . $field .')';
+        }
+        else {
+          // The index save some fields with ":".
+          $name = explode(':', $field);
+          $fields[$field] = array_shift($name) . ' (' . $field .')';
+        }
+      }
+
+      $form['settings']['search_node']['autocomplete']['field']['#options'] = array('_none_' => t('None')) + $fields;;
     }
   }
 }
@@ -272,6 +292,7 @@ function search_node_page_form_search_node_page_search_box_content_type_edit_for
       $indexes[$index->machine_name] = $index->name . ' (' . $index->options['search_node_indexes'] . ')';
     }
     $form['search_node']['index']['#options'] = $indexes;
+    $form['search_node']['autocomplete']['index']['#options'] = $indexes;
 
     // Build field and filter selection.
     $fields = array();
@@ -289,10 +310,10 @@ function search_node_page_form_search_node_page_search_box_content_type_edit_for
           // Load field.
           $info = field_info_field($field);
           $vocab = taxonomy_vocabulary_machine_name_load($info['settings']['allowed_values'][0]['vocabulary']);
-          $filters['taxonomy'][$field] = $vocab->name . ' (' . $field .')';
+          $filters['taxonomy'][$field] = $vocab->name . ' (' . $field . ')';
 
           // Also add it to searchable fields.
-          $fields[$field] = $vocab->name . ' (' . $field .')';
+          $fields[$field] = $vocab->name . ' (' . $field . ')';
           break;
 
         case 'boolean':
@@ -301,7 +322,7 @@ function search_node_page_form_search_node_page_search_box_content_type_edit_for
           $entity_type = reset($bundles);
           $bundle_name = reset($info['bundles'])[0];
           $info = field_info_instance($entity_type, $field, $bundle_name);
-          $filters['boolean'][$field] = t($info['label']) . ' (' . $field .')';;
+          $filters['boolean'][$field] = t($info['label']) . ' (' . $field . ')';;
           break;
 
         case 'date':
@@ -313,15 +334,15 @@ function search_node_page_form_search_node_page_search_box_content_type_edit_for
             $entity_type = reset($bundles);
             $bundle_name = reset($info['bundles'])[0];
             $info = field_info_instance($entity_type, $field_name, $bundle_name);
-            $dates[$field] = t($info['label']) . ' (' . $field_name .')';
+            $dates[$field] = t($info['label']) . ' (' . $field_name . ')';
             break;
           }
-          // Fall through to default.
+        // Fall through to default.
 
         default:
           // The index save some fields with ":".
           $name = explode(':', $field);
-          $fields[$field] = array_shift($name) . ' (' . $field .')';
+          $fields[$field] = array_shift($name) . ' (' . $field . ')';
           break;
       }
     }
@@ -350,6 +371,25 @@ function search_node_page_form_search_node_page_search_box_content_type_edit_for
       $terms[$term->name] = $term->name;
     }
     $form['search_node']['forces']['selected']['#options'] = $terms;
+
+    if (!empty($server_indexes)) {
+      $fields = array();
+      $selected_index = !empty($form_state['values']['search_node']['autocomplete']['index']) ? $form_state['values']['search_node']['autocomplete']['index'] : $form['settings']['search_node']['autocomplete']['index']['#default_value'];
+      $index = search_api_index_load($selected_index);
+      foreach ($index->options['fields'] as $field => $options) {
+        if (isset($options['entity_type']) && $options['entity_type'] == 'taxonomy_term') {
+          // Load field.
+          $info = field_info_field($field);
+          $vocab = taxonomy_vocabulary_machine_name_load($info['settings']['allowed_values'][0]['vocabulary']);
+          $filters[$field] = $vocab->name . ' (' . $field . ')';
+        }
+        else {
+          // The index save some fields with ":".
+          $name = explode(':', $field);
+          $fields[$field] = array_shift($name) . ' (' . $field . ')';
+        }
+      }
+    }
   }
 }
 
@@ -602,7 +642,6 @@ function search_node_page_configuration_form($form, array &$form_state = array()
     '#required' => TRUE,
   );
 
-  $path = drupal_get_path('module', 'search_node_page');
   $form['search_node']['templates']['result'] = array(
     '#type' => 'textfield',
     '#title' => 'Search result',
@@ -610,12 +649,55 @@ function search_node_page_configuration_form($form, array &$form_state = array()
     '#required' => TRUE,
   );
 
-  $path = drupal_get_path('module', 'search_node_page');
   $form['search_node']['templates']['pager'] = array(
     '#type' => 'textfield',
     '#title' => 'Search pager',
     '#default_value' => isset($defaults['templates']['pager']) ? $defaults['templates']['pager'] : '/' . $path . '/templates/angular/pager.html',
     '#required' => TRUE,
+  );
+
+  $form['search_node']['autocomplete'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Autocomplete (type-a-head)'),
+    '#description' => t('Enable auto-complete feature.'),
+    '#tree' => TRUE,
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+  );
+
+  $indexes = array('_none_' => t('Select index'));
+  $form['search_node']['autocomplete']['index'] = array(
+    '#type' => 'select',
+    '#title' => t('Search index'),
+    '#description' => t('Select the search api index to use'),
+    '#options' => $indexes,
+    '#default_value' => isset($defaults['autocomplete']['index']) ? $defaults['autocomplete']['index'] : '_none_',
+    '#ajax' => array(
+      'callback' => 'search_node_page_block_auto_field_ajax_callback',
+      'wrapper' => 'search-node-page-block-auto-field',
+    ),
+  );
+
+  $form['search_node']['autocomplete']['field'] = array(
+    '#type' => 'select',
+    '#title' => t('Field to use'),
+    '#description' => t('Select the field use'),
+    '#options' => array('_none_' => t('Select field')),
+    '#default_value' => isset($defaults['autocomplete']['field']) ? $defaults['autocomplete']['field'] : '_none_',
+    '#prefix' => '<div id="search-node-page-block-auto-field">',
+    '#suffix' => '</div>',
+  );
+
+  $form['search_node']['autocomplete']['minChars'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Minimum number of chars to match'),
+    '#default_value' => isset($defaults['autocomplete']['minChars']) ? $defaults['autocomplete']['minChars'] : '3',
+  );
+
+  $form['search_node']['autocomplete']['size'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Number of hits to return'),
+    '#default_value' => isset($defaults['autocomplete']['size']) ? $defaults['autocomplete']['size'] : '1',
   );
 
   return $form;
@@ -642,6 +724,12 @@ function search_node_page_block_force_field_ajax_callback(array $form, array &$f
   return isset($form['settings']['search_node']['forces']['selected']) ? $form['settings']['search_node']['forces']['selected'] : $form['search_node']['forces']['selected'];
 }
 
+/**
+ * Ajax callback to update the block and panes configuration form.
+ */
+function search_node_page_block_auto_field_ajax_callback(array $form, array &$form_state) {
+  return isset($form['settings']['search_node']['autocomplete']['field']) ? $form['settings']['search_node']['autocomplete']['field'] : $form['search_node']['autocomplete']['field'];
+}
 
 /**
  * Implements hook_block_save().
@@ -839,6 +927,17 @@ function search_node_page_build_search_box($configuration = array()) {
           'type' => 'taxonomy',
           'values' => array_filter($configuration['forces']['selected']),
         ),
+      );
+    }
+
+    // Check if auto-complete/type-a-head support is enabled.
+    if (!empty($configuration['autocomplete']['index']) && $configuration['autocomplete']['index'] != '_none_') {
+      $autoIndex = search_api_index_load($configuration['autocomplete']['index']);
+      $conf['provider']['autocomplete'] = array(
+        'index' => $autoIndex->options['search_node_indexes'],
+        'field' => $configuration['autocomplete']['field'],
+        'minChars' => $configuration['autocomplete']['minChars'],
+        'size' => $configuration['autocomplete']['size']
       );
     }
 
