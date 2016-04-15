@@ -357,13 +357,10 @@ function ulf_workflow_default_page_manager_pages() {
   $page->path = 'admin/workbench/awaiting-revision';
   $page->access = array(
     'plugins' => array(
-      0 => array(
-        'name' => 'role',
+      1 => array(
+        'name' => 'perm',
         'settings' => array(
-          'rids' => array(
-            0 => 17,
-            1 => 19,
-          ),
+          'perm' => 'administer nodes',
         ),
         'context' => 'logged-in-user',
         'not' => FALSE,
