@@ -18,8 +18,8 @@ var compass = require('gulp-compass');
 
 var browserSync = require('browser-sync').create();
 browserSync.init({
-  proxy: "ulf_profile.vm",
-  host: "ulf_profile.vm"
+  proxy: "ulf.vm",
+  host: "ulf.vm"
 });
 
 
@@ -38,6 +38,21 @@ gulp.task('jshint', function() {
     .pipe(jshint())
     .pipe(jshint.reporter(stylish));
 });
+
+
+/**
+ * Run Javascript through JSHint.
+ */
+
+gulp.task('uglify', function() {
+  gulp.src(jsPath)
+    .pipe(uglify())
+    .pipe(rename({
+      suffix: '-min'
+    }))
+    .pipe(gulp.dest('./scripts/min'))
+});
+
 
 /**
  * Process SCSS using libsass
@@ -61,7 +76,7 @@ gulp.task('sass', function () {
  */
 
 gulp.task('watch', function() {
-  gulp.watch(jsPath, ['jshint']);
+  gulp.watch(jsPath, ['jshint', 'uglify']);
   gulp.watch(sassPath, ['sass']);
   gulp.watch(phpPath).on('change', browserSync.reload);
   gulp.watch(jsPath).on('change',browserSync.reload);
@@ -115,5 +130,5 @@ gulp.task('compass', function() {
 
 
 // Tasks to compile sass and watch js file.
-gulp.task('default', ['sass', 'watch']);
-gulp.task('build', ['buildJs', 'sass']);
+gulp.task('default', ['sass', 'watch', 'uglify']);
+gulp.task('build', ['buildJs', 'sass', 'uglify']);

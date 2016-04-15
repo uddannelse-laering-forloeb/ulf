@@ -1,6 +1,13 @@
 #ULF changelog
 
-#v2.2.4
+#v2.3.4
+* Major change of menu structure
+* Added menu block module
+* Removed About ULF menu
+* Added support for multiple dropdown menus
+* Moved all menu items to main menu
+
+#v2.3.3
 * Removed impage dependency on profile
 * Added image dependency on courses
 

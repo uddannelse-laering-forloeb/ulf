@@ -100,7 +100,7 @@
           <?php if($static_page_menu) : ?>
             <div class="block--default">
               <h2 class="block--header">
-                <?php print t('More info'); ?>
+                <?php print render($static_page_menu['subject']); ?>
               </h2>
               <div class="block--content">
                 <div class="block--field-text">
