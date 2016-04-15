@@ -120,3 +120,13 @@ function ulf_base_update_7007() {
 
   module_enable($module_enable);
 }
+
+
+/**
+ * Delete old menu
+ */
+function ulf_base_update_7008() {
+  // Delete "about" menu.
+  $menu = menu_load('menu-about-ulf');
+  menu_delete($menu);
+}
