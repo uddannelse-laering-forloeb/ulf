@@ -95,33 +95,23 @@ function ulf_default_menu_link__main_menu($variables){
   $element = $variables['element'];
   $sub_menu = '';
 
-  // Set type of link based on title of link.
-  switch ($element['#title']) {
-    case 'Dagtilbud':
-      $element['#localized_options']['attributes']['class'][] = 'is-daycare';
-      break;
-    case 'Grundskole':
-      $element['#localized_options']['attributes']['class'][] = 'is-school';
-      break;
-    case 'Ungdomsuddannelse':
-      $element['#localized_options']['attributes']['class'][] = 'is-youth';
-      break;
-    case 'Kurser':
-      $element['#localized_options']['attributes']['class'][] = 'is-course';
-      break;
-    case 'Om ULF':
-      // Make Om ULF a dropdown.
-      $menu_array = module_invoke('menu', 'block_view', 'menu-about-ulf');
-      $element['#attributes']['class'][] = 'js-toggle-about';
-      $sub_menu = '<div class="nav--sub js-about-menu is-hidden"><ul class="nav--static-pages is-menu">' . render($menu_array['content']) . '</ul></div>';
-      break;
+  // If item is a parent.
+  if ($element['#below']) {
+    $element['#attributes']['class'][] = 'js-toggle-expanded';
+    $element['#attributes']['mlid'][] = $element['#original_link']['mlid'];
+    $sub_menu = '<div class="nav--sub js-expanded-menu-'. $element['#original_link']['mlid'] . ' is-hidden"><ul class="nav--static-pages is-menu">' . drupal_render($element['#below']) . '</ul></div>';
+  }
+  // If item is a child.
+  if($element['#original_link']['plid'] > 0) {
+    $element['#attributes']['class'][] = 'nav--list-item-sub';
+  } else {
+    $element['#attributes']['class'][] = 'nav--list-item';
+    $element['#localized_options']['attributes']['class'][] = 'nav--list-link';
   }
 
-  $element['#attributes']['class'][] = 'nav--list-item';
-  $element['#localized_options']['attributes']['class'][] = 'nav--list-link';
-  $output = l($element['#title'], $element['#href'], $element['#localized_options']);
+  $link = l($element['#title'], $element['#href'], $element['#localized_options']);
 
-  return "<li" . drupal_attributes($element['#attributes']) . ">" . $output . $sub_menu . "</li>" ;
+  return "<li" . drupal_attributes($element['#attributes']) . ">" . $link . $sub_menu . "</li>" ;
 }
 
 
@@ -174,12 +164,12 @@ function ulf_default_preprocess_node(&$variables) {
       if (isset($variables['content']['field_duration']['0']['#markup'])) {
         $variables['stripped_duration'] = preg_replace('/,?0+$/','', $variables['content']['field_duration']['0']['#markup']);
       }
-
       break;
 
     case 'static_page':
       // Provide menu block for static page nodes.
-      $variables['static_page_menu'] = module_invoke('menu', 'block_view', 'menu-about-ulf');
+      $variables['static_page_menu'] = module_invoke('menu_block', 'block_view', 'ulf_base-1');
+      $variables['static_page_menu_s'] = module_invoke('menu_block', 'block_view', '2');
 
       // Provide newsletter block for static pages.
       $variables['newsletter_block'] = module_invoke('mailchimp_signup', 'block_view', 'signup_to_newsletter');
