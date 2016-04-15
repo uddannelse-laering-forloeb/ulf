@@ -38,7 +38,7 @@
   background: $gray-darkest;
 
 
-  @include breakpoint(45em) {
+  @include breakpoint(1000px) {
     display: block;
   }
 
@@ -122,7 +122,7 @@
     border-right: 1px solid $gray-lighter;
     border-bottom: 1px solid $gray-lighter;
 
-    @include breakpoint(45em) {
+    @include breakpoint(1000px) {
       position: absolute;
 
       z-index: 2;
@@ -221,16 +221,16 @@
 ================================================================================================================== */
 
 .nav {
-  & .nav--static-pages {
+  .nav--static-pages {
     box-sizing: border-box;
     min-width: 0;
 
-    @include breakpoint(45em) {
+    @include breakpoint(1000px) {
       min-width: 240px;
     }
   }
 
-  & .nav--static-pages-item {
+  .nav--static-pages-item {
     border-bottom: 1px solid $gray-lighter;
     margin: 0 1em;
     width: auto;
@@ -259,19 +259,19 @@
 
 // Reuse the main menu html but neest once to override styles.
 .nav--mobile {
-  &  .nav--list-link {
+  .nav--list-link {
     display: block;
     padding: 0;
     border-bottom: 1px solid white;
     background: inherit;
   }
 
-  & .nav--sub {
+  .nav--sub {
     border-left: 0;
     border-right: 0;
   }
 
-  & .nav--static-pages-item {
+  .nav--static-pages-item {
     border-top: 1px solid $white;
     padding: 1em;
 
