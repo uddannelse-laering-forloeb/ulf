@@ -169,7 +169,6 @@ function ulf_default_preprocess_node(&$variables) {
     case 'static_page':
       // Provide menu block for static page nodes.
       $variables['static_page_menu'] = module_invoke('menu_block', 'block_view', 'ulf_base-1');
-      $variables['static_page_menu_s'] = module_invoke('menu_block', 'block_view', '2');
 
       // Provide newsletter block for static pages.
       $variables['newsletter_block'] = module_invoke('mailchimp_signup', 'block_view', 'signup_to_newsletter');
