@@ -161,6 +161,7 @@
   .nav--list-dropdown-item,
   .nav--list-item {
     box-sizing: border-box;
+    background: transparent;
     padding: 0 1em;
     width: 100%;
 
@@ -291,10 +292,11 @@
 .nav--static-pages.is-node {
   display: block;
 
-  & .nav--static-pages-item {
+  .nav--list-item-sub {
     border-bottom: 1px solid $white;
     padding: .5em 0;
     font-weight: bold;
+    margin: 0;
 
     &:last-child {
       border-bottom: 0;
@@ -302,6 +304,18 @@
 
     a {
       @include strip-link-styles($dark-blue);
+
+      display: block;
+      font-weight: bold;
+      padding: 0;
+
+      &:hover {
+        background-color: transparent;
+      }
+
+      &.active {
+        text-decoration: underline;
+      }
     }
   }
 }

@@ -105,7 +105,8 @@ function ulf_base_update_7006() {
   }
 
   // Delete "about" menu.
-  menu_delete('menu-about-ulf');
+  $menu = menu_delete('menu-about-ulf');
+  menu_delete($menu);
 }
 
 
