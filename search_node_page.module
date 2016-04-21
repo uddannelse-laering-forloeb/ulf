@@ -66,6 +66,9 @@ function search_node_page_ctools_plugin_directory($module, $plugin) {
  *   The machine name of the search api server to use.
  */
 function search_node_page_authenticate($search_server) {
+  // Ensure auth in not cached.
+  drupal_page_is_cacheable(FALSE);
+
   $server = search_api_server_load($search_server);
   if ($server) {
     // Check for overridden api-key and host from settings.php
