@@ -30,12 +30,17 @@
 }
 
 .block--newsletter,
-.teaser--group,
 .teaser,
 .search-results--result {
     float: left;
     max-width: 49%;
     min-width: 49%;
+    height: 255px;
+}
+
+.teaser--group {
+    float: left;
+    max-width: 49%;
     height: 255px;
 }
 
