@@ -89,7 +89,6 @@
 .search--widget-extras {
     box-sizing: border-box;
     float: left;
-    height: 2em;
 }
 
 .search-results--result:nth-child(odd),
