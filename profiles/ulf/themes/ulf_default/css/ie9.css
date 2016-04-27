@@ -86,7 +86,7 @@
 }
 
 .search--widget-selected,
-.search--widget-extra {
+.search--widget-extras {
     box-sizing: border-box;
     float: left;
     height: 2em;
