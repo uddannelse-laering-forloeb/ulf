@@ -85,6 +85,13 @@
     float: left;
 }
 
+.search--widget-selected,
+.search--widget-extra {
+    float: left;
+    height: 2em;
+    padding: 1em 0;
+}
+
 .search-results--result:nth-child(odd),
 .teaser:nth-child(odd) {
     margin-right: 2%;
