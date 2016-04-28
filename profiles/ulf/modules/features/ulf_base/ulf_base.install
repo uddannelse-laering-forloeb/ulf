@@ -5,6 +5,51 @@
  */
 
 /**
+ * Load users from a node type and migrate their location to the node.
+ *
+ * @param string $type
+ *   The node type to load.
+ */
+function _ulf_base_migrate_locations_from_users($type) {
+  $entities = db_select('node', 'n')
+    ->fields('n', array('nid', 'vid', 'uid'))
+    ->condition('type', $type, '=')
+    ->execute()
+    ->fetchAllAssoc('nid');
+
+  // Find location for a given uid (cached).
+  foreach ($entities as $entity) {
+    $user = user_load($entity->uid);
+
+    // Check that location exists and move all locations into an location array.
+    if (is_array($user->locations) && count($user->locations)) {
+      $locations = array();
+      foreach ($user->locations as $user_location) {
+        if ($user_location['latitude'] != '0.000000' && $user_location['longitude'] != '0.000000') {
+          $locations[] = array(
+            'street' => $user_location['street'],
+            'additional' => $user_location['additional'],
+            'city' => $user_location['city'],
+            'postal_code' => $user_location['postal_code'],
+            'country' => $user_location['country'],
+            'locoick' => array(
+              'user_latitude' => '',
+              'user_longitude' => '',
+            ),
+          );
+        }
+      }
+
+      // If one or more location was found for the node save them with reference
+      // to the node.
+      if (count($locations)) {
+        location_save_locations($locations, array('nid' => $entity->nid, 'vid' => $entity->vid));
+      }
+    }
+  }
+}
+
+/**
  * Enable ulf_aarhus settings module if it exists.
  */
 function ulf_base_update_7001(&$sandbox) {
@@ -106,7 +151,7 @@ function ulf_base_update_7007(&$sandbox) {
 
     // Create location array base on the information.
     if (!empty($street) && !empty($postal) && !empty($city)) {
-      $location = array(
+      $locations = array(
         array(
           'street' => $street,
           'additional' => '',
@@ -121,16 +166,85 @@ function ulf_base_update_7007(&$sandbox) {
       );
 
       // Add location to the current user.
-      location_save_locations($location, array('uid' => $user->uid));
+      location_save_locations($locations, array('uid' => $user->uid));
     }
   }
 }
 
 /**
- * Add locations to all courses.
+ * Add locations to all courses base on users.
  */
-//function ulf_base_update_7008(&$sandbox) {
-//  // Find all node with type "course".
-//
-//
-//}
+function ulf_base_update_7008(&$sandbox) {
+  _ulf_base_migrate_locations_from_users('course');
+  location_flush_caches();
+}
+
+/**
+ * Add locations to all educator courses base on users.
+ */
+function ulf_base_update_7009(&$sandbox) {
+  _ulf_base_migrate_locations_from_users('course_educators');
+  location_flush_caches();
+}
+
+
+/**
+ * Alter menu setup.
+ */
+function ulf_base_update_7010(&$sandbox) {
+  $links = menu_load_links('main-menu');
+
+  foreach ($links as $link) {
+    if ($link['module'] == 'system') {
+      // Reset system items.
+      menu_reset_item($link);
+    }
+
+    // Get the old expanded menu item mlid.
+    if ($link['link_title'] == 'Om ULF' || $link['link_title'] == 'Om os' ) {
+      $expanding_link_mlid = $link['mlid'];
+      $link['expanded'] = TRUE;
+      $link['weight'] = 10;
+      menu_link_save($link);
+    }
+  }
+
+  // If such item mlid exists move static menu items to the main menu.
+  if (isset($expanding_link_mlid)) {
+    $about_ulf_links =  menu_load_links('menu-about-ulf');
+    foreach ($about_ulf_links as $link) {
+      $link['menu_name'] = 'main-menu';
+      $link['plid'] = $expanding_link_mlid;
+      $link['depth'] = 2;
+      $link['p2'] = $link['p1'];
+      $link['p1'] = $expanding_link_mlid;
+      menu_link_save($link);
+    }
+  }
+
+  // Delete "about" menu.
+  $menu = menu_delete('menu-about-ulf');
+  menu_delete($menu);
+}
+
+
+/**
+ * Enable menu block
+ */
+function ulf_base_update_7011(&$sandbox) {
+  $module_enable = array(
+    'menu_block',
+  );
+
+  module_enable($module_enable);
+}
+
+
+/**
+ * Delete old menu
+ */
+function ulf_base_update_7012(&$sandbox) {
+  // Delete "about" menu.
+  $menu = menu_load('menu-about-ulf');
+  menu_delete($menu);
+}
