@@ -1,21 +1,22 @@
 <!-- Map/list switcher -->
-<!--
-<div data-search-switch class="search--display-switch" data-ng-click="switch()">
-  Toggle map
-</div>
--->
 <div class="search--display-switch" itk--tabs-count="2">
   <span data-search-switch class="search--display-switch-tab" data-ng-class="{ 'is-active': !displayMap}" data-ng-click="hideMap()">Vis resultater</span>
   <span data-search-switch class="search--display-switch-tab" data-ng-class="{ 'is-active': displayMap}" data-ng-click="showMap()">Vis kort</span>
 </div>
 
 <!-- Number of hits -->
-<div data-ng-if="hits.hits" class="search-results-header">
+<div data-ng-if="hits.hits && !displayMap" class="search-results-header">
   <h2><strong>{{ hits.hits }}</strong> resultater</h2>
 </div>
 
 <!-- Map search -->
 <search-map data-ng-if="displayMap">
+  <!-- Number of hits -->
+  <div class="search-results-header">
+    <h2><strong>{{ hitCount }}</strong> resultater</h2>
+  </div>
+
+  <!-- Map place holder -->
   <div id="search-map" style="width: 100%; height: 600px"></div>
 </search-map>
 

@@ -12,6 +12,17 @@
 
 .search {
 
+  // Make sure dropdown filters are lapping over results.
+  &--filters {
+    position: relative;
+    z-index: 2;
+  }
+
+  &--results {
+    position: relative;
+    z-index: 1;
+  }
+
   // Widget display.
   &--widget {
     background: $gray-lightest;

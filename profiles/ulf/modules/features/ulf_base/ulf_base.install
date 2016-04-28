@@ -179,6 +179,7 @@ function ulf_base_update_7008(&$sandbox) {
   location_flush_caches();
 }
 
+
 /**
  * Add locations to all educator courses base on users.
  */

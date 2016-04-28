@@ -43,12 +43,28 @@ function ulf_search_preprocess_search_node_page_search_box(&$variables) {
     'weight' => 7,
   ));
 
+  // Leaflet.
   drupal_add_js($path . '/js/leaflet.min.js', array(
     'type' => 'file',
     'scope' => 'footer',
     'weight' => 7,
   ));
   drupal_add_css($path . '/css/leaflet.css', array(
+    'type' => 'file',
+    'group' => 'CSS_THEME',
+  ));
+
+  // Marker clusters.
+  drupal_add_js($path . '/js/leaflet.markercluster.js', array(
+    'type' => 'file',
+    'scope' => 'footer',
+    'weight' => 7,
+  ));
+  drupal_add_css($path . '/css/MarkerCluster.Default.css', array(
+    'type' => 'file',
+    'group' => 'CSS_THEME',
+  ));
+  drupal_add_css($path . '/css/MarkerCluster.css', array(
     'type' => 'file',
     'group' => 'CSS_THEME',
   ));
@@ -115,7 +131,6 @@ function ulf_search_form_search_node_page_search_box_content_type_edit_form_alte
     '#default_value' => isset($default['map']['markers']) ? $default['map']['markers'] : '/profiles/ulf/themes/ulf_default/images/leaflet/',
     '#required' => TRUE,
   );
-
 }
 
 /**
