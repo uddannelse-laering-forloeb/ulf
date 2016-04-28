@@ -1,5 +1,11 @@
 #ULF changelog
 
+#2.3.6
+* Fixed workbench page permissions
+
+#v2.3.5
+* Updated IE9 styles
+
 #v2.3.4
 * Major change of menu structure
 * Added menu block module

@@ -86,8 +86,12 @@ function _ulf_workflow_admin() {
  */
 function ulf_workflow_menu_alter(&$items) {
   if (array_key_exists('admin/workbench/content', $items)) {
-    $items['admin/workbench/content']['title'] = 'Workbench';
+    $items['admin/workbench/content']['access callback'] = 'ulf_workflow_workbench_access';
   }
+}
+
+function ulf_workflow_workbench_access() {
+  return FALSE;
 }
 
 /**
