@@ -37,6 +37,8 @@
   display: none;
   background: $gray-darkest;
 
+  z-index: 3;
+  position: relative;
 
   @include breakpoint(45em) {
     display: block;

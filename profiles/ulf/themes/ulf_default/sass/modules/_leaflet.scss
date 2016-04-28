@@ -5,6 +5,7 @@
  * Contains styles related to leaflet.
  *
  * We won't modify the html as it is provided by the leaflet javascript.
+ * A lot of default styling is provided by leaflet (see modules/ulf_custom/ulf_search/css/leaflet.css)
  */
 
 
@@ -13,6 +14,7 @@
 
 .leaflet-popup-content-wrapper {
   border-radius: 0;
+  padding: 0;
 }
 
 
@@ -21,6 +23,20 @@
   width: auto!important; // Override inline css provided by js.
 }
 
-.leaflet-container a.leaflet-popup-close-button {
-  z-index: 1;
+
+
+.leaflet-container {
+  a.leaflet-popup-close-button {
+    z-index: 1;
+  }
+
+  p.teaser--type,
+  p.search-results--type,
+  p.teaser--type-read-more {
+    margin: 0 0 .5em 0;
+  }
+
+  header {
+    padding-bottom: 1em;
+  }
 }
