@@ -68,3 +68,65 @@ function ulf_base_update_7005() {
 
   module_enable($module_enable);
 }
+
+
+/**
+ * Alter menu setup.
+ */
+function ulf_base_update_7006() {
+  $links = menu_load_links('main-menu');
+
+  foreach ($links as $link) {
+    if ($link['module'] == 'system') {
+      // Reset system items.
+      menu_reset_item($link);
+    }
+
+    // Get the old expanded menu item mlid.
+    if ($link['link_title'] == 'Om ULF' || $link['link_title'] == 'Om os' ) {
+      $expanding_link_mlid = $link['mlid'];
+      $link['expanded'] = TRUE;
+      $link['weight'] = 10;
+      menu_link_save($link);
+    }
+  }
+
+  // If such item mlid exists move static menu items to the main menu.
+  if (isset($expanding_link_mlid)) {
+    $about_ulf_links =  menu_load_links('menu-about-ulf');
+    foreach ($about_ulf_links as $link) {
+      $link['menu_name'] = 'main-menu';
+      $link['plid'] = $expanding_link_mlid;
+      $link['depth'] = 2;
+      $link['p2'] = $link['p1'];
+      $link['p1'] = $expanding_link_mlid;
+      menu_link_save($link);
+    }
+  }
+
+  // Delete "about" menu.
+  $menu = menu_delete('menu-about-ulf');
+  menu_delete($menu);
+}
+
+
+/**
+ * Enable menu block
+ */
+function ulf_base_update_7007() {
+  $module_enable = array(
+    'menu_block',
+  );
+
+  module_enable($module_enable);
+}
+
+
+/**
+ * Delete old menu
+ */
+function ulf_base_update_7008() {
+  // Delete "about" menu.
+  $menu = menu_load('menu-about-ulf');
+  menu_delete($menu);
+}

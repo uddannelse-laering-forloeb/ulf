@@ -38,7 +38,7 @@
   background: $gray-darkest;
 
 
-  @include breakpoint(45em) {
+  @include breakpoint(1000px) {
     display: block;
   }
 
@@ -61,15 +61,51 @@
     &:hover {
       background-color: $gray-darker;
     }
+
+    &.expanded {  // Drupal default class
+      padding-right: 25px;
+
+      // Add dropdown arrow
+      &:after {
+        content: '';
+        background-image: url("/profiles/ulf/themes/ulf_default/images/arrow-white.svg");
+        background-position: right center;
+        background-repeat: no-repeat;
+        background-size: 15px;
+        position: absolute;
+        right: 5px;
+        top: 0;
+        width: 16px;
+        height: 100%;
+      }
+    }
   }
 
-  .nav--list-item:last-child {
-    background-image: url('/profiles/ulf/themes/ulf_default/images/arrow-white.svg');
-    background-position: 90px center;
-    background-repeat: no-repeat;
-    background-size: 15px;
-    padding-right: 25px;
-    padding-left: 10px;
+  &--list-item-sub {
+    border-bottom: 1px solid $gray-lighter;
+    margin: 0 1em;
+    width: auto;
+
+    a {
+      @include strip-link-styles($gray);
+
+      display: block;
+      font-weight: normal;
+      padding: 1em;
+
+      &.active {
+        font-weight: bold;
+      }
+
+      &:hover {
+        background-color: $white;
+        text-decoration: underline;
+      }
+    }
+
+    &:last-child {
+      border: 0;
+    }
   }
 
   &--dropdown-item {
@@ -86,7 +122,7 @@
     border-right: 1px solid $gray-lighter;
     border-bottom: 1px solid $gray-lighter;
 
-    @include breakpoint(45em) {
+    @include breakpoint(1000px) {
       position: absolute;
 
       z-index: 2;
@@ -98,6 +134,13 @@
         display: none;
       }
     }
+  }
+
+  // We want the first menu two items to expand right to avoid overflow.
+  .nav--list-item:nth-child(1) .nav--sub,
+  .nav--list-item:nth-child(2) .nav--sub {
+    left: 0;
+    right: auto;
   }
 }
 
@@ -111,18 +154,52 @@
   // Itk component.
   @extend %itk--menu;
 
+  .nav--inner {
+    height: auto;
+  }
+
   .nav--list-dropdown-item,
   .nav--list-item {
-    border-bottom: 1px solid $white;
+    box-sizing: border-box;
+    background: transparent;
+    padding: 0 1em;
     width: 100%;
+
+    &:after {
+      display: none;
+    }
 
     &:last-child {
       border-bottom: 0;
+    }
+    
+    &:hover {
+      background: inherit;
+    }
+  }
+
+  .nav--list-item-sub {
+    margin: 0 0 0 1em;
+
+    & a {
+      padding: 1em 0;
+
+      @include strip-link-styles($white);
+
+      &:hover {
+        background: inherit;
+        text-decoration: underline;
+      }
     }
   }
 
   .nav--list-link {
     display: inline;
+    padding: 0;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 
   .nav--list-dropdown-link:hover,
@@ -144,16 +221,16 @@
 ================================================================================================================== */
 
 .nav {
-  & .nav--static-pages {
+  .nav--static-pages {
     box-sizing: border-box;
     min-width: 0;
 
-    @include breakpoint(45em) {
+    @include breakpoint(1000px) {
       min-width: 240px;
     }
   }
 
-  & .nav--static-pages-item {
+  .nav--static-pages-item {
     border-bottom: 1px solid $gray-lighter;
     margin: 0 1em;
     width: auto;
@@ -182,16 +259,19 @@
 
 // Reuse the main menu html but neest once to override styles.
 .nav--mobile {
-  &  .nav--list-link.active {
+  .nav--list-link {
+    display: block;
+    padding: 0;
+    border-bottom: 1px solid white;
     background: inherit;
   }
 
-  & .nav--sub {
+  .nav--sub {
     border-left: 0;
     border-right: 0;
   }
 
-  & .nav--static-pages-item {
+  .nav--static-pages-item {
     border-top: 1px solid $white;
     padding: 1em;
 
@@ -206,16 +286,17 @@
       }
     }
   }
-}
+} 
 
 
 .nav--static-pages.is-node {
   display: block;
 
-  & .nav--static-pages-item {
+  .nav--list-item-sub {
     border-bottom: 1px solid $white;
     padding: .5em 0;
     font-weight: bold;
+    margin: 0;
 
     &:last-child {
       border-bottom: 0;
@@ -223,6 +304,18 @@
 
     a {
       @include strip-link-styles($dark-blue);
+
+      display: block;
+      font-weight: bold;
+      padding: 0;
+
+      &:hover {
+        background-color: transparent;
+      }
+
+      &.active {
+        text-decoration: underline;
+      }
     }
   }
 }

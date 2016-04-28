@@ -54,7 +54,7 @@
     @include border-radius(5px);
     @include box-shadow(1px 2px 3px rgba(0, 0, 0, 0.6));
 
-    @include breakpoint(45em) {
+    @include breakpoint(1000px) {
       display: none;
     }
   }

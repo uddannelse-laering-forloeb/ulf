@@ -7,9 +7,13 @@
 (function($) {
   // Function for toggle burger navigation.
   function toggle_sub() {
-    var sub = $('.js-about-menu');
+    $('.nav .js-toggle-expanded').hover(function() {
+      // Get hovered item id
+      var mlid = $(this).attr("mlid");
 
-    $('.js-toggle-about').hover(function() {
+      // Get the sub menu we want to affect.
+      var sub = $('.js-expanded-menu-'+ mlid);
+
       // If nav is open we close it.
       if (sub.hasClass('is-visible')) {
 
