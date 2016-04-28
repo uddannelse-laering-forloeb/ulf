@@ -751,6 +751,22 @@ Your account on [site:name] has been canceled.
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'views_defaults';
+  $strongarm->value = array(
+    'workbench_recent_content' => TRUE,
+    'workbench_edited' => TRUE,
+    'workbench_current_user' => TRUE,
+    'workbench_moderation' => TRUE,
+    'ulf_taxonomy_term' => TRUE,
+    'ulf_useful_info' => TRUE,
+    'ulf_node_contact' => TRUE,
+    'ulf_useful_info_moderation' => TRUE,
+  );
+  $export['views_defaults'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'workbench_moderation_nodedraft_disabled';
   $strongarm->value = TRUE;
   $export['workbench_moderation_nodedraft_disabled'] = $strongarm;
