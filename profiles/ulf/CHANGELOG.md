@@ -1,5 +1,8 @@
 #ULF changelog
 
+#2.3.7
+* Changed default menu for static pages
+
 #2.3.6
 * Fixed workbench page permissions
 
