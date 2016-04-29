@@ -249,3 +249,20 @@ function ulf_base_update_7012(&$sandbox) {
   $menu = menu_load('menu-about-ulf');
   menu_delete($menu);
 }
+
+/**
+ * Update existing url aliases.
+ */
+function ulf_base_update_7013() {
+  $num_updated = db_update('url_alias')
+    ->fields(array('language' => LANGUAGE_NONE))
+    ->condition('language', LANGUAGE_NONE, '!=')
+    ->condition('source', 'node' . '/%', 'LIKE')
+    ->execute();
+  if ($num_updated > 0) {
+    drupal_set_message(t('@num aliases were reset to language neutral', array('@num' => $num_updated)));
+  }
+  else {
+    drupal_set_message(t('No aliases were updated.') . $type);
+  }
+}
