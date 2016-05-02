@@ -1,5 +1,8 @@
 #ULF changelog
 
+#2.3.8
+* Fixed bug in unpublishing
+
 #2.3.7
 * Changed default menu for static pages
 
