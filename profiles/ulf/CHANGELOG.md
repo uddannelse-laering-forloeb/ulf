@@ -1,5 +1,8 @@
 #ULF changelog
 
+#2.3.10
+* Fixed bug in unpublishing
+
 #2.3.9
 * Fixed bug in unpublishing
 
