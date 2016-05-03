@@ -7,6 +7,26 @@
 include_once 'ulf_base.features.inc';
 
 /**
+ * Implements hook_menu_block_blocks().
+ */
+function ulf_base_menu_block_blocks() {
+  // The array key is the block delta used by menu block.
+  return array(
+    'ulf_base-1' => array(
+      'parent'      => '_active:0',
+      'title_link'  => 0,
+      'admin_title' => '',
+      'level'       => 2,
+      'follow'      => '0',
+      'depth'       => 0,
+      'expanded'    => 0,
+      'sort'        => 0,
+    ),
+  );
+}
+
+
+/**
  * Implement hook_pathauto_alias_alter().
  *
  * Change language to none.

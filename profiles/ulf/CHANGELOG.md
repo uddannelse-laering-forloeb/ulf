@@ -1,5 +1,36 @@
 #ULF changelog
 
+#2.3.6
+* Fixed workbench page permissions
+
+#v2.3.5
+* Updated IE9 styles
+
+#v2.3.4
+* Major change of menu structure
+* Added menu block module
+* Removed About ULF menu
+* Added support for multiple dropdown menus
+* Moved all menu items to main menu
+
+#v2.3.3
+* Removed impage dependency on profile
+* Added image dependency on courses
+
+#v2.3.2
+* Added image dependency on profile
+* Added url pattern
+
+#v2.3.1
+* Added frontpage blocks
+* Added nodequeue
+
+#v2.3.0
+* Added free checkbox to search
+* Changed display of courses on course provider
+* Added media display on news and static pages
+* Updated Drupal core
+
 #v2.2.0
 
 ##Release notes
