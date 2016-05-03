@@ -176,7 +176,7 @@ class SearchApiSearchNodeService extends SearchApiAbstractService {
           // The $ids will be an array when delete items.
           foreach ($ids as $id) {
             $deleted = FALSE;
-            $type = 'unknown';
+            $type = 'entity';
 
             // As search api don't provides an entity during deletion, we need
             // to try them all.
@@ -188,6 +188,9 @@ class SearchApiSearchNodeService extends SearchApiAbstractService {
                   break;
                 }
               }
+            }
+            else {
+              $deleted = $this->connection->remove($search_node_index, $type, $id);
             }
 
             // All types tried, so check if it was delete.
