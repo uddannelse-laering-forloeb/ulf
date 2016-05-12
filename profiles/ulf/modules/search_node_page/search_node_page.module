@@ -466,6 +466,21 @@ function search_node_page_configuration_form($form, array &$form_state = array()
     '#suffix' => '</div>',
   );
 
+  $form['search_node']['options']['match_type'] = array(
+    '#type' => 'select',
+    '#title' => t('Search Match'),
+    '#description' => t('For more information see https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-multi-match-query.html#type-phrase '),
+    '#options' => array(
+      'best_fields' => t('Best fields (default)'),
+      'most_fields' => t('Most fields'),
+      'cross_fields ' => t('Cross fields'),
+      'phrase' => t('Phrase match'),
+      'phrase_prefix ' => t('Phrase prefix match'),
+    ),
+    '#default_value' => isset($defaults['options']['match_type']) ? $defaults['options']['match_type'] : 'best_fields',
+    '#required' => TRUE,
+  );
+
   $form['search_node']['options']['cache_expire'] = array(
     '#type' => 'textfield',
     '#title' => t('Cache expire'),
@@ -823,6 +838,7 @@ function search_node_page_build_search_box($configuration = array()) {
         'index' => $index->options['search_node_indexes'],
         'fields' => array_values($fields),
         'boost' => $boost,
+        'match_type' => isset($configuration['options']['match_type']) ? $configuration['options']['match_type'] : 'best_fields',
         'pager' => array(
           'size' => (int) $configuration['options']['size'],
           'page' => 0
