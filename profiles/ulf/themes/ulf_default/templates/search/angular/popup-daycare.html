@@ -15,11 +15,6 @@
       <p class="teaser--type">Periode: Hele året</p>
     </div>
     <p class="teaser--type">Udbyder: <a href="{{ hit['author:url'] }}">{{ hit['author:field_profile_name'] }}</a></p>
-    <p class="search-results--type">Emne:
-          <span data-ng-repeat="subject in hit.field_subject track by $index">
-            <a href="{{ hit['field_subject:url'][$index] }}">{{ subject }}</a>,
-          </span>
-    </p>
     <p class="teaser--type-read-more"><a href="{{ hit.url }}">Se hele forløbet</a></p>
   </header>
   <figure><a href="{{ hit.url }}"><img data-ng-src="{{ hit['field_image:file'].url }}" src="#"/></a></figure>
