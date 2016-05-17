@@ -97,7 +97,7 @@ angular.module('searchResultApp').directive('searchMap', [ '$timeout', '$templat
         // Add open street map as base layer.
         var osm_url='http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
         var osm_copy='Map data © <a href="http://openstreetmap.org">OpenStreetMap</a>';
-        var osm = new L.TileLayer(osm_url, {minZoom: 3, maxZoom: 15, attribution: osm_copy});
+        var osm = new L.TileLayer(osm_url, {minZoom: 1, maxZoom: 16, attribution: osm_copy});
         map.addLayer(osm);
 
         // Bookkeeper for the currently placed markers.
