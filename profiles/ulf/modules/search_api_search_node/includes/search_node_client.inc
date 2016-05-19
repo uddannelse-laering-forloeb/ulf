@@ -80,6 +80,15 @@ class SearchNodeClient {
           );
           break;
 
+        case 401:
+        case 404:
+          $data = json_decode($request->data);
+          $responses = array(
+            'status' => $request->code,
+            'message' => $data->message,
+          );
+          break;
+
         default:
           watchdog('search_node', 'Unknown response from client: %code', array('%code' => $request->code), WATCHDOG_CRITICAL);
           if (isset($request->status_message)) {
