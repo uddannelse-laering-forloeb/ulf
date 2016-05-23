@@ -40,7 +40,7 @@ function ulf_maps_form_alter(&$form, &$form_state, $form_id) {
           'prevent' => 'submit click mousedown',
         ),
       );
-      $form['locations'][0]['#description'] = t('');
+      $form['locations'][0]['#description'] = t('Add a location to your course.<br>A map can be used to specify an entrance if the button is clicked, but is usually not neccesary to fill out.<br><b>Note: Clicking the map does not change the address</b></b>');
 
       // Add specify on the map button, which change the map location pointer
       // based on the entered address.
@@ -62,6 +62,8 @@ function ulf_maps_form_alter(&$form, &$form_state, $form_id) {
           // database on existing node and users.
           'prevent' => 'submit click mousedown',
         ),
+        '#element_validate' => array('ulf_maps_address_validate'),
+        '#limit_validation_errors' => array(array('locations')),       // Validate $form_state['values']['locations'].
       );
     }
   }
@@ -138,6 +140,15 @@ function ulf_maps_reset_coordinates($form, &$form_state) {
 
   // Render the from an remove messages.
   $element = render($form['locations']);
+
   drupal_get_messages();
   return $element;
+}
+
+
+function ulf_maps_address_validate($form, &$form_state) {
+  $data = location_latlon_exact($form_state['values']['locations'][0]);
+  if (empty($data['lat']) || empty($data['lon'])) {
+    form_set_error('locations', t('Test'), array(array('locations')));
+  }
 }
