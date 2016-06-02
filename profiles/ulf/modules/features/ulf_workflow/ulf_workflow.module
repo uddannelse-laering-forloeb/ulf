@@ -221,7 +221,7 @@ function ulf_workflow_form_node_form_alter(&$form, &$form_state, $form_id) {
         // Change the label of "Save and publish to "Save"
         $form['actions']['publish']['#value'] = t('Save');
 
-        //Don't run publishing submit function when resaving published content.
+        // Don't run publishing submit function when resaving published content.
         foreach($form['actions']['publish']['#submit'] as $key => $value) {
           if ($form['actions']['publish']['#submit'][$key] == 'ulf_workflow_course_node_form_publish_submit') {
             unset($form['actions']['publish']['#submit'][$key]);
@@ -297,7 +297,13 @@ function ulf_workflow_global_submit($form, &$form_state) {
       global $user;
       // Send user edited mails to site mail when a user is   changed.
       if (in_array('editor', $user->roles)) {
-        $form_state['values']['workbench_moderation_state_new'] = 'draft';
+        if ($form['workbench_moderation_state_current']['#value'] =='needs_review') {
+          $form_state['values']['workbench_moderation_state_new'] = 'needs_review';
+        }
+        else {
+          $form_state['values']['workbench_moderation_state_new'] = 'draft';
+        }
+
         $_GET['unpublish'] = TRUE;
       }
       break;
@@ -489,7 +495,7 @@ function ulf_workflow_node_presave($node) {
     if (array_key_exists('unpublish', $get_parameters) || ($user->uid == 0)) {
 
       // Presave is also run for each revision, we only want to act when we are saving the actual node.
-      if (!isset($node->revision)) {
+      if (!isset($node->revision) || $node->revision == 0) {
         // Get send_mail variable.
         $workflow_send_mail = variable_get('ulf_workflow_send_mail');
 

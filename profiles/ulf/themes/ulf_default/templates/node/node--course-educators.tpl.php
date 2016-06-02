@@ -157,7 +157,7 @@
               <div class="block--field-text"><?php print $profile_address; ?></div>
               <div class="block--field-text"><?php print $profile_postal_code; ?> <?php print $profile_city; ?></div>
               </br>
-              <div class="block--field-text"><?php print t('Phone')?>. <?php print $profile_phone; ?></div>
+              <div class="block--field-text"><?php print t('Phone')?> <?php print $profile_phone; ?></div>
               </br>
               <a href="/user/<?php print $uid ?>"><?php print t('View organizer profile'); ?></a>
             </div>

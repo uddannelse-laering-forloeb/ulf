@@ -1,5 +1,30 @@
 #ULF changelog
 
+#2.3.14
+* Added user email to csv export
+* Changed workflow states for editors
+
+#2.3.13
+* Changed pathauto language
+
+#2.3.12
+* Changed pathauto language
+
+#2.3.11
+* Enabled error messages
+
+#2.3.10
+* Fixed bug in unpublishing
+
+#2.3.9
+* Fixed bug in unpublishing
+
+#2.3.8
+* Fixed bug in unpublishing
+
+#2.3.7
+* Changed default menu for static pages
+
 #2.3.6
 * Fixed workbench page permissions
 
