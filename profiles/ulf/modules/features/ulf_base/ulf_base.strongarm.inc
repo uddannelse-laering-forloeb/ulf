@@ -753,14 +753,14 @@ Your account on [site:name] has been canceled.
   $strongarm->api_version = 1;
   $strongarm->name = 'views_defaults';
   $strongarm->value = array(
-    'workbench_recent_content' => TRUE,
-    'workbench_edited' => TRUE,
-    'workbench_current_user' => TRUE,
-    'workbench_moderation' => TRUE,
-    'ulf_taxonomy_term' => TRUE,
-    'ulf_useful_info' => TRUE,
-    'ulf_node_contact' => TRUE,
     'ulf_useful_info_moderation' => TRUE,
+    'workbench_moderation' => TRUE,
+    'workbench_current_user' => TRUE,
+    'workbench_edited' => TRUE,
+    'workbench_recent_content' => TRUE,
+    'ulf_useful_info' => TRUE,
+    'ulf_taxonomy_term' => TRUE,
+    'ulf_node_contact' => TRUE,
   );
   $export['views_defaults'] = $strongarm;
 
