@@ -1,5 +1,8 @@
 #ULF changelog
 
+#2.3.15
+* Added EUD and EUX to youth search template
+
 #2.3.14
 * Added user email to csv export
 * Changed workflow states for editors
