@@ -1,5 +1,8 @@
 #ULF changelog
 
+#2.3.16
+* Removed metatag dependency from profile info file
+
 #2.3.15
 * Added EUD and EUX to youth search template
 
