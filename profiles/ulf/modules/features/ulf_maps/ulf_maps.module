@@ -47,7 +47,7 @@ function ulf_maps_form_alter(&$form, &$form_state, $form_id) {
       $form['locations'][0]['#prefix'] = '<div id="location-wrapper">';
       $form['locations'][0]['#suffix'] = '</div>';
       $form['locations'][0]['submit'] = array(
-        '#weight' => '-95',
+        '#weight' => '-93',
         '#type' => 'button',
         '#value' => t('Specify entrance on map'),
         '#attributes' => array(

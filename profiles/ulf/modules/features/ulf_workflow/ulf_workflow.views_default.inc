@@ -420,18 +420,19 @@ Sorteret efter varighed';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Field: Content: Baggrundsviden */
-  $handler->display->display_options['fields']['field_background_knowledge']['id'] = 'field_background_knowledge';
-  $handler->display->display_options['fields']['field_background_knowledge']['table'] = 'field_data_field_background_knowledge';
-  $handler->display->display_options['fields']['field_background_knowledge']['field'] = 'field_background_knowledge';
+  /* Field: Content: Sted */
+  $handler->display->display_options['fields']['field_place']['id'] = 'field_place';
+  $handler->display->display_options['fields']['field_place']['table'] = 'field_data_field_place';
+  $handler->display->display_options['fields']['field_place']['field'] = 'field_place';
   $handler->display->display_options['filter_groups']['groups'] = array(
     1 => 'OR',
   );
-  /* Filter criterion: Content: Baggrundsviden (field_background_knowledge) */
-  $handler->display->display_options['filters']['field_background_knowledge_value']['id'] = 'field_background_knowledge_value';
-  $handler->display->display_options['filters']['field_background_knowledge_value']['table'] = 'field_data_field_background_knowledge';
-  $handler->display->display_options['filters']['field_background_knowledge_value']['field'] = 'field_background_knowledge_value';
-  $handler->display->display_options['filters']['field_background_knowledge_value']['operator'] = 'not empty';
+  /* Filter criterion: Content: Sted (field_place) */
+  $handler->display->display_options['filters']['field_place_value']['id'] = 'field_place_value';
+  $handler->display->display_options['filters']['field_place_value']['table'] = 'field_data_field_place';
+  $handler->display->display_options['filters']['field_place_value']['field'] = 'field_place_value';
+  $handler->display->display_options['filters']['field_place_value']['operator'] = 'not empty';
+  $handler->display->display_options['filters']['field_place_value']['group'] = 1;
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
@@ -461,7 +462,7 @@ Sorteret efter varighed';
     t('Viser indhold hvor "Varighed" eller "Varighed enhed".
 Sorteret efter varighed'),
     t('Title'),
-    t('Baggrundsviden'),
+    t('Sted'),
     t('Page'),
   );
   $export['ulf_editor_tool'] = $view;
