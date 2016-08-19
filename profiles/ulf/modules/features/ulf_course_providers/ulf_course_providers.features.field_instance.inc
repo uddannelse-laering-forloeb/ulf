@@ -540,10 +540,9 @@ function ulf_course_providers_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 14,
+        'type' => 'hidden',
+        'weight' => 15,
       ),
     ),
     'entity_type' => 'user',
