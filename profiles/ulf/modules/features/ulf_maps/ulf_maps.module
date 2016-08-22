@@ -70,8 +70,9 @@ function ulf_maps_form_alter(&$form, &$form_state, $form_id) {
       if ($form['#id'] == 'user-profile-form') {
         $form['#pre_render'][] = '_ulf_maps_prerender';
 
-        // Add custom submit handler.
-        $form['#submit'][]='_ulf_maps_profile_submit';
+        // Add custom submit handler (reset location is "show on map" is not
+        // checked, hence it needs to be executed first).
+        array_unshift($form['#submit'], '_ulf_maps_profile_submit');
       }
     }
   }
@@ -179,6 +180,7 @@ function ulf_maps_address_validate($form, &$form_state) {
 function _ulf_maps_prerender($form) {
   $form['locations']['0']['field_profile_show_on_map'] = $form['field_profile_show_on_map'];
   hide($form['field_profile_show_on_map']);
+
   return $form;
 }
 
