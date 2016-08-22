@@ -25,7 +25,6 @@ function ulf_base_menu_block_blocks() {
   );
 }
 
-
 /**
  * Implement hook_pathauto_alias_alter().
  *

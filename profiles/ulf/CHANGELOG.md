@@ -1,7 +1,23 @@
 #ULF changelog
 
+#2.3.16
+* Removed metatag dependency from profile info file
+
+#2.3.15
+* Added youth target group
+
+#2.3.14
+* Added user email to csv export
+* Changed workflow states for editors
+
+#2.3.13
+* Changed pathauto language
+
+#2.3.12
+* Changed pathauto language
+
 #2.3.11
-* Enabled error messages.
+* Enabled error messages
 
 #2.3.10
 * Fixed bug in unpublishing
