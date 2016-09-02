@@ -1,5 +1,9 @@
 #ULF changelog
 
+#2.3.17
+* Changed news archive references
+* Changed display of youth  target group search for viborg and silkeborg
+
 #2.3.16
 * Removed metatag dependency from profile info file
 
