@@ -62,9 +62,9 @@ function search_node_page_search_box_pane_admin_info($subtype, $conf, $contexts)
     $block = new stdClass;
     $block->title = $conf['search_node']['server'] . ' - ' . $conf['search_node']['index'];
     /**
-     * @TODO: Make overview based on confinguration.
+     * @TODO: Make overview based on configuration.
      */
-    $block->content = 'Make pertty overview of settings';
+    $block->content = 'Make pretty overview of settings';
 
     return $block;
   }

@@ -1,9 +1,58 @@
 <?php
+/**
+ * @file
+ * Handle update function for the feature.
+ */
+
+/**
+ * Load users from a node type and migrate their location to the node.
+ *
+ * @param string $type
+ *   The node type to load.
+ */
+function _ulf_base_migrate_locations_from_users($type) {
+  $entities = db_select('node', 'n')
+    ->fields('n', array('nid', 'vid', 'uid'))
+    ->condition('type', $type, '=')
+    ->execute()
+    ->fetchAllAssoc('nid');
+
+  // Find location for a given uid (cached).
+  foreach ($entities as $entity) {
+    $user = user_load($entity->uid);
+
+    // Check that location exists and move all locations into an location array.
+    if (is_array($user->locations) && count($user->locations)) {
+      $locations = array();
+      foreach ($user->locations as $user_location) {
+        if ($user_location['latitude'] != '0.000000' && $user_location['longitude'] != '0.000000') {
+          $locations[] = array(
+            'street' => $user_location['street'],
+            'additional' => $user_location['additional'],
+            'city' => $user_location['city'],
+            'postal_code' => $user_location['postal_code'],
+            'country' => $user_location['country'],
+            'locoick' => array(
+              'user_latitude' => '',
+              'user_longitude' => '',
+            ),
+          );
+        }
+      }
+
+      // If one or more location was found for the node save them with reference
+      // to the node.
+      if (count($locations)) {
+        location_save_locations($locations, array('nid' => $entity->nid, 'vid' => $entity->vid));
+      }
+    }
+  }
+}
 
 /**
  * Enable ulf_aarhus settings module if it exists.
  */
-function ulf_base_update_7001() {
+function ulf_base_update_7001(&$sandbox) {
   $module_enable = array();
   $aarhus_path = drupal_get_path('module', 'ulf_aarhus_settings');
   if (file_exists($aarhus_path . '/ulf_aarhus_settings.module')){
@@ -13,11 +62,10 @@ function ulf_base_update_7001() {
   module_enable($module_enable);
 }
 
-
 /**
  * Enable ulf_silkeborg settings module if it exists.
  */
-function ulf_base_update_7002() {
+function ulf_base_update_7002(&$sandbox) {
   $module_enable = array();
   $silkeborg_path = drupal_get_path('module', 'ulf_silkeborg_settings');
   if (file_exists($silkeborg_path . '/ulf_silkeborg_settings.module')){
@@ -27,11 +75,10 @@ function ulf_base_update_7002() {
   module_enable($module_enable);
 }
 
-
 /**
  * Enable token filter module.
  */
-function ulf_base_update_7003() {
+function ulf_base_update_7003(&$sandbox) {
   $module_enable = array(
     'token_filter'
   );
@@ -39,11 +86,10 @@ function ulf_base_update_7003() {
   module_enable($module_enable);
 }
 
-
 /**
  * Enable metatag and secure permissions modules.
  */
-function ulf_base_update_7004() {
+function ulf_base_update_7004(&$sandbox) {
   $module_enable = array(
     'path_metatags',
     'path_metatags_ui',
@@ -60,7 +106,7 @@ function ulf_base_update_7004() {
 /**
  * Enable nodequeue module.
  */
-function ulf_base_update_7005() {
+function ulf_base_update_7005(&$sandbox) {
   $module_enable = array(
     'nodequeue',
     'ulf_html_blocks'
@@ -69,11 +115,84 @@ function ulf_base_update_7005() {
   module_enable($module_enable);
 }
 
+/**
+ * Enable location modules.
+ */
+function ulf_base_update_7006(&$sandbox) {
+  $module_enable = array(
+    'gmap',
+    'gmap_location',
+    'location',
+    'location_user',
+    'location_node',
+    'ulf_maps'
+  );
+
+  module_enable($module_enable);
+}
+
+/**
+ * Move address on users into location fields.
+ */
+function ulf_base_update_7007(&$sandbox) {
+  $uids = db_select('users', 'u')
+    ->fields('u', array('uid'))
+    ->execute()
+    ->fetchCol();
+
+  foreach ($uids as $uid) {
+    $user = user_load($uid);
+
+    // Get location information form the users profile.
+    $wrapper = entity_metadata_wrapper('user', $user);
+    $street = $wrapper->field_profile_address->value();
+    $postal = $wrapper->field_profile_postal_code->value();
+    $city = $wrapper->field_profile_city->value();
+
+    // Create location array base on the information.
+    if (!empty($street) && !empty($postal) && !empty($city)) {
+      $locations = array(
+        array(
+          'street' => $street,
+          'additional' => '',
+          'city' => $city,
+          'postal_code' => $postal,
+          'country' => 'dk',
+          'locoick' => array(
+            'user_latitude' => '',
+            'user_longitude' => '',
+          ),
+        ),
+      );
+
+      // Add location to the current user.
+      location_save_locations($locations, array('uid' => $user->uid));
+    }
+  }
+}
+
+/**
+ * Add locations to all courses base on users.
+ */
+function ulf_base_update_7008(&$sandbox) {
+  _ulf_base_migrate_locations_from_users('course');
+  location_flush_caches();
+}
+
+
+/**
+ * Add locations to all educator courses base on users.
+ */
+function ulf_base_update_7009(&$sandbox) {
+  _ulf_base_migrate_locations_from_users('course_educators');
+  location_flush_caches();
+}
+
 
 /**
  * Alter menu setup.
  */
-function ulf_base_update_7006() {
+function ulf_base_update_7010(&$sandbox) {
   $links = menu_load_links('main-menu');
 
   foreach ($links as $link) {
@@ -113,7 +232,7 @@ function ulf_base_update_7006() {
 /**
  * Enable menu block
  */
-function ulf_base_update_7007() {
+function ulf_base_update_7011(&$sandbox) {
   $module_enable = array(
     'menu_block',
   );
@@ -125,8 +244,25 @@ function ulf_base_update_7007() {
 /**
  * Delete old menu
  */
-function ulf_base_update_7008() {
+function ulf_base_update_7012(&$sandbox) {
   // Delete "about" menu.
   $menu = menu_load('menu-about-ulf');
   menu_delete($menu);
+}
+
+/**
+ * Update existing url aliases.
+ */
+function ulf_base_update_7013() {
+  $num_updated = db_update('url_alias')
+    ->fields(array('language' => LANGUAGE_NONE))
+    ->condition('language', LANGUAGE_NONE, '!=')
+    ->condition('source', 'node' . '/%', 'LIKE')
+    ->execute();
+  if ($num_updated > 0) {
+    drupal_set_message(t('@num aliases were reset to language neutral', array('@num' => $num_updated)));
+  }
+  else {
+    drupal_set_message(t('No aliases were updated.') . $type);
+  }
 }
