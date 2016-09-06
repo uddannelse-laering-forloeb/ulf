@@ -4,7 +4,7 @@
 * Removed metatag dependency from profile info file
 
 #2.3.15
-* Added youth target group
+* Added EUD and EUX to youth search template
 
 #2.3.14
 * Added user email to csv export
