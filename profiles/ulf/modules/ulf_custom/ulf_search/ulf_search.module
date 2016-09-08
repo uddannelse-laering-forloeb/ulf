@@ -19,14 +19,64 @@ function ulf_search_preprocess_search_node_page_search_box(&$variables) {
     'weight' => 0,
   ));
 
-  // Add styel for date picker.
+  // Add style for date picker.
   drupal_add_css($path . '/css/jquery.datetimepicker.css', array(
     'type' => 'file',
     'group' => 'CSS_THEME',
   ));
 
+  drupal_add_js($path . '/js/datetimePickerDirective.js', array(
+    'type' => 'file',
+    'scope' => 'footer',
+    'weight' => 7,
+  ));
+
+  drupal_add_js($path . '/js/switchDirective.js', array(
+    'type' => 'file',
+    'scope' => 'footer',
+    'weight' => 7,
+  ));
+
+  drupal_add_js($path . '/js/mapDirective.js', array(
+    'type' => 'file',
+    'scope' => 'footer',
+    'weight' => 7,
+  ));
+
+  // Leaflet.
+  drupal_add_js($path . '/js/leaflet.min.js', array(
+    'type' => 'file',
+    'scope' => 'footer',
+    'weight' => 7,
+  ));
+  drupal_add_css($path . '/css/leaflet.css', array(
+    'type' => 'file',
+    'group' => 'CSS_THEME',
+  ));
+
+  // Marker clusters.
+  drupal_add_js($path . '/js/leaflet.markercluster.js', array(
+    'type' => 'file',
+    'scope' => 'footer',
+    'weight' => 7,
+  ));
+  drupal_add_css($path . '/css/MarkerCluster.Default.css', array(
+    'type' => 'file',
+    'group' => 'CSS_THEME',
+  ));
+  drupal_add_css($path . '/css/MarkerCluster.css', array(
+    'type' => 'file',
+    'group' => 'CSS_THEME',
+  ));
+
+  drupal_add_js($path . '/js/trimWordBoundaryFilter.js', array(
+    'type' => 'file',
+    'scope' => 'footer',
+    'weight' => 7,
+  ));
+
   // Add the search controller.
-  drupal_add_js($path . '/js/search_box_controller.js', array(
+  drupal_add_js($path . '/js/searchBoxController.js', array(
     'type' => 'file',
     'scope' => 'footer',
     'weight' => 7,
@@ -41,4 +91,57 @@ function ulf_search_search_node_filtered_item_alter(&$filteredItem) {
     $file = file_load($filteredItem['field_image:file']['fid']);
     $filteredItem['field_image:file']['url'] = image_style_url('teaser_display', $file->uri);
   }
+}
+
+/**
+ * Implements hook_from_FORM_ID_alter().
+ *
+ * Add search map configuration options to panels edit form.
+ */
+function ulf_search_form_search_node_page_search_box_content_type_edit_form_alter(&$form, &$form_state, $form_id) {
+  $default = $form_state['conf']['search_node'];
+  $form['search_node']['templates']['popup'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Maps popup'),
+    '#default_value' => isset($default['templates']['popup']) ? $default['templates']['popup'] : '/profiles/ulf/themes/ulf_default/templates/search/angular/popup.html',
+    '#required' => TRUE,
+  );
+
+  $form['search_node']['map'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Search Map'),
+    '#description' => t('Search map settings, if enabled in the templates.'),
+    '#tree' => TRUE,
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+  );
+
+  $form['search_node']['map']['points'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Points'),
+    '#description' => t('The maximum number of markers (points) to display on a single map.'),
+    '#default_value' => isset($default['map']['points']) ? $default['map']['points'] : 50,
+    '#required' => TRUE,
+  );
+
+  $form['search_node']['map']['markers'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Markers'),
+    '#description' => t('The location of the marker images.'),
+    '#default_value' => isset($default['map']['markers']) ? $default['map']['markers'] : '/profiles/ulf/themes/ulf_default/images/leaflet/',
+    '#required' => TRUE,
+  );
+}
+
+/**
+ * Implements hook_search_node_page_configuration_alter().
+ *
+ * Add maps configuration for AngularJS.
+ */
+function ulf_search_search_node_page_configuration_alter(&$conf, $configuration) {
+  $conf['provider']['map'] = array(
+    'points' => isset($configuration['map']['points']) ? $configuration['map']['points'] : 50,
+    'markers' => isset($default['map']['markers']) ? $default['map']['markers'] : '/profiles/ulf/themes/ulf_default/images/leaflet/',
+  );
+  $conf['templates']['popup'] = isset($configuration['templates']['popup']) ? $configuration['templates']['popup'] : '/profiles/ulf/themes/ulf_default/templates/search/angular/popup.html';
 }

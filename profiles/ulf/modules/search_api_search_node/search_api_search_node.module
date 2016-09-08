@@ -28,6 +28,12 @@ function search_api_search_node_search_api_alter_callback_info() {
       'class' => 'SearchNodeExcludeItemsFilter',
       'weight' => 100,
     ),
+    'location' => array(
+      'name' => t('Location'),
+      'description' => t('Include location information from the location modules.'),
+      'class' => 'SearchNodeLocationFilter',
+      'weight' => 101,
+    )
   );
 }
 
@@ -68,7 +74,7 @@ function search_api_search_node_form_search_api_admin_index_edit_alter(&$form, &
 
     $default = $form_state['values']['options']['search_node_indexes'];
   }
-  else if (!empty($form_state['index'])) {
+  else if (!empty($form_state['index']->server)) {
     $server = $servers[$form_state['index']->server];
 
     // Check if this is a search node server index.
