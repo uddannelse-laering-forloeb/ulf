@@ -2,6 +2,7 @@
 
 #2.3.18
 * Changed pathauto settings
+* Added show on map for courses and course_educators
 
 #2.3.17
 * Changed news archive references
