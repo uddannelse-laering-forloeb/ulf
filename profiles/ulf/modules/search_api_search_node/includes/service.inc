@@ -144,13 +144,14 @@ class SearchApiSearchNodeService extends SearchApiAbstractService {
         // Allow others to alter the filtered values.
         drupal_alter('search_node_filtered_item', $filteredItem);
 
-        // Add it to the index
-        if ($this->connection->add($search_node_index, $filteredItem['type'], $id, json_encode($filteredItem))){
+        // Add it to the index.
+        $result = $this->connection->add($search_node_index, $filteredItem['type'], $id, json_encode($filteredItem));
+        if ($result['success']){
           // Mark the content as indexed.
           $indexed[] = $id;
         }
         else {
-          watchdog('search_api_db', 'Unable to add content to the search index', NULL, WATCHDOG_ERROR);
+          watchdog('search_api_db', $result['message'], NULL, WATCHDOG_ERROR);
         }
       }
     }
@@ -175,7 +176,7 @@ class SearchApiSearchNodeService extends SearchApiAbstractService {
           // The $ids will be an array when delete items.
           foreach ($ids as $id) {
             $deleted = FALSE;
-            $type = 'unknown';
+            $type = 'entity';
 
             // As search api don't provides an entity during deletion, we need
             // to try them all.
@@ -187,6 +188,9 @@ class SearchApiSearchNodeService extends SearchApiAbstractService {
                   break;
                 }
               }
+            }
+            else {
+              $deleted = $this->connection->remove($search_node_index, $type, $id);
             }
 
             // All types tried, so check if it was delete.

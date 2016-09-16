@@ -1,0 +1,21 @@
+<article class="search-results--result is-ungdomsuddannelse is-popup">
+  <div class="ribbon-wrapper left" data-ng-if="hit.field_free == true">
+    <div class="ribbon">
+      <a href="{{ hit.url }}">Gratis</a>
+    </div>
+  </div>
+  <header>
+    <h2 class="search-results--header">
+      <a href="{{ hit.url }}">{{ hit.title }}</a>
+    </h2>
+    <div data-ng-if="hit.field_period_full_year == false">
+      <p class="teaser--type">Periode: <span class="date-display-start"> {{ hit['field_period:value'] * 1000 | date:'dd.MM.yyyy' }} </span> - <span class="date-display-end"> {{ hit['field_period:value2'] * 1000 | date:'dd.MM.yyyy' }} </span></p>
+    </div>
+    <div data-ng-if="hit.field_period_full_year == true">
+      <p class="teaser--type">Periode: Hele året</p>
+    </div>
+    <p class="teaser--type">Udbyder: <a href="{{ hit['author:url'] }}">{{ hit['author:field_profile_name'] }}</a></p>
+    <p class="teaser--type-read-more"><a href="{{ hit.url }}">Se hele forløbet</a></p>
+  </header>
+  <figure><a href="{{ hit.url }}"><img data-ng-src="{{ hit['field_image:file'].url }}" src="#"/></a></figure>
+</article>

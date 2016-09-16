@@ -39,6 +39,9 @@
 // Layout
 @import "layout/_layout";
 
+// Components
+@import "itk-components/_itk-menu";
+@import "itk-components/_itk-tabs";
 
 // Module
 @import "modules/_header";
@@ -51,6 +54,4 @@
 @import "modules/_buttons";
 @import "modules/_page";
 @import "modules/_search";
-
-// Components
-@import "itk-components/_itk-menu";
+@import "modules/_leaflet";

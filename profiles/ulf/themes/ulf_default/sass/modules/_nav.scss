@@ -13,7 +13,6 @@
 %nav--list-item {
   position: relative;
   display: inline-block;
-  height: 100%;
   vertical-align: top;
 }
 
@@ -37,6 +36,8 @@
   display: none;
   background: $gray-darkest;
 
+  z-index: 3;
+  position: relative;
 
   @include breakpoint(1000px) {
     display: block;

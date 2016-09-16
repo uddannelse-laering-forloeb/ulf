@@ -39,6 +39,7 @@ function ulf_search_settings_default_search_api_index() {
         "field_free" : { "type" : "boolean" },
         "field_full_description:value" : { "type" : "text" },
         "field_image:file" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "file" },
+        "field_location" : { "type" : "string" },
         "field_offer_type" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_period:value" : { "type" : "date" },
         "field_period:value2" : { "type" : "date" },
@@ -57,16 +58,26 @@ function ulf_search_settings_default_search_api_index() {
         "url" : { "type" : "uri" }
       },
       "data_alter_callbacks" : {
-        "search_api_alter_node_access" : { "status" : 0, "weight" : "0", "settings" : [] },
+        "exclude" : {
+          "status" : 0,
+          "weight" : "-50",
+          "settings" : { "fields" : { "name" : "", "values" : "" } }
+        },
+        "location" : {
+          "status" : 1,
+          "weight" : "-50",
+          "settings" : { "field_name" : "field_location" }
+        },
         "search_api_alter_node_status" : { "status" : 1, "weight" : "0", "settings" : [] },
+        "search_api_alter_node_access" : { "status" : 0, "weight" : "0", "settings" : [] },
         "search_api_alter_language_control" : {
           "status" : 0,
           "weight" : "0",
           "settings" : { "lang_field" : "", "languages" : [] }
         },
-        "search_api_alter_add_hierarchy" : { "status" : 0, "weight" : "0", "settings" : { "fields" : [] } },
         "search_api_alter_add_aggregation" : { "status" : 0, "weight" : "0", "settings" : [] },
         "search_api_alter_add_viewed_entity" : { "status" : 0, "weight" : "0", "settings" : { "mode" : "full" } },
+        "search_api_alter_add_hierarchy" : { "status" : 0, "weight" : "0", "settings" : { "fields" : [] } },
         "search_api_alter_add_url" : { "status" : 0, "weight" : "0", "settings" : [] }
       },
       "processors" : {
@@ -271,6 +282,7 @@ function ulf_search_settings_default_search_api_index() {
       "fields" : {
         "created" : { "type" : "date" },
         "field_image:file" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "file" },
+        "field_location" : { "type" : "string" },
         "field_profile_address" : { "type" : "text" },
         "field_profile_city" : { "type" : "text" },
         "field_profile_contact" : {
@@ -294,6 +306,11 @@ function ulf_search_settings_default_search_api_index() {
           "weight" : "-50",
           "settings" : { "fields" : { "name" : "", "values" : "" } }
         },
+        "location" : {
+          "status" : 1,
+          "weight" : "-50",
+          "settings" : { "field_name" : "field_location" }
+        },
         "search_api_alter_role_filter" : {
           "status" : 1,
           "weight" : "-10",
@@ -304,9 +321,9 @@ function ulf_search_settings_default_search_api_index() {
           "weight" : "0",
           "settings" : { "lang_field" : "", "languages" : [] }
         },
-        "search_api_alter_add_aggregation" : { "status" : 0, "weight" : "0", "settings" : [] },
+        "search_api_alter_add_viewed_entity" : { "status" : 0, "weight" : "0", "settings" : { "mode" : "full" } },
         "search_api_alter_add_url" : { "status" : 0, "weight" : "0", "settings" : [] },
-        "search_api_alter_add_viewed_entity" : { "status" : 0, "weight" : "0", "settings" : { "mode" : "full" } }
+        "search_api_alter_add_aggregation" : { "status" : 0, "weight" : "0", "settings" : [] }
       },
       "processors" : {
         "search_api_case_ignore" : {
