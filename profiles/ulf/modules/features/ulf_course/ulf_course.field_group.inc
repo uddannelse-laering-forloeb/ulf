@@ -8,7 +8,7 @@
  * Implements hook_field_group_info().
  */
 function ulf_course_field_group_info() {
-  $export = array();
+  $field_groups = array();
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -39,7 +39,7 @@ function ulf_course_field_group_info() {
       'formatter' => 'collapsed',
     ),
   );
-  $export['group_course_sub|node|course|form'] = $field_group;
+  $field_groups['group_course_sub|node|course|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -75,7 +75,7 @@ function ulf_course_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_course|node|course|form'] = $field_group;
+  $field_groups['group_course|node|course|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -108,7 +108,7 @@ function ulf_course_field_group_info() {
       'formatter' => 'collapsed',
     ),
   );
-  $export['group_duration|node|course|form'] = $field_group;
+  $field_groups['group_duration|node|course|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -137,7 +137,7 @@ function ulf_course_field_group_info() {
       'formatter' => 'collapsed',
     ),
   );
-  $export['group_facilities|node|course|form'] = $field_group;
+  $field_groups['group_facilities|node|course|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -166,7 +166,7 @@ function ulf_course_field_group_info() {
       'formatter' => 'collapsed',
     ),
   );
-  $export['group_materials|node|course|form'] = $field_group;
+  $field_groups['group_materials|node|course|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -195,7 +195,7 @@ function ulf_course_field_group_info() {
       'formatter' => 'collapsed',
     ),
   );
-  $export['group_media|node|course|form'] = $field_group;
+  $field_groups['group_media|node|course|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -225,7 +225,7 @@ function ulf_course_field_group_info() {
       'formatter' => 'collapsed',
     ),
   );
-  $export['group_period|node|course|form'] = $field_group;
+  $field_groups['group_period|node|course|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -260,7 +260,18 @@ function ulf_course_field_group_info() {
       'formatter' => 'collapsed',
     ),
   );
-  $export['group_practical_information|node|course|form'] = $field_group;
+  $field_groups['group_practical_information|node|course|form'] = $field_group;
 
-  return $export;
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Aktiviteter, baggrundsviden og efterbehandling');
+  t('Billeder/medier');
+  t('Faciliteter');
+  t('Forløbet');
+  t('Materialer');
+  t('Periode');
+  t('Praktisk information');
+  t('Varighed og pris');
+
+  return $field_groups;
 }

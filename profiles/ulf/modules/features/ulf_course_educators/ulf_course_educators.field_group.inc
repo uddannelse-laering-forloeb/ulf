@@ -8,7 +8,7 @@
  * Implements hook_field_group_info().
  */
 function ulf_course_educators_field_group_info() {
-  $export = array();
+  $field_groups = array();
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -36,7 +36,7 @@ function ulf_course_educators_field_group_info() {
       'formatter' => 'collapsed',
     ),
   );
-  $export['group_edu_course_sub|node|course_educators|form'] = $field_group;
+  $field_groups['group_edu_course_sub|node|course_educators|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -69,7 +69,7 @@ function ulf_course_educators_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_edu_course|node|course_educators|form'] = $field_group;
+  $field_groups['group_edu_course|node|course_educators|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -102,7 +102,7 @@ function ulf_course_educators_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_edu_practical_info|node|course_educators|form'] = $field_group;
+  $field_groups['group_edu_practical_info|node|course_educators|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -130,7 +130,7 @@ function ulf_course_educators_field_group_info() {
       'formatter' => 'collapsed',
     ),
   );
-  $export['group_materials|node|course_educators|form'] = $field_group;
+  $field_groups['group_materials|node|course_educators|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -159,7 +159,15 @@ function ulf_course_educators_field_group_info() {
       'formatter' => 'collapsed',
     ),
   );
-  $export['group_media|node|course_educators|form'] = $field_group;
+  $field_groups['group_media|node|course_educators|form'] = $field_group;
 
-  return $export;
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Billeder/medier');
+  t('Kurset');
+  t('Materialer');
+  t('Praktisk information');
+  t('Yderligere information');
+
+  return $field_groups;
 }

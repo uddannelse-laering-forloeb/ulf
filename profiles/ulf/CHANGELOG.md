@@ -1,5 +1,8 @@
 #ULF changelog
 
+#2.4.2
+* Added field for show on map on nodes
+
 #2.4.1
 * Changed pathauto settings
 * Added show on map for courses and course_educators

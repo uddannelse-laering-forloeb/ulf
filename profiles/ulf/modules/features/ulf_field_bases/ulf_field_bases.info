@@ -27,6 +27,7 @@ features[field_base][] = field_content
 features[field_base][] = field_count
 features[field_base][] = field_course_contact_mail
 features[field_base][] = field_course_contact_name
+features[field_base][] = field_course_show_on_map
 features[field_base][] = field_duration
 features[field_base][] = field_duration_description
 features[field_base][] = field_duration_unit
