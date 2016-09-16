@@ -1,5 +1,12 @@
 #ULF changelog
 
+#2.3.18
+* Changed pathauto settings
+
+#2.3.17
+* Changed news archive references
+* Changed display of youth  target group search for Viborg and Silkeborg
+
 #2.3.16
 * Removed metatag dependency from profile info file
 
