@@ -1,6 +1,6 @@
 #ULF changelog
 
-#2.3.18
+#2.4.1
 * Changed pathauto settings
 * Added show on map for courses and course_educators
 
