@@ -73,3 +73,39 @@ function ulf_maps_update_7100() {
       ))->execute();
   }
 }
+
+
+
+
+/**
+ * Populate show on map field for all nodes.
+ */
+function ulf_maps_update_7200() {
+  $nids = db_query('SELECT n.nid FROM {node} n WHERE n.type = :type1 OR n.type = :type2', array(':type1' => 'course', ':type2' => 'course_educators'));
+  foreach ($nids as $record) {
+    $nid = $record->nid;
+    db_insert('field_data_field_course_show_on_map')->fields(
+      array(
+        'entity_type' => 'node',
+        'bundle' => 'node',
+        'deleted' => '0',
+        'entity_id' => $nid,
+        'revision_id' => $nid,
+        'language' => 'und',
+        'delta' => 0,
+        'field_course_show_on_map_value' => 1,
+      ))->execute();
+
+    db_insert('field_revision_field_course_show_on_map')->fields(
+      array(
+        'entity_type' => 'node',
+        'bundle' => 'node',
+        'deleted' => '0',
+        'entity_id' => $nid,
+        'revision_id' => $nid,
+        'language' => 'und',
+        'delta' => 0,
+        'field_course_show_on_map_value' => 1,
+      ))->execute();
+  }
+}

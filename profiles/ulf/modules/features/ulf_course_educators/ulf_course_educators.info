@@ -33,6 +33,7 @@ features[field_group][] = group_media|node|course_educators|form
 features[field_instance][] = node-course_educators-field_catering
 features[field_instance][] = node-course_educators-field_course_contact_mail
 features[field_instance][] = node-course_educators-field_course_contact_name
+features[field_instance][] = node-course_educators-field_course_show_on_map
 features[field_instance][] = node-course_educators-field_educational_material
 features[field_instance][] = node-course_educators-field_free
 features[field_instance][] = node-course_educators-field_full_description

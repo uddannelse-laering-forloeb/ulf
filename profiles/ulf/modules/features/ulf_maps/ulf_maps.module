@@ -67,13 +67,11 @@ function ulf_maps_form_alter(&$form, &$form_state, $form_id) {
       );
 
       // Add prerender function to profile form.
-      if ($form['#id'] == 'user-profile-form') {
-        $form['#pre_render'][] = '_ulf_maps_prerender';
+      $form['#pre_render'][] = '_ulf_maps_prerender';
 
-        // Add custom submit handler (reset location is "show on map" is not
-        // checked, hence it needs to be executed first).
-        array_unshift($form['#submit'], '_ulf_maps_profile_submit');
-      }
+      // Add custom submit handler (reset location is "show on map" is not
+      // checked, hence it needs to be executed first).
+      array_unshift($form['#submit'], '_ulf_maps_profile_submit');
     }
   }
 }
@@ -178,8 +176,14 @@ function ulf_maps_address_validate($form, &$form_state) {
  * @return array
  */
 function _ulf_maps_prerender($form) {
-  $form['locations']['0']['field_profile_show_on_map'] = $form['field_profile_show_on_map'];
-  hide($form['field_profile_show_on_map']);
+  if ($form['#form_id'] == 'user_profile_form') {
+    $form['locations']['0']['field_profile_show_on_map'] = $form['field_profile_show_on_map'];
+    hide($form['field_profile_show_on_map']);
+  }
+  else {
+    $form['locations']['0']['field_course_show_on_map'] = $form['field_course_show_on_map'];
+    hide($form['field_course_show_on_map']);
+  }
 
   return $form;
 }
@@ -192,7 +196,7 @@ function _ulf_maps_prerender($form) {
  * @param $form_state
  */
 function _ulf_maps_profile_submit($form, &$form_state) {
-  if ($form_state['values']['field_profile_show_on_map']['und']['0']['value'] == 0) {
+  if ($form_state['values']['field_profile_show_on_map']['und']['0']['value'] == 0 || $form_state['values']['field_course_show_on_map']['und']['0']['value'] == 0) {
     // Update the values in the form.
     $form['locations'][0]['locpick']['user_latitude']['#value'] = '0.000000';
     $form['locations'][0]['locpick']['user_longitude']['#value'] = '0.000000';

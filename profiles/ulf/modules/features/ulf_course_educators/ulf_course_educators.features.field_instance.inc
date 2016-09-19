@@ -128,6 +128,49 @@ function ulf_course_educators_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-course_educators-field_course_show_on_map'.
+  $field_instances['node-course_educators-field_course_show_on_map'] = array(
+    'bundle' => 'course_educators',
+    'default_value' => array(
+      0 => array(
+        'value' => 1,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 15,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_course_show_on_map',
+    'label' => 'Vis på kort',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 0,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 44,
+    ),
+  );
+
   // Exported field_instance:
   // 'node-course_educators-field_educational_material'.
   $field_instances['node-course_educators-field_educational_material'] = array(
@@ -690,6 +733,7 @@ function ulf_course_educators_field_default_field_instances() {
   t('Undervisningsmateriale');
   t('Upload et billede/illustration');
   t('Video');
+  t('Vis på kort');
   t('Vuggestue, børnehave, SFO, klub, ungdomsskole, indskoling, mellemtrin, udskoling, ungdomsuddannelse.');
   t('Vælg omfattede fag for grundskoler.');
   t('Vælg omfattede fag for ungdomsuddannelser.');

@@ -1,5 +1,16 @@
 #ULF changelog
 
+#2.4.2
+* Added field for show on map on nodes
+
+#2.4.1
+* Changed pathauto settings
+* Added show on map for courses and course_educators
+
+#2.3.17
+* Changed news archive references
+* Changed display of youth  target group search for Viborg and Silkeborg
+
 #2.3.16
 * Removed metatag dependency from profile info file
 
