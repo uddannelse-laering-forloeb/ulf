@@ -8,9 +8,29 @@
 /**
  * Overrides the default searchBoxApp controller.
  */
-angular.module('searchBoxApp').controller('UlfBoxController', ['CONFIG', 'communicatorService', 'searchProxyService', '$scope',
-  function (CONFIG, communicatorService, searchProxyService, $scope) {
+angular.module('searchBoxApp').controller('UlfBoxController', ['CONFIG', 'communicatorService', 'searchProxyService', '$scope', '$location', '$rootScope', '$window',
+  function (CONFIG, communicatorService, searchProxyService, $scope, $location, $rootScope, $window) {
     'use strict';
+
+    /**
+     * Listen to location change event to handle (back/forward button).
+     */
+    $rootScope.$on('$locationChangeSuccess', function(newLocation, oldLocation) {
+      $rootScope.actualHash = $location.hash();
+    });
+
+    /**
+     *
+     */
+    $rootScope.$watch(function () {
+      return $location.hash();
+    }, function (newHash, oldHash) {
+      if($rootScope.actualHash === newHash) {
+        // @TODO: Figure out why promises stop working when the back/forward
+        // buttons in the browser have been user.
+        $window.location.reload();
+      }
+    });
 
     /**
      * Find the currently select filters/facets.
@@ -92,6 +112,7 @@ angular.module('searchBoxApp').controller('UlfBoxController', ['CONFIG', 'commun
         var query = angular.copy($scope.query);
         if (CONFIG.provider.hasOwnProperty('pager')) {
           query.pager.size = CONFIG.provider.map.points;
+          query.pager.page = 0;
         }
         searchProxyService.search(query, true).then(
           function (data) {
@@ -106,7 +127,7 @@ angular.module('searchBoxApp').controller('UlfBoxController', ['CONFIG', 'commun
     }
 
     /**
-     * Init the contoller.
+     * Init the controller.
      */
     function init() {
       // Get state from previous searches.
