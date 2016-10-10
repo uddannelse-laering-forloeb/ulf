@@ -31,6 +31,7 @@ features[field_base][] = field_course_show_on_map
 features[field_base][] = field_duration
 features[field_base][] = field_duration_description
 features[field_base][] = field_duration_unit
+features[field_base][] = field_editor_info
 features[field_base][] = field_educational_goals
 features[field_base][] = field_educational_material
 features[field_base][] = field_facilities
