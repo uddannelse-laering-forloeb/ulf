@@ -22,6 +22,7 @@ features[ctools][] = strongarm:strongarm:1
 features[ctools][] = views:views_default:3.0
 features[features_api][] = api:2
 features[field_group][] = group_metadata|user|user|form
+features[field_instance][] = user-user-field_editor_info
 features[field_instance][] = user-user-field_image
 features[field_instance][] = user-user-field_profile_address
 features[field_instance][] = user-user-field_profile_city

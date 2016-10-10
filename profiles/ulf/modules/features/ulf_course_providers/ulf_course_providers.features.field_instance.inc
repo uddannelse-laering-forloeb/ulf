@@ -10,6 +10,43 @@
 function ulf_course_providers_field_default_field_instances() {
   $field_instances = array();
 
+  // Exported field_instance: 'user-user-field_editor_info'.
+  $field_instances['user-user-field_editor_info'] = array(
+    'bundle' => 'user',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Indholdet i dette felt er kun tilgængeligt fra denne formular og vises ikke til slutbrugere.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 14,
+      ),
+    ),
+    'entity_type' => 'user',
+    'field_name' => 'field_editor_info',
+    'label' => 'Redaktørfelt',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 1,
+      'user_register_form' => 0,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'maxlength_js' => '',
+        'maxlength_js_enforce' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'maxlength_js_truncate_html' => 0,
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 15,
+    ),
+  );
+
   // Exported field_instance: 'user-user-field_image'.
   $field_instances['user-user-field_image'] = array(
     'bundle' => 'user',
@@ -314,7 +351,7 @@ function ulf_course_providers_field_default_field_instances() {
       ),
       'enable_tokens' => 0,
       'rel_remove' => 'default',
-      'title' => 'none',
+      'title' => 'optional',
       'title_label_use_field_label' => 0,
       'title_maxlength' => 128,
       'title_value' => '',
@@ -542,7 +579,7 @@ function ulf_course_providers_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 15,
+        'weight' => 16,
       ),
     ),
     'entity_type' => 'user',
@@ -570,6 +607,7 @@ function ulf_course_providers_field_default_field_instances() {
   t('Entré');
   t('Hjemmeside');
   t('Husk at inkludere http:// i webadressen');
+  t('Indholdet i dette felt er kun tilgængeligt fra denne formular og vises ikke til slutbrugere.');
   t('Kontakt');
   t('Kort præsentation af forløbsudbyder');
   t('Logo');
@@ -577,6 +615,7 @@ function ulf_course_providers_field_default_field_instances() {
   t('Navn');
   t('Postnr.');
   t('Pædagogisk profil');
+  t('Redaktørfelt');
   t('Telefonnr.');
   t('Upload et billede/illustration');
   t('Vis på kort');

@@ -57,6 +57,9 @@
           if (acceptFunction(text)) {
             $('.field-name-field-target-group-sub input[value=' + value + ']').parent().show();
           }
+          else {
+            $('.field-name-field-target-group-sub input[value=' + value + ']').prop( "checked", false );
+          }
         });
       }
 
