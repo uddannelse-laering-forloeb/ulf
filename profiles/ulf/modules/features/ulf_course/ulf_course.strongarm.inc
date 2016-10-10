@@ -77,6 +77,9 @@ function ulf_course_strongarm() {
         'redirect' => array(
           'weight' => '10',
         ),
+        'locations' => array(
+          'weight' => '30',
+        ),
       ),
       'display' => array(
         'ulf_author_pane_entity_view_1' => array(
