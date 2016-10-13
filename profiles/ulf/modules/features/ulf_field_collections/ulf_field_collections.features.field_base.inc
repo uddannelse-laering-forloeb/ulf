@@ -207,6 +207,31 @@ function ulf_field_collections_field_default_field_bases() {
     'type' => 'text',
   );
 
+  // Exported field_base: 'field_moms'.
+  $field_bases['field_moms'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_moms',
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'incl_vat' => 'Inklusiv moms',
+        'vat_free' => 'Momsfrit',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
   // Exported field_base: 'field_price'.
   $field_bases['field_price'] = array(
     'active' => 1,

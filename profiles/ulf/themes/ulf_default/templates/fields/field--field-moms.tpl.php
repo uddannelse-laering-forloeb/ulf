@@ -1,7 +1,8 @@
 <?php
 
 /**
- * @file field--field-material-file.tpl.php
+ * @file field--field-moms.tpl.php
+ * Template for fields displaying only field values.
  *
  * This file is not used and is here as a starting point for customization only.
  * @see theme_field()
@@ -43,7 +44,6 @@
  * @ingroup themeable
  */
 ?>
-
 <?php foreach ($items as $delta => $item): ?>
-  <div class="field--collection-file"><a href="<?php print file_create_url($item['#file']->uri); ?>"><?php print t('Fetch file');?></a></div>
+  (<?php print render($item); ?>)
 <?php endforeach; ?>

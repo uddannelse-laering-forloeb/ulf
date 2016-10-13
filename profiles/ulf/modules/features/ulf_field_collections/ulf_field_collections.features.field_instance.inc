@@ -11,6 +11,42 @@ function ulf_field_collections_field_default_field_instances() {
   $field_instances = array();
 
   // Exported field_instance:
+  // 'field_collection_item-field_collection_price-field_moms'.
+  $field_instances['field_collection_item-field_collection_price-field_moms'] = array(
+    'bundle' => 'field_collection_price',
+    'default_value' => array(
+      0 => array(
+        'value' => 'incl_vat',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 3,
+      ),
+    ),
+    'entity_type' => 'field_collection_item',
+    'field_name' => 'field_moms',
+    'label' => 'Moms',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 34,
+    ),
+  );
+
+  // Exported field_instance:
   // 'field_collection_item-field_collection_price-field_price'.
   $field_instances['field_collection_item-field_collection_price-field_price'] = array(
     'bundle' => 'field_collection_price',
@@ -854,6 +890,7 @@ function ulf_field_collections_field_default_field_instances() {
   t('Hjemmeside');
   t('Link');
   t('Litteraturforslag');
+  t('Moms');
   t('Navn');
   t('Pris');
   t('Telefon');

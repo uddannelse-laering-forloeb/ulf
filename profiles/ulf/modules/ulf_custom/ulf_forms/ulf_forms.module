@@ -76,9 +76,8 @@ function ulf_forms_form_alter(&$form, &$form_state, $form_id) {
     $form['actions']['submit']['#attributes']['class'][] = 'form-module--user-submit';
     break;
   }
-
-
 }
+
 
 /**
  * Implements hook_wysiwyg_editor_settings_alter().
