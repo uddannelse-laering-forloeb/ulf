@@ -602,7 +602,7 @@ function _send_revision_ready_mail($node) {
   $user = user_load($node->uid);
 
   // Set recipient.
-  $to = variable_get('mimemail_mail');;
+  $to = variable_get('mimemail_mail');
 
   // Provide additional parameters.
   $params['user'] = $user;
