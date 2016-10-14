@@ -266,3 +266,20 @@ function ulf_base_update_7013() {
     drupal_set_message(t('No aliases were updated.') . $type);
   }
 }
+
+/**
+ * Add webform module
+ */
+function ulf_base_update_7014(&$sandbox) {
+  $module_enable = array(
+    'entityform_notifications',
+    'entity2text',
+    'rules',
+    'entity_rules',
+    'entityform',
+    'entityreference',
+    'ulf_entityform'
+  );
+
+  module_enable($module_enable);
+}
