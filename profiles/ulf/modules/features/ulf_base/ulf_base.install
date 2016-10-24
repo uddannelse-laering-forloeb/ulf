@@ -283,3 +283,46 @@ function ulf_base_update_7014(&$sandbox) {
 
   module_enable($module_enable);
 }
+
+/**
+ * Enable entity form on all courses and course_educators
+ */
+function ulf_base_update_7015(&$sandbox) {
+  $type = array(
+    'course',
+    'course_educators'
+  );
+  $entities = db_select('node', 'n')
+    ->fields('n', array('nid', 'type'))
+    ->condition('type', $type, 'IN')
+    ->execute()
+    ->fetchAllAssoc('nid');
+
+  foreach ($entities as $entity) {
+    db_insert('field_data_field_message_form')
+      ->fields(array(
+        'entity_type' => 'node',
+        'bundle' => $entity->type,
+        'deleted' => 0,
+        'entity_id' => $entity->nid,
+        'revision_id' => $entity->nid,
+        'language' => 'und',
+        'delta' => 0,
+        'field_message_form_target_id' => '1',
+      ))
+      ->execute();
+
+    db_insert('field_revision_field_message_form')
+      ->fields(array(
+        'entity_type' => 'node',
+        'bundle' => $entity->type,
+        'deleted' => 0,
+        'entity_id' => $entity->nid,
+        'revision_id' => $entity->nid,
+        'language' => 'und',
+        'delta' => 0,
+        'field_message_form_target_id' => '1',
+      ))
+      ->execute();
+  }
+}

@@ -1,6 +1,7 @@
 /* Print styles to use across all themes */
 
 /* Hide fields */
+.entitytype-end_user_message-form,
 .block--field-label.is-video,
 .block--field-text.is-video {
     display: none;

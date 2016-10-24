@@ -364,6 +364,51 @@ function ulf_course_educators_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-course_educators-field_message_form'.
+  $field_instances['node-course_educators-field_message_form'] = array(
+    'bundle' => 'course_educators',
+    'default_value' => array(
+      0 => array(
+        'target_id' => 1,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'entityreference',
+        'settings' => array(
+          'links' => 1,
+          'use_content_language' => 1,
+          'view_mode' => 'default',
+        ),
+        'type' => 'entityreference_entity_view',
+        'weight' => 16,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_message_form',
+    'label' => 'Message form',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 46,
+    ),
+  );
+
   // Exported field_instance: 'node-course_educators-field_period'.
   $field_instances['node-course_educators-field_period'] = array(
     'bundle' => 'course_educators',
@@ -725,6 +770,7 @@ function ulf_course_educators_field_default_field_instances() {
   t('Kurset er relevant for lærere og pædagoger, der arbejder med målgruppen');
   t('Kurset er relevant for lærere, der underviser fagene');
   t('Kurset er relevant for undervisere i fagene');
+  t('Message form');
   t('Navn');
   t('Periode');
   t('Pris');
