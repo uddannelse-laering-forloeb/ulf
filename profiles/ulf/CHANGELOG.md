@@ -1,5 +1,14 @@
 #ULF changelog
 
+#2.4.5
+* Removed map field from pdf display on courses
+
+#2.4.4
+* Removed map field from pdf display
+
+#2.4.3
+* Hid field for show on map
+
 #2.4.2
 * Added field for show on map on nodes
 
