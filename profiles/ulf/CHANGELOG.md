@@ -1,5 +1,8 @@
 #ULF changelog
 
+#2.4.3
+* Hid field for show on map
+
 #2.4.2
 * Added field for show on map on nodes
 
