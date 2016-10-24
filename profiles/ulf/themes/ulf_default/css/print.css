@@ -71,6 +71,11 @@ a {
     display: none;
 }
 
+/* Hide fields */
+.block--field-label.is-video,
+.block--field-text.is-video {
+    display: none;
+}
 
 /* Layout */
 
