@@ -176,6 +176,7 @@
 .teaser--list-button {
   @extend .button;
 
-  margin: 0 auto; // Center buttons.
+  margin: 6px auto; // Center buttons.
+  width: 155px;
 }
 
