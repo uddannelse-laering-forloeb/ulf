@@ -80,7 +80,7 @@
  */
 ?>
 <article class="teaser is-<?php print $group_type; ?>">
-  <?php if ($type == 'course') : ?>
+  <?php if ($type == 'course' || $type == 'course_educators') : ?>
     <?php if (isset($content['field_free'])) : ?>
       <?php if ($content['field_free']['#items']['0']['value'] == 1) : ?>
         <div class="ribbon-wrapper left">

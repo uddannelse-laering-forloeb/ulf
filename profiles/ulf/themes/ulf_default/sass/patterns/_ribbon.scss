@@ -29,6 +29,13 @@
   }
 }
 
+.is-course {
+  .ribbon {
+    @include background-set-color('yellow', 1);
+  }
+}
+
+
 
 /* Left will inherit from right (so we don't need to duplicate code) */
 .ribbon {
