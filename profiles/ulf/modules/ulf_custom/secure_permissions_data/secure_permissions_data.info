@@ -3,3 +3,4 @@ description = Role and permission settings for the site.
 core = 7.x
 dependencies[] = secure_permissions
 files[] = secure_permissions_data.module
+package = Ulf base

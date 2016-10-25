@@ -162,6 +162,8 @@ function secure_permissions_data_secure_permissions($role) {
       'view revisions',
       'view the administration theme',
       'view user map',
+      'schedule publishing of nodes',
+      'view scheduled content',
     ),
   );
   if (isset($permissions[$role])) {
