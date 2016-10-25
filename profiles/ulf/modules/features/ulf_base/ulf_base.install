@@ -282,6 +282,9 @@ function ulf_base_update_7014(&$sandbox) {
   );
 
   module_enable($module_enable);
+
+  drupal_flush_all_caches();
+  print 'Clearing cache';
 }
 
 /**
