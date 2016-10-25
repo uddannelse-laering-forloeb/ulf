@@ -29,7 +29,7 @@ function ulf_news_views_api($module = NULL, $api = NULL) {
 function ulf_news_node_info() {
   $items = array(
     'news' => array(
-      'name' => t('News'),
+      'name' => t('Nyheder'),
       'base' => 'node_content',
       'description' => t('Nyheder til sitet.'),
       'has_title' => '1',
