@@ -5,3 +5,16 @@
  */
 
 include_once 'ulf_entityform.features.inc';
+
+function ulf_entityform_form_end_user_message_entityform_edit_form_alter(&$form, &$form_state) {
+  $form['field_message_parent_node']['#access'] = FALSE;
+  if (!empty(arg(0)) && arg(0) == 'node') {
+    $form['#parent_nid'] = arg(1);
+  }
+
+  array_unshift($form['actions']['submit']['#submit'], '_ulf_entityform_add_node_reference_submit');
+}
+
+function _ulf_entityform_add_node_reference_submit(&$form, &$form_state) {
+  $form_state['values']['field_message_parent_node']['und'][0]['target_id'] = $form['#parent_nid'];
+}

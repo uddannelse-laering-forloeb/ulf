@@ -19,16 +19,15 @@ function ulf_entityform_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 2,
+        'type' => 'hidden',
+        'weight' => 3,
       ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_message_body',
     'label' => 'Besked',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'text_processing' => 0,
       'user_register_form' => FALSE,
@@ -53,20 +52,19 @@ function ulf_entityform_field_default_field_instances() {
     'bundle' => 'end_user_message',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Angiv din email adresse',
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 1,
+        'type' => 'hidden',
+        'weight' => 2,
       ),
     ),
     'entity_type' => 'entityform',
     'field_name' => 'field_message_email',
     'label' => 'Email',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'text_processing' => 0,
       'user_register_form' => FALSE,
@@ -85,14 +83,13 @@ function ulf_entityform_field_default_field_instances() {
     'bundle' => 'end_user_message',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Angiv dit fulde navn',
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 0,
+        'type' => 'hidden',
+        'weight' => 1,
       ),
     ),
     'entity_type' => 'entityform',
@@ -116,10 +113,48 @@ function ulf_entityform_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance:
+  // 'entityform-end_user_message-field_message_parent_node'.
+  $field_instances['entityform-end_user_message-field_message_parent_node'] = array(
+    'bundle' => 'end_user_message',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_message_parent_node',
+    'label' => 'Message Parent node',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 34,
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
+  t('Angiv din email adresse');
+  t('Angiv dit fulde navn');
   t('Besked');
   t('Email');
+  t('Message Parent node');
   t('Navn');
 
   return $field_instances;

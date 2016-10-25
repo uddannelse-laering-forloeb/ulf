@@ -162,6 +162,14 @@
               <a href="/user/<?php print $uid ?>"><?php print t('View organizer profile'); ?></a>
             </div>
           </div>
+          <div class="block--light is-form">
+            <h2 class="block--header">
+              <?php print t('Send message to') . ' ' . $profile_name; ?>
+            </h2>
+            <div class="block--content">
+              <?php print render($content['field_message_form']); ?>
+            </div>
+          </div>
         </div>
       </div>
       <?php

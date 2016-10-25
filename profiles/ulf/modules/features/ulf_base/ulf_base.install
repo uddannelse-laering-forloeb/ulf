@@ -272,12 +272,12 @@ function ulf_base_update_7013() {
  */
 function ulf_base_update_7014(&$sandbox) {
   $module_enable = array(
-    'entityform_notifications',
     'entity2text',
     'rules',
-    'entity_rules',
     'entityform',
     'entityreference',
+    'captcha',
+    'image_captcha',
     'ulf_entityform'
   );
 
