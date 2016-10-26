@@ -152,5 +152,6 @@ features[variable][] = user_register
 features[variable][] = user_signatures
 features[variable][] = views_defaults
 features[variable][] = workbench_moderation_nodedraft_disabled
+features[views_view][] = ulf_admin_people
 features[views_view][] = ulf_user_export
 features_exclude[dependencies][list] = list
