@@ -27,11 +27,11 @@ function ulf_base_default_fe_block_settings() {
         'theme' => 'seven',
         'weight' => 0,
       ),
-      'ulf_default' => array(
+      'ulf_aarhus' => array(
         'region' => 'footer',
         'status' => 1,
-        'theme' => 'ulf_default',
-        'weight' => 60,
+        'theme' => 'ulf_aarhus',
+        'weight' => -15,
       ),
     ),
     'title' => '',
