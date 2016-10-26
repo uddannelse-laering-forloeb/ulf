@@ -329,3 +329,16 @@ function ulf_base_update_7015(&$sandbox) {
       ->execute();
   }
 }
+
+
+/**
+ * Add webform module
+ */
+function ulf_base_update_7016(&$sandbox) {
+  $module_enable = array(
+    'ulf_admin_panel',
+    'ulf_social_media'
+  );
+
+  module_enable($module_enable);
+}
