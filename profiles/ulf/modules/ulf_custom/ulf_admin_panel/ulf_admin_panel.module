@@ -1,0 +1,67 @@
+<?php
+
+function ulf_admin_panel_menu () {
+  $items = array();
+  $site_name = variable_get('site_name', '');
+  $items['admin/settings/custom'] = array(
+    'title' => $site_name . ' administration',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('_ulf_admin_panel_form'),
+    'access arguments' => array('access administration pages'),
+    'description' => t('Ulf specific site settings')
+  );
+
+  $items['admin/settings/custom/custom'] = array(
+    'title' => 'Default settings',
+    'description' => 'Find and manage people interacting with your site.',
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+    'weight' => -10,
+  );
+
+  return $items;
+}
+
+function _ulf_admin_panel_form($form, $form_state) {
+  $form['ulf_admin_panel'] = array(
+    '#type' => 'vertical_tabs',
+    '#default_tab' => 'edit-images',
+    '#weight' => 1,
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
+  );
+
+  $form['images'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Images'),
+    '#weight' => 1,
+    '#collapsible' => TRUE,
+    '#group' => 'ulf_admin_panel',
+  );
+
+  // Image fields
+  $form['images']['ulf_newsletter_header_image'] = array(
+    '#title' => t('Newsletter header image'),
+    '#type' => 'managed_file',
+    '#description' => t('Best format 1000x320. The uploaded image will be displayed on the page ') . '<a href="/newsletter/archive">/newsletter/archive</a>',
+    '#default_value' => variable_get('ulf_newsletter_header_image', ''),
+    '#upload_location' => 'public://',
+  );
+
+  
+
+  // Custom submit.
+  $form['#submit'] = array('_ulf_admin_panel_form_submit');
+
+  return system_settings_form($form);
+}
+
+function _ulf_admin_panel_form_submit($form, $form_state) {
+  // Load the file via file.fid.
+  $file = file_load($form_state['values']['ulf_newsletter_header_image']);
+  // Change status to permanent.
+  $file->status = FILE_STATUS_PERMANENT;
+  // Save.
+  file_save($file);
+  // Record that the module (in this example, user module) is using the file.
+  file_usage_add($file, 'user', 'user', 1);
+}

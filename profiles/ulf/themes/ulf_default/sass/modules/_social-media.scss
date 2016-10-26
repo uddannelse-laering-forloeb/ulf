@@ -1,0 +1,29 @@
+/**
+ *
+ * Social media module.
+ *
+ * Contains styles related to social media block.
+ *
+ */
+
+
+/* Styles
+================================================================================================================== */
+.social-media {
+  @include flexbox();
+  @include flex-direction(row-reverse);
+
+  text-align: center;
+
+  @include breakpoint(45em) {
+    text-align: right;
+  }
+
+  &--icon {
+    @include flex(1, 0, 40px);
+
+    margin-left: 5%;
+  }
+}
+
+

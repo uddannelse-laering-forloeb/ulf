@@ -37,13 +37,13 @@ function ulf_workflow_preprocess_page(&$variables) {
 function ulf_workflow_menu() {
   $items = array();
 
-  $items['admin/settings/ulf_workflow'] = array(
+  $items['admin/settings/custom/ulf_workflow'] = array(
     'title' => 'ULF workflow settings',
     'description' => 'Settings related to ulf workflow module',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('_ulf_workflow_admin'),
     'access arguments' => array('administer site configuration'),
-    'type' => MENU_NORMAL_ITEM,
+    'type' => MENU_LOCAL_TASK,
   );
 
   return $items;

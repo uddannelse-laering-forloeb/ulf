@@ -89,13 +89,17 @@ function ulf_base_views_default_views() {
 
   /* Display: User email list */
   $handler = $view->new_display('page', 'User email list', 'page');
-  $handler->display->display_options['path'] = 'admin/user-email-export';
-  $handler->display->display_options['menu']['type'] = 'normal';
+  $handler->display->display_options['path'] = 'admin/settings/custom/user-email-export';
+  $handler->display->display_options['menu']['type'] = 'tab';
   $handler->display->display_options['menu']['title'] = 'User mail export';
   $handler->display->display_options['menu']['weight'] = '0';
   $handler->display->display_options['menu']['name'] = 'management';
   $handler->display->display_options['menu']['context'] = 0;
   $handler->display->display_options['menu']['context_only_inline'] = 0;
+  $handler->display->display_options['tab_options']['type'] = 'tab';
+  $handler->display->display_options['tab_options']['title'] = 'Visninger';
+  $handler->display->display_options['tab_options']['weight'] = '0';
+  $handler->display->display_options['tab_options']['name'] = 'management';
 
   /* Display: User email export */
   $handler = $view->new_display('views_data_export', 'User email export', 'views_data_export_1');
@@ -110,7 +114,7 @@ function ulf_base_views_default_views() {
   $handler->display->display_options['style_options']['newline_token'] = '1';
   $handler->display->display_options['style_options']['header'] = 0;
   $handler->display->display_options['style_options']['keep_html'] = 0;
-  $handler->display->display_options['path'] = 'admin/user-email-export/csv';
+  $handler->display->display_options['path'] = 'admin/settings/custom/user-email-export/csv';
   $handler->display->display_options['displays'] = array(
     'page' => 'page',
     'default' => 0,
