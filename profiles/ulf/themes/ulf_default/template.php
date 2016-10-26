@@ -134,6 +134,27 @@ function ulf_default_preprocess_node(&$variables) {
     else {
       $variables['teaser_content'] = _ulf_default_teaser_filter($variables['content']['field_full_description']['0']['#markup']);
     }
+
+    // Select first 3 field_relevance_educators values and prepare for print.
+    if ($variables['type'] == 'course_educators') {
+      $target_group_array = array();
+      if(!empty($variables['field_relevance_educators'])) {
+        foreach($variables['field_relevance_educators'] as $target_group) {
+          $uri = taxonomy_term_uri($target_group['taxonomy_term']);
+          $target_group_array[] = '<a href="' . $uri['path'] .'">' . $target_group['taxonomy_term']->name . '</a>';
+        }
+      }
+      $sliced_target_group_array = array_slice($target_group_array, 0, 3);
+
+      $variables['course_teaser_target_group'] = '';
+      foreach ($sliced_target_group_array as $value) {
+        $variables['course_teaser_target_group'] .= $value . ', ';
+      }
+
+      if (count($target_group_array) > 3) {
+         $variables['course_teaser_target_group'] .= '(...)';
+      }
+    }
   }
 
   // Set a default group type.
