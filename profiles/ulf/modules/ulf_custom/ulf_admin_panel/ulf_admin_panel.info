@@ -1,0 +1,4 @@
+name = Ulf admin panel
+description = Holds amin panel setup
+package = Ulf base
+core = 7.x

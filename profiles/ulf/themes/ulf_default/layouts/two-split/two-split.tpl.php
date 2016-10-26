@@ -24,6 +24,10 @@
  *   - $content['delta']: Fourth element
  */
 ?>
+<?php
+  $image = variable_get('ulf_newsletter_header_image', '');
+  $file = file_load($image);
+;?>
 <div class="layout-newsletter-archive">
   <div class="layout-inner">
     <div class="layout-element-alpha">
@@ -33,7 +37,7 @@
             <div class="field--title"><?php print t('Newsletter archive');?></div>
             <div class="field--image">
               <div class="field--image-items">
-                <img src="/profiles/ulf/themes/ulftheme/images/ulf_default_fallback.jpg" alt="">
+                <img src="<?php print image_style_url('node_display', $file->uri); ?>" alt="">
               </div>
             </div>
           </div>

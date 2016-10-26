@@ -1,0 +1,103 @@
+<?php
+
+/**
+ * Implements hook_form_FORMID_alter().
+ *
+ * @param $form
+ * @param $form_state
+ */
+function ulf_social_media_form__ulf_admin_panel_form_alter(&$form, &$form_state) {
+  $form['social_media'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Social media'),
+    '#weight' => 2,
+    '#collapsible' => TRUE,
+    '#group' => 'ulf_admin_panel',
+  );
+
+  $form['social_media']['ulf_facebook'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Facebook'),
+    '#default_value' => variable_get('ulf_facebook', ''),
+    '#size' => 60,
+    '#maxlength' => 128,
+  );
+
+  $form['social_media']['ulf_instagram'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Instagram'),
+    '#default_value' => variable_get('ulf_instagram', ''),
+    '#size' => 60,
+    '#maxlength' => 128,
+  );
+
+  $form['social_media']['ulf_twitter'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Twitter'),
+    '#default_value' => variable_get('ulf_twitter', ''),
+    '#size' => 60,
+    '#maxlength' => 128,
+  );
+
+  $form['social_media']['ulf_linkedin'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Linkedin'),
+    '#default_value' => variable_get('ulf_linkedin', ''),
+    '#size' => 60,
+    '#maxlength' => 128,
+  );
+}
+
+
+/**
+ * Implements hook_block_info().
+ * @return array
+ */
+function ulf_social_media_block_info() {
+  $blocks = array();
+  $blocks['ulf_social_media'] = array(
+    'info' => t('Social media block'),
+  );
+
+  return $blocks;
+}
+
+
+/**
+ * Implements hook_block_view().
+ *
+ * @param string $delta
+ * @return array
+ * @throws \Exception
+ */
+function ulf_social_media_block_view($delta='') {
+  $block = array();
+
+  switch($delta) {
+    case 'ulf_social_media' :
+      $variables = array();
+      $variables['facebook'] = variable_get('ulf_facebook', '');
+      $variables['instagram'] = variable_get('ulf_instagram', '');
+      $variables['twitter'] = variable_get('ulf_twitter', '');
+      $variables['linkedin'] = variable_get('ulf_linkedin', '');
+      $variables['icon_path'] =  drupal_get_path('module', 'ulf_social_media') . '/icons';
+      $block['content'] = theme('ulf_social_media', $variables);
+      break;
+  }
+  return $block;
+}
+
+
+/**
+ * Implements hook_theme()
+ * @return array
+ */
+function ulf_social_media_theme() {
+  return array(
+    'ulf_social_media' => array(
+      'variables' => array(),
+      'template' => 'ulf-social-media',
+      'path' => drupal_get_path('module', 'ulf_social_media') . '/theme',
+    ),
+  );
+}
