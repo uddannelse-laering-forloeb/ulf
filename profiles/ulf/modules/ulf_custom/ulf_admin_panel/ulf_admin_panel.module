@@ -1,5 +1,9 @@
 <?php
-
+/**
+ * Implements hook_menu().
+ *
+ * @return array
+ */
 function ulf_admin_panel_menu () {
   $items = array();
   $site_name = variable_get('site_name', '');
@@ -21,7 +25,13 @@ function ulf_admin_panel_menu () {
   return $items;
 }
 
-function _ulf_admin_panel_form($form, $form_state) {
+/**
+ * Custom form setting af base for the admin panel.
+ *
+ * @param $form
+ * @return mixed
+ */
+function _ulf_admin_panel_form($form) {
   $form['ulf_admin_panel'] = array(
     '#type' => 'vertical_tabs',
     '#default_tab' => 'edit-images',
@@ -47,21 +57,28 @@ function _ulf_admin_panel_form($form, $form_state) {
     '#upload_location' => 'public://',
   );
 
-  
-
   // Custom submit.
   $form['#submit'] = array('_ulf_admin_panel_form_submit');
 
   return system_settings_form($form);
 }
 
+
+/**
+ * Custom submit handler for admin panel form to store the an image file properly.
+ * @param $form
+ * @param $form_state
+ */
 function _ulf_admin_panel_form_submit($form, $form_state) {
-  // Load the file via file.fid.
-  $file = file_load($form_state['values']['ulf_newsletter_header_image']);
-  // Change status to permanent.
-  $file->status = FILE_STATUS_PERMANENT;
-  // Save.
-  file_save($file);
-  // Record that the module (in this example, user module) is using the file.
-  file_usage_add($file, 'user', 'user', 1);
+  $a =2;
+  if(!empty($form_state['values']['ulf_newsletter_header_image'])) {
+    // Load the file via file.fid.
+    $file = file_load($form_state['values']['ulf_newsletter_header_image']);
+    // Change status to permanent.
+    $file->status = FILE_STATUS_PERMANENT;
+    // Save.
+    file_save($file);
+    // Record that the module (in this example, user module) is using the file.
+    file_usage_add($file, 'user', 'user', 1);
+  }
 }
