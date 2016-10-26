@@ -74,6 +74,9 @@ function ulf_html_blocks_strongarm() {
         'redirect' => array(
           'weight' => '30',
         ),
+        'locations' => array(
+          'weight' => '30',
+        ),
       ),
       'display' => array(),
     ),

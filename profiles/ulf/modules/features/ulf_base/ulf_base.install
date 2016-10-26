@@ -332,12 +332,13 @@ function ulf_base_update_7015(&$sandbox) {
 
 
 /**
- * Add webform module
+ * Add contrib modules
  */
 function ulf_base_update_7016(&$sandbox) {
   $module_enable = array(
     'ulf_admin_panel',
-    'ulf_social_media'
+    'ulf_social_media',
+    'insert'
   );
 
   module_enable($module_enable);
