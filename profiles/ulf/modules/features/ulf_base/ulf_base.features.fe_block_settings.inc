@@ -31,7 +31,7 @@ function ulf_base_default_fe_block_settings() {
         'region' => 'footer',
         'status' => 1,
         'theme' => 'ulf_default',
-        'weight' => 20,
+        'weight' => 60,
       ),
     ),
     'title' => '',
