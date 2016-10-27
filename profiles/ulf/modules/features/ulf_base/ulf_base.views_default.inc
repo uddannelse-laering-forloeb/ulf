@@ -22,7 +22,7 @@ function ulf_base_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Ulf admin people';
+  $handler->display->display_options['title'] = 'People';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['access']['perm'] = 'access user profiles';
@@ -193,7 +193,7 @@ function ulf_base_views_default_views() {
   $handler->display->display_options['path'] = 'admin/people';
   $translatables['ulf_admin_people'] = array(
     t('Master'),
-    t('Ulf admin people'),
+    t('People'),
     t('more'),
     t('Udfør'),
     t('Nulstil søgning'),

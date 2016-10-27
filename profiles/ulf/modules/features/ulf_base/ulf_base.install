@@ -338,7 +338,8 @@ function ulf_base_update_7016(&$sandbox) {
   $module_enable = array(
     'ulf_admin_panel',
     'ulf_social_media',
-    'insert'
+    'insert',
+    'ife'
   );
 
   module_enable($module_enable);
