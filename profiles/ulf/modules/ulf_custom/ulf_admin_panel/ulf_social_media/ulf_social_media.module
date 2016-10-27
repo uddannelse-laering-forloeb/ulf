@@ -78,7 +78,7 @@ function ulf_social_media_form__ulf_admin_panel_form_alter(&$form, &$form_state)
       'dark' => t('Dark'),
       'white' => t('White'),
     ),
-    '#default_value' => variable_get('ulf_social_media_header_color', 'white'),
+    '#default_value' => variable_get('ulf_social_media_footer_color', 'white'),
     '#description' => t('Set the color you want your icons for the footer'),
   );
 }
