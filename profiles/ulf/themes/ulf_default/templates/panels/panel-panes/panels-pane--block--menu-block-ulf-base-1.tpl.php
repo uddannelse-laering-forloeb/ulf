@@ -20,7 +20,7 @@
  */
 ?>
 <div class="block--default">
-  <h2 class="block--header"><?php print t('More info'); ?></h2>
+  <h2 class="block--header"><?php print $title; ?></h2>
   <div class="block--content">
     <div class="block--field-text">
       <ul class="nav--static-pages is-node">
