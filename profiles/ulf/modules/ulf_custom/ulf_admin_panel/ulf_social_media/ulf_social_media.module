@@ -15,6 +15,13 @@ function ulf_social_media_form__ulf_admin_panel_form_alter(&$form, &$form_state)
     '#group' => 'ulf_admin_panel',
   );
 
+  $form['social_media']['ulf_social_media_header'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Show social media links in header'),
+    '#default_value' => variable_get('ulf_social_media_header', FALSE),
+    '#description' => t('Shows social media links in header on desktop display (wider than 1000px). Social links will always be visible in footer.'),
+  );
+
   $form['social_media']['ulf_facebook'] = array(
     '#type' => 'textfield',
     '#title' => t('Facebook'),
@@ -46,6 +53,34 @@ function ulf_social_media_form__ulf_admin_panel_form_alter(&$form, &$form_state)
     '#size' => 60,
     '#maxlength' => 128,
   );
+
+  $form['social_media']['colors']= array(
+    '#type' => 'fieldset',
+    '#collapsible' => FALSE,
+    '#title' => t('Colors'),
+  );
+
+  $form['social_media']['colors']['ulf_social_media_header_color'] = array(
+    '#type' => 'select',
+    '#title' => t('Icon color in header'),
+    '#options' => array(
+      'dark' => t('Dark'),
+      'white' => t('White'),
+    ),
+    '#default_value' => variable_get('ulf_social_media_header_color', 'dark'),
+    '#description' => t('Set the color you want your icons for the header'),
+  );
+
+  $form['social_media']['colors']['ulf_social_media_footer_color'] = array(
+    '#type' => 'select',
+    '#title' => t('Icon color in footer'),
+    '#options' => array(
+      'dark' => t('Dark'),
+      'white' => t('White'),
+    ),
+    '#default_value' => variable_get('ulf_social_media_header_color', 'white'),
+    '#description' => t('Set the color you want your icons for the footer'),
+  );
 }
 
 
@@ -57,6 +92,9 @@ function ulf_social_media_block_info() {
   $blocks = array();
   $blocks['ulf_social_media'] = array(
     'info' => t('Social media block'),
+  );
+  $blocks['ulf_social_media_footer'] = array(
+    'info' => t('Social media block footer'),
   );
 
   return $blocks;
@@ -80,8 +118,19 @@ function ulf_social_media_block_view($delta='') {
       $variables['instagram'] = variable_get('ulf_instagram', '');
       $variables['twitter'] = variable_get('ulf_twitter', '');
       $variables['linkedin'] = variable_get('ulf_linkedin', '');
-      $variables['icon_path'] =  '/' . drupal_get_path('module', 'ulf_social_media') . '/icons';
+      $color = variable_get('ulf_social_media_header_color', 'dark');
+      $variables['icon_path'] =  '/' . drupal_get_path('module', 'ulf_social_media') . '/icons/' . $color;
       $block['content'] = theme('ulf_social_media', $variables);
+      break;
+    case 'ulf_social_media_footer' :
+      $variables = array();
+      $variables['facebook'] = variable_get('ulf_facebook', '');
+      $variables['instagram'] = variable_get('ulf_instagram', '');
+      $variables['twitter'] = variable_get('ulf_twitter', '');
+      $variables['linkedin'] = variable_get('ulf_linkedin', '');
+      $color = variable_get('ulf_social_media_footer_color', 'white');
+      $variables['icon_path'] =  '/' . drupal_get_path('module', 'ulf_social_media') . '/icons/' . $color;;
+      $block['content'] = theme('ulf_social_media_footer', $variables);
       break;
   }
   return $block;
@@ -95,6 +144,11 @@ function ulf_social_media_block_view($delta='') {
 function ulf_social_media_theme() {
   return array(
     'ulf_social_media' => array(
+      'variables' => array(),
+      'template' => 'ulf-social-media',
+      'path' => drupal_get_path('module', 'ulf_social_media') . '/theme',
+    ),
+    'ulf_social_media_footer' => array(
       'variables' => array(),
       'template' => 'ulf-social-media',
       'path' => drupal_get_path('module', 'ulf_social_media') . '/theme',

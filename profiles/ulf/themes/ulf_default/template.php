@@ -37,6 +37,11 @@ function ulf_default_preprocess_page(&$variables) {
   if (arg(0) == 'user' && is_numeric(arg(1))) {
     //unset($variables['tabs']['#primary']);
   }
+
+  // Add social media links to header if selected.
+  if (variable_get('ulf_social_media_header', FALSE) == TRUE) {
+    $variables['social_media_links'] = module_invoke('ulf_social_media', 'block_view', 'ulf_social_media');
+  }
 }
 
 

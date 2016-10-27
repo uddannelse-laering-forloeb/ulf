@@ -62,4 +62,4 @@ dependencies[] = entityform
 dependencies[] = entityreference
 dependencies[] = captcha
 dependencies[] = insert
-dependencies[] = ife
+dependencies[] = insert

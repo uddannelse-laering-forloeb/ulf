@@ -2,6 +2,7 @@ name = Ulf base
 description = Contains the base configuration for the site, pathauto, date, general permissions, menus, image styles, user settings
 core = 7.x
 package = Ulf base
+version = "7.x-1.0"
 dependencies[] = block
 dependencies[] = captcha
 dependencies[] = contextual

@@ -338,7 +338,8 @@ function ulf_base_update_7016(&$sandbox) {
     'ulf_admin_panel',
     'ulf_social_media',
     'insert',
-    'ife'
+    'ife',
+    'ulf_translations'
   );
 
   module_enable($module_enable);

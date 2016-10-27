@@ -84,6 +84,11 @@
               <img class="header--logo-image" src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
             </a>
           <?php endif; ?>
+          <?php if ($social_media_links) : ?>
+            <div class="social-media--header-wrapper">
+              <?php print render($social_media_links['content']); ?>
+            </div>
+          <?php endif; ?>
         </div>
       </div>
     </header>
@@ -101,6 +106,7 @@
         <?php endif; ?>
       </ul>
     </nav>
+
     <div class="page--messages">
       <?php print $messages; ?>
     </div>
