@@ -81,3 +81,7 @@ input[type="checkbox"] {
 label.option {
   @include flex(1, 1, auto);
 }
+
+.form-wrapper.captcha {
+  margin-bottom: $boxlist-padding;
+}

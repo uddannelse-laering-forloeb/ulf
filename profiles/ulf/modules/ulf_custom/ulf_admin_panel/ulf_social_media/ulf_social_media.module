@@ -80,7 +80,7 @@ function ulf_social_media_block_view($delta='') {
       $variables['instagram'] = variable_get('ulf_instagram', '');
       $variables['twitter'] = variable_get('ulf_twitter', '');
       $variables['linkedin'] = variable_get('ulf_linkedin', '');
-      $variables['icon_path'] =  drupal_get_path('module', 'ulf_social_media') . '/icons';
+      $variables['icon_path'] =  '/' . drupal_get_path('module', 'ulf_social_media') . '/icons';
       $block['content'] = theme('ulf_social_media', $variables);
       break;
   }
