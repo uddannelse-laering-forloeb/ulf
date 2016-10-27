@@ -70,7 +70,6 @@ function _ulf_admin_panel_form($form) {
  * @param $form_state
  */
 function _ulf_admin_panel_form_submit($form, $form_state) {
-  $a =2;
   if(!empty($form_state['values']['ulf_newsletter_header_image'])) {
     // Load the file via file.fid.
     $file = file_load($form_state['values']['ulf_newsletter_header_image']);
