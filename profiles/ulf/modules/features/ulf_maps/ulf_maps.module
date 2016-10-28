@@ -110,6 +110,17 @@ function ulf_maps_update_location($form, &$form_state) {
     'js-show-map',
   );
 
+  // Add show on map field.
+  if ($form['#form_id'] == 'user_profile_form') {
+    $form['locations']['0']['field_profile_show_on_map'] = $form['field_profile_show_on_map'];
+    hide($form['field_profile_show_on_map']);
+  }
+  else {
+    $form['locations']['0']['field_course_show_on_map'] = $form['field_course_show_on_map'];
+    hide($form['field_course_show_on_map']);
+  }
+
+
   // Render the form and remove messages.
   $element = render($form['locations']);
   drupal_get_messages();
@@ -196,45 +207,36 @@ function _ulf_maps_prerender($form) {
  * @param $form_state
  */
 function _ulf_maps_profile_submit($form, &$form_state) {
-  $form_id = $form['#form_id'];
-  if ($form_id == 'user_profile_form') {
-    if ($form_state['values']['field_profile_show_on_map']['und']['0']['value'] == 0) {
-      // Update the values in the form.
-      $form['locations'][0]['locpick']['user_latitude']['#value'] = '0.000000';
-      $form['locations'][0]['locpick']['user_longitude']['#value'] = '0.000000';
-
-      // Update default values with the new values.
-      $form['locations'][0]['#default_value']['latitude'] = '0.000000';
-      $form['locations'][0]['#default_value']['longitude'] = '0.000000';
-      $form_state['values']['locations'][0]['locpick']['user_latitude'] = '0.000000';
-      $form_state['values']['locations'][0]['locpick']['user_longitude'] = '0.000000';
-
-      // Update map information with new location.
-      $form['locations'][0]['locpick']['map']['#gmap_settings']['latitude'] = '0.000000';
-      $form['locations'][0]['locpick']['map']['#gmap_settings']['longitude'] = '0.000000';
-      $form['locations'][0]['locpick']['map']['#gmap_settings']['latlong'] = '0.000000' . ',' . '0.000000';
-      $form['locations'][0]['locpick']['current']['current_latitude']['#markup'] = '0.000000';
-      $form['locations'][0]['locpick']['current']['current_longitude']['#markup'] = '0.000000';
-    }
+  if (isset($form_state['values']['field_profile_show_on_map']) && $form_state['values']['field_profile_show_on_map']['und']['0']['value'] === 0) {
+    _reset_coordinates($form, $form_state);
   }
-  else {
-    if ($form_state['values']['field_course_show_on_map']['und']['0']['value'] == 0) {
-      // Update the values in the form.
-      $form['locations'][0]['locpick']['user_latitude']['#value'] = '0.000000';
-      $form['locations'][0]['locpick']['user_longitude']['#value'] = '0.000000';
 
-      // Update default values with the new values.
-      $form['locations'][0]['#default_value']['latitude'] = '0.000000';
-      $form['locations'][0]['#default_value']['longitude'] = '0.000000';
-      $form_state['values']['locations'][0]['locpick']['user_latitude'] = '0.000000';
-      $form_state['values']['locations'][0]['locpick']['user_longitude'] = '0.000000';
-
-      // Update map information with new location.
-      $form['locations'][0]['locpick']['map']['#gmap_settings']['latitude'] = '0.000000';
-      $form['locations'][0]['locpick']['map']['#gmap_settings']['longitude'] = '0.000000';
-      $form['locations'][0]['locpick']['map']['#gmap_settings']['latlong'] = '0.000000' . ',' . '0.000000';
-      $form['locations'][0]['locpick']['current']['current_latitude']['#markup'] = '0.000000';
-      $form['locations'][0]['locpick']['current']['current_longitude']['#markup'] = '0.000000';
-    }
+  if (isset($form_state['values']['field_course_show_on_map']) && $form_state['values']['field_course_show_on_map']['und']['0']['value'] === 0) {
+    _reset_coordinates($form, $form_state);
   }
+}
+
+
+/**
+ * Reset coordinates for the form.
+ * @param $form
+ * @param $form_state
+ */
+function _reset_coordinates($form, $form_state) {
+  // Update the values in the form.
+  $form['locations'][0]['locpick']['user_latitude']['#value'] = '0.000000';
+  $form['locations'][0]['locpick']['user_longitude']['#value'] = '0.000000';
+
+  // Update default values with the new values.
+  $form['locations'][0]['#default_value']['latitude'] = '0.000000';
+  $form['locations'][0]['#default_value']['longitude'] = '0.000000';
+  $form_state['values']['locations'][0]['locpick']['user_latitude'] = '0.000000';
+  $form_state['values']['locations'][0]['locpick']['user_longitude'] = '0.000000';
+
+  // Update map information with new location.
+  $form['locations'][0]['locpick']['map']['#gmap_settings']['latitude'] = '0.000000';
+  $form['locations'][0]['locpick']['map']['#gmap_settings']['longitude'] = '0.000000';
+  $form['locations'][0]['locpick']['map']['#gmap_settings']['latlong'] = '0.000000' . ',' . '0.000000';
+  $form['locations'][0]['locpick']['current']['current_latitude']['#markup'] = '0.000000';
+  $form['locations'][0]['locpick']['current']['current_longitude']['#markup'] = '0.000000';
 }
