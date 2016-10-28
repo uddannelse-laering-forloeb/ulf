@@ -1,5 +1,9 @@
 #ULF changelog
 
+#2.4.6
+* Fixed error in map display on users and nodes
+* Fixed error in draft creation and updating.
+
 #2.4.5
 * Removed map field from pdf display on courses
 
