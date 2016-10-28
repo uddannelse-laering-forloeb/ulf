@@ -12,7 +12,6 @@ dependencies[] = location_user
 dependencies[] = strongarm
 features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:2
-features[variable][] = gmap_api_key
 features[variable][] = gmap_marker_custom_dir
 features[variable][] = gmap_marker_file
 features[variable][] = gmap_markermanager
