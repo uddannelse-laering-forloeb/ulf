@@ -69,13 +69,13 @@ function ulf_course_educators_strongarm() {
           'weight' => '1',
         ),
         'path' => array(
-          'weight' => '6',
+          'weight' => '8',
         ),
         'redirect' => array(
-          'weight' => '7',
+          'weight' => '9',
         ),
         'locations' => array(
-          'weight' => '30',
+          'weight' => '10',
         ),
       ),
       'display' => array(),
