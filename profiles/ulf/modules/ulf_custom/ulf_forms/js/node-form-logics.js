@@ -138,27 +138,30 @@
         if ($(this).is(':checked')) {
           $('#node_course_form_group_period').hide();
           $('.field-name-field-period').hide();
-          $('.field-name-field-period .start-date-wrapper input').val(start_time);
-          $('.field-name-field-period .end-date-wrapper input').val('01/01/2030');
+          $('.field-name-field-period .start-date-wrapper .form-item-field-period-und-0-value-date input').val(start_time);
+          $('.field-name-field-period .end-date-wrapper .form-item-field-period-und-0-value2-date input').val('01/01/2030');
         }
         else {
           $('#node_course_form_group_period').show();
           $('.field-name-field-period').show();
-          $('.field-name-field-period .start-date-wrapper input').val('');
-          $('.field-name-field-period .end-date-wrapper input').val('');
+          $('.field-name-field-period .start-date-wrapper .form-item-field-period-und-0-value-date input').val('');
+          $('.field-name-field-period .end-date-wrapper .form-item-field-period-und-0-value2-date input').val('');
         }
       });
 
+      // When field free is checked.
       $('.field-name-field-free .form-checkbox').click(function () {
         if ($(this).is(':checked')) {
           $('.field-name-field-collection-price').hide();
           $('.field-name-field-price').hide();
           $('.field-name-field-vary-price').hide();
+          $('.field-name-field-course-moms').hide();
         }
         else {
           $('.field-name-field-collection-price').show();
           $('.field-name-field-price').show();
           $('.field-name-field-vary-price').show();
+          $('.field-name-field-course-moms').show();
         }
       });
 
@@ -211,8 +214,8 @@
         if ($(this).is(':checked')) {
           $('#node_course_form_group_period').hide();
           $('.field-name-field-period').hide();
-          $('.field-name-field-period .start-date-wrapper input').val(start_time);
-          $('.field-name-field-period .end-date-wrapper input').val('01/01/2030');
+          $('.field-name-field-period .start-date-wrapper .form-item-field-period-und-0-value-date input').val(start_time);
+          $('.field-name-field-period .end-date-wrapper .form-item-field-period-und-0-value2-date input').val('01/01/2030');
         }
         else {
           $('#node_course_form_group_period').show();
@@ -226,11 +229,13 @@
           $('.field-name-field-collection-price').hide();
           $('.field-name-field-price').hide();
           $('.field-name-field-vary-price').hide();
+          $('.field-name-field-course-moms').hide();
         }
         else {
           $('.field-name-field-collection-price').show();
           $('.field-name-field-price').show();
           $('.field-name-field-vary-price').show();
+          $('.field-name-field-course-moms').hide();
         }
       });
     }

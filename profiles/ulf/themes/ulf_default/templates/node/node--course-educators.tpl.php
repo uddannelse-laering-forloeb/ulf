@@ -105,6 +105,47 @@
           <?php print render($content['field_video']); ?>
           <?php print render($content['field_catering']); ?>
           <?php print render($content['field_educational_material']); ?>
+          <?php if ($location['street'] || $location['name']) : ?>
+            <div class="field--collection-wrapper">
+              <div class="field--collection-label"><?php print t('Place');?></div>
+              <div class="field--collection-content">
+                <div class="field--collection-item">
+                  <?php if ($location['street']) : ?>
+                    <div><?php print $location['street'] ?></div>
+                  <?php endif; ?>
+                  <?php if ($location['additional']) : ?>
+                    <div><?php print $location['additional'] ?></div>
+                  <?php endif; ?>
+                  <?php if ($location['city']) : ?>
+                  <div><?php print $location['city'] ?></div>
+                  <?php endif; ?>
+                  <?php if ($location['postal_code']) : ?>
+                    <div><?php print $location['postal_code'] ?></div>
+                  <?php endif; ?>
+                  <?php if ($location['name']) : ?>
+                    <div><?php print $location['name'] ?></div>
+                  <?php endif; ?>
+                </div>
+              </div>
+            </div>
+          <?php endif; ?>
+          <?php if ($field_last_signup_date || $field_signup_link || $field_signup_email || $field_conduction_dates) : ?>
+            <div class="field--collection-wrapper">
+              <div class="field--collection-label"><?php print t('Signup');?></div>
+              <div class="field--collection-content">
+                <div class="field--collection-item">
+                  <div class="field--collection-item-inner">
+                    <div class="field--collection-description">
+                      <?php print render($content['field_last_signup_date']); ?>
+                      <?php print render($content['field_signup_link']); ?>
+                      <?php print render($content['field_signup_email']); ?>
+                      <?php print render($content['field_conduction_dates']); ?>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <?php endif;?>
           <div class="block--pdf">
             <a class="block--pdf-link" target="_blank" href="/printpdf/<?php print $node->nid; ?>"><?php print t('Print this offer as pdf')?></a>
           </div>
@@ -119,6 +160,7 @@
                 <div class="block--field-wrapper">
                   <?php print render($content['field_course_contact_name']); ?>
                   <?php print render($content['field_course_contact_mail']); ?>
+                  <?php print render($content['field_course_phone']); ?>
                 </div>
               <?php endif; ?>
               <?php /* If any of the fields in this wrapper contain data */ ?>
@@ -135,7 +177,7 @@
                   <?php print render($content['field_subject']); ?>
                 </div>
               <?php endif;?>
-              <?php if (isset($field_period_full_year['0']) || isset($field_price) || isset($field_free['0'])) : ?>
+              <?php if ($field_duration || $field_duration_description || isset($field_period_full_year['0']) || isset($field_price) || isset($field_free['0'])) : ?>
                 <?php if ($field_period_full_year['0']['value'] == 0 || $field_price || $field_free['0']['value'] == 1) : ?>
                   <div class="block--field-wrapper">
                     <?php if ($field_period_full_year['0']['value'] == 0 ) : ?>
@@ -143,6 +185,16 @@
                     <?php else : ?>
                       <div class="block--field-label"><?php print t('Periode');?></div>
                       <div class="block--field-text"><?php print t('All year');?></div>
+                    <?php endif;?>
+                    <?php print render($content['field_period_info']); ?>
+                    <?php if ($field_duration || $field_duration_description) : ?>
+                      <div class="block--field-label"><?php print t('Duration');?></div>
+                      <?php if ($field_duration) : ?>
+                        <div class="block--field-text"><?php print $stripped_duration; ?><?php print render($content['field_duration_unit']); ?></div>
+                      <?php endif; ?>
+                      <?php if ($field_duration_description) : ?>
+                        <div class="block--field-text"><?php print render($content['field_duration_description']); ?></div>
+                      <?php endif; ?>
                     <?php endif;?>
                     <?php if ($field_free['0']['value'] == 0 ) : ?>
                       <div class="block--field-label"><?php print t('Price');?></div>
@@ -181,6 +233,7 @@
       </div>
       <?php
       // We hide the comments and links now so that we can render them later.
+      hide($content['field_duration']);
       hide($content['field_period']);
       hide($content['field_price']);
       hide($content['field_free']);

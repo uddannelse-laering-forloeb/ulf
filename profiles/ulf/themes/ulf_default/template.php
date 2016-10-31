@@ -192,6 +192,14 @@ function ulf_default_preprocess_node(&$variables) {
       }
       break;
 
+    case 'course_educators':
+      // Display of duration remove 0's in decimal.
+      if (isset($variables['content']['field_duration']['0']['#markup'])) {
+        $variables['stripped_duration'] = preg_replace('/,?0+$/','', $variables['content']['field_duration']['0']['#markup']);
+      }
+      break;
+
+
     case 'static_page':
       // Provide menu block for static page nodes.
       $variables['static_page_menu'] = module_invoke('menu_block', 'block_view', 'ulf_base-1');

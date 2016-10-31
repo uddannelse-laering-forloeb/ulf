@@ -15,6 +15,19 @@
 * 5) Setup site through UI, making choices along the way.
 * You should now have an empty ulf installation.
 
+##Update guide
+
+###For each site:
+´
+git pull
+git checkout v.XYZ
+drush updb
+drush fra -y
+drush l10n-update-refresh
+drush l10n-update
+drush cc all
+´
+
 ###Patches used
 * https://www.drupal.org/files/1093420-22.patch (Used by profiler module during site install)
 * https://www.drupal.org/files/issues/translate_role_names-2205581-1.patch
@@ -32,3 +45,5 @@
 
 ###Other
 - Each theme has theme specific styles that override specific selectors. But the default styles (ulf-styles.css) are always used.
+
+
