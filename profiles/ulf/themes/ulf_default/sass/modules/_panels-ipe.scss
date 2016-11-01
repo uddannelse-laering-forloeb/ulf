@@ -1,0 +1,37 @@
+/**
+ *
+ * Panels ipe
+ *
+ * - Contains styles used when panels ipe is active.
+ * - The html is severely modified when panels ipe is activated on a page.
+ * - Attempting to align the templates to our standards is unwise because alot
+ * of js and css is expecting a certain html setup.
+ * - We don't change the html but rather align our css to comply with this setup.
+ *
+ */
+
+
+/* Styles.
+================================================================================================================== */
+
+// Nest once to override styles used when panels ipe is not active.
+/*
+.panels-ipe-sort-container {
+  .teaser--group {
+    @include breakpoint(650px) {
+      margin-bottom: 0;
+      width: 100%;
+    }
+  }
+}
+*/
+.panels-ipe-region {
+  width: 100%;
+}
+
+// First region.
+.panels-ipe-portlet-content {
+  @include flexbox;
+  @include flex-wrap(wrap);
+  @include flex-direction(row);
+}

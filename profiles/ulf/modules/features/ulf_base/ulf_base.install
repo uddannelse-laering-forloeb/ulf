@@ -373,3 +373,18 @@ function ulf_base_update_7017(&$sandbox) {
       'display' => 0,
     ))->execute();
 }
+
+
+/**
+ * Add features override module and panels ipe
+ */
+function ulf_base_update_7018(&$sandbox) {
+  $module_enable = array(
+    'features_override',
+    'panels_ipe'
+  );
+
+  module_enable($module_enable);
+
+  drupal_flush_all_caches();
+}
