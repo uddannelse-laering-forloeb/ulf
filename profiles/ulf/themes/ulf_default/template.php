@@ -52,8 +52,7 @@ function ulf_default_preprocess_page(&$variables) {
  *   Available variables.
  */
 function ulf_default_preprocess_front_page(&$variables) {
-  // Provide newsletter block for front page.
-  $variables['newsletter_block'] = module_invoke('mailchimp_signup', 'block_view', 'signup_to_newsletter');
+
 }
 
 
@@ -332,6 +331,10 @@ function ulf_default_preprocess_panels_pane(&$variables) {
   $variables['provided_class'] = '';
   if(!empty($variables['pane']->css['css_class'])) {
     $variables['provided_class'] = $variables['pane']->css['css_class'];
+  }
+  if ($variables['pane']->subtype == 'group_course') {
+    // Provide newsletter block for front page.
+    $variables['newsletter_block'] = module_invoke('mailchimp_signup', 'block_view', 'signup_to_newsletter');
   }
 }
 

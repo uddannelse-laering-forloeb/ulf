@@ -38,6 +38,49 @@ function ulf_frontpage_default_ctools_custom_content() {
   $content = new stdClass();
   $content->disabled = FALSE; /* Edit this to true to make a default content disabled initially */
   $content->api_version = 1;
+  $content->name = 'group_courses_main';
+  $content->admin_title = 'Group - courses main';
+  $content->admin_description = 'Link to daycare, school and youth offers';
+  $content->category = 'Target group link';
+  $content->settings = array(
+    'admin_title' => '',
+    'title' => '',
+    'body' => '<div class="teaser--group">
+<a class="teaser--group-inner" href="/dagtilbud">
+<div class="teaser--group-field">
+<img src="/profiles/ulf/themes/[site:current-user:theme]/images/frontpage-dagtilbud.jpg" alt="Dagtilbud">
+</div>
+<div class="teaser--group-text is-dagtilbud">
+<div class="teaser--group-text-inner">Dagtilbud</div>
+</div>
+</a>
+</div><div class="teaser--group">
+<a class="teaser--group-inner" href="/grundskole">
+<div class="teaser--group-field">
+<img src="/profiles/ulf/themes/[site:current-user:theme]/images/frontpage-grundskole.jpg" alt="Grundskole">
+</div>
+<div class="teaser--group-text is-grundskole">
+<div class="teaser--group-text-inner">Grundskolen</div>
+</div>
+</a>
+</div><div class="teaser--group">
+<a class="teaser--group-inner" href="/ungdomsuddannelse">
+<div class="teaser--group-field">
+<img src="/profiles/ulf/themes/[site:current-user:theme]/images/frontpage-ungdomsudd.jpg" alt="Ungdomsuddannelse">
+</div>
+<div class="teaser--group-text is-ungdomsuddannelse">
+<div class="teaser--group-text-inner">Ungdomsuddannelser</div>
+</div>
+</a>
+</div>',
+    'format' => 'full_html',
+    'substitute' => 1,
+  );
+  $export['group_courses_main'] = $content;
+
+  $content = new stdClass();
+  $content->disabled = FALSE; /* Edit this to true to make a default content disabled initially */
+  $content->api_version = 1;
   $content->name = 'group_daycare';
   $content->admin_title = 'Group - daycare';
   $content->admin_description = 'Link to daycare offers';
