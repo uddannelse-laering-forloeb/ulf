@@ -376,7 +376,7 @@ function ulf_base_update_7017(&$sandbox) {
 
 
 /**
- * Add features override module and panels ipe
+ * Add panels ipe
  */
 function ulf_base_update_7018(&$sandbox) {
   $module_enable = array(
