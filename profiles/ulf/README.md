@@ -22,6 +22,7 @@
 git pull
 git checkout v.XYZ
 drush updb
+drush spr
 drush fra -y
 drush l10n-update-refresh
 drush l10n-update
