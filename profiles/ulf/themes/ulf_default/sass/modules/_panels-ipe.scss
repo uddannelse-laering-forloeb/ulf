@@ -14,7 +14,17 @@
 /* Styles.
 ================================================================================================================== */
 
-// Nest once to override styles used when panels ipe is not active.
+.panels-ipe.front .layout-inner > div > div {
+  padding: 0;
+}
+
+.panels-ipe.front .panels-ipe-portlet-content {
+  padding: 2em 0;
+
+  &.panels-ipe-empty-pane {
+    padding: 0;
+  }
+}
 
 //Ensure 100% width on all regions
 .panels-ipe-region {
@@ -28,11 +38,12 @@
   @include flex-direction(row);
 }
 
+.panels-ipe-empty-pane,
 .panels-ipe-display-container .is-empty {
   display: none;
 }
 
-
+.panels-ipe-display-container.panels-ipe-editing .panels-ipe-empty-pane,
 .panels-ipe-display-container.panels-ipe-editing .is-empty {
   display: block;
 }

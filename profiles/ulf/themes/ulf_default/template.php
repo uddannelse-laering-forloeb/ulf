@@ -52,7 +52,12 @@ function ulf_default_preprocess_page(&$variables) {
  *   Available variables.
  */
 function ulf_default_preprocess_front_page(&$variables) {
-
+  $variables['empty_regions'] = array();
+  foreach ($variables['display']->content as $pane) {
+    if (property_exists($pane, 'IPE_empty')) {
+      $variables['empty_regions'][] = $pane->pid;
+    }
+  }
 }
 
 
