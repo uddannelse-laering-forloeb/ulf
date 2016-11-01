@@ -380,7 +380,6 @@ function ulf_base_update_7017(&$sandbox) {
  */
 function ulf_base_update_7018(&$sandbox) {
   $module_enable = array(
-    'features_override',
     'panels_ipe'
   );
 
