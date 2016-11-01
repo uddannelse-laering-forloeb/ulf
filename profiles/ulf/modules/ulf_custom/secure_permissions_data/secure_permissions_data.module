@@ -148,6 +148,8 @@ function secure_permissions_data_secure_permissions($role) {
       'switch shortcut sets',
       'translate interface',
       'use panels dashboard',
+      'use panels in place editing',
+      'use ipe with page manager',
       'use text format editor',
       'use text format full_html',
       'use workbench_moderation my drafts tab',

@@ -15,23 +15,25 @@
 ================================================================================================================== */
 
 // Nest once to override styles used when panels ipe is not active.
-/*
-.panels-ipe-sort-container {
-  .teaser--group {
-    @include breakpoint(650px) {
-      margin-bottom: 0;
-      width: 100%;
-    }
-  }
-}
-*/
+
+//Ensure 100% width on all regions
 .panels-ipe-region {
   width: 100%;
 }
 
-// First region.
+// First region. Imitate flexbox from
 .panels-ipe-portlet-content {
   @include flexbox;
   @include flex-wrap(wrap);
   @include flex-direction(row);
 }
+
+.panels-ipe-display-container .is-empty {
+  display: none;
+}
+
+
+.panels-ipe-display-container.panels-ipe-editing .is-empty {
+  display: block;
+}
+
