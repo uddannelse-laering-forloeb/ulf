@@ -1,6 +1,0 @@
-name = ULF latest moderation
-description = Provides a views field handler for fetching the latest workbench moderation id of a node
-package = Ulf base
-core = 7.x
-dependencies[] = views
-files[] = views/ulf_latest_moderation_handler_custom_field.inc
