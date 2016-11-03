@@ -89,35 +89,6 @@ function ulf_field_bases_field_default_field_bases() {
     'type' => 'field_collection',
   );
 
-  // Exported field_base: 'field_conduction_dates'.
-  $field_bases['field_conduction_dates'] = array(
-    'active' => 1,
-    'cardinality' => -1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_conduction_dates',
-    'indexes' => array(),
-    'locked' => 0,
-    'module' => 'date',
-    'settings' => array(
-      'cache_count' => 4,
-      'cache_enabled' => 0,
-      'granularity' => array(
-        'day' => 'day',
-        'hour' => 'hour',
-        'minute' => 'minute',
-        'month' => 'month',
-        'second' => 0,
-        'year' => 'year',
-      ),
-      'timezone_db' => 'UTC',
-      'todate' => '',
-      'tz_handling' => 'site',
-    ),
-    'translatable' => 0,
-    'type' => 'date',
-  );
-
   // Exported field_base: 'field_contact_home_page'.
   $field_bases['field_contact_home_page'] = array(
     'active' => 1,
@@ -353,6 +324,7 @@ function ulf_field_bases_field_default_field_bases() {
         'lesson' => 'lektion',
         'lessons' => 'lektioner',
         'minutes' => 'minutter',
+        'days' => 'dage',
       ),
       'allowed_values_function' => '',
     ),
