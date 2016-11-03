@@ -116,11 +116,11 @@
                   <?php if ($location['additional']) : ?>
                     <div><?php print $location['additional'] ?></div>
                   <?php endif; ?>
-                  <?php if ($location['city']) : ?>
-                  <div><?php print $location['city'] ?></div>
-                  <?php endif; ?>
                   <?php if ($location['postal_code']) : ?>
-                    <div><?php print $location['postal_code'] ?></div>
+                    <span><?php print $location['postal_code'] ?></span>
+                  <?php endif; ?>
+                  <?php if ($location['city']) : ?>
+                  <span><?php print $location['city'] ?></span>
                   <?php endif; ?>
                   <?php if ($location['name']) : ?>
                     <div><?php print $location['name'] ?></div>
@@ -139,7 +139,6 @@
                       <?php print render($content['field_last_signup_date']); ?>
                       <?php print render($content['field_signup_link']); ?>
                       <?php print render($content['field_signup_email']); ?>
-                      <?php print render($content['field_conduction_dates']); ?>
                     </div>
                   </div>
                 </div>

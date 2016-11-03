@@ -373,3 +373,17 @@ function ulf_base_update_7017(&$sandbox) {
       'display' => 0,
     ))->execute();
 }
+
+
+/**
+ * Add panels ipe
+ */
+function ulf_base_update_7018(&$sandbox) {
+  $module_enable = array(
+    'panels_ipe'
+  );
+
+  module_enable($module_enable);
+
+  drupal_flush_all_caches();
+}
