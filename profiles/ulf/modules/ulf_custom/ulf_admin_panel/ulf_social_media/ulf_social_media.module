@@ -129,7 +129,7 @@ function ulf_social_media_block_view($delta='') {
       $variables['twitter'] = variable_get('ulf_twitter', '');
       $variables['linkedin'] = variable_get('ulf_linkedin', '');
       $color = variable_get('ulf_social_media_footer_color', 'white');
-      $variables['icon_path'] =  '/' . drupal_get_path('module', 'ulf_social_media') . '/icons/' . $color;;
+      $variables['icon_path'] =  '/' . drupal_get_path('module', 'ulf_social_media') . '/icons/' . $color;
       $block['content'] = theme('ulf_social_media_footer', $variables);
       break;
   }

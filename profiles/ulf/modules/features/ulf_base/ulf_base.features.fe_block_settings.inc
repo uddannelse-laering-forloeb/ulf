@@ -12,10 +12,10 @@ function ulf_base_default_fe_block_settings() {
 
   $export['version'] = '2.0';
 
-  $export['ulf_social_media-ulf_social_media'] = array(
+  $export['ulf_social_media-ulf_social_media_footer'] = array(
     'cache' => 1,
     'custom' => 0,
-    'delta' => 'ulf_social_media',
+    'delta' => 'ulf_social_media_footer',
     'module' => 'ulf_social_media',
     'node_types' => array(),
     'pages' => '',
