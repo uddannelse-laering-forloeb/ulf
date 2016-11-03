@@ -36,7 +36,6 @@ features[field_group][] = group_media|node|course_educators|form
 features[field_group][] = group_period|node|course_educators|form
 features[field_group][] = group_signup|node|course_educators|form
 features[field_instance][] = node-course_educators-field_catering
-features[field_instance][] = node-course_educators-field_conduction_dates
 features[field_instance][] = node-course_educators-field_course_contact_mail
 features[field_instance][] = node-course_educators-field_course_contact_name
 features[field_instance][] = node-course_educators-field_course_moms
