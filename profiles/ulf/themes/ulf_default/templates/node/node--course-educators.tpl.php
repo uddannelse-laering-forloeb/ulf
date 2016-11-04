@@ -105,24 +105,24 @@
           <?php print render($content['field_video']); ?>
           <?php print render($content['field_catering']); ?>
           <?php print render($content['field_educational_material']); ?>
-          <?php if ($location['street'] || $location['name']) : ?>
+          <?php if (isset($location['street']) || isset($location['name'])) : ?>
             <div class="field--collection-wrapper">
               <div class="field--collection-label"><?php print t('Place');?></div>
               <div class="field--collection-content">
                 <div class="field--collection-item">
-                  <?php if ($location['street']) : ?>
+                  <?php if (isset($location['street'])) : ?>
                     <div><?php print $location['street'] ?></div>
                   <?php endif; ?>
-                  <?php if ($location['additional']) : ?>
+                  <?php if (isset($location['additional'])) : ?>
                     <div><?php print $location['additional'] ?></div>
                   <?php endif; ?>
-                  <?php if ($location['postal_code']) : ?>
+                  <?php if (isset($location['postal_code'])) : ?>
                     <span><?php print $location['postal_code'] ?></span>
                   <?php endif; ?>
-                  <?php if ($location['city']) : ?>
+                  <?php if (isset($location['city'])) : ?>
                   <span><?php print $location['city'] ?></span>
                   <?php endif; ?>
-                  <?php if ($location['name']) : ?>
+                  <?php if (isset($location['name'])) : ?>
                     <div><?php print $location['name'] ?></div>
                   <?php endif; ?>
                 </div>
