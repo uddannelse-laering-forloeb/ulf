@@ -1,11 +1,9 @@
 /* Print styles to use across all themes */
 
-@media print {
-    /* Hide fields */
-    .block--light.is-form,
-    .block--field-label.is-video,
-    .ribbon-wrapper,
-    .block--field-text.is-video {
-        display: none;
-    }
+/* Hide fields */
+.block--light.is-form,
+.block--field-label.is-video,
+.ribbon-wrapper,
+.block--field-text.is-video {
+    display: none;
 }
