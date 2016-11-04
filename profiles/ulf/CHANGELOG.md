@@ -1,7 +1,13 @@
 #ULF changelog
 
+#2.4.9
+* Added to changelog
+
+#2.4.9
+* Added google site verification file
+
 #2.4.8
-* Added gootle site verification file
+* Added google site verification file
 
 #2.4.7
 * Removed api key from map feature
