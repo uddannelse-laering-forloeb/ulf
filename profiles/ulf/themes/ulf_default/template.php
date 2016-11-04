@@ -33,10 +33,6 @@ function ulf_default_preprocess_page(&$variables) {
   // Provide main menu as block for all pages.
   $variables['main_menu_block'] = module_invoke('system', 'block_view', 'main-menu');
 
-  // Hide login tabs for user profiles (see ulf_course_providers module)
-  if (arg(0) == 'user' && is_numeric(arg(1))) {
-    //unset($variables['tabs']['#primary']);
-  }
 
   // Add social media links to header if selected.
   if (variable_get('ulf_social_media_header', FALSE) == TRUE) {
@@ -207,7 +203,9 @@ function ulf_default_preprocess_node(&$variables) {
     case 'static_page':
       // Provide menu block for static page nodes.
       $variables['static_page_menu'] = module_invoke('menu_block', 'block_view', 'ulf_base-1');
-
+      if (empty($variables['static_page_menu']['content'])) {
+        $variables['static_page_menu'] = FALSE;
+      }
       // Provide newsletter block for static pages.
       $variables['newsletter_block'] = module_invoke('mailchimp_signup', 'block_view', 'signup_to_newsletter');
       break;
