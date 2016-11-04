@@ -6,6 +6,9 @@
  *
  */
 
+/* Fetch default print styles */
+@import url("../../ulf_default/css/custom-styles.css");
+
 @font-face {
     font-family: 'Asap';
     src: url("../fonts/Asap-Regular.ttf");
@@ -31,9 +34,6 @@ body {
     text-shadow: none;
     position: relative;
 }
-
-/* Fetch default print styles */
-@import url("../../ulf_default/css/print-styles.css");
 
 /* Logo display. */
 .print-logo {
