@@ -1,5 +1,11 @@
 #ULF changelog
 
+#2.4.8
+* Added gootle site verification file
+
+#2.4.7
+* Removed api key from map feature
+
 #2.4.6
 * Fixed error in map display on users and nodes
 * Fixed error in draft creation and updating.
