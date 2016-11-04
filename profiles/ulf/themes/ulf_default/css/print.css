@@ -32,6 +32,9 @@ body {
     position: relative;
 }
 
+/* Fetch default print styles */
+@import url("../../ulf_default/css/print-styles.css");
+
 /* Logo display. */
 .print-logo {
     background: url("../images/header-bg.jpg");
