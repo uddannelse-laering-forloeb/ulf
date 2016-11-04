@@ -1,6 +1,10 @@
 #ULF changelog
 
-#2.4.9
+
+#2.4.10
+* Removed verification file from git
+
+#2.4.10
 * Added to changelog
 
 #2.4.9
