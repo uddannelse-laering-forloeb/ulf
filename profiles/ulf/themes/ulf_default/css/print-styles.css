@@ -4,6 +4,7 @@
     /* Hide fields */
     .block--light.is-form,
     .block--field-label.is-video,
+    .ribbon-wrapper,
     .block--field-text.is-video {
         display: none;
     }
