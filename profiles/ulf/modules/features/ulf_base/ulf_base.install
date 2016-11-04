@@ -387,8 +387,17 @@ function ulf_base_update_7018(&$sandbox) {
 }
 
 /**
- * Set translations path variable.
+ * Set translations path variable. and add user list path alias.
  */
 function ulf_base_update_7019(&$sandbox) {
   variable_set('l10n_update_download_store', 'sites/all/translations');
+
+  // Add alias to url alias table.
+  db_insert('url_alias')
+  ->fields(array(
+    'source' => 'admin/settings/custom/people',
+    'alias' => 'admin/people  ',
+    'language' => 'und',
+  ))
+    ->execute();
 }
