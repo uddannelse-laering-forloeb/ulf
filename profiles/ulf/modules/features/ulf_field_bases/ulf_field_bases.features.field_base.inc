@@ -194,31 +194,6 @@ function ulf_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_course_moms'.
-  $field_bases['field_course_moms'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_course_moms',
-    'indexes' => array(
-      'value' => array(
-        0 => 'value',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'list',
-    'settings' => array(
-      'allowed_values' => array(
-        'incl_vat' => 'Inklusiv moms',
-        'vat_free' => 'Momsfrit',
-      ),
-      'allowed_values_function' => '',
-    ),
-    'translatable' => 0,
-    'type' => 'list_text',
-  );
-
   // Exported field_base: 'field_course_phone'.
   $field_bases['field_course_phone'] = array(
     'active' => 1,

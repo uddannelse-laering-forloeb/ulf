@@ -104,6 +104,9 @@
           <?php print render($content['field_full_description']); ?>
           <?php print render($content['field_video']); ?>
           <?php print render($content['field_catering']); ?>
+          <?php if ($field_profile_contact) : ?>
+            <?php print render($content['field_profile_contact']); ?>
+          <?php endif; ?>
           <?php print render($content['field_educational_material']); ?>
           <?php if (isset($location['street']) || isset($location['name'])) : ?>
             <div class="field--collection-wrapper">
@@ -197,7 +200,12 @@
                     <?php endif;?>
                     <?php if ($field_free['0']['value'] == 0 ) : ?>
                       <div class="block--field-label"><?php print t('Price');?></div>
-                      <?php print render($content['field_price']); ?>
+                      <!--Check for price field value before printing-->
+                      <?php if ($field_collection_price) : ?>
+                        <?php print render($content['field_collection_price']); ?>
+                      <?php else : ?>
+                        <?php print render($content['field_price']); ?>
+                      <?php endif; ?>
                     <?php else : ?>
                       <div class="block--field-label"><?php print t('This course is free.');?></div>
                     <?php endif;?>

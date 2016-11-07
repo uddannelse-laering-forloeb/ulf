@@ -153,15 +153,11 @@
       $('.field-name-field-free .form-checkbox').click(function () {
         if ($(this).is(':checked')) {
           $('.field-name-field-collection-price').hide();
-          $('.field-name-field-price').hide();
           $('.field-name-field-vary-price').hide();
-          $('.field-name-field-course-moms').hide();
         }
         else {
           $('.field-name-field-collection-price').show();
-          $('.field-name-field-price').show();
           $('.field-name-field-vary-price').show();
-          $('.field-name-field-course-moms').show();
         }
       });
 
@@ -227,17 +223,29 @@
       $('.field-name-field-free .form-checkbox').each(function () {
         if ($(this).is(':checked')) {
           $('.field-name-field-collection-price').hide();
-          $('.field-name-field-price').hide();
           $('.field-name-field-vary-price').hide();
-          $('.field-name-field-course-moms').hide();
         }
         else {
           $('.field-name-field-collection-price').show();
-          $('.field-name-field-price').show();
           $('.field-name-field-vary-price').show();
-          $('.field-name-field-course-moms').hide();
         }
       });
+
+      // Hide empty fields for old price and and contact on course educators content type.
+      // If fields have values the editor should manually move them. When all values have been moved the field should be deleted as part of a future patch.
+      if (!$('.field-name-field-course-contact-name input').val()) {
+        $('.field-name-field-course-contact-name').hide();
+      }
+      if (!$('.field-name-field-course-contact-mail input').val()) {
+        $('.field-name-field-course-contact-mail').hide();
+      }
+      if (!$('.field-name-field-course-phone input').val()) {
+        $('.field-name-field-course-phone ').hide();
+      }
+
+      if ($('.fieldset-wrapper > .field-name-field-price input').val() == '0' || $('.fieldset-wrapper > .field-name-field-price input').val() == '0.00' || !$('.fieldset-wrapper > .field-name-field-price input').val()) {
+        $('.fieldset-wrapper > .field-name-field-price').hide();
+      }
     }
   };
 }(jQuery));

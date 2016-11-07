@@ -25,10 +25,11 @@ function ulf_course_educators_field_group_info() {
     'children' => array(
       0 => 'field_free',
       1 => 'field_price',
-      2 => 'field_duration_description',
+      2 => 'field_course_moms',
       3 => 'field_duration',
-      4 => 'field_duration_unit',
-      5 => 'field_course_moms',
+      4 => 'field_duration_description',
+      5 => 'field_duration_unit',
+      6 => 'field_collection_price',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -120,9 +121,10 @@ function ulf_course_educators_field_group_info() {
     'children' => array(
       0 => 'field_course_contact_mail',
       1 => 'field_course_contact_name',
-      2 => 'field_place',
+      2 => 'field_course_phone',
       3 => 'field_educational_goals',
-      4 => 'field_course_phone',
+      4 => 'field_place',
+      5 => 'field_profile_contact',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -240,9 +242,8 @@ function ulf_course_educators_field_group_info() {
     'weight' => '3',
     'children' => array(
       0 => 'field_last_signup_date',
-      1 => 'field_signup_link',
-      2 => 'field_conduction_dates',
-      3 => 'field_signup_email',
+      1 => 'field_signup_email',
+      2 => 'field_signup_link',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

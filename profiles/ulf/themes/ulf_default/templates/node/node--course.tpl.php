@@ -140,6 +140,30 @@
           <?php endif; ?>
           <?php print render($content['field_educational_material']); ?>
           <?php print render($content['field_inspirational_material']); ?>
+          <?php if (isset($location['street']) || isset($location['name'])) : ?>
+            <div class="field--collection-wrapper">
+              <div class="field--collection-label"><?php print t('Place');?></div>
+              <div class="field--collection-content">
+                <div class="field--collection-item">
+                  <?php if (isset($location['street'])) : ?>
+                    <div><?php print $location['street'] ?></div>
+                  <?php endif; ?>
+                  <?php if (isset($location['additional'])) : ?>
+                    <div><?php print $location['additional'] ?></div>
+                  <?php endif; ?>
+                  <?php if (isset($location['postal_code'])) : ?>
+                    <span><?php print $location['postal_code'] ?></span>
+                  <?php endif; ?>
+                  <?php if (isset($location['city'])) : ?>
+                    <span><?php print $location['city'] ?></span>
+                  <?php endif; ?>
+                  <?php if (isset($location['name'])) : ?>
+                    <div><?php print $location['name'] ?></div>
+                  <?php endif; ?>
+                </div>
+              </div>
+            </div>
+          <?php endif; ?>
           <div class="block--pdf">
             <a class="block--pdf-link" target="_blank" href="/printpdf/<?php print $node->nid; ?>"><?php print t('Save this offer as pdf'); ?></a>
           </div>
