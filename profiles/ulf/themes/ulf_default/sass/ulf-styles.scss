@@ -35,6 +35,7 @@
 @import "layout/_layout";
 
 // Components
+@import "itk-components/_itk-modal";
 @import "itk-components/_itk-menu";
 @import "itk-components/_itk-tabs";
 
@@ -52,3 +53,4 @@
 @import "modules/_search";
 @import "modules/_leaflet";
 @import "modules/_social-media";
+@import "modules/_modal";

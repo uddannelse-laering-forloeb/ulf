@@ -28,9 +28,20 @@
  * @see template_process()
  */
 ?>
-<div class="content"<?php print $content_attributes; ?>>
+<div class="content--main"<?php print $content_attributes; ?>>
   <?php
     hide($content['info']);
-    print render($content);
   ?>
+  <div class="block--field-wrapper">
+    <div class="block--field-label"><?php print t('Name'); ?></div>
+    <div class="block--field-text"><?php print $elements['#entity']->field_message_name['und']['0']['value']; ?></div>
+  </div>
+  <div class="block--field-wrapper">
+    <div class="block--field-label"><?php print t('Email'); ?></div>
+    <div class="block--field-text"><?php print $elements['#entity']->field_message_email['und']['0']['value']; ?></div>
+  </div>
+  <div class="block--field-wrapper">
+    <div class="block--field-label"><?php print t('Message'); ?></div>
+    <div class="block--field-text"><?php print $elements['#entity']->field_message_body['und']['0']['value']; ?></div>
+  </div>
 </div>

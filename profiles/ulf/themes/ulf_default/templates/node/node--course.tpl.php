@@ -242,21 +242,26 @@
               <div class="block--field-label"><?php print $profile_name; ?></div>
               <div class="block--field-text"><?php print $profile_address; ?></div>
               <div class="block--field-text"><?php print $profile_postal_code; ?> <?php print $profile_city; ?></div>
-              </br>
+              <br>
               <?php if (isset($profile_phone)) : ?>
                 <div class="block--field-text"><?php print t('Phone')?> <?php print $profile_phone; ?></div>
               <?php endif; ?>
-              </br>
+              <div class="block--field-label js-toggle-modal modal--open"><?php print t('Contact organizer'); ?></div>
+              <br>
               <a href="/user/<?php print $uid ?>"><?php print t('View organizer profile'); ?></a>
             </div>
           </div>
           <?php if ($field_message_form) : ?>
             <div class="block--light is-form">
-              <h2 class="block--header">
-                <?php print t('Send message to') . ' ' . $profile_name; ?>
-              </h2>
-              <div class="block--content">
-                <?php print render($content['field_message_form']); ?>
+            <div class="is-modal js-modal js-toggle-modal"></div>
+              <div class="modal--wrapper js-modal-dialog">
+                <div class="modal--close js-toggle-modal"><img src="/profiles/ulf/themes/ulf_default/images/close.svg"></div>
+                <h2 class="block--header modal--header">
+                  <?php print t('Send message to') . ' ' . $profile_name; ?>
+                </h2>
+                <div class="block--content">
+                  <?php print render($content['field_message_form']); ?>
+                </div>
               </div>
             </div>
           <?php endif; ?>

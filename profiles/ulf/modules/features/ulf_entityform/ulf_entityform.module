@@ -11,8 +11,9 @@ function ulf_entityform_form_end_user_message_entityform_edit_form_alter(&$form,
   if (!empty(arg(0)) && arg(0) == 'node') {
     $form['#parent_nid'] = arg(1);
   }
-
-  array_unshift($form['actions']['submit']['#submit'], '_ulf_entityform_add_node_reference_submit');
+  if (isset($form['actions']['submit'])) {
+    array_unshift($form['actions']['submit']['#submit'], '_ulf_entityform_add_node_reference_submit');
+  }
 }
 
 function _ulf_entityform_add_node_reference_submit(&$form, &$form_state) {

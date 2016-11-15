@@ -1,0 +1,33 @@
+/**
+ *
+ * Modal module.
+ *
+ * Contains styles related to presenting content in a modal box.
+ *
+ */
+
+.modal {
+  &--wrapper {
+    @include modal-dialog();
+  }
+
+  &--header {
+    padding-right: 40px;
+  }
+
+  &--close {
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
+
+  &--open {
+    cursor: pointer;
+  }
+}
+
+.is-modal {
+  @extend %itk--menu-nav-overlay;
+}
+
