@@ -1,6 +1,13 @@
 #ULF changelog
 
-#2.4.9
+#2.4.12
+* Updated core with security fix
+* Updated several contrib modules with security updates
+
+#2.4.11
+* Removed verification file from git
+
+#2.4.10
 * Added to changelog
 
 #2.4.9
