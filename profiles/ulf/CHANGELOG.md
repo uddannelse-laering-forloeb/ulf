@@ -1,5 +1,7 @@
 #ULF changelog
 
+#2.4.11
+* Updated core with security fix
 
 #2.4.10
 * Removed verification file from git
