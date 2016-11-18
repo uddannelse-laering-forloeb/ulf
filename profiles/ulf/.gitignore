@@ -1,0 +1,12 @@
+# Ignore modules
+modules/features/ulf_aarhus_search_settings
+modules/features/ulf_silkeborg_search_settings
+modules/features/ulf_viborg_search_settings
+modules/ulf_custom/ulf_aarhus_settings
+modules/ulf_custom/ulf_silkeborg_settings
+modules/ulf_custom/ulf_viborg_settings
+
+# Ignore theme
+themes/ud_og_laer
+themes/ulf_aarhus
+themes/ulf_viborg
