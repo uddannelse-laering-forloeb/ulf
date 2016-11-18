@@ -17,7 +17,25 @@ function ulf_forms_form_alter(&$form, &$form_state, $form_id) {
 
   // Course node form.
   case 'course_node_form':
+    // Add author variables
+    $uservalues = array();
+    $mapconfig = variable_get('gmap_default');
+    $author = user_load($form['uid']['#value']);
+    $uservalues['street'] = $author->locations['0']['street'];
+    $uservalues['further_info'] = $author->locations['0']['additional'];
+    $uservalues['postal_code'] = $author->locations['0']['postal_code'];
+    $uservalues['city'] = $author->locations['0']['city'];
+    $place_config = $form['#entity']->field_place_settings['und'][0]['value'];
+
     $form['#attached']['js'][] = drupal_get_path('module', 'ulf_forms') . '/js/node-form-logics.js';
+    $form['#attached']['js'][] = array(
+      'data' => array(
+        'userValues' => $uservalues,
+        'mapConfig' => $mapconfig,
+        'placeConfig' => $place_config,
+      ),
+      'type' => 'setting',
+    );
 
     // User messages.
 

@@ -9,7 +9,7 @@
 
   // Called when the document has finished loading.
   Drupal.behaviors.ulfCourseFormAlter = {
-    attach: function () {
+    attach: function (context, settings) {
       /**
        * Function to call when the the Target Group selector is changed.
        * Updates which fields should be shown.
@@ -43,6 +43,51 @@
         }
       }
 
+      /**
+       * Function to call when the the place settings selector is changed.
+       * Updates which fields should be shown.
+       */
+      function changePlaceSelection(selected) {
+        // Show stuff depending on what the selection array contains.
+        $('.location-wrapper').hide();
+        if ($.trim(selected) == 'Vis udbyderadresse') {
+          $('.location-wrapper').show();
+          $('.group-address .fieldset-wrapper').show();
+          $('.group-address').removeClass('collapsed');
+          $('.location-wrapper #edit-locations-0-street').val(Drupal.settings.userValues.street);
+          $('.location-wrapper #edit-locations-0-additional').val(Drupal.settings.userValues.further_info);
+          $('.location-wrapper #edit-locations-0-postal-code').val(Drupal.settings.userValues.postal_code);
+          $('.location-wrapper #edit-locations-0-city').val(Drupal.settings.userValues.city);
+          $('.group-address input').prop('readonly', true);
+          $('.group-address').addClass('form-disabled')
+          $('.group-address .gmap-control').hide();
+          $('.form-item-locations-0-city .messages').remove();
+        }
+
+        if ($.trim(selected) == 'Vis alternativ adresse') {
+          $('.location-wrapper').show();
+          $('.group-address .gmap-control').show();
+          $('.group-address .fieldset-wrapper').show();
+          $('.group-address').removeClass('collapsed');
+          $('.group-address input').prop('readonly', false);
+          $('.group-address').removeClass('form-disabled');
+          $('.location-wrapper input[type=text]').val('');
+          mapObj = Drupal.gmap.getMap('gmap-auto1map-gmap0');
+          mapObj.map.setZoom(12);
+          google.maps.event.trigger(mapObj.map, 'resize');
+          var coord = Drupal.settings.mapConfig.latlong.split(',');
+          mapObj.map.setCenter(new google.maps.LatLng(coord['0'], coord['1']), 12);
+          $('.form-item-locations-0-city').append('<div class="messages warning">Google forsøger på baggrund af adressen angivet, at bestemme lokaliteten der vises på kortet til slutbrugeren. Hvis du vil hjælpe google på vej kan du angive positionen på kortet herunder.</div>');
+        }
+        if ($.trim(selected) == 'Vis ikke på kort') {
+          $('.group-address .gmap-control').show();
+          $('.group-address .fieldset-wrapper').show();
+          $('.group-address').removeClass('collapsed');
+          $('.group-address input').prop('readonly', true);
+          $('.group-address').removeClass('form-disabled');
+          $('.form-item-locations-0-city .messages').remove();
+        }
+      }
 
       /**
        * Displays and hides Target Subgroup divs according to the accept function.
@@ -115,7 +160,6 @@
       }
 
 
-
       /// --- A lot of actions related to click events
 
       // Change stuff when a new target group is added or removed.
@@ -128,9 +172,19 @@
         changeSelection(selected, id);
       });
 
+      // Change stuff when a new target group is added or removed.
+      $('.field-name-field-place-settings .form-radio').change(function () {
+
+        var id = ($(this).val());
+        var selected = $('.field-name-field-place-settings input[value="' + id + '"]').next().text();
+        changePlaceSelection(selected);
+      });
+
       // When the Target Group selector is changed, change the subgroup options.
       $('.field-name-field-target-group .form-select').change(changeSelection);
 
+      // When the place settings field is changed, change the subgroup options.
+      $('.field-name-field-place-settings .form-select').change(changePlaceSelection);
 
       // When "Full year" is unchecked show field group for duration.
       // And set some default values.
@@ -161,6 +215,14 @@
         }
       });
 
+      $('.form-layout--beta .fieldset-title').click(function () {
+        mapObj = Drupal.gmap.getMap('gmap-auto1map-gmap0');
+        mapObj.map.setZoom(12);
+        google.maps.event.trigger(mapObj.map, 'resize');
+        var coord = Drupal.settings.mapConfig.latlong.split(',');
+        mapObj.map.setCenter(new google.maps.LatLng(coord['0'], coord['1']), 12);
+      });
+
 
       /// ------ Stuff that happens when the form is first loaded.
 
@@ -169,6 +231,16 @@
       var twoDigitMonth = fullDate.getMonth()+"";if(twoDigitMonth.length==1)	twoDigitMonth="0" +twoDigitMonth;
       var twoDigitDate = fullDate.getDate()+"";if(twoDigitDate.length==1)	twoDigitDate="0" +twoDigitDate;
       var start_time = twoDigitDate + "/" + twoDigitMonth + "/" + fullDate.getFullYear();
+
+      // Display map
+      mapObj = Drupal.gmap.getMap('gmap-auto1map-gmap0');
+      google.maps.event.trigger(Drupal.gmap.map, 'resize');
+
+      // Set readonly on fields
+      if (Drupal.settings.placeConfig == 'place_settings_show_address') {
+        $('.group-address input').prop('readonly', true);
+        $('.group-address').addClass('form-disabled')
+      }
 
       // Fill the subgroup array.
       $('.field-name-field-target-group-sub .option').each(function () {
