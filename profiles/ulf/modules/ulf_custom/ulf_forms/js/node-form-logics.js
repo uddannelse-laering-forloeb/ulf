@@ -241,6 +241,10 @@
         $('.group-address input').prop('readonly', true);
         $('.group-address').addClass('form-disabled')
       }
+      
+      if (Drupal.settings.placeConfig === false) {
+        $('.location-wrapper').hide();
+      }
 
       // Fill the subgroup array.
       $('.field-name-field-target-group-sub .option').each(function () {

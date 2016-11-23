@@ -13,10 +13,10 @@ function ulf_forms_form_alter(&$form, &$form_state, $form_id) {
   $form['#attached']['js'][] = drupal_get_path('module', 'ulf_forms') . '/js/jquery.imagesloaded.js';
   $form['#attached']['js'][] = drupal_get_path('module', 'ulf_forms') . '/js/jquery.imgareaselect.dev.js';
   $form['#attached']['css'][] = drupal_get_path('module', 'ulf_forms') . '/css/node-form-styles.css';
-  switch ($form_id) {
 
-  // Course node form.
-  case 'course_node_form':
+
+  // Address specific settings
+  if ($form_id == 'course_node_form' || $form_id == 'course_educators_node_form') {
     // Add author variables
     $uservalues = array();
     $mapconfig = variable_get('gmap_default');
@@ -25,7 +25,10 @@ function ulf_forms_form_alter(&$form, &$form_state, $form_id) {
     $uservalues['further_info'] = $author->locations['0']['additional'];
     $uservalues['postal_code'] = $author->locations['0']['postal_code'];
     $uservalues['city'] = $author->locations['0']['city'];
-    $place_config = $form['#entity']->field_place_settings['und'][0]['value'];
+    $place_config = FALSE;
+    if (!empty($form['#entity']->field_place_settings)) {
+      $place_config = $form['#entity']->field_place_settings['und'][0]['value'];
+    }
 
     $form['#attached']['js'][] = drupal_get_path('module', 'ulf_forms') . '/js/node-form-logics.js';
     $form['#attached']['js'][] = array(
@@ -36,8 +39,12 @@ function ulf_forms_form_alter(&$form, &$form_state, $form_id) {
       ),
       'type' => 'setting',
     );
+  }
 
-    // User messages.
+  switch ($form_id) {
+
+  // Course node form.
+  case 'course_node_form':
 
     // Assist on node add.
     if (empty($form['nid']['#value'])) {
