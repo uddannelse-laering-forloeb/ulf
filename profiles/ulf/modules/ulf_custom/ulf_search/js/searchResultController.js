@@ -34,7 +34,6 @@ angular.module('searchResultApp').controller('UlfResultController', ['CONFIG', '
      */
     $scope.hits = [];
     communicatorService.$on('hits', function onHits(event, data) {
-      console.log(data);
       var phase = this.$root.$$phase;
       if (phase === '$apply' || phase === '$digest') {
         $scope.hits = data.hits;
