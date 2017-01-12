@@ -2,11 +2,17 @@
 modules/features/ulf_aarhus_search_settings
 modules/features/ulf_silkeborg_search_settings
 modules/features/ulf_viborg_search_settings
+modules/features/ulf_thisted_search_settings
+modules/features/ulf_aalborg_search_settings
 modules/ulf_custom/ulf_aarhus_settings
 modules/ulf_custom/ulf_silkeborg_settings
 modules/ulf_custom/ulf_viborg_settings
+modules/ulf_custom/ulf_thisted_settings
+modules/ulf_custom/ulf_aalborg_settings
 
 # Ignore theme
 themes/ud_og_laer
 themes/ulf_aarhus
 themes/ulf_viborg
+themes/ulf_thisted
+themes/ulf_aalborg
