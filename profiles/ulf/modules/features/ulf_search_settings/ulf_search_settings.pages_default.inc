@@ -131,6 +131,20 @@ function ulf_search_settings_default_page_manager_pages() {
             'boolean' => array(),
           ),
         ),
+        'filters' => array(
+          'type' => array(
+            'field_educational_goals' => 'or',
+            'field_offer_type' => 'or',
+            'field_relevance_educators' => 'or',
+            'field_relevance_primary_school' => 'or',
+            'field_relevance_upper_school' => 'or',
+            'field_subject' => 'or',
+            'field_subjects_primary_school' => 'or',
+            'field_subjects_youth' => 'or',
+            'field_target_group' => 'or',
+            'field_target_group_sub' => 'or',
+          ),
+        ),
         'sorting' => array(
           'field' => 'title',
           'order' => 'asc',
@@ -347,6 +361,17 @@ function ulf_search_settings_default_page_manager_pages() {
             ),
           ),
         ),
+        'filters' => array(
+          'type' => array(
+            'field_educational_goals' => 'or',
+            'field_offer_type' => 'or',
+            'field_subject' => 'or',
+            'field_subjects_primary_school' => 'or',
+            'field_subjects_youth' => 'or',
+            'field_target_group' => 'or',
+            'field_target_group_sub' => 'or',
+          ),
+        ),
         'sorting' => array(
           'field' => 'title',
           'order' => 'asc',
@@ -555,6 +580,17 @@ function ulf_search_settings_default_page_manager_pages() {
               'field_free' => 'field_free',
               'field_period_full_year' => 0,
             ),
+          ),
+        ),
+        'filters' => array(
+          'type' => array(
+            'field_educational_goals' => 'or',
+            'field_offer_type' => 'or',
+            'field_subject' => 'or',
+            'field_subjects_primary_school' => 'or',
+            'field_subjects_youth' => 'or',
+            'field_target_group' => 'or',
+            'field_target_group_sub' => 'or',
           ),
         ),
         'sorting' => array(
@@ -950,6 +986,17 @@ function ulf_search_settings_default_page_manager_pages() {
               'field_free' => 'field_free',
               'field_period_full_year' => 0,
             ),
+          ),
+        ),
+        'filters' => array(
+          'type' => array(
+            'field_educational_goals' => 'or',
+            'field_offer_type' => 'or',
+            'field_subject' => 'or',
+            'field_subjects_primary_school' => 'or',
+            'field_subjects_youth' => 'or',
+            'field_target_group' => 'or',
+            'field_target_group_sub' => 'or',
           ),
         ),
         'sorting' => array(

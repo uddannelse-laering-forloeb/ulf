@@ -5,7 +5,7 @@
  */
 $dirname = dirname(__FILE__) . '/includes';
 $includes = file_scan_directory($dirname, '/.inc$/');
-foreach (array_keys(_system_rebuild_module_data()) as $module) {
+foreach (array_keys(array('block', 'filter', 'node', 'system', 'taxonomy', 'user')) as $module) {
   $file = "{$dirname}/{$module}.inc";
   if (isset($includes[$file])) {
     require_once $file;

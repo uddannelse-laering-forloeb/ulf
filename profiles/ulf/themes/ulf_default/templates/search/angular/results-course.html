@@ -1,7 +1,7 @@
 <!-- Map/list switcher -->
 <div class="search--display-switch" itk--tabs-count="2">
-  <span data-search-switch class="search--display-switch-tab" data-ng-class="{ 'is-active': !displayMap}" data-ng-click="hideMap()">Vis resultater</span>
-  <span data-search-switch class="search--display-switch-tab" data-ng-class="{ 'is-active': displayMap}" data-ng-click="showMap()">Vis kort</span>
+  <span data-search-switch class="search--display-switch-tab" data-ng-class="{ 'is-active': !displayMap}" data-ng-click="hideMap()">Vis alle resultater</span>
+  <span data-search-switch class="search--display-switch-tab" data-ng-class="{ 'is-active': displayMap}" data-ng-click="showMap()">Vis resultater på kort</span>
 </div>
 
 <!-- Number of hits -->
@@ -13,7 +13,7 @@
 <search-map data-ng-if="displayMap">
   <!-- Number of hits -->
   <div class="search-results-header">
-    <h2><strong>{{ hitCount }}</strong> resultater</h2>
+    <h2><strong>{{ hitCount }}</strong> af <strong>{{ hits.hits }}</strong> steder du kan besøge</h2>
   </div>
 
   <!-- Map place holder -->
