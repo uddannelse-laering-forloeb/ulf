@@ -87,6 +87,12 @@ function ulf_base_views_default_views() {
       'empty_column' => 0,
     ),
   );
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['content'] = '<a href="/admin/people/create">+ Tilføj bruger</a>';
+  $handler->display->display_options['header']['area']['format'] = 'editor';
   /* Field: User: Name */
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'users';
@@ -216,6 +222,7 @@ function ulf_base_views_default_views() {
     t('‹ previous'),
     t('next ›'),
     t('last »'),
+    t('<a href="/admin/people/create">+ Tilføj bruger</a>'),
     t('Name'),
     t('Aktiv'),
     t('Roller'),
