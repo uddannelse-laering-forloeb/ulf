@@ -517,19 +517,6 @@ function ulf_workflow_node_presave($node) {
 
 
 /**
- * Implements hook_user_insert().
- *
- * @param $edit
- * @param $account
- * @param $category
- */
-
-function ulf_workflow_user_insert(&$edit, $account, $category) {
-  $account->roles[] = 'course provider';
-}
-
-
-/**
  * Create and send mail to author when new draft is published.
  *
  * @param $node
