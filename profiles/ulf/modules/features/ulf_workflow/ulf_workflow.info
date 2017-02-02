@@ -9,7 +9,6 @@ dependencies[] = page_manager_redirect
 dependencies[] = scheduler
 dependencies[] = strongarm
 dependencies[] = ulf_admin_panel
-dependencies[] = ulf_scheduler_notify
 dependencies[] = views
 dependencies[] = views_bulk_operations
 dependencies[] = views_content
