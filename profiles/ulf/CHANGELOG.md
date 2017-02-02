@@ -1,5 +1,9 @@
 #ULF changelog
 
+#2.4.13
+* Fixed bug where "ghost role" was added on user create
+* Fixed circular dependency between ulf_workflow and ulf_scheduler_notify
+
 #2.4.12
 * Updated core with security fix
 * Updated several contrib modules with security updates
