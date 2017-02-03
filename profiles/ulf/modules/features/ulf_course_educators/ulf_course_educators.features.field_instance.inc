@@ -1058,7 +1058,7 @@ function ulf_course_educators_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_relevance_primary_school',
-    'label' => 'Kurset er relevant for lærere, der underviser fagene',
+    'label' => 'Kurset er relevant for lærere, der underviser i fagene',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -1310,7 +1310,7 @@ function ulf_course_educators_field_default_field_instances() {
   t('Her kan du uploade materiale til kurset.');
   t('Kontakt');
   t('Kurset er relevant for lærere og pædagoger, der arbejder med målgruppen');
-  t('Kurset er relevant for lærere, der underviser fagene');
+  t('Kurset er relevant for lærere, der underviser i fagene');
   t('Kurset er relevant for undervisere i fagene');
   t('Læreplanstemaer');
   t('Message form');
