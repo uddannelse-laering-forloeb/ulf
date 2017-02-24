@@ -7,12 +7,12 @@
 * Logs ITK changes made to the dokk1 project.
 
 ##Install guide
-1) Run vagrant up
-2) Run ./install.sh
-3) Run vagrant ssh
-4) Clone your theme rep into /htdocs/profiles/ulf/themes.   
+1. Run vagrant up
+2. Run ./install.sh
+3. Run vagrant ssh
+4. Clone your theme rep into /htdocs/profiles/ulf/themes.   
 (Available themes @ https://github.com/uddannelse-laering-forloeb)
-5) Setup site through UI, making choices along the way.
+5. Setup site through UI, making choices along the way.
 
 You should now have an empty ulf installation.
 
