@@ -4,7 +4,7 @@
 
 ###Changelog
 * CHANGELOG.md located at /htdocs/profiles/ulf
-* Logs ITK changes made to the dokk1 project.
+* Logs ITK changes made to the ULF project.
 
 ##Install guide
 1. Run vagrant up
