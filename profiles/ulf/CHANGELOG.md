@@ -1,112 +1,119 @@
 #ULF changelog
 
-#2.4.14
+#v2.4.x
+
+##2.4.15
+* Added extra padding between blocks in footer 
+
+##2.4.14
 * Updated Gitignore to exclude Google site verification
 
-#2.4.13
+##2.4.13
 * Fixed bug where "ghost role" was added on user create
 * Fixed circular dependency between ulf_workflow and ulf_scheduler_notify
 
-#2.4.12
+##2.4.12
 * Updated core with security fix
 * Updated several contrib modules with security updates
 
-#2.4.11
+##2.4.11
 * Removed verification file from git
 
-#2.4.10
+##2.4.10
 * Added to changelog
 
-#2.4.9
+##2.4.9
 * Added google site verification file
 
-#2.4.8
+##2.4.8
 * Added google site verification file
 
-#2.4.7
+##2.4.7
 * Removed api key from map feature
 
-#2.4.6
+##2.4.6
 * Fixed error in map display on users and nodes
 * Fixed error in draft creation and updating.
 
-#2.4.5
+##2.4.5
 * Removed map field from pdf display on courses
 
-#2.4.4
+##2.4.4
 * Removed map field from pdf display
 
-#2.4.3
+##2.4.3
 * Hid field for show on map
 
-#2.4.2
+##2.4.2
 * Added field for show on map on nodes
 
-#2.4.1
+##2.4.1
 * Changed pathauto settings
 * Added show on map for courses and course_educators
 
-#2.3.17
+#v2.3.x
+
+##2.3.17
 * Changed news archive references
 * Changed display of youth  target group search for Viborg and Silkeborg
 
-#2.3.16
+##2.3.16
 * Removed metatag dependency from profile info file
 
-#2.3.15
+##2.3.15
 * Added EUD and EUX to youth search template
 
-#2.3.14
+##2.3.14
 * Added user email to csv export
 * Changed workflow states for editors
 
-#2.3.13
+##2.3.13
 * Changed pathauto language
 
-#2.3.12
+##2.3.12
 * Changed pathauto language
 
-#2.3.11
+##2.3.11
 * Enabled error messages
 
-#2.3.10
+##2.3.10
 * Fixed bug in unpublishing
 
-#2.3.9
+##2.3.9
 * Fixed bug in unpublishing
 
-#2.3.8
+##2.3.8
 * Fixed bug in unpublishing
 
-#2.3.7
+##2.3.7
 * Changed default menu for static pages
 
-#2.3.6
+##2.3.6
 * Fixed workbench page permissions
 
-#v2.3.5
+##v2.3.5
 * Updated IE9 styles
 
-#v2.3.4
+##v2.3.4
 * Major change of menu structure
 * Added menu block module
 * Removed About ULF menu
 * Added support for multiple dropdown menus
 * Moved all menu items to main menu
 
-#v2.3.3
+##v2.3.3
 * Removed impage dependency on profile
 * Added image dependency on courses
 
-#v2.3.2
+##v2.3.2
 * Added image dependency on profile
 * Added url pattern
 
-#v2.3.1
+##v2.3.1
 * Added frontpage blocks
 * Added nodequeue
 
-#v2.3.0
+##v2.3.0
 * Added free checkbox to search
 * Changed display of courses on course provider
 * Added media display on news and static pages
