@@ -7,18 +7,19 @@
 * Logs ITK changes made to the dokk1 project.
 
 ##Install guide
-* 1) Run vagrant up
-* 2) Run ./install.sh
-* 3) Run vagrant ssh
-* 4) Clone your theme rep into /htdocs/profiles/ulf/themes.
+1) Run vagrant up
+2) Run ./install.sh
+3) Run vagrant ssh
+4) Clone your theme rep into /htdocs/profiles/ulf/themes.   
 (Available themes @ https://github.com/uddannelse-laering-forloeb)
-* 5) Setup site through UI, making choices along the way.
-* You should now have an empty ulf installation.
+5) Setup site through UI, making choices along the way.
+
+You should now have an empty ulf installation.
 
 ##Update guide
 
 ###For each site:
-´
+```
 git pull
 git checkout v.XYZ
 drush updb
@@ -27,7 +28,7 @@ drush fra -y
 drush l10n-update-refresh
 drush l10n-update
 drush cc all
-´
+```
 
 ###Patches used
 * https://www.drupal.org/files/1093420-22.patch (Used by profiler module during site install)
