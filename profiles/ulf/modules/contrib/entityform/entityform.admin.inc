@@ -211,7 +211,7 @@ function entityform_type_submit_page($entityform_type) {
  *     'preview' - Preview on Entityform type management
  * @see entityform_edit_form()
  */
-function entityform_form_wrapper($entityform, $mode = 'submit', $form_context = 'page') {
+function entityform_form_wrapper(Entityform $entityform, $mode = 'submit', $form_context = 'page') {
   $make_form = TRUE;
 
   $entityform_type = entityform_type_load($entityform->type);
@@ -271,12 +271,7 @@ function entityform_form_wrapper($entityform, $mode = 'submit', $form_context = 
     );
   }
   if ($make_form) {
-    $form = drupal_get_form($entityform->type . '_entityform_edit_form', $entityform, $mode, $form_context);
-    $form['#attributes']['class'][] = 'entityform';
-    if (!empty($entityform->type)) {
-      $form['#attributes']['class'][] = 'entitytype-' . $entityform->type . '-form';
-    }
-    $output += $form;
+    $output += drupal_get_form($entityform->type . '_entityform_edit_form', $entityform, $mode, $form_context);
   }
   if (user_access('administer entityform types')) {
     // Make contextual links if user has access.
@@ -290,7 +285,6 @@ function entityform_form_wrapper($entityform, $mode = 'submit', $form_context = 
   return $output;
 }
 
-
 /**
  * Form callback wrapper: delete a entityform.
  *
@@ -303,13 +297,12 @@ function entityform_delete_form_wrapper($entityform) {
   return drupal_get_form('entityform_delete_form', $entityform);
 }
 
-
 /**
  * Form callback: create or edit a entityform.
  *
  * @param $entityform
- *   The entityform object to edit or for a create form an empty entityform object
- *     with only a entityform type defined.
+ *   The entityform object to edit or for a create form an empty entityform
+ *   object with only a entityform type defined.
  */
 function entityform_edit_form($form, &$form_state, $entityform, $mode = 'submit', $form_context = 'page') {
   global $user;
@@ -334,6 +327,10 @@ function entityform_edit_form($form, &$form_state, $entityform, $mode = 'submit'
   if (!$is_review) {
     field_attach_form('entityform', $entityform, $form, $form_state);
   }
+
+  // Add CSS classes to the form for styling.
+  $form['#attributes']['class'][] = 'entityform';
+  $form['#attributes']['class'][] = 'entitytype-' . $entityform->type . '-form';
 
   $form['actions'] = array(
     '#type' => 'container',
