@@ -52,7 +52,7 @@ class SearchNodeLocationFilter extends SearchApiAbstractAlterCallback {
       '#type' => 'textfield',
       '#title' => t('Field name'),
       '#default_value' => isset($this->options['field_name']) ? $this->options['field_name'] : '',
-      '#required' => TRUE,
+      '#required' => FALSE,
     );
 
     return $form;

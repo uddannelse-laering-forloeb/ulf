@@ -918,6 +918,10 @@ function search_node_page_build_search_box($configuration = array()) {
     // Check for host override in settings.php.
     $host = variable_get('search_api_' . $server->machine_name . '_host', $server->options['host']);
 
+    // Check that the index have not been override in settings.
+    $search_node_index = $index->options['search_node_indexes'];
+    $search_node_index = variable_get('search_api_' . $server->machine_name . '_index_' . $index->machine_name, $search_node_index);
+
     // Build array to convert to json configuration.
     $conf = array(
       'id' => $configuration['id'],
@@ -930,7 +934,7 @@ function search_node_page_build_search_box($configuration = array()) {
         'service' => 'searchNodeProvider',
         'host' => $host,
         'auth' => '/search_node/api/' . $server->machine_name . '/auth',
-        'index' => $index->options['search_node_indexes'],
+        'index' => $search_node_index,
         'fields' => array_values($fields),
         'boost' => $boost,
         'match_type' => isset($configuration['options']['match_type']) ? $configuration['options']['match_type'] : 'best_fields',
@@ -1058,8 +1062,13 @@ function search_node_page_build_search_box($configuration = array()) {
     // Check if auto-complete/type-a-head support is enabled.
     if (!empty($configuration['autocomplete']['index']) && $configuration['autocomplete']['index'] != '_none_') {
       $autoIndex = search_api_index_load($configuration['autocomplete']['index']);
+
+      // Check that the index have not been override in settings.
+      $search_node_index = $autoIndex->options['search_node_indexes'];
+      $search_node_index = variable_get('search_api_' . $server->machine_name . '_index_' . $autoIndex->machine_name, $search_node_index);
+
       $conf['provider']['autocomplete'] = array(
-        'index' => $autoIndex->options['search_node_indexes'],
+        'index' => $search_node_index,
         'field' => $configuration['autocomplete']['field'],
         'minChars' => $configuration['autocomplete']['minChars'],
         'size' => $configuration['autocomplete']['size']

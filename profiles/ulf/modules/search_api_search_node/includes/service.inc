@@ -124,12 +124,41 @@ class SearchApiSearchNodeService extends SearchApiAbstractService {
   }
 
   /**
+   * Implements SearchApiServiceInterface::__construct().
+   *
+   * The default implementation does a crude output as a definition list, with
+   * option names taken from the configuration form.
+   */
+  public function viewSettings() {
+    $output = '';
+    $form = $form_state = array();
+    $option_form = $this->configurationForm($form, $form_state);
+    $option_names = array();
+    foreach ($option_form as $key => $element) {
+      if (isset($element['#title']) && isset($this->options[$key])) {
+        $option_names[$key] = $element['#title'];
+      }
+    }
+
+    foreach ($option_names as $key => $name) {
+      $value = variable_get('search_api_' . $this->server->machine_name . '_' . $key, $this->options[$key]);
+      $output .= '<dt>' . check_plain($name) . '</dt>' . "\n";
+      $output .= '<dd>' . nl2br(check_plain(print_r($value, TRUE))) . '</dd>' . "\n";
+    }
+
+    return $output ? "<dl>\n$output</dl>" : '';
+  }
+
+  /**
    * {@inheritdoc}
    */
   public function indexItems(SearchApiIndex $index, array $items) {
     $indexed = array();
 
+    // Check that the index have not been override in settings.
     $search_node_index = $index->options['search_node_indexes'];
+    $search_node_index = variable_get('search_api_' . $this->server->machine_name . '_index_' . $index->machine_name, $search_node_index);
+
     if (!empty($search_node_index)) {
       foreach ($items as $id => $item) {
         // Filter the items to better match the value search node works.
