@@ -40,9 +40,9 @@
       <div class="layout-element-alpha-inner">
         <div class="content">
           <div class="content--image">
-            <div class="field--title is-profile">
+            <h1 class="field--title is-profile">
               <?php print render($user_profile['field_profile_name']); ?>
-            </div>
+            </h1>
             <?php print render($user_profile['field_image']); ?>
           </div>
           <div class="content--main">
