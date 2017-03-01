@@ -91,10 +91,10 @@ function ulf_course_field_group_info() {
     'weight' => '2',
     'children' => array(
       0 => 'field_collection_price',
-      1 => 'field_duration_unit',
-      2 => 'field_free',
-      3 => 'field_duration',
-      4 => 'field_duration_description',
+      1 => 'field_duration',
+      2 => 'field_duration_description',
+      3 => 'field_duration_unit',
+      4 => 'field_free',
       5 => 'field_price_description',
     ),
     'format_type' => 'fieldset',
@@ -208,7 +208,7 @@ function ulf_course_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Periode',
-    'weight' => '3',
+    'weight' => '4',
     'children' => array(
       0 => 'field_period',
       1 => 'field_period_full_year',
@@ -243,11 +243,11 @@ function ulf_course_field_group_info() {
       0 => 'field_count',
       1 => 'field_educational_goals',
       2 => 'field_offer_type',
-      3 => 'field_subject',
-      4 => 'field_subjects_primary_school',
-      5 => 'field_subjects_youth',
-      6 => 'field_target_group_sub',
-      7 => 'field_place',
+      3 => 'field_place',
+      4 => 'field_subject',
+      5 => 'field_subjects_primary_school',
+      6 => 'field_subjects_youth',
+      7 => 'field_target_group_sub',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -262,6 +262,37 @@ function ulf_course_field_group_info() {
   );
   $field_groups['group_practical_information|node|course|form'] = $field_group;
 
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_signup|node|course|form';
+  $field_group->group_name = 'group_signup';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'course';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Tilmelding',
+    'weight' => '3',
+    'children' => array(
+      0 => 'field_last_signup_date',
+      1 => 'field_signup_link',
+      2 => 'field_signup_email',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Tilmelding',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'id' => '',
+        'classes' => 'group-signup field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'collapsed',
+    ),
+  );
+  $field_groups['group_signup|node|course|form'] = $field_group;
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Aktiviteter, baggrundsviden og efterbehandling');
@@ -271,6 +302,7 @@ function ulf_course_field_group_info() {
   t('Materialer');
   t('Periode');
   t('Praktisk information');
+  t('Tilmelding');
   t('Varighed og pris');
 
   return $field_groups;
