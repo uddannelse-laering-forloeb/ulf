@@ -7,7 +7,6 @@
  *
  */
 
-
 /* Styles
 ================================================================================================================== */
 
@@ -35,8 +34,6 @@
   }
 }
 
-
-
 /* Left will inherit from right (so we don't need to duplicate code) */
 .ribbon {
   /* The right and left classes determine the side we attach our banner to */
@@ -44,7 +41,6 @@
 
   /* Add a bit of padding to give some substance outside the "stitching" */
   padding: 2px 0;
-
 
   /* Set a gradient: transparent black at the top to almost-transparent black at the bottom */
   background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0)), to(rgba(0, 0, 0, 0.15)));
@@ -96,11 +92,14 @@
   height: 150px;
   position: absolute;
   overflow: hidden;
-  bottom: 0px;
+  top: 0;
   pointer-events: none;
 
-  @include breakpoint($node-breakpoint) {
-    &.is-content {
+  &.is-content {
+    top: auto;
+    bottom: 0px;
+
+    @include breakpoint($node-breakpoint) {
       font-size: 1.15em;
 
       top: 0px;
@@ -130,7 +129,7 @@
 
   @include rotate(45deg);
 
-  @include breakpoint($node-breakpoint){
+  @include breakpoint($node-breakpoint) {
     @include rotate(-45deg);
   }
 
@@ -153,7 +152,7 @@
 
   @include rotate(-45deg);
 
-  @include breakpoint($node-breakpoint){
+  @include breakpoint($node-breakpoint) {
     @include rotate(45deg);
   }
 
