@@ -3,6 +3,7 @@
 #v2.5.x
 
 ##2.5.0
+* Added sigup fields from 'course educators' to 'course'
 * Changed title fields to use H1’s instead of DIV’s
 * Fixed ‘gratisbanner’ placement on mobile
 * CKEditor updated to 4.6.2
