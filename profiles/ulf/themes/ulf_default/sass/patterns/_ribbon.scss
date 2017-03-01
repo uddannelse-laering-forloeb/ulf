@@ -125,23 +125,23 @@
 
 .ribbon-wrapper.left .ribbon {
   left: -63px;
-  top: 40px;
+  top: 25px;
 
-  @include rotate(45deg);
-
-  @include breakpoint($node-breakpoint) {
-    @include rotate(-45deg);
-  }
+  @include rotate(-45deg);
 
   &.is-content {
     left: -105px;
     top: auto;
     bottom: 25px;
 
+    @include rotate(45deg);
+
     @include breakpoint($node-breakpoint) {
       left: -90px;
       top: 40px;
       bottom: auto;
+
+      @include rotate(-45deg);
     }
   }
 }
@@ -150,21 +150,21 @@
   right: -43px;
   top: 40px;
 
-  @include rotate(-45deg);
-
-  @include breakpoint($node-breakpoint) {
-    @include rotate(45deg);
-  }
+  @include rotate(45deg);
 
   &.is-content {
     right: -105px;
     top: auto;
     bottom: 25px;
 
+    @include rotate(-45deg);
+
     @include breakpoint($node-breakpoint) {
       right: -90px;
       top: 40px;
       bottom: auto;
+
+      @include rotate(45deg);
     }
   }
 }
