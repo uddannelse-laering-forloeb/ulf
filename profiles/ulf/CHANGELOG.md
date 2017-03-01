@@ -3,6 +3,7 @@
 #v2.5.x
 
 ##2.5.0
+* Fixed ‘gratisbanner’ placement on mobile
 * CKEditor updated to 4.6.2
 * Core and contrib updated:
     ```
