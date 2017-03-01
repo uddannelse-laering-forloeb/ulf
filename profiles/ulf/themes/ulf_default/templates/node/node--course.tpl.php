@@ -164,6 +164,22 @@
               </div>
             </div>
           <?php endif; ?>
+          <?php if ($field_last_signup_date || $field_signup_link || $field_signup_email) : ?>
+            <div class="field--collection-wrapper">
+              <div class="field--collection-label"><?php print t('Signup');?></div>
+              <div class="field--collection-content">
+                <div class="field--collection-item">
+                  <div class="field--collection-item-inner">
+                    <div class="field--collection-description">
+                      <?php print render($content['field_last_signup_date']); ?>
+                      <?php print render($content['field_signup_link']); ?>
+                      <?php print render($content['field_signup_email']); ?>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <?php endif;?>
           <div class="block--pdf">
             <a class="block--pdf-link" target="_blank" href="/printpdf/<?php print $node->nid; ?>"><?php print t('Save this offer as pdf'); ?></a>
           </div>
