@@ -85,7 +85,7 @@
     <div class="layout-element-alpha-inner">
       <div class="content">
         <div class="content--image">
-          <div class="field--title"><?php print render($title); ?></div>
+          <h1 class="field--title"><?php print render($title); ?></h1>
           <?php print render($content['field_image']); ?>
         </div>
         <div class="content--main">

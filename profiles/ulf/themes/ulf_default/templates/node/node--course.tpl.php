@@ -108,7 +108,7 @@
               </div>
             </div>
           <?php endif;?>
-          <div class="field--title is-<?php print $group_type; ?>"><?php print render($title); ?></div>
+          <h1 class="field--title is-<?php print $group_type; ?>"><?php print render($title); ?></h1>
           <?php print render($content['field_image']); ?>
         </div>
         <div class="content--main">
