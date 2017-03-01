@@ -26,7 +26,9 @@ angular.module('searchResultApp').controller('UlfResultController', ['CONFIG', '
      * Update pager information.
      */
     $scope.search = function search() {
-      communicatorService.$emit('pager', $scope.pager);
+      var pager = angular.copy($scope.pager);
+      pager.page--;
+      communicatorService.$emit('pager', pager);
     };
 
     /**
@@ -38,12 +40,14 @@ angular.module('searchResultApp').controller('UlfResultController', ['CONFIG', '
       if (phase === '$apply' || phase === '$digest') {
         $scope.hits = data.hits;
         $scope.pager = data.pager;
+        $scope.pager.page++;
         $scope.searching = false;
       }
       else {
         $scope.$apply(function () {
           $scope.hits = data.hits;
           $scope.pager = data.pager;
+          $scope.pager.page++;
           $scope.searching = false;
         });
       }
