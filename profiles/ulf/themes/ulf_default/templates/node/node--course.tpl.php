@@ -260,12 +260,18 @@
               <div class="block--field-text"><?php print $profile_postal_code; ?> <?php print $profile_city; ?></div>
               <br>
               <?php if (isset($profile_phone)) : ?>
-                <a class="block--field-text"><?php print t('Phone')?> <?php print $profile_phone; ?></a>
+                <p>
+                  <a class="block--field-text"><?php print t('Phone')?> <?php print $profile_phone; ?></a>
+                </p>
               <?php endif; ?>
+              <?php if ($field_message_form) : ?>
               <p>
                 <button class="block--modal-link js-toggle-modal modal--open"><?php print t('Contact organizer'); ?></button>
               </p>
-              <a href="/user/<?php print $uid ?>"><?php print t('View organizer profile'); ?></a>
+              <?php endif; ?>
+              <p>
+                <a href="/user/<?php print $uid ?>"><?php print t('View organizer profile'); ?></a>
+              </p>
             </div>
           </div>
           <?php if ($field_message_form) : ?>
