@@ -191,7 +191,7 @@
             </h2>
             <div class="block--content">
               <div class="block--field-wrapper">
-                <div class="block--field-label"><?php print t('Contact');?></div>
+                <div class="block--field-label"><?php print t('Provider');?></div>
                 <a href="/user/<?php print $uid; ?>"><?php print $profile_name; ?></a>
               </div>
               <div class="block--field-wrapper is-inline">
@@ -260,10 +260,11 @@
               <div class="block--field-text"><?php print $profile_postal_code; ?> <?php print $profile_city; ?></div>
               <br>
               <?php if (isset($profile_phone)) : ?>
-                <div class="block--field-text"><?php print t('Phone')?> <?php print $profile_phone; ?></div>
+                <a class="block--field-text"><?php print t('Phone')?> <?php print $profile_phone; ?></a>
               <?php endif; ?>
-              <div class="block--field-label js-toggle-modal modal--open"><?php print t('Contact organizer'); ?></div>
-              <br>
+              <p>
+                <button class="block--modal-link js-toggle-modal modal--open"><?php print t('Contact organizer'); ?></button>
+              </p>
               <a href="/user/<?php print $uid ?>"><?php print t('View organizer profile'); ?></a>
             </div>
           </div>

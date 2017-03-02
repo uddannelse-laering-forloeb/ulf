@@ -23,7 +23,19 @@
   }
 
   &--open {
-    cursor: pointer;
+    margin-top: 1em;
+    @extend %button;
+
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: 1px solid $white;
+    color: $white;
+    outline:none;
+
+    @include strip-link-styles($white);
+    @include text-shadow(.025em .025em .1em darken($white, 10%));
+
+    @include border-radius($border-radius);
   }
 }
 
