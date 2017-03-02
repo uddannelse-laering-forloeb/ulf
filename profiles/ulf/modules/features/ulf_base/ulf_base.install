@@ -401,3 +401,29 @@ function ulf_base_update_7019(&$sandbox) {
   ))
     ->execute();
 }
+
+/**
+ * Set translations path variable. and add user list path alias.
+ */
+function ulf_base_update_7020(&$sandbox) {
+  $modules = array(
+    'facetapi',
+    'facetapi_bonus',
+    'flag',
+    'search_api_solr',
+    'ulf_footer',
+    'ulf_mails',
+    'ulf_structures',
+    'ulf_taxonomy_terms',
+    'ulf_pages',
+    'migrate',
+    'migrate_ui',
+    'migrate_d2d',
+    'migrate_extras',
+    'ulf_migration',
+  );
+  db_delete('system')
+    ->condition('name', $modules, 'IN')
+    ->condition('type', 'module')
+    ->execute();
+}
