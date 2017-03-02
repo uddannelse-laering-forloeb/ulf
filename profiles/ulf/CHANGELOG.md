@@ -3,6 +3,7 @@
 #v2.5.x
 
 ##2.5.0
+* Fixed mobile styling an javascript for ‘end user message’ modal 
 * Added sigup fields from 'course educators' to 'course'
 * Changed title fields to use H1’s instead of DIV’s
 * Fixed ‘gratisbanner’ placement on mobile

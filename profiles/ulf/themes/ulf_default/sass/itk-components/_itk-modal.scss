@@ -86,7 +86,7 @@
     max-width: 90%;
 
     margin: 0 auto;
-    top: -120%;  // Dialog hidden just outside screen display
+    top: -150%;  // Dialog hidden just outside screen display
     left: 0;
     right: 0;
     position: fixed;
@@ -97,10 +97,11 @@
 
     &.is-visible {
       overflow-y: auto;
-      max-height: 75%;
+      max-height: 90%;
+      top: 5%;
 
       @include breakpoint($node-breakpoint) {
-        top: 150px;
+        top: 2em;
       }
     }
   }

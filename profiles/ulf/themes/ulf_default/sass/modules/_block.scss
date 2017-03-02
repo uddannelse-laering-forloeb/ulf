@@ -192,6 +192,12 @@
 
     @include strip-link-styles($white);
   }
+
+  &-modal-link {
+    @extend %button;
+
+    @include strip-link-styles($white);
+  }
 }
 
 

@@ -11,6 +11,10 @@
     var body = $('html');
 
     $('.js-toggle-modal').bind('touchstart click', function(e) {
+      // If fired on 'touchstart' prevent 'click' from firing,
+      // and closing dialog
+      e.stopPropagation(); e.preventDefault();
+
       // If nav is open we close it.
       if (modal.hasClass('is-visible')) {
 
