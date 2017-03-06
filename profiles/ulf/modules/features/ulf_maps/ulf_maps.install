@@ -39,7 +39,6 @@ function ulf_maps_install() {
   }
 }
 
-
 /**
  * Populate show on map field for all users.
  */
@@ -74,9 +73,6 @@ function ulf_maps_update_7100() {
   }
 }
 
-
-
-
 /**
  * Populate show on map field for all nodes.
  */
@@ -108,4 +104,11 @@ function ulf_maps_update_7200() {
         'field_course_show_on_map_value' => 1,
       ))->execute();
   }
+}
+
+/**
+ * Migrate data on users from 'Organization fields' to 'location fields'
+ */
+function ulf_maps_update_7201() {
+
 }
