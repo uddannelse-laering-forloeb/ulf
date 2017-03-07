@@ -105,10 +105,3 @@ function ulf_maps_update_7200() {
       ))->execute();
   }
 }
-
-/**
- * Migrate data on users from 'Organization fields' to 'location fields'
- */
-function ulf_maps_update_7201() {
-
-}

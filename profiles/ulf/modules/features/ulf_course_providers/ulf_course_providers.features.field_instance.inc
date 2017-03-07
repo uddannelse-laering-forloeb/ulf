@@ -117,74 +117,6 @@ function ulf_course_providers_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'user-user-field_profile_address'.
-  $field_instances['user-user-field_profile_address'] = array(
-    'bundle' => 'user',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 7,
-      ),
-    ),
-    'entity_type' => 'user',
-    'field_name' => 'field_profile_address',
-    'label' => 'Address',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 0,
-      'user_register_form' => 0,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 8,
-    ),
-  );
-
-  // Exported field_instance: 'user-user-field_profile_city'.
-  $field_instances['user-user-field_profile_city'] = array(
-    'bundle' => 'user',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 9,
-      ),
-    ),
-    'entity_type' => 'user',
-    'field_name' => 'field_profile_city',
-    'label' => 'By',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 0,
-      'user_register_form' => 0,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 10,
-    ),
-  );
-
   // Exported field_instance: 'user-user-field_profile_contact'.
   $field_instances['user-user-field_profile_contact'] = array(
     'bundle' => 'user',
@@ -546,46 +478,6 @@ function ulf_course_providers_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'user-user-field_profile_postal_code'.
-  $field_instances['user-user-field_profile_postal_code'] = array(
-    'bundle' => 'user',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'hidden',
-        'module' => 'number',
-        'settings' => array(
-          'decimal_separator' => '.',
-          'prefix_suffix' => 1,
-          'scale' => 0,
-          'thousand_separator' => '',
-        ),
-        'type' => 'number_integer',
-        'weight' => 8,
-      ),
-    ),
-    'entity_type' => 'user',
-    'field_name' => 'field_profile_postal_code',
-    'label' => 'Postnr.',
-    'required' => 0,
-    'settings' => array(
-      'max' => 9999,
-      'min' => '',
-      'prefix' => '',
-      'suffix' => '',
-      'user_register_form' => 0,
-    ),
-    'widget' => array(
-      'active' => 0,
-      'module' => 'number',
-      'settings' => array(),
-      'type' => 'number',
-      'weight' => 9,
-    ),
-  );
-
   // Exported field_instance: 'user-user-field_profile_show_on_map'.
   $field_instances['user-user-field_profile_show_on_map'] = array(
     'bundle' => 'user',
@@ -624,8 +516,6 @@ function ulf_course_providers_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Address');
-  t('By');
   t('Entré');
   t('Hjemmeside');
   t('Husk at inkludere http:// i webadressen');
@@ -635,7 +525,6 @@ function ulf_course_providers_field_default_field_instances() {
   t('Logo');
   t('Mail');
   t('Navn');
-  t('Postnr.');
   t('Pædagogisk profil');
   t('Redaktørfelt');
   t('Telefonnr.');

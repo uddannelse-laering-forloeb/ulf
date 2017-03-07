@@ -23,13 +23,10 @@ function ulf_course_providers_field_group_info() {
     'label' => 'Organization',
     'weight' => '7',
     'children' => array(
-      0 => 'field_profile_address',
-      1 => 'field_profile_city',
-      2 => 'field_profile_home_page',
-      3 => 'field_profile_logo',
-      4 => 'field_profile_phone',
-      5 => 'field_profile_postal_code',
-      6 => 'field_profile_mail',
+      0 => 'field_profile_home_page',
+      1 => 'field_profile_logo',
+      2 => 'field_profile_phone',
+      3 => 'field_profile_mail',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
