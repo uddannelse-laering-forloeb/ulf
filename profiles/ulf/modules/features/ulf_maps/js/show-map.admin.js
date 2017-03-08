@@ -3,21 +3,115 @@
  * Changes the behavior of the location map widget on the node edit form.
  */
 (function ($) {
+  // Global variables inside this closure. jQuery object can not be defined
+  // here as the DOM may not be ready.
+  var gmap_name = 'gmap-auto1map-gmap0';
+  var location_wrapper = '.location-wrapper';
 
   /**
-   * Hide all map related fields on the node edit form.
+   * Hide location fields that we don't want to display to the user.
    *
-   * @TODO: A lot of this could be remove in form alter.
+   * This is extra field with e.g. the lat/lon location etc.
    */
-  function hideMapsInformation() {
-    var $location = $('.location-wrapper');
+  function hideExtraLocationInformation() {
+    var $locationWrapper = $(location_wrapper);
 
-    $('.location-current-coordinates-fieldset', $location).hide();
-    $('.form-item-locations-0-locpick-user-latitude', $location).hide();
-    $('.form-item-locations-0-locpick-user-longitude', $location).hide();
-    $('.form-item-locations-0-re-geocode-location', $location).hide();
-    $('.form-item-locations-0-delete-location', $location).hide();
-    $('.description', $location).hide();
+    $('.location-current-coordinates-fieldset', $locationWrapper).hide();
+    $('.form-item-locations-0-locpick-user-latitude', $locationWrapper).hide();
+    $('.form-item-locations-0-locpick-user-longitude', $locationWrapper).hide();
+    $('.form-item-locations-0-re-geocode-location', $locationWrapper).hide();
+    $('.form-item-locations-0-delete-location', $locationWrapper).hide();
+    $('.description', $locationWrapper).hide();
+  }
+
+  /**
+   * Show/hide the google displayed map.
+   *
+   * @param {boolean} show
+   *   If true show the map else hide it.
+   */
+  function showLocationMap(show) {
+    var $gMap = $('#' + gmap_name);
+    $gMap.toggle(show);
+  }
+
+  /**
+   * Enable/disable the location input fields.
+   *
+   * @param {boolean} edit
+   *   If true enable the fields else disable.
+   */
+  function locationEditable(edit) {
+    var $locationWrapper = $(location_wrapper);
+
+    if (edit) {
+      $('input', $locationWrapper).prop('readonly', false);
+      $locationWrapper.removeClass('form-disabled');
+    }
+    else {
+      $('input', $locationWrapper).prop('readonly', true);
+      $locationWrapper.addClass('form-disabled');
+    }
+  }
+
+  /**
+   * The logic behind the UI behaviour when the different options are selected.
+   *
+   * @param {string} state
+   *   The state selected in the UI.
+   */
+  function changeLocationFields(state) {
+    var $locationWrapper = $(location_wrapper);
+
+    // Used to set helper text for new nodes selecting the provider address.
+    var $providerElement = $('.form-item-field-map-placement-und [for="edit-field-map-placement-und-provider"]');
+    var $providerText = $('.description', $providerElement);
+
+    // Helper text don't exists so lets create it (and hide it).
+    if (!$providerText.length) {
+      $providerElement.append('<div class="description">' + Drupal.t('As this is a new node the provider address will be set before the node have been saved.') + '</div>');
+      $providerText = $('.description', $providerElement);
+      $providerText.hide();
+    }
+
+    console.log(state);
+    switch (state) {
+      case 'provider':
+        // Fill on the providers address, which have been loaded from the
+        // provider. Only if the node is not new, hence we don't have the
+        // information yet.
+        if (Drupal.settings.hasOwnProperty('ulf_maps')) {
+          // If this is a new node add helper text.
+          if (Drupal.settings.ulf_maps.is_new) {
+            $providerText.show();
+          }
+          else {
+            $('#edit-locations-0-street', $locationWrapper).val(Drupal.settings.ulf_maps.provider.street);
+            $('#edit-locations-0-additional', $locationWrapper).val(Drupal.settings.ulf_maps.provider.address);
+            $('#edit-locations-0-postal-code', $locationWrapper).val(Drupal.settings.ulf_maps.provider.postal_code);
+            $('#edit-locations-0-postal-code', $locationWrapper).val(Drupal.settings.ulf_maps.provider.city);
+          }
+        }
+        showLocationMap(true);
+        locationEditable(false);
+        break;
+
+      case 'alternative':
+        $providerText.hide();
+        showLocationMap(true);
+        locationEditable(true);
+        break;
+
+      case 'hide':
+        $providerText.hide();
+        showLocationMap(false);
+        locationEditable(true);
+        break;
+
+      default:
+        console.error('Unknown location provider chosen!');
+        break;
+    }
   }
 
   /**
@@ -26,127 +120,19 @@
    */
   Drupal.behaviors.show_map = {
     attach: function (context, settings) {
-      hideMapsInformation();
-      //$('.gmap-control').show();
-      /*
+      // Start by hiding the location fields that we don't want the user to see.
+      hideExtraLocationInformation();
 
-      // Hide "specify entrance" button if address fields are missing.
-      if ($street.val() == '' || $postal.val() == '' || $city.val() == '' ) {
-        $('.js-specify-on-map', $location).hide();
-        $('.js-change-address', $location).hide();
+      // Find the selectors (radio buttons) that defines what should be shown.
+      var $selectors = $('.field-name-field-map-placement [name="field_map_placement[und]"]');
 
-        // Needs to be remove as it may have been set before.
-        $('.location-wrapper').removeClass('form-disabled');
-      }
-      else if (!$('.js-enable-address', $location).length) {
-        // Disable input fields.
-        $('.location-wrapper').addClass('form-disabled');
-        $street.attr('disabled','disabled');
-        $postal.attr('disabled','disabled');
-        $city.attr('disabled','disabled');
-        $('.js-change-address', $location).show();
-      }
-      else {
-        // Needs to be remove as it may have been set before.
-        $('.location-wrapper').removeClass('form-disabled');
-      }
+      // Set the default state based on current form selections.
+      changeLocationFields($selectors.val());
 
-      // Check when all address fields have values.
-      $('.form-item input', $location).keyup(function() {
-        // Show button if all address fields are filled out.
-        if ($('.form-item-locations-0-street input').val() == '' || $('.form-item-locations-0-postal-code input').val() == '' || $('.form-item-locations-0-city input').val() == '' ) {
-          $('.js-specify-on-map', $location).hide();
-        }
-        else {
-          $('.js-specify-on-map', $location).show();
-          $('.js-change-address', $location).show();
-        }
-      });*/
+      // Hook into the selectors change event to update the UI.
+      $selectors.click(function () {
+        changeLocationFields($(this).val());
+      });
     }
   };
-
-
-  // /**
-  //  * Function to call when the the place settings selector is changed.
-  //  * Updates which fields should be shown.
-  //  */
-  // function changePlaceSelection(selected) {
-  //   // Show stuff depending on what the selection array contains.
-  //   $('.location-wrapper').hide();
-  //   if ($.trim(selected) == 'Vis udbyderadresse') {
-  //     $('.location-wrapper').show();
-  //     $('.group-address .fieldset-wrapper').show();
-  //     $('.group-address').removeClass('collapsed');
-  //     $('.location-wrapper #edit-locations-0-street').val(Drupal.settings.userValues.street);
-  //     $('.location-wrapper #edit-locations-0-additional').val(Drupal.settings.userValues.further_info);
-  //     $('.location-wrapper #edit-locations-0-postal-code').val(Drupal.settings.userValues.postal_code);
-  //     $('.location-wrapper #edit-locations-0-city').val(Drupal.settings.userValues.city);
-  //     $('.group-address input').prop('readonly', true);
-  //     $('.group-address').addClass('form-disabled')
-  //     $('.group-address .gmap-control').hide();
-  //     $('.form-item-locations-0-city .messages').remove();
-  //   }
-  //
-  //   if ($.trim(selected) == 'Vis alternativ adresse') {
-  //     $('.location-wrapper').show();
-  //     $('.group-address .gmap-control').show();
-  //     $('.group-address .fieldset-wrapper').show();
-  //     $('.group-address').removeClass('collapsed');
-  //     $('.group-address input').prop('readonly', false);
-  //     $('.group-address').removeClass('form-disabled');
-  //     $('.location-wrapper input[type=text]').val('');
-  //     mapObj = Drupal.gmap.getMap('gmap-auto1map-gmap0');
-  //     mapObj.map.setZoom(12);
-  //     google.maps.event.trigger(mapObj.map, 'resize');
-  //     var coord = Drupal.settings.mapConfig.latlong.split(',');
-  //     mapObj.map.setCenter(new google.maps.LatLng(coord['0'], coord['1']), 12);
-  //     $('.form-item-locations-0-city').append('<div class="messages warning">Google forsøger på baggrund af adressen angivet, at bestemme lokaliteten der vises på kortet til slutbrugeren. Hvis du vil hjælpe google på vej kan du angive positionen på kortet herunder.</div>');
-  //   }
-  //   if ($.trim(selected) == 'Vis ikke på kort') {
-  //     $('.group-address .gmap-control').show();
-  //     $('.group-address .fieldset-wrapper').show();
-  //     $('.group-address').removeClass('collapsed');
-  //     $('.group-address input').prop('readonly', true);
-  //     $('.group-address').removeClass('form-disabled');
-  //     $('.form-item-locations-0-city .messages').remove();
-  //   }
-  // }
-  //
-  // $('.form-layout--beta .fieldset-title').click(function () {
-  //   mapObj = Drupal.gmap.getMap('gmap-auto1map-gmap0');
-  //   mapObj.map.setZoom(12);
-  //   google.maps.event.trigger(mapObj.map, 'resize');
-  //   var coord = Drupal.settings.mapConfig.latlong.split(',');
-  //   mapObj.map.setCenter(new google.maps.LatLng(coord['0'], coord['1']), 12);
-  // });
-  //
-  //
-  // // Display map
-  // mapObj = Drupal.gmap.getMap('gmap-auto1map-gmap0');
-  // google.maps.event.trigger(Drupal.gmap.map, 'resize');
-  //
-  // // Set readonly on fields
-  // if (Drupal.settings.placeConfig == 'place_settings_show_address') {
-  //   $('.group-address input').prop('readonly', true);
-  //   $('.group-address').addClass('form-disabled')
-  // }
-  //
-  // if (Drupal.settings.placeConfig === false) {
-  //   $('.location-wrapper').hide();
-  // }
-  //
-  // // Change stuff when a new target group is added or removed.
-  // $('.field-name-field-place-settings .form-radio').change(function () {
-  //
-  //   var id = ($(this).val());
-  //   var selected = $('.field-name-field-place-settings input[value="' + id + '"]').next().text();
-  //   changePlaceSelection(selected);
-  // });
-  //
-  // //When the place settings field is changed, change the subgroup options.
-  // $('.field-name-field-place-settings .form-select').change(changePlaceSelection);
-
-
-
 })(jQuery);
-

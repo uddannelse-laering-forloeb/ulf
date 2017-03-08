@@ -31,15 +31,33 @@ function ulf_maps_form_alter(&$form, &$form_state, $form_id) {
 
   if (in_array($form_id, $form_ids)) {
     if (isset($form['locations'])) {
-
-      //$mapconfig = variable_get('gmap_default');
-
       // Attach js to the form.
       $form['#attached']['js'][] = drupal_get_path('module', 'ulf_maps') . '/js/show-map.admin.js';
 
+      // Load provider information and save it in Drupal settings, so it's
+      // available for JS during form editing.
+      if (!empty($form['uid']['#value'])) {
+        $author = user_load($form['uid']['#value']);
+        $form['#attached']['js'][] = array(
+          'data' => array(
+            'ulf_maps' => array(
+              'is_new' => $form['nid']['#value'] == NULL,
+              'provider' => array(
+                'street' => $author->locations['0']['street'],
+                'additional' => $author->locations['0']['additional'],
+                'postal_code' => $author->locations['0']['postal_code'],
+                'city' => $author->locations['0']['city'],
+              ),
+            ),
+          ),
+          'type' => 'setting',
+        );
+      }
+
+
       // Extra submit handler to ensure that content selected to not be
       // displayed in map searches have their coordinates removed.
-//      array_unshift($form['#submit'], '_ulf_maps_profile_submit');
+      //array_unshift($form['#submit'], '_ulf_maps_profile_submit');
     }
   }
 }
