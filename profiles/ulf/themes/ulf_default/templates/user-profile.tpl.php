@@ -79,8 +79,8 @@
               </h2>
               <div class="block--content">
                 <div class="block--field-label"><?php print render($user_profile['field_profile_name']); ?></div>
-                <div class="block--field-text"><?php print render($user_profile['field_profile_address']); ?></div>
-                <div class="block--field-text"><?php print render($user_profile['field_profile_postal_code']); ?> <?php print render($user_profile['field_profile_city']); ?></div>
+                <div class="block--field-text"><?php print $location['street']; ?></div>
+                <div class="block--field-text"><?php print $location['postal_code']; ?> <?php print $location['city']; ?></div>
                 </br>
                 <?php if (isset($user_profile['field_profile_phone'])) : ?>
                   <div class="block--field-text"><?php print t('Phone')?> <?php print render($user_profile['field_profile_phone']); ?></div>
