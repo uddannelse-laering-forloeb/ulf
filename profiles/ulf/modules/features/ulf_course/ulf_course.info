@@ -35,6 +35,7 @@ features[field_group][] = group_facilities|node|course|form
 features[field_group][] = group_materials|node|course|form
 features[field_group][] = group_media|node|course|form
 features[field_group][] = group_period|node|course|form
+features[field_group][] = group_placement|node|course|form
 features[field_group][] = group_practical_information|node|course|form
 features[field_group][] = group_signup|node|course|form
 features[field_instance][] = node-course-field_activities

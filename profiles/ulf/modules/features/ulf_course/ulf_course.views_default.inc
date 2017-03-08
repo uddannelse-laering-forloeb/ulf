@@ -56,7 +56,7 @@ function ulf_course_views_default_views() {
   $handler->display->display_options['fields']['field_profile_name']['label'] = '';
   $handler->display->display_options['fields']['field_profile_name']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_profile_name']['element_label_colon'] = FALSE;
-  /* Field: User: Address */
+  /* Field: : field_profile_address */
   $handler->display->display_options['fields']['field_profile_address']['id'] = 'field_profile_address';
   $handler->display->display_options['fields']['field_profile_address']['table'] = 'field_data_field_profile_address';
   $handler->display->display_options['fields']['field_profile_address']['field'] = 'field_profile_address';
@@ -64,7 +64,7 @@ function ulf_course_views_default_views() {
   $handler->display->display_options['fields']['field_profile_address']['label'] = 'Adresse';
   $handler->display->display_options['fields']['field_profile_address']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_profile_address']['element_label_colon'] = FALSE;
-  /* Field: User: Postnr. */
+  /* Field: : field_profile_postal_code */
   $handler->display->display_options['fields']['field_profile_postal_code']['id'] = 'field_profile_postal_code';
   $handler->display->display_options['fields']['field_profile_postal_code']['table'] = 'field_data_field_profile_postal_code';
   $handler->display->display_options['fields']['field_profile_postal_code']['field'] = 'field_profile_postal_code';
@@ -76,7 +76,7 @@ function ulf_course_views_default_views() {
     'thousand_separator' => '',
     'prefix_suffix' => 1,
   );
-  /* Field: User: By */
+  /* Field: : field_profile_city */
   $handler->display->display_options['fields']['field_profile_city']['id'] = 'field_profile_city';
   $handler->display->display_options['fields']['field_profile_city']['table'] = 'field_data_field_profile_city';
   $handler->display->display_options['fields']['field_profile_city']['field'] = 'field_profile_city';

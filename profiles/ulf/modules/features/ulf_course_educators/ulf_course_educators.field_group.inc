@@ -25,11 +25,10 @@ function ulf_course_educators_field_group_info() {
     'children' => array(
       0 => 'field_free',
       1 => 'field_price',
-      2 => 'field_course_moms',
+      2 => 'field_collection_price',
       3 => 'field_duration',
       4 => 'field_duration_description',
       5 => 'field_duration_unit',
-      6 => 'field_collection_price',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -231,6 +230,35 @@ function ulf_course_educators_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_placement|node|course_educators|form';
+  $field_group->group_name = 'group_placement';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'course_educators';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Lokation',
+    'weight' => '8',
+    'children' => array(
+      0 => 'field_course_show_on_map',
+      1 => 'locations',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-placement field-group-fieldset',
+        'required_fields' => 1,
+        'id' => '',
+      ),
+    ),
+  );
+  $field_groups['group_placement|node|course_educators|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_signup|node|course_educators|form';
   $field_group->group_name = 'group_signup';
   $field_group->entity_type = 'node';
@@ -263,6 +291,7 @@ function ulf_course_educators_field_group_info() {
   // Included for use with string extractors like potx.
   t('Billeder/medier');
   t('Kurset');
+  t('Lokation');
   t('Materialer');
   t('Periode');
   t('Praktisk information');
