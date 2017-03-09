@@ -55,6 +55,7 @@ features[field_instance][] = node-course-field_full_description
 features[field_instance][] = node-course-field_image
 features[field_instance][] = node-course-field_inspirational_material
 features[field_instance][] = node-course-field_last_signup_date
+features[field_instance][] = node-course-field_map_placement
 features[field_instance][] = node-course-field_material_suggestions
 features[field_instance][] = node-course-field_message_form
 features[field_instance][] = node-course-field_offer_type

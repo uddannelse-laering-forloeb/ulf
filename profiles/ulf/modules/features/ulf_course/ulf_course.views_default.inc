@@ -151,7 +151,6 @@ function ulf_course_views_default_views() {
     t('næste ›'),
     t('sidste »'),
     t('author'),
-    t('Adresse'),
     t('Hjemmeside'),
     t('Telefon'),
     t('<div class="block-module--content">
