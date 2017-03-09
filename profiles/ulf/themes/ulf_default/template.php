@@ -201,9 +201,6 @@ function ulf_default_preprocess_node(&$variables) {
 
   // Display author meta data for courses.
   if (($variables['type'] == 'course'|| $variables['type'] == 'course_educators') && ($variables['view_mode'] == 'full' || $variables['view_mode'] == 'print')) {
-    $variables['profile_address'] = $author_wrapper->field_profile_address->value();
-    $variables['profile_postal_code'] = $author_wrapper->field_profile_postal_code->value();
-    $variables['profile_city'] = $author_wrapper->field_profile_city->value();
     $variables['profile_phone'] = $author_wrapper->field_profile_phone->value();
     $variables['profile_home_page'] = $author_wrapper->field_profile_home_page->value()['url'];
   }
@@ -237,8 +234,6 @@ function ulf_default_preprocess_field(&$variables) {
   $stripped_template = array(
     'field_duration',
     'field_duration_unit',
-    'field_profile_postal_code',
-    'field_profile_city',
     'field_unit_price',
     'field_price_description',
     'field_duration_description'

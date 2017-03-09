@@ -1,6 +1,6 @@
 /**
  * @file
- * Changes the behavior of the location map widget on the node edit form.
+ * Changes the behavior of the location widget on the node edit form.
  */
 (function ($) {
   // Global variables inside this closure. jQuery object can not be defined
@@ -86,10 +86,11 @@
             $providerText.show();
           }
           else {
+            // Insert the providers information in the location form.
             $('#edit-locations-0-street', $locationWrapper).val(Drupal.settings.ulf_maps.provider.street);
-            $('#edit-locations-0-additional', $locationWrapper).val(Drupal.settings.ulf_maps.provider.address);
+            $('#edit-locations-0-additional', $locationWrapper).val(Drupal.settings.ulf_maps.provider.additional);
             $('#edit-locations-0-postal-code', $locationWrapper).val(Drupal.settings.ulf_maps.provider.postal_code);
-            $('#edit-locations-0-postal-code', $locationWrapper).val(Drupal.settings.ulf_maps.provider.city);
+            $('#edit-locations-0-city', $locationWrapper).val(Drupal.settings.ulf_maps.provider.city);
           }
         }
         showLocationMap(true);

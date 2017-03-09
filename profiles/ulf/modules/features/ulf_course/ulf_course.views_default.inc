@@ -56,34 +56,6 @@ function ulf_course_views_default_views() {
   $handler->display->display_options['fields']['field_profile_name']['label'] = '';
   $handler->display->display_options['fields']['field_profile_name']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_profile_name']['element_label_colon'] = FALSE;
-  /* Field: : field_profile_address */
-  $handler->display->display_options['fields']['field_profile_address']['id'] = 'field_profile_address';
-  $handler->display->display_options['fields']['field_profile_address']['table'] = 'field_data_field_profile_address';
-  $handler->display->display_options['fields']['field_profile_address']['field'] = 'field_profile_address';
-  $handler->display->display_options['fields']['field_profile_address']['relationship'] = 'uid';
-  $handler->display->display_options['fields']['field_profile_address']['label'] = 'Adresse';
-  $handler->display->display_options['fields']['field_profile_address']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_profile_address']['element_label_colon'] = FALSE;
-  /* Field: : field_profile_postal_code */
-  $handler->display->display_options['fields']['field_profile_postal_code']['id'] = 'field_profile_postal_code';
-  $handler->display->display_options['fields']['field_profile_postal_code']['table'] = 'field_data_field_profile_postal_code';
-  $handler->display->display_options['fields']['field_profile_postal_code']['field'] = 'field_profile_postal_code';
-  $handler->display->display_options['fields']['field_profile_postal_code']['relationship'] = 'uid';
-  $handler->display->display_options['fields']['field_profile_postal_code']['label'] = '';
-  $handler->display->display_options['fields']['field_profile_postal_code']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_profile_postal_code']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_profile_postal_code']['settings'] = array(
-    'thousand_separator' => '',
-    'prefix_suffix' => 1,
-  );
-  /* Field: : field_profile_city */
-  $handler->display->display_options['fields']['field_profile_city']['id'] = 'field_profile_city';
-  $handler->display->display_options['fields']['field_profile_city']['table'] = 'field_data_field_profile_city';
-  $handler->display->display_options['fields']['field_profile_city']['field'] = 'field_profile_city';
-  $handler->display->display_options['fields']['field_profile_city']['relationship'] = 'uid';
-  $handler->display->display_options['fields']['field_profile_city']['label'] = '';
-  $handler->display->display_options['fields']['field_profile_city']['exclude'] = TRUE;
-  $handler->display->display_options['fields']['field_profile_city']['element_label_colon'] = FALSE;
   /* Field: User: Hjemmeside */
   $handler->display->display_options['fields']['field_profile_home_page']['id'] = 'field_profile_home_page';
   $handler->display->display_options['fields']['field_profile_home_page']['table'] = 'field_data_field_profile_home_page';
@@ -116,8 +88,6 @@ function ulf_course_views_default_views() {
   <h3><a href="/user/[uid]">[field_profile_name]</a></h3>
   <div class="block-module--field-wrapper">
     <div class="block-module--field-label">Adresse</div>
-    <div class="block-module--field-text--no-space">[field_profile_address]</div> 
-    <div class="block-module--field-text">[field_profile_postal_code] [field_profile_city]</div>
   </div>
   <div class="block-module--field-wrapper">
     <div class="block-module--field-label">Kontaktinformation</div>
@@ -188,8 +158,6 @@ function ulf_course_views_default_views() {
   <h3><a href="/user/[uid]">[field_profile_name]</a></h3>
   <div class="block-module--field-wrapper">
     <div class="block-module--field-label">Adresse</div>
-    <div class="block-module--field-text--no-space">[field_profile_address]</div> 
-    <div class="block-module--field-text">[field_profile_postal_code] [field_profile_city]</div>
   </div>
   <div class="block-module--field-wrapper">
     <div class="block-module--field-label">Kontaktinformation</div>

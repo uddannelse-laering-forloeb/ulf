@@ -220,8 +220,8 @@
             </h2>
             <div class="block--content">
               <div class="block--field-label"><?php print $profile_name; ?></div>
-              <div class="block--field-text"><?php print $profile_address; ?></div>
-              <div class="block--field-text"><?php print $profile_postal_code; ?> <?php print $profile_city; ?></div>
+<!--              <div class="block--field-text">--><?php //print $profile_address; ?><!--</div>-->
+<!--              <div class="block--field-text">--><?php //print $profile_postal_code; ?><!-- --><?php //print $profile_city; ?><!--</div>-->
               <br>
               <div class="block--field-text"><?php print t('Phone')?> <?php print $profile_phone; ?></div>
               <br>

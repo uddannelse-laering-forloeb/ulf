@@ -17,6 +17,9 @@ function ulf_maps_form_alter(&$form, &$form_state, $form_id) {
     'course_educators_node_form',
   );
 
+  // We have location information in the user profiles and there the location
+  // module don't allow use to move it inside the a field_group, so we do it
+  // right here.
   if ($form_id == 'user_profile_form') {
     // If location modules are set up.
     if (isset($form['locations'])) {
@@ -24,15 +27,16 @@ function ulf_maps_form_alter(&$form, &$form_state, $form_id) {
       $form['#groups']['group_placement']->children[] = 'locations';
       $form['#fieldgroups']['group_placement']->children[] = 'locations';
       $form['#group_children']['locations'] = 'group_placement';
-
       $form['locations']['#weight'] = 30;
     }
   }
 
+  // Check if the JS should be added to the form and also send user (provider)
+  // location information into JS to allow for a better UX.
   if (in_array($form_id, $form_ids)) {
     if (isset($form['locations'])) {
       // Attach js to the form.
-      $form['#attached']['js'][] = drupal_get_path('module', 'ulf_maps') . '/js/show-map.admin.js';
+      $form['#attached']['js'][] = drupal_get_path('module', 'ulf_maps') . '/js/ulf_maps.admin.js';
 
       // Load provider information and save it in Drupal settings, so it's
       // available for JS during form editing.
@@ -57,134 +61,20 @@ function ulf_maps_form_alter(&$form, &$form_state, $form_id) {
 
       // Extra submit handler to ensure that content selected to not be
       // displayed in map searches have their coordinates removed.
-      //array_unshift($form['#submit'], '_ulf_maps_profile_submit');
+      array_unshift($form['#submit'], '_ulf_maps_profile_submit');
     }
   }
 }
 
 
-//// Address specific settings
-//if ($form_id == 'course_node_form' || $form_id == 'course_educators_node_form') {
-//
-//  // Add author variables
-//  $uservalues = array();
-//  $mapconfig = variable_get('gmap_default');
-//  $author = user_load($form['uid']['#value']);
-//  $uservalues['street'] = $author->locations['0']['street'];
-//  $uservalues['further_info'] = $author->locations['0']['additional'];
-//  $uservalues['postal_code'] = $author->locations['0']['postal_code'];
-//  $uservalues['city'] = $author->locations['0']['city'];
-//  $place_config = FALSE;
-//  if (!empty($form['#entity']->field_place_settings)) {
-//    $place_config = $form['#entity']->field_place_settings['und'][0]['value'];
-//  }
-//
-//  $form['#attached']['js'][] = drupal_get_path('module', 'ulf_forms') . '/js/node-form-logics.js';
-//  $form['#attached']['js'][] = array(
-//    'data' => array(
-//      'userValues' => $uservalues,
-//      'mapConfig' => $mapconfig,
-//      'placeConfig' => $place_config,
-//    ),
-//    'type' => 'setting',
-//  );
-//}
-//
-///**
-// * Ajax callback that updates the map marker.
-// */
-//function ulf_maps_update_location($form, &$form_state) {
-//  // Get lat/lon for the address.
-//  $data = location_latlon_exact($form_state['values']['locations'][0]);
-//
-//  // Update the values in the form.
-//  $form['locations'][0]['locpick']['user_latitude']['#value'] = $data['lat'];
-//  $form['locations'][0]['locpick']['user_longitude']['#value'] = $data['lon'];
-//
-//  // Update default values with the new values.
-//  $form['locations'][0]['#default_value']['latitude'] = $data['lat'];
-//  $form['locations'][0]['#default_value']['longitude'] = $data['lon'];
-//  $form_state['values']['locations'][0]['locpick']['user_latitude'] = $data['lat'];
-//  $form_state['values']['locations'][0]['locpick']['user_longitude'] = $data['lon'];
-//
-//  // Update map information with new location.
-//  $form['locations'][0]['locpick']['map']['#gmap_settings']['latitude'] = $data['lat'];
-//  $form['locations'][0]['locpick']['map']['#gmap_settings']['longitude'] = $data['lon'];
-//  $form['locations'][0]['locpick']['map']['#gmap_settings']['latlong'] = $data['lat'] . ',' . $data['lon'];
-//  $form['locations'][0]['locpick']['current']['current_latitude']['#markup'] = $data['lat'];
-//  $form['locations'][0]['locpick']['current']['current_longitude']['#markup'] = $data['lon'];
-//
-//  // Change clicked button text.
-//  $form['locations'][0]['submit']['#value'] = t('Reset marker');
-//
-//  // Class hack to handle JS.
-//  $form['locations'][0]['#attributes']['class'] = array(
-//    'location',
-//    'js-show-map',
-//  );
-//
-//  // Render the form and remove messages.
-//  $element = render($form['locations']);
-//  drupal_get_messages();
-//
-//  return $element;
-//}
-//
-//
-///**
-// * Ajax callback that resets the map marker and lat/lon.
-// */
-//function ulf_maps_reset_coordinates($form, &$form_state) {
-//  // Update the values in the form.
-//  $form['locations'][0]['locpick']['user_latitude']['#value'] = '';
-//  $form['locations'][0]['locpick']['user_longitude']['#value'] = '';
-//
-//  // Update default values with the new values.
-//  $form['locations'][0]['#default_value']['latitude'] = '';
-//  $form['locations'][0]['#default_value']['longitude'] = '';
-//  $form_state['values']['locations'][0]['locpick']['user_latitude'] = '';
-//  $form_state['values']['locations'][0]['locpick']['user_longitude'] = '';
-//
-//  // Update map information with new location.
-//  $form['locations'][0]['locpick']['map']['#gmap_settings']['latitude'] = '';
-//  $form['locations'][0]['locpick']['map']['#gmap_settings']['longitude'] = '';
-//  $form['locations'][0]['locpick']['map']['#gmap_settings']['latlong'] = '' . ',' . '';
-//  $form['locations'][0]['locpick']['current']['current_latitude']['#markup'] = '';
-//  $form['locations'][0]['locpick']['current']['current_longitude']['#markup'] = '';
-//
-//  // Change clicked button text.
-//  $form['locations'][0]['submit']['#value'] = t('Specify entrance on map');
-//
-//  // Class hack to handle JS.
-//  $form['locations'][0]['#attributes']['class'] = array(
-//    'location',
-//    'js-enable-address',
-//  );
-//
-//  // Render the from an remove messages.
-//  $element = render($form['locations']);
-//
-//  drupal_get_messages();
-//  return $element;
-//}
-//
-///**
-// * Reset location if address depending on value og place_settings selector false
-// *
-// * @param $form
-// * @param $form_state
-// */
-//function _ulf_maps_profile_submit($form, &$form_state) {
-//  _reset_coordinates($form, $form_state);
-//}
-//
-///**
-// * Reset coordinates for the form.
-// * @param $form
-// * @param $form_state
-// */
-//function _reset_coordinates($form, $form_state) {
-//  // Update the values in the form.
+/**
+ * Reset location if address depending on value og place_settings selector false
+ *
+ * @param $form
+ * @param $form_state
+ */
+function _ulf_maps_profile_submit($form, &$form_state) {
+  $t = 1;
 //  $form['locations'][0]['locpick']['user_latitude']['#value'] = '0.000000';
 //  $form['locations'][0]['locpick']['user_longitude']['#value'] = '0.000000';
 //
@@ -200,4 +90,4 @@ function ulf_maps_form_alter(&$form, &$form_state, $form_id) {
 //  $form['locations'][0]['locpick']['map']['#gmap_settings']['latlong'] = '0.000000' . ',' . '0.000000';
 //  $form['locations'][0]['locpick']['current']['current_latitude']['#markup'] = '0.000000';
 //  $form['locations'][0]['locpick']['current']['current_longitude']['#markup'] = '0.000000';
-//}
+}
