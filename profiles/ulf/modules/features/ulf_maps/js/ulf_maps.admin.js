@@ -22,6 +22,7 @@
     $('.form-item-locations-0-re-geocode-location', $locationWrapper).hide();
     $('.form-item-locations-0-delete-location', $locationWrapper).hide();
     $('.description', $locationWrapper).hide();
+    $('#' + gmap_name).hide();
   }
 
   /**
@@ -32,7 +33,52 @@
    */
   function showLocationMap(show) {
     var $gMap = $('#' + gmap_name);
-    $gMap.toggle(show);
+
+    if (show) {
+      // Display the map element in the UI.
+      $gMap.show(function () {
+        updateGoogleMapPreview();
+      });
+    }
+    else {
+      // Simple hide the map element.
+      $gMap.hide();
+    }
+  }
+
+  /**
+   * Update the google map preview.
+   *
+   * This will update the google map preview to display the currently enter
+   * address on the map.
+   */
+  function updateGoogleMapPreview() {
+    // Get the google map object and trigger resize to re-draw the map.
+    var map  = Drupal.gmap.getMap(gmap_name).map;
+    google.maps.event.trigger(map, 'resize');
+
+    // Get the current entered address and use google geocoder to get the
+    // lat/lon.
+    var address =  $('#edit-locations-0-street').val() + ',' +  $('#edit-locations-0-postal-code').val() + ',' + $('#edit-locations-0-city').val();
+    var geocoder = new google.maps.Geocoder();
+    geocoder.geocode( { 'address': address}, function(results, status) {
+      if (status == 'OK') {
+        var location = results[0].geometry.location;
+
+        // Use the location to update the hidden lock-pick fields and
+        // trigger change events on them to trigger it to update the marker
+        // position on the map.
+        $('#gmap-auto1map-locpick_latitude0').val(location.lat);
+        $('#gmap-auto1map-locpick_latitude0').change();
+        $('#gmap-auto1map-locpick_longitude0').val(location.lng);
+        $('#gmap-auto1map-locpick_longitude0').change();
+
+        // Change the map to center on the marker and trigger another resize
+        // event to re-draw the map once more.
+        map.setCenter(location);
+        google.maps.event.trigger(map, 'resize');
+      }
+    });
   }
 
   /**
@@ -74,7 +120,6 @@
       $providerText.hide();
     }
 
-    console.log(state);
     switch (state) {
       case 'provider':
         // Fill on the providers address, which have been loaded from the
@@ -121,8 +166,14 @@
    */
   Drupal.behaviors.show_map = {
     attach: function (context, settings) {
+      var $locationWrapper = $(location_wrapper);
+
       // Start by hiding the location fields that we don't want the user to see.
       hideExtraLocationInformation();
+
+      // Add hidden overlay to prevent marker movement in google maps.
+      $('#' + gmap_name).wrap('<div class="gmap-wrapper"></div>');
+      $('.gmap-wrapper').append('<div class="gmap-overlay"></div>');
 
       // Find the selectors (radio buttons) that defines what should be shown.
       var $selectors = $('.field-name-field-map-placement [name="field_map_placement[und]"]');
@@ -133,12 +184,22 @@
       }
 
       // Set the default state based on current form selections.
-      changeLocationFields($selectors.val());
+      $selectors.each(function () {
+        if ($(this).is(":checked")) {
+          changeLocationFields($(this).val());
+        }
+      });
 
       // Hook into the selectors change event to update the UI.
-      $selectors.click(function () {
+      $selectors.change(function () {
         changeLocationFields($(this).val());
       });
+
+      // Hook into the input address fields and update the google map.
+      $('#edit-locations-0-street', $locationWrapper).change(updateGoogleMapPreview);
+      $('#edit-locations-0-additional', $locationWrapper).change(updateGoogleMapPreview);
+      $('#edit-locations-0-postal-code', $locationWrapper).change(updateGoogleMapPreview);
+      $('#edit-locations-0-city', $locationWrapper).change(updateGoogleMapPreview);
     }
   };
 })(jQuery);
