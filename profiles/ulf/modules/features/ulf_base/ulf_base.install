@@ -224,13 +224,12 @@ function ulf_base_update_7010(&$sandbox) {
   }
 
   // Delete "about" menu.
-  $menu = menu_delete('menu-about-ulf');
-  menu_delete($menu);
+  menu_delete('menu-about-ulf');
 }
 
 
 /**
- * Enable menu block
+ * Enable menu block.
  */
 function ulf_base_update_7011(&$sandbox) {
   $module_enable = array(
@@ -242,7 +241,7 @@ function ulf_base_update_7011(&$sandbox) {
 
 
 /**
- * Delete old menu
+ * Delete old menu.
  */
 function ulf_base_update_7012(&$sandbox) {
   // Delete "about" menu.
@@ -268,26 +267,39 @@ function ulf_base_update_7013() {
 }
 
 /**
- * Add webform module
+ * Enabled modules used to create end user messages forms.
  */
 function ulf_base_update_7014(&$sandbox) {
-  $module_enable = array(
+  module_enable(array(
     'entity2text',
     'rules',
     'entityform',
     'entityreference',
     'captcha',
     'image_captcha',
-    'ulf_entityform'
-  );
+    'ulf_entityform',
+  ));
 
-  module_enable($module_enable);
-
+  // Revert all features as this have not been possible before due the missing
+  // entity reference module. So the feature revert before runnig updates have
+  // not been completed for all features.
+  $features = features_get_features(NULL, TRUE);
+  foreach ($features as $name => $feature) {
+    if (module_exists($name)) {
+      // Get all components of the feature.
+      foreach (array_keys($feature->info['features']) as $component) {
+        if (features_hook($component, 'features_revert')) {
+          // Revert each component (force).
+          features_revert(array($name => array($component)));
+        }
+      }
+    }
+  }
   drupal_flush_all_caches();
 }
 
 /**
- * Enable entity form on all courses and course_educators
+ * Enable entity form on all "courses" and "course educators" nodes.
  */
 function ulf_base_update_7015(&$sandbox) {
   $type = array(
