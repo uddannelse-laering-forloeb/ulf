@@ -427,3 +427,55 @@ function ulf_base_update_7020(&$sandbox) {
     ->condition('type', 'module')
     ->execute();
 }
+
+/**
+ * Remove old migration tables.
+ */
+function ulf_base_update_7101(&$sandbox) {
+  $tables = array(
+    'migrate_field_mapping',
+    'migrate_group',
+    'migrate_log',
+    'migrate_map_ulfcourserelevancyeducators',
+    'migrate_map_ulfcourses',
+    'migrate_map_ulfcourseseducation',
+    'migrate_map_ulfeducationalgoals',
+    'migrate_map_ulfeducationalmaterial',
+    'migrate_map_ulfelementaryschool',
+    'migrate_map_ulffiles',
+    'migrate_map_ulfnews',
+    'migrate_map_ulfoffertype',
+    'migrate_map_ulfprimaryschool',
+    'migrate_map_ulfroles',
+    'migrate_map_ulfstatic',
+    'migrate_map_ulfsubjectsprimaryschools',
+    'migrate_map_ulfsubjectsyouth',
+    'migrate_map_ulftags',
+    'migrate_map_ulftopics',
+    'migrate_map_ulfusers',
+    'migrate_map_ulfuserscontact',
+    'migrate_message_ulfcourserelevancyeducators',
+    'migrate_message_ulfcourses',
+    'migrate_message_ulfcourseseducation',
+    'migrate_message_ulfeducationalgoals',
+    'migrate_message_ulfeducationalmaterial',
+    'migrate_message_ulfelementaryschool',
+    'migrate_message_ulffiles',
+    'migrate_message_ulfnews',
+    'migrate_message_ulfoffertype',
+    'migrate_message_ulfprimaryschool',
+    'migrate_message_ulfroles',
+    'migrate_message_ulfstatic',
+    'migrate_message_ulfsubjectsprimaryschools',
+    'migrate_message_ulfsubjectsyouth',
+    'migrate_message_ulftags',
+    'migrate_message_ulftopics',
+    'migrate_message_ulfusers',
+    'migrate_message_ulfuserscontact',
+    'migrate_status',
+  );
+
+  foreach ($tables as $table) {
+    db_drop_table($table);
+  }
+}
