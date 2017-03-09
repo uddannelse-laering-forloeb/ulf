@@ -127,6 +127,11 @@
       // Find the selectors (radio buttons) that defines what should be shown.
       var $selectors = $('.field-name-field-map-placement [name="field_map_placement[und]"]');
 
+      // If selectors not found, it may be an provider profile.
+      if (!$selectors.length) {
+        $selectors = $('.field-name-field-profile-map-placement [name="field_profile_map_placement[und]"]');
+      }
+
       // Set the default state based on current form selections.
       changeLocationFields($selectors.val());
 

@@ -55,7 +55,7 @@ function ulf_course_providers_field_group_info() {
     'weight' => '9',
     'children' => array(
       0 => 'field_profile_show_on_map',
-      1 => 'field_map_placement',
+      1 => 'field_profile_map_placement',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

@@ -410,6 +410,41 @@ function ulf_course_providers_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'user-user-field_profile_map_placement'.
+  $field_instances['user-user-field_profile_map_placement'] = array(
+    'bundle' => 'user',
+    'default_value' => array(
+      0 => array(
+        'value' => 'alternative',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 17,
+      ),
+    ),
+    'entity_type' => 'user',
+    'field_name' => 'field_profile_map_placement',
+    'label' => 'Visning på kort',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => 1,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 16,
+    ),
+  );
+
   // Exported field_instance: 'user-user-field_profile_name'.
   $field_instances['user-user-field_profile_name'] = array(
     'bundle' => 'user',
@@ -530,6 +565,7 @@ function ulf_course_providers_field_default_field_instances() {
   t('Telefonnr.');
   t('Upload et billede/illustration');
   t('Vis på kort');
+  t('Visning på kort');
 
   return $field_instances;
 }

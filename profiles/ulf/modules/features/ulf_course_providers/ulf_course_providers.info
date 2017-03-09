@@ -32,6 +32,7 @@ features[field_instance][] = user-user-field_profile_entry
 features[field_instance][] = user-user-field_profile_home_page
 features[field_instance][] = user-user-field_profile_logo
 features[field_instance][] = user-user-field_profile_mail
+features[field_instance][] = user-user-field_profile_map_placement
 features[field_instance][] = user-user-field_profile_name
 features[field_instance][] = user-user-field_profile_phone
 features[field_instance][] = user-user-field_profile_show_on_map
