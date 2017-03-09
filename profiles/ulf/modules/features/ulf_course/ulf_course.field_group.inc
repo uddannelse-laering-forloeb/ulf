@@ -240,9 +240,8 @@ function ulf_course_field_group_info() {
     'label' => 'Lokation',
     'weight' => '11',
     'children' => array(
-      0 => 'field_course_show_on_map',
-      1 => 'locations',
-      2 => 'field_map_placement',
+      0 => 'locations',
+      1 => 'field_map_placement',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

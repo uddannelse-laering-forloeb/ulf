@@ -207,48 +207,6 @@ function ulf_course_educators_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-course_educators-field_course_show_on_map'.
-  $field_instances['node-course_educators-field_course_show_on_map'] = array(
-    'bundle' => 'course_educators',
-    'default_value' => array(
-      0 => array(
-        'value' => 1,
-      ),
-    ),
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 28,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 8,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_course_show_on_map',
-    'label' => 'Vis på kort',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'display_label' => 0,
-      ),
-      'type' => 'options_onoff',
-      'weight' => 12,
-    ),
-  );
-
   // Exported field_instance: 'node-course_educators-field_duration'.
   $field_instances['node-course_educators-field_duration'] = array(
     'bundle' => 'course_educators',
