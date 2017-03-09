@@ -58,7 +58,6 @@ function ulf_maps_form_alter(&$form, &$form_state, $form_id) {
         );
       }
 
-
       // Extra submit handler to ensure that content selected to not be
       // displayed in map searches have their coordinates removed.
       array_unshift($form['#submit'], '_ulf_maps_profile_submit');
@@ -66,28 +65,38 @@ function ulf_maps_form_alter(&$form, &$form_state, $form_id) {
   }
 }
 
-
 /**
- * Reset location if address depending on value og place_settings selector false
+ * Implements hook_submit().
  *
- * @param $form
- * @param $form_state
+ * Reset location if address depending on value og place_settings selector false
  */
 function _ulf_maps_profile_submit($form, &$form_state) {
-  $t = 1;
-//  $form['locations'][0]['locpick']['user_latitude']['#value'] = '0.000000';
-//  $form['locations'][0]['locpick']['user_longitude']['#value'] = '0.000000';
-//
-//  // Update default values with the new values.
-//  $form['locations'][0]['#default_value']['latitude'] = '0.000000';
-//  $form['locations'][0]['#default_value']['longitude'] = '0.000000';
-//  $form_state['values']['locations'][0]['locpick']['user_latitude'] = '0.000000';
-//  $form_state['values']['locations'][0]['locpick']['user_longitude'] = '0.000000';
-//
-//  // Update map information with new location.
-//  $form['locations'][0]['locpick']['map']['#gmap_settings']['latitude'] = '0.000000';
-//  $form['locations'][0]['locpick']['map']['#gmap_settings']['longitude'] = '0.000000';
-//  $form['locations'][0]['locpick']['map']['#gmap_settings']['latlong'] = '0.000000' . ',' . '0.000000';
-//  $form['locations'][0]['locpick']['current']['current_latitude']['#markup'] = '0.000000';
-//  $form['locations'][0]['locpick']['current']['current_longitude']['#markup'] = '0.000000';
+  $values = $form_state['values'];
+
+  // Find selected map placement choice.
+  if (isset($values['field_map_placement'])) {
+    $choice = $values['field_map_placement'][LANGUAGE_NONE][0]['value'];
+  }
+  else {
+    $choice = $values['field_profile_map_placement'][LANGUAGE_NONE][0]['value'];
+  }
+
+  // If the selection is to hide it on the search map (reset coordinates).
+  if ($choice == 'hide') {
+    $form['locations'][0]['locpick']['user_latitude']['#value'] = '0.000000';
+    $form['locations'][0]['locpick']['user_longitude']['#value'] = '0.000000';
+
+    // Update default values with the new values.
+    $form['locations'][0]['#default_value']['latitude'] = '0.000000';
+    $form['locations'][0]['#default_value']['longitude'] = '0.000000';
+    $form_state['values']['locations'][0]['locpick']['user_latitude'] = '0.000000';
+    $form_state['values']['locations'][0]['locpick']['user_longitude'] = '0.000000';
+
+    // Update map information with new location.
+    $form['locations'][0]['locpick']['map']['#gmap_settings']['latitude'] = '0.000000';
+    $form['locations'][0]['locpick']['map']['#gmap_settings']['longitude'] = '0.000000';
+    $form['locations'][0]['locpick']['map']['#gmap_settings']['latlong'] = '0.000000' . ',' . '0.000000';
+    $form['locations'][0]['locpick']['current']['current_latitude']['#markup'] = '0.000000';
+    $form['locations'][0]['locpick']['current']['current_longitude']['#markup'] = '0.000000';
+  }
 }
