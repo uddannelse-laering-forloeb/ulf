@@ -238,9 +238,11 @@
                 <h2 class="block--header modal--header">
                   <?php print t('Send message to') . ' ' . $profile_name; ?>
                 </h2>
+                <?php if (isset($content['field_message_form'])): ?>
                 <div class="block--content">
                   <?php print render($content['field_message_form']); ?>
                 </div>
+                <?php endif; ?>
               </div>
             </div>
           <?php endif; ?>
