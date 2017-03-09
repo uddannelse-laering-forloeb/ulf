@@ -8,12 +8,22 @@
  * Migrate data on users from 'Organization fields' to 'location fields'
  */
 function ulf_course_providers_update_7201() {
+  // Find the course providers role id, as this is different from site to site.
+  $rid = 0;
+  $roles = user_roles(TRUE);
+  foreach ($roles as $rid => $role) {
+    if ($role == 'course provider') {
+      // Stop the search as $rid now has the role id (also outside this loop).
+      break;
+    }
+  }
+
   // Find all users (providers) that don't have a location.
   $query = db_select('users', 'u');
   $query->fields('u', array('uid'));
   $query->addJoin('LEFT', 'users_roles', 'ur', 'ur.uid = u.uid');
   $query->addJoin('LEFT', 'location_instance', 'l', 'u.uid = l.uid');
-  $query->condition('ur.rid', 18, '=')
+  $query->condition('ur.rid', $rid, '=')
     ->condition('u.uid', 0, '!=')
     ->isNull('l.uid');
   $uids = $query->execute()->fetchCol(0);
@@ -43,5 +53,5 @@ function ulf_course_providers_update_7202() {
   field_delete_field('field_profile_address');
   field_delete_field('field_profile_city');
   field_delete_field('field_profile_postal_code');
-  field_purge_batch(500);
+  field_purge_batch(5000);
 }

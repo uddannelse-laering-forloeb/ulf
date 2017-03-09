@@ -4,45 +4,10 @@
  * Install, update and uninstall functions for the ulf maps module.
  */
 
-
-/**
- * Install tasks related to ulf maps.
- */
-function ulf_maps_install() {
-  $uids = db_query('SELECT uid FROM {users} AS u');
-  foreach ($uids as $record) {
-    $uid = $record->uid;
-
-    db_insert('field_data_field_profile_show_on_map')->fields(
-      array(
-        'entity_type' => 'user',
-        'bundle' => 'user',
-        'deleted' => '0',
-        'entity_id' => $uid,
-        'revision_id' => $uid,
-        'language' => 'und',
-        'delta' => 0,
-        'field_profile_show_on_map_value' => 1,
-      ))->execute();
-
-    db_insert('field_revision_field_profile_show_on_map')->fields(
-      array(
-        'entity_type' => 'user',
-        'bundle' => 'user',
-        'deleted' => '0',
-        'entity_id' => $uid,
-        'revision_id' => $uid,
-        'language' => 'und',
-        'delta' => 0,
-        'field_profile_show_on_map_value' => 1,
-      ))->execute();
-  }
-}
-
 /**
  * Populate show on map field for all users.
  */
-function ulf_maps_update_7100() {
+function ulf_maps_update_7100(&$sandbox) {
   $uids = db_query('SELECT uid FROM {users} AS u');
   foreach ($uids as $record) {
     $uid = $record->uid;
@@ -76,7 +41,7 @@ function ulf_maps_update_7100() {
 /**
  * Populate show on map field for all nodes.
  */
-function ulf_maps_update_7200() {
+function ulf_maps_update_7200(&$sandbox) {
   $nids = db_query('SELECT n.nid FROM {node} n WHERE n.type = :type1 OR n.type = :type2', array(':type1' => 'course', ':type2' => 'course_educators'));
   foreach ($nids as $record) {
     $nid = $record->nid;
@@ -103,5 +68,48 @@ function ulf_maps_update_7200() {
         'delta' => 0,
         'field_course_show_on_map_value' => 1,
       ))->execute();
+  }
+}
+
+/**
+ * Set default values for placement fields on users (providers).
+ *
+ * Note that this is done in this module and not ulf_course_providers due to the
+ * fact that the field needs to be delete and is used across users and content
+ * types.
+ */
+function ulf_maps_update_7201(&$sandbox) {
+  // Find the course providers role id, as this is different from site to site.
+  $rid = 0;
+  $roles = user_roles(TRUE);
+  foreach ($roles as $rid => $role) {
+    if ($role == 'course provider') {
+      // Stop the search as $rid now has the role id (also outside this loop).
+      break;
+    }
+  }
+
+  // Find all users (providers) that don't have a location.
+  $query = db_select('users', 'u');
+  $query->fields('u', array('uid'));
+  $query->join('users_roles', 'ur', 'ur.uid = u.uid');
+  $query->condition('ur.rid', $rid, '=');
+  $uids = $query->execute()->fetchCol(0);
+  $users = user_load_multiple($uids);
+
+  foreach ($users as $user) {
+    // Set default value to be displayed in maps.
+    $user->field_profile_map_placement[LANGUAGE_NONE] = array(
+      array(
+        'value' => 'alternative',
+      )
+    );
+
+    // If the old show_on_map is un-checked - hide location on the map.
+    if (!$user->field_profile_show_on_map[LANGUAGE_NONE][0]['value']) {
+      $user->field_profile_map_placement[LANGUAGE_NONE][0]['value'] = 'hide';
+    }
+
+    user_save($user);
   }
 }
