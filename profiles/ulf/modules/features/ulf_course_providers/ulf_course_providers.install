@@ -55,3 +55,50 @@ function ulf_course_providers_update_7202() {
   field_delete_field('field_profile_postal_code');
   field_purge_batch(5000);
 }
+
+/**
+ * Set default values for placement fields on users (providers).
+ */
+function ulf_course_providers_update_7203(&$sandbox) {
+  // Find the course providers role id, as this is different from site to site.
+  $rid = 0;
+  $roles = user_roles(TRUE);
+  foreach ($roles as $rid => $role) {
+    if ($role == 'course provider') {
+      // Stop the search as $rid now has the role id (also outside this loop).
+      break;
+    }
+  }
+
+  // Find all users (providers) that don't have a location.
+  $query = db_select('users', 'u');
+  $query->fields('u', array('uid'));
+  $query->join('users_roles', 'ur', 'ur.uid = u.uid');
+  $query->condition('ur.rid', $rid, '=');
+  $uids = $query->execute()->fetchCol(0);
+  $users = user_load_multiple($uids);
+
+  foreach ($users as $user) {
+    // Set default value to be displayed in maps.
+    $user->field_profile_map_placement[LANGUAGE_NONE] = array(
+      array(
+        'value' => 'alternative',
+      )
+    );
+
+    // If the old show_on_map is un-checked - hide location on the map.
+    if (!$user->field_profile_show_on_map[LANGUAGE_NONE][0]['value']) {
+      $user->field_profile_map_placement[LANGUAGE_NONE][0]['value'] = 'hide';
+    }
+
+    user_save($user);
+  }
+}
+
+/**
+ * Removed "field_profile_show_on_map" from user profiles.
+ */
+function ulf_course_providers_update_7204() {
+  field_delete_field('field_profile_show_on_map');
+  field_purge_batch(500);
+}
