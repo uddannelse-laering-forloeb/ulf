@@ -200,9 +200,18 @@ function ulf_default_preprocess_node(&$variables) {
   $variables['profile_name'] = $author_wrapper->field_profile_name->value();
 
   // Display author meta data for courses.
-  if (($variables['type'] == 'course'|| $variables['type'] == 'course_educators') && ($variables['view_mode'] == 'full' || $variables['view_mode'] == 'print')) {
+  if (($variables['type'] == 'course'|| $variables['type'] == 'course_educators') &&
+    ($variables['view_mode'] == 'full' || $variables['view_mode'] == 'print')) {
+
     $variables['profile_phone'] = $author_wrapper->field_profile_phone->value();
     $variables['profile_home_page'] = $author_wrapper->field_profile_home_page->value()['url'];
+
+    // Fetch location information from the user. Used in the information box to
+    // the right when displaying the profile.
+    $account = $variables['author'];
+    $variables['profile_address'] = $account->location['street'];
+    $variables['profile_postal_code'] = $account->location['postal_code'];
+    $variables['profile_city'] = $account->location['city'];
   }
 }
 
