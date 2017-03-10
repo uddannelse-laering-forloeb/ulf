@@ -302,13 +302,15 @@ function ulf_base_update_7014(&$sandbox) {
  * Enable entity form on all "courses" and "course educators" nodes.
  */
 function ulf_base_update_7015(&$sandbox) {
-  $type = array(
-    'course',
-    'course_educators'
-  );
+  $entityform_type_id = db_select('entityform_type', 'et')
+    ->fields('et', array('id'))
+    ->condition('type', 'end_user_message', '=')
+    ->execute()
+    ->fetchField();
+
   $entities = db_select('node', 'n')
     ->fields('n', array('nid', 'type'))
-    ->condition('type', $type, 'IN')
+    ->condition('type', array('course', 'course_educators'), 'IN')
     ->execute()
     ->fetchAllAssoc('nid');
 
@@ -322,7 +324,7 @@ function ulf_base_update_7015(&$sandbox) {
         'revision_id' => $entity->nid,
         'language' => 'und',
         'delta' => 0,
-        'field_message_form_target_id' => '1',
+        'field_message_form_target_id' => $entityform_type_id,
       ))
       ->execute();
 
@@ -335,7 +337,7 @@ function ulf_base_update_7015(&$sandbox) {
         'revision_id' => $entity->nid,
         'language' => 'und',
         'delta' => 0,
-        'field_message_form_target_id' => '1',
+        'field_message_form_target_id' => $entityform_type_id,
       ))
       ->execute();
   }
@@ -343,7 +345,7 @@ function ulf_base_update_7015(&$sandbox) {
 
 
 /**
- * Add contrib modules
+ * Add contrib modules.
  */
 function ulf_base_update_7016(&$sandbox) {
   $module_enable = array(
@@ -360,7 +362,7 @@ function ulf_base_update_7016(&$sandbox) {
 }
 
 /**
- * Populate ife db table
+ * Populate ife database table.
  */
 function ulf_base_update_7017(&$sandbox) {
   db_insert('ife')
@@ -406,11 +408,11 @@ function ulf_base_update_7019(&$sandbox) {
 
   // Add alias to url alias table.
   db_insert('url_alias')
-  ->fields(array(
-    'source' => 'admin/settings/custom/people',
-    'alias' => 'admin/people  ',
-    'language' => 'und',
-  ))
+    ->fields(array(
+      'source' => 'admin/settings/custom/people',
+      'alias' => 'admin/people  ',
+      'language' => 'und',
+    ))
     ->execute();
 }
 
