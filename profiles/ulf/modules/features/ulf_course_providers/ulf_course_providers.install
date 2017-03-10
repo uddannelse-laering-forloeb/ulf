@@ -42,6 +42,9 @@ function ulf_course_providers_update_7201() {
       'country' => 'dk',
       'country_name' => 'Danmark',
     );
+
+    // This needs to be a user save (and not just an database update) to trigger
+    // the location node save.
     user_save($user);
   }
 }
@@ -101,4 +104,20 @@ function ulf_course_providers_update_7203(&$sandbox) {
 function ulf_course_providers_update_7204() {
   field_delete_field('field_profile_show_on_map');
   field_purge_batch(500);
+}
+
+/**
+ * Update all hidden locations to 0.00000,0.00000 for providers.
+ */
+function ulf_course_providers_update_7205() {
+  // This could have been done with at db_update with an db_select sub-query.
+  // But it is easier to read the query directly.
+  db_query("UPDATE location
+    SET latitude=0.000000, longitude=0.000000
+    WHERE lid IN (
+      SELECT li.lid FROM field_data_field_profile_map_placement p
+      JOIN location_instance li ON p.entity_id = li.uid
+      WHERE field_profile_map_placement_value = 'hide'
+    )"
+  );
 }

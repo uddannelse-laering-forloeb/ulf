@@ -91,3 +91,19 @@ function ulf_field_bases_update_7104() {
   field_delete_field('field_course_show_on_map');
   field_purge_batch(500);
 }
+
+/**
+ * Update all hidden locations to 0.00000,0.00000 for courses.
+ */
+function ulf_field_bases_update_7105() {
+  // This could have been done with at db_update with an db_select sub-query.
+  // But it is easier to read the query directly.
+  db_query("UPDATE location
+    SET latitude=0.000000, longitude=0.000000
+    WHERE lid IN (
+      SELECT li.lid FROM field_data_field_map_placement p
+      JOIN location_instance li ON p.entity_id = li.nid
+      WHERE field_map_placement_value = 'hide'
+    )"
+  );
+}
