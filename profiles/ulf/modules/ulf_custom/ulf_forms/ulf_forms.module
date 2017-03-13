@@ -6,100 +6,73 @@
 
 /**
  * Implements hook_form_alter().
- *
- * Modify forms
  */
 function ulf_forms_form_alter(&$form, &$form_state, $form_id) {
+
+  // @TODO: Why is this add to all forms across the whole site? Please add
+  //        comment!
   $form['#attached']['js'][] = drupal_get_path('module', 'ulf_forms') . '/js/jquery.imagesloaded.js';
   $form['#attached']['js'][] = drupal_get_path('module', 'ulf_forms') . '/js/jquery.imgareaselect.dev.js';
   $form['#attached']['css'][] = drupal_get_path('module', 'ulf_forms') . '/css/node-form-styles.css';
 
-
-  // Address specific settings
-  if ($form_id == 'course_node_form' || $form_id == 'course_educators_node_form') {
-    // Add author variables
-    $uservalues = array();
-    $mapconfig = variable_get('gmap_default');
-    $author = user_load($form['uid']['#value']);
-    $uservalues['street'] = $author->locations['0']['street'];
-    $uservalues['further_info'] = $author->locations['0']['additional'];
-    $uservalues['postal_code'] = $author->locations['0']['postal_code'];
-    $uservalues['city'] = $author->locations['0']['city'];
-    $place_config = FALSE;
-    if (!empty($form['#entity']->field_place_settings)) {
-      $place_config = $form['#entity']->field_place_settings['und'][0]['value'];
-    }
-
-    $form['#attached']['js'][] = drupal_get_path('module', 'ulf_forms') . '/js/node-form-logics.js';
-    $form['#attached']['js'][] = array(
-      'data' => array(
-        'userValues' => $uservalues,
-        'mapConfig' => $mapconfig,
-        'placeConfig' => $place_config,
-      ),
-      'type' => 'setting',
-    );
-  }
-
   switch ($form_id) {
+    // Course node form.
+    case 'course_node_form':
+      // Assist on node add.
+      if (empty($form['nid']['#value'])) {
+        $message_required = '<p>' . t('Required fields are marked with a star and can be found in the "Practical information" field group.') . '</p>';
+        drupal_set_message($message_required);
+      }
 
-  // Course node form.
-  case 'course_node_form':
+      // Assist on lacking image.
+      if ($form_state['field']['field_image'][LANGUAGE_NONE]['items_count'] == 0) {
+        $message_image = '<p>' . t('You will need to add an image to your course, before the content can be published.') . '</p>';
+        drupal_set_message($message_image);
+      }
 
-    // Assist on node add.
-    if (empty($form['nid']['#value'])) {
-      $message_required = '<p>' . t('Required fields are marked with a star and can be found in the "Practical information" field group.') . '</p>';
-      drupal_set_message($message_required);
-    }
+      // Latest moderation log.
+      if (!empty($form['vid']['#value'])) {
+        $latest_log_message = t('Latest message') . ': ' . ulf_forms_fetch_moderation_log_latest($form['vid']['#value']);
+        drupal_set_message($latest_log_message);
+      }
 
-    // Assist on lacking image.
-    if ($form_state['field']['field_image'][LANGUAGE_NONE]['items_count'] == 0) {
-      $message_image = '<p>' . t('You will need to add an image to your course, before the content can be published.') . '</p>';
-      drupal_set_message($message_image);
-    }
+      $form['#prefix'] = '<div class="node--form is-default-form">';
+      $form['#suffix'] = '</div>';
+      break;
 
-    // Latest moderation log.
-    if (!empty($form['vid']['#value'])) {
-      $latest_log_message = t('Latest message') . ': ' . ulf_forms_fetch_moderation_log_latest($form['vid']['#value']);
-      drupal_set_message($latest_log_message);
-    }
+    // Course educators node form.
+    case 'course_educators_node_form':
+      $form['#attached']['js'][] = drupal_get_path('module', 'ulf_forms') . '/js/node-form-logics.js';
+      $form['#prefix'] = '<div class="node--form is-default-form">';
+      $form['#suffix'] = '</div>';
+      break;
 
-    $form['#prefix'] = '<div class="node--form is-default-form">';
-    $form['#suffix'] = '</div>';
-    break;
+    // User anonymous forms (Login, request pass and create account)
+    case 'user_pass':
+      $form['#prefix'] = '<div class="form-module--user-login">';
+      $form['#suffix'] = '</div>';
+      $form['actions']['submit']['#attributes']['class'][] = 'form-module--user-submit';
+      break;
 
-  // Course educators node form.
-  case 'course_educators_node_form':
-    $form['#attached']['js'][] = drupal_get_path('module', 'ulf_forms') . '/js/node-form-logics.js';
-    $form['#prefix'] = '<div class="node--form is-default-form">';
-    $form['#suffix'] = '</div>';
-    break;
+    case 'user_register_form':
+      $form['#prefix'] = '<div class="form-module--user-login">';
+      $form['#suffix'] = '</div>';
+      $form['actions']['submit']['#attributes']['class'][] = 'form-module--user-submit';
+      break;
 
-  // User anonymous forms (Login, request pass and create account)
-  case 'user_pass':
-    $form['#prefix'] = '<div class="form-module--user-login">';
-    $form['#suffix'] = '</div>';
-    $form['actions']['submit']['#attributes']['class'][] = 'form-module--user-submit';
-    break;
-
-  case 'user_register_form':
-    $form['#prefix'] = '<div class="form-module--user-login">';
-    $form['#suffix'] = '</div>';
-    $form['actions']['submit']['#attributes']['class'][] = 'form-module--user-submit';
-    break;
-
-  case 'user_profile_form':
-    global $user;
-    if ($user->uid != 1 ) {
+    case 'user_profile_form':
+      global $user;
+      if ($user->uid != 1) {
         $form['mimemail']['#access'] = FALSE;
         $form['locale']['#access'] = FALSE;
-    }
-    break;
-  case 'user_login':
-    $form['#prefix'] = '<div class="form-module--user-login">';
-    $form['#suffix'] = '</div>';
-    $form['actions']['submit']['#attributes']['class'][] = 'form-module--user-submit';
-    break;
+      }
+      break;
+
+    case 'user_login':
+      $form['#prefix'] = '<div class="form-module--user-login">';
+      $form['#suffix'] = '</div>';
+      $form['actions']['submit']['#attributes']['class'][] = 'form-module--user-submit';
+      break;
   }
 }
 

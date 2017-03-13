@@ -1,5 +1,10 @@
 <?php
 /**
+ * @file
+ * Handle updates for the module.
+ */
+
+/**
  * Set weight of the ulf_forms module to 999.
  */
 function ulf_forms_update_7100() {

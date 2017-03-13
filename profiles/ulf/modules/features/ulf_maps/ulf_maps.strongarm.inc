@@ -2076,7 +2076,7 @@ function ulf_maps_strongarm() {
     'form' => array(
       'weight' => '8',
       'collapsible' => 0,
-      'collapsed' => 1,
+      'collapsed' => 0,
       'fields' => array(
         'street' => array(
           'collect' => '1',

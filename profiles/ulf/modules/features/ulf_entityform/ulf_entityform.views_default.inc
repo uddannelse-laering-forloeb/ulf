@@ -122,7 +122,7 @@ function ulf_entityform_views_default_views() {
   $handler->display->display_options['relationships']['uid']['label'] = 'forfatter';
   /* Field: Bulk operations: Entityform Submission */
   $handler->display->display_options['fields']['views_bulk_operations']['id'] = 'views_bulk_operations';
-  $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'entityform';
+  $handler->display->display_options['fields']['views_bulk_operations']['table'] = 'views_entity_entityform';
   $handler->display->display_options['fields']['views_bulk_operations']['field'] = 'views_bulk_operations';
   $handler->display->display_options['fields']['views_bulk_operations']['label'] = '';
   $handler->display->display_options['fields']['views_bulk_operations']['element_label_colon'] = FALSE;

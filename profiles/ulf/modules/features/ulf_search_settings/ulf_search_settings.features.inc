@@ -283,8 +283,6 @@ function ulf_search_settings_default_search_api_index() {
         "created" : { "type" : "date" },
         "field_image:file" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "file" },
         "field_location" : { "type" : "string" },
-        "field_profile_address" : { "type" : "text" },
-        "field_profile_city" : { "type" : "text" },
         "field_profile_contact" : {
           "type" : "list\\u003Cinteger\\u003E",
           "entity_type" : "field_collection_item"
@@ -294,7 +292,6 @@ function ulf_search_settings_default_search_api_index() {
         "field_profile_mail" : { "type" : "text" },
         "field_profile_name" : { "type" : "text" },
         "field_profile_phone" : { "type" : "text" },
-        "field_profile_postal_code" : { "type" : "integer" },
         "roles" : { "type" : "list\\u003Cstring\\u003E" },
         "search_api_language" : { "type" : "string" },
         "uid" : { "type" : "integer" },
@@ -330,8 +327,6 @@ function ulf_search_settings_default_search_api_index() {
           "status" : 0,
           "weight" : "0",
           "settings" : { "fields" : {
-              "field_profile_address" : true,
-              "field_profile_city" : true,
               "field_profile_entry" : true,
               "field_profile_name" : true,
               "field_profile_phone" : true,
@@ -344,8 +339,6 @@ function ulf_search_settings_default_search_api_index() {
           "weight" : "10",
           "settings" : {
             "fields" : {
-              "field_profile_address" : true,
-              "field_profile_city" : true,
               "field_profile_entry" : true,
               "field_profile_name" : true,
               "field_profile_phone" : true,
@@ -360,8 +353,7 @@ function ulf_search_settings_default_search_api_index() {
           "status" : 0,
           "weight" : "15",
           "settings" : { "fields" : {
-              "field_profile_address" : true,
-              "field_profile_city" : true,
+
               "field_profile_entry" : true,
               "field_profile_name" : true,
               "field_profile_phone" : true,
@@ -374,8 +366,6 @@ function ulf_search_settings_default_search_api_index() {
           "weight" : "20",
           "settings" : {
             "fields" : {
-              "field_profile_address" : true,
-              "field_profile_city" : true,
               "field_profile_entry" : true,
               "field_profile_name" : true,
               "field_profile_phone" : true,
@@ -390,8 +380,6 @@ function ulf_search_settings_default_search_api_index() {
           "weight" : "30",
           "settings" : {
             "fields" : {
-              "field_profile_address" : true,
-              "field_profile_city" : true,
               "field_profile_entry" : true,
               "field_profile_name" : true,
               "field_profile_phone" : true,
