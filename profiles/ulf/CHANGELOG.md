@@ -3,6 +3,7 @@
 #v2.5.x
 
 ##2.5.0
+* Changed 'place' to be a location field. Simplified node edit form for place selection. 
 * Fixed mobile styling an javascript for ‘end user message’ modal 
 * Added sigup fields from 'course educators' to 'course'
 * Changed title fields to use H1’s instead of DIV’s
