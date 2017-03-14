@@ -4,6 +4,7 @@
 .block--light.is-form,
 .block--field-label.is-video,
 .ribbon-wrapper,
-.block--field-text.is-video {
+.block--field-text.is-video,
+.block--modal-link {
     display: none;
 }

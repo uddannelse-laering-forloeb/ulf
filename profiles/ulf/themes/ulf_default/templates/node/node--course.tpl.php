@@ -260,9 +260,11 @@
               <div class="block--field-text"><?php print $profile_postal_code; ?> <?php print $profile_city; ?></div>
               <br>
               <?php if (isset($profile_phone)) : ?>
-                <p>
-                  <a class="block--field-text"><?php print t('Phone')?> <?php print $profile_phone; ?></a>
-                </p>
+                <div class="block--field-text">
+                  <p>
+                    <?php print t('Phone')?> <?php print $profile_phone; ?>
+                  </p>
+                </div>
               <?php endif; ?>
               <?php if ($field_message_form) : ?>
               <p>

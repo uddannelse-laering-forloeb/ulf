@@ -577,7 +577,7 @@ function ulf_course_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 28,
+        'weight' => 33,
       ),
       'full' => array(
         'label' => 'above',
@@ -822,7 +822,7 @@ function ulf_course_field_default_field_instances() {
           'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
-        'weight' => 32,
+        'weight' => 29,
       ),
       'full' => array(
         'label' => 'above',
@@ -885,11 +885,10 @@ function ulf_course_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'module' => 'list',
+        'label' => 'hidden',
         'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 35,
+        'type' => 'hidden',
+        'weight' => 32,
       ),
       'full' => array(
         'label' => 'above',
@@ -991,7 +990,7 @@ function ulf_course_field_default_field_instances() {
           'view_mode' => 'default',
         ),
         'type' => 'entityreference_entity_view',
-        'weight' => 31,
+        'weight' => 28,
       ),
       'full' => array(
         'label' => 'hidden',
@@ -1477,7 +1476,7 @@ At opnå kendskab til...
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 34,
+        'weight' => 31,
       ),
       'full' => array(
         'label' => 'above',
@@ -1522,7 +1521,7 @@ At opnå kendskab til...
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_default',
-        'weight' => 33,
+        'weight' => 30,
       ),
       'full' => array(
         'label' => 'above',
@@ -1718,7 +1717,7 @@ At opnå kendskab til...
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 30,
+        'weight' => 34,
       ),
       'full' => array(
         'label' => 'above',
@@ -1915,7 +1914,6 @@ At opnå kendskab til...
   t('Upload et billede/illustration');
   t('Varighed');
   t('Video');
-  t('Vis på kort');
   t('Visning på kort');
   t('Vælg enhed');
   t('Yderligere oplysninger til faciliteter');

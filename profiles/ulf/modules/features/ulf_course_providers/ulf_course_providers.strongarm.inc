@@ -53,13 +53,13 @@ function ulf_course_providers_strongarm() {
       'display' => array(
         'summary' => array(
           'default' => array(
-            'weight' => '14',
+            'weight' => '12',
             'visible' => FALSE,
           ),
         ),
         'mimemail' => array(
           'default' => array(
-            'weight' => '11',
+            'weight' => '8',
             'visible' => TRUE,
           ),
         ),
