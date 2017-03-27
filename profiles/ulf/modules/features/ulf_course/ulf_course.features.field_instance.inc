@@ -163,11 +163,7 @@ function ulf_course_field_default_field_instances() {
   // Exported field_instance: 'node-course-field_count'.
   $field_instances['node-course-field_count'] = array(
     'bundle' => 'course',
-    'default_value' => array(
-      0 => array(
-        'value' => 0,
-      ),
-    ),
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => 'Angiv max. antal deltagere',
     'display' => array(
@@ -205,7 +201,7 @@ function ulf_course_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_count',
     'label' => 'Antal',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'max' => '',
       'min' => '',
