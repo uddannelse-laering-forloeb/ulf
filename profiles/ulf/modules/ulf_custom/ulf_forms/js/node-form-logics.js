@@ -53,16 +53,6 @@
         priceSelector.click(function () { priceChanged(priceSelector) });
         priceChanged(priceSelector);
 
-
-        // Fill the subgroup array.
-        // @TODO: More information is needed about why this is here and how
-        //        subgroup array is used?
-        $('.field-name-field-target-group-sub .option').each(function () {
-          var val = $(this).siblings('input').val();
-          var text = $(this).text();
-          subgroup.push([text, val]);
-        });
-
         // @TODO: Can this be removed?????
         // Hide empty fields for old price and and contact on course educators
         // content type.
@@ -174,6 +164,16 @@
         $('.is-school').hide();
         $('.is-preschool').hide();
 
+        // Fill the subgroup array, if no already done. Used in the
+        // sub-selection function in the switch statement below.
+        if (subgroup.length === 0) {
+          $('.field-name-field-target-group-sub .option').each(function () {
+            var val = $(this).siblings('input').val();
+            var text = $(this).text();
+            subgroup.push([text, val]);
+          });
+        }
+
         // Change form input elements based on selected target group.
         var selected = $(':checked', $('.field-name-field-target-group')).next().text().trim();
         switch (selected) {
@@ -190,8 +190,10 @@
             break;
 
           default:
+            // When the edit node page is first loaded (for new nodes) the
+            // selection is empty and we fallback to "pre-school".
             // This should not happen - ever.
-            console.error('Unknown target group selected.');
+            selectionPreschool();
             break;
         }
       }
