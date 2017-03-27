@@ -28,6 +28,7 @@ features[ctools][] = field_group:field_group:1
 features[ctools][] = strongarm:strongarm:1
 features[ctools][] = views:views_default:3.0
 features[features_api][] = api:2
+features[field_group][] = group_contact|node|course|form
 features[field_group][] = group_course_sub|node|course|form
 features[field_group][] = group_course|node|course|form
 features[field_group][] = group_duration|node|course|form

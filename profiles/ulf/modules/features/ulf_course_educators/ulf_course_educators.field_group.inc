@@ -13,6 +13,35 @@ function ulf_course_educators_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_contact|node|course_educators|form';
+  $field_group->group_name = 'group_contact';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'course_educators';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Vis kontaktformular / Skjul kontaktformular',
+    'weight' => '61',
+    'children' => array(
+      0 => 'field_message_form',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Vis kontaktformular / Skjul kontaktformular',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'id' => '',
+        'classes' => 'group-contact field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'collapsed',
+    ),
+  );
+  $field_groups['group_contact|node|course_educators|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_duration|node|course_educators|form';
   $field_group->group_name = 'group_duration';
   $field_group->entity_type = 'node';
@@ -240,8 +269,8 @@ function ulf_course_educators_field_group_info() {
     'label' => 'Lokation',
     'weight' => '8',
     'children' => array(
-      0 => 'locations',
-      1 => 'field_map_placement',
+      0 => 'field_map_placement',
+      1 => 'locations',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -297,6 +326,7 @@ function ulf_course_educators_field_group_info() {
   t('Praktisk information');
   t('Signup');
   t('Varighed og pris');
+  t('Vis kontaktformular / Skjul kontaktformular');
   t('Yderligere information');
 
   return $field_groups;

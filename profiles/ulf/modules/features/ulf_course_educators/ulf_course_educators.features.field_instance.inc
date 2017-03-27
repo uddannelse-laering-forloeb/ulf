@@ -678,11 +678,11 @@ function ulf_course_educators_field_default_field_instances() {
     'bundle' => 'course_educators',
     'default_value' => array(
       0 => array(
-        'target_id' => 1,
+        'target_id' => 2,
       ),
     ),
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Vælg indstilling for visning af kontaktformular i kontaktboks',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -1328,6 +1328,7 @@ function ulf_course_educators_field_default_field_instances() {
   t('Visning på kort');
   t('Vuggestue, børnehave, SFO, klub, ungdomsskole, indskoling, mellemtrin, udskoling, ungdomsuddannelse.');
   t('Vælg enhed');
+  t('Vælg indstilling for visning af kontaktformular i kontaktboks');
   t('Vælg omfattede fag for grundskoler.');
   t('Vælg omfattede fag for ungdomsuddannelser.');
   t('Værdier fra dette felt bør flyttes til kontakt.');
