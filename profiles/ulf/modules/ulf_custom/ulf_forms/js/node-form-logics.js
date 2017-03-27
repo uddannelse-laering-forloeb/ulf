@@ -47,8 +47,8 @@
         timeSelector.click(function () { timePeriodSelectionChanged(timeSelector) });
         timePeriodSelectionChanged(timeSelector);
 
-        // Handle the price (free) checkboz and show/hide price input fields based
-        // on free field state.
+        // Handle the price (free) checkboxes and show/hide price input fields
+        // based on free field state.
         var priceSelector = $('.field-name-field-free');
         priceSelector.click(function () { priceChanged(priceSelector) });
         priceChanged(priceSelector);

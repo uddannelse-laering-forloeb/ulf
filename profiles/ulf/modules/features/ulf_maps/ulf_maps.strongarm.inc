@@ -1920,7 +1920,7 @@ function ulf_maps_strongarm() {
           'weight' => '-100',
         ),
         'additional' => array(
-          'collect' => '1',
+          'collect' => '0',
           'default' => '',
           'weight' => '-99',
         ),
@@ -2002,7 +2002,7 @@ function ulf_maps_strongarm() {
           'weight' => '-100',
         ),
         'additional' => array(
-          'collect' => '1',
+          'collect' => '0',
           'default' => '',
           'weight' => '-99',
         ),
@@ -2084,7 +2084,7 @@ function ulf_maps_strongarm() {
           'weight' => '-100',
         ),
         'additional' => array(
-          'collect' => '1',
+          'collect' => '0',
           'default' => '',
           'weight' => '-99',
         ),
