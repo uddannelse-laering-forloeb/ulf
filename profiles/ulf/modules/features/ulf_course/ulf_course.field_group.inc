@@ -269,8 +269,9 @@ function ulf_course_field_group_info() {
     'label' => 'Lokation',
     'weight' => '11',
     'children' => array(
-      0 => 'field_map_placement',
-      1 => 'locations',
+      0 => 'field_place',
+      1 => 'field_map_placement',
+      2 => 'locations',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -305,7 +306,6 @@ function ulf_course_field_group_info() {
       4 => 'field_subjects_primary_school',
       5 => 'field_subjects_youth',
       6 => 'field_target_group_sub',
-      7 => 'field_place',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
