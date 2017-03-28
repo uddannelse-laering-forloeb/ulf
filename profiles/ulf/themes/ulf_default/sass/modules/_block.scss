@@ -173,9 +173,9 @@
     }
   }
 
-  .form-submit,
-  .form-item {
-    margin: 0 $spacing;
+  .mailchimp-signup-subscribe-form {
+    padding: 0 $spacing;
+    box-sizing: border-box;
   }
 }
 
@@ -188,6 +188,12 @@
   margin: 2 * $spacing 0;
 
   &-link {
+    @extend %button;
+
+    @include strip-link-styles($white);
+  }
+
+  &-modal-link {
     @extend %button;
 
     @include strip-link-styles($white);

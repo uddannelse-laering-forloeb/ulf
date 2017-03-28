@@ -91,7 +91,16 @@ angular.module('searchBoxApp').controller('UlfBoxController', ['CONFIG', 'commun
           }
 
           // Send results.
-          communicatorService.$emit('hits', {"hits" : data});
+          var res = {
+            "hits": data
+          };
+
+          // Add pager info to the results.
+          if (CONFIG.provider.hasOwnProperty('pager')) {
+            res.pager = $scope.query.pager
+          }
+
+          communicatorService.$emit('hits', res);
         },
         function (reason) {
           console.error(reason);
@@ -173,7 +182,7 @@ angular.module('searchBoxApp').controller('UlfBoxController', ['CONFIG', 'commun
           $scope.query.pager = angular.copy(CONFIG.provider.pager);
         }
 
-        // Check if an inital search should be executed.
+        // Check if an initial search should be executed.
         if (CONFIG.hasOwnProperty('initialQueryText')) {
           $scope.query.text = angular.copy(CONFIG.initialQueryText);
 

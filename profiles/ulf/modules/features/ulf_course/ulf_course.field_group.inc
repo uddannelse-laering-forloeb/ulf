@@ -13,6 +13,35 @@ function ulf_course_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_contact|node|course|form';
+  $field_group->group_name = 'group_contact';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'course';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Vis kontaktformular / Skjul kontaktformular',
+    'weight' => '42',
+    'children' => array(
+      0 => 'field_message_form',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Vis kontaktformular / Skjul kontaktformular',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'id' => '',
+        'classes' => 'group-contact field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'collapsed',
+    ),
+  );
+  $field_groups['group_contact|node|course|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_course_sub|node|course|form';
   $field_group->group_name = 'group_course_sub';
   $field_group->entity_type = 'node';
@@ -208,7 +237,7 @@ function ulf_course_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Periode',
-    'weight' => '3',
+    'weight' => '4',
     'children' => array(
       0 => 'field_period',
       1 => 'field_period_full_year',
@@ -230,6 +259,36 @@ function ulf_course_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_placement|node|course|form';
+  $field_group->group_name = 'group_placement';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'course';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Lokation',
+    'weight' => '11',
+    'children' => array(
+      0 => 'field_place',
+      1 => 'field_map_placement',
+      2 => 'locations',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-placement field-group-fieldset',
+        'required_fields' => 1,
+        'id' => '',
+      ),
+    ),
+  );
+  $field_groups['group_placement|node|course|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_practical_information|node|course|form';
   $field_group->group_name = 'group_practical_information';
   $field_group->entity_type = 'node';
@@ -247,7 +306,6 @@ function ulf_course_field_group_info() {
       4 => 'field_subjects_primary_school',
       5 => 'field_subjects_youth',
       6 => 'field_target_group_sub',
-      7 => 'field_place',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -262,16 +320,50 @@ function ulf_course_field_group_info() {
   );
   $field_groups['group_practical_information|node|course|form'] = $field_group;
 
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_signup|node|course|form';
+  $field_group->group_name = 'group_signup';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'course';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Tilmelding',
+    'weight' => '3',
+    'children' => array(
+      0 => 'field_last_signup_date',
+      1 => 'field_signup_email',
+      2 => 'field_signup_link',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Tilmelding',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'id' => '',
+        'classes' => 'group-signup field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'collapsed',
+    ),
+  );
+  $field_groups['group_signup|node|course|form'] = $field_group;
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Aktiviteter, baggrundsviden og efterbehandling');
   t('Billeder/medier');
   t('Faciliteter');
   t('Forløbet');
+  t('Lokation');
   t('Materialer');
   t('Periode');
   t('Praktisk information');
+  t('Tilmelding');
   t('Varighed og pris');
+  t('Vis kontaktformular / Skjul kontaktformular');
 
   return $field_groups;
 }

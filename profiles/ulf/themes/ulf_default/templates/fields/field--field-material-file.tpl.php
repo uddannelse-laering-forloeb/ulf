@@ -45,5 +45,5 @@
 ?>
 
 <?php foreach ($items as $delta => $item): ?>
-  <div class="field--collection-file"><?php print strip_tags(render($item), '<a>'); ?></div>
+  <div class="field--collection-file"><a href="<?php print file_create_url($item['#file']->uri); ?>"><?php print t('Fetch file');?></a></div>
 <?php endforeach; ?>

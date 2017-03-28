@@ -90,14 +90,64 @@
       <?php endif; ?>
       <div class="content is-<?php print $group_type; ?>">
         <div class="content--image">
-          <div class="field--title is-<?php print $group_type; ?>"><?php print render($title); ?></div>
+          <?php if ($field_free['0']['value'] == 1) : ?>
+            <div class="ribbon-wrapper left is-content">
+              <div class="ribbon is-content">
+                <div class="ribbon--course is-content"><?php print t('Free'); ?></div>
+              </div>
+            </div>
+          <?php endif;?>
+          <h1 class="field--title is-<?php print $group_type; ?>"><?php print render($title); ?></h1>
           <?php print render($content['field_image']); ?>
         </div>
         <div class="content--main">
           <?php print render($content['field_full_description']); ?>
           <?php print render($content['field_video']); ?>
           <?php print render($content['field_catering']); ?>
+          <?php if ($field_profile_contact) : ?>
+            <?php print render($content['field_profile_contact']); ?>
+          <?php endif; ?>
           <?php print render($content['field_educational_material']); ?>
+          <?php if (isset($location['street']) || isset($location['name'])) : ?>
+            <div class="field--collection-wrapper">
+              <div class="field--collection-label"><?php print t('Place');?></div>
+              <div class="field--collection-content">
+                <div class="field--collection-item">
+                  <?php if (isset($location['street'])) : ?>
+                    <div><?php print $location['street'] ?></div>
+                  <?php endif; ?>
+                  <?php if (isset($location['additional'])) : ?>
+                    <div><?php print $location['additional'] ?></div>
+                  <?php endif; ?>
+                  <?php if (isset($location['postal_code'])) : ?>
+                    <span><?php print $location['postal_code'] ?></span>
+                  <?php endif; ?>
+                  <?php if (isset($location['city'])) : ?>
+                  <span><?php print $location['city'] ?></span>
+                  <?php endif; ?>
+                  <?php if (isset($location['name'])) : ?>
+                    <div><?php print $location['name'] ?></div>
+                  <?php endif; ?>
+                </div>
+              </div>
+            </div>
+          <?php endif; ?>
+          <?php if ($field_last_signup_date || $field_signup_link || $field_signup_email) : ?>
+            <div class="field--collection-wrapper">
+              <div class="field--collection-label"><?php print t('Signup');?></div>
+              <div class="field--collection-content">
+                <div class="field--collection-item">
+                  <div class="field--collection-item-inner">
+                    <div class="field--collection-description">
+                      <?php print render($content['field_last_signup_date']); ?>
+                      <?php print render($content['field_signup_link']); ?>
+                      <?php print render($content['field_signup_email']); ?>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <?php endif;?>
           <div class="block--pdf">
             <a class="block--pdf-link" target="_blank" href="/printpdf/<?php print $node->nid; ?>"><?php print t('Print this offer as pdf')?></a>
           </div>
@@ -112,6 +162,7 @@
                 <div class="block--field-wrapper">
                   <?php print render($content['field_course_contact_name']); ?>
                   <?php print render($content['field_course_contact_mail']); ?>
+                  <?php print render($content['field_course_phone']); ?>
                 </div>
               <?php endif; ?>
               <?php /* If any of the fields in this wrapper contain data */ ?>
@@ -128,7 +179,7 @@
                   <?php print render($content['field_subject']); ?>
                 </div>
               <?php endif;?>
-              <?php if (isset($field_period_full_year['0']) || isset($field_price) || isset($field_free['0'])) : ?>
+              <?php if ($field_duration || $field_duration_description || isset($field_period_full_year['0']) || isset($field_price) || isset($field_free['0'])) : ?>
                 <?php if ($field_period_full_year['0']['value'] == 0 || $field_price || $field_free['0']['value'] == 1) : ?>
                   <div class="block--field-wrapper">
                     <?php if ($field_period_full_year['0']['value'] == 0 ) : ?>
@@ -137,9 +188,24 @@
                       <div class="block--field-label"><?php print t('Periode');?></div>
                       <div class="block--field-text"><?php print t('All year');?></div>
                     <?php endif;?>
+                    <?php print render($content['field_period_info']); ?>
+                    <?php if ($field_duration || $field_duration_description) : ?>
+                      <div class="block--field-label"><?php print t('Duration');?></div>
+                      <?php if ($field_duration) : ?>
+                        <div class="block--field-text"><?php print $stripped_duration; ?><?php print render($content['field_duration_unit']); ?></div>
+                      <?php endif; ?>
+                      <?php if ($field_duration_description) : ?>
+                        <div class="block--field-text"><?php print render($content['field_duration_description']); ?></div>
+                      <?php endif; ?>
+                    <?php endif;?>
                     <?php if ($field_free['0']['value'] == 0 ) : ?>
                       <div class="block--field-label"><?php print t('Price');?></div>
-                      <?php print render($content['field_price']); ?>
+                      <!--Check for price field value before printing-->
+                      <?php if ($field_collection_price) : ?>
+                        <?php print render($content['field_collection_price']); ?>
+                      <?php else : ?>
+                        <?php print render($content['field_price']); ?>
+                      <?php endif; ?>
                     <?php else : ?>
                       <div class="block--field-label"><?php print t('This course is free.');?></div>
                     <?php endif;?>
@@ -154,18 +220,37 @@
             </h2>
             <div class="block--content">
               <div class="block--field-label"><?php print $profile_name; ?></div>
-              <div class="block--field-text"><?php print $profile_address; ?></div>
-              <div class="block--field-text"><?php print $profile_postal_code; ?> <?php print $profile_city; ?></div>
-              </br>
+<!--              <div class="block--field-text">--><?php //print $profile_address; ?><!--</div>-->
+<!--              <div class="block--field-text">--><?php //print $profile_postal_code; ?><!-- --><?php //print $profile_city; ?><!--</div>-->
+              <br>
               <div class="block--field-text"><?php print t('Phone')?> <?php print $profile_phone; ?></div>
-              </br>
+              <br>
+              <div class="block--field-label js-toggle-modal modal--open"><?php print t('Contact organizer'); ?></div>
+              <br>
               <a href="/user/<?php print $uid ?>"><?php print t('View organizer profile'); ?></a>
             </div>
           </div>
+          <?php if ($field_message_form) : ?>
+            <div class="block--light is-form">
+              <div class="is-modal js-modal js-toggle-modal"></div>
+              <div class="modal--wrapper js-modal-dialog">
+                <div class="modal--close js-toggle-modal"><img src="/profiles/ulf/themes/ulf_default/images/close.svg"></div>
+                <h2 class="block--header modal--header">
+                  <?php print t('Send message to') . ' ' . $profile_name; ?>
+                </h2>
+                <?php if (isset($content['field_message_form'])): ?>
+                <div class="block--content">
+                  <?php print render($content['field_message_form']); ?>
+                </div>
+                <?php endif; ?>
+              </div>
+            </div>
+          <?php endif; ?>
         </div>
       </div>
       <?php
       // We hide the comments and links now so that we can render them later.
+      hide($content['field_duration']);
       hide($content['field_period']);
       hide($content['field_price']);
       hide($content['field_free']);

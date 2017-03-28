@@ -17,9 +17,8 @@ function ulf_course_providers_menu_alter(&$items) {
 
 /**
  * Custom access callback for user profiles.
- * Allow view access to blocked users
  *
- * @return bool
+ * Allow view access to blocked users.
  */
 function _ulf_course_providers_profile_access() {
   if (user_access('access content')) {

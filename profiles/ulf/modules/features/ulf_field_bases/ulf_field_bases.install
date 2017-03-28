@@ -1,9 +1,109 @@
 <?php
 /**
- * Delete field_price_info
+ * @file
+ * Handle updated across content types.
+ */
+
+/**
+ * Internal function to migrate content from show_on_map to placement field.
+ *
+ * @param string $type
+ *    The content type to migrate.
+ */
+function _ulf_field_bases_update_placement($type) {
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', $type);
+  $result = $query->execute();
+  $nodes = entity_load('node', array_keys($result['node']));
+
+  foreach ($nodes as $node) {
+    // Set default value to be displayed in maps.
+    $value = 'provider';
+
+    // If show on maps selected and locations is not empty set to "alternative"
+    // else it will be the default "provider".
+    if ($node->field_course_show_on_map[LANGUAGE_NONE][0]['value']) {
+      if (!empty($node->locations)) {
+        $value = 'alternative';
+      }
+    }
+    else {
+      // Show on map not selected, so set placement to hidden.
+      $value = 'hide';
+    }
+
+    // Save the changes. It's done in this way to prevent sending mails to all
+    // providers that their content have been altered. The system sends mails
+    // on node_save events.
+    db_insert('field_data_field_map_placement')->fields(
+      array(
+        'entity_type' => 'node',
+        'bundle' => 'node',
+        'deleted' => '0',
+        'entity_id' => $node->nid,
+        'revision_id' => $node->nid,
+        'language' => 'und',
+        'delta' => 0,
+        'field_map_placement_value' => $value,
+      ))->execute();
+
+    db_insert('field_revision_field_map_placement')->fields(
+      array(
+        'entity_type' => 'node',
+        'bundle' => 'node',
+        'deleted' => '0',
+        'entity_id' => $node->nid,
+        'revision_id' => $node->nid,
+        'language' => 'und',
+        'delta' => 0,
+        'field_map_placement_value' => $value,
+      ))->execute();
+  }
+}
+
+/**
+ * Delete field_price_info field.
  */
 function ulf_field_bases_update_7001() {
   field_delete_field('field_price_info');
   field_purge_batch(1);
 }
 
+/**
+ * Set default values for placement fields on "courses".
+ */
+function ulf_field_bases_update_7102(&$sandbox) {
+  _ulf_field_bases_update_placement('course');
+}
+
+/**
+ * Set default values for placement fields on "course educators".
+ */
+function ulf_field_bases_update_7103(&$sandbox) {
+  _ulf_field_bases_update_placement('course_educators');
+}
+
+/**
+ * Removed "field_course_show_on_map" from user profiles.
+ */
+function ulf_field_bases_update_7104() {
+  field_delete_field('field_course_show_on_map');
+  field_purge_batch(500);
+}
+
+/**
+ * Update all hidden locations to 0.00000,0.00000 for courses.
+ */
+function ulf_field_bases_update_7105() {
+  // This could have been done with at db_update with an db_select sub-query.
+  // But it is easier to read the query directly.
+  db_query("UPDATE location
+    SET latitude=0.000000, longitude=0.000000
+    WHERE lid IN (
+      SELECT li.lid FROM field_data_field_map_placement p
+      JOIN location_instance li ON p.entity_id = li.nid
+      WHERE field_map_placement_value = 'hide'
+    )"
+  );
+}

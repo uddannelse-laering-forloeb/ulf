@@ -81,6 +81,20 @@ function ulf_search_preprocess_search_node_page_search_box(&$variables) {
     'scope' => 'footer',
     'weight' => 7,
   ));
+
+  // Add the search controller.
+  drupal_add_js($path . '/js/searchBoxController.js', array(
+    'type' => 'file',
+    'scope' => 'footer',
+    'weight' => 7,
+  ));
+
+  // Add the search result controller.
+  drupal_add_js($path . '/js/searchResultController.js', array(
+    'type' => 'file',
+    'scope' => 'footer',
+    'weight' => 7,
+  ));
 }
 
 /**

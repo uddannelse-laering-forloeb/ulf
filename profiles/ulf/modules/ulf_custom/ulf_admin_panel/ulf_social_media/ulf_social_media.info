@@ -1,0 +1,5 @@
+name = Ulf social media
+description = Holds config for social media
+package = Ulf admin panel
+core = 7.x
+dependencies[] = ulf_admin_panel

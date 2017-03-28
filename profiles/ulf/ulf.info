@@ -27,6 +27,10 @@ dependencies[] = ulf_node_clone
 dependencies[] = ulf_scheduler_notify
 dependencies[] = ulf_workflow
 dependencies[] = ulf_wysiwyg
+dependencies[] = ulf_admin_panel
+dependencies[] = ulf_html_blocks
+dependencies[] = ulf_maps
+dependencies[] = ulf_entityform
 
 ; ULF Search.
 dependencies[] = ulf_search
@@ -53,3 +57,8 @@ dependencies[] = token_filter
 dependencies[] = print_pdf_wkhtmltopdf
 dependencies[] = nodequeue
 dependencies[] = path_metatags
+dependencies[] = entity
+dependencies[] = entityform
+dependencies[] = entityreference
+dependencies[] = captcha
+dependencies[] = insert

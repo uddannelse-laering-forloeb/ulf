@@ -224,13 +224,12 @@ function ulf_base_update_7010(&$sandbox) {
   }
 
   // Delete "about" menu.
-  $menu = menu_delete('menu-about-ulf');
-  menu_delete($menu);
+  menu_delete('menu-about-ulf');
 }
 
 
 /**
- * Enable menu block
+ * Enable menu block.
  */
 function ulf_base_update_7011(&$sandbox) {
   $module_enable = array(
@@ -242,7 +241,7 @@ function ulf_base_update_7011(&$sandbox) {
 
 
 /**
- * Delete old menu
+ * Delete old menu.
  */
 function ulf_base_update_7012(&$sandbox) {
   // Delete "about" menu.
@@ -264,5 +263,233 @@ function ulf_base_update_7013() {
   }
   else {
     drupal_set_message(t('No aliases were updated.') . $type);
+  }
+}
+
+/**
+ * Enabled modules used to create end user messages forms.
+ */
+function ulf_base_update_7014(&$sandbox) {
+  module_enable(array(
+    'entity2text',
+    'rules',
+    'entityform',
+    'entityreference',
+    'captcha',
+    'image_captcha',
+    'ulf_entityform',
+  ));
+
+  // Revert all features as this have not been possible before due the missing
+  // entity reference module. So the feature revert before runnig updates have
+  // not been completed for all features.
+  $features = features_get_features(NULL, TRUE);
+  foreach ($features as $name => $feature) {
+    if (module_exists($name)) {
+      // Get all components of the feature.
+      foreach (array_keys($feature->info['features']) as $component) {
+        if (features_hook($component, 'features_revert')) {
+          // Revert each component (force).
+          features_revert(array($name => array($component)));
+        }
+      }
+    }
+  }
+  drupal_flush_all_caches();
+}
+
+/**
+ * Enable entity form on all "courses" and "course educators" nodes.
+ */
+function ulf_base_update_7015(&$sandbox) {
+  $entityform_type_id = db_select('entityform_type', 'et')
+    ->fields('et', array('id'))
+    ->condition('type', 'end_user_message', '=')
+    ->execute()
+    ->fetchField();
+
+  $entities = db_select('node', 'n')
+    ->fields('n', array('nid', 'type'))
+    ->condition('type', array('course', 'course_educators'), 'IN')
+    ->execute()
+    ->fetchAllAssoc('nid');
+
+  foreach ($entities as $entity) {
+    db_insert('field_data_field_message_form')
+      ->fields(array(
+        'entity_type' => 'node',
+        'bundle' => $entity->type,
+        'deleted' => 0,
+        'entity_id' => $entity->nid,
+        'revision_id' => $entity->nid,
+        'language' => 'und',
+        'delta' => 0,
+        'field_message_form_target_id' => $entityform_type_id,
+      ))
+      ->execute();
+
+    db_insert('field_revision_field_message_form')
+      ->fields(array(
+        'entity_type' => 'node',
+        'bundle' => $entity->type,
+        'deleted' => 0,
+        'entity_id' => $entity->nid,
+        'revision_id' => $entity->nid,
+        'language' => 'und',
+        'delta' => 0,
+        'field_message_form_target_id' => $entityform_type_id,
+      ))
+      ->execute();
+  }
+}
+
+
+/**
+ * Add contrib modules.
+ */
+function ulf_base_update_7016(&$sandbox) {
+  $module_enable = array(
+    'ulf_admin_panel',
+    'ulf_social_media',
+    'insert',
+    'ife',
+    'ulf_translations'
+  );
+
+  module_enable($module_enable);
+
+  drupal_flush_all_caches();
+}
+
+/**
+ * Populate ife database table.
+ */
+function ulf_base_update_7017(&$sandbox) {
+  db_insert('ife')
+    ->fields(array(
+      'form_id' => 'course_educators_node_form',
+      'field_types' => NULL,
+      'status' => 1,
+      'display' => 0,
+    ))->execute();
+  db_insert('ife')
+    ->fields(array(
+      'form_id' => 'course_node_form',
+      'field_types' => NULL,
+      'status' => 1,
+      'display' => 0,
+    ))->execute();
+  db_insert('ife')
+    ->fields(array(
+      'form_id' => 'user_profile_form',
+      'field_types' => NULL,
+      'status' => 1,
+      'display' => 0,
+    ))->execute();
+}
+
+
+/**
+ * Add panels ipe
+ */
+function ulf_base_update_7018(&$sandbox) {
+  $module_enable = array(
+    'panels_ipe'
+  );
+
+  module_enable($module_enable);
+}
+
+/**
+ * Set translations path variable. and add user list path alias.
+ */
+function ulf_base_update_7019(&$sandbox) {
+  variable_set('l10n_update_download_store', 'sites/all/translations');
+
+  // Add alias to url alias table.
+  db_insert('url_alias')
+    ->fields(array(
+      'source' => 'admin/settings/custom/people',
+      'alias' => 'admin/people  ',
+      'language' => 'und',
+    ))
+    ->execute();
+}
+
+/**
+ * Set translations path variable. and add user list path alias.
+ */
+function ulf_base_update_7020(&$sandbox) {
+  $modules = array(
+    'facetapi',
+    'facetapi_bonus',
+    'flag',
+    'search_api_solr',
+    'ulf_footer',
+    'ulf_mails',
+    'ulf_structures',
+    'ulf_taxonomy_terms',
+    'ulf_pages',
+    'migrate',
+    'migrate_ui',
+    'migrate_d2d',
+    'migrate_extras',
+    'ulf_migration',
+  );
+  db_delete('system')
+    ->condition('name', $modules, 'IN')
+    ->condition('type', 'module')
+    ->execute();
+}
+
+/**
+ * Remove old migration tables.
+ */
+function ulf_base_update_7101(&$sandbox) {
+  $tables = array(
+    'migrate_field_mapping',
+    'migrate_group',
+    'migrate_log',
+    'migrate_map_ulfcourserelevancyeducators',
+    'migrate_map_ulfcourses',
+    'migrate_map_ulfcourseseducation',
+    'migrate_map_ulfeducationalgoals',
+    'migrate_map_ulfeducationalmaterial',
+    'migrate_map_ulfelementaryschool',
+    'migrate_map_ulffiles',
+    'migrate_map_ulfnews',
+    'migrate_map_ulfoffertype',
+    'migrate_map_ulfprimaryschool',
+    'migrate_map_ulfroles',
+    'migrate_map_ulfstatic',
+    'migrate_map_ulfsubjectsprimaryschools',
+    'migrate_map_ulfsubjectsyouth',
+    'migrate_map_ulftags',
+    'migrate_map_ulftopics',
+    'migrate_map_ulfusers',
+    'migrate_map_ulfuserscontact',
+    'migrate_message_ulfcourserelevancyeducators',
+    'migrate_message_ulfcourses',
+    'migrate_message_ulfcourseseducation',
+    'migrate_message_ulfeducationalgoals',
+    'migrate_message_ulfeducationalmaterial',
+    'migrate_message_ulfelementaryschool',
+    'migrate_message_ulffiles',
+    'migrate_message_ulfnews',
+    'migrate_message_ulfoffertype',
+    'migrate_message_ulfprimaryschool',
+    'migrate_message_ulfroles',
+    'migrate_message_ulfstatic',
+    'migrate_message_ulfsubjectsprimaryschools',
+    'migrate_message_ulfsubjectsyouth',
+    'migrate_message_ulftags',
+    'migrate_message_ulftopics',
+    'migrate_message_ulfusers',
+    'migrate_message_ulfuserscontact',
+    'migrate_status',
+  );
+
+  foreach ($tables as $table) {
+    db_drop_table($table);
   }
 }

@@ -6,13 +6,8 @@
  *
  */
 
-/**
- *
- * Font definitions
- *
- * Should contain definitions for all font-families used on the site
- *
- */
+/* Fetch default print styles */
+@import url("../../ulf_default/css/custom-styles.css");
 
 @font-face {
     font-family: 'Asap';
@@ -70,7 +65,6 @@ a {
 .block--pdf {
     display: none;
 }
-
 
 /* Layout */
 

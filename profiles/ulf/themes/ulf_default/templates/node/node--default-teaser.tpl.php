@@ -80,7 +80,7 @@
  */
 ?>
 <article class="teaser is-<?php print $group_type; ?>">
-  <?php if ($type == 'course') : ?>
+  <?php if ($type == 'course' || $type == 'course_educators') : ?>
     <?php if (isset($content['field_free'])) : ?>
       <?php if ($content['field_free']['#items']['0']['value'] == 1) : ?>
         <div class="ribbon-wrapper left">
@@ -107,6 +107,9 @@
       <?php if (isset($content['field_subject'])) : ?>
         <p class="teaser--type"><?php print t('Subject'); ?>: <?php print render($content['field_subject']); ?></p>
       <?php endif;?>
+    <?php endif;?>
+    <?php if ($type == 'course_educators') : ?>
+    <p class="teaser--type"><?php print t('Target group'); ?>: <?php print $course_teaser_target_group; ?></p>
     <?php endif;?>
     <p class="teaser--type-read-more"><a href="/node/<?php print $nid; ?>"><?php print t('Read more'); ?></a></p>
   </header>

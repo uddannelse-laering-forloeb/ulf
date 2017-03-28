@@ -1920,7 +1920,7 @@ function ulf_maps_strongarm() {
           'weight' => '-100',
         ),
         'additional' => array(
-          'collect' => '1',
+          'collect' => '0',
           'default' => '',
           'weight' => '-99',
         ),
@@ -2002,7 +2002,7 @@ function ulf_maps_strongarm() {
           'weight' => '-100',
         ),
         'additional' => array(
-          'collect' => '1',
+          'collect' => '0',
           'default' => '',
           'weight' => '-99',
         ),
@@ -2076,7 +2076,7 @@ function ulf_maps_strongarm() {
     'form' => array(
       'weight' => '8',
       'collapsible' => 0,
-      'collapsed' => 1,
+      'collapsed' => 0,
       'fields' => array(
         'street' => array(
           'collect' => '1',
@@ -2084,7 +2084,7 @@ function ulf_maps_strongarm() {
           'weight' => '-100',
         ),
         'additional' => array(
-          'collect' => '1',
+          'collect' => '0',
           'default' => '',
           'weight' => '-99',
         ),

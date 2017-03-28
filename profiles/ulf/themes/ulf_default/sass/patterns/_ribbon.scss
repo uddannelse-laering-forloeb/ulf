@@ -7,7 +7,6 @@
  *
  */
 
-
 /* Styles
 ================================================================================================================== */
 
@@ -29,6 +28,11 @@
   }
 }
 
+.is-course {
+  .ribbon {
+    @include background-set-color('yellow', 1);
+  }
+}
 
 /* Left will inherit from right (so we don't need to duplicate code) */
 .ribbon {
@@ -37,7 +41,6 @@
 
   /* Add a bit of padding to give some substance outside the "stitching" */
   padding: 2px 0;
-
 
   /* Set a gradient: transparent black at the top to almost-transparent black at the bottom */
   background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0)), to(rgba(0, 0, 0, 0.15)));
@@ -93,10 +96,19 @@
   pointer-events: none;
 
   &.is-content {
-    font-size: 1.15em;
-    height: 200px;
-    width: 200px;
+    top: auto;
+    bottom: 0px;
+
+    @include breakpoint($node-breakpoint) {
+      font-size: 1.15em;
+
+      top: 0px;
+      bottom: auto;
+      height: 200px;
+      width: 200px;
+    }
   }
+
 }
 
 .ribbon-wrapper.fixed {
@@ -111,66 +123,48 @@
   right: 0;
 }
 
-.ribbon-wrapper.left-bottom {
-  position: absolute;
-  top: inherit;
-  bottom: 0;
-  left: 0;
-}
-
-.ribbon-wrapper.right-bottom {
-  position: absolute;
-  top: inherit;
-  bottom: 0;
-  right: 0;
-}
-
-.ribbon-wrapper.right .ribbon {
-  top: 42px;
-  right: -43px;
-
-  -webkit-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  -o-transform: rotate(45deg);
-  transform: rotate(45deg);
-}
-
 .ribbon-wrapper.left .ribbon {
-  top: 22px;
   left: -63px;
+  top: 25px;
 
-  -webkit-transform: rotate(-45deg);
-  -moz-transform: rotate(-45deg);
-  -ms-transform: rotate(-45deg);
-  -o-transform: rotate(-45deg);
-  transform: rotate(-45deg);
+  @include rotate(-45deg);
 
   &.is-content {
-    top: 40px;
-    left: -80px;
+    left: -105px;
+    top: auto;
+    bottom: 25px;
+
+    @include rotate(45deg);
+
+    @include breakpoint($node-breakpoint) {
+      left: -90px;
+      top: 40px;
+      bottom: auto;
+
+      @include rotate(-45deg);
+    }
   }
 }
 
-
-.ribbon-wrapper.left-bottom .ribbon {
-  top: 80px;
-  left: -43px;
-
-  -webkit-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  -o-transform: rotate(45deg);
-  transform: rotate(45deg);
-}
-
-.ribbon-wrapper.right-bottom .ribbon {
-  top: 80px;
+.ribbon-wrapper.right .ribbon {
   right: -43px;
+  top: 40px;
 
-  -webkit-transform: rotate(-45deg);
-  -moz-transform: rotate(-45deg);
-  -ms-transform: rotate(-45deg);
-  -o-transform: rotate(-45deg);
-  transform: rotate(-45deg);
+  @include rotate(45deg);
+
+  &.is-content {
+    right: -105px;
+    top: auto;
+    bottom: 25px;
+
+    @include rotate(-45deg);
+
+    @include breakpoint($node-breakpoint) {
+      right: -90px;
+      top: 40px;
+      bottom: auto;
+
+      @include rotate(45deg);
+    }
+  }
 }

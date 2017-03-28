@@ -1,10 +1,11 @@
 <?php
+/**
+ * @file
+ * Processes content before the templates.
+ */
 
 /**
  * Implements hook_preprocess_html().
- *
- * @param $variables
- *   Available variables.
  */
 function ulf_default_preprocess_html(&$variables) {
   if (isset($variables['page']['content']['system_main']['field_profile_name']['0']['#markup'])) {
@@ -12,12 +13,8 @@ function ulf_default_preprocess_html(&$variables) {
   }
 }
 
-
 /**
  * Implements hook_preprocess_page().
- *
- * @param $variables
- *   Available variables.
  */
 function ulf_default_preprocess_page(&$variables) {
   // Check theme.
@@ -33,33 +30,27 @@ function ulf_default_preprocess_page(&$variables) {
   // Provide main menu as block for all pages.
   $variables['main_menu_block'] = module_invoke('system', 'block_view', 'main-menu');
 
-  // Hide login tabs for user profiles (see ulf_course_providers module)
-  if (arg(0) == 'user' && is_numeric(arg(1))) {
-    //unset($variables['tabs']['#primary']);
+
+  // Add social media links to header if selected.
+  if (variable_get('ulf_social_media_header', FALSE) == TRUE) {
+    $variables['social_media_links'] = module_invoke('ulf_social_media', 'block_view', 'ulf_social_media');
   }
 }
 
-
 /**
  * Implements hook_preprocess_layout().
- *
- * @param $variables
- *   Available variables.
  */
 function ulf_default_preprocess_front_page(&$variables) {
-  // Provide newsletter block for front page.
-  $variables['newsletter_block'] = module_invoke('mailchimp_signup', 'block_view', 'signup_to_newsletter');
+  $variables['empty_regions'] = array();
+  foreach ($variables['display']->content as $pane) {
+    if (property_exists($pane, 'IPE_empty')) {
+      $variables['empty_regions'][] = $pane->pid;
+    }
+  }
 }
-
 
 /**
  * Implements theme_menu_tree().
- *
- * @param $variables
- *   Available variables.
- *
- * @return array
- *  The menu tree array.
  */
 function ulf_default_menu_tree__main_menu ($variables) {
   // Strip default main menu tree of wrappers.
@@ -68,28 +59,14 @@ function ulf_default_menu_tree__main_menu ($variables) {
 
 /**
  * Implements theme_menu_tree().
- *
- * @param $variables
- *   Available variables.
- *
- * @return array
- *  The menu tree array.
  */
 function ulf_default_menu_tree__menu_about_ulf ($variables) {
   // Strip default main menu tree of wrappers.
   return $variables['tree'];
 }
 
-
-
 /**
  * Implements theme_menu_link().
- *
- * @param $variables
- *  Available variables.
- *
- * @return string
- *  HTML string for a list item.
  */
 function ulf_default_menu_link__main_menu($variables){
   $element = $variables['element'];
@@ -114,12 +91,8 @@ function ulf_default_menu_link__main_menu($variables){
   return "<li" . drupal_attributes($element['#attributes']) . ">" . $link . $sub_menu . "</li>" ;
 }
 
-
 /**
  * Implements hook_preprocess_node().
- *
- * @param $variables
- *   Available variables.
  */
 function ulf_default_preprocess_node(&$variables) {
   // Set default node teaser template.
@@ -133,6 +106,27 @@ function ulf_default_preprocess_node(&$variables) {
     }
     else {
       $variables['teaser_content'] = _ulf_default_teaser_filter($variables['content']['field_full_description']['0']['#markup']);
+    }
+
+    // Select first 3 field_relevance_educators values and prepare for print.
+    if ($variables['type'] == 'course_educators') {
+      $target_group_array = array();
+      if(!empty($variables['field_relevance_educators'])) {
+        foreach($variables['field_relevance_educators'] as $target_group) {
+          $uri = taxonomy_term_uri($target_group['taxonomy_term']);
+          $target_group_array[] = '<a href="' . $uri['path'] .'">' . $target_group['taxonomy_term']->name . '</a>';
+        }
+      }
+      $sliced_target_group_array = array_slice($target_group_array, 0, 3);
+
+      $variables['course_teaser_target_group'] = '';
+      foreach ($sliced_target_group_array as $value) {
+        $variables['course_teaser_target_group'] .= $value . ', ';
+      }
+
+      if (count($target_group_array) > 3) {
+         $variables['course_teaser_target_group'] .= '(...)';
+      }
     }
   }
 
@@ -166,10 +160,20 @@ function ulf_default_preprocess_node(&$variables) {
       }
       break;
 
+    case 'course_educators':
+      // Display of duration remove 0's in decimal.
+      if (isset($variables['content']['field_duration']['0']['#markup'])) {
+        $variables['stripped_duration'] = preg_replace('/,?0+$/','', $variables['content']['field_duration']['0']['#markup']);
+      }
+      break;
+
+
     case 'static_page':
       // Provide menu block for static page nodes.
       $variables['static_page_menu'] = module_invoke('menu_block', 'block_view', 'ulf_base-1');
-
+      if (empty($variables['static_page_menu']['content'])) {
+        $variables['static_page_menu'] = FALSE;
+      }
       // Provide newsletter block for static pages.
       $variables['newsletter_block'] = module_invoke('mailchimp_signup', 'block_view', 'signup_to_newsletter');
       break;
@@ -196,21 +200,23 @@ function ulf_default_preprocess_node(&$variables) {
   $variables['profile_name'] = $author_wrapper->field_profile_name->value();
 
   // Display author meta data for courses.
-  if (($variables['type'] == 'course'|| $variables['type'] == 'course_educators') && ($variables['view_mode'] == 'full' || $variables['view_mode'] == 'print')) {
-    $variables['profile_address'] = $author_wrapper->field_profile_address->value();
-    $variables['profile_postal_code'] = $author_wrapper->field_profile_postal_code->value();
-    $variables['profile_city'] = $author_wrapper->field_profile_city->value();
+  if (($variables['type'] == 'course'|| $variables['type'] == 'course_educators') &&
+    ($variables['view_mode'] == 'full' || $variables['view_mode'] == 'print')) {
+
     $variables['profile_phone'] = $author_wrapper->field_profile_phone->value();
     $variables['profile_home_page'] = $author_wrapper->field_profile_home_page->value()['url'];
+
+    // Fetch location information from the user. Used in the information box to
+    // the right when displaying the profile.
+    $account = $variables['author'];
+    $variables['profile_address'] = $account->location['street'];
+    $variables['profile_postal_code'] = $account->location['postal_code'];
+    $variables['profile_city'] = $account->location['city'];
   }
 }
 
-
 /**
  * Implements hook_preprocess_user_profile().
- *
- * @param $variables
- *   Available variables.
  */
 function ulf_default_preprocess_user_profile(&$variables) {
   // Enable a view for user profile templates.
@@ -218,22 +224,25 @@ function ulf_default_preprocess_user_profile(&$variables) {
   $variables['content_by_user_school'] = views_embed_view('ulf_content_by_user', 'block_3');
   $variables['content_by_user_youth'] = views_embed_view('ulf_content_by_user', 'block_1');
   $variables['content_by_user_courses'] = views_embed_view('ulf_content_by_user', 'block_2');
-}
 
+  // Fetch location information from the user. Used in the information box to
+  // the right when displaying the profile.
+  $account = $variables['elements']['#account'];
+  $variables['location'] = array(
+    'street' => $account->location['street'],
+    'postal_code' => $account->location['postal_code'],
+    'city' => $account->location['city'],
+  );
+}
 
 /**
  * Implements hook_preprocess_field().
- *
- * @param $variables
- *   Available variables.
  */
 function ulf_default_preprocess_field(&$variables) {
   // Some fields need all their html stripped, and want only the field value shown. We add a template for that.
   $stripped_template = array(
     'field_duration',
     'field_duration_unit',
-    'field_profile_postal_code',
-    'field_profile_city',
     'field_unit_price',
     'field_price_description',
     'field_duration_description'
@@ -272,12 +281,8 @@ function ulf_default_preprocess_field(&$variables) {
   }
 }
 
-
 /**
  * Implements hook_preprocess_panels_pane().
- *
- * @param $variables
- *   Available variables.
  */
 function ulf_default_preprocess_panels_pane(&$variables) {
   // Suggestions based on sub-type.
@@ -299,19 +304,16 @@ function ulf_default_preprocess_panels_pane(&$variables) {
   if(!empty($variables['pane']->css['css_class'])) {
     $variables['provided_class'] = $variables['pane']->css['css_class'];
   }
+  if ($variables['pane']->subtype == 'group_course') {
+    // Provide newsletter block for front page.
+    $variables['newsletter_block'] = module_invoke('mailchimp_signup', 'block_view', 'signup_to_newsletter');
+  }
 }
-
 
 /**
  * Implements theme_panels_default_style_render_region().
  *
  * Remove the panel separator from the default rendering method.
- *
- * @param $variables
- *   Available variables.
- *
- * @return string
- *  A panel region without seperator.
  */
 function ulf_default_panels_default_style_render_region($variables) {
   $output = '';
@@ -320,15 +322,8 @@ function ulf_default_panels_default_style_render_region($variables) {
   return $output;
 }
 
-
 /**
  * Implements theme_links().
- *
- * @param $variables
- *   Available variables.
- *
- * @return string
- *  An altered html of main menu links.
  */
 function ulf_default_links__system_main_menu($variables) {
   $html = '';
@@ -341,15 +336,8 @@ function ulf_default_links__system_main_menu($variables) {
   return $html;
 }
 
-
 /**
  * Implements theme_links().
- *
- * @param $variables
- *   Available variables.
- *
- * @return string
- *  An altered html of about ulf menu links.
  */
 function ulf_default_menu_link__menu_about_ulf($variables) {
   $element = $variables ['element'];
@@ -364,15 +352,8 @@ function ulf_default_menu_link__menu_about_ulf($variables) {
   return '<li' . drupal_attributes($element ['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
 }
 
-
 /**
  * Implements theme_item_list().
- *
- * @param $variables
- *   Available variables.
- *
- * @return string
- *  The html of default item lists.
  */
 function ulf_default_item_list($variables) {
   $items = $variables ['items'];
@@ -431,14 +412,8 @@ function ulf_default_item_list($variables) {
   return $output;
 }
 
-
 /**
  * Implements theme_date_display_range().
- * @param $variables
- *   Available variables.
- *
- * @return string
- *  The html of a date range
  */
 function ulf_default_date_display_range($variables) {
   $date1 = $variables['date1'];
@@ -468,15 +443,8 @@ function ulf_default_date_display_range($variables) {
   return $output . $show_remaining_days;
 }
 
-
 /**
  * Implements hook_file_link().
- *
- * @param $variables
- *   Available variables.
- *
- * @return string
- *  The html of a file link.
  */
 function ulf_default_file_link($variables) {
   $file = $variables['file'];
@@ -506,7 +474,6 @@ function ulf_default_file_link($variables) {
   return '<span class="file">' . $icon . ' ' . l($link_text, $url, $options) . '</span>';
 }
 
-
 /**
  * A custom function for striping html for node teasers
  *
@@ -520,7 +487,7 @@ function _ulf_default_teaser_filter($str) {
   // Clean out headlines.
   $str = strip_tags($str);
 
-  // Trim string to word boundry.
+  // Trim string to word boundary.
   $trimmed = substr($str, 0, 100);
   if (strlen($str) > 100) {
     $trimmed = $trimmed . '...';

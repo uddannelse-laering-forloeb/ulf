@@ -1,5 +1,40 @@
 #ULF changelog
 
+#v2.5.x
+
+##2.5.0
+* Changed 'place' to be a location field. Simplified node edit form for place selection. 
+* Fixed mobile styling an javascript for ‘end user message’ modal 
+* Added sigup fields from 'course educators' to 'course'
+* Changed title fields to use H1’s instead of DIV’s
+* Fixed ‘gratisbanner’ placement on mobile
+* CKEditor updated to 4.6.2
+* Core and contrib updated:
+    ```
+    Drupal                                                     7.52               7.54              Update available   
+    Views (views)                                              7.x-3.14           7.x-3.15          SECURITY UPDATE available                                                                  
+    Views Bulk Operations (views_bulk_operations)              7.x-3.3            7.x-3.4           Update available                                                                 
+    Chaos tools (ctools)                                       7.x-1.11           7.x-1.12          Update available                                                                 
+    CAPTCHA (captcha)                                          7.x-1.3            7.x-1.4           Update available                                                                 
+    Diff (diff)                                                7.x-3.2            7.x-3.3           Update available                                                                 
+    Drafty (drafty)                                            7.x-1.0-beta3      7.x-1.0-beta4     Update available                                                                 
+    Entity API (entity)                                        7.x-1.6            7.x-1.8           Update available                                                                 
+    Entityforms (entityform)                                   7.x-2.0-rc2+2-dev  7.x-2.0-rc3       Update available                                                                 
+    Field collection (field_collection)                        7.x-1.0-beta11     7.x-1.0-beta12    Update available                                                                 
+    Panels (panels)                                            7.x-3.8            7.x-3.9           Update available                                                                 
+    Localization update (l10n_update)                          7.x-2.0            7.x-2.1           Update available                                                                 
+    Libraries (libraries)                                      7.x-2.2            7.x-2.3           Update available                                                                 
+    Link checker (linkchecker)                                 7.x-1.2            7.x-1.3           Update available                                                                 
+    MailChimp (mailchimp)                                      7.x-4.7            7.x-4.8           Update available                                                                 
+    Manual Crop (manualcrop)                                   7.x-1.5            7.x-1.6           Update available                                                                 
+    Nodequeue (nodequeue)                                      7.x-2.0            7.x-2.1           Update available                                                                 
+    Search API (search_api)                                    7.x-1.18           7.x-1.21          Update available                                                                 
+    Token (token)                                              7.x-1.6            7.x-1.7           Update available                                                                 
+    Universally Unique ID (uuid)                               7.x-1.0-beta1      7.x-1.0-beta2     Update available                                                                 
+    UUID Features (uuid_features)                              7.x-1.0-alpha4     7.x-1.0-rc1       Update available
+    Wysiwyg (wysiwyg)                                          7.x-2.2            7.x-2.3           Update available
+    ```
+
 #v2.4.x
 
 ##2.4.15

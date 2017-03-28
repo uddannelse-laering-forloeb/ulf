@@ -1,0 +1,6 @@
+name = Ulf translations
+description = Holds translations for ulf
+package = Ulf base
+core = 7.x
+version = "7.x-1.0"
+project = "ulf_translations"

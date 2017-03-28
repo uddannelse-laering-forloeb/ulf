@@ -1,0 +1,10 @@
+/* Print styles to use across all themes */
+
+/* Hide fields */
+.block--light.is-form,
+.block--field-label.is-video,
+.ribbon-wrapper,
+.block--field-text.is-video,
+.block--modal-link {
+    display: none;
+}

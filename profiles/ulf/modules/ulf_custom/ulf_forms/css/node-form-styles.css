@@ -12,6 +12,7 @@
     clear: left;
 }
 
+.fieldset-wrapper > .field-name-field-course-moms,
 .fieldset-wrapper > .field-name-field-duration-unit {
     clear: none;
 }
@@ -40,7 +41,6 @@
     width: auto;
     position: relative;
 }
-
 
 .end-date-wrapper > .form-item > label {
     position: absolute;

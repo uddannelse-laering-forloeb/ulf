@@ -1,0 +1,123 @@
+<?php
+/**
+ * @file
+ * Updated functions.
+ */
+
+/**
+ * Migrate data on users from 'Organization fields' to 'location fields'
+ */
+function ulf_course_providers_update_7201() {
+  // Find the course providers role id, as this is different from site to site.
+  $rid = 0;
+  $roles = user_roles(TRUE);
+  foreach ($roles as $rid => $role) {
+    if ($role == 'course provider') {
+      // Stop the search as $rid now has the role id (also outside this loop).
+      break;
+    }
+  }
+
+  // Find all users (providers) that don't have a location.
+  $query = db_select('users', 'u');
+  $query->fields('u', array('uid'));
+  $query->addJoin('LEFT', 'users_roles', 'ur', 'ur.uid = u.uid');
+  $query->addJoin('LEFT', 'location_instance', 'l', 'u.uid = l.uid');
+  $query->condition('ur.rid', $rid, '=')
+    ->condition('u.uid', 0, '!=')
+    ->isNull('l.uid');
+  $uids = $query->execute()->fetchCol(0);
+  $users = user_load_multiple($uids);
+
+  // Add location to these users and save the user, which will trigger an geo-
+  // location look-up.
+  foreach ($users as $user) {
+    $user->locations[] = array(
+      'name' => '',
+      'street' => $user->field_profile_address[LANGUAGE_NONE][0]['value'],
+      'additional' => '',
+      'city' => $user->field_profile_city[LANGUAGE_NONE][0]['value'],
+      'province' => '',
+      'postal_code' => $user->field_profile_postal_code[LANGUAGE_NONE][0]['value'],
+      'country' => 'dk',
+      'country_name' => 'Danmark',
+    );
+
+    // This needs to be a user save (and not just an database update) to trigger
+    // the location node save.
+    user_save($user);
+  }
+}
+
+/**
+ * Removed old migrated fields from "address".
+ */
+function ulf_course_providers_update_7202() {
+  field_delete_field('field_profile_address');
+  field_delete_field('field_profile_city');
+  field_delete_field('field_profile_postal_code');
+  field_purge_batch(5000);
+}
+
+/**
+ * Set default values for placement fields on users (providers).
+ */
+function ulf_course_providers_update_7203(&$sandbox) {
+  // Find the course providers role id, as this is different from site to site.
+  $rid = 0;
+  $roles = user_roles(TRUE);
+  foreach ($roles as $rid => $role) {
+    if ($role == 'course provider') {
+      // Stop the search as $rid now has the role id (also outside this loop).
+      break;
+    }
+  }
+
+  // Find all users (providers) that don't have a location.
+  $query = db_select('users', 'u');
+  $query->fields('u', array('uid'));
+  $query->join('users_roles', 'ur', 'ur.uid = u.uid');
+  $query->condition('ur.rid', $rid, '=');
+  $uids = $query->execute()->fetchCol(0);
+  $users = user_load_multiple($uids);
+
+  foreach ($users as $user) {
+    // Set default value to be displayed in maps.
+    $user->field_profile_map_placement[LANGUAGE_NONE] = array(
+      array(
+        'value' => 'alternative',
+      )
+    );
+
+    // If the old show_on_map is un-checked - hide location on the map.
+    if (!$user->field_profile_show_on_map[LANGUAGE_NONE][0]['value']) {
+      $user->field_profile_map_placement[LANGUAGE_NONE][0]['value'] = 'hide';
+    }
+
+    user_save($user);
+  }
+}
+
+/**
+ * Removed "field_profile_show_on_map" from user profiles.
+ */
+function ulf_course_providers_update_7204() {
+  field_delete_field('field_profile_show_on_map');
+  field_purge_batch(500);
+}
+
+/**
+ * Update all hidden locations to 0.00000,0.00000 for providers.
+ */
+function ulf_course_providers_update_7205() {
+  // This could have been done with at db_update with an db_select sub-query.
+  // But it is easier to read the query directly.
+  db_query("UPDATE location
+    SET latitude=0.000000, longitude=0.000000
+    WHERE lid IN (
+      SELECT li.lid FROM field_data_field_profile_map_placement p
+      JOIN location_instance li ON p.entity_id = li.uid
+      WHERE field_profile_map_placement_value = 'hide'
+    )"
+  );
+}

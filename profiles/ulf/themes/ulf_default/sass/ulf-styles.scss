@@ -15,35 +15,32 @@
 // Override with theme vars
 @import "theme/_theme-vars";
 
-
-
-// Include base
-@import "base/_normalize";
-@import "base/_base";
-@import "base/_form";
-
-
 // Theme
 @import "theme/_flexbox";
 @import "theme/_tabs";
 @import "theme/_pager";
 @import "theme/_fonts";
 
+// Include base
+@import "base/_normalize";
+@import "base/_base";
+@import "base/_form";
 
 // Placeholder and mixins
 @import "patterns/_global-mixins";
 @import "patterns/_global-patterns";
 @import "patterns/_ribbon";
 
-
 // Layout
 @import "layout/_layout";
 
 // Components
+@import "itk-components/_itk-modal";
 @import "itk-components/_itk-menu";
 @import "itk-components/_itk-tabs";
 
 // Module
+@import "modules/_panels-ipe";
 @import "modules/_header";
 @import "modules/_footer";
 @import "modules/_field";
@@ -55,3 +52,5 @@
 @import "modules/_page";
 @import "modules/_search";
 @import "modules/_leaflet";
+@import "modules/_social-media";
+@import "modules/_modal";

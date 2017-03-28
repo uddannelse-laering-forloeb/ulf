@@ -12,16 +12,18 @@
 ================================================================================================================== */
 
 .pager {
-  @include flexbox;
-  @include flex-flow(row wrap);
-  @include justify-content(center);
-
   border-top: 1px dashed $gray-light;
   margin-top: 2em;
   padding-top: 2em;
   padding-left: 0;
   text-align: center;
   width: 100%;
+}
+
+.pagination {
+  @include flexbox;
+  @include flex-flow(row wrap);
+  @include justify-content(center);
 
   li {
     @include flex(0 1 42px);
@@ -29,15 +31,18 @@
     cursor: pointer;
     margin: 4px;
 
-    &.pager-first,
-    &.pager-previous,
-    &.pager-next,
-    &.pager-last {
+    &:nth-child(2),
+    &:nth-last-child(2) {
+      @include flex(0 1 60px);
+    }
+
+    &:nth-child(1),
+    &:nth-last-child(1) {
       @include flex(0 1 84px);
     }
   }
 
-  a,
+  a:link, a:visited, a:hover, a:focus,
   span {
     display: block;
     padding-top: .5em;
@@ -46,6 +51,7 @@
     padding-left: 1em;
     background-color: $gray-lighter;
     text-decoration: none;
+    color: $gray-darkest;
 
     &:hover {
       background-color: darken($gray-lighter, 5%);
@@ -53,11 +59,10 @@
     }
   }
 
-  .pager-current {
+  .active {
     @include flexbox;
 
     background-color: $gray-light;
-    color: $white;
     justify-content: center;
     align-items: center;
 
@@ -65,7 +70,9 @@
       background-color: darken($gray-light, 5%);
     }
 
+    a:link, a:visited, a:hover, a:focus,
     span {
+      color: $white;
       background-color: $gray-light;
 
       &:hover {

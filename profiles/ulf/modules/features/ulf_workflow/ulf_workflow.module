@@ -37,13 +37,13 @@ function ulf_workflow_preprocess_page(&$variables) {
 function ulf_workflow_menu() {
   $items = array();
 
-  $items['admin/settings/ulf_workflow'] = array(
+  $items['admin/settings/custom/ulf_workflow'] = array(
     'title' => 'ULF workflow settings',
     'description' => 'Settings related to ulf workflow module',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('_ulf_workflow_admin'),
     'access arguments' => array('administer site configuration'),
-    'type' => MENU_NORMAL_ITEM,
+    'type' => MENU_LOCAL_TASK,
   );
 
   return $items;
@@ -523,6 +523,7 @@ function ulf_workflow_node_presave($node) {
  *
  * */
 function _send_published_mail($node) {
+  global $language;
   // Get author fields.
   $user = user_load($node->uid);
   $module = 'ulf_workflow';
@@ -531,6 +532,7 @@ function _send_published_mail($node) {
   $to = $user->mail;
   $key = 'published_mail_author';
 
+  
   // If site mail recipient is active override receiving email address.
   $site_mail_recipient = variable_get('ulf_workflow_local_recipient');
   if ($site_mail_recipient > 0) {
@@ -540,7 +542,7 @@ function _send_published_mail($node) {
 
   // Provide additional parameters.
   $params['user'] = $user;
-  drupal_mail($module, $key, $to, 'da', $params);
+  drupal_mail($module, $key, $to, $language, $params);
 }
 
 
@@ -551,6 +553,7 @@ function _send_published_mail($node) {
  *
  * */
 function _send_unpublished_mail($node) {
+  global $language;
   // Get author fields.
   $user = user_load($node->uid);
   $module = 'ulf_workflow';
@@ -558,8 +561,6 @@ function _send_unpublished_mail($node) {
   // Set recipient.
   $to = $user->mail;
   $key = 'unpublished_mail_author';
-
-  $lang = 'da';
 
   // If site mail recipient is active override receiving email address.
   $site_mail_recipient = variable_get('ulf_workflow_local_recipient');
@@ -571,7 +572,7 @@ function _send_unpublished_mail($node) {
   // Provide additional parameters.
   $params['user'] = $user;
 
-  drupal_mail($module, $key, $to, $lang, $params);
+  drupal_mail($module, $key, $to, $language, $params);
 }
 
 
@@ -582,6 +583,7 @@ function _send_unpublished_mail($node) {
  *
  * */
 function _send_revision_ready_mail($node) {
+  global $language;
   $module = 'ulf_workflow';
   $key = 'revision_ready_mail_admin';
 
@@ -593,7 +595,7 @@ function _send_revision_ready_mail($node) {
 
   // Provide additional parameters.
   $params['user'] = $user;
-  drupal_mail($module, $key, $to, 'da', $params);
+  drupal_mail($module, $key, $to, $language, $params);
 }
 
 
@@ -604,6 +606,7 @@ function _send_revision_ready_mail($node) {
  *
  * */
 function _send_user_edited_mail($user) {
+  global $language;
   $module = 'ulf_workflow';
   $key = 'user_edited_mail_admin';
 
@@ -612,7 +615,7 @@ function _send_user_edited_mail($user) {
 
   // Provide additional parameters.
   $params['user'] = $user;
-  drupal_mail($module, $key, $to, 'da', $params);
+  drupal_mail($module, $key, $to, $language, $params);
 }
 
 

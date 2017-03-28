@@ -25,7 +25,7 @@ function ulf_course_field_default_field_instances() {
         'weight' => 9,
       ),
       'full' => array(
-        'label' => 'hidden',
+        'label' => 'above',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
@@ -76,7 +76,7 @@ function ulf_course_field_default_field_instances() {
         'weight' => 10,
       ),
       'full' => array(
-        'label' => 'hidden',
+        'label' => 'above',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
@@ -163,11 +163,7 @@ function ulf_course_field_default_field_instances() {
   // Exported field_instance: 'node-course-field_count'.
   $field_instances['node-course-field_count'] = array(
     'bundle' => 'course',
-    'default_value' => array(
-      0 => array(
-        'value' => 0,
-      ),
-    ),
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => 'Angiv max. antal deltagere',
     'display' => array(
@@ -219,54 +215,6 @@ function ulf_course_field_default_field_instances() {
       'settings' => array(),
       'type' => 'number',
       'weight' => 25,
-    ),
-  );
-
-  // Exported field_instance: 'node-course-field_course_show_on_map'.
-  $field_instances['node-course-field_course_show_on_map'] = array(
-    'bundle' => 'course',
-    'default_value' => array(
-      0 => array(
-        'value' => 1,
-      ),
-    ),
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 29,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 30,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_course_show_on_map',
-    'label' => 'Vis på kort',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'display_label' => 0,
-      ),
-      'type' => 'options_onoff',
-      'weight' => 34,
     ),
   );
 
@@ -625,7 +573,7 @@ function ulf_course_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 28,
+        'weight' => 33,
       ),
       'full' => array(
         'label' => 'above',
@@ -770,9 +718,20 @@ function ulf_course_field_default_field_instances() {
       'active' => 1,
       'module' => 'image',
       'settings' => array(
+        'insert' => 0,
+        'insert_absolute' => FALSE,
+        'insert_class' => '',
+        'insert_default' => array(
+          0 => 'auto',
+        ),
+        'insert_styles' => array(
+          0 => 'auto',
+        ),
+        'insert_width' => '',
         'manualcrop_crop_info' => 1,
         'manualcrop_default_crop_area' => 1,
         'manualcrop_enable' => 1,
+        'manualcrop_filter_insert' => TRUE,
         'manualcrop_inline_crop' => 0,
         'manualcrop_instant_crop' => 0,
         'manualcrop_instant_preview' => 1,
@@ -841,6 +800,121 @@ function ulf_course_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-course-field_last_signup_date'.
+  $field_instances['node-course-field_last_signup_date'] = array(
+    'bundle' => 'course',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'long',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+          'show_remaining_days' => FALSE,
+        ),
+        'type' => 'date_default',
+        'weight' => 29,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'long',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+          'show_remaining_days' => FALSE,
+        ),
+        'type' => 'date_default',
+        'weight' => 33,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_last_signup_date',
+    'label' => 'Seneste tilmeldelsesdato',
+    'required' => 0,
+    'settings' => array(
+      'default_value' => 'blank',
+      'default_value2' => 'same',
+      'default_value_code' => '',
+      'default_value_code2' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'date',
+      'settings' => array(
+        'increment' => 15,
+        'input_format' => 'd/m/Y - H:i:s',
+        'input_format_custom' => '',
+        'label_position' => 'above',
+        'no_fieldset' => 0,
+        'text_parts' => array(),
+        'year_range' => '-3:+3',
+      ),
+      'type' => 'date_popup',
+      'weight' => 37,
+    ),
+  );
+
+  // Exported field_instance: 'node-course-field_map_placement'.
+  $field_instances['node-course-field_map_placement'] = array(
+    'bundle' => 'course',
+    'default_value' => array(
+      0 => array(
+        'value' => 'provider',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 32,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_map_placement',
+    'label' => 'Visning på kort',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 14,
+    ),
+  );
+
   // Exported field_instance: 'node-course-field_material_suggestions'.
   $field_instances['node-course-field_material_suggestions'] = array(
     'bundle' => 'course',
@@ -856,7 +930,7 @@ function ulf_course_field_default_field_instances() {
         'weight' => 12,
       ),
       'full' => array(
-        'label' => 'hidden',
+        'label' => 'above',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
@@ -889,6 +963,58 @@ function ulf_course_field_default_field_instances() {
       ),
       'type' => 'text_textarea',
       'weight' => 11,
+    ),
+  );
+
+  // Exported field_instance: 'node-course-field_message_form'.
+  $field_instances['node-course-field_message_form'] = array(
+    'bundle' => 'course',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Vælg indstilling for visning af kontaktformular i kontaktboks',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'links' => 0,
+          'use_content_language' => 1,
+          'view_mode' => 'default',
+        ),
+        'type' => 'entityreference_entity_view',
+        'weight' => 28,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'entityreference',
+        'settings' => array(
+          'links' => TRUE,
+          'use_content_language' => TRUE,
+          'view_mode' => 'default',
+        ),
+        'type' => 'entityreference_entity_view',
+        'weight' => 30,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_message_form',
+    'label' => 'Message form',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_select',
+      'weight' => 14,
     ),
   );
 
@@ -1121,7 +1247,7 @@ function ulf_course_field_default_field_instances() {
     'bundle' => 'course',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Dette felt kan anvendes hvis sted er forskelligt fra udbyderadresse',
+    'description' => 'Skriv ikke jeres faste fysiske adresse her, den har vi allerede. Anvend dette felt til ekstraoplysninger om forløbets sted: Eks. \'Store Sal\', \'Brug højre indgang - ring på dørklokken\' eller en alternativ adresse end jeres faste fysiske adresse.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -1146,7 +1272,7 @@ function ulf_course_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_place',
-    'label' => 'Sted',
+    'label' => 'Sted (ekstraoplysninger): Eks. \'Store Sal\', \'Brug højre indgang - ring på dørklokken\' ',
     'required' => 0,
     'settings' => array(
       'text_processing' => 1,
@@ -1163,7 +1289,7 @@ function ulf_course_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 32,
+      'weight' => 16,
     ),
   );
 
@@ -1182,7 +1308,7 @@ function ulf_course_field_default_field_instances() {
         'weight' => 11,
       ),
       'full' => array(
-        'label' => 'hidden',
+        'label' => 'above',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
@@ -1330,6 +1456,115 @@ At opnå kendskab til...
     ),
   );
 
+  // Exported field_instance: 'node-course-field_signup_email'.
+  $field_instances['node-course-field_signup_email'] = array(
+    'bundle' => 'course',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 31,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 31,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_signup_email',
+    'label' => 'Tilmeldingsemail',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'html5_tools',
+      'settings' => array(),
+      'type' => 'emailwidget',
+      'weight' => 39,
+    ),
+  );
+
+  // Exported field_instance: 'node-course-field_signup_link'.
+  $field_instances['node-course-field_signup_link'] = array(
+    'bundle' => 'course',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_default',
+        'weight' => 30,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_default',
+        'weight' => 32,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_signup_link',
+    'label' => 'Tilmeldingslink',
+    'required' => 0,
+    'settings' => array(
+      'absolute_url' => 1,
+      'attributes' => array(
+        'class' => '',
+        'configurable_class' => 0,
+        'configurable_title' => 0,
+        'rel' => '',
+        'target' => '_blank',
+        'title' => '',
+      ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 1,
+      'rel_remove' => 'default',
+      'title' => 'optional',
+      'title_label_use_field_label' => 0,
+      'title_maxlength' => 128,
+      'title_value' => '',
+      'url' => 0,
+      'user_register_form' => FALSE,
+      'validate_url' => 1,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'link',
+      'settings' => array(),
+      'type' => 'link_field',
+      'weight' => 38,
+    ),
+  );
+
   // Exported field_instance: 'node-course-field_subject'.
   $field_instances['node-course-field_subject'] = array(
     'bundle' => 'course',
@@ -1474,7 +1709,7 @@ At opnå kendskab til...
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 30,
+        'weight' => 34,
       ),
       'full' => array(
         'label' => 'above',
@@ -1639,7 +1874,6 @@ At opnå kendskab til...
   t('Beskrivelse');
   t('Beskrivelse til pris');
   t('Beskrivlese til varighed');
-  t('Dette felt kan anvendes hvis sted er forskelligt fra udbyderadresse');
   t('Efterbehandling');
   t('Eksempeltekst (bør skiftes, så målgruppen afspejles): Skovene omkring Gl. Rye gemmer på mange spor af tidligere tiders udnyttelse af skoven - skoven gav og giver stadig menneskene såvel materialer som oplevelser. Vi hører om fortidens brug af skoven fra bondestenalderens svedjebrug til middelalderens munke.');
   t('Eksempeltekst (bør skiftes, så målgruppen afspejles): Spørg i familien om nogen har gamle ”Himmelbjerg-souvenirs” og lav en lille udstilling i klassen med dem.');
@@ -1657,18 +1891,24 @@ At opnå kendskab til...
   t('Hvilke faciliteter kan I tilbyde?');
   t('Inspirationsmateriale');
   t('Læreplanstemaer');
+  t('Message form');
   t('Målgruppe');
   t('Overordnet målgruppe');
   t('Periode');
   t('Pris');
-  t('Sted');
+  t('Seneste tilmeldelsesdato');
+  t('Skriv ikke jeres faste fysiske adresse her, den har vi allerede. Anvend dette felt til ekstraoplysninger om forløbets sted: Eks. \'Store Sal\', \'Brug højre indgang - ring på dørklokken\' eller en alternativ adresse end jeres faste fysiske adresse.');
+  t('Sted (ekstraoplysninger): Eks. \'Store Sal\', \'Brug højre indgang - ring på dørklokken\' ');
   t('Sæt kryds i alle de aldre, som besøget/forløbet er relevant for.');
+  t('Tilmeldingsemail');
+  t('Tilmeldingslink');
   t('Undervisningsmateriale');
   t('Upload et billede/illustration');
   t('Varighed');
   t('Video');
-  t('Vis på kort');
+  t('Visning på kort');
   t('Vælg enhed');
+  t('Vælg indstilling for visning af kontaktformular i kontaktboks');
   t('Yderligere oplysninger til faciliteter');
   t('Yderligere oplysninger til periode');
 

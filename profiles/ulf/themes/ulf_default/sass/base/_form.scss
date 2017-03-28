@@ -66,3 +66,22 @@ input[disabled][type="checkbox"] + label {
   @include opacity(.3);
   opacity: .3;
 }
+
+
+// Checkbox list wrapper (Mailchimp signup)
+.form-type-checkbox {
+  @include flexbox;
+  @include flex-direction(row);
+}
+
+input[type="checkbox"] {
+  @include flex(0, 0, 20px);
+}
+
+label.option {
+  @include flex(1, 1, auto);
+}
+
+.form-wrapper.captcha {
+  margin-bottom: $boxlist-padding;
+}

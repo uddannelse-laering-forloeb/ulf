@@ -108,7 +108,7 @@
               </div>
             </div>
           <?php endif;?>
-          <div class="field--title is-<?php print $group_type; ?>"><?php print render($title); ?></div>
+          <h1 class="field--title is-<?php print $group_type; ?>"><?php print render($title); ?></h1>
           <?php print render($content['field_image']); ?>
         </div>
         <div class="content--main">
@@ -140,6 +140,46 @@
           <?php endif; ?>
           <?php print render($content['field_educational_material']); ?>
           <?php print render($content['field_inspirational_material']); ?>
+          <?php if (isset($location['street']) || isset($location['name'])) : ?>
+            <div class="field--collection-wrapper">
+              <div class="field--collection-label"><?php print t('Place');?></div>
+              <div class="field--collection-content">
+                <div class="field--collection-item">
+                  <?php if (isset($location['street'])) : ?>
+                    <div><?php print $location['street'] ?></div>
+                  <?php endif; ?>
+                  <?php if (isset($location['additional'])) : ?>
+                    <div><?php print $location['additional'] ?></div>
+                  <?php endif; ?>
+                  <?php if (isset($location['postal_code'])) : ?>
+                    <span><?php print $location['postal_code'] ?></span>
+                  <?php endif; ?>
+                  <?php if (isset($location['city'])) : ?>
+                    <span><?php print $location['city'] ?></span>
+                  <?php endif; ?>
+                  <?php if (isset($location['name'])) : ?>
+                    <div><?php print $location['name'] ?></div>
+                  <?php endif; ?>
+                </div>
+              </div>
+            </div>
+          <?php endif; ?>
+          <?php if ($field_last_signup_date || $field_signup_link || $field_signup_email) : ?>
+            <div class="field--collection-wrapper">
+              <div class="field--collection-label"><?php print t('Signup');?></div>
+              <div class="field--collection-content">
+                <div class="field--collection-item">
+                  <div class="field--collection-item-inner">
+                    <div class="field--collection-description">
+                      <?php print render($content['field_last_signup_date']); ?>
+                      <?php print render($content['field_signup_link']); ?>
+                      <?php print render($content['field_signup_email']); ?>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <?php endif;?>
           <div class="block--pdf">
             <a class="block--pdf-link" target="_blank" href="/printpdf/<?php print $node->nid; ?>"><?php print t('Save this offer as pdf'); ?></a>
           </div>
@@ -151,7 +191,7 @@
             </h2>
             <div class="block--content">
               <div class="block--field-wrapper">
-                <div class="block--field-label"><?php print t('Contact');?></div>
+                <div class="block--field-label"><?php print t('Provider');?></div>
                 <a href="/user/<?php print $uid; ?>"><?php print $profile_name; ?></a>
               </div>
               <div class="block--field-wrapper is-inline">
@@ -218,14 +258,40 @@
               <div class="block--field-label"><?php print $profile_name; ?></div>
               <div class="block--field-text"><?php print $profile_address; ?></div>
               <div class="block--field-text"><?php print $profile_postal_code; ?> <?php print $profile_city; ?></div>
-              </br>
+              <br>
               <?php if (isset($profile_phone)) : ?>
-                <div class="block--field-text"><?php print t('Phone')?> <?php print $profile_phone; ?></div>
+                <div class="block--field-text">
+                  <p>
+                    <?php print t('Phone')?> <?php print $profile_phone; ?>
+                  </p>
+                </div>
               <?php endif; ?>
-              </br>
-              <a href="/user/<?php print $uid ?>"><?php print t('View organizer profile'); ?></a>
+              <?php if ($field_message_form) : ?>
+              <p>
+                <button class="block--modal-link js-toggle-modal modal--open"><?php print t('Contact organizer'); ?></button>
+              </p>
+              <?php endif; ?>
+              <p>
+                <a href="/user/<?php print $uid ?>"><?php print t('View organizer profile'); ?></a>
+              </p>
             </div>
           </div>
+          <?php if ($field_message_form) : ?>
+            <div class="block--light is-form">
+            <div class="is-modal js-modal js-toggle-modal"></div>
+              <div class="modal--wrapper js-modal-dialog">
+                <div class="modal--close js-toggle-modal"><img src="/profiles/ulf/themes/ulf_default/images/close.svg"></div>
+                <h2 class="block--header modal--header">
+                  <?php print t('Send message to') . ' ' . $profile_name; ?>
+                </h2>
+                <?php if (isset($content['field_message_form'])): ?>
+                <div class="block--content">
+                  <?php print render($content['field_message_form']); ?>
+                </div>
+                <?php endif; ?>
+              </div>
+            </div>
+          <?php endif; ?>
         </div>
       </div>
       <?php
