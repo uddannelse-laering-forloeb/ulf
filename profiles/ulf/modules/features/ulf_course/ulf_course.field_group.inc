@@ -13,6 +13,35 @@ function ulf_course_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_contact|node|course|form';
+  $field_group->group_name = 'group_contact';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'course';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Vis kontaktformular / Skjul kontaktformular',
+    'weight' => '42',
+    'children' => array(
+      0 => 'field_message_form',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Vis kontaktformular / Skjul kontaktformular',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'id' => '',
+        'classes' => 'group-contact field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'collapsed',
+    ),
+  );
+  $field_groups['group_contact|node|course|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_course_sub|node|course|form';
   $field_group->group_name = 'group_course_sub';
   $field_group->entity_type = 'node';
@@ -240,8 +269,9 @@ function ulf_course_field_group_info() {
     'label' => 'Lokation',
     'weight' => '11',
     'children' => array(
-      0 => 'locations',
+      0 => 'field_place',
       1 => 'field_map_placement',
+      2 => 'locations',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -276,7 +306,6 @@ function ulf_course_field_group_info() {
       4 => 'field_subjects_primary_school',
       5 => 'field_subjects_youth',
       6 => 'field_target_group_sub',
-      7 => 'field_place',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -334,6 +363,7 @@ function ulf_course_field_group_info() {
   t('Praktisk information');
   t('Tilmelding');
   t('Varighed og pris');
+  t('Vis kontaktformular / Skjul kontaktformular');
 
   return $field_groups;
 }

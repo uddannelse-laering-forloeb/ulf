@@ -163,11 +163,7 @@ function ulf_course_field_default_field_instances() {
   // Exported field_instance: 'node-course-field_count'.
   $field_instances['node-course-field_count'] = array(
     'bundle' => 'course',
-    'default_value' => array(
-      0 => array(
-        'value' => 0,
-      ),
-    ),
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => 'Angiv max. antal deltagere',
     'display' => array(
@@ -205,7 +201,7 @@ function ulf_course_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_count',
     'label' => 'Antal',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'max' => '',
       'min' => '',
@@ -850,7 +846,7 @@ function ulf_course_field_default_field_instances() {
     'label' => 'Seneste tilmeldelsesdato',
     'required' => 0,
     'settings' => array(
-      'default_value' => 'now',
+      'default_value' => 'blank',
       'default_value2' => 'same',
       'default_value_code' => '',
       'default_value_code2' => '',
@@ -973,13 +969,9 @@ function ulf_course_field_default_field_instances() {
   // Exported field_instance: 'node-course-field_message_form'.
   $field_instances['node-course-field_message_form'] = array(
     'bundle' => 'course',
-    'default_value' => array(
-      0 => array(
-        'target_id' => 1,
-      ),
-    ),
+    'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Vælg indstilling for visning af kontaktformular i kontaktboks',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1255,7 +1247,7 @@ function ulf_course_field_default_field_instances() {
     'bundle' => 'course',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Dette felt kan anvendes hvis sted er forskelligt fra udbyderadresse',
+    'description' => 'Skriv ikke jeres faste fysiske adresse her, den har vi allerede. Anvend dette felt til ekstraoplysninger om forløbets sted: Eks. \'Store Sal\', \'Brug højre indgang - ring på dørklokken\' eller en alternativ adresse end jeres faste fysiske adresse.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -1280,7 +1272,7 @@ function ulf_course_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_place',
-    'label' => 'Sted',
+    'label' => 'Sted (ekstraoplysninger): Eks. \'Store Sal\', \'Brug højre indgang - ring på dørklokken\' ',
     'required' => 0,
     'settings' => array(
       'text_processing' => 1,
@@ -1297,7 +1289,7 @@ function ulf_course_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 32,
+      'weight' => 16,
     ),
   );
 
@@ -1882,7 +1874,6 @@ At opnå kendskab til...
   t('Beskrivelse');
   t('Beskrivelse til pris');
   t('Beskrivlese til varighed');
-  t('Dette felt kan anvendes hvis sted er forskelligt fra udbyderadresse');
   t('Efterbehandling');
   t('Eksempeltekst (bør skiftes, så målgruppen afspejles): Skovene omkring Gl. Rye gemmer på mange spor af tidligere tiders udnyttelse af skoven - skoven gav og giver stadig menneskene såvel materialer som oplevelser. Vi hører om fortidens brug af skoven fra bondestenalderens svedjebrug til middelalderens munke.');
   t('Eksempeltekst (bør skiftes, så målgruppen afspejles): Spørg i familien om nogen har gamle ”Himmelbjerg-souvenirs” og lav en lille udstilling i klassen med dem.');
@@ -1906,7 +1897,8 @@ At opnå kendskab til...
   t('Periode');
   t('Pris');
   t('Seneste tilmeldelsesdato');
-  t('Sted');
+  t('Skriv ikke jeres faste fysiske adresse her, den har vi allerede. Anvend dette felt til ekstraoplysninger om forløbets sted: Eks. \'Store Sal\', \'Brug højre indgang - ring på dørklokken\' eller en alternativ adresse end jeres faste fysiske adresse.');
+  t('Sted (ekstraoplysninger): Eks. \'Store Sal\', \'Brug højre indgang - ring på dørklokken\' ');
   t('Sæt kryds i alle de aldre, som besøget/forløbet er relevant for.');
   t('Tilmeldingsemail');
   t('Tilmeldingslink');
@@ -1916,6 +1908,7 @@ At opnå kendskab til...
   t('Video');
   t('Visning på kort');
   t('Vælg enhed');
+  t('Vælg indstilling for visning af kontaktformular i kontaktboks');
   t('Yderligere oplysninger til faciliteter');
   t('Yderligere oplysninger til periode');
 

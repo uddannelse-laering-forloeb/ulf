@@ -11,13 +11,16 @@ function ulf_forms_form_alter(&$form, &$form_state, $form_id) {
 
   // @TODO: Why is this add to all forms across the whole site? Please add
   //        comment!
-  $form['#attached']['js'][] = drupal_get_path('module', 'ulf_forms') . '/js/jquery.imagesloaded.js';
-  $form['#attached']['js'][] = drupal_get_path('module', 'ulf_forms') . '/js/jquery.imgareaselect.dev.js';
-  $form['#attached']['css'][] = drupal_get_path('module', 'ulf_forms') . '/css/node-form-styles.css';
+  $path = drupal_get_path('module', 'ulf_forms');
+  $form['#attached']['js'][] = $path . '/js/jquery.imagesloaded.js';
+  $form['#attached']['js'][] = $path . '/js/jquery.imgareaselect.dev.js';
+  $form['#attached']['css'][] = $path . '/css/node-form-styles.css';
 
   switch ($form_id) {
     // Course node form.
     case 'course_node_form':
+      $form['#attached']['js'][] = $path . '/js/node-form-logics.js';
+
       // Assist on node add.
       if (empty($form['nid']['#value'])) {
         $message_required = '<p>' . t('Required fields are marked with a star and can be found in the "Practical information" field group.') . '</p>';
@@ -42,7 +45,7 @@ function ulf_forms_form_alter(&$form, &$form_state, $form_id) {
 
     // Course educators node form.
     case 'course_educators_node_form':
-      $form['#attached']['js'][] = drupal_get_path('module', 'ulf_forms') . '/js/node-form-logics.js';
+      $form['#attached']['js'][] = $path . '/js/node-form-logics.js';
       $form['#prefix'] = '<div class="node--form is-default-form">';
       $form['#suffix'] = '</div>';
       break;

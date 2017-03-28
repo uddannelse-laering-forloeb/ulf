@@ -27,7 +27,7 @@ function ulf_entityform_default_entityform_type() {
   $items = array();
   $items['end_user_message'] = entity_import('entityform_type', '{
     "type" : "end_user_message",
-    "label" : "End user message",
+    "label" : "Vis kontaktformular til udbyder",
     "data" : {
       "draftable" : 0,
       "draft_redirect_path" : "",
