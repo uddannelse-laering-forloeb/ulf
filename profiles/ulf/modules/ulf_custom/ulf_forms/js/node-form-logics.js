@@ -44,7 +44,7 @@
         // When "Full year" is unchecked show field group for duration else hide
         // the fields. This is also called when the form is initialized.
         var timeSelector = $('.field-name-field-period-full-year');
-        timeSelector.click(function () { timePeriodSelectionChanged(timeSelector) });
+        timeSelector.change(function () { timePeriodSelectionChanged(timeSelector) });
         timePeriodSelectionChanged(timeSelector);
 
         // Handle the price (free) checkboxes and show/hide price input fields
@@ -205,13 +205,26 @@
        *   jQuery element object.
        */
       function timePeriodSelectionChanged(field) {
+        var field_period = $('.field-name-field-period');
         if ($(':checked', field).length) {
-          $('#node_course_form_group_period').hide();
-          $('.field-name-field-period').hide();
+          field_period.hide();
+          $('.start-date-wrapper input', field_period).val('');
+          $('.end-date-wrapper input', field_period).val('');
         }
         else {
-          $('#node_course_form_group_period').show();
-          $('.field-name-field-period').show();
+          // When the field time period is hidden/displayed when "full year" it
+          // toggled the data fields is reset and pre-filled.
+          var date = new Date();
+          var start_date = ('0' + date.getDate()).slice(-2) + '/'
+            + ('0' + (date.getMonth()+1)).slice(-2) + '/'
+            + date.getFullYear();
+          var time = ('0' + date.getHours()).slice(-2) + ':' + ('0' + date.getMinutes()).slice(-2);
+
+          field_period.show();
+          $('.start-date-wrapper input:first', field_period).val(start_date);
+          $('.start-date-wrapper input:last', field_period).val(time);
+          $('.end-date-wrapper input:first', field_period).val('01/01/2030');
+          $('.end-date-wrapper input:last', field_period).val(time);
         }
       }
 
