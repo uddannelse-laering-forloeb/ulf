@@ -1,12 +1,12 @@
-#Install profile setup
+# Install profile setup
 
-##The setup
+## The setup
 
-###Changelog
+### Changelog
 * CHANGELOG.md located at /htdocs/profiles/ulf
 * Logs ITK changes made to the ULF project.
 
-##Install guide
+## Install guide
 1. Run vagrant up
 2. Run ./install.sh
 3. Run vagrant ssh
@@ -16,9 +16,9 @@
 
 You should now have an empty ulf installation.
 
-##Update guide
+## Update guide
 
-###For each site:
+### For each site:
 ```
 git pull
 git checkout v.XYZ
@@ -30,11 +30,11 @@ drush l10n-update
 drush cc all
 ```
 
-###Patches used
+### Patches used
 * https://www.drupal.org/files/1093420-22.patch (Used by profiler module during site install)
 * https://www.drupal.org/files/issues/translate_role_names-2205581-1.patch
 
-##About the css files
+## About the css files
 - ie8.css: Specific to Internet explorer 8 (Might be absolete)
 
 - ie9.css: Specific to Internet explorer 9 (Loaded in html.tpl.php)
@@ -45,7 +45,7 @@ drush cc all
 
 - ulf-styles.css: Compiled scss files from default theme (Used in all themes)
 
-###Other
+### Other
 - Each theme has theme specific styles that override specific selectors. But the default styles (ulf-styles.css) are always used.
 
 
