@@ -2,6 +2,11 @@
 
 #v2.5.x
 
+##2.5.1
+* SUPPORT-997: 
+  - Removed required from period date field
+  - Reverted ‘revision’ settings on ‘course’ node type to fix workbench bug where node couldn’t change from ‘needs review’ to ‘published’
+
 ##2.5.0
 * Changed 'place' to be a location field. Simplified node edit form for place selection. 
 * Fixed mobile styling an javascript for ‘end user message’ modal 
