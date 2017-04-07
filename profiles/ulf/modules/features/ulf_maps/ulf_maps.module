@@ -95,8 +95,7 @@ function _ulf_maps_profile_submit($form, &$form_state) {
           $form_state['values']['locations'][0]['postal_code'] = $account->location['postal_code'];
         }
       }
-
-    break;
+      break;
 
     case 'hide':
       // If the selection is to hide it on the search map (reset coordinates).
