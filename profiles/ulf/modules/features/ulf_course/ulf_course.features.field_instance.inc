@@ -810,12 +810,12 @@ function ulf_course_field_default_field_instances() {
         'label' => 'above',
         'module' => 'date',
         'settings' => array(
-          'format_type' => 'long',
+          'format_type' => 'html5_tools_iso8601',
           'fromto' => 'both',
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
-          'show_remaining_days' => FALSE,
+          'show_remaining_days' => 0,
         ),
         'type' => 'date_default',
         'weight' => 29,
@@ -824,12 +824,12 @@ function ulf_course_field_default_field_instances() {
         'label' => 'above',
         'module' => 'date',
         'settings' => array(
-          'format_type' => 'long',
+          'format_type' => 'ulf_default_date_format',
           'fromto' => 'both',
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
-          'show_remaining_days' => FALSE,
+          'show_remaining_days' => 0,
         ),
         'type' => 'date_default',
         'weight' => 33,
@@ -843,7 +843,7 @@ function ulf_course_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_last_signup_date',
-    'label' => 'Seneste tilmeldelsesdato',
+    'label' => 'Tilmeldingsfrist',
     'required' => 0,
     'settings' => array(
       'default_value' => 'blank',
@@ -1465,14 +1465,14 @@ At opnå kendskab til...
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'text_plain',
         'weight' => 31,
       ),
       'full' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
@@ -1532,7 +1532,7 @@ At opnå kendskab til...
     ),
     'entity_type' => 'node',
     'field_name' => 'field_signup_link',
-    'label' => 'Tilmeldingslink',
+    'label' => 'Tilmelding',
     'required' => 0,
     'settings' => array(
       'absolute_url' => 1,
@@ -1897,12 +1897,12 @@ At opnå kendskab til...
   t('Overordnet målgruppe');
   t('Periode');
   t('Pris');
-  t('Seneste tilmeldelsesdato');
   t('Skriv ikke jeres faste fysiske adresse her, den har vi allerede. Anvend dette felt til ekstraoplysninger om forløbets sted: Eks. \'Store Sal\', \'Brug højre indgang - ring på dørklokken\' eller en alternativ adresse end jeres faste fysiske adresse.');
   t('Sted (ekstraoplysninger): Eks. \'Store Sal\', \'Brug højre indgang - ring på dørklokken\' ');
   t('Sæt kryds i alle de aldre, som besøget/forløbet er relevant for.');
+  t('Tilmelding');
   t('Tilmeldingsemail');
-  t('Tilmeldingslink');
+  t('Tilmeldingsfrist');
   t('Undervisningsmateriale');
   t('Upload et billede/illustration');
   t('Varighed');

@@ -588,12 +588,12 @@ function ulf_course_educators_field_default_field_instances() {
         'label' => 'above',
         'module' => 'date',
         'settings' => array(
-          'format_type' => 'long',
+          'format_type' => 'ulf_default_date_format',
           'fromto' => 'both',
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
-          'show_remaining_days' => FALSE,
+          'show_remaining_days' => 0,
         ),
         'type' => 'date_default',
         'weight' => 22,
@@ -607,7 +607,7 @@ function ulf_course_educators_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_last_signup_date',
-    'label' => 'Seneste tilmeldelsesdato',
+    'label' => 'Tilmeldingsfrist',
     'required' => 0,
     'settings' => array(
       'default_value' => 'blank',
@@ -1117,10 +1117,10 @@ function ulf_course_educators_field_default_field_instances() {
     'description' => '',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'text_plain',
         'weight' => 24,
       ),
       'teaser' => array(
@@ -1170,7 +1170,7 @@ function ulf_course_educators_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_signup_link',
-    'label' => 'Tilmeldingslink',
+    'label' => 'Tilmelding',
     'required' => 0,
     'settings' => array(
       'absolute_url' => 1,
@@ -1315,13 +1315,13 @@ function ulf_course_educators_field_default_field_instances() {
   t('Navn');
   t('Periode');
   t('Pris');
-  t('Seneste tilmeldelsesdato');
   t('Skriv en beskrivelse af kursets indhold');
   t('Skriv ikke jeres faste fysiske adresse her, den har vi allerede. Anvend dette felt til ekstraoplysninger om forløbets sted: Eks. \'Store Sal\', \'Brug højre indgang - ring på dørklokken\' eller en alternativ adresse end jeres faste fysiske adresse.');
   t('Sted (ekstraoplysninger): Eks. \'Store Sal\', \'Brug højre indgang - ring på dørklokken\' ');
   t('Telefonnummer');
+  t('Tilmelding');
   t('Tilmeldingsemail');
-  t('Tilmeldingslink');
+  t('Tilmeldingsfrist');
   t('Undervisningsmateriale');
   t('Upload et billede/illustration');
   t('Varighed');
