@@ -151,8 +151,7 @@ function ulf_course_educators_field_group_info() {
       1 => 'field_course_contact_name',
       2 => 'field_course_phone',
       3 => 'field_educational_goals',
-      4 => 'field_place',
-      5 => 'field_profile_contact',
+      4 => 'field_profile_contact',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -270,7 +269,8 @@ function ulf_course_educators_field_group_info() {
     'weight' => '8',
     'children' => array(
       0 => 'field_map_placement',
-      1 => 'locations',
+      1 => 'field_place',
+      2 => 'locations',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
