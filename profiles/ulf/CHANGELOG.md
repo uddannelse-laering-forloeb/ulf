@@ -4,6 +4,7 @@
 
 ##2.5.2
 
+* SUPPORT-1001: Updated missing locations form nodes
 * SUPPORT-1006: Fixed signupdate default value on ulf_course_educators
 * SUPPORT-1008: Fixed when/where ‘place’ was shown on course and course_educators
 * SUPPORT-1013: Changed widget for ‘periode’ date fields to select to avoid js error in popup setting end year to wrong value
