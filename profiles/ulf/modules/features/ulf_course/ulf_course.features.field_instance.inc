@@ -1132,10 +1132,11 @@ function ulf_course_field_default_field_instances() {
         'input_format' => 'd/m/Y - H:i:s',
         'input_format_custom' => '',
         'label_position' => 'above',
+        'no_fieldset' => 0,
         'text_parts' => array(),
         'year_range' => '-0:+5',
       ),
-      'type' => 'date_popup',
+      'type' => 'date_select',
       'weight' => 9,
     ),
   );

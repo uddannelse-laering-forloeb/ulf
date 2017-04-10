@@ -4,6 +4,7 @@
 
 ##2.5.2
 
+* SUPPORT-1013: Changed widget for ‘periode’ date fields to select to avoid js error in popup setting end year to wrong value
 * Core and contrib updated:
     ```
     Date (date)                                7.x-2.9         7.x-2.10          Update available                                                                                   
