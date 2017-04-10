@@ -108,25 +108,32 @@
             <?php print render($content['field_profile_contact']); ?>
           <?php endif; ?>
           <?php print render($content['field_educational_material']); ?>
-          <?php if (isset($location['street']) || isset($location['name'])) : ?>
+          <?php if ($field_place || $field_map_placement['und']['0']['value'] == 'alternative'): ?>
             <div class="field--collection-wrapper">
               <div class="field--collection-label"><?php print t('Place');?></div>
               <div class="field--collection-content">
                 <div class="field--collection-item">
-                  <?php if (isset($location['street'])) : ?>
-                    <div><?php print $location['street'] ?></div>
+                  <?php if ($field_map_placement['und']['0']['value'] == 'alternative' ) : ?>
+                    <?php if (!empty($location['street'])) : ?>
+                      <div><?php print $location['street'] ?></div>
+                    <?php endif; ?>
+                    <?php if (!empty($location['additional'])) : ?>
+                      <div><?php print $location['additional'] ?></div>
+                    <?php endif; ?>
+                    <?php if (!empty($location['postal_code'])) : ?>
+                      <span><?php print $location['postal_code'] ?></span>
+                    <?php endif; ?>
+                    <?php if (!empty($location['city'])) : ?>
+                      <span><?php print $location['city'] ?></span>
+                    <?php endif; ?>
+                    <?php if (!empty($location['name'])) : ?>
+                      <div><?php print $location['name'] ?></div>
+                    <?php endif; ?>
                   <?php endif; ?>
-                  <?php if (isset($location['additional'])) : ?>
-                    <div><?php print $location['additional'] ?></div>
-                  <?php endif; ?>
-                  <?php if (isset($location['postal_code'])) : ?>
-                    <span><?php print $location['postal_code'] ?></span>
-                  <?php endif; ?>
-                  <?php if (isset($location['city'])) : ?>
-                  <span><?php print $location['city'] ?></span>
-                  <?php endif; ?>
-                  <?php if (isset($location['name'])) : ?>
-                    <div><?php print $location['name'] ?></div>
+                  <?php if ($field_place): ?>
+                    <p>
+                      <?php print render($content['field_place']); ?>
+                    </p>
                   <?php endif; ?>
                 </div>
               </div>
@@ -220,14 +227,24 @@
             </h2>
             <div class="block--content">
               <div class="block--field-label"><?php print $profile_name; ?></div>
-<!--              <div class="block--field-text">--><?php //print $profile_address; ?><!--</div>-->
-<!--              <div class="block--field-text">--><?php //print $profile_postal_code; ?><!-- --><?php //print $profile_city; ?><!--</div>-->
+              <div class="block--field-text"><?php print $profile_address; ?></div>
+              <div class="block--field-text"><?php print $profile_postal_code; ?> <?php print $profile_city; ?></div>
               <br>
-              <div class="block--field-text"><?php print t('Phone')?> <?php print $profile_phone; ?></div>
-              <br>
-              <div class="block--field-label js-toggle-modal modal--open"><?php print t('Contact organizer'); ?></div>
-              <br>
-              <a href="/user/<?php print $uid ?>"><?php print t('View organizer profile'); ?></a>
+              <?php if (isset($profile_phone)) : ?>
+                <div class="block--field-text">
+                  <p>
+                    <?php print t('Phone')?> <?php print $profile_phone; ?>
+                  </p>
+                </div>
+              <?php endif; ?>
+              <?php if ($field_message_form) : ?>
+                <p>
+                  <button class="block--modal-link js-toggle-modal modal--open"><?php print t('Contact organizer'); ?></button>
+                </p>
+              <?php endif; ?>
+              <p>
+                <a href="/user/<?php print $uid ?>"><?php print t('View organizer profile'); ?></a>
+              </p>
             </div>
           </div>
           <?php if ($field_message_form) : ?>

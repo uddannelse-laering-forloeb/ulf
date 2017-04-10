@@ -115,12 +115,33 @@
           <?php print render($content['field_full_description']); ?>
           <?php print render($content['field_purpose']); ?>
           <?php print render($content['field_video']); ?>
-          <?php if ($field_place) : ?>
+          <?php if ($field_place || $field_map_placement['und']['0']['value'] == 'alternative'): ?>
             <div class="field--collection-wrapper">
               <div class="field--collection-label"><?php print t('Place');?></div>
               <div class="field--collection-content">
                 <div class="field--collection-item">
-                  <?php print render($content['field_place']); ?>
+                  <?php if ($field_map_placement['und']['0']['value'] == 'alternative' ) : ?>
+                    <?php if (!empty($location['street'])) : ?>
+                      <div><?php print $location['street'] ?></div>
+                    <?php endif; ?>
+                    <?php if (!empty($location['additional'])) : ?>
+                      <div><?php print $location['additional'] ?></div>
+                    <?php endif; ?>
+                    <?php if (!empty($location['postal_code'])) : ?>
+                      <span><?php print $location['postal_code'] ?></span>
+                    <?php endif; ?>
+                    <?php if (!empty($location['city'])) : ?>
+                      <span><?php print $location['city'] ?></span>
+                    <?php endif; ?>
+                    <?php if (!empty($location['name'])) : ?>
+                      <div><?php print $location['name'] ?></div>
+                    <?php endif; ?>
+                  <?php endif; ?>
+                  <?php if ($field_place): ?>
+                    <p>
+                      <?php print render($content['field_place']); ?>
+                    </p>
+                  <?php endif; ?>
                 </div>
               </div>
             </div>
@@ -140,30 +161,6 @@
           <?php endif; ?>
           <?php print render($content['field_educational_material']); ?>
           <?php print render($content['field_inspirational_material']); ?>
-          <?php if (isset($location['street']) || isset($location['name'])) : ?>
-            <div class="field--collection-wrapper">
-              <div class="field--collection-label"><?php print t('Place');?></div>
-              <div class="field--collection-content">
-                <div class="field--collection-item">
-                  <?php if (isset($location['street'])) : ?>
-                    <div><?php print $location['street'] ?></div>
-                  <?php endif; ?>
-                  <?php if (isset($location['additional'])) : ?>
-                    <div><?php print $location['additional'] ?></div>
-                  <?php endif; ?>
-                  <?php if (isset($location['postal_code'])) : ?>
-                    <span><?php print $location['postal_code'] ?></span>
-                  <?php endif; ?>
-                  <?php if (isset($location['city'])) : ?>
-                    <span><?php print $location['city'] ?></span>
-                  <?php endif; ?>
-                  <?php if (isset($location['name'])) : ?>
-                    <div><?php print $location['name'] ?></div>
-                  <?php endif; ?>
-                </div>
-              </div>
-            </div>
-          <?php endif; ?>
           <?php if ($field_last_signup_date || $field_signup_link || $field_signup_email) : ?>
             <div class="field--collection-wrapper">
               <div class="field--collection-label"><?php print t('Signup');?></div>

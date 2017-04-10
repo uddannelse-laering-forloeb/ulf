@@ -2,6 +2,21 @@
 
 #v2.5.x
 
+##2.5.2
+
+* SUPPORT-1001: Updated missing locations form nodes
+* SUPPORT-1006: Fixed signupdate default value on ulf_course_educators
+* SUPPORT-1008: Fixed when/where ‘place’ was shown on course and course_educators
+* SUPPORT-1013: Changed widget for ‘periode’ date fields to select to avoid js error in popup setting end year to wrong value
+* SUPPORT-1014: Fixed ‘signup’ box display
+* Core and contrib updated:
+    ```
+    Date (date)                                7.x-2.9         7.x-2.10          Update available                                                                                   
+    jQuery Update (jquery_update)              7.x-3.0-alpha3  7.x-3.0-alpha5    Update available                                                                                   
+    Views (views)                              7.x-3.15        7.x-3.16          Update available                                                                                   
+    Views Data Export (views_data_export)      7.x-3.1         7.x-3.2           Update available
+    ```
+
 ##2.5.1
 * SUPPORT-997: 
   - Removed required from period date field

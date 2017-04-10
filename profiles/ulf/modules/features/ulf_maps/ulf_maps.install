@@ -70,3 +70,35 @@ function ulf_maps_update_7200(&$sandbox) {
       ))->execute();
   }
 }
+
+/**
+ * Update nodes with missing location information. This may take some time.
+ */
+function ulf_maps_update_7201(&$sandbox) {
+  // Find all users (providers) that don't have a location.
+  $query = db_select('field_data_field_map_placement', 'f');
+  $query->fields('f', array('entity_id'));
+  $query->addJoin('LEFT', 'location_instance', 'li', 'f.entity_id = li.nid');
+  $query->condition('field_map_placement_value', 'provider', '=')
+    ->isNull('li.nid');
+  $nids = $query->execute()->fetchCol(0);
+
+  // Add location to these nodes and save the nodes, which will trigger an geo-
+  // location look-up. We don't load all nodes in one multi load to preserve
+  // memory.
+  foreach ($nids as $nid) {
+    $node = node_load($nid);
+    $account = user_load($node->uid);
+    $node->locations[] = array(
+      'name' => $account->location['name'],
+      'street' => $account->location['street'],
+      'city' => $account->location['city'],
+      'province' => '',
+      'postal_code' => $account->location['postal_code'],
+      'country' => 'dk',
+      'country_name' => 'Danmark',
+    );
+
+    node_save($node);
+  }
+}

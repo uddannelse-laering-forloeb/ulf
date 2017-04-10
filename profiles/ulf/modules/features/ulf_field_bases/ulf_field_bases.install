@@ -62,6 +62,19 @@ function _ulf_field_bases_update_placement($type) {
   }
 }
 
+function _ulf_field_bases_update_placement_bundle($type) {
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', $type);
+  $result = $query->execute();
+  $entity_ids = array_keys($result['node']);
+
+  db_update('field_data_field_map_placement')
+    ->fields(array('bundle' => $type))
+    ->condition('entity_id', $entity_ids, 'IN')
+    ->execute();
+}
+
 /**
  * Delete field_price_info field.
  */
@@ -106,4 +119,18 @@ function ulf_field_bases_update_7105() {
       WHERE field_map_placement_value = 'hide'
     )"
   );
+}
+
+/**
+ * Set correct bundle type on field_placement - courses.
+ */
+function ulf_field_bases_update_7106() {
+  _ulf_field_bases_update_placement_bundle('course');
+}
+
+/**
+ * Set correct bundle type on field_placement - course_educators.
+ */
+function ulf_field_bases_update_7107() {
+  _ulf_field_bases_update_placement_bundle('course_educators');
 }
