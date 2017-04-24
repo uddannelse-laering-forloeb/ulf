@@ -3,6 +3,7 @@
 #v2.5.x
 
 ##2.5.3
+* SUPPORT-1019: Fixed contact form using wrong email field. Added course titel to email
 * Contrib updated:
     ```                
    Mail Editor (mail_edit)                    7.x-1.1    7.x-1.2   Update available                                                                                   

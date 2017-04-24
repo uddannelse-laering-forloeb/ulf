@@ -26,17 +26,20 @@ function ulf_entityform_default_rules_configuration() {
           }
         },
         { "entity_fetch" : {
-            "USING" : { "type" : "user", "id" : [ "parent-node:author:uid" ] },
+            "USING" : {
+              "type" : "user",
+              "id" : [ "entityform:field-message-parent-node:author:uid" ]
+            },
             "PROVIDE" : { "entity_fetched" : { "message_node_author" : "Message node author" } }
           }
         },
         { "mimemail" : {
             "key" : "Send email on end user message",
-            "to" : "[message-node-author:field-profile-mail]",
+            "to" : "[message-node-author:mail]",
             "from_name" : "[entityform:field-message-name]",
             "from_mail" : "[entityform:field-message-email]",
-            "subject" : "Besked fra bruger p\\u00e5 [site:name]",
-            "body" : "En bruger har udfyldt en kontakt formular p\\u00e5 [site:name] ([site:url])\\r\\n\\r\\n---\\r\\n\\u003Cstrong\\u003EFra:\\u003C\\/strong\\u003E [entityform:field-message-name]\\r\\n\\u003Cstrong\\u003EEmail:\\u003C\\/strong\\u003E [entityform:field-message-email]\\r\\n\\u003Cstrong\\u003EBesked:\\u003C\\/strong\\u003E\\r\\n[entityform:field-message-body]\\r\\n\\r\\n---\\r\\n\\r\\nMed venlig hilsen\\r\\n[site:name]",
+            "subject" : "Henvendelse ang. [parent-node:title] fra [entityform:field-message-name]",
+            "body" : "Henvendelse ang. [parent-node:title] ([parent-node:url]) fra [entityform:field-message-name]\\r\\n\\r\\n---\\r\\n\\u003Cstrong\\u003EFra:\\u003C\\/strong\\u003E [entityform:field-message-name]\\r\\n\\u003Cstrong\\u003EEmail:\\u003C\\/strong\\u003E [entityform:field-message-email]\\r\\n\\u003Cstrong\\u003EKursus:\\u003C\\/strong\\u003E [parent-node:title]\\r\\n\\u003Cstrong\\u003EBesked:\\u003C\\/strong\\u003E\\r\\n[entityform:field-message-body]\\r\\n\\r\\n---\\r\\n\\r\\nMed venlig hilsen\\r\\n[site:name]",
             "language" : [ "" ]
           }
         }
