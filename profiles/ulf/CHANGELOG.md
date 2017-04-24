@@ -2,6 +2,13 @@
 
 #v2.5.x
 
+##2.5.3
+* Contrib updated:
+    ```                
+   Mail Editor (mail_edit)                    7.x-1.1    7.x-1.2   Update available                                                                                   
+   Rules (rules)                              7.x-2.9    7.x-2.10  Update available
+   ```
+
 ##2.5.2
 
 * SUPPORT-1001: Updated missing locations form nodes
@@ -9,7 +16,7 @@
 * SUPPORT-1008: Fixed when/where ‘place’ was shown on course and course_educators
 * SUPPORT-1013: Changed widget for ‘periode’ date fields to select to avoid js error in popup setting end year to wrong value
 * SUPPORT-1014: Fixed ‘signup’ box display
-* Core and contrib updated:
+* Contrib updated:
     ```
     Date (date)                                7.x-2.9         7.x-2.10          Update available                                                                                   
     jQuery Update (jquery_update)              7.x-3.0-alpha3  7.x-3.0-alpha5    Update available                                                                                   
