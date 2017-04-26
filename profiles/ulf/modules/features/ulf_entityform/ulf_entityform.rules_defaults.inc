@@ -35,11 +35,11 @@ function ulf_entityform_default_rules_configuration() {
         },
         { "mimemail" : {
             "key" : "Send email on end user message",
-            "to" : "[message-node-author:mail]",
+            "to" : "[message-node-author:field-profile-mail]",
             "from_name" : "[entityform:field-message-name]",
             "from_mail" : "[entityform:field-message-email]",
             "subject" : "Henvendelse ang. [parent-node:title] fra [entityform:field-message-name]",
-            "body" : "Henvendelse ang. [parent-node:title] ([parent-node:url]) fra [entityform:field-message-name]\\r\\n\\r\\n---\\r\\n\\u003Cstrong\\u003EFra:\\u003C\\/strong\\u003E [entityform:field-message-name]\\r\\n\\u003Cstrong\\u003EEmail:\\u003C\\/strong\\u003E [entityform:field-message-email]\\r\\n\\u003Cstrong\\u003EKursus:\\u003C\\/strong\\u003E [parent-node:title]\\r\\n\\u003Cstrong\\u003EBesked:\\u003C\\/strong\\u003E\\r\\n[entityform:field-message-body]\\r\\n\\r\\n---\\r\\n\\r\\nMed venlig hilsen\\r\\n[site:name]",
+            "body" : "Henvendelse ang. [parent-node:title] ([parent-node:url]) fra [entityform:field-message-name]\\r\\n\\r\\n---\\r\\n\\u003Cstrong\\u003EFra:\\u003C\\/strong\\u003E [entityform:field-message-name]\\r\\n\\u003Cstrong\\u003EEmail:\\u003C\\/strong\\u003E [entityform:field-message-email]\\r\\n\\u003Cstrong\\u003EAng. kursus:\\u003C\\/strong\\u003E [parent-node:title]\\r\\n\\u003Cstrong\\u003EBesked:\\u003C\\/strong\\u003E\\r\\n[entityform:field-message-body]\\r\\n\\r\\n---\\r\\n\\r\\nMed venlig hilsen\\r\\n[site:name]",
             "language" : [ "" ]
           }
         }
