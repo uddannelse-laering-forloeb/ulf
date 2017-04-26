@@ -1,0 +1,38 @@
+<?php
+/**
+ * @file
+ */
+
+/**
+ * Set 'profile mail'
+ */
+function ulf_entityform_update_7100(&$sandbox) {
+  $users = entity_load('user');
+  $count = 0;
+
+  if (!isset($sandbox['progress'])) {
+    $sandbox['progress'] = 0;
+    $sandbox['current_uid'] = 0;
+    $sandbox['max'] = count($users);
+  }
+
+  foreach ($users as $user) {
+    $user_wrapper = entity_metadata_wrapper('user', $user);
+
+    if (empty($user_wrapper->field_profile_mail->value()) && intval($user_wrapper->uid->value()) > 1) {
+      $user_wrapper->field_profile_mail->set($user->mail);
+      $user_wrapper->save();
+
+      $count++;
+    }
+
+    $sandbox['progress']++;
+    $sandbox['current_uid'] = $user->uid;
+
+  }
+
+  $sandbox['#finished'] = empty($sandbox['max']) ? 1 : ($sandbox['progress'] / $sandbox['max']);
+
+  return t('Profile mail added for @count users', array('@count' => $count));
+
+}
