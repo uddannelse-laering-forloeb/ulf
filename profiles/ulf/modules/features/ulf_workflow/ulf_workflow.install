@@ -61,3 +61,59 @@ function ulf_workflow_update_7601() {
 
   module_enable($module_enable);
 }
+
+/**
+ * Remove schedule for un-publishing if course is 'full_year'
+ */
+function ulf_workflow_update_7602() {
+  if (db_table_exists('scheduler') && db_table_exists('scheduler_notify')) {
+
+    // course
+    $query = new EntityFieldQuery;
+
+    $query->entityCondition('entity_type', 'node')
+      ->entityCondition('bundle', 'course')
+      ->fieldCondition('field_period_full_year', 'value', 1);
+
+    $results = $query->execute();
+
+    if (isset($results['node'])) {
+      foreach ($results['node'] as $node) {
+        // Remove old nid entry element.
+        db_delete('scheduler')
+          ->condition('nid', $node->nid)
+          ->execute();
+
+        // Remove old node entry from scheduled notifications so we don't create more entries for sending "a week prior mail".
+        db_delete('scheduler_notify')
+          ->condition('nid', $node->nid)
+          ->execute();
+      }
+    }
+
+    // course_educators
+    $query = new EntityFieldQuery;
+
+    $query->entityCondition('entity_type', 'node')
+      ->entityCondition('bundle', 'course_educators')
+      ->fieldCondition('field_period_full_year', 'value', 1);
+
+    $results = $query->execute();
+
+    if (isset($results['node'])) {
+      foreach ($results['node'] as $node) {
+        // Remove old nid entry element.
+        db_delete('scheduler')
+          ->condition('nid', $node->nid)
+          ->execute();
+
+        // Remove old node entry from scheduled notifications so we don't create more entries for sending "a week prior mail".
+        db_delete('scheduler_notify')
+          ->condition('nid', $node->nid)
+          ->execute();
+      }
+    }
+
+  }
+
+}
