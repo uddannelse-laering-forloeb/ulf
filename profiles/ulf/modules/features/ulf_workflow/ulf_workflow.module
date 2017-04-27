@@ -270,27 +270,29 @@ function ulf_workflow_global_submit($form, &$form_state) {
   }
 
   // If "full year" not checked and "to date" and we are editing existing node(has nid) set scheduling options.
-  if (!$form_state['values']['field_period_full_year']['und']['0']['value'] && isset($form_state['values']['field_period']['und']['0']['value2']) && isset($form_state['values']['nid'])) {
-    // Get to date from period field.
-    $period_timestamp_to_date = $form_state['values']['field_period']['und']['0']['value2'];
+  if (isset($form_state['values']['field_period_full_year']['und']['0']['value']) && !$form_state['values']['field_period_full_year']['und']['0']['value']) {
+    if (isset($form_state['values']['field_period']['und']['0']['value2']) && isset($form_state['values']['nid'])) {
+      // Get to date from period field.
+      $period_timestamp_to_date = $form_state['values']['field_period']['und']['0']['value2'];
 
-    // Format the date according to scheduler requested format.
-    $formatted_to_date = format_date($period_timestamp_to_date, 'custom', 'Y-m-d');
+      // Format the date according to scheduler requested format.
+      $formatted_to_date = format_date($period_timestamp_to_date, 'custom', 'Y-m-d');
 
-    // Set unpublishing date.
-    $form_state['values']['unpublish_on'] = $formatted_to_date . ' 23:59:59';
+      // Set unpublishing date.
+      $form_state['values']['unpublish_on'] = $formatted_to_date . ' 23:59:59';
 
-    // Register timestamp a week prior for sending email.
-    $week_prior = $period_timestamp_to_date - 604800;
+      // Register timestamp a week prior for sending email.
+      $week_prior = $period_timestamp_to_date - 604800;
 
-    // Create new entry from form state.
-    db_insert('scheduler_notify')
-      ->fields(array(
-        'nid' => $form_state['values']['nid'],
-        'uid' => $form_state['values']['uid'],
-        'send_mail_on' => $week_prior,
-      ))
-      ->execute();
+      // Create new entry from form state.
+      db_insert('scheduler_notify')
+        ->fields(array(
+          'nid' => $form_state['values']['nid'],
+          'uid' => $form_state['values']['uid'],
+          'send_mail_on' => $week_prior,
+        ))
+        ->execute();
+    }
   }
 
   // Set the moderation form state depending on which button is clicked.
@@ -453,33 +455,34 @@ function ulf_workflow_node_insert($node) {
 
     // If ´full year" is not checked then set scheduler date (We need to do this for newly created nodes after they have been assigned a nid.)
     // Existing nodes are assigned unscheduling in ulf_workflow_global_submit() function.
-    if (!$node->field_period_full_year['und']['0']['value'] && isset($node->field_period['und']['0']['value2'])) {
-      // Get to date from period field.
-      $period_timestamp_to_date = $node->field_period['und']['0']['value2'];
+    if (isset($node->field_period_full_year['und']['0']['value']) && !$node->field_period_full_year['und']['0']['value']) {
+      if (isset($node->field_period['und']['0']['value2'])) {
+        // Get to date from period field.
+        $period_timestamp_to_date = $node->field_period['und']['0']['value2'];
 
-      // Register timestamp a week prior for sending email.
-      $week_prior = $period_timestamp_to_date - 604800;
+        // Register timestamp a week prior for sending email.
+        $week_prior = $period_timestamp_to_date - 604800;
 
-      // Remove old nid entry element.
-      if (db_table_exists('scheduler')) {
-        // Create new entry from nid.
-        db_insert('scheduler')
+        if (db_table_exists('scheduler')) {
+          // Create new entry from nid.
+          db_insert('scheduler')
+            ->fields(array(
+              'nid' => $node->nid,
+              'publish_on' => 0,
+              'unpublish_on' => $period_timestamp_to_date,
+            ))
+            ->execute();
+        }
+
+        // Create new entry from form state.
+        db_insert('scheduler_notify')
           ->fields(array(
             'nid' => $node->nid,
-            'publish_on' => 0,
-            'unpublish_on' => $period_timestamp_to_date,
+            'uid' => $node->uid,
+            'send_mail_on' => $week_prior,
           ))
           ->execute();
       }
-
-      // Create new entry from form state.
-      db_insert('scheduler_notify')
-        ->fields(array(
-          'nid' => $node->nid,
-          'uid' => $node->uid,
-          'send_mail_on' => $week_prior,
-        ))
-        ->execute();
     }
   }
 }
