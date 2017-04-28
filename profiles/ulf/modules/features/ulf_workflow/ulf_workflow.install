@@ -63,7 +63,7 @@ function ulf_workflow_update_7601() {
 }
 
 /**
- * Remove schedule for un-publishing if course is 'full_year', rebuild unpublish dates for all others
+ * Remove schedule for un-publishing if course is 'full_year', rebuild un-publish dates for all others
  */
 function ulf_workflow_update_7602() {
   if (db_table_exists('scheduler') && db_table_exists('scheduler_notify')) {
@@ -101,14 +101,16 @@ function ulf_workflow_update_7602() {
             ))
             ->execute();
 
-          // Create new entry from form state.
-          db_insert('scheduler_notify')
-            ->fields(array(
-              'nid' => $node->nid,
-              'uid' => $node->uid,
-              'send_mail_on' => $week_prior,
-            ))
-            ->execute();
+          if($week_prior > time()) {
+            // Create new entry from form state.
+            db_insert('scheduler_notify')
+              ->fields(array(
+                'nid' => $node->nid,
+                'uid' => $node->uid,
+                'send_mail_on' => $week_prior,
+              ))
+              ->execute();
+          }
         }
       }
     }
