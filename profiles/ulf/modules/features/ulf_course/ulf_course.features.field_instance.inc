@@ -810,7 +810,7 @@ function ulf_course_field_default_field_instances() {
         'label' => 'above',
         'module' => 'date',
         'settings' => array(
-          'format_type' => 'html5_tools_iso8601',
+          'format_type' => 'ulf_default_date_format',
           'fromto' => 'both',
           'multiple_from' => '',
           'multiple_number' => '',
