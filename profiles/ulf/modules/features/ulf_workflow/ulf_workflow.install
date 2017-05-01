@@ -61,3 +61,62 @@ function ulf_workflow_update_7601() {
 
   module_enable($module_enable);
 }
+
+/**
+ * Remove schedule for un-publishing if course is 'full_year', rebuild un-publish dates for all others
+ */
+function ulf_workflow_update_7602() {
+  if (db_table_exists('scheduler') && db_table_exists('scheduler_notify')) {
+
+    // Table content is assumed of of sync
+    db_truncate('scheduler')->execute();
+    db_truncate('scheduler_notify')->execute();
+
+    $query = new EntityFieldQuery;
+
+    $query->entityCondition('entity_type', 'node')
+      ->entityCondition('bundle', array('course', 'course_educators'), 'IN')
+      ->propertyCondition('status', 1)
+      ->fieldCondition('field_period_full_year', 'value', 0);
+
+    $results = $query->execute();
+
+    if (isset($results['node'])) {
+      $nodes = node_load_multiple(array_keys($results['node']));
+
+      foreach ($nodes as $node) {
+        if (isset($node->field_period['und']['0']['value2'])) {
+          // Get to date from period field.
+          $period_timestamp_to_date = $node->field_period['und']['0']['value2'];
+
+          // Register timestamp a week prior for sending email.
+          $week_prior = $period_timestamp_to_date - 604800;
+
+          // Create new entry from nid.
+          db_insert('scheduler')
+            ->fields(array(
+              'nid' => $node->nid,
+              'publish_on' => 0,
+              'unpublish_on' => $period_timestamp_to_date,
+            ))
+            ->execute();
+
+          if($week_prior > time()) {
+            // Create new entry from form state.
+            db_insert('scheduler_notify')
+              ->fields(array(
+                'nid' => $node->nid,
+                'uid' => $node->uid,
+                'send_mail_on' => $week_prior,
+              ))
+              ->execute();
+          }
+        }
+      }
+    }
+
+  }
+
+}
+
+

@@ -107,10 +107,10 @@ function ulf_workflow_preprocess_node(&$variables) {
     'href' => "node/{$variables['nid']}/moderation/{$variables['vid']}/change-state/published",
     'query' => array(
       'token' => drupal_get_token("{$variables['nid']}:{$variables['vid']}:published")
-      ),
+    ),
   );
 
-  $variables['publish_link']= l(t('Publish'), $link['href'], array(
+  $variables['publish_link'] = l(t('Publish'), $link['href'], array(
     'attributes' => array(
       'class' => 'button'
     ),
@@ -132,7 +132,7 @@ function ulf_workflow_menu_local_tasks_alter(&$data) {
   if (in_array('course provider', $user->roles)) {
     if ($data['tabs']) {
       $tabs = $data['tabs']['0']['output'];
-      foreach($tabs as $key => $tab) {
+      foreach ($tabs as $key => $tab) {
         if ($tab['#link']['path'] == 'node/%/moderation') {
           unset($data['tabs']['0']['output'][$key]);
         }
@@ -144,7 +144,7 @@ function ulf_workflow_menu_local_tasks_alter(&$data) {
   if (in_array('editor', $user->roles)) {
     if ($data['tabs']) {
       $tabs = $data['tabs']['0']['output'];
-      foreach($tabs as $key => $tab) {
+      foreach ($tabs as $key => $tab) {
         if ($tab['#link']['path'] == 'admin/workbench/content') {
           unset($data['tabs']['0']['output'][$key]);
         }
@@ -176,7 +176,7 @@ function ulf_workflow_form_node_form_alter(&$form, &$form_state, $form_id) {
 
 
     // Add a save draft action button.
-    $form['actions']['save'] = array (
+    $form['actions']['save'] = array(
       '#type' => 'submit',
       '#access' => !user_access('moderate content from needs_review to published'),
       '#value' => t('Save as draft'),
@@ -188,7 +188,7 @@ function ulf_workflow_form_node_form_alter(&$form, &$form_state, $form_id) {
     );
 
     // Add a save & publish action button.
-    $form['actions']['publish'] = array (
+    $form['actions']['publish'] = array(
       '#type' => 'submit',
       '#access' => user_access('moderate content from needs_review to published'),
       '#value' => t('Save & publish'),
@@ -204,7 +204,7 @@ function ulf_workflow_form_node_form_alter(&$form, &$form_state, $form_id) {
     // Add unpublish button.
     if (isset($form['#node']->workbench_moderation)) {
       if ($form['#node']->workbench_moderation['current']->state == 'published') {
-        $form['actions']['unpublish'] = array (
+        $form['actions']['unpublish'] = array(
           '#type' => 'submit',
           '#access' => user_access('view own unpublished content'),
           '#value' => t('Unpublish'),
@@ -222,7 +222,7 @@ function ulf_workflow_form_node_form_alter(&$form, &$form_state, $form_id) {
         $form['actions']['publish']['#value'] = t('Save');
 
         // Don't run publishing submit function when resaving published content.
-        foreach($form['actions']['publish']['#submit'] as $key => $value) {
+        foreach ($form['actions']['publish']['#submit'] as $key => $value) {
           if ($form['actions']['publish']['#submit'][$key] == 'ulf_workflow_course_node_form_publish_submit') {
             unset($form['actions']['publish']['#submit'][$key]);
           }
@@ -261,33 +261,38 @@ function ulf_workflow_form_node_form_alter(&$form, &$form_state, $form_id) {
  * This function is called before custom submit handlers.
  */
 function ulf_workflow_global_submit($form, &$form_state) {
-  // If "to date" and we are editing existing node(has nid) set scheduling options.
-  if (isset($form_state['values']['field_period']['und']['0']['value2']) && isset($form_state['values']['nid'])) {
-    // Get to date from period field.
-    $period_timestamp_to_date = $form_state['values']['field_period']['und']['0']['value2'];
 
-    // Format the date according to scheduler requested format.
-    $formatted_to_date = format_date($period_timestamp_to_date, 'custom', 'Y-m-d');
-
-    // Set unpublishing date.
-    $form_state['values']['unpublish_on'] = $formatted_to_date . ' 23:59:59';
-
-    // Register timestamp a week prior for sending email.
-    $week_prior = $period_timestamp_to_date - 604800;
-
-    // Remove old node entry from scheduled notifications so we don't create more entries for sending "a week prior mail".
+  // Remove old node entry from scheduled notifications so we don't create more entries for sending "a week prior mail".
+  if (isset($form_state['values']['nid'])) {
     db_delete('scheduler_notify')
       ->condition('nid', $form_state['values']['nid'])
       ->execute();
+  }
 
-    // Create new entry from form state.
-    db_insert('scheduler_notify')
-      ->fields(array(
-        'nid' => $form_state['values']['nid'],
-        'uid' => $form_state['values']['uid'],
-        'send_mail_on' => $week_prior,
-      ))
-      ->execute();
+  // If "full year" not checked and "to date" and we are editing existing node(has nid) set scheduling options.
+  if (isset($form_state['values']['field_period_full_year']['und']['0']['value']) && !$form_state['values']['field_period_full_year']['und']['0']['value']) {
+    if (isset($form_state['values']['field_period']['und']['0']['value2']) && isset($form_state['values']['nid'])) {
+      // Get to date from period field.
+      $period_timestamp_to_date = $form_state['values']['field_period']['und']['0']['value2'];
+
+      // Format the date according to scheduler requested format.
+      $formatted_to_date = format_date($period_timestamp_to_date, 'custom', 'Y-m-d');
+
+      // Set unpublishing date.
+      $form_state['values']['unpublish_on'] = $formatted_to_date . ' 23:59:59';
+
+      // Register timestamp a week prior for sending email.
+      $week_prior = $period_timestamp_to_date - 604800;
+
+      // Create new entry from form state.
+      db_insert('scheduler_notify')
+        ->fields(array(
+          'nid' => $form_state['values']['nid'],
+          'uid' => $form_state['values']['uid'],
+          'send_mail_on' => $week_prior,
+        ))
+        ->execute();
+    }
   }
 
   // Set the moderation form state depending on which button is clicked.
@@ -297,7 +302,7 @@ function ulf_workflow_global_submit($form, &$form_state) {
       global $user;
       // Send user edited mails to site mail when a user is   changed.
       if (in_array('editor', $user->roles)) {
-        if ($form['workbench_moderation_state_current']['#value'] =='needs_review') {
+        if ($form['workbench_moderation_state_current']['#value'] == 'needs_review') {
           $form_state['values']['workbench_moderation_state_new'] = 'needs_review';
         }
         else {
@@ -435,45 +440,49 @@ function ulf_workflow_node_insert($node) {
   if (($node->type == 'course' || $node->type == 'course_educators')) {
     $_GET['destination'] = 'node/' . $node->nid . '/edit';
 
+    // Remove old nid entry element.
+    if (db_table_exists('scheduler')) {
+      db_delete('scheduler')
+        ->condition('nid', $node->nid)
+        ->execute();
+    }
 
-    // Set scheduler date (We need to do this for newly created nodes after they have been assigned a nid.)
+    // Remove old node entry from scheduled notifications so we don't create more entries for sending "a week prior mail".
+    db_delete('scheduler_notify')
+      ->condition('nid', $node->nid)
+      ->execute();
+
+
+    // If ´full year" is not checked then set scheduler date (We need to do this for newly created nodes after they have been assigned a nid.)
     // Existing nodes are assigned unscheduling in ulf_workflow_global_submit() function.
-    if (isset($node->field_period['und']['0']['value2'])) {
-      // Get to date from period field.
-      $period_timestamp_to_date = $node->field_period['und']['0']['value2'];
+    if (isset($node->field_period_full_year['und']['0']['value']) && !$node->field_period_full_year['und']['0']['value']) {
+      if (isset($node->field_period['und']['0']['value2'])) {
+        // Get to date from period field.
+        $period_timestamp_to_date = $node->field_period['und']['0']['value2'];
 
-      // Register timestamp a week prior for sending email.
-      $week_prior = $period_timestamp_to_date - 604800;
+        // Register timestamp a week prior for sending email.
+        $week_prior = $period_timestamp_to_date - 604800;
 
-      // Remove old nid entry element.
-      if (db_table_exists('scheduler')) {
-        db_delete('scheduler')
-          ->condition('nid', $node->nid)
-          ->execute();
+        if (db_table_exists('scheduler')) {
+          // Create new entry from nid.
+          db_insert('scheduler')
+            ->fields(array(
+              'nid' => $node->nid,
+              'publish_on' => 0,
+              'unpublish_on' => $period_timestamp_to_date,
+            ))
+            ->execute();
+        }
 
-        // Create new entry from nid.
-        db_insert('scheduler')
+        // Create new entry from form state.
+        db_insert('scheduler_notify')
           ->fields(array(
             'nid' => $node->nid,
-            'publish_on' => 0,
-            'unpublish_on' => $period_timestamp_to_date,
+            'uid' => $node->uid,
+            'send_mail_on' => $week_prior,
           ))
           ->execute();
       }
-
-      // Remove old node entry from scheduled notifications so we don't create more entries for sending "a week prior mail".
-      db_delete('scheduler_notify')
-        ->condition('nid', $node->nid)
-        ->execute();
-
-      // Create new entry from form state.
-      db_insert('scheduler_notify')
-        ->fields(array(
-          'nid' => $node->nid,
-          'uid' => $node->uid,
-          'send_mail_on' => $week_prior,
-        ))
-        ->execute();
     }
   }
 }
@@ -532,7 +541,7 @@ function _send_published_mail($node) {
   $to = $user->mail;
   $key = 'published_mail_author';
 
-  
+
   // If site mail recipient is active override receiving email address.
   $site_mail_recipient = variable_get('ulf_workflow_local_recipient');
   if ($site_mail_recipient > 0) {
@@ -650,7 +659,7 @@ function ulf_workflow_mail_edit_text($mailkey, $language) {
     case 'revision_ready_mail_admin':
       $return['subject'] = 'A new draft is ready for publishing by [user:field_profile_name]';
       $return['body'] =
-'[user:field-profile-name] has marked a draft ready for publishing.
+        '[user:field-profile-name] has marked a draft ready for publishing.
 
 This is an automated message created by [site:name].';
       return $return;
@@ -660,7 +669,7 @@ This is an automated message created by [site:name].';
     case 'published_mail_author':
       $return['subject'] = 'Content you sent to revision has been published by an admin on [site:name]';
       $return['body'] =
-'Some content you sent to revision has now been published on [site:name].
+        'Some content you sent to revision has now been published on [site:name].
 
 Go to [site:login-url] and login to see what has been published.
 
@@ -685,7 +694,7 @@ This is an automated message created by [site:name].';
     case 'user_edited_mail_admin':
       $return['subject'] = 'The organisation: [user:field_profile_name] has made changes to its profile';
       $return['body'] =
-'The organisation: [user:field_profile_name] has made changes to its profile [current-date:short].
+        'The organisation: [user:field_profile_name] has made changes to its profile [current-date:short].
 
 Go to [user:url] to see the changes.
 
