@@ -383,7 +383,7 @@ function ulf_course_providers_field_default_field_instances() {
     'bundle' => 'user',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Henvendelser via kontaktformularen på forløbene sendes til denne adresse.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -396,10 +396,10 @@ function ulf_course_providers_field_default_field_instances() {
     'entity_type' => 'user',
     'field_name' => 'field_profile_mail',
     'label' => 'Mail',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'text_processing' => 0,
-      'user_register_form' => 0,
+      'user_register_form' => 1,
     ),
     'widget' => array(
       'active' => 0,
@@ -515,6 +515,7 @@ function ulf_course_providers_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Entré');
+  t('Henvendelser via kontaktformularen på forløbene sendes til denne adresse.');
   t('Hjemmeside');
   t('Husk at inkludere http:// i webadressen');
   t('Indholdet i dette felt er kun tilgængeligt fra denne formular og vises ikke til slutbrugere.');
