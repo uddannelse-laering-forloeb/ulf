@@ -3,8 +3,9 @@
 # v2.5.x
 
 ## 2.5.3
-* SUPPORT-1019: Made 'field_profile_mail' on users required and set account mail as default is missing value. Added course titel to entityform email.
-* SUPPORT-1029: Added check for “full year” when scheduling un-publishing to fix un-publishing bug. Added hookm to fix wrongly set schedules.
+* SUPPORT-1019: Made 'field_profile_mail' on users required and set account mail as default is missing value. 
+* SUPPORT-1027: Added course titel to entityform email.
+* SUPPORT-1029: Added check for “full year” when scheduling un-publishing to fix un-publishing bug. Added hook to fix wrongly set schedules.
 * Contrib updated:
     ```                
    Mail Editor (mail_edit)                    7.x-1.1    7.x-1.2   Update available                                                                                   
