@@ -269,6 +269,7 @@
       // We hide the comments and links now so that we can render them later.
       hide($content['field_duration']);
       hide($content['field_period']);
+      hide($content['field_collection_price']);
       hide($content['field_price']);
       hide($content['field_free']);
       hide($content['field_period_full_year']);
