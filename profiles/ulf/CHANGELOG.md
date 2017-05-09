@@ -4,6 +4,7 @@
 
 ## 2.5.4
 * SUPPORT-1040: Added Taxonomy term view for target group on courses
+* SUPPORT-1044: Changed contact form email text.
 
 ## 2.5.3
 * SUPPORT-1019: Made 'field_profile_mail' on users required and set account mail as default is missing value. 
