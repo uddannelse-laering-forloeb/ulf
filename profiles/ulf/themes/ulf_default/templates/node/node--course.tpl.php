@@ -193,7 +193,10 @@
               </div>
               <div class="block--field-wrapper is-inline">
                 <?php print render($content['field_offer_type']); ?>
-                <?php print render($content['field_target_group_sub']); ?>
+                <?php if (!empty($view__target_group_sub)) : ?>
+                  <div class="block--field-label"><?php print t('Target group');?></div>
+                  <div class="block--field-text"><?php print $view__target_group_sub; ?></div>
+                <?php endif;?>
                 <?php print render($content['field_count']); ?>
               </div>
               <?php /* If any of the fields in this wrapper contain data */ ?>
