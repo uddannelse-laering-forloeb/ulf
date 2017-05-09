@@ -277,7 +277,7 @@ function ulf_course_educators_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_duration_description',
-    'label' => 'Beskrivlese til varighed',
+    'label' => 'Beskrivelse til varighed',
     'required' => 0,
     'settings' => array(
       'text_processing' => 0,
@@ -1299,7 +1299,7 @@ function ulf_course_educators_field_default_field_instances() {
   t('Angiv tidspunkt for kursets afvikling.');
   t('Angiv url til mail eller link til side.');
   t('Beskrivelse');
-  t('Beskrivlese til varighed');
+  t('Beskrivelse til varighed');
   t('Email');
   t('Emneområde');
   t('Forplejning');
