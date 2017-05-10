@@ -3,7 +3,15 @@
 # v2.5.x
 
 ## 2.5.4
-* SUPPORT-1040: Added Taxonomy term view for target group on courses
+* ULF-581: Added checkbox for showing footer social links.
+* ULF-581: Removed required from number of participants.
+* ULF-581: Updated all search settings modules (to 2.5.1) to add free field for courses.
+* ULF-581: Fixed bug where changing course target group didn't clear all unretaed field values.
+* ULF-581: Added free tag on search pages for course educators.
+* ULF-580: Contact form enabled by default.
+* ULF-580: Pagination fixed on taxonomy term pages.
+* ULF-580: Max upload size increased.
+* SUPPORT-1040: Added Taxonomy term view for target group on courses.
 * SUPPORT-1044: Changed contact form email text.
 
 ## 2.5.3
