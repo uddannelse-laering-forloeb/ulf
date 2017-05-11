@@ -3,6 +3,7 @@
 # v2.5.x
 
 ## 2.5.4
+* SUPPORT-1052: Changed workflow mails to follow user language.
 * ULF-581: Added checkbox for showing footer social links.
 * ULF-581: Removed required from number of participants.
 * ULF-581: Updated all search settings modules (to 2.5.1) to add free field for courses.
