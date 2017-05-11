@@ -66,7 +66,7 @@ function ulf_scheduler_notify_mailkeys() {
  */
 function ulf_scheduler_notify_mail_edit_text($mailkey, $language) {
   $return = array();
-  if ($mailkey = 'week_prior_unpublishing') {
+  if ($mailkey == 'week_prior_unpublishing') {
     $return['subject'] = 'Some of your content is about to be unpublished on [site:name]';
     $return['body'] =
       'The content "[node:title]" will be unpublished in seven days.
