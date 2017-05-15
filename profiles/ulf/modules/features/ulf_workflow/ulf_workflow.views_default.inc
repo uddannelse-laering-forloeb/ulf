@@ -404,13 +404,6 @@ function ulf_workflow_views_default_views() {
       'empty_column' => 0,
     ),
   );
-  /* Header: Global: Text area */
-  $handler->display->display_options['header']['area']['id'] = 'area';
-  $handler->display->display_options['header']['area']['table'] = 'views';
-  $handler->display->display_options['header']['area']['field'] = 'area';
-  $handler->display->display_options['header']['area']['content'] = 'Viser indhold hvor "Varighed" eller "Varighed enhed".
-Sorteret efter varighed';
-  $handler->display->display_options['header']['area']['format'] = 'editor';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -428,6 +421,11 @@ Sorteret efter varighed';
   $handler->display->display_options['fields']['field_target_group_sub']['label'] = '';
   $handler->display->display_options['fields']['field_target_group_sub']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_target_group_sub']['delta_offset'] = '0';
+  /* Field: Content: Edit link */
+  $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
+  $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node']['label'] = 'Redigér-link';
   $handler->display->display_options['filter_groups']['operator'] = 'OR';
   $handler->display->display_options['filter_groups']['groups'] = array(
     1 => 'AND',
@@ -581,6 +579,11 @@ Sorteret efter varighed';
   $handler->display->display_options['fields']['field_educational_goals']['table'] = 'field_data_field_educational_goals';
   $handler->display->display_options['fields']['field_educational_goals']['field'] = 'field_educational_goals';
   $handler->display->display_options['fields']['field_educational_goals']['delta_offset'] = '0';
+  /* Field: Content: Edit link */
+  $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
+  $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node']['label'] = 'Redigér-link';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['filter_groups']['operator'] = 'OR';
   $handler->display->display_options['filter_groups']['groups'] = array(
@@ -665,10 +668,9 @@ Sorteret efter varighed';
     t('‹ previous'),
     t('next ›'),
     t('last »'),
-    t('Viser indhold hvor "Varighed" eller "Varighed enhed".
-Sorteret efter varighed'),
     t('Title'),
     t('Overordnet målgruppe'),
+    t('Redigér-link'),
     t('Page'),
     t('Bilag'),
     t('Fag'),
