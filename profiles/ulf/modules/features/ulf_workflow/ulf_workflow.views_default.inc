@@ -420,19 +420,133 @@ Sorteret efter varighed';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Field: Content: Sted */
-  $handler->display->display_options['fields']['field_place']['id'] = 'field_place';
-  $handler->display->display_options['fields']['field_place']['table'] = 'field_data_field_place';
-  $handler->display->display_options['fields']['field_place']['field'] = 'field_place';
+  /* Field: Content: Overordnet målgruppe */
+  $handler->display->display_options['fields']['field_target_group']['id'] = 'field_target_group';
+  $handler->display->display_options['fields']['field_target_group']['table'] = 'field_data_field_target_group';
+  $handler->display->display_options['fields']['field_target_group']['field'] = 'field_target_group';
+  /* Field: Content: Målgruppe */
+  $handler->display->display_options['fields']['field_target_group_sub']['id'] = 'field_target_group_sub';
+  $handler->display->display_options['fields']['field_target_group_sub']['table'] = 'field_data_field_target_group_sub';
+  $handler->display->display_options['fields']['field_target_group_sub']['field'] = 'field_target_group_sub';
+  $handler->display->display_options['fields']['field_target_group_sub']['label'] = '';
+  $handler->display->display_options['fields']['field_target_group_sub']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_target_group_sub']['delta_offset'] = '0';
+  $handler->display->display_options['filter_groups']['operator'] = 'OR';
   $handler->display->display_options['filter_groups']['groups'] = array(
-    1 => 'OR',
+    1 => 'AND',
+    2 => 'AND',
+    3 => 'AND',
   );
-  /* Filter criterion: Content: Sted (field_place) */
-  $handler->display->display_options['filters']['field_place_value']['id'] = 'field_place_value';
-  $handler->display->display_options['filters']['field_place_value']['table'] = 'field_data_field_place';
-  $handler->display->display_options['filters']['field_place_value']['field'] = 'field_place_value';
-  $handler->display->display_options['filters']['field_place_value']['operator'] = 'not empty';
-  $handler->display->display_options['filters']['field_place_value']['group'] = 1;
+  /* Filter criterion: Content: Målgruppe (field_target_group_sub) */
+  $handler->display->display_options['filters']['field_target_group_sub_tid']['id'] = 'field_target_group_sub_tid';
+  $handler->display->display_options['filters']['field_target_group_sub_tid']['table'] = 'field_data_field_target_group_sub';
+  $handler->display->display_options['filters']['field_target_group_sub_tid']['field'] = 'field_target_group_sub_tid';
+  $handler->display->display_options['filters']['field_target_group_sub_tid']['value'] = array(
+    1045 => '1045',
+    1044 => '1044',
+    1046 => '1046',
+    1047 => '1047',
+    128 => '128',
+    119 => '119',
+    109 => '109',
+  );
+  $handler->display->display_options['filters']['field_target_group_sub_tid']['group'] = 1;
+  $handler->display->display_options['filters']['field_target_group_sub_tid']['reduce_duplicates'] = TRUE;
+  $handler->display->display_options['filters']['field_target_group_sub_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_target_group_sub_tid']['vocabulary'] = 'target_group_sub';
+  /* Filter criterion: Content: Målgruppe (field_target_group_sub) */
+  $handler->display->display_options['filters']['field_target_group_sub_tid_1']['id'] = 'field_target_group_sub_tid_1';
+  $handler->display->display_options['filters']['field_target_group_sub_tid_1']['table'] = 'field_data_field_target_group_sub';
+  $handler->display->display_options['filters']['field_target_group_sub_tid_1']['field'] = 'field_target_group_sub_tid';
+  $handler->display->display_options['filters']['field_target_group_sub_tid_1']['value'] = array(
+    12 => '12',
+    79 => '79',
+    14 => '14',
+    36 => '36',
+    131 => '131',
+    87 => '87',
+    41 => '41',
+    97 => '97',
+    93 => '93',
+    124 => '124',
+    44 => '44',
+  );
+  $handler->display->display_options['filters']['field_target_group_sub_tid_1']['group'] = 1;
+  $handler->display->display_options['filters']['field_target_group_sub_tid_1']['reduce_duplicates'] = TRUE;
+  $handler->display->display_options['filters']['field_target_group_sub_tid_1']['type'] = 'select';
+  $handler->display->display_options['filters']['field_target_group_sub_tid_1']['vocabulary'] = 'target_group_sub';
+  /* Filter criterion: Content: Målgruppe (field_target_group_sub) */
+  $handler->display->display_options['filters']['field_target_group_sub_tid_4']['id'] = 'field_target_group_sub_tid_4';
+  $handler->display->display_options['filters']['field_target_group_sub_tid_4']['table'] = 'field_data_field_target_group_sub';
+  $handler->display->display_options['filters']['field_target_group_sub_tid_4']['field'] = 'field_target_group_sub_tid';
+  $handler->display->display_options['filters']['field_target_group_sub_tid_4']['value'] = array(
+    12 => '12',
+    79 => '79',
+    14 => '14',
+    36 => '36',
+    131 => '131',
+    87 => '87',
+    41 => '41',
+    97 => '97',
+    93 => '93',
+    124 => '124',
+    44 => '44',
+  );
+  $handler->display->display_options['filters']['field_target_group_sub_tid_4']['group'] = 2;
+  $handler->display->display_options['filters']['field_target_group_sub_tid_4']['reduce_duplicates'] = TRUE;
+  $handler->display->display_options['filters']['field_target_group_sub_tid_4']['type'] = 'select';
+  $handler->display->display_options['filters']['field_target_group_sub_tid_4']['vocabulary'] = 'target_group_sub';
+  /* Filter criterion: Content: Målgruppe (field_target_group_sub) */
+  $handler->display->display_options['filters']['field_target_group_sub_tid_5']['id'] = 'field_target_group_sub_tid_5';
+  $handler->display->display_options['filters']['field_target_group_sub_tid_5']['table'] = 'field_data_field_target_group_sub';
+  $handler->display->display_options['filters']['field_target_group_sub_tid_5']['field'] = 'field_target_group_sub_tid';
+  $handler->display->display_options['filters']['field_target_group_sub_tid_5']['value'] = array(
+    1058 => '1058',
+    1059 => '1059',
+    20 => '20',
+    9 => '9',
+    112 => '112',
+    47 => '47',
+    1057 => '1057',
+  );
+  $handler->display->display_options['filters']['field_target_group_sub_tid_5']['group'] = 2;
+  $handler->display->display_options['filters']['field_target_group_sub_tid_5']['reduce_duplicates'] = TRUE;
+  $handler->display->display_options['filters']['field_target_group_sub_tid_5']['type'] = 'select';
+  $handler->display->display_options['filters']['field_target_group_sub_tid_5']['vocabulary'] = 'target_group_sub';
+  /* Filter criterion: Content: Målgruppe (field_target_group_sub) */
+  $handler->display->display_options['filters']['field_target_group_sub_tid_2']['id'] = 'field_target_group_sub_tid_2';
+  $handler->display->display_options['filters']['field_target_group_sub_tid_2']['table'] = 'field_data_field_target_group_sub';
+  $handler->display->display_options['filters']['field_target_group_sub_tid_2']['field'] = 'field_target_group_sub_tid';
+  $handler->display->display_options['filters']['field_target_group_sub_tid_2']['value'] = array(
+    1045 => '1045',
+    1044 => '1044',
+    1046 => '1046',
+    1047 => '1047',
+    128 => '128',
+    119 => '119',
+    109 => '109',
+  );
+  $handler->display->display_options['filters']['field_target_group_sub_tid_2']['group'] = 3;
+  $handler->display->display_options['filters']['field_target_group_sub_tid_2']['reduce_duplicates'] = TRUE;
+  $handler->display->display_options['filters']['field_target_group_sub_tid_2']['type'] = 'select';
+  $handler->display->display_options['filters']['field_target_group_sub_tid_2']['vocabulary'] = 'target_group_sub';
+  /* Filter criterion: Content: Målgruppe (field_target_group_sub) */
+  $handler->display->display_options['filters']['field_target_group_sub_tid_3']['id'] = 'field_target_group_sub_tid_3';
+  $handler->display->display_options['filters']['field_target_group_sub_tid_3']['table'] = 'field_data_field_target_group_sub';
+  $handler->display->display_options['filters']['field_target_group_sub_tid_3']['field'] = 'field_target_group_sub_tid';
+  $handler->display->display_options['filters']['field_target_group_sub_tid_3']['value'] = array(
+    1058 => '1058',
+    1059 => '1059',
+    20 => '20',
+    9 => '9',
+    112 => '112',
+    47 => '47',
+    1057 => '1057',
+  );
+  $handler->display->display_options['filters']['field_target_group_sub_tid_3']['group'] = 3;
+  $handler->display->display_options['filters']['field_target_group_sub_tid_3']['reduce_duplicates'] = TRUE;
+  $handler->display->display_options['filters']['field_target_group_sub_tid_3']['type'] = 'select';
+  $handler->display->display_options['filters']['field_target_group_sub_tid_3']['vocabulary'] = 'target_group_sub';
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
@@ -462,7 +576,7 @@ Sorteret efter varighed';
     t('Viser indhold hvor "Varighed" eller "Varighed enhed".
 Sorteret efter varighed'),
     t('Title'),
-    t('Sted'),
+    t('Overordnet målgruppe'),
     t('Page'),
   );
   $export['ulf_editor_tool'] = $view;
