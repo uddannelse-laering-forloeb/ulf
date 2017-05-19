@@ -137,7 +137,7 @@
                       <div><?php print $location['name'] ?></div>
                     <?php endif; ?>
                   <?php endif; ?>
-                  <?php if ($field_place): ?>
+                  <?php if (!empty($field_place)): ?>
                     <p>
                       <?php print render($content['field_place']); ?>
                     </p>
