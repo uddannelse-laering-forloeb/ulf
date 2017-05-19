@@ -184,6 +184,7 @@
               <?php if ($field_subject) : ?>
                 <div class="block--field-wrapper">
                   <?php print render($content['field_subject']); ?>
+                  <?php print render($content['field_educational_goals']); ?>
                 </div>
               <?php endif;?>
               <?php if ($field_duration || $field_duration_description || isset($field_period_full_year['0']) || isset($field_price) || isset($field_free['0'])) : ?>
