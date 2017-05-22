@@ -3,6 +3,10 @@
 # v2.5.x
 
 ## 2.5.4
+* SUPPORT-1064: Fixed bug where sidebar content appeared at the bottom of content.
+* SUPPORT-1057: Added Editor view for tracking mixed target groups
+* ULF-581 Run through backlog document and implementation of lacking features
+* ULF-580: Fixes of bugs related to 2.5.0 described in "Extra feedback" document
 * SUPPORT-1052: Changed workflow mails to follow user language.
 * ULF-581: Added checkbox for showing footer social links.
 * ULF-581: Removed required from number of participants.
