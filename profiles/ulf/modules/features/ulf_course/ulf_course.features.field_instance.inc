@@ -201,7 +201,7 @@ function ulf_course_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_count',
     'label' => 'Antal',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'max' => '',
       'min' => '',
@@ -306,7 +306,7 @@ function ulf_course_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_duration_description',
-    'label' => 'Beskrivlese til varighed',
+    'label' => 'Beskrivelse til varighed',
     'required' => 0,
     'settings' => array(
       'text_processing' => 1,
@@ -969,7 +969,11 @@ function ulf_course_field_default_field_instances() {
   // Exported field_instance: 'node-course-field_message_form'.
   $field_instances['node-course-field_message_form'] = array(
     'bundle' => 'course',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'target_id' => 2,
+      ),
+    ),
     'deleted' => 0,
     'description' => 'Vælg indstilling for visning af kontaktformular i kontaktboks',
     'display' => array(
@@ -1874,7 +1878,7 @@ At opnå kendskab til...
   t('Baggrundsviden');
   t('Beskrivelse');
   t('Beskrivelse til pris');
-  t('Beskrivlese til varighed');
+  t('Beskrivelse til varighed');
   t('Efterbehandling');
   t('Eksempeltekst (bør skiftes, så målgruppen afspejles): Skovene omkring Gl. Rye gemmer på mange spor af tidligere tiders udnyttelse af skoven - skoven gav og giver stadig menneskene såvel materialer som oplevelser. Vi hører om fortidens brug af skoven fra bondestenalderens svedjebrug til middelalderens munke.');
   t('Eksempeltekst (bør skiftes, så målgruppen afspejles): Spørg i familien om nogen har gamle ”Himmelbjerg-souvenirs” og lav en lille udstilling i klassen med dem.');

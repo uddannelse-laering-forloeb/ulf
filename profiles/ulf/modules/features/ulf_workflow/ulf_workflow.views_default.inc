@@ -358,13 +358,10 @@ function ulf_workflow_views_default_views() {
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['title'] = 'ULF editor tool';
   $handler->display->display_options['use_more_always'] = FALSE;
-  $handler->display->display_options['access']['type'] = 'role';
-  $handler->display->display_options['access']['role'] = array(
-    17 => '17',
-    19 => '19',
-  );
+  $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['distinct'] = TRUE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['pager']['options']['items_per_page'] = '40';
@@ -407,32 +404,144 @@ function ulf_workflow_views_default_views() {
       'empty_column' => 0,
     ),
   );
-  /* Header: Global: Text area */
-  $handler->display->display_options['header']['area']['id'] = 'area';
-  $handler->display->display_options['header']['area']['table'] = 'views';
-  $handler->display->display_options['header']['area']['field'] = 'area';
-  $handler->display->display_options['header']['area']['content'] = 'Viser indhold hvor "Varighed" eller "Varighed enhed".
-Sorteret efter varighed';
-  $handler->display->display_options['header']['area']['format'] = 'editor';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Field: Content: Sted */
-  $handler->display->display_options['fields']['field_place']['id'] = 'field_place';
-  $handler->display->display_options['fields']['field_place']['table'] = 'field_data_field_place';
-  $handler->display->display_options['fields']['field_place']['field'] = 'field_place';
+  /* Field: Content: Overordnet målgruppe */
+  $handler->display->display_options['fields']['field_target_group']['id'] = 'field_target_group';
+  $handler->display->display_options['fields']['field_target_group']['table'] = 'field_data_field_target_group';
+  $handler->display->display_options['fields']['field_target_group']['field'] = 'field_target_group';
+  /* Field: Content: Målgruppe */
+  $handler->display->display_options['fields']['field_target_group_sub']['id'] = 'field_target_group_sub';
+  $handler->display->display_options['fields']['field_target_group_sub']['table'] = 'field_data_field_target_group_sub';
+  $handler->display->display_options['fields']['field_target_group_sub']['field'] = 'field_target_group_sub';
+  $handler->display->display_options['fields']['field_target_group_sub']['label'] = '';
+  $handler->display->display_options['fields']['field_target_group_sub']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_target_group_sub']['delta_offset'] = '0';
+  /* Field: Content: Edit link */
+  $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
+  $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node']['label'] = 'Redigér-link';
+  $handler->display->display_options['filter_groups']['operator'] = 'OR';
   $handler->display->display_options['filter_groups']['groups'] = array(
-    1 => 'OR',
+    1 => 'AND',
+    2 => 'AND',
+    3 => 'AND',
   );
-  /* Filter criterion: Content: Sted (field_place) */
-  $handler->display->display_options['filters']['field_place_value']['id'] = 'field_place_value';
-  $handler->display->display_options['filters']['field_place_value']['table'] = 'field_data_field_place';
-  $handler->display->display_options['filters']['field_place_value']['field'] = 'field_place_value';
-  $handler->display->display_options['filters']['field_place_value']['operator'] = 'not empty';
-  $handler->display->display_options['filters']['field_place_value']['group'] = 1;
+  /* Filter criterion: Content: Målgruppe (field_target_group_sub) */
+  $handler->display->display_options['filters']['field_target_group_sub_tid']['id'] = 'field_target_group_sub_tid';
+  $handler->display->display_options['filters']['field_target_group_sub_tid']['table'] = 'field_data_field_target_group_sub';
+  $handler->display->display_options['filters']['field_target_group_sub_tid']['field'] = 'field_target_group_sub_tid';
+  $handler->display->display_options['filters']['field_target_group_sub_tid']['value'] = array(
+    1045 => '1045',
+    1044 => '1044',
+    1046 => '1046',
+    1047 => '1047',
+    128 => '128',
+    119 => '119',
+    109 => '109',
+  );
+  $handler->display->display_options['filters']['field_target_group_sub_tid']['group'] = 1;
+  $handler->display->display_options['filters']['field_target_group_sub_tid']['reduce_duplicates'] = TRUE;
+  $handler->display->display_options['filters']['field_target_group_sub_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_target_group_sub_tid']['vocabulary'] = 'target_group_sub';
+  /* Filter criterion: Content: Målgruppe (field_target_group_sub) */
+  $handler->display->display_options['filters']['field_target_group_sub_tid_1']['id'] = 'field_target_group_sub_tid_1';
+  $handler->display->display_options['filters']['field_target_group_sub_tid_1']['table'] = 'field_data_field_target_group_sub';
+  $handler->display->display_options['filters']['field_target_group_sub_tid_1']['field'] = 'field_target_group_sub_tid';
+  $handler->display->display_options['filters']['field_target_group_sub_tid_1']['value'] = array(
+    12 => '12',
+    79 => '79',
+    14 => '14',
+    36 => '36',
+    131 => '131',
+    87 => '87',
+    41 => '41',
+    97 => '97',
+    93 => '93',
+    124 => '124',
+    44 => '44',
+  );
+  $handler->display->display_options['filters']['field_target_group_sub_tid_1']['group'] = 1;
+  $handler->display->display_options['filters']['field_target_group_sub_tid_1']['reduce_duplicates'] = TRUE;
+  $handler->display->display_options['filters']['field_target_group_sub_tid_1']['type'] = 'select';
+  $handler->display->display_options['filters']['field_target_group_sub_tid_1']['vocabulary'] = 'target_group_sub';
+  /* Filter criterion: Content: Målgruppe (field_target_group_sub) */
+  $handler->display->display_options['filters']['field_target_group_sub_tid_4']['id'] = 'field_target_group_sub_tid_4';
+  $handler->display->display_options['filters']['field_target_group_sub_tid_4']['table'] = 'field_data_field_target_group_sub';
+  $handler->display->display_options['filters']['field_target_group_sub_tid_4']['field'] = 'field_target_group_sub_tid';
+  $handler->display->display_options['filters']['field_target_group_sub_tid_4']['value'] = array(
+    12 => '12',
+    79 => '79',
+    14 => '14',
+    36 => '36',
+    131 => '131',
+    87 => '87',
+    41 => '41',
+    97 => '97',
+    93 => '93',
+    124 => '124',
+    44 => '44',
+  );
+  $handler->display->display_options['filters']['field_target_group_sub_tid_4']['group'] = 2;
+  $handler->display->display_options['filters']['field_target_group_sub_tid_4']['reduce_duplicates'] = TRUE;
+  $handler->display->display_options['filters']['field_target_group_sub_tid_4']['type'] = 'select';
+  $handler->display->display_options['filters']['field_target_group_sub_tid_4']['vocabulary'] = 'target_group_sub';
+  /* Filter criterion: Content: Målgruppe (field_target_group_sub) */
+  $handler->display->display_options['filters']['field_target_group_sub_tid_5']['id'] = 'field_target_group_sub_tid_5';
+  $handler->display->display_options['filters']['field_target_group_sub_tid_5']['table'] = 'field_data_field_target_group_sub';
+  $handler->display->display_options['filters']['field_target_group_sub_tid_5']['field'] = 'field_target_group_sub_tid';
+  $handler->display->display_options['filters']['field_target_group_sub_tid_5']['value'] = array(
+    1058 => '1058',
+    1059 => '1059',
+    20 => '20',
+    9 => '9',
+    112 => '112',
+    47 => '47',
+    1057 => '1057',
+  );
+  $handler->display->display_options['filters']['field_target_group_sub_tid_5']['group'] = 2;
+  $handler->display->display_options['filters']['field_target_group_sub_tid_5']['reduce_duplicates'] = TRUE;
+  $handler->display->display_options['filters']['field_target_group_sub_tid_5']['type'] = 'select';
+  $handler->display->display_options['filters']['field_target_group_sub_tid_5']['vocabulary'] = 'target_group_sub';
+  /* Filter criterion: Content: Målgruppe (field_target_group_sub) */
+  $handler->display->display_options['filters']['field_target_group_sub_tid_2']['id'] = 'field_target_group_sub_tid_2';
+  $handler->display->display_options['filters']['field_target_group_sub_tid_2']['table'] = 'field_data_field_target_group_sub';
+  $handler->display->display_options['filters']['field_target_group_sub_tid_2']['field'] = 'field_target_group_sub_tid';
+  $handler->display->display_options['filters']['field_target_group_sub_tid_2']['value'] = array(
+    1045 => '1045',
+    1044 => '1044',
+    1046 => '1046',
+    1047 => '1047',
+    128 => '128',
+    119 => '119',
+    109 => '109',
+  );
+  $handler->display->display_options['filters']['field_target_group_sub_tid_2']['group'] = 3;
+  $handler->display->display_options['filters']['field_target_group_sub_tid_2']['reduce_duplicates'] = TRUE;
+  $handler->display->display_options['filters']['field_target_group_sub_tid_2']['type'] = 'select';
+  $handler->display->display_options['filters']['field_target_group_sub_tid_2']['vocabulary'] = 'target_group_sub';
+  /* Filter criterion: Content: Målgruppe (field_target_group_sub) */
+  $handler->display->display_options['filters']['field_target_group_sub_tid_3']['id'] = 'field_target_group_sub_tid_3';
+  $handler->display->display_options['filters']['field_target_group_sub_tid_3']['table'] = 'field_data_field_target_group_sub';
+  $handler->display->display_options['filters']['field_target_group_sub_tid_3']['field'] = 'field_target_group_sub_tid';
+  $handler->display->display_options['filters']['field_target_group_sub_tid_3']['value'] = array(
+    1058 => '1058',
+    1059 => '1059',
+    20 => '20',
+    9 => '9',
+    112 => '112',
+    47 => '47',
+    1057 => '1057',
+  );
+  $handler->display->display_options['filters']['field_target_group_sub_tid_3']['group'] = 3;
+  $handler->display->display_options['filters']['field_target_group_sub_tid_3']['reduce_duplicates'] = TRUE;
+  $handler->display->display_options['filters']['field_target_group_sub_tid_3']['type'] = 'select';
+  $handler->display->display_options['filters']['field_target_group_sub_tid_3']['vocabulary'] = 'target_group_sub';
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
@@ -443,6 +552,106 @@ Sorteret efter varighed';
   $handler->display->display_options['menu']['name'] = 'management';
   $handler->display->display_options['menu']['context'] = 0;
   $handler->display->display_options['menu']['context_only_inline'] = 0;
+
+  /* Display: Bilag */
+  $handler = $view->new_display('attachment', 'Bilag', 'attachment_1');
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Field: Content: Fag */
+  $handler->display->display_options['fields']['field_subjects_youth']['id'] = 'field_subjects_youth';
+  $handler->display->display_options['fields']['field_subjects_youth']['table'] = 'field_data_field_subjects_youth';
+  $handler->display->display_options['fields']['field_subjects_youth']['field'] = 'field_subjects_youth';
+  $handler->display->display_options['fields']['field_subjects_youth']['delta_offset'] = '0';
+  /* Field: Content: Fag */
+  $handler->display->display_options['fields']['field_subjects_primary_school']['id'] = 'field_subjects_primary_school';
+  $handler->display->display_options['fields']['field_subjects_primary_school']['table'] = 'field_data_field_subjects_primary_school';
+  $handler->display->display_options['fields']['field_subjects_primary_school']['field'] = 'field_subjects_primary_school';
+  $handler->display->display_options['fields']['field_subjects_primary_school']['delta_offset'] = '0';
+  /* Field: Content: Læreplanstemaer */
+  $handler->display->display_options['fields']['field_educational_goals']['id'] = 'field_educational_goals';
+  $handler->display->display_options['fields']['field_educational_goals']['table'] = 'field_data_field_educational_goals';
+  $handler->display->display_options['fields']['field_educational_goals']['field'] = 'field_educational_goals';
+  $handler->display->display_options['fields']['field_educational_goals']['delta_offset'] = '0';
+  /* Field: Content: Edit link */
+  $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
+  $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node']['label'] = 'Redigér-link';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['filter_groups']['operator'] = 'OR';
+  $handler->display->display_options['filter_groups']['groups'] = array(
+    1 => 'AND',
+    2 => 'AND',
+    3 => 'AND',
+  );
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Fag (field_subjects_primary_school) */
+  $handler->display->display_options['filters']['field_subjects_primary_school_tid']['id'] = 'field_subjects_primary_school_tid';
+  $handler->display->display_options['filters']['field_subjects_primary_school_tid']['table'] = 'field_data_field_subjects_primary_school';
+  $handler->display->display_options['filters']['field_subjects_primary_school_tid']['field'] = 'field_subjects_primary_school_tid';
+  $handler->display->display_options['filters']['field_subjects_primary_school_tid']['operator'] = 'not empty';
+  $handler->display->display_options['filters']['field_subjects_primary_school_tid']['group'] = 1;
+  $handler->display->display_options['filters']['field_subjects_primary_school_tid']['reduce_duplicates'] = TRUE;
+  $handler->display->display_options['filters']['field_subjects_primary_school_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_subjects_primary_school_tid']['vocabulary'] = 'subjects_primary_school';
+  /* Filter criterion: Content: Fag (field_subjects_youth) */
+  $handler->display->display_options['filters']['field_subjects_youth_tid']['id'] = 'field_subjects_youth_tid';
+  $handler->display->display_options['filters']['field_subjects_youth_tid']['table'] = 'field_data_field_subjects_youth';
+  $handler->display->display_options['filters']['field_subjects_youth_tid']['field'] = 'field_subjects_youth_tid';
+  $handler->display->display_options['filters']['field_subjects_youth_tid']['operator'] = 'not empty';
+  $handler->display->display_options['filters']['field_subjects_youth_tid']['group'] = 1;
+  $handler->display->display_options['filters']['field_subjects_youth_tid']['reduce_duplicates'] = TRUE;
+  $handler->display->display_options['filters']['field_subjects_youth_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_subjects_youth_tid']['vocabulary'] = 'subjects_youth';
+  /* Filter criterion: Content: Fag (field_subjects_youth) */
+  $handler->display->display_options['filters']['field_subjects_youth_tid_1']['id'] = 'field_subjects_youth_tid_1';
+  $handler->display->display_options['filters']['field_subjects_youth_tid_1']['table'] = 'field_data_field_subjects_youth';
+  $handler->display->display_options['filters']['field_subjects_youth_tid_1']['field'] = 'field_subjects_youth_tid';
+  $handler->display->display_options['filters']['field_subjects_youth_tid_1']['operator'] = 'not empty';
+  $handler->display->display_options['filters']['field_subjects_youth_tid_1']['group'] = 2;
+  $handler->display->display_options['filters']['field_subjects_youth_tid_1']['reduce_duplicates'] = TRUE;
+  $handler->display->display_options['filters']['field_subjects_youth_tid_1']['type'] = 'select';
+  $handler->display->display_options['filters']['field_subjects_youth_tid_1']['vocabulary'] = 'subjects_youth';
+  /* Filter criterion: Content: Læreplanstemaer (field_educational_goals) */
+  $handler->display->display_options['filters']['field_educational_goals_tid']['id'] = 'field_educational_goals_tid';
+  $handler->display->display_options['filters']['field_educational_goals_tid']['table'] = 'field_data_field_educational_goals';
+  $handler->display->display_options['filters']['field_educational_goals_tid']['field'] = 'field_educational_goals_tid';
+  $handler->display->display_options['filters']['field_educational_goals_tid']['operator'] = 'not empty';
+  $handler->display->display_options['filters']['field_educational_goals_tid']['group'] = 2;
+  $handler->display->display_options['filters']['field_educational_goals_tid']['reduce_duplicates'] = TRUE;
+  $handler->display->display_options['filters']['field_educational_goals_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_educational_goals_tid']['vocabulary'] = 'educational_goals';
+  /* Filter criterion: Content: Fag (field_subjects_primary_school) */
+  $handler->display->display_options['filters']['field_subjects_primary_school_tid_1']['id'] = 'field_subjects_primary_school_tid_1';
+  $handler->display->display_options['filters']['field_subjects_primary_school_tid_1']['table'] = 'field_data_field_subjects_primary_school';
+  $handler->display->display_options['filters']['field_subjects_primary_school_tid_1']['field'] = 'field_subjects_primary_school_tid';
+  $handler->display->display_options['filters']['field_subjects_primary_school_tid_1']['operator'] = 'not empty';
+  $handler->display->display_options['filters']['field_subjects_primary_school_tid_1']['group'] = 3;
+  $handler->display->display_options['filters']['field_subjects_primary_school_tid_1']['reduce_duplicates'] = TRUE;
+  $handler->display->display_options['filters']['field_subjects_primary_school_tid_1']['type'] = 'select';
+  $handler->display->display_options['filters']['field_subjects_primary_school_tid_1']['vocabulary'] = 'subjects_primary_school';
+  /* Filter criterion: Content: Læreplanstemaer (field_educational_goals) */
+  $handler->display->display_options['filters']['field_educational_goals_tid_1']['id'] = 'field_educational_goals_tid_1';
+  $handler->display->display_options['filters']['field_educational_goals_tid_1']['table'] = 'field_data_field_educational_goals';
+  $handler->display->display_options['filters']['field_educational_goals_tid_1']['field'] = 'field_educational_goals_tid';
+  $handler->display->display_options['filters']['field_educational_goals_tid_1']['operator'] = 'not empty';
+  $handler->display->display_options['filters']['field_educational_goals_tid_1']['group'] = 3;
+  $handler->display->display_options['filters']['field_educational_goals_tid_1']['reduce_duplicates'] = TRUE;
+  $handler->display->display_options['filters']['field_educational_goals_tid_1']['type'] = 'select';
+  $handler->display->display_options['filters']['field_educational_goals_tid_1']['vocabulary'] = 'educational_goals';
+  $handler->display->display_options['displays'] = array(
+    'page' => 'page',
+    'default' => 0,
+  );
+  $handler->display->display_options['attachment_position'] = 'after';
+  $handler->display->display_options['inherit_arguments'] = FALSE;
   $translatables['ulf_editor_tool'] = array(
     t('Master'),
     t('ULF editor tool'),
@@ -459,11 +668,13 @@ Sorteret efter varighed';
     t('‹ previous'),
     t('next ›'),
     t('last »'),
-    t('Viser indhold hvor "Varighed" eller "Varighed enhed".
-Sorteret efter varighed'),
     t('Title'),
-    t('Sted'),
+    t('Overordnet målgruppe'),
+    t('Redigér-link'),
     t('Page'),
+    t('Bilag'),
+    t('Fag'),
+    t('Læreplanstemaer'),
   );
   $export['ulf_editor_tool'] = $view;
 
