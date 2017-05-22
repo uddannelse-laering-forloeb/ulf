@@ -531,11 +531,13 @@ function ulf_workflow_node_presave($node) {
  * @param $node
  *
  * */
-function _send_published_mail($node) {
-  global $language;
+function _send_published_mail($node) {  
   // Get author fields.
   $user = user_load($node->uid);
   $module = 'ulf_workflow';
+
+  // Get language from user obj.
+  $language =_get_language_object($user->language);
 
   // Set recipient.
   $to = $user->mail;
@@ -562,10 +564,13 @@ function _send_published_mail($node) {
  *
  * */
 function _send_unpublished_mail($node) {
-  global $language;
+
   // Get author fields.
   $user = user_load($node->uid);
   $module = 'ulf_workflow';
+
+  // Get language from user obj.
+  $language =_get_language_object($user->language);
 
   // Set recipient.
   $to = $user->mail;
@@ -592,12 +597,14 @@ function _send_unpublished_mail($node) {
  *
  * */
 function _send_revision_ready_mail($node) {
-  global $language;
   $module = 'ulf_workflow';
   $key = 'revision_ready_mail_admin';
 
   // Get author fields.
   $user = user_load($node->uid);
+
+  // Get language from user obj.
+  $language =_get_language_object($user->language);
 
   // Set recipient.
   $to = variable_get('mimemail_mail');
@@ -611,13 +618,16 @@ function _send_revision_ready_mail($node) {
 /**
  * Create and send mail to editor when a user has been changed.
  *
- * @param $node
+ * @param $user
  *
  * */
 function _send_user_edited_mail($user) {
-  global $language;
+
   $module = 'ulf_workflow';
   $key = 'user_edited_mail_admin';
+
+  // Get language from user obj.
+  $language =_get_language_object($user->language);
 
   // Set recipient.
   $to = variable_get('mimemail_mail');;
@@ -714,4 +724,15 @@ This is an automated message created by [site:name].';
  */
 function ulf_workflow_mail_edit_token_types($mailkey) {
   return user_mail_edit_token_types($mailkey);
+}
+
+/**
+ * Get language objeck from string.
+ *
+ * @param $language
+ * @return mixed
+ */
+function _get_language_object($language) {
+  $installed_languages = language_list();
+  return $installed_languages[$language];
 }

@@ -359,6 +359,8 @@ function ulf_default_menu_link__menu_about_ulf($variables) {
  * Implements theme_item_list().
  */
 function ulf_default_item_list($variables) {
+  $is_pager = (in_array('pager', $variables['attributes']['class'])) ? TRUE : FALSE;
+
   $items = $variables ['items'];
   $title = $variables ['title'];
   $type = $variables ['type'];
@@ -368,6 +370,11 @@ function ulf_default_item_list($variables) {
   // Check to see whether the block title exists before adding a header.
   // Empty headers are not semantic and present accessibility challenges.
   $output = '';
+
+  if($is_pager) {
+    $output .= '<div class="pager-wrapper"><div class="pagination">';
+  }
+
   if (isset($title) && $title !== '') {
     $output .= '<h3>' . $title . '</h3>';
   }
@@ -410,6 +417,10 @@ function ulf_default_item_list($variables) {
       $output .= '<li' . drupal_attributes($attributes) . '>' . $data . "</li>\n";
     }
     $output .= "</$type>";
+  }
+
+  if($is_pager) {
+    $output .= '</div></div>';
   }
 
   return $output;

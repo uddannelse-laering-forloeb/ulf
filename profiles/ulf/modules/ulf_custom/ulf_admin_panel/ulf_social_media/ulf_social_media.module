@@ -19,7 +19,14 @@ function ulf_social_media_form__ulf_admin_panel_form_alter(&$form, &$form_state)
     '#type' => 'checkbox',
     '#title' => t('Show social media links in header'),
     '#default_value' => variable_get('ulf_social_media_header', FALSE),
-    '#description' => t('Shows social media links in header on desktop display (wider than 1000px). Social links will always be visible in footer.'),
+    '#description' => t('Shows social media links in header on desktop display (wider than 1000px).'),
+  );
+
+  $form['social_media']['ulf_social_media_footer'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Show social media links in footer'),
+    '#default_value' => variable_get('ulf_social_media_footer', FALSE),
+    '#description' => t('Shows social media links in footer.'),
   );
 
   $form['social_media']['ulf_facebook'] = array(
@@ -128,6 +135,7 @@ function ulf_social_media_block_view($delta='') {
       $variables['instagram'] = variable_get('ulf_instagram', '');
       $variables['twitter'] = variable_get('ulf_twitter', '');
       $variables['linkedin'] = variable_get('ulf_linkedin', '');
+      $variables['show_footer'] = variable_get('ulf_social_media_footer', FALSE);
       $color = variable_get('ulf_social_media_footer_color', 'white');
       $variables['icon_path'] =  '/' . drupal_get_path('module', 'ulf_social_media') . '/icons/' . $color;
       $block['content'] = theme('ulf_social_media_footer', $variables);
@@ -150,7 +158,7 @@ function ulf_social_media_theme() {
     ),
     'ulf_social_media_footer' => array(
       'variables' => array(),
-      'template' => 'ulf-social-media',
+      'template' => 'ulf-social-media-footer',
       'path' => drupal_get_path('module', 'ulf_social_media') . '/theme',
     ),
   );
