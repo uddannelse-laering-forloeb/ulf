@@ -18,6 +18,15 @@
 * ULF-580: Max upload size increased.
 * SUPPORT-1040: Added Taxonomy term view for target group on courses.
 * SUPPORT-1044: Changed contact form email text.
+* Contrib modules updated
+  ```
+
+  Entityform	                    7.x-2.0-rc3	    7.x-2.0-rc4
+  Entity reference	              7.x-1.2	        7.x-1.4
+  Mime Mail	                      7.x-1.0-beta4	  7.x-1.0
+  Universally Unique IDentifier	  7.x-1.0-beta2	  7.x-1.0
+  Wysiwyg	                        7.x-2.3	        7.x-2.4
+  ```
 
 ## 2.5.3
 * SUPPORT-1019: Made 'field_profile_mail' on users required and set account mail as default is missing value. 
