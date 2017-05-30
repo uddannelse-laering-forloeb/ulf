@@ -2,6 +2,23 @@
 
 # v2.5.x
 
+## 2.5.4
+* SUPPORT-1064: Fixed bug where sidebar content appeared at the bottom of content.
+* SUPPORT-1057: Added Editor view for tracking mixed target groups
+* ULF-581 Run through backlog document and implementation of lacking features
+* ULF-580: Fixes of bugs related to 2.5.0 described in "Extra feedback" document
+* SUPPORT-1052: Changed workflow mails to follow user language.
+* ULF-581: Added checkbox for showing footer social links.
+* ULF-581: Removed required from number of participants.
+* ULF-581: Updated all search settings modules (to 2.5.1) to add free field for courses.
+* ULF-581: Fixed bug where changing course target group didn't clear all unretaed field values.
+* ULF-581: Added free tag on search pages for course educators.
+* ULF-580: Contact form enabled by default.
+* ULF-580: Pagination fixed on taxonomy term pages.
+* ULF-580: Max upload size increased.
+* SUPPORT-1040: Added Taxonomy term view for target group on courses.
+* SUPPORT-1044: Changed contact form email text.
+
 ## 2.5.3
 * SUPPORT-1019: Made 'field_profile_mail' on users required and set account mail as default is missing value. 
 * SUPPORT-1027: Added course titel to entityform email.

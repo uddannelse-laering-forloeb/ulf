@@ -137,7 +137,7 @@
                       <div><?php print $location['name'] ?></div>
                     <?php endif; ?>
                   <?php endif; ?>
-                  <?php if ($field_place): ?>
+                  <?php if (!empty($field_place)): ?>
                     <p>
                       <?php print render($content['field_place']); ?>
                     </p>
@@ -193,7 +193,10 @@
               </div>
               <div class="block--field-wrapper is-inline">
                 <?php print render($content['field_offer_type']); ?>
-                <?php print render($content['field_target_group_sub']); ?>
+                <?php if (!empty($view__target_group_sub)) : ?>
+                  <div class="block--field-label"><?php print t('Target group');?></div>
+                  <div class="block--field-text"><?php print $view__target_group_sub; ?></div>
+                <?php endif;?>
                 <?php print render($content['field_count']); ?>
               </div>
               <?php /* If any of the fields in this wrapper contain data */ ?>
@@ -293,6 +296,7 @@
       </div>
       <?php
       // We hide the comments and links now so that we can render them later.
+      hide($content['field_target_group_sub']);
       hide($content['field_duration']);
       hide($content['field_period']);
       hide($content['field_collection_price']);

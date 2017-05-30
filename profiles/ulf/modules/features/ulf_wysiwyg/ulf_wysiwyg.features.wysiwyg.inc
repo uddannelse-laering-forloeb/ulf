@@ -50,9 +50,9 @@ function ulf_wysiwyg_wysiwyg_default_profiles() {
     ),
     'preferences' => array(
       'add_to_summaries' => NULL,
-      'default' => 1,
-      'show_toggle' => 0,
-      'user_choose' => 0,
+      'default' => NULL,
+      'show_toggle' => NULL,
+      'user_choose' => NULL,
       'version' => NULL,
     ),
     'name' => 'formateditor',
