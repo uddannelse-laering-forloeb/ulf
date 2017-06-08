@@ -53,12 +53,12 @@
         priceSelector.click(function () { priceChanged(priceSelector) });
         priceChanged(priceSelector);
 
-        // @TODO: Can this be removed?????
         // Hide empty fields for old price and and contact on course educators
         // content type.
         // If fields have values the editor should manually move them. When all
         // values have been moved the field should be deleted as part of a future
         // patch.
+        // @TODO: This is still awaiting manual transfer of price field to field collection.
         if (!$('.field-name-field-course-contact-name input').val()) {
           $('.field-name-field-course-contact-name').hide();
         }
@@ -69,7 +69,7 @@
           $('.field-name-field-course-phone ').hide();
         }
 
-        // @TODO: Please document this?
+        // Hides the price field outside the field collection wrapper if it is set to 0 so editors will not be confused.
         if ($('.fieldset-wrapper > .field-name-field-price input').val() == '0' || $('.fieldset-wrapper > .field-name-field-price input').val() == '0.00' || !$('.fieldset-wrapper > .field-name-field-price input').val()) {
           $('.fieldset-wrapper > .field-name-field-price').hide();
         }
@@ -112,6 +112,8 @@
         $('.field-name-field-material-suggestions').show();
         $('.field-name-field-educational-goals').show();
         $('.is-preschool').show();
+        clearSubjectsValues('subjects-primary-school');
+        clearSubjectsValues('subjects-youth');
       }
 
       /**
@@ -127,6 +129,8 @@
         $('.field-name-field-educational-material').show();
         $('.field-name-field-subjects-primary-school').show();
         $('.is-school').show();
+        clearSubjectsValues('educational-goals');
+        clearSubjectsValues('subjects-youth');
       }
 
       /**
@@ -142,6 +146,15 @@
         $('.field-name-field-educational-material').show();
         $('.field-name-field-subjects-youth').show();
         $('.is-school').show();
+        clearSubjectsValues('educational-goals');
+        clearSubjectsValues('subjects-primary-school');
+      }
+
+      /**
+       * Clear subjects and educational goals field field values.
+       */
+      function clearSubjectsValues(fieldValue) {
+        $('.field-name-field-' + fieldValue + ' input').prop( "checked", false );
       }
 
       /**

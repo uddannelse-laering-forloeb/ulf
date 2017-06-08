@@ -1,13 +1,15 @@
-<div data-ng-hide="pager.max == 0" class="pager">
-  <div paging
-       page="pager.page"
-       total="pager.max"
-       show-prev-next="true"
-       show-first-last="true"
-       text-first="&laquo;"
-       text-last="&raquo;"
-       text-next="&rsaquo;"
-       text-prev="&lsaquo;"
-       paging-action="changePage(page, pageSize, total)">
+<div class="pager-wrapper">
+  <div data-ng-hide="pager.max == 0" class="pager">
+    <div paging
+         page="pager.page"
+         total="pager.max"
+         show-prev-next="true"
+         show-first-last="true"
+         text-first="&laquo;"
+         text-last="&raquo;"
+         text-next="&rsaquo;"
+         text-prev="&lsaquo;"
+         paging-action="changePage(page, pageSize, total)">
+    </div>
   </div>
 </div>
