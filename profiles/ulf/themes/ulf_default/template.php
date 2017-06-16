@@ -159,14 +159,14 @@ function ulf_default_preprocess_node(&$variables) {
 
       // Display of duration remove 0's in decimal.
       if (isset($variables['content']['field_duration']['0']['#markup'])) {
-        $variables['stripped_duration'] = preg_replace('/,?0+$/','', $variables['content']['field_duration']['0']['#markup']);
+        $variables['stripped_duration'] = preg_replace('/[,\.]?0+$/', '', $variables['content']['field_duration']['0']['#markup']);
       }
       break;
 
     case 'course_educators':
       // Display of duration remove 0's in decimal.
       if (isset($variables['content']['field_duration']['0']['#markup'])) {
-        $variables['stripped_duration'] = preg_replace('/,?0+$/','', $variables['content']['field_duration']['0']['#markup']);
+        $variables['stripped_duration'] = preg_replace('/[,\.]?0+$/', '', $variables['content']['field_duration']['0']['#markup']);
       }
       break;
 

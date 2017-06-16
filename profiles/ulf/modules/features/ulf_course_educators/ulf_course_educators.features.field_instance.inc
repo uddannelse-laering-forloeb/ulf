@@ -85,7 +85,7 @@ function ulf_course_educators_field_default_field_instances() {
       'module' => 'field_collection',
       'settings' => array(),
       'type' => 'field_collection_embed',
-      'weight' => 42,
+      'weight' => 41,
     ),
   );
 
@@ -220,8 +220,8 @@ function ulf_course_educators_field_default_field_instances() {
         'settings' => array(
           'decimal_separator' => '.',
           'prefix_suffix' => 1,
-          'scale' => 0,
-          'thousand_separator' => '',
+          'scale' => 2,
+          'thousand_separator' => ' ',
         ),
         'type' => 'number_decimal',
         'weight' => 18,
@@ -249,7 +249,7 @@ function ulf_course_educators_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 43,
+      'weight' => 42,
     ),
   );
 
@@ -280,7 +280,7 @@ function ulf_course_educators_field_default_field_instances() {
     'label' => 'Beskrivelse til varighed',
     'required' => 0,
     'settings' => array(
-      'text_processing' => 0,
+      'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -331,7 +331,7 @@ function ulf_course_educators_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_select',
-      'weight' => 44,
+      'weight' => 43,
     ),
   );
 
@@ -954,6 +954,50 @@ function ulf_course_educators_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-course_educators-field_price_description'.
+  $field_instances['node-course_educators-field_price_description'] = array(
+    'bundle' => 'course_educators',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 29,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_price_description',
+    'label' => 'Beskrivelse til pris',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'maxlength_js' => '',
+        'maxlength_js_enforce' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'maxlength_js_truncate_html' => 0,
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 44,
+    ),
+  );
+
   // Exported field_instance: 'node-course_educators-field_profile_contact'.
   $field_instances['node-course_educators-field_profile_contact'] = array(
     'bundle' => 'course_educators',
@@ -1285,7 +1329,7 @@ function ulf_course_educators_field_default_field_instances() {
       'module' => 'video_embed_field',
       'settings' => array(),
       'type' => 'video_embed_field_video',
-      'weight' => 3,
+      'weight' => 4,
     ),
   );
 
@@ -1299,6 +1343,7 @@ function ulf_course_educators_field_default_field_instances() {
   t('Angiv tidspunkt for kursets afvikling.');
   t('Angiv url til mail eller link til side.');
   t('Beskrivelse');
+  t('Beskrivelse til pris');
   t('Beskrivelse til varighed');
   t('Email');
   t('Emneområde');

@@ -58,6 +58,7 @@ function ulf_course_educators_field_group_info() {
       3 => 'field_duration',
       4 => 'field_duration_description',
       5 => 'field_duration_unit',
+      6 => 'field_price_description',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
