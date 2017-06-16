@@ -2,6 +2,10 @@
 
 # v2.5.x
 
+## 2.5.5
+* SUPPORT-1106: Fixed bugs in duration patterns
+* SUPPORT-1106: Fixed Viborg logo
+
 ## 2.5.4
 * SUPPORT-1064: Fixed bug where sidebar content appeared at the bottom of content.
 * SUPPORT-1057: Added Editor view for tracking mixed target groups
