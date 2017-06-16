@@ -57,6 +57,7 @@ features[field_instance][] = node-course_educators-field_period_full_year
 features[field_instance][] = node-course_educators-field_period_info
 features[field_instance][] = node-course_educators-field_place
 features[field_instance][] = node-course_educators-field_price
+features[field_instance][] = node-course_educators-field_price_description
 features[field_instance][] = node-course_educators-field_profile_contact
 features[field_instance][] = node-course_educators-field_relevance_educators
 features[field_instance][] = node-course_educators-field_relevance_primary_school
