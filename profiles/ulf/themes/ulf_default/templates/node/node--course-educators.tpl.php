@@ -187,7 +187,7 @@
                   <?php print render($content['field_educational_goals']); ?>
                 </div>
               <?php endif;?>
-              <?php if ($field_duration || $field_duration_description || isset($field_period_full_year['0']) || isset($field_price) || isset($field_free['0'])) : ?>
+              <?php if ($field_duration || $field_duration_description || isset($field_period_full_year['0']) || isset($field_price) || isset($field_free['0']) || isset($field_price_description['0'])) : ?>
                 <?php if ($field_period_full_year['0']['value'] == 0 || $field_price || $field_free['0']['value'] == 1) : ?>
                   <div class="block--field-wrapper">
                     <?php if ($field_period_full_year['0']['value'] == 0 ) : ?>
@@ -217,6 +217,9 @@
                     <?php else : ?>
                       <div class="block--field-label"><?php print t('This course is free.');?></div>
                     <?php endif;?>
+                    <?php if ($field_price_description) : ?>
+                      <div class="block--field-text"><?php print render($content['field_price_description']); ?></div>
+                    <?php endif; ?>
                   </div>
                 <?php endif;?>
               <?php endif;?>
@@ -269,6 +272,7 @@
       <?php
       // We hide the comments and links now so that we can render them later.
       hide($content['field_duration']);
+      hide($content['field_duration_unit']);
       hide($content['field_period']);
       hide($content['field_collection_price']);
       hide($content['field_price']);
