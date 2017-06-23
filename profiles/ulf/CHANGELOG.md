@@ -2,6 +2,9 @@
 
 # v2.5.x
 
+## 2.5.6
+* SUPPORT-1121: Changed spacing in mailchimp block
+
 ## 2.5.5
 * SUPPORT-1106: Fixed bugs in duration patterns
 * SUPPORT-1106: Fixed Viborg logo
