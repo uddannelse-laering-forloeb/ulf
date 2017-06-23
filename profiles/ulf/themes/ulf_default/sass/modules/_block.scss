@@ -176,6 +176,12 @@
   .mailchimp-signup-subscribe-form {
     padding: 0 $spacing;
     box-sizing: border-box;
+
+    .form-type-checkboxes,
+    .mailchimp-newsletter-mergefields {
+      padding: 0;
+      padding-bottom: $spacing;
+    }
   }
 }
 
