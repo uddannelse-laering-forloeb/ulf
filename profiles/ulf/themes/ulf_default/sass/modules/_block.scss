@@ -162,26 +162,35 @@
   form {
     width: 100%;
   }
+}
 
-  &.is-front {
-    .form-type-emailfield {
-      padding: 0;
+// Node mailchimp form
+.not-front .mailchimp-signup-subscribe-form {
+  padding: 0;
+}
 
-      & > label {
-        display: none;
-      }
+// All mailchimp forms
+.mailchimp-signup-subscribe-form {
+  padding: 0 $spacing;
+  box-sizing: border-box;
+
+  .form-type-emailfield {
+    padding: 0;
+
+    & > label {
+      display: none;
     }
   }
 
-  .mailchimp-signup-subscribe-form {
-    padding: 0 $spacing;
-    box-sizing: border-box;
+  .form-item {
+    padding: 0;
+  }
 
-    .form-type-checkboxes,
-    .mailchimp-newsletter-mergefields {
-      padding: 0;
-      padding-bottom: $spacing;
-    }
+  .form-actions,
+  .form-type-checkboxes,
+  .mailchimp-newsletter-mergefields {
+    padding: 0;
+    padding-bottom: $spacing;
   }
 }
 
