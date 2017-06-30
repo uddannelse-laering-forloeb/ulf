@@ -20,7 +20,7 @@
  */
 ?>
 <div class="block--light">
-  <h2 class="block--header"><?php print t('Newsletter'); ?></h2>
+  <h2 class="block--header"><?php print t('Signup to newsletter'); ?></h2>
   <div class="block--content">
     <div class="block--field-text">
       <ul class="nav--static-pages is-node">
