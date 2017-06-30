@@ -509,3 +509,11 @@ function _ulf_default_teaser_filter($str) {
 
   return $trimmed;
 }
+
+
+/**
+ * Form alter
+ */
+function ulf_default_form_mailchimp_signup_subscribe_block_signup_to_newsletter_form_alter(&$form, &$form_state, $form_id) {
+  $form['mergevars']['EMAIL']['#attributes']['placeholder'] = t('Email');
+}

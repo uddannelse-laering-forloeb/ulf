@@ -2,6 +2,11 @@
 
 # v2.5.x
 
+## 2.5.7
+* SUPPORT-1122: Added placeholder text for mailchimp block
+* SUPPORT-1121: Removed label for mailchimp block.
+*
+
 ## 2.5.6
 * SUPPORT-1121: Changed spacing in mailchimp block
 
