@@ -202,30 +202,25 @@ function ulf_workflow_form_node_form_alter(&$form, &$form_state, $form_id) {
 
     // -- Modify form if node is published. -- //
     // Add unpublish button.
-    if (isset($form['#node']->workbench_moderation)) {
-      if ($form['#node']->workbench_moderation['current']->state == 'published') {
-        $form['actions']['unpublish'] = array(
-          '#type' => 'submit',
-          '#access' => user_access('view own unpublished content'),
-          '#value' => t('Unpublish'),
-          '#weight' => 9,
-          '#submit' => array(
-            'node_form_submit',
-            'ulf_workflow_course_node_form_unpublish_submit',
-          ),
-        );
+    if ($form['#node']->status == '1') {
+      $form['actions']['unpublish'] = array(
+        '#type' => 'submit',
+        '#access' => user_access('view own unpublished content'),
+        '#value' => t('Unpublish'),
+        '#weight' => 9,
+        '#submit' => array(
+          'node_form_submit',
+          'ulf_workflow_course_node_form_unpublish_submit',
+        ),
+      );
 
-        // Hide save as draft.
-        $form['actions']['submit']['#access'] = FALSE;
+      // Change the label of "Save and publish to "Save"
+      $form['actions']['publish']['#value'] = t('Save');
 
-        // Change the label of "Save and publish to "Save"
-        $form['actions']['publish']['#value'] = t('Save');
-
-        // Don't run publishing submit function when resaving published content.
-        foreach ($form['actions']['publish']['#submit'] as $key => $value) {
-          if ($form['actions']['publish']['#submit'][$key] == 'ulf_workflow_course_node_form_publish_submit') {
-            unset($form['actions']['publish']['#submit'][$key]);
-          }
+      // Don't run publishing submit function when resaving published content.
+      foreach ($form['actions']['publish']['#submit'] as $key => $value) {
+        if ($form['actions']['publish']['#submit'][$key] == 'ulf_workflow_course_node_form_publish_submit') {
+          unset($form['actions']['publish']['#submit'][$key]);
         }
       }
     }
@@ -501,7 +496,7 @@ function ulf_workflow_node_presave($node) {
     $get_parameters = drupal_get_query_parameters();
 
     // If attached parameter is unpublish or we assume running cron (User check)
-    if (array_key_exists('unpublish', $get_parameters) || ($user->uid == 0)) {
+    if (R_REQUEST['op'] == 'T' || ($user->uid == 0)) {
 
       // Presave is also run for each revision, we only want to act when we are saving the actual node.
       if (!isset($node->revision) || $node->revision == 0) {
