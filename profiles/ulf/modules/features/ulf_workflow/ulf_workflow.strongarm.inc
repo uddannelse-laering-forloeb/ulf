@@ -34,30 +34,9 @@ function ulf_workflow_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'mimemail_key';
-  $strongarm->value = 'oFVGhFwy8vGkFNM6TEE9KuNJFYm2MZFCpTuDxxfCUB4';
-  $export['mimemail_key'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'mimemail_linkonly';
   $strongarm->value = 0;
   $export['mimemail_linkonly'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'mimemail_mail';
-  $strongarm->value = 'mif@aarhus.dk';
-  $export['mimemail_mail'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'mimemail_name';
-  $strongarm->value = 'Ulf';
-  $export['mimemail_name'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
