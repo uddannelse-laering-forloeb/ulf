@@ -22,7 +22,7 @@ function ulf_workflow_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Ulf all content';
+  $handler->display->display_options['title'] = 'All content';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['access']['perm'] = 'administer nodes';
@@ -308,7 +308,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['menu']['context_only_inline'] = 0;
   $translatables['ulf_all_content'] = array(
     t('Master'),
-    t('Ulf all content'),
+    t('All content'),
     t('more'),
     t('Apply'),
     t('Reset'),
@@ -356,7 +356,7 @@ function ulf_workflow_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'ULF editor tool';
+  $handler->display->display_options['title'] = 'Editor tool';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -654,7 +654,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['inherit_arguments'] = FALSE;
   $translatables['ulf_editor_tool'] = array(
     t('Master'),
-    t('ULF editor tool'),
+    t('Editor tool'),
     t('more'),
     t('Apply'),
     t('Reset'),
