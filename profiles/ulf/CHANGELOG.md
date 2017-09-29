@@ -2,6 +2,9 @@
 
 # v2.5.x
 
+## 2.5.10
+* SUPPORT-1228: Removed ULF occurences in core
+
 ## 2.5.9
 * SUPPORT-1193: Split siteimprove from default theme
 * Removed Aarhus mail address from mime mail
