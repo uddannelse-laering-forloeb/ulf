@@ -33,6 +33,12 @@ function ulf_base_default_fe_block_settings() {
         'theme' => 'ulf_aarhus',
         'weight' => 0,
       ),
+      'ulf_viborg' => array(
+        'region' => 'footer',
+        'status' => 1,
+        'theme' => 'ulf_viborg',
+        'weight' => 0,
+      ),
     ),
     'title' => '',
     'visibility' => 0,
