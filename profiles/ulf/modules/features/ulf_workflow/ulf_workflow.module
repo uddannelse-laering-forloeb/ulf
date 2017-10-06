@@ -548,6 +548,8 @@ function _send_published_mail($node) {
 
   // Provide additional parameters.
   $params['user'] = $user;
+  $params['node'] = $node;
+
   drupal_mail($module, $key, $to, $language, $params);
 }
 
@@ -580,6 +582,7 @@ function _send_unpublished_mail($node) {
 
   // Provide additional parameters.
   $params['user'] = $user;
+  $params['node'] = $node;
 
   drupal_mail($module, $key, $to, $language, $params);
 }
@@ -606,6 +609,8 @@ function _send_revision_ready_mail($node) {
 
   // Provide additional parameters.
   $params['user'] = $user;
+  $params['node'] = $node;
+
   drupal_mail($module, $key, $to, $language, $params);
 }
 
@@ -709,6 +714,22 @@ This is an automated message created by [site:name].';
   }
 }
 
+
+/**
+ * Alter the token tree in mail edit functionality to represent nodes and users.
+ *
+ * @param $form
+ * @param $form_state
+ * @param $form_id
+ */
+function ulf_workflow_form_mail_edit_template_form_alter(&$form, &$form_state, $form_id) {
+  $form['mail']['token_tree'] = array(
+    '#theme' => 'token_tree_link',
+    '#token_types' => array('node', 'user'),
+    '#global_types' => TRUE,
+    '#click_insert' => TRUE,
+  );
+}
 
 /**
  * Implements hook_mail_edit_token_types().
