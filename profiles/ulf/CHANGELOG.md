@@ -2,8 +2,11 @@
 
 # v2.5.x
 
+## 2.5.11
+* SUPPORT-1250: Added node token to mail edit templates
+
 ## 2.5.10
-* SUPPORT-1228: Removed ULF occurences in core
+* SUPPORT-1228: Removed ULF occurrences in core
 
 ## 2.5.9
 * SUPPORT-1193: Split siteimprove from default theme
