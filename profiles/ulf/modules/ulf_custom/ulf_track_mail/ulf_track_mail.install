@@ -1,0 +1,43 @@
+<?php
+/**
+ * Implements hook_schema().
+ */
+function ulf_track_mail_schema() {
+  $schema['ulf_track_mail'] = array (
+    'description' => 'Mails sent from the system',
+    'fields' => array (
+      'id' => array (
+        'description' => 'Primary key: Id',
+        'type' => 'serial',
+        'not null' => TRUE,
+      ),
+      'headers' => array (
+        'description' => 'The email headers',
+        'type' => 'text',
+        'not null' => TRUE,
+        'size' => 'big'
+      ),
+      'body' => array (
+        'description' => 'The email body',
+        'type' => 'text',
+        'not null' => TRUE,
+        'size' => 'big'
+      ),
+      'context' => array(
+        'description' => 'The email context',
+        'type' => 'varchar',
+        'not null' => TRUE,
+        'default' => '',
+        'length' => 255
+      ),
+      'timestamp' => array (
+        'description' => 'The UNIX UTC timestamp when to send the mail',
+        'type' => 'int',
+        'not null' => TRUE,
+      ),
+    ),
+    'primary key' => array('id'),
+  );
+
+  return $schema;
+}

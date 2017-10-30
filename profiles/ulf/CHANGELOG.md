@@ -2,6 +2,9 @@
 
 # v2.5.x
 
+## 2.5.12
+* SUPPORT-1278: Added ulf_track_mail module to assist bug reporting
+
 ## 2.5.11
 * SUPPORT-1250: Added node token to mail edit templates
 

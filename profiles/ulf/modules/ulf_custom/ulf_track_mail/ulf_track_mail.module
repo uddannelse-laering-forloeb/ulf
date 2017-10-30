@@ -1,0 +1,16 @@
+<?php
+/**
+ * Implements hook_mail_alter()
+ *
+ * Track the mails sent from the system.
+ */
+function ulf_track_mail_mail_alter(&$message) {
+  db_insert('ulf_track_mail')
+    ->fields(array(
+      'headers' => implode("|", $message['headers']),
+      'body' => $message['body'],
+      'context' => $message['key'],
+      'timestamp' => time(),
+    ))
+    ->execute();
+}
