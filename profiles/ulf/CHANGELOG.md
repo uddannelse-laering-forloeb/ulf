@@ -2,6 +2,9 @@
 
 # v2.5.x
 
+## 2.5.13
+* SUPPORT-1278: Apply translate role names patch
+
 ## 2.5.12
 * SUPPORT-1278: Added ulf_track_mail module to assist bug reporting
 
