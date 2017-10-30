@@ -1,6 +1,8 @@
 <?php
 /**
 * Implements hook_cron().
+ *
+ *
 */
 function ulf_scheduler_notify_cron() {
   $now = time();
@@ -12,7 +14,6 @@ function ulf_scheduler_notify_cron() {
   $query->fields('s');
   $query ->condition('s.send_mail_on', $now, '<');
   $result = $query->execute();
-
   foreach ($result as $job) {
     $nid = $job->nid;
     $uid = $job->uid;

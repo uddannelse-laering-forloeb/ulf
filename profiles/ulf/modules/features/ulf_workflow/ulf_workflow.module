@@ -496,7 +496,7 @@ function ulf_workflow_node_presave($node) {
     $get_parameters = drupal_get_query_parameters();
 
     // If attached parameter is unpublish or we assume running cron (User check)
-    if (R_REQUEST['op'] == 'T' || ($user->uid == 0)) {
+    if ($_REQUEST['op'] == 'T' || ($user->uid == 0)) {
 
       // Presave is also run for each revision, we only want to act when we are saving the actual node.
       if (!isset($node->revision) || $node->revision == 0) {

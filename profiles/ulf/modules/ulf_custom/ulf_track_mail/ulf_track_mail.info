@@ -1,0 +1,4 @@
+name = Ulf track mail
+description = Track mails sent
+package = Ulf base
+core = 7.x
