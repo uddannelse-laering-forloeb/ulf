@@ -1,5 +1,10 @@
 <?php
 /**
+ * @file
+ * DB table for tracking mails.
+ */
+
+/**
  * Implements hook_schema().
  */
 function ulf_track_mail_schema() {
