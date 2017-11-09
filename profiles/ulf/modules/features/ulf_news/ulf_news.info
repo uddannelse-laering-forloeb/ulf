@@ -9,6 +9,7 @@ dependencies[] = image
 dependencies[] = page_manager
 dependencies[] = strongarm
 dependencies[] = text
+dependencies[] = ulf_admin_panel
 dependencies[] = ulf_field_bases
 dependencies[] = ulf_field_collections
 dependencies[] = ulf_frontpage
