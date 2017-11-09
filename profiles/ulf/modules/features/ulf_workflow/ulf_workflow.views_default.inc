@@ -927,16 +927,6 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['relationship'] = 'vid';
   $handler->display->display_options['fields']['edit_node']['label'] = 'Redigér';
-  /* Field: Workbench Moderation: Current */
-  $handler->display->display_options['fields']['is_current']['id'] = 'is_current';
-  $handler->display->display_options['fields']['is_current']['table'] = 'workbench_moderation_node_history';
-  $handler->display->display_options['fields']['is_current']['field'] = 'is_current';
-  $handler->display->display_options['fields']['is_current']['label'] = 'Kladde';
-  $handler->display->display_options['fields']['is_current']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['is_current']['alter']['text'] = '<a href="/node/[nid]/draft">Kladde</a>';
-  $handler->display->display_options['fields']['is_current']['empty_zero'] = TRUE;
-  $handler->display->display_options['fields']['is_current']['type'] = 'boolean';
-  $handler->display->display_options['fields']['is_current']['not'] = 1;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
@@ -1660,8 +1650,6 @@ function ulf_workflow_views_default_views() {
     t('more'),
     t('Nid'),
     t('Titel'),
-    t('Kladde'),
-    t('<a href="/node/[nid]/draft">Kladde</a>'),
     t('View panes'),
     t('Awaiting revision'),
     t('Shows your content awaiting revisioning'),
