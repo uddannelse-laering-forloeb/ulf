@@ -5,3 +5,35 @@
  */
 
 include_once 'ulf_news.features.inc';
+
+/**
+ * Implements hook_form_FORMID_alter().
+ *
+ * @param $form
+ * @param $form_state
+ */
+function ulf_news_form__ulf_admin_panel_form_alter(&$form, &$form_state) {
+  $form['newsletter_archive'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Newsletter archive'),
+    '#weight' => 2,
+    '#collapsible' => TRUE,
+    '#group' => 'ulf_admin_panel',
+  );
+  $archive_content = variable_get('ulf_newsletter_archive_content', '');
+  $form['newsletter_archive']['ulf_newsletter_archive_content'] = array(
+    '#type' => 'text_format',
+    '#title' => t('The newsletter archive code from Mailchimp'),
+    '#default_value' => (!empty($archive_content['value'])) ? $archive_content['value'] : '',
+    '#format' => 'full_html'
+  );
+}
+
+/**
+ * Implements hook_ctools_plugin_directory().
+ */
+function ulf_news_ctools_plugin_directory($owner, $plugin_type) {
+  if ($owner == 'ctools' && $plugin_type == 'content_types') {
+    return 'plugins/content_types';
+  }
+}
