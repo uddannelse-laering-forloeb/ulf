@@ -2,6 +2,9 @@
 
 # v2.5.x
 
+## 2.5.14
+* SUPPORT-1314: Fixed moderation bug in workflow.
+
 ## 2.5.13
 * SUPPORT-1278: Apply translate role names patch
 
