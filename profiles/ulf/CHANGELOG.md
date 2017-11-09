@@ -4,6 +4,7 @@
 
 ## 2.5.14
 * SUPPORT-1314: Fixed moderation bug in workflow.
+* SUPPORT-1317: Added configuration to mailchimp archive page
 
 ## 2.5.13
 * SUPPORT-1278: Apply translate role names patch
