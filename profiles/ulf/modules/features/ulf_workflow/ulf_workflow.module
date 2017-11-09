@@ -116,7 +116,8 @@ function ulf_workflow_preprocess_node(&$variables) {
     ),
     'query' => array(
       'token' => $link['query']['token'],
-      'destination' => "node/{$variables['nid']}"
+      'destination' => "node/{$variables['nid']}",
+      'publish_node' => TRUE
     )
   ));
 }
@@ -292,22 +293,6 @@ function ulf_workflow_global_submit($form, &$form_state) {
 
   // Set the moderation form state depending on which button is clicked.
   switch ($form_state['clicked_button']['#id']) {
-    // Save button.
-    case 'edit-submit':
-      global $user;
-      // Send user edited mails to site mail when a user is   changed.
-      if (in_array('editor', $user->roles)) {
-        if ($form['workbench_moderation_state_current']['#value'] == 'needs_review') {
-          $form_state['values']['workbench_moderation_state_new'] = 'needs_review';
-        }
-        else {
-          $form_state['values']['workbench_moderation_state_new'] = 'draft';
-        }
-
-        $_GET['unpublish'] = TRUE;
-      }
-      break;
-
     // Unpublish button.
     case 'edit-unpublish':
       $form_state['values']['workbench_moderation_state_new'] = 'draft';
@@ -493,10 +478,9 @@ function ulf_workflow_node_presave($node) {
   // Node types with workflow enabled.
   if (($node->type == 'course' || $node->type == 'course_educators')) {
     global $user;
-    $get_parameters = drupal_get_query_parameters();
 
     // If attached parameter is unpublish or we assume running cron (User check)
-    if ($_REQUEST['op'] == 'T' || ($user->uid == 0)) {
+    if ((isset($_REQUEST['op']) && $_REQUEST['op'] == 'T') || ($user->uid == 0)) {
 
       // Presave is also run for each revision, we only want to act when we are saving the actual node.
       if (!isset($node->revision) || $node->revision == 0) {

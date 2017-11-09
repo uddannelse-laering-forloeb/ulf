@@ -1743,6 +1743,7 @@ function workbench_moderation_moderate($node, $state) {
  *   The new moderation state requested.
  */
 function workbench_moderation_moderate_callback($node, $state) {
+  $a = 1;
   if (!isset($_GET['token']) || !drupal_valid_token($_GET['token'], "{$node->nid}:{$node->vid}:$state")) {
     return MENU_ACCESS_DENIED;
   }

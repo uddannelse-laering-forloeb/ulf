@@ -110,6 +110,7 @@ function secure_permissions_data_secure_permissions($role) {
       'administer users',
       'administer workbench moderation',
       'block IP addresses',
+      'bypass workbench moderation',
       'change own username',
       'clone node',
       'create course content',
