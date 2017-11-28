@@ -13,6 +13,18 @@ function transportpulje_form_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'default_field_group';
+  $strongarm->value = array(
+    'group_tpf_course|entityform|transportpulje_form|form' => FALSE,
+    'group_tpf_institution|entityform|transportpulje_form|form' => FALSE,
+    'group_tpf_transport|entityform|transportpulje_form|form' => FALSE,
+    'group_tpf_contact|entityform|transportpulje_form|form' => FALSE,
+  );
+  $export['default_field_group'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_entityform__transportpulje_form';
   $strongarm->value = array(
     'view_modes' => array(),
