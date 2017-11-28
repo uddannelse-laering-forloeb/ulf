@@ -5,3 +5,11 @@
  */
 
 include_once 'transportpulje_form.features.inc';
+
+function transportpulje_form_form_taxonomy_form_term_alter(&$form, &$form_state, $form_id) {
+  if ($form['#bundle'] == 'tpf_institutions_list') {
+    $form['description']['#access'] = FALSE;
+    $form['relations']['#access'] = FALSE;
+    $form['path']['#access'] = FALSE;
+  }
+}
