@@ -5,7 +5,8 @@
  */
 
 include_once 'transportpulje_form.features.inc';
-include_once 'transportpulje_form.distance.inc';
+//include_once 'transportpulje_form.distance.inc';
+include_once 'transportpulje_form.tpf-options.inc';
 
 /**
  * Implements hook_menu().
@@ -58,7 +59,6 @@ function transportpulje_form_add_application($form, &$form_state) {
   $form['fields']['part_one'] = array(
     '#type' => 'container',
     '#weight' => 1,
-    '#disabled' => ($show_part == 'part_two') ? TRUE : FALSE,
   );
   $form['fields']['part_one']['select_course'] = array('#type' => 'fieldset', '#title' => t('Select course'));
   $form['fields']['part_one']['select_institution'] = array('#type' => 'fieldset', '#title' => t('Select institution'));
@@ -157,20 +157,11 @@ function transportpulje_form_add_application($form, &$form_state) {
     '#suffix' => '</div>',
   );
 
-  // Add message wrapper.
-  $form['fields']['part_two']['message_wrapper'] = array(
-    '#type' => 'container',
-    '#weight' => 1
-  );
-  $form['fields']['part_two']['message_wrapper']['messages'] = array(
-    '#markup' => '<div id="messages"></div>'
-  );
-
   // Add button for calculation.
-  $form['transportpulje_calculate'] = array(
+  $form['fields']['transportpulje_calculate'] = array(
     '#type' => 'button',
     '#value' => t('Create transport request'),
-    '#weight' => 2,
+    '#weight' => 1,
     '#name' => '_transportpulje_calculate',
     '#ajax' => array(
       'callback' => '_transportpulje_form_calculate_conditions',
@@ -178,25 +169,29 @@ function transportpulje_form_add_application($form, &$form_state) {
       'method' => 'replace',
       'effect' => 'fade',
     ),
-//    '#states' => array(
-//      'disabled' => array(
-//        ':input[name="course_address"]' => array('filled' => FALSE)
-//      ),
-//    ),
     '#executes_submit_callback' => TRUE,
   );
+
+  // Add message wrapper.
+  $form['fields']['part_two']['message_wrapper'] = array(
+    '#type' => 'container',
+    '#weight' => 1,
+  );
+  $form['fields']['part_two']['message_wrapper']['messages'] = array();
 
   $form['fields']['part_two']['transport'] = array(
     '#prefix' => '<div class="is-hidden">',
     '#type' => 'fieldset',
     '#title' => t('Transport information'),
     '#suffix' => '</div>',
+    '#weight' => 2,
   );
   $form['fields']['part_two']['contact'] = array(
     '#prefix' => '<div class="is-hidden">',
     '#type' => 'fieldset',
     '#title' => t('Contact information'),
     '#suffix' => '</div>',
+    '#weight' => 3,
   );
 
   // Add fields for transport information.
@@ -245,10 +240,11 @@ function transportpulje_form_add_application($form, &$form_state) {
   );
 
   $form['#validate'] = array('_tpf_states_required_form_validate');
-  $form['submit_button'] = array(
+  $form['fields']['submit_wrapper'] = array('#type' => 'container', '#weight' => 5);
+  $form['fields']['submit_wrapper']['submit_button'] = array(
     '#type' => 'submit',
     '#value' => t('Send application'),
-    '#weight' => 5,
+    '#weight' => 1,
   );
 
   return $form;
@@ -263,25 +259,56 @@ function _transportpulje_form_calculate_conditions($form, &$form_state) {
   $passed = isset($form_state['input']['course_dropdown']) ? TRUE : FALSE;
 
   if (!empty(form_get_errors())) {
-    $text = 'Valideringsfejl';
     $passed = FALSE;
-    $form['message_wrapper']['messages'] = array(
-      '#markup' => '<div class="messages" id="part_two">' . $text . '</div>',
-      '#weight' => 20,
-    );
   }
   if ($passed) {
     $form_state['rebuild'] = TRUE;
+    $form['fields']['part_two']['#prefix'] = '<div id="part_two" class="has-passed">';
     unset($form['fields']['part_two']['transport']['#prefix']);
     unset($form['fields']['part_two']['transport']['#suffix']);
     unset($form['fields']['part_two']['contact']['#prefix']);
     unset($form['fields']['part_two']['contact']['#suffix']);
-  }
 
-  $form['message_wrapper']['messages'] = array(
-    '#markup' => '<div class="messages">' . $text . '</div>',
-    '#weight' => 20,
-  );
+    $form['fields']['part_two']['message_wrapper']['#prefix'] = '<div class="message">';
+    $form['fields']['part_two']['message_wrapper']['#suffix'] = '</div>';
+
+    $form_values = $form_state['values'];
+    $type = _tpf_get_type($form_values);
+    switch ($type) {
+      case 'denied_private' :
+        $text = 'Denied because you are private';
+        break;
+
+      case 'denied_distance' :
+        $text = 'Denied because of distance';
+        break;
+
+      case 'is_private' :
+        $text = 'Text A - Fri transport';
+        break;
+
+      case 'is_not_course' :
+        $text = 'Text B - Henvisning til mulig arragementsliste';
+        break;
+
+      case 'has_no_district' :
+        $text = 'Text A - Fri transport';
+        break;
+
+      case 'not_part_of_course_list' :
+        $text = 'Text A - Fri transport';
+        break;
+
+      case 'part_of_course_list' :
+        $text = 'Text district X - Afh. af skoledistrikt';
+        break;
+
+      default:
+        $text = t('Error!');
+    }
+
+    $form['fields']['part_two']['message_wrapper']['messages']['#markup'] = $text;
+  }
 
   $form_state['rebuild'] = TRUE;
   return $form['fields']['part_two'];

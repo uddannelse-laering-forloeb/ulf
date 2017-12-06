@@ -36,3 +36,11 @@
 #transportpulje-form-add-application #part_two .is-hidden {
     display: none!important;
 }
+
+#transportpulje-form-add-application #edit-submit-wrapper {
+    display: none;
+}
+
+#transportpulje-form-add-application #part_two.has-passed + #edit-submit-wrapper {
+    display: block;
+}
