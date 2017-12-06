@@ -71,11 +71,18 @@ function transportpulje_form_add_application($form, &$form_state) {
     '#options' => entityreference_get_selection_handler(field_info_field('field_tpf_course_select'))->getReferencableEntities(),
     '#default_value' => isset($form_state['values']['course_dropdown']) ? $form_state['values']['course_dropdown'] : '',
     '#name' => 'course_dropdown',
+    '#states' => array(
+      'required' => array(
+        ':input[name="course_not_found"]' => array('unchecked' => TRUE)
+      ),
+    ),
+
   );
   $form['fields']['part_one']['select_course']['course_not_found'] = array(
     '#title' => t('I could not find the course'),
     '#type' => 'checkbox'
   );
+
   $form['fields']['part_one']['select_course']['course_what'] = array(
     '#title' => t('What is the course'),
     '#type' => 'textarea',
@@ -229,6 +236,7 @@ function transportpulje_form_add_application($form, &$form_state) {
     '#default_value' => isset($form_state['values']['description']) ? $form_state['values']['description'] : '',
   );
 
+  $form['#validate'] = array('_tpf_states_required_form_validate');
   $form['submit_button'] = array(
     '#type' => 'submit',
     '#value' => t('Send application'),
@@ -238,50 +246,6 @@ function transportpulje_form_add_application($form, &$form_state) {
   return $form;
 }
 
-function _tpf_field_required_validate($element, &$form_state, $form) {
-  if (empty($element['#value'])) {
-    form_error($element, t('This field is required.'));
-  }
-}
-
-/**
- * Function for requiring one of two different fields.
- *
- * @param $form
- * @param $form_state
- */
-function _transportpulje_form_require_one_of_two($form, &$form_state) {
-  $values = $form_state['values'];
-  foreach ($values as $key => $field) {
-    if(is_array($field)) {
-      foreach ($field[LANGUAGE_NONE]['0'] as $value) {
-        $values[$key] = $value;
-      }
-    }
-  }
-
-  // Grab variables.
-  $compare_fields = array();
-  $compare_fields[] = array(
-    'field_tpf_course_select',
-    'field_tpf_course_not_found'
-  );
-  foreach ($compare_fields as $fields) {
-    if (empty($values[$fields['0']]) && empty($values[$fields['1']])) {
-      foreach ($fields as $field) {
-        form_set_error($field);
-      }
-    }
-    if (!empty($values[$fields['0']]) && !empty($values[$fields['1']])) {
-      foreach ($fields as $field) {
-        form_set_error($field);
-      }
-    }
-  }
-}
-
-
-
 /**
  * Calculate transport based on entered values.
  */
@@ -289,7 +253,6 @@ function _transportpulje_form_require_one_of_two($form, &$form_state) {
 function _transportpulje_form_calculate_conditions($form, &$form_state) {
   $text = 'Bemærk lorem ipsum 3 2 1 lorem ipsum  1 2 3 asdfdgd ds da';
   $passed = isset($form_state['input']['course_dropdown']) ? TRUE : FALSE;
-  $form_errors = form_get_errors();
   if (!empty(form_get_errors())) {
     $text = 'Valideringsfejl';
     $passed = FALSE;
@@ -313,6 +276,47 @@ function _transportpulje_form_calculate_conditions($form, &$form_state) {
 
   $form_state['rebuild'] = TRUE;
   return $form['fields']['part_two'];
+}
+
+
+function _tpf_states_required_form_validate($form, &$form_state) {
+  // Check for required field specified in the states array
+  foreach($form['fields']['part_one']['select_course'] as $key => $field) {
+    if(is_array($field) && isset($field['#states']['required'])) {
+      $required = false;
+      foreach($field['#states']['required'] as $cond_field_sel => $cond_vals) {
+        // Look for name= in the jquery selector - if that isn't there then give up (for now)
+        preg_match('/name="(.*)"/', $cond_field_sel, $matches);
+
+        if(isset($matches[1])) {
+          // Get value identifier (e.g. value, tid, target_id)
+          $value_ident = key($cond_vals);
+
+          // Loop over the values of the conditional field
+          foreach($form_state['values'] as $cond_field_val => $value) {
+            // Reverse for course_dropdown field
+            if (array_key_exists('unchecked', $cond_vals) && $form_state['values'][$matches[1]] == '0') {
+              $required = true;
+              break 2;
+            }
+            // Check for a match
+            if(array_key_exists('checked', $cond_vals) && $cond_vals[$value_ident] == $form_state['values'][$matches[1]]) {
+              // Now we know this field is required
+              $required = true;
+              break 2;
+            }
+          }
+        }
+      }
+
+      if($required) {
+        $field_name = $field['#name'];
+        if(empty($form_state['values'][$field_name])) {
+          form_set_error($field_name, t(':field is a required field', array(':field' => $field['#title'])));
+        }
+      }
+    }
+  }
 }
 
 
