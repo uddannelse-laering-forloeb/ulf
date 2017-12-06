@@ -11,7 +11,7 @@ function transportpulje_form_field_group_info() {
   $field_groups = array();
 
   $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->disabled = TRUE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_tpf_contact|entityform|transportpulje_form|form';
   $field_group->group_name = 'group_tpf_contact';
@@ -87,7 +87,7 @@ function transportpulje_form_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => '2. Vælg institution',
-    'weight' => '2',
+    'weight' => '1',
     'children' => array(
       0 => 'field_tpf_institution_type',
       1 => 'field_tpf_institution',
@@ -108,7 +108,7 @@ function transportpulje_form_field_group_info() {
   $field_groups['group_tpf_institution|entityform|transportpulje_form|form'] = $field_group;
 
   $field_group = new stdClass();
-  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->disabled = TRUE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_tpf_transport|entityform|transportpulje_form|form';
   $field_group->group_name = 'group_tpf_transport';

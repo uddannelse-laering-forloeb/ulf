@@ -17,8 +17,9 @@ function transportpulje_form_strongarm() {
   $strongarm->value = array(
     'group_tpf_course|entityform|transportpulje_form|form' => FALSE,
     'group_tpf_institution|entityform|transportpulje_form|form' => FALSE,
-    'group_tpf_transport|entityform|transportpulje_form|form' => FALSE,
-    'group_tpf_contact|entityform|transportpulje_form|form' => FALSE,
+    'group_tpf_transport|entityform|transportpulje_form|form' => TRUE,
+    'group_tpf_contact|entityform|transportpulje_form|form' => TRUE,
+    'group_tpf_part_two|entityform|transportpulje_form|form' => TRUE,
   );
   $export['default_field_group'] = $strongarm;
 
@@ -31,7 +32,7 @@ function transportpulje_form_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'redirect' => array(
-          'weight' => '9',
+          'weight' => '11',
         ),
       ),
       'display' => array(),

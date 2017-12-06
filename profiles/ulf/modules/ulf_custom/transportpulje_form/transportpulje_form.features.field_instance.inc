@@ -29,7 +29,7 @@ function transportpulje_form_field_default_field_instances() {
     'entity_type' => 'entityform',
     'field_name' => 'field_tpf_address',
     'label' => 'Indtast adresse',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'text_processing' => 0,
       'user_register_form' => FALSE,
@@ -170,7 +170,7 @@ function transportpulje_form_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_popup',
-      'weight' => 12,
+      'weight' => 4,
     ),
   );
 
@@ -202,7 +202,7 @@ function transportpulje_form_field_default_field_instances() {
       'module' => 'html5_tools',
       'settings' => array(),
       'type' => 'emailwidget',
-      'weight' => 15,
+      'weight' => 7,
     ),
   );
 
@@ -235,7 +235,7 @@ function transportpulje_form_field_default_field_instances() {
       'module' => 'html5_tools',
       'settings' => array(),
       'type' => 'emailwidget',
-      'weight' => 16,
+      'weight' => 8,
     ),
   );
 
@@ -276,7 +276,7 @@ function transportpulje_form_field_default_field_instances() {
       'module' => 'html5_tools',
       'settings' => array(),
       'type' => 'numberfield',
-      'weight' => 10,
+      'weight' => 2,
     ),
   );
 
@@ -416,7 +416,7 @@ function transportpulje_form_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 17,
+      'weight' => 9,
     ),
   );
 
@@ -452,7 +452,7 @@ function transportpulje_form_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 13,
+      'weight' => 5,
     ),
   );
 
@@ -493,7 +493,7 @@ function transportpulje_form_field_default_field_instances() {
       'module' => 'html5_tools',
       'settings' => array(),
       'type' => 'numberfield',
-      'weight' => 11,
+      'weight' => 3,
     ),
   );
 
@@ -524,7 +524,7 @@ function transportpulje_form_field_default_field_instances() {
       'module' => 'html5_tools',
       'settings' => array(),
       'type' => 'telwidget',
-      'weight' => 14,
+      'weight' => 6,
     ),
   );
 
