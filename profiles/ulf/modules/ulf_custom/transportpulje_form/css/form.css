@@ -33,6 +33,6 @@
     border-color: lightgrey;
 }
 
-#transportpulje-form-add-application #part_two.is-hidden {
+#transportpulje-form-add-application #part_two .is-hidden {
     display: none!important;
 }

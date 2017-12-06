@@ -135,12 +135,19 @@ function transportpulje_form_add_application($form, &$form_state) {
     '#default_value' => isset($form_state['values']['institution_grade']) ? $form_state['values']['institution_grade'] : '',
   );
 
-  // Add message wrapper.
-  $form['message_wrapper'] = array(
+  $form['fields']['part_two'] = array(
+    '#prefix' => '<div id="part_two">',
     '#type' => 'container',
-    '#weight' => 3
+    '#weight' => 4,
+    '#suffix' => '</div>',
   );
-  $form['message_wrapper']['messages'] = array(
+
+  // Add message wrapper.
+  $form['fields']['part_two']['message_wrapper'] = array(
+    '#type' => 'container',
+    '#weight' => 1
+  );
+  $form['fields']['part_two']['message_wrapper']['messages'] = array(
     '#markup' => '<div id="messages"></div>'
   );
 
@@ -164,19 +171,17 @@ function transportpulje_form_add_application($form, &$form_state) {
     '#executes_submit_callback' => TRUE,
   );
 
-  $form['fields']['part_two'] = array(
-    '#prefix' => '<div id="part_two" class="is-hidden">',
-    '#type' => 'container',
-    '#weight' => 4,
+  $form['fields']['part_two']['transport'] = array(
+    '#prefix' => '<div class="is-hidden">',
+    '#type' => 'fieldset',
+    '#title' => t('Transport information'),
     '#suffix' => '</div>',
   );
-  $form['fields']['part_two']['transport'] = array(
-    '#type' => 'fieldset',
-    '#title' => t('Transport information')
-  );
   $form['fields']['part_two']['contact'] = array(
+    '#prefix' => '<div class="is-hidden">',
     '#type' => 'fieldset',
-    '#title' => t('Contact information')
+    '#title' => t('Contact information'),
+    '#suffix' => '</div>',
   );
 
   // Add fields for transport information.
@@ -295,8 +300,10 @@ function _transportpulje_form_calculate_conditions($form, &$form_state) {
   }
   if ($passed) {
     $form_state['rebuild'] = TRUE;
-    unset($form['fields']['part_two']['#prefix']);
-    unset($form['fields']['part_two']['#suffix']);
+    unset($form['fields']['part_two']['transport']['#prefix']);
+    unset($form['fields']['part_two']['transport']['#suffix']);
+    unset($form['fields']['part_two']['contact']['#prefix']);
+    unset($form['fields']['part_two']['contact']['#suffix']);
   }
 
   $form['message_wrapper']['messages'] = array(
