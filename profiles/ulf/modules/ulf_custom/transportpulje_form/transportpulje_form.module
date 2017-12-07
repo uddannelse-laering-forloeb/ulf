@@ -120,11 +120,9 @@ function transportpulje_form_add_application($form, &$form_state) {
       ),
     ),
   );
-  $form['fields']['part_one']['select_course']['course_address'] = array('#type' => 'fieldset', '#title' => t('Course Address'));
-  $form['fields']['part_one']['select_course']['course_address']['street'] = array(
-    '#title' => t('Street'),
-    '#type' => 'textfield',
-    '#default_value' => isset($form_state['values']['course_address']['street']) ? $form_state['values']['street'] : '',
+  $form['fields']['part_one']['select_course']['course_address'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Course Address'),
     '#states' => array(
       'visible' => array(
         ':input[name="course_not_found"]' => array('checked' => TRUE)
@@ -133,32 +131,21 @@ function transportpulje_form_add_application($form, &$form_state) {
         ':input[name="course_not_found"]' => array('checked' => TRUE)
       ),
     ),
+  );
+  $form['fields']['part_one']['select_course']['course_address']['street'] = array(
+    '#title' => t('Street'),
+    '#type' => 'textfield',
+    '#default_value' => isset($form_state['values']['course_address']['street']) ? $form_state['values']['street'] : '',
   );
   $form['fields']['part_one']['select_course']['course_address']['postal_code'] = array(
     '#title' => t('Postal code'),
     '#type' => 'textfield',
     '#default_value' => isset($form_state['values']['course_address']['postal_code']) ? $form_state['values']['course_address']['postal_code'] : '',
-    '#states' => array(
-      'visible' => array(
-        ':input[name="course_not_found"]' => array('checked' => TRUE)
-      ),
-      'required' => array(
-        ':input[name="course_not_found"]' => array('checked' => TRUE)
-      ),
-    ),
   );
   $form['fields']['part_one']['select_course']['course_address']['city'] = array(
     '#title' => t('City'),
     '#type' => 'textfield',
     '#default_value' => isset($form_state['values']['course_address']['city']) ? $form_state['values']['course_address']['city'] : '',
-    '#states' => array(
-      'visible' => array(
-        ':input[name="course_not_found"]' => array('checked' => TRUE)
-      ),
-      'required' => array(
-        ':input[name="course_not_found"]' => array('checked' => TRUE)
-      ),
-    ),
   );
 
   // Add fields to select institution.
