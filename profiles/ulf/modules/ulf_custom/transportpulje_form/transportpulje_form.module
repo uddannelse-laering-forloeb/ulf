@@ -13,7 +13,6 @@ include_once 'transportpulje_form.backend.inc';
  */
 function transportpulje_form_menu() {
   $items['transport_application'] = array(
-    'title' => t('Applications'),
     'page callback' => 'drupal_get_form',
     'page arguments' => array('transportpulje_form_add_application'),
     'type' => MENU_CALLBACK,
@@ -70,6 +69,7 @@ function transportpulje_form_add_application($form, &$form_state) {
   );
 
   // Add fields
+  $form['intro'] = array('#markup' => '<div class="user-message">' . variable_get('intro', array('value' => '', 'format' => NULL))['value'] . '</div>');
   $form['fields'] = array('#type' => 'container');
 
   // Create part one.
