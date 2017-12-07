@@ -48,9 +48,20 @@ function transportpulje_form_add_application($form, &$form_state) {
   $show_part = isset($form_state['clicked_button']) ? 'part_two' : 'part_one';
 
   // General form setup.
-  drupal_add_js(drupal_get_path('module', 'transportpulje_form'). '/js/form.js');
-  drupal_add_js(array('transportpulje_form' => array('key' => 'value')), 'setting');
-  drupal_add_css(drupal_get_path('module', 'transportpulje_form'). '/css/form.css');
+  $form['#attached'] = array(
+    'css' => array(
+      drupal_get_path('module', 'transportpulje_form'). '/css/form.css'
+    ),
+    'js' => array(
+      array(
+        'type' => 'file',
+        'data' => drupal_get_path('module', 'transportpulje_form'). '/js/form.js',
+      ),
+      array(
+        'type' => 'setting',
+        'data' => array('key' => 'value')),
+    )
+  );
 
   // Add fields
   $form['fields'] = array('#type' => 'container');
@@ -239,7 +250,10 @@ function transportpulje_form_add_application($form, &$form_state) {
     '#default_value' => isset($form_state['values']['description']) ? $form_state['values']['description'] : '',
   );
 
-  $form['#validate'] = array('_tpf_states_required_form_validate');
+  $form['#validate'] = array(
+    '_tpf_states_required_form_validate',
+    '_tpf_full_form_validate',
+  );
   $form['fields']['submit_wrapper'] = array('#type' => 'container', '#weight' => 5);
   $form['fields']['submit_wrapper']['submit_button'] = array(
     '#type' => 'submit',
@@ -255,59 +269,67 @@ function transportpulje_form_add_application($form, &$form_state) {
  */
 
 function _transportpulje_form_calculate_conditions($form, &$form_state) {
-  $text = 'Bemærk lorem ipsum 3 2 1 lorem ipsum  1 2 3 asdfdgd ds da';
-  $passed = isset($form_state['input']['course_dropdown']) ? TRUE : FALSE;
+  $passed = FALSE;
 
   if (!empty(form_get_errors())) {
-    $passed = FALSE;
-  }
-  if ($passed) {
     $form_state['rebuild'] = TRUE;
+    return $form['fields']['part_two'];
+  }
+
+  $form_values = $form_state['values'];
+  $type = _tpf_get_type($form_values);
+  switch ($type) {
+    case 'denied_private' :
+      $text = 'Denied because you are private';
+      break;
+
+    case 'denied_distance' :
+      $text = 'Denied because of distance';
+      break;
+
+    case 'is_private' :
+      $passed = TRUE;
+      $text = 'Text A - Fri transport';
+      break;
+
+    case 'is_not_course' :
+      $passed = TRUE;
+      $text = 'Text B - Henvisning til mulig arragementsliste';
+      break;
+
+    case 'has_no_district' :
+      $passed = TRUE;
+      $text = 'Text A - Fri transport';
+      break;
+
+    case 'not_part_of_course_list' :
+      $passed = TRUE;
+      $text = 'Text A - Fri transport';
+      break;
+
+    case 'part_of_course_list' :
+      $passed = TRUE;
+      $text = 'Text district X - Afh. af skoledistrikt';
+      break;
+
+    default:
+      $text = t('Error!');
+  }
+
+  if ($passed) {
     $form['fields']['part_two']['#prefix'] = '<div id="part_two" class="has-passed">';
     unset($form['fields']['part_two']['transport']['#prefix']);
     unset($form['fields']['part_two']['transport']['#suffix']);
     unset($form['fields']['part_two']['contact']['#prefix']);
     unset($form['fields']['part_two']['contact']['#suffix']);
 
-    $form['fields']['part_two']['message_wrapper']['#prefix'] = '<div class="message">';
+    $form['fields']['part_two']['message_wrapper']['#prefix'] = '<div class="user-message">';
     $form['fields']['part_two']['message_wrapper']['#suffix'] = '</div>';
 
-    $form_values = $form_state['values'];
-    $type = _tpf_get_type($form_values);
-    switch ($type) {
-      case 'denied_private' :
-        $text = 'Denied because you are private';
-        break;
-
-      case 'denied_distance' :
-        $text = 'Denied because of distance';
-        break;
-
-      case 'is_private' :
-        $text = 'Text A - Fri transport';
-        break;
-
-      case 'is_not_course' :
-        $text = 'Text B - Henvisning til mulig arragementsliste';
-        break;
-
-      case 'has_no_district' :
-        $text = 'Text A - Fri transport';
-        break;
-
-      case 'not_part_of_course_list' :
-        $text = 'Text A - Fri transport';
-        break;
-
-      case 'part_of_course_list' :
-        $text = 'Text district X - Afh. af skoledistrikt';
-        break;
-
-      default:
-        $text = t('Error!');
-    }
-
     $form['fields']['part_two']['message_wrapper']['messages']['#markup'] = $text;
+  }
+  else {
+    $form['fields']['part_two']['#prefix'] = '<div id="part_two" class="not-passed"><div class="user-message">' . $text . '</div>';
   }
 
   $form_state['rebuild'] = TRUE;
@@ -355,6 +377,89 @@ function _tpf_states_required_form_validate($form, &$form_state) {
   }
 }
 
+function _tpf_full_form_validate($form, &$form_state) {
+  $error = FALSE;
+  // Get all fields.
+  $form_groups = array(
+    array('part_one', 'select_course'),
+    array('part_one', 'select_institution'),
+    array('part_two', 'transport'),
+    array('part_two', 'contact')
+  );
+  $form_fields = array();
+  foreach($form_groups as $groups) {
+    foreach($form['fields'][$groups[0]][$groups[1]] as $field) {
+      if (is_array($field) && isset($field['#name'])) {
+        $form_fields[] = $field;
+      }
+    }
+  }
+
+  if ($form_state['clicked_button']['#name'] == 'op') {
+    $required_fields = _tpf_validate_all_required($form_state);
+    if(!empty($required_fields)) {
+      
+      form_set_error('lorem', t(':field is a required field', array(':field' => 'ipsum')));
+      $error = TRUE;
+    }
+
+    if(_tpf_validate_expenses($form_state)) {
+      form_set_error('lorem', t(':field is a required field', array(':field' => 'ipsum')));
+      $error = TRUE;
+    }
+
+    if(_tpf_validate_emails($form_state)) {
+      form_set_error('lorem', t(':field is a required field', array(':field' => 'ipsum')));
+      $error = TRUE;
+    }
+
+    if(_tpf_validate_participants($form_state)) {
+      form_set_error('lorem', t(':field is a required field', array(':field' => 'ipsum')));
+      $error = TRUE;
+    }
+
+    if ($error) {
+      drupal_add_js(drupal_get_path('module', 'transportpulje_form'). '/js/form_validation_error.js');
+    }
+  }
+}
+
+function _tpf_validate_all_required($form_state) {
+  $error_field_names = array();
+
+  if ($form_state['values']['course_not_found']) {
+    unset($form_state['values']['course_dropdown']);
+  } else {
+    unset($form_state['values']['course_what']);
+    unset($form_state['values']['course_description']);
+    unset($form_state['values']['course_address']);
+  }
+
+  // We don't require all fields
+  unset($form_state['values']['course_not_found']);
+  unset($form_state['values']['institution_grade']);
+  unset($form_state['values']['description']);
+  foreach ($form_state['values'] as $key => $value) {
+    if(empty($value)) {
+      $error_field_names[] = $key;
+    }
+  }
+  return $error_field_names;
+}
+
+function _tpf_validate_expenses($form_state) {
+  return FALSE;
+}
+
+
+function _tpf_validate_emails($form_state) {
+  return FALSE;
+}
+
+
+function _tpf_validate_participants($form_state) {
+  return FALSE;
+}
 
 /**
  * @param $form

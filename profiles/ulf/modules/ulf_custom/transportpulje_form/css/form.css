@@ -14,7 +14,7 @@
     margin: 1em 0;
 }
 
-#transportpulje-form-add-application .form-wrapper > .message {
+#transportpulje-form-add-application .user-message {
     background: lightgrey;
     box-sizing: border-box;
     display: block;

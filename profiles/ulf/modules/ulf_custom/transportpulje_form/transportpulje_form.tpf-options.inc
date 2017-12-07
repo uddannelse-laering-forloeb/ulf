@@ -7,5 +7,5 @@
  */
 
 function _tpf_get_type($form_values) {
-  return 'abc';
+  return 'is_private';
 }
