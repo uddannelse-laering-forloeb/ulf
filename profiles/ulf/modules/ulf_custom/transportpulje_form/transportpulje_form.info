@@ -13,6 +13,7 @@ dependencies[] = features
 dependencies[] = field_group
 dependencies[] = html5_tools
 dependencies[] = list
+dependencies[] = location
 dependencies[] = number
 dependencies[] = options
 dependencies[] = strongarm

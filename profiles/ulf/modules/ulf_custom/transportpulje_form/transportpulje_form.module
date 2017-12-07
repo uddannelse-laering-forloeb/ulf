@@ -5,7 +5,6 @@
  */
 
 include_once 'transportpulje_form.features.inc';
-//include_once 'transportpulje_form.distance.inc';
 include_once 'transportpulje_form.tpf-options.inc';
 include_once 'transportpulje_form.backend.inc';
 
@@ -129,9 +128,8 @@ function transportpulje_form_add_application($form, &$form_state) {
     ),
   );
   $form['fields']['part_one']['select_course']['course_address'] = array(
-    '#title' => t('Type the address of the course'),
-    '#type' => 'textfield',
-    '#default_value' => isset($form_state['values']['course_address']) ? $form_state['values']['course_address'] : '',
+    '#type' => 'fieldset',
+    '#title' => t('Course Address'),
     '#states' => array(
       'visible' => array(
         ':input[name="course_not_found"]' => array('checked' => TRUE)
@@ -140,6 +138,21 @@ function transportpulje_form_add_application($form, &$form_state) {
         ':input[name="course_not_found"]' => array('checked' => TRUE)
       ),
     ),
+  );
+  $form['fields']['part_one']['select_course']['course_address']['street'] = array(
+    '#title' => t('Street'),
+    '#type' => 'textfield',
+    '#default_value' => isset($form_state['values']['course_address']['street']) ? $form_state['values']['street'] : '',
+  );
+  $form['fields']['part_one']['select_course']['course_address']['postal_code'] = array(
+    '#title' => t('Postal code'),
+    '#type' => 'textfield',
+    '#default_value' => isset($form_state['values']['course_address']['postal_code']) ? $form_state['values']['course_address']['postal_code'] : '',
+  );
+  $form['fields']['part_one']['select_course']['course_address']['city'] = array(
+    '#title' => t('City'),
+    '#type' => 'textfield',
+    '#default_value' => isset($form_state['values']['course_address']['city']) ? $form_state['values']['course_address']['city'] : '',
   );
 
   // Add fields to select institution.
@@ -353,8 +366,16 @@ function _transportpulje_form_calculate_conditions($form, &$form_state) {
 
 function _tpf_states_required_form_validate($form, &$form_state) {
   // Check for required field specified in the states array
-  foreach($form['fields']['part_one']['select_course'] as $key => $field) {
-    if(is_array($field) && isset($field['#states']['required'])) {
+  _tpf_states_required_form_fields_validate($form['fields']['part_one']['select_course'], $form_state);
+}
+
+
+function _tpf_states_required_form_fields_validate($fields, &$form_state) {
+  // Check for required field specified in the states array
+  foreach($fields as $key => $field) {
+    if(is_array($field) && key_exists('#type', $field) && $field['#type'] === 'fieldset') {
+      _tpf_states_required_form_fields_validate($field, $form_state);
+    } else if(is_array($field) && isset($field['#states']['required'])) {
       $required = false;
       foreach($field['#states']['required'] as $cond_field_sel => $cond_vals) {
         // Look for name= in the jquery selector - if that isn't there then give up (for now)
