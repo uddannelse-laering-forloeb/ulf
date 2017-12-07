@@ -300,31 +300,31 @@ function _transportpulje_form_calculate_conditions($form, &$form_state) {
   $type = _tpf_get_type($form_values);
   switch ($type) {
     case 'denied_private' :
-      $text = 'Denied because you are private';
+      $text = variable_get('denial_grade', array('value' => '', 'format' => NULL))['value'];
       break;
 
     case 'denied_distance' :
-      $text = 'Denied because of distance';
+      $text = variable_get('denial_private', array('value' => '', 'format' => NULL))['value'];
       break;
 
     case 'is_private' :
       $passed = TRUE;
-      $text = 'Text A - Fri transport';
+      $text = variable_get('free_choice', array('value' => '', 'format' => NULL))['value'];
       break;
 
     case 'is_not_course' :
       $passed = TRUE;
-      $text = 'Text B - Henvisning til mulig arragementsliste';
+      $text = variable_get('course_not_found', array('value' => '', 'format' => NULL))['value'];
       break;
 
     case 'has_no_district' :
       $passed = TRUE;
-      $text = 'Text A - Fri transport';
+      $text = variable_get('free_choice', array('value' => '', 'format' => NULL))['value'];
       break;
 
     case 'not_part_of_course_list' :
       $passed = TRUE;
-      $text = 'Text A - Fri transport';
+      $text = variable_get('free_choice', array('value' => '', 'format' => NULL))['value'];
       break;
 
     case 'part_of_course_list' :
