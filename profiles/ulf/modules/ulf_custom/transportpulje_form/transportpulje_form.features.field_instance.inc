@@ -607,6 +607,38 @@ function transportpulje_form_field_default_field_instances() {
   );
 
   // Exported field_instance:
+  // 'taxonomy_term-tpf_institutions_list-field_field_tpf_geo_location'.
+  $field_instances['taxonomy_term-tpf_institutions_list-field_field_tpf_geo_location'] = array(
+    'bundle' => 'tpf_institutions_list',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'location_cck',
+        'settings' => array(),
+        'type' => 'location_all',
+        'weight' => 4,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'field_name' => 'field_field_tpf_geo_location',
+    'label' => 'Adresse / Lokation',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'location_cck',
+      'settings' => array(),
+      'type' => 'location',
+      'weight' => 8,
+    ),
+  );
+
+  // Exported field_instance:
   // 'taxonomy_term-tpf_institutions_list-field_tpf_district'.
   $field_instances['taxonomy_term-tpf_institutions_list-field_tpf_district'] = array(
     'bundle' => 'tpf_institutions_list',
@@ -637,43 +669,6 @@ function transportpulje_form_field_default_field_instances() {
       ),
       'type' => 'options_select',
       'weight' => 4,
-    ),
-  );
-
-  // Exported field_instance:
-  // 'taxonomy_term-tpf_institutions_list-field_tpf_geo_location'.
-  $field_instances['taxonomy_term-tpf_institutions_list-field_tpf_geo_location'] = array(
-    'bundle' => 'tpf_institutions_list',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'taxonomy_term',
-    'field_name' => 'field_tpf_geo_location',
-    'label' => 'Geolokation',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'maxlength_js' => 0,
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 1,
     ),
   );
 
@@ -747,6 +742,7 @@ function transportpulje_form_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Adresse / Lokation');
   t('Antal deltagere');
   t('Beskriv læringsfomålet');
   t('Dato');
@@ -754,7 +750,6 @@ function transportpulje_form_field_default_field_instances() {
   t('E-mail');
   t('Evt. besked');
   t('Gentag E-mail');
-  t('Geolokation');
   t('Hvad er forløbet');
   t('Indtast adresse');
   t('Institution');

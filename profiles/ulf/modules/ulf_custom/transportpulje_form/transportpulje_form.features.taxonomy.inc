@@ -13,7 +13,7 @@ function transportpulje_form_taxonomy_default_vocabularies() {
       'name' => 'Institutionsliste',
       'machine_name' => 'tpf_institutions_list',
       'description' => 'Liste over institutioner i kommunen',
-      'hierarchy' => 0,
+      'hierarchy' => 1,
       'module' => 'taxonomy',
       'weight' => 0,
     ),

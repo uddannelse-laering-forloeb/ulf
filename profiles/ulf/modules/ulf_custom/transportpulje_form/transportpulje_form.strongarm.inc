@@ -139,7 +139,17 @@ function transportpulje_form_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_taxonomy_term__tpf_institutions_list';
   $strongarm->value = array(
-    'view_modes' => array(),
+    'view_modes' => array(
+      'full' => array(
+        'custom_settings' => FALSE,
+      ),
+      'diff_standard' => array(
+        'custom_settings' => FALSE,
+      ),
+      'token' => array(
+        'custom_settings' => FALSE,
+      ),
+    ),
     'extra_fields' => array(
       'form' => array(
         'path' => array(
@@ -155,7 +165,14 @@ function transportpulje_form_strongarm() {
           'weight' => '5',
         ),
       ),
-      'display' => array(),
+      'display' => array(
+        'description' => array(
+          'default' => array(
+            'weight' => '0',
+            'visible' => TRUE,
+          ),
+        ),
+      ),
     ),
   );
   $export['field_bundle_settings_taxonomy_term__tpf_institutions_list'] = $strongarm;
