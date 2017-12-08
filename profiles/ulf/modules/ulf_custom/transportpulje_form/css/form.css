@@ -24,6 +24,10 @@
     width: 100%;
 }
 
+#transportpulje-form-add-application .user-message p:last-child {
+    margin-bottom: 0;
+}
+
 #transportpulje-form-add-application .form-submit {
     margin: 1em 0;
 }
