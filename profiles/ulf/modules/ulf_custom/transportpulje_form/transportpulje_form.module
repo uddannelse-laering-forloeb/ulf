@@ -17,7 +17,8 @@ function transportpulje_form_menu() {
     'page callback' => 'drupal_get_form',
     'page arguments' => array('transportpulje_form_add_application'),
     'type' => MENU_CALLBACK,
-    'access arguments' => array('access content'),
+    //'access arguments' => array('access content'),
+    'access arguments' => array('access administration pages'),
   );
 
   $items['fetch-address/%node'] = array(
@@ -40,7 +41,8 @@ function transportpulje_form_menu() {
   $items['admin/settings/custom/transport/applications'] = array(
     'title' => t('Applications'),
     'type' => MENU_DEFAULT_LOCAL_TASK,
-    'weight' => -10
+    'weight' => -10,
+    'access arguments' => array('access administration pages'),
   );
 
   $items['admin/settings/custom/transport/texts'] = array(

@@ -2,6 +2,9 @@
 
 # v2.5.x
 
+## 2.5.16
+* Temporarily denied access to transportpulje
+
 ## 2.5.15
 * Added transport pulje module targeted KLC Viborg
 
