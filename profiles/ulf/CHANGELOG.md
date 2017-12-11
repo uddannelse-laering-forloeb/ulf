@@ -2,6 +2,9 @@
 
 # v2.5.x
 
+## 2.5.15
+* Added transport pulje module targeted KLC Viborg
+
 ## 2.5.14
 * SUPPORT-1314: Fixed moderation bug in workflow.
 * SUPPORT-1317: Added configuration to mailchimp archive page
