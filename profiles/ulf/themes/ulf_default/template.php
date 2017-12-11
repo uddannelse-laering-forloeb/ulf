@@ -216,6 +216,9 @@ function ulf_default_preprocess_node(&$variables) {
     $variables['profile_postal_code'] = $account->location['postal_code'];
     $variables['profile_city'] = $account->location['city'];
   }
+
+  // Transport application form
+  $variables['transport_form'] = module_exists('transportpulje_form') ? TRUE : FALSE;
 }
 
 /**
