@@ -157,5 +157,21 @@ function transportpulje_form_backend($form, &$form_state) {
     '#weight' => 5,
   );
 
+  $form['settings'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Other settings'),
+    '#group' => 'groups',
+    '#collapsible' => FALSE,
+    '#collapsed' => 0,
+  );
+
+  $form['settings']['secretary_email'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Mail to secretariat'),
+    '#default_value' => variable_get('secretary_email'),
+    '#weight' => 1,
+    '#size'=> 30,
+  );
+
   return system_settings_form($form);
 }

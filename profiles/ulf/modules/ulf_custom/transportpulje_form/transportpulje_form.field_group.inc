@@ -138,12 +138,42 @@ function transportpulje_form_field_group_info() {
   );
   $field_groups['group_tpf_transport|entityform|transportpulje_form|form'] = $field_group;
 
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_transport_app|node|course|form';
+  $field_group->group_name = 'group_transport_app';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'course';
+  $field_group->mode = 'form';
+  $field_group->parent_name = 'group_placement';
+  $field_group->data = array(
+    'label' => 'Transportpulje indstillinger',
+    'weight' => '17',
+    'children' => array(
+      0 => 'field_tpf_who_get_support',
+      1 => 'field_tpf_in_list',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-transport-app field-group-fieldset',
+        'required_fields' => 1,
+        'id' => '',
+      ),
+    ),
+  );
+  $field_groups['group_transport_app|node|course|form'] = $field_group;
+
   // Translatables
   // Included for use with string extractors like potx.
   t('1. Vælg forløb');
   t('2. Vælg institution');
   t('3. Transportudgifter');
   t('4. Kontaktoplysninger');
+  t('Transportpulje indstillinger');
 
   return $field_groups;
 }

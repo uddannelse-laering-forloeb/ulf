@@ -606,6 +606,104 @@ function transportpulje_form_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-course-field_tpf_in_list'.
+  $field_instances['node-course-field_tpf_in_list'] = array(
+    'bundle' => 'course',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 36,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_tpf_in_list',
+    'label' => 'Omfattet af arrangementskørselslisten',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 41,
+    ),
+  );
+
+  // Exported field_instance: 'node-course-field_tpf_who_get_support'.
+  $field_instances['node-course-field_tpf_who_get_support'] = array(
+    'bundle' => 'course',
+    'default_value' => array(
+      0 => array(
+        'value' => 'all',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 35,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_tpf_who_get_support',
+    'label' => 'Hvem kan få tilskud',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => 40,
+    ),
+  );
+
   // Exported field_instance:
   // 'taxonomy_term-tpf_institutions_list-field_field_tpf_geo_location'.
   $field_instances['taxonomy_term-tpf_institutions_list-field_field_tpf_geo_location'] = array(
@@ -669,6 +767,43 @@ function transportpulje_form_field_default_field_instances() {
       ),
       'type' => 'options_select',
       'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'taxonomy_term-tpf_institutions_list-field_tpf_geo_location'.
+  $field_instances['taxonomy_term-tpf_institutions_list-field_tpf_geo_location'] = array(
+    'bundle' => 'tpf_institutions_list',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'taxonomy_term',
+    'field_name' => 'field_tpf_geo_location',
+    'label' => 'Geolokation',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'maxlength_js' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 1,
     ),
   );
 
@@ -750,11 +885,14 @@ function transportpulje_form_field_default_field_instances() {
   t('E-mail');
   t('Evt. besked');
   t('Gentag E-mail');
+  t('Geolokation');
   t('Hvad er forløbet');
+  t('Hvem kan få tilskud');
   t('Indtast adresse');
   t('Institution');
   t('Jeg kunne ikke finde forløbet ');
   t('Navn');
+  t('Omfattet af arrangementskørselslisten');
   t('Privat/kommunal');
   t('Tlf.');
   t('Type');

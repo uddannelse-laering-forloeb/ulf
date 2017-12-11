@@ -114,6 +114,7 @@ function transportpulje_form_strongarm() {
     'group_tpf_transport|entityform|transportpulje_form|form' => TRUE,
     'group_tpf_contact|entityform|transportpulje_form|form' => TRUE,
     'group_tpf_part_two|entityform|transportpulje_form|form' => TRUE,
+    'group_transport_app|node|course|form' => FALSE,
   );
   $export['default_field_group'] = $strongarm;
 

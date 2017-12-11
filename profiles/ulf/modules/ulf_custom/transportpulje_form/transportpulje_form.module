@@ -7,6 +7,7 @@
 include_once 'transportpulje_form.features.inc';
 include_once 'transportpulje_form.tpf-options.inc';
 include_once 'transportpulje_form.backend.inc';
+include_once 'transportpulje_form.dropdown.inc';
 
 /**
  * Implements hook_menu().
@@ -17,6 +18,23 @@ function transportpulje_form_menu() {
     'page arguments' => array('transportpulje_form_add_application'),
     'type' => MENU_CALLBACK,
     'access arguments' => array('access content'),
+  );
+
+  $items['fetch-address/%node'] = array(
+    'access arguments' => array('access content'),
+    'page callback' => '_tpf_fetch_address',
+    'page arguments' => array(1),
+    'delivery callback' => '_tpf_fetch_address_output',
+    'type' => MENU_CALLBACK,
+    'file' => 'transportpulje_form.dropdown.inc',
+    'file path' => drupal_get_path('module', 'transportpulje_form'),
+  );
+
+  $items['transport_application/sent'] = array(
+    'page callback' => '_tpf_transport_application_sent',
+    'type' => MENU_CALLBACK,
+    'access arguments' => array('access content'),
+    'delivery callback' => '_tpf_transport_application_sent_output',
   );
 
   $items['admin/settings/custom/transport/applications'] = array(
@@ -52,6 +70,7 @@ function transportpulje_form_form_taxonomy_form_term_alter(&$form, &$form_state,
 }
 
 function transportpulje_form_add_application($form, &$form_state) {
+  $institution_list =	taxonomy_get_tree(taxonomy_vocabulary_machine_name_load('tpf_institutions_list')->vid);
   // General form setup.
   $form['#attached'] = array(
     'css' => array(
@@ -64,7 +83,7 @@ function transportpulje_form_add_application($form, &$form_state) {
       ),
       array(
         'type' => 'setting',
-        'data' => array('key' => 'value')),
+        'data' => array('institutions' => $institution_list)),
     )
   );
 
@@ -80,6 +99,16 @@ function transportpulje_form_add_application($form, &$form_state) {
   $form['fields']['part_one']['select_course'] = array('#type' => 'fieldset', '#title' => t('Select course'));
   $form['fields']['part_one']['select_institution'] = array('#type' => 'fieldset', '#title' => t('Select institution'));
 
+  // Set suffix and default selection based on query.
+  $course_dropdown_default = isset($form_state['values']['course_dropdown']) ? $form_state['values']['course_dropdown'] : '';
+  $course_dropdown_suffix = '<div id="course_dropdown_address"></div>';
+  $course_dropdown_params = drupal_get_query_parameters();
+  if(array_key_exists('course_id', $course_dropdown_params)) {
+    $course_dropdown_default = $course_dropdown_params['course_id'];
+    $course_dropdown_selected_node = node_load($course_dropdown_params['course_id']);
+    $course_dropdown_suffix = '<div id="course_dropdown_address">' . $course_dropdown_selected_node->location['street'] . '<br>' . $course_dropdown_selected_node->location['postal_code'] . '<br>' . $course_dropdown_selected_node->location['city'] . '</div>';
+  }
+
   // Add fields to course wrapper.
   $form['fields']['part_one']['select_course']['course_dropdown'] = array(
     '#title' => t('Select course'),
@@ -87,13 +116,14 @@ function transportpulje_form_add_application($form, &$form_state) {
     "#empty_option"=>t('- Select -'),
     '#size' => 15,
     '#options' => entityreference_get_selection_handler(field_info_field('field_tpf_course_select'))->getReferencableEntities(),
-    '#default_value' => isset($form_state['values']['course_dropdown']) ? $form_state['values']['course_dropdown'] : '',
+    '#default_value' => $course_dropdown_default,
     '#name' => 'course_dropdown',
     '#states' => array(
       'required' => array(
         ':input[name="course_not_found"]' => array('unchecked' => TRUE)
       ),
     ),
+    '#suffix' => $course_dropdown_suffix,
 
   );
   $form['fields']['part_one']['select_course']['course_not_found'] = array(
@@ -160,7 +190,6 @@ function transportpulje_form_add_application($form, &$form_state) {
     '#title' => t('Type'),
     '#type' => 'select',
     "#empty_option"=>t('- Select -'),
-    '#size' => 15,
     '#options' => list_allowed_values(field_info_field('field_tpf_institution_type')),
     '#required' => TRUE,
     '#default_value' => isset($form_state['values']['institution_type']) ? $form_state['values']['institution_type'] : '',
@@ -179,6 +208,14 @@ function transportpulje_form_add_application($form, &$form_state) {
     "#empty_option"=>t('- Select -'),
     '#options' => list_allowed_values(field_info_field('field_tpf_grade')),
     '#default_value' => isset($form_state['values']['institution_grade']) ? $form_state['values']['institution_grade'] : '',
+    '#states' => array(
+      'visible' => array(
+        ':input[name="institution_type"]' => array('value' => 'tpf_school')
+      ),
+      'required' => array(
+        ':input[name="institution_type"]' => array('value' => 'tpf_school')
+      ),
+    ),
   );
 
   $form['fields']['part_two'] = array(
@@ -410,6 +447,14 @@ function _tpf_states_required_form_fields_validate($fields, &$form_state) {
       }
     }
   }
+
+  if($form_state['values']['institution_type'] == 'tpf_school' && empty($form_state['values']['institution_grade'])) {
+    form_set_error('institution_grade', t(':field is a required field', array(':field' => t('Select grade'))));
+  }
+
+  if($form_state['values']['course_not_found'] == 1 && (empty($form_state['values']['street']) || empty($form_state['values']['postal_code']) || empty($form_state['values']['city']))) {
+    form_set_error('course_address', t(':field is a required field', array(':field' => t('Course Address'))));
+  }
 }
 
 function _tpf_full_form_validate($form, &$form_state) {
@@ -521,7 +566,7 @@ function transportpulje_form_add_application_submit($form, &$form_state) {
     $wrapper->field_tpf_course_not_found = $form_state['values']['course_not_found'];
     $wrapper->field_tpf_what_course = $form_state['values']['course_what'];
     $wrapper->field_tpf_purpose_course = $form_state['values']['course_description'];
-    $wrapper->field_tpf_address = $form_state['values']['course_address'];
+    $wrapper->field_tpf_address = $form_state['values']['street'] . ', ' . $form_state['values']['postal_code'] . ' ' . $form_state['values']['city'];
     $wrapper->field_tpf_institution_type = $form_state['values']['institution_type'];
     $wrapper->field_tpf_institution = $form_state['values']['institution_name'];
     $wrapper->field_tpf_grade = $form_state['values']['institution_grade'];
@@ -535,5 +580,15 @@ function transportpulje_form_add_application_submit($form, &$form_state) {
     $wrapper->field_tpf_message = $form_state['values']['description'];
 
     $wrapper->save();
+
+    $form_state['redirect'] = '/transport_application/sent';
   }
+}
+
+function _tpf_transport_application_sent () {
+  return variable_get('confirmation', array('value' => '', 'format' => NULL))['value'];
+}
+
+function _tpf_transport_application_sent_output ($output) {
+  drupal_deliver_html_page($output);
 }
