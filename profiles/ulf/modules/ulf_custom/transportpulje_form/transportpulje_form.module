@@ -73,6 +73,12 @@ function transportpulje_form_form_taxonomy_form_term_alter(&$form, &$form_state,
 
 function transportpulje_form_add_application($form, &$form_state) {
   $institution_list =	taxonomy_get_tree(taxonomy_vocabulary_machine_name_load('tpf_institutions_list')->vid);
+  $term_ids = array();
+  foreach ($institution_list as $term) {
+    $term_ids[] = $term->tid;
+  }
+
+  $terms = taxonomy_term_load_multiple($term_ids);
   // General form setup.
   $form['#attached'] = array(
     'css' => array(
@@ -85,7 +91,7 @@ function transportpulje_form_add_application($form, &$form_state) {
       ),
       array(
         'type' => 'setting',
-        'data' => array('institutions' => $institution_list)),
+        'data' => array('institutions' => $terms)),
     )
   );
 
