@@ -17,7 +17,8 @@ function transportpulje_form_menu() {
     'page callback' => 'drupal_get_form',
     'page arguments' => array('transportpulje_form_add_application'),
     'type' => MENU_CALLBACK,
-    'access arguments' => array('access content'),
+    //'access arguments' => array('access content'),
+    'access arguments' => array('access administration pages'),
   );
 
   $items['fetch-address/%node'] = array(
@@ -41,7 +42,8 @@ function transportpulje_form_menu() {
     'title' => t('Applications'),
     'type' => MENU_DEFAULT_LOCAL_TASK,
     'weight' => -10,
-    //'access arguments' => array('access administration pages'),
+    'access arguments' => array('access administration pages'),
+
   );
 
   $items['admin/settings/custom/transport/texts'] = array(
@@ -72,6 +74,12 @@ function transportpulje_form_form_taxonomy_form_term_alter(&$form, &$form_state,
 
 function transportpulje_form_add_application($form, &$form_state) {
   $institution_list =	taxonomy_get_tree(taxonomy_vocabulary_machine_name_load('tpf_institutions_list')->vid);
+  $term_ids = array();
+  foreach ($institution_list as $term) {
+    $term_ids[] = $term->tid;
+  }
+
+  $terms = taxonomy_term_load_multiple($term_ids);
   // General form setup.
   $form['#attached'] = array(
     'css' => array(
@@ -84,7 +92,7 @@ function transportpulje_form_add_application($form, &$form_state) {
       ),
       array(
         'type' => 'setting',
-        'data' => array('institutions' => $institution_list)),
+        'data' => array('institutions' => $terms)),
     )
   );
 
