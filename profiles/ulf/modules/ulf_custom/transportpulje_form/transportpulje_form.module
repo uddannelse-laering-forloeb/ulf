@@ -56,6 +56,18 @@ function transportpulje_form_menu() {
   return $items;
 }
 
+
+/**
+ * Implements hook_form_FORM_ID_alter()
+ *
+ * Hide transport fields for most users and on youth items.
+ */
+function transportpulje_form_form_course_node_form_alter(&$form, &$form_state, $form_id) {
+  // Maybe just add a bit of js.
+  // Hide stuff based on role.
+  // Hide stuff based on type of course.
+}
+
 /**
  * Implements hook_form_FORM_ID_alter()
  *
@@ -69,6 +81,13 @@ function transportpulje_form_form_taxonomy_form_term_alter(&$form, &$form_state,
   }
 }
 
+/**
+ * Custom form for adding a transport application entity_form entity.
+ *
+ * @param $form
+ * @param $form_state
+ * @return mixed
+ */
 function transportpulje_form_add_application($form, &$form_state) {
   $institution_list =	taxonomy_get_tree(taxonomy_vocabulary_machine_name_load('tpf_institutions_list')->vid);
   $term_ids = array();
