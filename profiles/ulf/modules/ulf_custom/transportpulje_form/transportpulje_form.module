@@ -41,8 +41,6 @@ function transportpulje_form_menu() {
     'title' => t('Applications'),
     'type' => MENU_DEFAULT_LOCAL_TASK,
     'weight' => -10,
-    'access arguments' => array('access administration pages'),
-
   );
 
   $items['admin/settings/custom/transport/texts'] = array(
