@@ -771,39 +771,40 @@ function transportpulje_form_field_default_field_instances() {
   );
 
   // Exported field_instance:
-  // 'taxonomy_term-tpf_institutions_list-field_tpf_geo_location'.
-  $field_instances['taxonomy_term-tpf_institutions_list-field_tpf_geo_location'] = array(
+  // 'taxonomy_term-tpf_institutions_list-field_tpf_parent_term'.
+  $field_instances['taxonomy_term-tpf_institutions_list-field_tpf_parent_term'] = array(
     'bundle' => 'tpf_institutions_list',
-    'default_value' => NULL,
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
     'deleted' => 0,
     'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
+        'module' => 'list',
         'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 0,
+        'type' => 'list_default',
+        'weight' => 5,
       ),
     ),
     'entity_type' => 'taxonomy_term',
-    'field_name' => 'field_tpf_geo_location',
-    'label' => 'Geolokation',
+    'field_name' => 'field_tpf_parent_term',
+    'label' => 'Parent term',
     'required' => 0,
     'settings' => array(
-      'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'text',
+      'module' => 'options',
       'settings' => array(
-        'maxlength_js' => 0,
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'size' => 60,
+        'display_label' => 1,
       ),
-      'type' => 'text_textfield',
-      'weight' => 1,
+      'type' => 'options_onoff',
+      'weight' => 9,
     ),
   );
 
@@ -885,7 +886,6 @@ function transportpulje_form_field_default_field_instances() {
   t('E-mail');
   t('Evt. besked');
   t('Gentag E-mail');
-  t('Geolokation');
   t('Hvad er forløbet');
   t('Hvem kan få tilskud');
   t('Indtast adresse');
@@ -893,6 +893,7 @@ function transportpulje_form_field_default_field_instances() {
   t('Jeg kunne ikke finde forløbet ');
   t('Navn');
   t('Omfattet af arrangementskørselslisten');
+  t('Parent term');
   t('Privat/kommunal');
   t('Tlf.');
   t('Type');
