@@ -179,7 +179,7 @@
               <div class="block--field-wrapper">
                 <div class="block--field-label"><?php print t('Provider');?></div>
                 <p><a href="/user/<?php print $uid; ?>"><?php print $profile_name; ?></a></p>
-                <!--<a target="_blank" href="/transport_application?course_id=<?php print $nid; ?>"><?php print t('Create transport application'); ?></a>-->
+                <a target="_blank" href="/transport_application?course_id=<?php print $nid; ?>"><?php print t('Create transport application'); ?></a>
               </div>
               <div class="block--field-wrapper is-inline">
                 <?php print render($content['field_offer_type']); ?>

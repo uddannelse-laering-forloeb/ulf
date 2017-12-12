@@ -17,8 +17,7 @@ function transportpulje_form_menu() {
     'page callback' => 'drupal_get_form',
     'page arguments' => array('transportpulje_form_add_application'),
     'type' => MENU_CALLBACK,
-    //'access arguments' => array('access content'),
-    'access arguments' => array('access administration pages'),
+    'access arguments' => array('access content'),
   );
 
   $items['fetch-address/%node'] = array(
