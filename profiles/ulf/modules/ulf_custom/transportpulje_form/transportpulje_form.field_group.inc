@@ -56,9 +56,9 @@ function transportpulje_form_field_group_info() {
     'label' => '1. Vælg forløb',
     'weight' => '0',
     'children' => array(
-      0 => 'field_tpf_course_select',
+      0 => 'field_tpf_address',
       1 => 'field_tpf_course_not_found',
-      2 => 'field_tpf_address',
+      2 => 'field_tpf_course_select',
       3 => 'field_tpf_purpose_course',
       4 => 'field_tpf_what_course',
     ),
@@ -89,9 +89,9 @@ function transportpulje_form_field_group_info() {
     'label' => '2. Vælg institution',
     'weight' => '1',
     'children' => array(
-      0 => 'field_tpf_institution_type',
+      0 => 'field_tpf_grade',
       1 => 'field_tpf_institution',
-      2 => 'field_tpf_grade',
+      2 => 'field_tpf_institution_type',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
