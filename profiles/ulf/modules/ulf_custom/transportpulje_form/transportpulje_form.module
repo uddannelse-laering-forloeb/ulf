@@ -682,7 +682,7 @@ function transportpulje_form_add_application_submit($form, &$form_state) {
     else {
       $node_selected = node_load($form_state['values']['course_dropdown']);
       if (isset($node_selected['location']) && isset($node_selected['location']['street']) && isset($node_selected['location']['postal_code']) && isset($node_selected['location']['city'])) {
-        $form_address = $node_selected['location']['street'] . ', ' . $node_selected['location']['postal_code'] . ' ' . $node_selected['location']['city']
+        $form_address = $node_selected['location']['street'] . ', ' . $node_selected['location']['postal_code'] . ' ' . $node_selected['location']['city'];
       }
     }
 
