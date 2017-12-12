@@ -155,9 +155,20 @@ function transportpulje_form_add_application($form, &$form_state) {
     '#suffix' => $course_dropdown_suffix,
 
   );
+
   $form['fields']['part_one']['select_course']['course_not_found'] = array(
     '#title' => t('I could not find the course'),
     '#type' => 'checkbox'
+  );
+
+  $form['fields']['part_one']['select_course']['course_alt_address'] = array(
+    '#title' => t('Enter alternative course address'),
+    '#type' => 'checkbox'
+  );
+
+  $form['fields']['part_one']['select_course']['distance_calc_failed'] = array(
+    '#title' => t('Distance calculation failed'),
+    '#type' => 'hidden'
   );
 
   $form['fields']['part_one']['select_course']['course_what'] = array(
@@ -191,10 +202,12 @@ function transportpulje_form_add_application($form, &$form_state) {
     '#title' => t('Course Address'),
     '#states' => array(
       'visible' => array(
-        ':input[name="course_not_found"]' => array('checked' => TRUE)
+        array(':input[name="course_not_found"]' => array('checked' => TRUE)),
+        array(':input[name="course_alt_address"]' => array('checked' => TRUE))
       ),
       'required' => array(
-        ':input[name="course_not_found"]' => array('checked' => TRUE)
+        array(':input[name="course_not_found"]' => array('checked' => TRUE)),
+        array(':input[name="course_alt_address"]' => array('checked' => TRUE))
       ),
     ),
   );
@@ -372,11 +385,11 @@ function _transportpulje_form_calculate_conditions($form, &$form_state) {
   // The different messages to display.
   switch ($type) {
     case 'denied_private' :
-      $text = variable_get('denial_grade', array('value' => '', 'format' => NULL))['value'];
+      $text = variable_get('denied_private', array('value' => '', 'format' => NULL))['value'];
       break;
 
     case 'denied_distance' :
-      $text = variable_get('denial_private', array('value' => '', 'format' => NULL))['value'];
+      $text = variable_get('denied_distance', array('value' => '', 'format' => NULL))['value'];
       break;
 
     case 'is_private' :
@@ -503,6 +516,10 @@ function _tpf_states_required_form_fields_validate($fields, &$form_state) {
   }
 
   if($form_state['values']['course_not_found'] == 1 && (empty($form_state['values']['street']) || empty($form_state['values']['postal_code']) || empty($form_state['values']['city']))) {
+    form_set_error('course_address', t(':field is a required field', array(':field' => t('Course Address'))));
+  }
+
+  if($form_state['values']['course_alt_address'] == 1 && (empty($form_state['values']['street']) || empty($form_state['values']['postal_code']) || empty($form_state['values']['city']))) {
     form_set_error('course_address', t(':field is a required field', array(':field' => t('Course Address'))));
   }
 }
@@ -713,6 +730,7 @@ function transportpulje_form_add_application_submit($form, &$form_state) {
     // Set the fields.
     $wrapper->field_tpf_course_select = $form_state['values']['course_dropdown'];
     $wrapper->field_tpf_course_not_found = $form_state['values']['course_not_found'];
+    $wrapper->field_tpf_distance_calc_failed = $form_state['values']['distance_calc_failed'];
     $wrapper->field_tpf_what_course = $form_state['values']['course_what'];
     $wrapper->field_tpf_purpose_course = $form_state['values']['course_description'];
     $wrapper->field_tpf_address = $form_address;

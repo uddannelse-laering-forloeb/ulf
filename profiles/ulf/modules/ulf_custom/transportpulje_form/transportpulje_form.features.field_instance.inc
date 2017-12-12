@@ -174,6 +174,44 @@ function transportpulje_form_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance:
+  // 'entityform-transportpulje_form-field_tpf_distance_calc_failed'.
+  $field_instances['entityform-transportpulje_form-field_tpf_distance_calc_failed'] = array(
+    'bundle' => 'transportpulje_form',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 18,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_tpf_distance_calc_failed',
+    'label' => 'Afstandsudregning fejlet',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 13,
+    ),
+  );
+
   // Exported field_instance: 'entityform-transportpulje_form-field_tpf_email'.
   $field_instances['entityform-transportpulje_form-field_tpf_email'] = array(
     'bundle' => 'transportpulje_form',
@@ -879,6 +917,7 @@ function transportpulje_form_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Adresse / Lokation');
+  t('Afstandsudregning fejlet');
   t('Antal deltagere');
   t('Beskriv læringsfomålet');
   t('Dato');

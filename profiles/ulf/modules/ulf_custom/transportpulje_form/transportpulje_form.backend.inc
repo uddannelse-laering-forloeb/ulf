@@ -61,18 +61,18 @@ function transportpulje_form_backend($form, &$form_state) {
     '#weight' => 0,
   );
 
-  $form['frontend_texts']['denial_grade'] = array(
+  $form['frontend_texts']['denied_distance'] = array(
     '#type' => 'text_format',
-    '#title' => t('Denied 6th grade +'),
-    '#default_value' => variable_get('denial_grade', array('value' => '', 'format' => NULL))['value'],
+    '#title' => t('Denied for 6th grade+ because distance to course is less than 6 km.'),
+    '#default_value' => variable_get('denied_distance', array('value' => '', 'format' => NULL))['value'],
     '#format' => 'editor',
     '#weight' => 1,
   );
 
-  $form['frontend_texts']['denial_private'] = array(
+  $form['frontend_texts']['denied_private'] = array(
     '#type' => 'text_format',
     '#title' => t('Denied for private institution not on arrangement list'),
-    '#default_value' => variable_get('denial_private', array('value' => '', 'format' => NULL))['value'],
+    '#default_value' => variable_get('denied_private', array('value' => '', 'format' => NULL))['value'],
     '#format' => 'editor',
     '#weight' => 2,
   );
