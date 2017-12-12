@@ -7,12 +7,13 @@
  */
 
 function _tpf_get_type(&$form_values) {
-  if('tpf_school' === $form_values['institution_type'] && 'grade_6' >= $form_values['institution_grade']) {
+  if('tpf_school' === $form_values['institution_type'] && 'grade_6' <= $form_values['institution_grade']) {
     $distance = _tpf_get_distance($form_values);
 
-    if(is_array($distance) && key_exists('scalar', $distance) && 6 >= $distance['scalar']) {
-      $form_values['distance_calc_failed'] = false;
-      return 'denied_distance';
+    if(is_array($distance) && key_exists('scalar', $distance)) {
+      if (6 >= $distance['scalar']) {
+        return 'denied_distance';
+      }
     } else {
       $form_values['distance_calc_failed'] = true;
     }
