@@ -1,5 +1,17 @@
 <?php
 
+/**
+ * @file
+ * Code for the backend form.
+ */
+
+/**
+ * Create custom backend form.
+ *
+ * @param $form
+ * @param $form_state
+ * @return mixed
+ */
 function transportpulje_form_backend($form, &$form_state) {
   $form['groups'] = array (
     '#type' => 'vertical_tabs',
