@@ -81,3 +81,17 @@ function _ulf_admin_panel_form_submit($form, $form_state) {
     file_usage_add($file, 'user', 'user', 1);
   }
 }
+
+/**
+ * Permission for accessing admin panel.
+ *
+ * @return array
+ */
+function ulf_admin_panel_permission() {
+  return array(
+    'administer custom settings' => array(
+      'title' => t('Administer customized settings'),
+      'description' => t('Access administration tasks for customized settings.'),
+    ),
+  );
+}

@@ -48,7 +48,7 @@ function transportpulje_form_menu() {
     'page callback' => 'drupal_get_form',
     'page arguments' => array('transportpulje_form_backend'),
     'type' => MENU_LOCAL_TASK,
-    'access arguments' => array('access administration pages'),
+    'access arguments' => array('administer tpf'),
     'file' => 'transportpulje_form.backend.inc',
 		'file path' => drupal_get_path('module', 'transportpulje_form'),
   );
@@ -56,6 +56,43 @@ function transportpulje_form_menu() {
   return $items;
 }
 
+function transportpulje_form_permission() {
+  return array(
+    'administer tpf' => array(
+      'title' => t('Administer transport applications'),
+      'description' => t('Perform administration tasks for transportpulje form module.'),
+    ),
+  );
+}
+
+function transportpulje_form_secure_permissions_roles() {
+  return array(
+    'transport pool editor',
+  );
+}
+
+function transportpulje_form_secure_permissions($role) {
+  $permissions = array(
+    'transport pool editor' => array(
+      'view the administration theme',
+      'administer tpf'
+    ),
+  );
+  if (isset($permissions[$role])) {
+    return $permissions[$role];
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter()
+ *
+ * Add help text to transport application editors.
+ */
+function transportpulje_form_form_user_profile_form_alter(&$form, &$form_state) {
+  if (in_array('transport pool editor', $form['#user']->roles)) {
+    drupal_set_message('<a href="/admin/settings/custom/transport">' . t("Click to access transport application list") . '</a>', 'Status');
+  }
+}
 
 /**
  * Implements hook_form_FORM_ID_alter()
