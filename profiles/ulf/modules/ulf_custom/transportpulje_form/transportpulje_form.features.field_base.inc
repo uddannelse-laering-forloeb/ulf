@@ -508,27 +508,6 @@ function transportpulje_form_field_default_field_bases() {
     'type' => 'number_integer',
   );
 
-  // Exported field_base: 'field_tpf_phone'.
-  $field_bases['field_tpf_phone'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_tpf_phone',
-    'indexes' => array(
-      'format' => array(
-        0 => 'format',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'text',
-    'settings' => array(
-      'max_length' => 255,
-    ),
-    'translatable' => 0,
-    'type' => 'text',
-  );
-
   // Exported field_base: 'field_tpf_purpose_course'.
   $field_bases['field_tpf_purpose_course'] = array(
     'active' => 1,
@@ -566,6 +545,33 @@ function transportpulje_form_field_default_field_bases() {
       'allowed_values' => array(
         'tpf_relation_private' => 'Privat',
         'tpf_relation_public' => 'Kommunal',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
+  // Exported field_base: 'field_tpf_status'.
+  $field_bases['field_tpf_status'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_tpf_status',
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'awaiting' => 'Afventer',
+        'awaiting_distance_calc_failed' => 'Afventer (Afstandsberegning fejlet)',
+        'accepted' => 'Godkendt',
+        'refused' => 'Afvist',
       ),
       'allowed_values_function' => '',
     ),

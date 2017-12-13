@@ -208,7 +208,7 @@ function transportpulje_form_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 13,
+      'weight' => 4,
     ),
   );
 
@@ -535,37 +535,6 @@ function transportpulje_form_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'entityform-transportpulje_form-field_tpf_phone'.
-  $field_instances['entityform-transportpulje_form-field_tpf_phone'] = array(
-    'bundle' => 'transportpulje_form',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 10,
-      ),
-    ),
-    'entity_type' => 'entityform',
-    'field_name' => 'field_tpf_phone',
-    'label' => 'Tlf.',
-    'required' => FALSE,
-    'settings' => array(
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'module' => 'html5_tools',
-      'settings' => array(),
-      'type' => 'telwidget',
-      'weight' => 6,
-    ),
-  );
-
   // Exported field_instance:
   // 'entityform-transportpulje_form-field_tpf_purpose_course'.
   $field_instances['entityform-transportpulje_form-field_tpf_purpose_course'] = array(
@@ -602,6 +571,43 @@ function transportpulje_form_field_default_field_instances() {
       ),
       'type' => 'text_textarea',
       'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance: 'entityform-transportpulje_form-field_tpf_status'.
+  $field_instances['entityform-transportpulje_form-field_tpf_status'] = array(
+    'bundle' => 'transportpulje_form',
+    'default_value' => array(
+      0 => array(
+        'value' => 'awaiting',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 19,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_tpf_status',
+    'label' => 'Status',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => 5,
     ),
   );
 
@@ -698,7 +704,7 @@ function transportpulje_form_field_default_field_instances() {
     'bundle' => 'course',
     'default_value' => array(
       0 => array(
-        'value' => 'all',
+        'value' => 'municipal',
       ),
     ),
     'deleted' => 0,
@@ -934,7 +940,7 @@ function transportpulje_form_field_default_field_instances() {
   t('Omfattet af arrangementskørselslisten');
   t('Parent term');
   t('Privat/kommunal');
-  t('Tlf.');
+  t('Status');
   t('Type');
   t('Udgift');
   t('Vælg forløb');

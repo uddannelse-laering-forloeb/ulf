@@ -11,7 +11,39 @@ function transportpulje_form_field_group_info() {
   $field_groups = array();
 
   $field_group = new stdClass();
-  $field_group->disabled = TRUE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_tpf_admin|entityform|transportpulje_form|form';
+  $field_group->group_name = 'group_tpf_admin';
+  $field_group->entity_type = 'entityform';
+  $field_group->bundle = 'transportpulje_form';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Admin fields',
+    'weight' => '14',
+    'children' => array(
+      0 => 'field_tpf_course_not_found',
+      1 => 'field_tpf_distance_calc_failed',
+      2 => 'field_tpf_status',
+      3 => 'redirect',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Admin fields',
+      'instance_settings' => array(
+        'required_fields' => 1,
+        'id' => '',
+        'classes' => 'group-tpf-admin field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'collapsed',
+    ),
+  );
+  $field_groups['group_tpf_admin|entityform|transportpulje_form|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_tpf_contact|entityform|transportpulje_form|form';
   $field_group->group_name = 'group_tpf_contact';
@@ -21,7 +53,7 @@ function transportpulje_form_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => '4. Kontaktoplysninger',
-    'weight' => '8',
+    'weight' => '13',
     'children' => array(
       0 => 'field_tpf_name',
       1 => 'field_tpf_phone',
@@ -33,7 +65,7 @@ function transportpulje_form_field_group_info() {
     'format_settings' => array(
       'label' => '4. Kontaktoplysninger',
       'instance_settings' => array(
-        'required_fields' => 0,
+        'required_fields' => 1,
         'id' => '',
         'classes' => 'group-tpf-contact field-group-fieldset',
         'description' => '',
@@ -56,11 +88,10 @@ function transportpulje_form_field_group_info() {
     'label' => '1. Vælg forløb',
     'weight' => '0',
     'children' => array(
-      0 => 'field_tpf_address',
-      1 => 'field_tpf_course_not_found',
-      2 => 'field_tpf_course_select',
-      3 => 'field_tpf_purpose_course',
-      4 => 'field_tpf_what_course',
+      0 => 'field_tpf_course_select',
+      1 => 'field_tpf_address',
+      2 => 'field_tpf_purpose_course',
+      3 => 'field_tpf_what_course',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -89,9 +120,9 @@ function transportpulje_form_field_group_info() {
     'label' => '2. Vælg institution',
     'weight' => '1',
     'children' => array(
-      0 => 'field_tpf_grade',
+      0 => 'field_tpf_institution_type',
       1 => 'field_tpf_institution',
-      2 => 'field_tpf_institution_type',
+      2 => 'field_tpf_grade',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -108,7 +139,7 @@ function transportpulje_form_field_group_info() {
   $field_groups['group_tpf_institution|entityform|transportpulje_form|form'] = $field_group;
 
   $field_group = new stdClass();
-  $field_group->disabled = TRUE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
   $field_group->identifier = 'group_tpf_transport|entityform|transportpulje_form|form';
   $field_group->group_name = 'group_tpf_transport';
@@ -118,7 +149,7 @@ function transportpulje_form_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => '3. Transportudgifter',
-    'weight' => '7',
+    'weight' => '12',
     'children' => array(
       0 => 'field_tpf_expense',
       1 => 'field_tpf_participants',
@@ -128,7 +159,7 @@ function transportpulje_form_field_group_info() {
     'format_settings' => array(
       'label' => '3. Transportudgifter',
       'instance_settings' => array(
-        'required_fields' => 0,
+        'required_fields' => 1,
         'id' => '',
         'classes' => 'group-tpf-transport field-group-fieldset',
         'description' => '',
@@ -173,6 +204,7 @@ function transportpulje_form_field_group_info() {
   t('2. Vælg institution');
   t('3. Transportudgifter');
   t('4. Kontaktoplysninger');
+  t('Admin fields');
   t('Transportpulje indstillinger');
 
   return $field_groups;

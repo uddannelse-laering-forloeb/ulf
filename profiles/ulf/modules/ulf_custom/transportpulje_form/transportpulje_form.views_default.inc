@@ -45,27 +45,27 @@ function transportpulje_form_views_default_views() {
   $handler->display->display_options['pager']['options']['tags']['next'] = 'næste ›';
   $handler->display->display_options['pager']['options']['tags']['last'] = 'sidste »';
   $handler->display->display_options['style_plugin'] = 'table';
-  /* No results behavior: Global: Text area */
+  /* Opførsel ved ingen resultater: Global: Tekstområde */
   $handler->display->display_options['empty']['area']['id'] = 'area';
   $handler->display->display_options['empty']['area']['table'] = 'views';
   $handler->display->display_options['empty']['area']['field'] = 'area';
   $handler->display->display_options['empty']['area']['empty'] = TRUE;
   $handler->display->display_options['empty']['area']['content'] = 'Ingen ansøgninger på nuværende tidspunkt';
   $handler->display->display_options['empty']['area']['format'] = 'editor';
-  /* Field: Entityform Submission: Entityform submission ID */
+  /* Felt: Entityform Submission: Entityform submission ID */
   $handler->display->display_options['fields']['entityform_id_1']['id'] = 'entityform_id_1';
   $handler->display->display_options['fields']['entityform_id_1']['table'] = 'entityform';
   $handler->display->display_options['fields']['entityform_id_1']['field'] = 'entityform_id';
   $handler->display->display_options['fields']['entityform_id_1']['label'] = 'ID';
   $handler->display->display_options['fields']['entityform_id_1']['separator'] = '';
-  /* Field: Entityform Submission: Date submitted */
+  /* Felt: Entityform Submission: Date submitted */
   $handler->display->display_options['fields']['created']['id'] = 'created';
   $handler->display->display_options['fields']['created']['table'] = 'entityform';
   $handler->display->display_options['fields']['created']['field'] = 'created';
   $handler->display->display_options['fields']['created']['label'] = 'Dato for indsendelse';
   $handler->display->display_options['fields']['created']['date_format'] = 'medium';
   $handler->display->display_options['fields']['created']['second_date_format'] = 'html5_tools_iso8601';
-  /* Field: Entityform Submission: Vælg forløb */
+  /* Felt: Entityform Submission: Vælg forløb */
   $handler->display->display_options['fields']['field_tpf_course_select']['id'] = 'field_tpf_course_select';
   $handler->display->display_options['fields']['field_tpf_course_select']['table'] = 'field_data_field_tpf_course_select';
   $handler->display->display_options['fields']['field_tpf_course_select']['field'] = 'field_tpf_course_select';
@@ -74,7 +74,7 @@ function transportpulje_form_views_default_views() {
     'bypass_access' => 0,
     'link' => 0,
   );
-  /* Field: Entityform Submission: Jeg kunne ikke finde forløbet  */
+  /* Felt: Entityform Submission: Jeg kunne ikke finde forløbet  */
   $handler->display->display_options['fields']['field_tpf_course_not_found']['id'] = 'field_tpf_course_not_found';
   $handler->display->display_options['fields']['field_tpf_course_not_found']['table'] = 'field_data_field_tpf_course_not_found';
   $handler->display->display_options['fields']['field_tpf_course_not_found']['field'] = 'field_tpf_course_not_found';
@@ -83,23 +83,23 @@ function transportpulje_form_views_default_views() {
   $handler->display->display_options['fields']['field_tpf_course_not_found']['empty'] = 'Nej';
   $handler->display->display_options['fields']['field_tpf_course_not_found']['empty_zero'] = TRUE;
   $handler->display->display_options['fields']['field_tpf_course_not_found']['type'] = 'list_key';
-  /* Field: Entityform Submission: Indtast adresse */
+  /* Felt: Entityform Submission: Indtast adresse */
   $handler->display->display_options['fields']['field_tpf_address']['id'] = 'field_tpf_address';
   $handler->display->display_options['fields']['field_tpf_address']['table'] = 'field_data_field_tpf_address';
   $handler->display->display_options['fields']['field_tpf_address']['field'] = 'field_tpf_address';
   $handler->display->display_options['fields']['field_tpf_address']['label'] = 'Adresse';
-  /* Field: Entityform Submission: Institution */
+  /* Felt: Entityform Submission: Institution */
   $handler->display->display_options['fields']['field_tpf_institution']['id'] = 'field_tpf_institution';
   $handler->display->display_options['fields']['field_tpf_institution']['table'] = 'field_data_field_tpf_institution';
   $handler->display->display_options['fields']['field_tpf_institution']['field'] = 'field_tpf_institution';
   $handler->display->display_options['fields']['field_tpf_institution']['type'] = 'taxonomy_term_reference_plain';
-  /* Field: Entityform Submission: Link */
+  /* Felt: Entityform Submission: Link */
   $handler->display->display_options['fields']['link_entityform']['id'] = 'link_entityform';
   $handler->display->display_options['fields']['link_entityform']['table'] = 'entityform';
   $handler->display->display_options['fields']['link_entityform']['field'] = 'link_entityform';
   $handler->display->display_options['fields']['link_entityform']['label'] = '';
   $handler->display->display_options['fields']['link_entityform']['element_label_colon'] = FALSE;
-  /* Filter criterion: Entityform Submission: Entityform Type */
+  /* Filterkriterie: Entityform Submission: Entityform Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'entityform';
   $handler->display->display_options['filters']['type']['field'] = 'type';
@@ -143,7 +143,6 @@ function transportpulje_form_views_default_views() {
     t('Adresse'),
     t('Institution'),
     t('Page'),
-    t('more'),
   );
   $export['tpf_requests'] = $view;
 

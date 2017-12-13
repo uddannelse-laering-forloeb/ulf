@@ -63,9 +63,19 @@ function transportpulje_form_menu() {
  * Hide transport fields for most users and on youth items.
  */
 function transportpulje_form_form_course_node_form_alter(&$form, &$form_state, $form_id) {
-  // Maybe just add a bit of js.
-  // Hide stuff based on role.
-  // Hide stuff based on type of course.
+  $user = $GLOBALS['user'];
+  $youth_term_id = key(taxonomy_get_term_by_name('Ungdomsuddannelse', 'target_group'));
+  $form['#attached'] = array(
+    'js' => array(
+      array(
+        'type' => 'file',
+        'data' => drupal_get_path('module', 'transportpulje_form'). '/js/course-form-alter.js',
+      ),
+      array(
+        'type' => 'setting',
+        'data' => array('user' => $user, 'target_group' => $youth_term_id)),
+    )
+  );
 }
 
 /**
@@ -328,11 +338,7 @@ function transportpulje_form_add_application($form, &$form_state) {
     '#type' => 'textfield',
     '#default_value' => isset($form_state['values']['name']) ? $form_state['values']['name'] : '',
   );
-  $form['fields']['part_two']['contact']['phone'] = array(
-    '#title' => t('Phone'),
-    '#type' => 'textfield',
-    '#default_value' => isset($form_state['values']['phone']) ? $form_state['values']['phone'] : '',
-  );
+
   $form['fields']['part_two']['contact']['email'] = array(
     '#title' => t('Email'),
     '#type' => 'textfield',
@@ -432,7 +438,6 @@ function _transportpulje_form_calculate_conditions($form, &$form_state) {
     $form['fields']['part_two']['transport']['participants']['#required'] = TRUE;
     $form['fields']['part_two']['transport']['date']['#required'] = TRUE;
     $form['fields']['part_two']['contact']['name']['#required'] = TRUE;
-    $form['fields']['part_two']['contact']['phone']['#required'] = TRUE;
     $form['fields']['part_two']['contact']['email']['#required'] = TRUE;
     $form['fields']['part_two']['contact']['email_repeat']['#required'] = TRUE;
 
@@ -676,8 +681,8 @@ function _tpf_modify_course_dropdown($courses) {
       // If a title for the course already exists in the modified list we want to add target group to title.
       if ($match = array_search($courses['course'][$result->entity_id], $modified_list['course'])) {
         // Fetch the matching nodes
-        $node_wrapper = $wrapper = entity_metadata_wrapper('node', $result->entity_id);
-        $matched_node_wrapper = $wrapper = entity_metadata_wrapper('node', $match);
+        $node_wrapper = entity_metadata_wrapper('node', $result->entity_id);
+        $matched_node_wrapper = entity_metadata_wrapper('node', $match);
         // Fetch the respective nodes target groups.
         $new_node_target_group = taxonomy_term_load($node_wrapper->field_target_group->tid->value())->name;
         $matched_node_target_group = taxonomy_term_load($matched_node_wrapper->field_target_group->tid->value())->name;
@@ -730,7 +735,7 @@ function transportpulje_form_add_application_submit($form, &$form_state) {
     // Set the fields.
     $wrapper->field_tpf_course_select = $form_state['values']['course_dropdown'];
     $wrapper->field_tpf_course_not_found = $form_state['values']['course_not_found'];
-    $wrapper->field_tpf_distance_calc_failed = $form_state['values']['distance_calc_failed'];
+    //$wrapper->field_tpf_distance_calc_failed = $form_state['values']['distance_calc_failed'];
     $wrapper->field_tpf_what_course = $form_state['values']['course_what'];
     $wrapper->field_tpf_purpose_course = $form_state['values']['course_description'];
     $wrapper->field_tpf_address = $form_address;
@@ -741,10 +746,10 @@ function transportpulje_form_add_application_submit($form, &$form_state) {
     $wrapper->field_tpf_participants = $form_state['values']['participants'];
     $wrapper->field_tpf_date = strtotime($form_state['values']['date']);
     $wrapper->field_tpf_name = $form_state['values']['name'];
-    $wrapper->field_tpf_phone = $form_state['values']['phone'];
     $wrapper->field_tpf_email = $form_state['values']['email'];
     $wrapper->field_tpf_email_repeat = $form_state['values']['email_repeat'];
     $wrapper->field_tpf_message = $form_state['values']['description'];
+    $wrapper->field_tpf_status = ($form_state['values']['distance_calc_failed']) ? 'awaiting_distance_calc_failed' : 'awaiting';
 
     $wrapper->save();
 
