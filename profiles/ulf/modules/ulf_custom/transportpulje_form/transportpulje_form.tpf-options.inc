@@ -89,7 +89,7 @@ function _tpf_is_private($form_values) {
 }
 
 function _tpf_not_course($form_values) {
-  return (isset($form_values['course_dropdown']) ? TRUE : FALSE);
+  return (isset($form_values['course_dropdown']) ? FALSE : TRUE);
 }
 
 function _tpf_has_no_district($form_values) {
