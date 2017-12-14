@@ -94,7 +94,7 @@ function transportpulje_form_add_application($form, &$form_state) {
 
   $form['fields']['part_one']['select_course']['distance_calc_failed'] = array(
     '#title' => t('Distance calculation failed'),
-    '#type' => 'hidden'
+    '#type' => 'hidden',
   );
 
   $form['fields']['part_one']['select_course']['course_what'] = array(
@@ -425,7 +425,7 @@ function _tpf_states_required_form_fields_validate($fields, &$form_state) {
       if($required) {
         $field_name = $field['#name'];
         if(empty($form_state['values'][$field_name])) {
-          form_set_error($field_name, t(':field is a required field', array(':field' => $field['#title'])));
+          form_set_error($field_name, t(':field is a required field2', array(':field' => $field['#title'])));
         }
       }
     }
@@ -440,8 +440,16 @@ function _tpf_states_required_form_fields_validate($fields, &$form_state) {
     form_set_error('course_address', t(':field is a required field', array(':field' => t('Course Address'))));
   }
 
-  if($form_state['values']['course_alt_address'] == 1 && (empty($form_state['values']['street']) || empty($form_state['values']['postal_code']) || empty($form_state['values']['city']))) {
-    form_set_error('course_address', t(':field is a required field', array(':field' => t('Course Address'))));
+  if($form_state['values']['course_alt_address'] == 1) {
+    if(empty($form_state['values']['street'])) {
+      form_set_error('street', t(':field is a required field', array(':field' => t('Street'))));
+    }
+    if(empty($form_state['values']['postal_code'])) {
+      form_set_error('postal_code', t(':field is a required field', array(':field' => t('Postal Code'))));
+    }
+    if(empty($form_state['values']['city'])) {
+      form_set_error('city', t(':field is a required field', array(':field' => t('City'))));
+    }
   }
 }
 
@@ -514,6 +522,12 @@ function _tpf_full_form_validate($form, &$form_state) {
 function _tpf_validate_all_required($form_state) {
   $error_field_names = array();
 
+  if(!$form_state['values']['course_not_found'] && !$form_state['values']['course_alt_address']) {
+    unset($form_state['values']['street']);
+    unset($form_state['values']['postal_code']);
+    unset($form_state['values']['city']);
+  }
+
   if ($form_state['values']['course_not_found']) {
     unset($form_state['values']['course_dropdown']);
   } else {
@@ -526,11 +540,14 @@ function _tpf_validate_all_required($form_state) {
   unset($form_state['values']['course_not_found']);
   unset($form_state['values']['institution_grade']);
   unset($form_state['values']['description']);
+  unset($form_state['values']['distance_calc_failed']);
+
   foreach ($form_state['values'] as $key => $value) {
     if(empty($value) && $value != '0') {
       $error_field_names[] = $key;
     }
   }
+
   return $error_field_names;
 }
 
@@ -653,7 +670,7 @@ function transportpulje_form_add_application_submit($form, &$form_state) {
     // Set the fields.
     $wrapper->field_tpf_course_select = $form_state['values']['course_dropdown'];
     $wrapper->field_tpf_course_not_found = $form_state['values']['course_not_found'];
-    //$wrapper->field_tpf_distance_calc_failed = $form_state['values']['distance_calc_failed'];
+    $wrapper->field_tpf_distance_calc_failed = $form_state['values']['distance_calc_failed'];
     $wrapper->field_tpf_what_course = $form_state['values']['course_what'];
     $wrapper->field_tpf_purpose_course = $form_state['values']['course_description'];
     $wrapper->field_tpf_address = $form_address;
