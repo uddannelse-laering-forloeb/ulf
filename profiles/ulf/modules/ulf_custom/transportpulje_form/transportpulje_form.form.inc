@@ -495,6 +495,7 @@ function _tpf_full_form_validate($form, &$form_state) {
       $error = TRUE;
     }
 
+    //@todo add email address validation.
     if(_tpf_validate_emails($form_state)) {
       form_set_error('email_repeat', t(':field_1 and :field_2 must be alike', array(':field_1' => $form_fields['email']['#title'], ':field_2' => $form_fields['email_repeat']['#title'])));
       $error = TRUE;

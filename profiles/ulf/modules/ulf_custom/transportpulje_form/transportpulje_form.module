@@ -47,7 +47,7 @@ function transportpulje_form_menu() {
 
   $items['admin/settings/custom/transport/form'] = array(
     'title' => t('Create application'),
-    'page callback' => 'transportpulje_form_wrapper',
+    'page callback' => '_tpf_form_wrapper',
     'page arguments' => array('transportpulje_form'),
     'type' => MENU_LOCAL_TASK,
     'access arguments' => array('administer tpf'),
@@ -67,12 +67,100 @@ function transportpulje_form_menu() {
 }
 
 /**
+ * Implements hook_action_info().
+ */
+function transportpulje_form_action_info() {
+  $actions['_tpf_change_status_accepted'] = array(
+    'type' => 'entityform',
+    'label' => t('Change status to accepted (No mail)'),
+    'configurable' => FALSE,
+    'triggers' => array('any'),
+    'behavior' => array('changes_property'),
+    'vbo_configurable' => FALSE,
+    'pass rows' => TRUE,
+  );
+
+  $actions['_tpf_change_status_refused'] = array(
+    'type' => 'entityform',
+    'label' => t('Change status to refused (No mail)'),
+    'configurable' => FALSE,
+    'triggers' => array('any'),
+    'behavior' => array('changes_property'),
+    'vbo_configurable' => FALSE,
+    'pass rows' => TRUE,
+  );
+
+  $actions['_tpf_accept'] = array(
+    'type' => 'entityform',
+    'label' => t('Accept (With mail)'),
+    'configurable' => FALSE,
+    'triggers' => array('any'),
+    'behavior' => array('changes_property'),
+    'vbo_configurable' => FALSE,
+    'pass rows' => TRUE,
+  );
+
+  $actions['_tpf_refuse'] = array(
+    'type' => 'entityform',
+    'label' => t('Refuse (With mail)'),
+    'configurable' => FALSE,
+    'triggers' => array('any'),
+    'behavior' => array('changes_property'),
+    'vbo_configurable' => FALSE,
+    'pass rows' => TRUE,
+  );
+
+  return $actions;
+}
+
+function _tpf_change_status_accepted($entity) {
+  _tpf_change_entity($entity, 'accepted');
+}
+
+function _tpf_accept($entity) {
+  _tpf_change_entity($entity, 'accepted_mail');
+}
+
+function _tpf_change_status_refused($entity) {
+  _tpf_change_entity($entity, 'refused');
+}
+
+
+function _tpf_refuse($entity) {
+  _tpf_change_entity($entity, 'refused_mail');
+}
+
+function _tpf_change_entity($entity, $action) {
+  $wrapper = entity_metadata_wrapper('entityform', $entity);
+  switch ($action) {
+    case 'accepted' :
+      $wrapper->field_tpf_status = 'accepted';
+      $wrapper->save();
+      break;
+    case 'accepted_mail' :
+      $wrapper->field_tpf_status = 'accepted';
+      $wrapper->save();
+      // @todo Send mail
+      break;
+    case 'refused' :
+      $wrapper->field_tpf_status = 'refused';
+      $wrapper->save();
+      break;
+    case 'refused_mail' :
+      $wrapper->field_tpf_status = 'refused';
+      $wrapper->save();
+      // @todo Send mail
+      break;
+  }
+}
+
+/**
  * Display form in backend.
  *
  * @param $bundle
  * @return bool|string
  */
-function transportpulje_form_wrapper($bundle) {
+function _tpf_form_wrapper($bundle) {
   module_load_include('inc', 'entityform', 'entityform.admin');
 
   return entityform_type_submit_page(entityform_type_load($bundle));
