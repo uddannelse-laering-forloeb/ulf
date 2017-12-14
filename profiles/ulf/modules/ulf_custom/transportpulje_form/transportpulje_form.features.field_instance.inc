@@ -29,7 +29,7 @@ function transportpulje_form_field_default_field_instances() {
     'entity_type' => 'entityform',
     'field_name' => 'field_tpf_address',
     'label' => 'Indtast adresse',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'text_processing' => 0,
       'user_register_form' => FALSE,

@@ -54,7 +54,7 @@ function transportpulje_form_default_entityform_type() {
       "form_status" : "ENTITYFORM_OPEN",
       "roles" : { "19" : "19", "22" : "22", "1" : 0, "2" : 0, "18" : 0 },
       "resubmit_action" : "new",
-      "redirect_path" : "",
+      "redirect_path" : "admin\\/settings\\/custom\\/transport",
       "instruction_pre" : { "value" : "", "format" : "editor" }
     },
     "weight" : "0",
