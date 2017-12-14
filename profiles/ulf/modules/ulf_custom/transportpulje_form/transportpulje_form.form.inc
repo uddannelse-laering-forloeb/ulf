@@ -626,6 +626,7 @@ function transportpulje_form_add_application_submit($form, &$form_state) {
   if ($form_state['clicked_button']['#name'] == 'op') {
     // Create node entity.
     $entityform = entity_create('entityform', array(
+      'uid' => 0,
       'type' => "transportpulje_form",
       'created' => time(),
       'changed' => time(),

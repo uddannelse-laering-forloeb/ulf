@@ -52,7 +52,7 @@ function transportpulje_form_default_entityform_type() {
       "submissions_view" : "default",
       "user_submissions_view" : "default",
       "form_status" : "ENTITYFORM_OPEN",
-      "roles" : { "1" : "1", "2" : "2", "18" : 0, "19" : 0 },
+      "roles" : { "19" : "19", "22" : "22", "1" : 0, "2" : 0, "18" : 0 },
       "resubmit_action" : "new",
       "redirect_path" : "",
       "instruction_pre" : { "value" : "", "format" : "editor" }

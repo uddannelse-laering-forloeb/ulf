@@ -204,31 +204,6 @@ function transportpulje_form_field_default_field_bases() {
     'type' => 'date',
   );
 
-  // Exported field_base: 'field_tpf_distance_calc_failed'.
-  $field_bases['field_tpf_distance_calc_failed'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_tpf_distance_calc_failed',
-    'indexes' => array(
-      'value' => array(
-        0 => 'value',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'list',
-    'settings' => array(
-      'allowed_values' => array(
-        0 => '',
-        1 => '',
-      ),
-      'allowed_values_function' => '',
-    ),
-    'translatable' => 0,
-    'type' => 'list_boolean',
-  );
-
   // Exported field_base: 'field_tpf_district'.
   $field_bases['field_tpf_district'] = array(
     'active' => 1,

@@ -45,6 +45,14 @@ function transportpulje_form_menu() {
     'weight' => -10,
   );
 
+  $items['admin/settings/custom/transport/form'] = array(
+    'title' => t('Create application'),
+    'page callback' => 'transportpulje_form_wrapper',
+    'page arguments' => array('transportpulje_form'),
+    'type' => MENU_LOCAL_TASK,
+    'access arguments' => array('administer tpf'),
+  );
+
   $items['admin/settings/custom/transport/texts'] = array(
     'title' => t('Help texts'),
     'page callback' => 'drupal_get_form',
@@ -56,6 +64,18 @@ function transportpulje_form_menu() {
   );
 
   return $items;
+}
+
+/**
+ * Display form in backend.
+ *
+ * @param $bundle
+ * @return bool|string
+ */
+function transportpulje_form_wrapper($bundle) {
+  module_load_include('inc', 'entityform', 'entityform.admin');
+
+  return entityform_type_submit_page(entityform_type_load($bundle));
 }
 
 /**
@@ -84,7 +104,7 @@ function transportpulje_form_secure_permissions_roles() {
 }
 
 /**
- * Add permissions to role
+ * Add tpf related permissions to roles.
  * 
  * @param $role
  * @return mixed
@@ -93,7 +113,14 @@ function transportpulje_form_secure_permissions($role) {
   $permissions = array(
     'transport pool editor' => array(
       'view the administration theme',
-      'administer tpf'
+      'administer tpf',
+      'view any entityform',
+      'edit any entityform',
+    ),
+    'editor' => array(
+      'administer tpf',
+      'view any entityform',
+      'edit any entityform',
     ),
   );
   if (isset($permissions[$role])) {
@@ -151,7 +178,7 @@ function transportpulje_form_form_taxonomy_form_term_alter(&$form, &$form_state,
  *
  * @return mixed
  */
-function _tpf_transport_application_sent () {
+function _tpf_transport_application_sent() {
   return variable_get('confirmation', array('value' => '', 'format' => NULL))['value'];
 }
 
@@ -160,6 +187,16 @@ function _tpf_transport_application_sent () {
  *
  * @return mixed
  */
-function _tpf_transport_application_sent_output ($output) {
+function _tpf_transport_application_sent_output($output) {
   drupal_deliver_html_page($output);
+}
+
+function transportpulje_form_preprocess(&$variables) {
+  if (isset($variables['entity_type']) && $variables['entity_type'] == 'entityform') {
+    if(isset($variables['view_mode']) && $variables['view_mode'] == 'full') {
+      if(isset($variables['elements']['#bundle']) && $variables['elements']['#bundle'] == 'transportpulje_form') {
+        drupal_add_css(drupal_get_path('module', 'transportpulje_form'). '/css/form.css');
+      }
+    }
+  }
 }

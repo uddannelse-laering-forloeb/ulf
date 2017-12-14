@@ -169,7 +169,6 @@ function secure_permissions_data_secure_permissions($role) {
       'view user map',
       'schedule publishing of nodes',
       'view scheduled content',
-      'administer tpf',
       'administer custom settings',
     ),
 

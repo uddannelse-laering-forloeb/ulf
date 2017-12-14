@@ -48,3 +48,20 @@
 #transportpulje-form-add-application #part_two.has-passed + #edit-submit-wrapper {
     display: block;
 }
+
+.entityform-transportpulje-form .submitted {
+    margin: 1em 0;
+}
+
+.entityform-transportpulje-form .block--field-label {
+    display: block;
+    float: left;
+    margin-top: 1em;
+    width: 100%;
+}
+
+.entityform-transportpulje-form .tpf-status {
+    font-size: 1.5em;
+    float: left;
+    width: 100%;
+}

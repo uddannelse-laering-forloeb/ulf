@@ -23,7 +23,7 @@ function transportpulje_form_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 2,
+        'weight' => 5,
       ),
     ),
     'entity_type' => 'entityform',
@@ -64,7 +64,7 @@ function transportpulje_form_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 1,
+        'weight' => 2,
       ),
     ),
     'entity_type' => 'entityform',
@@ -101,7 +101,7 @@ function transportpulje_form_field_default_field_instances() {
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
-        'weight' => 0,
+        'weight' => 1,
       ),
     ),
     'entity_type' => 'entityform',
@@ -143,7 +143,7 @@ function transportpulje_form_field_default_field_instances() {
           'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
-        'weight' => 8,
+        'weight' => 11,
       ),
     ),
     'entity_type' => 'entityform',
@@ -174,44 +174,6 @@ function transportpulje_form_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance:
-  // 'entityform-transportpulje_form-field_tpf_distance_calc_failed'.
-  $field_instances['entityform-transportpulje_form-field_tpf_distance_calc_failed'] = array(
-    'bundle' => 'transportpulje_form',
-    'default_value' => array(
-      0 => array(
-        'value' => 0,
-      ),
-    ),
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'list',
-        'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 18,
-      ),
-    ),
-    'entity_type' => 'entityform',
-    'field_name' => 'field_tpf_distance_calc_failed',
-    'label' => 'Afstandsudregning fejlet',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'display_label' => 1,
-      ),
-      'type' => 'options_onoff',
-      'weight' => 4,
-    ),
-  );
-
   // Exported field_instance: 'entityform-transportpulje_form-field_tpf_email'.
   $field_instances['entityform-transportpulje_form-field_tpf_email'] = array(
     'bundle' => 'transportpulje_form',
@@ -224,7 +186,7 @@ function transportpulje_form_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 11,
+        'weight' => 13,
       ),
     ),
     'entity_type' => 'entityform',
@@ -254,10 +216,9 @@ function transportpulje_form_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 12,
+        'type' => 'hidden',
+        'weight' => 16,
       ),
     ),
     'entity_type' => 'entityform',
@@ -295,7 +256,7 @@ function transportpulje_form_field_default_field_instances() {
           'thousand_separator' => '',
         ),
         'type' => 'number_decimal',
-        'weight' => 6,
+        'weight' => 9,
       ),
     ),
     'entity_type' => 'entityform',
@@ -330,7 +291,7 @@ function transportpulje_form_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 5,
+        'weight' => 8,
       ),
     ),
     'entity_type' => 'entityform',
@@ -364,7 +325,7 @@ function transportpulje_form_field_default_field_instances() {
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
-        'weight' => 4,
+        'weight' => 7,
       ),
     ),
     'entity_type' => 'entityform',
@@ -398,7 +359,7 @@ function transportpulje_form_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 3,
+        'weight' => 6,
       ),
     ),
     'entity_type' => 'entityform',
@@ -432,7 +393,7 @@ function transportpulje_form_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 13,
+        'weight' => 14,
       ),
     ),
     'entity_type' => 'entityform',
@@ -470,7 +431,7 @@ function transportpulje_form_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 9,
+        'weight' => 12,
       ),
     ),
     'entity_type' => 'entityform',
@@ -512,7 +473,7 @@ function transportpulje_form_field_default_field_instances() {
           'thousand_separator' => '',
         ),
         'type' => 'number_integer',
-        'weight' => 7,
+        'weight' => 10,
       ),
     ),
     'entity_type' => 'entityform',
@@ -548,7 +509,7 @@ function transportpulje_form_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 15,
+        'weight' => 4,
       ),
     ),
     'entity_type' => 'entityform',
@@ -590,7 +551,7 @@ function transportpulje_form_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 19,
+        'weight' => 0,
       ),
     ),
     'entity_type' => 'entityform',
@@ -624,7 +585,7 @@ function transportpulje_form_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 16,
+        'weight' => 3,
       ),
     ),
     'entity_type' => 'entityform',
@@ -923,7 +884,6 @@ function transportpulje_form_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Adresse / Lokation');
-  t('Afstandsudregning fejlet');
   t('Antal deltagere');
   t('Beskriv læringsfomålet');
   t('Dato');
