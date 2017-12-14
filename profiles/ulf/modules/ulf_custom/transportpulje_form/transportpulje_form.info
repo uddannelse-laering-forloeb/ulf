@@ -24,6 +24,7 @@ dependencies[] = ulf_base
 dependencies[] = ulf_course
 dependencies[] = ulf_taxonomies
 dependencies[] = views
+dependencies[] = views_data_export
 features[captcha_points][] = transportpulje_form_entityform_edit_form
 features[ctools][] = captcha:captcha:1
 features[ctools][] = field_group:field_group:1

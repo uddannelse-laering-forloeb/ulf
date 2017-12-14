@@ -67,6 +67,8 @@ function transportpulje_form_menu() {
 }
 
 /**
+ * Add actions to Views bulk operations.
+ *
  * Implements hook_action_info().
  */
 function transportpulje_form_action_info() {
@@ -113,23 +115,48 @@ function transportpulje_form_action_info() {
   return $actions;
 }
 
+/**
+ * Custom action for bulk operation. (Accepted)
+ *
+ * @param $entity
+ */
 function _tpf_change_status_accepted($entity) {
   _tpf_change_entity($entity, 'accepted');
 }
 
+/**
+ * Custom action for bulk operation. (Accepted and send mail)
+ *
+ * @param $entity
+ */
 function _tpf_accept($entity) {
   _tpf_change_entity($entity, 'accepted_mail');
 }
 
+/**
+ * Custom action for bulk operation. (Refused)
+ *
+ * @param $entity
+ */
 function _tpf_change_status_refused($entity) {
   _tpf_change_entity($entity, 'refused');
 }
 
-
+/**
+ * Custom action for bulk operation. (Refused and send mail)
+ *
+ * @param $entity
+ */
 function _tpf_refuse($entity) {
   _tpf_change_entity($entity, 'refused_mail');
 }
 
+/**
+ * Set status and send mail based on action selected.
+ *
+ * @param $entity
+ * @param $action
+ */
 function _tpf_change_entity($entity, $action) {
   $wrapper = entity_metadata_wrapper('entityform', $entity);
   switch ($action) {
@@ -279,6 +306,11 @@ function _tpf_transport_application_sent_output($output) {
   drupal_deliver_html_page($output);
 }
 
+/**
+ * Add css file to entityform submission display.
+ *
+ * @param $variables
+ */
 function transportpulje_form_preprocess(&$variables) {
   if (isset($variables['entity_type']) && $variables['entity_type'] == 'entityform') {
     if(isset($variables['view_mode']) && $variables['view_mode'] == 'full') {
