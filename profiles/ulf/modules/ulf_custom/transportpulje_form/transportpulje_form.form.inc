@@ -379,7 +379,7 @@ function _transportpulje_form_calculate_conditions($form, &$form_state) {
     $form['fields']['part_two']['contact']['email']['#required'] = TRUE;
     $form['fields']['part_two']['contact']['email_repeat']['#required'] = TRUE;
 
-    $form['fields']['part_two']['message_wrapper']['#prefix'] = '<div class="user-message">';
+    $form['fields']['part_two']['message_wrapper']['#prefix'] = '<div class="user-message" id="type-' . $type . '">';
     $form['fields']['part_two']['message_wrapper']['#suffix'] = '</div>';
 
     $form['fields']['part_two']['message_wrapper']['messages']['#markup'] = $text;
