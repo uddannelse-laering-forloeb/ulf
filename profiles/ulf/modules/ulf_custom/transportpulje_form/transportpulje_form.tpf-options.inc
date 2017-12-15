@@ -19,6 +19,9 @@ function _tpf_get_type(&$form_values) {
     }
   }
 
+  if (_tpf_node_is_private($form_values)) {
+    return 'denied_private';
+  }
   if (_tpf_is_private($form_values)) {
     return 'is_private';
   }
@@ -34,6 +37,18 @@ function _tpf_get_type(&$form_values) {
   if (_tpf_part_of_course_list($form_values)) {
     return 'part_of_course_list';
   }
+}
+
+function _tpf_node_is_private($form_values) {
+  if (isset($form_values['course_dropdown'])) {
+    $node_wrapper = entity_metadata_wrapper('node', $form_values['course_dropdown']);
+    $allowed_support = $node_wrapper->field_tpf_who_get_support->value();
+    // @todo needs check for type of institution
+    if ($allowed_support == 'municipal') {
+      return TRUE;
+    }
+  }
+  return FALSE;
 }
 
 function _tpf_get_distance($form_values) {
@@ -82,10 +97,13 @@ function _tpf_get_distance($form_values) {
 
 
 function _tpf_is_private($form_values) {
-  $institution = taxonomy_term_load($form_values['institution_name']);
-  $wrapper = entity_metadata_wrapper('taxonomy_term', $institution);
-  $institution_type = $wrapper->field_tpf_relation->value();
-  return ($institution_type == 'tpf_relation_private') ? TRUE : FALSE;
+  if (isset($form_values['institution_name'])) {
+    $institution = taxonomy_term_load($form_values['institution_name']);
+    $wrapper = entity_metadata_wrapper('taxonomy_term', $institution);
+    $institution_type = $wrapper->field_tpf_relation->value();
+    return ($institution_type == 'tpf_relation_private') ? TRUE : FALSE;
+  }
+  return FALSE;
 }
 
 function _tpf_not_course($form_values) {
@@ -93,12 +111,30 @@ function _tpf_not_course($form_values) {
 }
 
 function _tpf_has_no_district($form_values) {
-  return TRUE;
+  if (isset($form_values['institution_name'])) {
+    $institution = taxonomy_term_load($form_values['institution_name']);
+    $wrapper = entity_metadata_wrapper('taxonomy_term', $institution);
+    $district = $wrapper->field_tpf_district->value();
+    // If school (Has district)
+    if (!isset($district)) {
+      return TRUE;
+    }
+  }
+
+  return FALSE;
 }
 
 function _tpf_not_part_of_course_list($form_values) {
-  // Check on node field.
-  return TRUE;
+  if (isset($form_values['course_dropdown'])) {
+    $node_wrapper = entity_metadata_wrapper('node', $form_values['course_dropdown']);
+    $in_list = $node_wrapper->field_tpf_in_list->value();
+    // Requested course is part of courselist. (Checkbox on node)
+    if (!$in_list) {
+      return TRUE;
+    }
+  }
+  
+  return FALSE;
 }
 
 function _tpf_part_of_course_list($form_values) {

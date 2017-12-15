@@ -336,11 +336,30 @@ function _transportpulje_form_calculate_conditions($form, &$form_state) {
 
     case 'part_of_course_list' :
       $passed = TRUE;
-      $text = 'Text district X - Afh. af skoledistrikt';
-      break;
+      if (isset($form_values['course_dropdown']) && isset($form_values['institution_name'])) {
+        $institution = taxonomy_term_load($form_values['institution_name']);
+        $wrapper = entity_metadata_wrapper('taxonomy_term', $institution);
+        $district = $wrapper->field_tpf_district->value();
+        switch ($district) {
+          case 1 :
+            $text = variable_get('district_1', array('value' => '', 'format' => NULL))['value'];
+            break;
+          case 2 :
+            $text = variable_get('district_2', array('value' => '', 'format' => NULL))['value'];
+            break;
+          case 3 :
+            $text = variable_get('district_3', array('value' => '', 'format' => NULL))['value'];
+            break;
+          case 4 :
+            $text = variable_get('district_4', array('value' => '', 'format' => NULL))['value'];
+            break;
+          case 5 :
+            $text = variable_get('district_5', array('value' => '', 'format' => NULL))['value'];
+            break;
+        }
+      }
 
-    default:
-      $text = t("Error! - Couldn't find text");
+      break;
   }
 
   // If passed is true we show part two of the form.
@@ -489,13 +508,16 @@ function _tpf_full_form_validate($form, &$form_state) {
     }
 
     // Provide specific field validations.
-
     if(_tpf_validate_expenses($form_state)) {
       form_set_error('expenses', t(':field must be integer or decimal', array(':field' => $form_fields['expenses']['#title'])));
       $error = TRUE;
     }
 
-    //@todo add email address validation.
+    if(_tpf_validate_email_address($form_state)) {
+      form_set_error('email', t(':field_1 must be a valid email address', array(':field_1' => $form_fields['email']['#title'])));
+      $error = TRUE;
+    }
+
     if(_tpf_validate_emails($form_state)) {
       form_set_error('email_repeat', t(':field_1 and :field_2 must be alike', array(':field_1' => $form_fields['email']['#title'], ':field_2' => $form_fields['email_repeat']['#title'])));
       $error = TRUE;
@@ -568,6 +590,16 @@ function _tpf_validate_expenses($form_state) {
  * @param $form_state
  * @return bool
  */
+function _tpf_validate_email_address($form_state) {
+  return(filter_var($form_state['values']['email'], FILTER_VALIDATE_EMAIL)) ? FALSE : TRUE;
+}
+
+/**
+ * Validate email fields / Email repeat check.
+ *
+ * @param $form_state
+ * @return bool
+ */
 function _tpf_validate_emails($form_state) {
   return($form_state['values']['email'] == $form_state['values']['email_repeat']) ? FALSE : TRUE;
 }
@@ -632,7 +664,15 @@ function _tpf_modify_course_dropdown($courses) {
     }
   }
 
-  return $modified_list;
+  // Cleanup array.
+  foreach ($modified_list['course'] as $key => $value) {
+    $modified_list['course'][$key] = trim(html_entity_decode($value));
+  }
+
+  // Sort alphabetically.
+  asort($modified_list['course']);
+
+  return $modified_list['course'];
 }
 
 /**
@@ -670,7 +710,6 @@ function transportpulje_form_add_application_submit($form, &$form_state) {
     // Set the fields.
     $wrapper->field_tpf_course_select = $form_state['values']['course_dropdown'];
     $wrapper->field_tpf_course_not_found = $form_state['values']['course_not_found'];
-    $wrapper->field_tpf_distance_calc_failed = $form_state['values']['distance_calc_failed'];
     $wrapper->field_tpf_what_course = $form_state['values']['course_what'];
     $wrapper->field_tpf_purpose_course = $form_state['values']['course_description'];
     $wrapper->field_tpf_address = $form_address;
