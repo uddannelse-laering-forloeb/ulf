@@ -41,10 +41,13 @@ function _tpf_get_type(&$form_values) {
 
 function _tpf_node_is_private($form_values) {
   if (isset($form_values['course_dropdown'])) {
+    $institution = taxonomy_term_load($form_values['institution_name']);
+    $wrapper = entity_metadata_wrapper('taxonomy_term', $institution);
+    $institution_type = $wrapper->field_tpf_relation->value();
     $node_wrapper = entity_metadata_wrapper('node', $form_values['course_dropdown']);
     $allowed_support = $node_wrapper->field_tpf_who_get_support->value();
     // @todo needs check for type of institution
-    if ($allowed_support == 'municipal') {
+    if ($allowed_support == 'municipal' && $institution_type == 'tpf_relation_private') {
       return TRUE;
     }
   }

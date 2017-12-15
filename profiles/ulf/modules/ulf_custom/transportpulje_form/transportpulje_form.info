@@ -24,7 +24,6 @@ dependencies[] = ulf_course
 dependencies[] = ulf_taxonomies
 dependencies[] = views
 dependencies[] = views_data_export
-features[ctools][] = captcha:captcha:1
 features[ctools][] = field_group:field_group:1
 features[ctools][] = strongarm:strongarm:1
 features[ctools][] = views:views_default:3.0

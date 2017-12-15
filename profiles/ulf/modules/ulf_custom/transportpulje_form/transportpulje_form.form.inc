@@ -84,12 +84,14 @@ function transportpulje_form_add_application($form, &$form_state) {
 
   $form['fields']['part_one']['select_course']['course_not_found'] = array(
     '#title' => t('I could not find the course'),
-    '#type' => 'checkbox'
+    '#type' => 'checkbox',
+    '#description' => variable_get('help_no_course'),
   );
 
   $form['fields']['part_one']['select_course']['course_alt_address'] = array(
     '#title' => t('Enter alternative course address'),
-    '#type' => 'checkbox'
+    '#type' => 'checkbox',
+    '#description' => variable_get('help_alt_address'),
   );
 
   $form['fields']['part_one']['select_course']['distance_calc_failed'] = array(

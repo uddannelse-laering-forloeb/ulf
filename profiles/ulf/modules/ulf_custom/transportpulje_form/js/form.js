@@ -2,12 +2,18 @@
   "use strict";
   Drupal.behaviors.transportpulje_form = {
     attach: function (context, settings) {
-
       // Load course.
       $('.form-item-course-dropdown').change(function (){
         var value = $('.form-item-course-dropdown .chosen-single span').html();
         var nid = $('.form-item-course-dropdown option').filter(function() { return ($(this).text() === value) }).val();
-        $('#course_dropdown_address').load('fetch-address/' + nid);
+        $('#course_dropdown_address').load('fetch-address/' + nid, function () {
+          if($(this)[0].innerHTML.length == 0) {
+            $('#edit-course-alt-address').prop('checked', true).trigger('change');
+          }
+          else {
+            $('#edit-course-alt-address').prop('checked', false).trigger('change');
+          }
+        });
       });
       
       // Setup dropdown lists.

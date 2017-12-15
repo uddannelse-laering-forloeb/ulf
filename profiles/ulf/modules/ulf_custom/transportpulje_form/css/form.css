@@ -2,9 +2,19 @@
     width: 50%;
 }
 
-#transportpulje-form-add-application label {
-    display: block;
+/*
+@media screen and (min-width: 20em) {
+    #transportpulje-form-add-application {
+        width: 50%;
+    }
+}*/
+
+@media screen and (max-width:860px) {
+    #transportpulje-form-add-application {
+        width: 100%;
+    }
 }
+
 
 #transportpulje-form-add-application select {
     min-width: 50%;
@@ -22,6 +32,11 @@
     margin: 1em 0;
     border-radius: .5em;
     width: 100%;
+}
+
+/* Override jquery Chosen default styling. */
+#transportpulje-form-add-application .chosen-container {
+    width: 100%!important;
 }
 
 #transportpulje-form-add-application .user-message p:last-child {
@@ -64,4 +79,15 @@
     font-size: 1.5em;
     float: left;
     width: 100%;
+}
+
+#transportpulje-form-add-application .form-item {
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+#transportpulje-form-add-application .description {
+    -webkit-flex: 0 0 100%;
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
 }
