@@ -387,7 +387,7 @@ function _transportpulje_form_calculate_conditions($form, &$form_state) {
   else {
     // We still show some of part two because this is what is ajaxified (Ie. This is where we can display a message to the user).
     // We just only show the message.
-    $form['fields']['part_two']['#prefix'] = '<div id="part_two" class="not-passed"><div class="user-message">' . $text . '</div>';
+    $form['fields']['part_two']['#prefix'] = '<div id="part_two" class="not-passed"><div class="user-message" id="type-' . $type .'">' . $text . '</div>';
   }
 
   $form_state['rebuild'] = TRUE;
