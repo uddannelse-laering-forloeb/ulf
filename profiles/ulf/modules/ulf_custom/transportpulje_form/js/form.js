@@ -41,6 +41,14 @@
           }
         }
       });
+
+      // Remove dash before child items.
+      $('.form-item-institution-name option:not(:first-child)').text(
+        function() {
+          return this.text.replace('-', '');
+        }
+      );
+
       // Change the result of the dropdown based on type selected.
       $('.form-item-institution-type').change(function (){
         var inst_type = $('.form-item-institution-type').find(":selected").text();

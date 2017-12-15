@@ -16,13 +16,13 @@ function _transportpulje_form_build_mail_confirmation($wrapper) {
   if($wrapper->field_tpf_course_not_found->value()) {
     $application .= '<strong>';
     $application .= t('What is the course', array(), array('langcode' => $language->language));
-    $application .= ':</strong> ';
+    $application .= ':</strong>';
     $application .= $wrapper->field_tpf_what_course->value();
     $application .= '<br/>';
 
     $application .= '<strong>';
     $application .= t('Describe the learning target', array(), array('langcode' => $language->language));
-    $application .= ':</strong> ';
+    $application .= ':</strong>';
     $application .= $wrapper->field_tpf_purpose_course->value();
     $application .= '<br/>';
   } else {
@@ -30,14 +30,14 @@ function _transportpulje_form_build_mail_confirmation($wrapper) {
 
     $application .= '<strong>';
     $application .= t('Course', array(), array('langcode' => $language->language));
-    $application .= ':</strong> ';
+    $application .= ':</strong>';
     $application .= $course->title;
     $application .= '<br/>';
   }
 
   $application .= '<strong>';
   $application .= t('Address', array(), array('langcode' => $language->language));
-  $application .= ':</strong> ';
+  $application .= ':</strong>';
   $application .= $wrapper->field_tpf_address->value();
   $application .= '<br/>';
 
@@ -51,20 +51,20 @@ function _transportpulje_form_build_mail_confirmation($wrapper) {
 
   $application .= '<strong>';
   $application .= t('Expenses', array(), array('langcode' => $language->language));
-  $application .= ':</strong> ';
+  $application .= ':</strong>';
   $application .= $wrapper->field_tpf_expense->value();
   $application .= '<br/>';
 
   $application .= '<strong>';
   $application .= t('Participants', array(), array('langcode' => $language->language));
-  $application .= ':</strong> ';
+  $application .= ':</strong>';
   $application .= $wrapper->field_tpf_participants->value();
   $application .= '<br/>';
 
   $application .= '<strong>';
   $application .= t('Date', array(), array('langcode' => $language->language));
-  $application .= ':</strong> ';
-  $application .= $wrapper->field_tpf_date->value();
+  $application .= ':</strong>';
+  $application .= date('d/m/Y', $wrapper->field_tpf_date->value());
   $application .= '<br/>';
 
   $application .= '</p>';
@@ -77,19 +77,19 @@ function _transportpulje_form_build_mail_confirmation($wrapper) {
 
   $application .= '<strong>';
   $application .= t('Name', array(), array('langcode' => $language->language));
-  $application .= ':</strong> ';
+  $application .= ':</strong>';
   $application .= $wrapper->field_tpf_name->value();
   $application .= '<br/>';
 
   $application .= '<strong>';
   $application .= t('Email', array(), array('langcode' => $language->language));
-  $application .= ':</strong> ';
+  $application .= ':</strong>';
   $application .= $wrapper->field_tpf_email->value();
   $application .= '<br/>';
 
   $application .= '<strong>';
   $application .= t('Short description', array(), array('langcode' => $language->language));
-  $application .= ':</strong> ';
+  $application .= ':</strong>';
   $application .= $wrapper->field_tpf_date->value();
   $application .= '<br/>';
 
@@ -100,7 +100,7 @@ function _transportpulje_form_build_mail_confirmation($wrapper) {
 
 function _transportpulje_form_notify($wrapper, $action) {
   global $language;
-  $to = '';
+  $to = variable_get('site_mail');
   $params = array();
   switch ($action) {
     case 'on_submit_user':

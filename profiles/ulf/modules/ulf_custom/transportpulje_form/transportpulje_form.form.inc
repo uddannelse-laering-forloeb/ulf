@@ -447,7 +447,7 @@ function _tpf_states_required_form_fields_validate($fields, &$form_state) {
       if($required) {
         $field_name = $field['#name'];
         if(empty($form_state['values'][$field_name])) {
-          form_set_error($field_name, t(':field is a required field2', array(':field' => $field['#title'])));
+          form_set_error($field_name, t(':field is a required field', array(':field' => $field['#title'])));
         }
       }
     }

@@ -2,19 +2,15 @@
     width: 50%;
 }
 
-/*
-@media screen and (min-width: 20em) {
-    #transportpulje-form-add-application {
-        width: 50%;
-    }
-}*/
-
 @media screen and (max-width:860px) {
     #transportpulje-form-add-application {
         width: 100%;
     }
 }
 
+#transportpulje-form-add-application .form-checkbox {
+    margin-top: 4px;
+}
 
 #transportpulje-form-add-application select {
     min-width: 50%;
@@ -90,4 +86,6 @@
     -webkit-flex: 0 0 100%;
     -ms-flex: 0 0 100%;
     flex: 0 0 100%;
+    font-size: .8em;
+    color: gray;
 }
