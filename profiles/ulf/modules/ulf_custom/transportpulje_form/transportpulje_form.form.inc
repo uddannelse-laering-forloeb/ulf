@@ -677,6 +677,129 @@ function _tpf_modify_course_dropdown($courses) {
   return $modified_list['course'];
 }
 
+function _transportpulje_form_build_mail_confirmation($wrapper) {
+  global $language;
+
+  $application = '<h2>';
+  $application .= t('Transport application copy', array(), array('langcode' => $language->language));
+  $application .= ':</h2>';
+
+  $application .= '<h3>';
+  $application .= t('Course', array(), array('langcode' => $language->language));
+  $application .= ':</h3>';
+
+  $application .= '<p>';
+
+  if($wrapper->field_tpf_course_not_found->value()) {
+    $application .= '<strong>';
+    $application .= t('What is the course', array(), array('langcode' => $language->language));
+    $application .= ':</strong> ';
+    $application .= $wrapper->field_tpf_what_course->value();
+    $application .= '<br/>';
+
+    $application .= '<strong>';
+    $application .= t('Describe the learning target', array(), array('langcode' => $language->language));
+    $application .= ':</strong> ';
+    $application .= $wrapper->field_tpf_purpose_course->value();
+    $application .= '<br/>';
+  } else {
+    $course = $wrapper->field_tpf_course_select->value();
+
+    $application .= '<strong>';
+    $application .= t('Course', array(), array('langcode' => $language->language));
+    $application .= ':</strong> ';
+    $application .= $course->title;
+    $application .= '<br/>';
+  }
+
+  $application .= '<strong>';
+  $application .= t('Address', array(), array('langcode' => $language->language));
+  $application .= ':</strong> ';
+  $application .= $wrapper->field_tpf_address->value();
+  $application .= '<br/>';
+
+  $application .= '</p>';
+
+  $application .= '<h3>';
+  $application .= t('Transport information', array(), array('langcode' => $language->language));
+  $application .= ':</h3>';
+
+  $application .= '<p>';
+
+  $application .= '<strong>';
+  $application .= t('Expenses', array(), array('langcode' => $language->language));
+  $application .= ':</strong> ';
+  $application .= $wrapper->field_tpf_expense->value();
+  $application .= '<br/>';
+
+  $application .= '<strong>';
+  $application .= t('Participants', array(), array('langcode' => $language->language));
+  $application .= ':</strong> ';
+  $application .= $wrapper->field_tpf_participants->value();
+  $application .= '<br/>';
+
+  $application .= '<strong>';
+  $application .= t('Date', array(), array('langcode' => $language->language));
+  $application .= ':</strong> ';
+  $application .= $wrapper->field_tpf_date->value();
+  $application .= '<br/>';
+
+  $application .= '</p>';
+
+  $application .= '<h3>';
+  $application .= t('Contact information', array(), array('langcode' => $language->language));
+  $application .= ':</h3>';
+
+  $application .= '<p>';
+
+  $application .= '<strong>';
+  $application .= t('Name', array(), array('langcode' => $language->language));
+  $application .= ':</strong> ';
+  $application .= $wrapper->field_tpf_name->value();
+  $application .= '<br/>';
+
+  $application .= '<strong>';
+  $application .= t('Email', array(), array('langcode' => $language->language));
+  $application .= ':</strong> ';
+  $application .= $wrapper->field_tpf_email->value();
+  $application .= '<br/>';
+
+  $application .= '<strong>';
+  $application .= t('Short description', array(), array('langcode' => $language->language));
+  $application .= ':</strong> ';
+  $application .= $wrapper->field_tpf_date->value();
+  $application .= '<br/>';
+
+  $application .= '</p>';
+
+  return $application;
+}
+
+function _transportpulje_form_notify($wrapper) {
+  global $language;
+
+  $params['subject'] = t('Transport application recieved', array(), array('langcode' => $language->language));
+  $params['body'] = '<h2>' . t('Transport application recieved', array(), array('langcode' => $language->language)) . '</h2>';
+  $params['body'] .= variable_get('confirmation_email', array('value' => '', 'format' => NULL))['value'];
+  $params['body'] .= _transportpulje_form_build_mail_confirmation($wrapper);
+
+  $to = $wrapper->field_tpf_email->value();
+
+  drupal_mail('transportpulje_form', 'notification', $to, $language->language, $params);
+}
+
+/**
+ * Implements hook_mail().
+ */
+function transportpulje_form_mail($key, &$message, $params) {
+  switch ($key) {
+    case 'notification':
+      $message['subject'] = $params['subject'];
+      $message['body'] = $params['body'];
+      break;
+  }
+}
+
 /**
  * @param $form
  * @param $form_state
@@ -728,6 +851,8 @@ function transportpulje_form_add_application_submit($form, &$form_state) {
     $wrapper->field_tpf_status = ($form_state['values']['distance_calc_failed']) ? 'awaiting_distance_calc_failed' : 'awaiting';
 
     $wrapper->save();
+
+    _transportpulje_form_notify($wrapper);
 
     // Set redirect.
     $form_state['redirect'] = '/transport_application/sent';
