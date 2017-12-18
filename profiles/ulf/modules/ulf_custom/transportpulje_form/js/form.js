@@ -3,18 +3,36 @@
   Drupal.behaviors.transportpulje_form = {
     attach: function (context, settings) {
       // Load course.
-      $('.form-item-course-dropdown').change(function (){
+      $('.form-item-course-dropdown').change(function () {
         var value = $('.form-item-course-dropdown .chosen-single span').html();
         var nid = $('.form-item-course-dropdown option').filter(function() { return ($(this).text() === value) }).val();
+        console.log(value);
+        console.log(nid);
         $('#course_dropdown_address').load('fetch-address/' + nid, function () {
           if($(this)[0].innerHTML.length == 0) {
             $('#edit-course-alt-address').prop('checked', true).trigger('change');
+            $('#edit-course-alt-address').prop("disabled", !this.checked);
           }
           else {
             $('#edit-course-alt-address').prop('checked', false).trigger('change');
+            $('#edit-course-alt-address').removeAttr("disabled");
           }
         });
       });
+
+      var url_course_id = urlParam('course_id');
+      if (url_course_id){
+        $('#course_dropdown_address').load('fetch-address/' + url_course_id, function () {
+          if($(this)[0].innerHTML.length == 0) {
+            $('#edit-course-alt-address').prop('checked', true).trigger('change');
+            $('#edit-course-alt-address').prop("disabled", !this.checked);
+          }
+          else {
+            $('#edit-course-alt-address').prop('checked', false).trigger('change');
+            $('#edit-course-alt-address').removeAttr("disabled");
+          }
+        });
+      }
       
       // Setup dropdown lists.
       var inst_by_type = [];
@@ -69,6 +87,16 @@
             break;
         }
       });
+
+      function urlParam(name){
+        var results = new RegExp('[\?&]' + name + '=([^]*)').exec(window.location.href);
+        if (results==null){
+          return null;
+        }
+        else{
+          return results[1] || 0;
+        }
+      }
     }
   };
 }(jQuery));
