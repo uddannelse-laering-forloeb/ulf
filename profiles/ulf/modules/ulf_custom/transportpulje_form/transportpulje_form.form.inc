@@ -637,11 +637,8 @@ function _tpf_modify_course_dropdown($courses) {
       }
       // Else just add the nodes title.
       else {
-        // Fetch nodes location setting, if hide selected don't add them to list
-        $location = $node_wrapper->field_map_placement->value();
-        if ($location != 'hide') {
-          $modified_list['course'][$result->entity_id] = $courses['course'][$result->entity_id];
-        }
+        // Fetch nodes location setting.
+        $modified_list['course'][$result->entity_id] = $courses['course'][$result->entity_id];
       }
     }
   }

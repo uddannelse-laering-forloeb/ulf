@@ -2,6 +2,7 @@
   "use strict";
   Drupal.behaviors.transportpulje_form = {
     attach: function (context, settings) {
+      console.log(settings);
       // Load course.
       $('.form-item-course-dropdown').change(function () {
         var value = $('.form-item-course-dropdown .chosen-single span').html();
@@ -66,8 +67,22 @@
       inst_by_type['kindergarten_options'] = '';
       inst_by_type['nursery_options'] = '';
       inst_by_type['daycare_options'] = '';
-      // Populate dropdown lists.
-      $.each(settings.institutions, function(index, value) {
+
+      var sort_arr = [];
+      for (var key in settings.institutions) {
+        sort_arr.push(settings.institutions[key]);
+      }
+
+      var sorted = sort_arr.sort(function (a,b) {
+        var nameA=a.name.toLowerCase(), nameB=b.name.toLowerCase();
+        if (nameA < nameB)
+          return -1;
+        if (nameA > nameB)
+          return 1;
+        return 0;
+      });
+
+      $.each(sorted, function(index, value) {
         if(typeof value.field_tpf_type['und'] !== 'undefined') {
           switch(value.field_tpf_type['und']['0']['value']) {
             case 'tpf_institution_type_school':
@@ -85,6 +100,8 @@
           }
         }
       });
+
+
 
       // Remove dash before child items.
       $('.form-item-institution-name option:not(:first-child)').text(
