@@ -330,20 +330,21 @@ function _transportpulje_form_calculate_conditions($form, &$form_state) {
         $institution = taxonomy_term_load($form_values['institution_name']);
         $wrapper = entity_metadata_wrapper('taxonomy_term', $institution);
         $district = $wrapper->field_tpf_district->value();
+        $a = 1;
         switch ($district) {
-          case 1 :
+          case 'district_1' :
             $text = variable_get('district_1', array('value' => '', 'format' => NULL))['value'];
             break;
-          case 2 :
+          case 'district_2' :
             $text = variable_get('district_2', array('value' => '', 'format' => NULL))['value'];
             break;
-          case 3 :
+          case 'district_3' :
             $text = variable_get('district_3', array('value' => '', 'format' => NULL))['value'];
             break;
-          case 4 :
+          case 'district_4' :
             $text = variable_get('district_4', array('value' => '', 'format' => NULL))['value'];
             break;
-          case 5 :
+          case 'district_5' :
             $text = variable_get('district_5', array('value' => '', 'format' => NULL))['value'];
             break;
         }

@@ -35,8 +35,8 @@
         $('.group-transport-app').hide();
       }
 
-      // Hide on load if youth.
-      $('.field-name-field-message-form option[value="2"]').remove();
+      // Hide selection on eform list.
+      $('.field-name-field-message-form option').filter(function() { return ($(this).text() === 'Transportpulje formular') }).remove();
     }
   };
 }(jQuery));
