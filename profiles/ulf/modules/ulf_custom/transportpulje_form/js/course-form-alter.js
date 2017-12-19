@@ -37,6 +37,7 @@
 
       // Hide selection on eform list.
       $('.field-name-field-message-form option').filter(function() { return ($(this).text() === 'Transportpulje formular') }).remove();
+      $('.field-name-field-message-form option').filter(function() { return ($(this).text() === '- Begrænset adgang -') }).remove();
     }
   };
 }(jQuery));

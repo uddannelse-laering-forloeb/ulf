@@ -238,7 +238,7 @@
               <?php endif; ?>
             </div>
           </div>
-          <?php if (module_exists('transportpulje_form')) : ?>
+          <?php if (module_exists('transportpulje_form') && $group_type != 'ungdomsuddannelse') : ?>
             <div class="block--dark block--transport-request-link">
               <h2 class="block--header">
                 <?php print t('Transport');?>
