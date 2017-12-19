@@ -495,7 +495,7 @@ function transportpulje_form_views_default_views() {
   $handler->display->display_options['fields']['field_tpf_status']['id'] = 'field_tpf_status';
   $handler->display->display_options['fields']['field_tpf_status']['table'] = 'field_data_field_tpf_status';
   $handler->display->display_options['fields']['field_tpf_status']['field'] = 'field_tpf_status';
-  $handler->display->display_options['path'] = 'admin/settings/custom/transport/export.csv';
+  $handler->display->display_options['path'] = 'admin/settings/custom/transport/export';
   $handler->display->display_options['displays'] = array(
     'page' => 'page',
     'default' => 0,
