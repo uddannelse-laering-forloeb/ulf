@@ -615,24 +615,33 @@ function _tpf_modify_course_dropdown($courses) {
     ->condition('entity_id', array_keys($courses['course']), 'IN')
     ->execute();
   foreach ($results as $result) {
+    $node_wrapper = entity_metadata_wrapper('node', $result->entity_id);
+
     // If youth term we don't want to display it.
     if ($result->field_target_group_tid != $youth_term_id) {
       // If a title for the course already exists in the modified list we want to add target group to title.
       if ($match = array_search($courses['course'][$result->entity_id], $modified_list['course'])) {
+
         // Fetch the matching nodes
-        $node_wrapper = entity_metadata_wrapper('node', $result->entity_id);
         $matched_node_wrapper = entity_metadata_wrapper('node', $match);
+
         // Fetch the respective nodes target groups.
         $new_node_target_group = taxonomy_term_load($node_wrapper->field_target_group->tid->value())->name;
         $matched_node_target_group = taxonomy_term_load($matched_node_wrapper->field_target_group->tid->value())->name;
-        // Add new node with modified title.
-        $modified_list['course'][$result->entity_id] = $courses['course'][$result->entity_id] . ' (' . $new_node_target_group . ')';
-        // Modify existing nodes title.
-        $modified_list['course'][$match] = $courses['course'][$result->entity_id] . ' (' . $matched_node_target_group . ')';
+
+          // Add new node with modified title.
+          $modified_list['course'][$result->entity_id] = $courses['course'][$result->entity_id] . ' (' . $new_node_target_group . ')';
+
+          // Modify existing nodes title.
+          $modified_list['course'][$match] = $courses['course'][$result->entity_id] . ' (' . $matched_node_target_group . ')';
       }
       // Else just add the nodes title.
       else {
-        $modified_list['course'][$result->entity_id] = $courses['course'][$result->entity_id];
+        // Fetch nodes location setting, if hide selected don't add them to list
+        $location = $node_wrapper->field_map_placement->value();
+        if ($location != 'hide') {
+          $modified_list['course'][$result->entity_id] = $courses['course'][$result->entity_id];
+        }
       }
     }
   }
