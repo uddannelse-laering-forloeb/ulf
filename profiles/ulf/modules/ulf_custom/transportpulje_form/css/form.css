@@ -1,10 +1,49 @@
-#transportpulje-form-add-application {
-    width: 50%;
+#transportpulje-form-add-application > div {
+    width: 100%;
+    display: -webkit-flex; /* Safari */
+    -webkit-flex-wrap: wrap; /* Safari 6.1+ */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+#transportpulje-form-add-application > div > h1 {
+    -webkit-flex: 0 1 100%; /* Safari 6.1+ */
+    -ms-flex: 0 1 100%; /* IE 10 */
+    flex: 0 1 100%;
+    order: 0;
+}
+
+#transportpulje-form-add-application > div > .user-message--wrapper {
+    -webkit-flex: 0 1 45%; /* Safari 6.1+ */
+    -ms-flex: 0 1 45%; /* IE 10 */
+    flex: 0 1 45%;
+    order: 2;
+}
+
+#transportpulje-form-add-application > div > #edit-fields {
+    -webkit-flex: 0 1 45%; /* Safari 6.1+ */
+    -ms-flex: 0 1 45%; /* IE 10 */
+    flex: 0 1 45%;
+    order: 1;
 }
 
 @media screen and (max-width:860px) {
-    #transportpulje-form-add-application {
-        width: 100%;
+    #transportpulje-form-add-application > div > .user-message--wrapper {
+        -webkit-flex: 0 1 100%; /* Safari 6.1+ */
+        -ms-flex: 0 1 100%; /* IE 10 */
+        flex: 0 1 100%;
+        order: 1;
+    }
+}
+
+@media screen and (max-width:860px) {
+    #transportpulje-form-add-application > div > #edit-fields {
+        -webkit-flex: 0 1 100%; /* Safari 6.1+ */
+        -ms-flex: 0 1 100%; /* IE 10 */
+        flex: 0 1 100%;
+        order: 2;
+        }
     }
 }
 

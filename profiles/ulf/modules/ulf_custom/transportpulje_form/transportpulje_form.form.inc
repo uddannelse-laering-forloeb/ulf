@@ -40,7 +40,7 @@ function transportpulje_form_add_application($form, &$form_state) {
   );
 
   // Add fields
-  $form['intro'] = array('#markup' => '<div class="user-message">' . variable_get('intro', array('value' => '', 'format' => NULL))['value'] . '</div>');
+  $form['intro'] = array('#markup' => '<h1>' . t('Transport pool form') . '</h1><div class="user-message--wrapper"><div class="user-message">' . variable_get('intro', array('value' => '', 'format' => NULL))['value'] . '</div></div>');
   $form['fields'] = array('#type' => 'container');
 
   // Create part one.
