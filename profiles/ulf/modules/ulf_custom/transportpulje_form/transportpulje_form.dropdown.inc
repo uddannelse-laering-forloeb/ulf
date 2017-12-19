@@ -18,6 +18,6 @@ function _tpf_fetch_address($node) {
 function _tpf_fetch_address_output($node) {
   $location = $node->location;
   if (!empty($location['street']) && !empty($location['postal_code']) && !empty($location['city'])){
-    print '<div id="course_dropdown_address">' . $location['street'] . '<br>' . $location['postal_code'] . ' ' . $location['city'] . '</div>';
+    print '<div id="course_dropdown_street">' . $location['street'] . '</div><div id="course_dropdown_postal">' . $location['postal_code'] . '</div><div id="course_dropdown_city">' . $location['city'] . '</div>';
   }
 }

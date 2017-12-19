@@ -89,12 +89,6 @@ function transportpulje_form_add_application($form, &$form_state) {
     '#description' => variable_get('help_no_course'),
   );
 
-  $form['fields']['part_one']['select_course']['course_alt_address'] = array(
-    '#title' => t('Enter alternative course address'),
-    '#type' => 'checkbox',
-    '#description' => variable_get('help_alt_address'),
-  );
-
   $form['fields']['part_one']['select_course']['distance_calc_failed'] = array(
     '#title' => t('Distance calculation failed'),
     '#type' => 'hidden',
@@ -129,30 +123,23 @@ function transportpulje_form_add_application($form, &$form_state) {
   $form['fields']['part_one']['select_course']['course_address'] = array(
     '#type' => 'fieldset',
     '#title' => t('Course Address'),
-    '#states' => array(
-      'visible' => array(
-        array(':input[name="course_not_found"]' => array('checked' => TRUE)),
-        array(':input[name="course_alt_address"]' => array('checked' => TRUE))
-      ),
-      'required' => array(
-        array(':input[name="course_not_found"]' => array('checked' => TRUE)),
-        array(':input[name="course_alt_address"]' => array('checked' => TRUE))
-      ),
-    ),
   );
   $form['fields']['part_one']['select_course']['course_address']['street'] = array(
     '#title' => t('Street'),
     '#type' => 'textfield',
+    '#required' => TRUE,
     '#default_value' => isset($form_state['values']['course_address']['street']) ? $form_state['values']['street'] : '',
   );
   $form['fields']['part_one']['select_course']['course_address']['postal_code'] = array(
     '#title' => t('Postal code'),
     '#type' => 'textfield',
+    '#required' => TRUE,
     '#default_value' => isset($form_state['values']['course_address']['postal_code']) ? $form_state['values']['course_address']['postal_code'] : '',
   );
   $form['fields']['part_one']['select_course']['course_address']['city'] = array(
     '#title' => t('City'),
     '#type' => 'textfield',
+    '#required' => TRUE,
     '#default_value' => isset($form_state['values']['course_address']['city']) ? $form_state['values']['course_address']['city'] : '',
   );
 
@@ -461,18 +448,6 @@ function _tpf_states_required_form_fields_validate($fields, &$form_state) {
   if($form_state['values']['course_not_found'] == 1 && (empty($form_state['values']['street']) || empty($form_state['values']['postal_code']) || empty($form_state['values']['city']))) {
     form_set_error('course_address', t(':field is a required field', array(':field' => t('Course Address'))));
   }
-
-  if($form_state['values']['course_alt_address'] == 1) {
-    if(empty($form_state['values']['street'])) {
-      form_set_error('street', t(':field is a required field', array(':field' => t('Street'))));
-    }
-    if(empty($form_state['values']['postal_code'])) {
-      form_set_error('postal_code', t(':field is a required field', array(':field' => t('Postal Code'))));
-    }
-    if(empty($form_state['values']['city'])) {
-      form_set_error('city', t(':field is a required field', array(':field' => t('City'))));
-    }
-  }
 }
 
 /**
@@ -546,12 +521,6 @@ function _tpf_full_form_validate($form, &$form_state) {
  */
 function _tpf_validate_all_required($form_state) {
   $error_field_names = array();
-
-  if(!$form_state['values']['course_not_found'] && !$form_state['values']['course_alt_address']) {
-    unset($form_state['values']['street']);
-    unset($form_state['values']['postal_code']);
-    unset($form_state['values']['city']);
-  }
 
   if ($form_state['values']['course_not_found']) {
     unset($form_state['values']['course_dropdown']);
@@ -703,15 +672,11 @@ function transportpulje_form_add_application_submit($form, &$form_state) {
     if (isset($form_state['values']['street']) && isset($form_state['values']['postal_code']) && isset($form_state['values']['city'])) {
       $form_address = $form_state['values']['street'] . ', ' . $form_state['values']['postal_code'] . ' ' . $form_state['values']['city'];
     }
-    else {
-      $node_selected = node_load($form_state['values']['course_dropdown']);
-      if (isset($node_selected['location']) && isset($node_selected['location']['street']) && isset($node_selected['location']['postal_code']) && isset($node_selected['location']['city'])) {
-        $form_address = $node_selected['location']['street'] . ', ' . $node_selected['location']['postal_code'] . ' ' . $node_selected['location']['city'];
-      }
-    }
 
     // Set the fields.
-    $wrapper->field_tpf_course_select = $form_state['values']['course_dropdown'];
+    if ($form_state['values']['course_not_found'] == 0) {
+      $wrapper->field_tpf_course_select = $form_state['values']['course_dropdown'];
+    }
     $wrapper->field_tpf_course_not_found = $form_state['values']['course_not_found'];
     $wrapper->field_tpf_what_course = $form_state['values']['course_what'];
     $wrapper->field_tpf_purpose_course = $form_state['values']['course_description'];

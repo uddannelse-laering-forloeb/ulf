@@ -6,6 +6,12 @@
  * Helper functions to decide transport options.
  */
 
+/**
+ * An ordered list of checks to perform to decide how the form should react next.
+ *
+ * @param $form_values
+ * @return string
+ */
 function _tpf_get_type(&$form_values) {
   if('tpf_school' === $form_values['institution_type'] && 'grade_6' <= $form_values['institution_grade']) {
     $distance = _tpf_get_distance($form_values);
@@ -39,6 +45,12 @@ function _tpf_get_type(&$form_values) {
   }
 }
 
+/**
+ * Check if the selected course can be applied to private institutions.
+ *
+ * @param $form_values
+ * @return bool
+ */
 function _tpf_node_is_private($form_values) {
   if (isset($form_values['course_dropdown'])) {
     $institution = taxonomy_term_load($form_values['institution_name']);
@@ -46,7 +58,6 @@ function _tpf_node_is_private($form_values) {
     $institution_type = $wrapper->field_tpf_relation->value();
     $node_wrapper = entity_metadata_wrapper('node', $form_values['course_dropdown']);
     $allowed_support = $node_wrapper->field_tpf_who_get_support->value();
-    // @todo needs check for type of institution
     if ($allowed_support == 'municipal' && $institution_type == 'tpf_relation_private') {
       return TRUE;
     }
@@ -54,10 +65,16 @@ function _tpf_node_is_private($form_values) {
   return FALSE;
 }
 
+/**
+ * Check if the range requirements are honored.
+ *
+ * @param $form_values
+ * @return array|bool|null
+ */
 function _tpf_get_distance($form_values) {
   // If course is unknown or user has entered an alternative address we use that.
   // Otherwise use the course location.
-  if($form_values['course_not_found'] || $form_values['course_alt_address']) {
+  if($form_values['course_not_found']) {
     $tpf_location = array(
       'street' => $form_values['street'],
       'postal_code' => $form_values['postal_code'],
@@ -98,7 +115,12 @@ function _tpf_get_distance($form_values) {
   return location_distance_between($pos_from, $pos_to);
 }
 
-
+/**
+ * Check if the institution requesting is private.
+ *
+ * @param $form_values
+ * @return bool
+ */
 function _tpf_is_private($form_values) {
   if (isset($form_values['institution_name'])) {
     $institution = taxonomy_term_load($form_values['institution_name']);
@@ -109,10 +131,22 @@ function _tpf_is_private($form_values) {
   return FALSE;
 }
 
+/**
+ * Check if the request is made on behalf of an existing course.
+ *
+ * @param $form_values
+ * @return bool
+ */
 function _tpf_not_course($form_values) {
   return (isset($form_values['course_dropdown']) ? FALSE : TRUE);
 }
 
+/**
+ * Check if the institution is a school type (Has a district)
+ *
+ * @param $form_values
+ * @return bool
+ */
 function _tpf_has_no_district($form_values) {
   if (isset($form_values['institution_name'])) {
     $institution = taxonomy_term_load($form_values['institution_name']);
@@ -127,6 +161,12 @@ function _tpf_has_no_district($form_values) {
   return FALSE;
 }
 
+/**
+ * Check if selected node is not part of course list.
+ *
+ * @param $form_values
+ * @return bool
+ */
 function _tpf_not_part_of_course_list($form_values) {
   if (isset($form_values['course_dropdown'])) {
     $node_wrapper = entity_metadata_wrapper('node', $form_values['course_dropdown']);
@@ -140,6 +180,12 @@ function _tpf_not_part_of_course_list($form_values) {
   return FALSE;
 }
 
+/**
+ * Since all other checks fail we conclude that we are part of the course list.
+ *
+ * @param $form_values
+ * @return bool
+ */
 function _tpf_part_of_course_list($form_values) {
   return TRUE;
 }

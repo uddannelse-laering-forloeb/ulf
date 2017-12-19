@@ -80,13 +80,6 @@ function transportpulje_form_backend($form, &$form_state) {
     '#weight' => 0,
   );
 
-  $form['frontend_texts']['help_alt_address'] = array(
-    '#type' => 'textfield',
-    '#title' => t('Help text "Enter alt. address" checkbox'),
-    '#default_value' => variable_get('help_alt_address'),
-    '#weight' => 0,
-  );
-
   $form['frontend_texts']['denied_distance'] = array(
     '#type' => 'text_format',
     '#title' => t('Denied for 6th grade+ because distance to course is less than 6 km.'),
