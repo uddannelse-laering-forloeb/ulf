@@ -7,7 +7,11 @@
   Drupal.behaviors.course_form = {
     attach: function (context, settings) {
       // Hide if not editor user.
-      if (!inArray('editor', Object.values(settings.user.roles))) {
+      var roles = Object.keys(settings.user.roles).map(function(e) {
+        return settings.user.roles[e]
+      });
+
+      if (!inArray('editor', Object.values(roles))) {
         $('.group-transport-app').hide();
       }
 
