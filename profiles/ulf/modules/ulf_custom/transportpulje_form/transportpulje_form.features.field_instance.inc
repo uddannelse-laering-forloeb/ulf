@@ -687,6 +687,55 @@ function transportpulje_form_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-course-field_tpf_exclude'.
+  $field_instances['node-course-field_tpf_exclude'] = array(
+    'bundle' => 'course',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 37,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_tpf_exclude',
+    'label' => 'Ekskludér dette forløb fra transportpuljen',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 19,
+    ),
+  );
+
   // Exported field_instance: 'node-course-field_tpf_in_list'.
   $field_instances['node-course-field_tpf_in_list'] = array(
     'bundle' => 'course',
@@ -732,7 +781,7 @@ function transportpulje_form_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 41,
+      'weight' => 20,
     ),
   );
 
@@ -781,7 +830,7 @@ function transportpulje_form_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 40,
+      'weight' => 18,
     ),
   );
 
@@ -966,6 +1015,7 @@ function transportpulje_form_field_default_field_instances() {
   t('Dato');
   t('Distrikt (Kun kommunale)');
   t('E-mail');
+  t('Ekskludér dette forløb fra transportpuljen');
   t('Evt. besked');
   t('Gentag E-mail');
   t('Hvad er forløbet');

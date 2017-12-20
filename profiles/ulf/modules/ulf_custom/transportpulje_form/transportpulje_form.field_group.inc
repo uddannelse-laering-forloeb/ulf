@@ -177,13 +177,14 @@ function transportpulje_form_field_group_info() {
   $field_group->entity_type = 'node';
   $field_group->bundle = 'course';
   $field_group->mode = 'form';
-  $field_group->parent_name = 'group_placement';
+  $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Transportpulje indstillinger',
     'weight' => '17',
     'children' => array(
-      0 => 'field_tpf_who_get_support',
-      1 => 'field_tpf_in_list',
+      0 => 'field_tpf_in_list',
+      1 => 'field_tpf_who_get_support',
+      2 => 'field_tpf_exclude',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

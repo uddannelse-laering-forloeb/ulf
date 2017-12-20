@@ -308,7 +308,9 @@ function _tpf_transport_application_sent_output($output) {
 }
 
 /**
- * Add css file to entityform submission display. And node display.
+ * Implements hook_preprocess().
+ *
+ * Add css file to entityform submission display and node display.
  *
  * @param $variables
  */
@@ -322,6 +324,13 @@ function transportpulje_form_preprocess(&$variables) {
   }
 }
 
+/**
+ * Implements hook_preprocess_node().
+ *
+ * Add css to node display.
+ *
+ * @param $variables
+ */
 function transportpulje_form_preprocess_node(&$variables) {
   if ($variables['type'] == 'course' && $variables['view_mode'] == 'full') {
     drupal_add_css(drupal_get_path('module', 'transportpulje_form'). '/css/form.css');

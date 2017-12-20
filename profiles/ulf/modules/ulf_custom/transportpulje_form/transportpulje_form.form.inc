@@ -630,9 +630,9 @@ function _tpf_modify_course_dropdown($courses) {
     ->execute();
   foreach ($results as $result) {
     $node_wrapper = entity_metadata_wrapper('node', $result->entity_id);
-
-    // If youth term we don't want to display it.
-    if ($result->field_target_group_tid != $youth_term_id) {
+    $excluded = $node_wrapper->field_tpf_exclude->value();
+    // If youth term or excluded by checkbox we don't want to display it.
+    if ($result->field_target_group_tid != $youth_term_id && $excluded != TRUE) {
       // If a title for the course already exists in the modified list we want to add target group to title.
       if ($match = array_search($courses['course'][$result->entity_id], $modified_list['course'])) {
 
