@@ -380,6 +380,7 @@ function transportpulje_form_views_default_views() {
   $handler->display->display_options['style_options']['newline_token'] = '1';
   $handler->display->display_options['style_options']['header'] = 1;
   $handler->display->display_options['style_options']['keep_html'] = 0;
+  $handler->display->display_options['style_options']['encoding'] = 'utf8_decode';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Entityform Submission: Indtast adresse */
   $handler->display->display_options['fields']['field_tpf_address']['id'] = 'field_tpf_address';
