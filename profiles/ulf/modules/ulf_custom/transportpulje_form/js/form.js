@@ -7,30 +7,43 @@
       $('.form-item-course-dropdown').change(function () {
         var value = $('.form-item-course-dropdown .chosen-single span').html();
         var nid = $('.form-item-course-dropdown option').filter(function() { return ($(this).text() === value) }).val();
-        $('#course_dropdown_address').load('fetch-address/' + nid, function () {
-          if($(this)[0].innerHTML.length == 0) {
-            // When a course without address is selected.
-            $('#edit-course-not-found').prop('checked', false).trigger('change');
-            resetFields()
-          }
-          else {
-            if (nid) {
-              // When a course with address is selected.
+        // Check if address hidden is selected for node (If so, act as the course had no address)
+        if (settings.hidden.indexOf(nid) < 0) {
+          $('#course_dropdown_address').load('fetch-address/' + nid, function () {
+            if($(this)[0].innerHTML.length == 0) {
+              // When a course without address is selected.
               $('#edit-course-not-found').prop('checked', false).trigger('change');
-              populateFields(this);
-            } else {
-              // When no course (- Select -) selected.
-              $('#edit-course-not-found').prop('checked', true).trigger('change');
               resetFields()
             }
-          }
-        });
+            else {
+              if (nid) {
+                // When a course with address is selected.
+                $('#edit-course-not-found').prop('checked', false).trigger('change');
+                populateFields(this);
+              } else {
+                // When no course (- Select -) selected.
+                $('#edit-course-not-found').prop('checked', true).trigger('change');
+                resetFields()
+              }
+            }
+          });
+        } else {
+          // Act as if address was hidden.
+          $('#edit-course-not-found').prop('checked', false).trigger('change');
+          resetFields();
+        }
       });
 
       $('#edit-course-not-found').click(function () {
         if($(this).is(':checked')) {
+          // Clear all fields in part one.
           $('.form-item-course-dropdown .chosen-single').html('<span>- Vælg -</span>');
           $('.form-item-course-dropdown .result-selected').removeClass('result-selected');
+          $('#edit-select-course .form-type-textarea textarea').val('');
+          $('#edit-select-course .form-type-textfield input').val('');
+        } else {
+          $('#edit-select-course .form-type-textarea textarea').val('');
+          $('#edit-select-course .form-type-textfield input').val('');
         }
       });
 

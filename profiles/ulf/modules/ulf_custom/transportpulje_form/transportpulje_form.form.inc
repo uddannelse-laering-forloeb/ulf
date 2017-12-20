@@ -22,7 +22,18 @@ function transportpulje_form_add_application($form, &$form_state) {
     $term_ids[] = $term->tid;
   }
 
+  // Get terms from institutions list.
   $terms = taxonomy_term_load_multiple($term_ids);
+
+  // Get all courses with location hidden.
+  $hidden_courses = db_select('field_data_field_map_placement', 'f')
+    ->fields('f', array('entity_id'))
+    ->condition('entity_type', 'node')
+    ->condition('bundle', 'course')
+    ->condition('field_map_placement_value', 'hide')
+    ->execute()
+    ->fetchCol();
+
   // General form setup.
   $form['#attached'] = array(
     'css' => array(
@@ -35,7 +46,11 @@ function transportpulje_form_add_application($form, &$form_state) {
       ),
       array(
         'type' => 'setting',
-        'data' => array('institutions' => $terms)),
+        'data' => array(
+          'institutions' => $terms,
+          'hidden' => $hidden_courses
+        )
+      ),
     )
   );
 
