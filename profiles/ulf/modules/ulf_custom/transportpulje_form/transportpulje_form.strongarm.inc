@@ -153,7 +153,7 @@ function transportpulje_form_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'redirect' => array(
-          'weight' => '3',
+          'weight' => '13',
         ),
       ),
       'display' => array(),

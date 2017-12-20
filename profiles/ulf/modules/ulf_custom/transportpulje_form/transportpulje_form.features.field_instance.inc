@@ -48,6 +48,82 @@ function transportpulje_form_field_default_field_instances() {
   );
 
   // Exported field_instance:
+  // 'entityform-transportpulje_form-field_tpf_address_variation'.
+  $field_instances['entityform-transportpulje_form-field_tpf_address_variation'] = array(
+    'bundle' => 'transportpulje_form',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 18,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_tpf_address_variation',
+    'label' => 'Adresse varierer fra indhold',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 12,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'entityform-transportpulje_form-field_tpf_backend_submission'.
+  $field_instances['entityform-transportpulje_form-field_tpf_backend_submission'] = array(
+    'bundle' => 'transportpulje_form',
+    'default_value' => array(
+      0 => array(
+        'value' => 1,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 17,
+      ),
+    ),
+    'entity_type' => 'entityform',
+    'field_name' => 'field_tpf_backend_submission',
+    'label' => 'Udfyldt i backend',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 10,
+    ),
+  );
+
+  // Exported field_instance:
   // 'entityform-transportpulje_form-field_tpf_course_not_found'.
   $field_instances['entityform-transportpulje_form-field_tpf_course_not_found'] = array(
     'bundle' => 'transportpulje_form',
@@ -81,7 +157,7 @@ function transportpulje_form_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 2,
+      'weight' => 11,
     ),
   );
 
@@ -568,7 +644,7 @@ function transportpulje_form_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 5,
+      'weight' => 14,
     ),
   );
 
@@ -884,6 +960,7 @@ function transportpulje_form_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Adresse / Lokation');
+  t('Adresse varierer fra indhold');
   t('Antal deltagere');
   t('Beskriv læringsfomålet');
   t('Dato');
@@ -902,6 +979,7 @@ function transportpulje_form_field_default_field_instances() {
   t('Privat/kommunal');
   t('Status');
   t('Type');
+  t('Udfyldt i backend');
   t('Udgift');
   t('Vælg forløb');
   t('Vælg trin');

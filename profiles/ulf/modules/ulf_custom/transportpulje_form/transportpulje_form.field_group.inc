@@ -24,9 +24,10 @@ function transportpulje_form_field_group_info() {
     'weight' => '14',
     'children' => array(
       0 => 'field_tpf_course_not_found',
-      1 => 'field_tpf_distance_calc_failed',
-      2 => 'field_tpf_status',
-      3 => 'redirect',
+      1 => 'field_tpf_status',
+      2 => 'field_tpf_backend_submission',
+      3 => 'field_tpf_address_variation',
+      4 => 'redirect',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -55,11 +56,10 @@ function transportpulje_form_field_group_info() {
     'label' => '4. Kontaktoplysninger',
     'weight' => '13',
     'children' => array(
-      0 => 'field_tpf_name',
-      1 => 'field_tpf_phone',
-      2 => 'field_tpf_email',
-      3 => 'field_tpf_email_repeat',
-      4 => 'field_tpf_message',
+      0 => 'field_tpf_email',
+      1 => 'field_tpf_email_repeat',
+      2 => 'field_tpf_message',
+      3 => 'field_tpf_name',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -88,8 +88,8 @@ function transportpulje_form_field_group_info() {
     'label' => '1. Vælg forløb',
     'weight' => '0',
     'children' => array(
-      0 => 'field_tpf_course_select',
-      1 => 'field_tpf_address',
+      0 => 'field_tpf_address',
+      1 => 'field_tpf_course_select',
       2 => 'field_tpf_purpose_course',
       3 => 'field_tpf_what_course',
     ),
@@ -120,9 +120,9 @@ function transportpulje_form_field_group_info() {
     'label' => '2. Vælg institution',
     'weight' => '1',
     'children' => array(
-      0 => 'field_tpf_institution_type',
+      0 => 'field_tpf_grade',
       1 => 'field_tpf_institution',
-      2 => 'field_tpf_grade',
+      2 => 'field_tpf_institution_type',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -151,9 +151,9 @@ function transportpulje_form_field_group_info() {
     'label' => '3. Transportudgifter',
     'weight' => '12',
     'children' => array(
-      0 => 'field_tpf_expense',
-      1 => 'field_tpf_participants',
-      2 => 'field_tpf_date',
+      0 => 'field_tpf_date',
+      1 => 'field_tpf_expense',
+      2 => 'field_tpf_participants',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

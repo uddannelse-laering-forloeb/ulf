@@ -713,6 +713,8 @@ function transportpulje_form_add_application_submit($form, &$form_state) {
     $wrapper->field_tpf_email_repeat = $form_state['values']['email_repeat'];
     $wrapper->field_tpf_message = $form_state['values']['description'];
     $wrapper->field_tpf_status = ($form_state['values']['distance_calc_failed']) ? 'awaiting_distance_calc_failed' : 'awaiting';
+    $wrapper->field_tpf_address_variation = _tpf_address_variation($form_state['values']);
+    $wrapper->field_tpf_backend_submission = FALSE;
 
     $wrapper->save();
 
@@ -722,4 +724,22 @@ function transportpulje_form_add_application_submit($form, &$form_state) {
     // Set redirect.
     $form_state['redirect'] = '/transport_application/sent';
   }
+}
+
+/**
+ * Check if the values in the form correspond to the node selected.
+ *
+ * @param $values
+ * @return bool
+ */
+function _tpf_address_variation($values) {
+  if(!empty($values['course_dropdown']) && !empty($values['street']) && !empty($values['postal_code']) && !empty($values['city'])) {
+    $node = node_load($values['course_dropdown']);
+    if($node->location['street'] == $values['street'] && $node->location['postal_code'] == $values['postal_code'] && $node->location['city'] == $values['city']) {
+      return FALSE;
+    } else {
+      return TRUE;
+    }
+  }
+  return FALSE;
 }
