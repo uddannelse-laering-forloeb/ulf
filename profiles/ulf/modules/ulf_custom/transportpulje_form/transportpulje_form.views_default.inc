@@ -202,7 +202,7 @@ function transportpulje_form_views_default_views() {
   $handler->display->display_options['fields']['field_tpf_address_variation']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_tpf_address_variation']['alter']['text'] = '(*)';
   $handler->display->display_options['fields']['field_tpf_address_variation']['empty_zero'] = TRUE;
-  $handler->display->display_options['fields']['field_tpf_address_variation']['hide_alter_empty'] = FALSE;
+  $handler->display->display_options['fields']['field_tpf_address_variation']['type'] = 'list_key';
   /* Field: Entityform Submission: Beskriv læringsfomålet */
   $handler->display->display_options['fields']['field_tpf_purpose_course']['id'] = 'field_tpf_purpose_course';
   $handler->display->display_options['fields']['field_tpf_purpose_course']['table'] = 'field_data_field_tpf_purpose_course';
