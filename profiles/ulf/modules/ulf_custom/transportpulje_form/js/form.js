@@ -2,18 +2,17 @@
   "use strict";
   Drupal.behaviors.transportpulje_form = {
     attach: function (context, settings) {
-      console.log(settings);
       // Load course.
       $('.form-item-course-dropdown').change(function () {
         var value = $('.form-item-course-dropdown .chosen-single span').html();
         var nid = $('.form-item-course-dropdown option').filter(function() { return ($(this).text() === value) }).val();
-        // Check if address hidden is selected for node (If so, act as the course had no address)
+        // Check if address is hidden(> 0) for selected for node (If so, act as the course had no address)
         if (settings.hidden.indexOf(nid) < 0) {
           $('#course_dropdown_address').load('fetch-address/' + nid, function () {
             if($(this)[0].innerHTML.length == 0) {
               // When a course without address is selected.
               $('#edit-course-not-found').prop('checked', false).trigger('change');
-              resetFields()
+              resetFields();
             }
             else {
               if (nid) {
@@ -23,6 +22,7 @@
               } else {
                 // When no course (- Select -) selected.
                 $('#edit-course-not-found').prop('checked', true).trigger('change');
+                $('.form-item-course-dropdown .result-selected').removeClass('result-selected');
                 resetFields()
               }
             }
