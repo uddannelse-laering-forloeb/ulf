@@ -74,7 +74,10 @@ function _tpf_node_is_private($form_values) {
 function _tpf_get_distance($form_values) {
   // If course is unknown or user has entered an alternative address we use that.
   // Otherwise use the course location.
-  if($form_values['course_not_found']) {
+
+  $pos_to = NULL;
+
+  if(!empty($form_values['street']) && !empty($form_values['postal_code']) && !empty($form_values['city'])) {
     $tpf_location = array(
       'street' => $form_values['street'],
       'postal_code' => $form_values['postal_code'],
@@ -84,17 +87,6 @@ function _tpf_get_distance($form_values) {
 
     module_load_include('inc', 'location', 'location');
     $pos_to = location_latlon_exact($tpf_location);
-  } else {
-    $tpf_course = node_load($form_values['course_dropdown']);
-    $tpf_to = field_get_items('node', $tpf_course, 'locations');
-
-    // If the course is not displayed on map we have no coordinates - even if we have a valid address.
-    if('0.000000' === $tpf_to['latitude']) {
-      module_load_include('inc', 'location', 'location');
-      $pos_to = location_latlon_exact($tpf_to);
-    } else {
-      $pos_to = array('lat' => $tpf_to['latitude'], 'lon' => $tpf_to['longitude']);
-    }
   }
 
   // Get the institutions address/location
