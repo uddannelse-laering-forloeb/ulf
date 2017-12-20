@@ -11,7 +11,7 @@
         return settings.user.roles[e]
       });
 
-      if (!inArray('editor', Object.values(roles))) {
+      if (!inArray('editor', roles)) {
         $('.group-transport-app').hide();
       }
 
