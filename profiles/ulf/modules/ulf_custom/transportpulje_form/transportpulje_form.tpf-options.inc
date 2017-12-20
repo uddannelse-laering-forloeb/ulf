@@ -52,7 +52,7 @@ function _tpf_get_type(&$form_values) {
  * @return bool
  */
 function _tpf_node_is_private($form_values) {
-  if (isset($form_values['course_dropdown'])) {
+  if (!empty($form_values['course_dropdown'])) {
     $institution = taxonomy_term_load($form_values['institution_name']);
     $wrapper = entity_metadata_wrapper('taxonomy_term', $institution);
     $institution_type = $wrapper->field_tpf_relation->value();
@@ -138,7 +138,7 @@ function _tpf_is_private($form_values) {
  * @return bool
  */
 function _tpf_not_course($form_values) {
-  return (isset($form_values['course_dropdown']) ? FALSE : TRUE);
+  return (!empty($form_values['course_dropdown']) ? FALSE : TRUE);
 }
 
 /**
@@ -168,7 +168,7 @@ function _tpf_has_no_district($form_values) {
  * @return bool
  */
 function _tpf_not_part_of_course_list($form_values) {
-  if (isset($form_values['course_dropdown'])) {
+  if (!empty($form_values['course_dropdown'])) {
     $node_wrapper = entity_metadata_wrapper('node', $form_values['course_dropdown']);
     $in_list = $node_wrapper->field_tpf_in_list->value();
     // Requested course is part of courselist. (Checkbox on node)

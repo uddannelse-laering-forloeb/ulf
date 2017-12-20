@@ -341,11 +341,10 @@ function _transportpulje_form_calculate_conditions($form, &$form_state) {
 
     case 'part_of_course_list' :
       $passed = TRUE;
-      if (isset($form_values['course_dropdown']) && isset($form_values['institution_name'])) {
+      if (!empty($form_values['course_dropdown']) && isset($form_values['institution_name'])) {
         $institution = taxonomy_term_load($form_values['institution_name']);
         $wrapper = entity_metadata_wrapper('taxonomy_term', $institution);
         $district = $wrapper->field_tpf_district->value();
-        $a = 1;
         switch ($district) {
           case 'district_1' :
             $text = variable_get('district_1', array('value' => '', 'format' => NULL))['value'];
