@@ -1,4 +1,10 @@
 <?php
+/**
+ * @file
+ * transportpulje_form.dropdown.inc
+ *
+ * The course dropdown adds a div with content that is hidden with css and used to populate fields with js.
+ */
 
 /**
  * Fetch node from dropdown.

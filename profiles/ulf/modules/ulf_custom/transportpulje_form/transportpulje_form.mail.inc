@@ -1,5 +1,18 @@
 <?php
 
+/**
+ * @file
+ * transportpulje_form.mail.inc
+ * 
+ * Handle the sending of mails.
+ */
+
+/**
+ * Create mail template.
+ *
+ * @param $wrapper
+ * @return string
+ */
 function _transportpulje_form_build_mail_confirmation($wrapper) {
   global $language;
 
@@ -98,6 +111,12 @@ function _transportpulje_form_build_mail_confirmation($wrapper) {
   return $application;
 }
 
+/**
+ * Add the different cases in which to send mail.
+ *
+ * @param $wrapper
+ * @param $action
+ */
 function _transportpulje_form_notify($wrapper, $action) {
   global $language;
   $to = variable_get('site_mail');
@@ -152,6 +171,8 @@ function _transportpulje_form_notify($wrapper, $action) {
 
 /**
  * Implements hook_mail().
+ *
+ * Alter mail.
  */
 function transportpulje_form_mail($key, &$message, $params) {
   switch ($key) {
