@@ -3,7 +3,7 @@
 /**
  * @file
  * transportpulje_form.form.inc
- * 
+ *
  * Code for the Transportpulje custom form.
  */
 
@@ -13,8 +13,11 @@ include_once 'transportpulje_form.mail.inc';
 /**
  * Custom form for adding a transport application entity_form entity.
  *
- * @param $form
- * @param $form_state
+ * @param array $form
+ *   Custom frontend form.
+ * @param array $form_state
+ *   Form state of custom form.
+ *
  * @return mixed
  */
 function transportpulje_form_add_application($form, &$form_state) {

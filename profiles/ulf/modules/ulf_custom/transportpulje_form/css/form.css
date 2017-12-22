@@ -1,133 +1,133 @@
 #transportpulje-form-add-application > div {
-    width: 100%;
-    display: -webkit-flex; /* Safari */
-    -webkit-flex-wrap: wrap; /* Safari 6.1+ */
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+  width: 100%;
+  display: -webkit-flex; /* Safari */
+  -webkit-flex-wrap: wrap; /* Safari 6.1+ */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 #transportpulje-form-add-application > div > h1 {
-    -webkit-flex: 0 1 100%; /* Safari 6.1+ */
-    -ms-flex: 0 1 100%; /* IE 10 */
-    flex: 0 1 100%;
-    order: 0;
+  -webkit-flex: 0 1 100%; /* Safari 6.1+ */
+  -ms-flex: 0 1 100%; /* IE 10 */
+  flex: 0 1 100%;
+  order: 0;
 }
 
 #transportpulje-form-add-application > div > .user-message--wrapper {
-    -webkit-flex: 0 1 45%; /* Safari 6.1+ */
-    -ms-flex: 0 1 45%; /* IE 10 */
-    flex: 0 1 45%;
-    order: 2;
+  -webkit-flex: 0 1 45%; /* Safari 6.1+ */
+  -ms-flex: 0 1 45%; /* IE 10 */
+  flex: 0 1 45%;
+  order: 2;
 }
 
 #transportpulje-form-add-application > div > #edit-fields {
-    -webkit-flex: 0 1 45%; /* Safari 6.1+ */
-    -ms-flex: 0 1 45%; /* IE 10 */
-    flex: 0 1 45%;
+  -webkit-flex: 0 1 45%; /* Safari 6.1+ */
+  -ms-flex: 0 1 45%; /* IE 10 */
+  flex: 0 1 45%;
+  order: 1;
+}
+
+@media screen and (max-width: 860px) {
+  #transportpulje-form-add-application > div > .user-message--wrapper {
+    -webkit-flex: 0 1 100%; /* Safari 6.1+ */
+    -ms-flex: 0 1 100%; /* IE 10 */
+    flex: 0 1 100%;
     order: 1;
+  }
 }
 
-@media screen and (max-width:860px) {
-    #transportpulje-form-add-application > div > .user-message--wrapper {
-        -webkit-flex: 0 1 100%; /* Safari 6.1+ */
-        -ms-flex: 0 1 100%; /* IE 10 */
-        flex: 0 1 100%;
-        order: 1;
-    }
-}
-
-@media screen and (max-width:860px) {
-    #transportpulje-form-add-application > div > #edit-fields {
-        -webkit-flex: 0 1 100%; /* Safari 6.1+ */
-        -ms-flex: 0 1 100%; /* IE 10 */
-        flex: 0 1 100%;
-        order: 2;
-    }
+@media screen and (max-width: 860px) {
+  #transportpulje-form-add-application > div > #edit-fields {
+    -webkit-flex: 0 1 100%; /* Safari 6.1+ */
+    -ms-flex: 0 1 100%; /* IE 10 */
+    flex: 0 1 100%;
+    order: 2;
+  }
 }
 
 #transportpulje-form-add-application .form-checkbox {
-    margin-top: 4px;
+  margin-top: 4px;
 }
 
 #transportpulje-form-add-application select {
-    min-width: 50%;
+  min-width: 50%;
 }
 
 #transportpulje-form-add-application fieldset {
-    margin: 1em 0;
+  margin: 1em 0;
 }
 
 #transportpulje-form-add-application .user-message {
-    background: lightgrey;
-    box-sizing: border-box;
-    display: block;
-    padding: 1em;
-    margin: 1em 0;
-    border-radius: .5em;
-    width: 100%;
+  background: lightgrey;
+  box-sizing: border-box;
+  display: block;
+  padding: 1em;
+  margin: 1em 0;
+  border-radius: .5em;
+  width: 100%;
 }
 
 #transportpulje-form-add-application #course_dropdown_address {
-    display: none;
+  display: none;
 }
 
 /* Override jquery Chosen default styling. */
 #transportpulje-form-add-application .chosen-container {
-    width: 100%!important;
+  width: 100% !important;
 }
 
 #transportpulje-form-add-application .user-message p:last-child {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 #transportpulje-form-add-application .form-submit {
-    margin: 1em 0;
+  margin: 1em 0;
 }
 
 #transportpulje-form-add-application .form-submit.form-disabled {
-    background: lightgrey;
-    border-color: lightgrey;
+  background: lightgrey;
+  border-color: lightgrey;
 }
 
 #transportpulje-form-add-application #part_two .is-hidden {
-    display: none!important;
+  display: none !important;
 }
 
 #transportpulje-form-add-application #edit-submit-wrapper {
-    display: none;
+  display: none;
 }
 
 #transportpulje-form-add-application #part_two.has-passed + #edit-submit-wrapper {
-    display: block;
+  display: block;
 }
 
 .entityform-transportpulje-form .submitted {
-    margin: 1em 0;
+  margin: 1em 0;
 }
 
 .entityform-transportpulje-form .block--field-label {
-    display: block;
-    float: left;
-    margin-top: 1em;
-    width: 100%;
+  display: block;
+  float: left;
+  margin-top: 1em;
+  width: 100%;
 }
 
 .entityform-transportpulje-form .tpf-status {
-    font-size: 1.5em;
-    float: left;
-    width: 100%;
+  font-size: 1.5em;
+  float: left;
+  width: 100%;
 }
 
 #transportpulje-form-add-application .form-item {
-    -webkit-flex-wrap: wrap;
-    flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
 #transportpulje-form-add-application .description {
-    -webkit-flex: 0 0 100%;
-    -ms-flex: 0 0 100%;
-    flex: 0 0 100%;
-    font-size: .8em;
-    color: gray;
+  -webkit-flex: 0 0 100%;
+  -ms-flex: 0 0 100%;
+  flex: 0 0 100%;
+  font-size: .8em;
+  color: gray;
 }

@@ -10,8 +10,10 @@
 /**
  * Create custom backend form.
  *
- * @param $form
- * @param $form_state
+ * @param array $form
+ *
+ * @param array $form_state
+ *
  * @return mixed
  */
 function transportpulje_form_backend($form, &$form_state) {
