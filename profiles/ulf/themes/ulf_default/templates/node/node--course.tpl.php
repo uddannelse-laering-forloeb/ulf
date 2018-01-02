@@ -239,7 +239,21 @@
             </div>
           </div>
           <?php if (module_exists('transportpulje_form') && $group_type != 'ungdomsuddannelse') : ?>
-            <?php if (!empty($field_tpf_exclude) && $field_tpf_exclude[LANGUAGE_NONE]['0']['value'] != 1) : ?>
+            <?php if (!empty($field_tpf_exclude)) : ?>
+              <?php if ($field_tpf_exclude[LANGUAGE_NONE]['0']['value'] != 1) : ?>
+                <div class="block--dark block--transport-request-link">
+                  <h2 class="block--header">
+                    <?php print t('Transport');?>
+                  </h2>
+                  <div class="block--content">
+                    <div class="block--field-text"><?php print t('Create an application to request funding from the transport pool to attend this course'); ?></div>
+                    <p>
+                      <a target="_blank" href="/transport_application?course_id=<?php print $nid; ?>"><?php print t('Create transport application'); ?></a>
+                    </p>
+                  </div>
+                </div>
+              <?php endif; ?>
+            <?php else : ?>
               <div class="block--dark block--transport-request-link">
                 <h2 class="block--header">
                   <?php print t('Transport');?>

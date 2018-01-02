@@ -94,7 +94,7 @@ function transportpulje_form_backend($form, &$form_state) {
 
   $form['frontend_texts']['denied_private'] = array(
     '#type' => 'text_format',
-    '#title' => t('Denied for private institution not on arrangement list'),
+    '#title' => t('Denied for private institution requesting funding for public only courses'),
     '#default_value' => variable_get('denied_private', array('value' => '', 'format' => NULL))['value'],
     '#format' => 'editor',
     '#weight' => 2,

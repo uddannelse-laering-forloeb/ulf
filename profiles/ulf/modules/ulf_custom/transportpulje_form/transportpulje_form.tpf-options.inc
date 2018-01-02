@@ -52,13 +52,20 @@ function _tpf_get_type(&$form_values) {
  * @return bool
  */
 function _tpf_node_is_private($form_values) {
+  $institution = taxonomy_term_load($form_values['institution_name']);
+  $wrapper = entity_metadata_wrapper('taxonomy_term', $institution);
+  $institution_type = $wrapper->field_tpf_relation->value();
+  // Deny if private requesting municipal only course.
   if (!empty($form_values['course_dropdown'])) {
-    $institution = taxonomy_term_load($form_values['institution_name']);
-    $wrapper = entity_metadata_wrapper('taxonomy_term', $institution);
-    $institution_type = $wrapper->field_tpf_relation->value();
     $node_wrapper = entity_metadata_wrapper('node', $form_values['course_dropdown']);
     $allowed_support = $node_wrapper->field_tpf_who_get_support->value();
     if ($allowed_support == 'municipal' && $institution_type == 'tpf_relation_private') {
+      return TRUE;
+    }
+  }
+  // Deny if private requesting course they typed manually.
+  else {
+    if ($institution_type == 'tpf_relation_private') {
       return TRUE;
     }
   }
