@@ -1,8 +1,9 @@
 <?php
+
 /**
  * @file
  * transportpulje_form.module
- * 
+ *
  * Code for the Transportpulje form feature.
  */
 
@@ -43,13 +44,13 @@ function transportpulje_form_menu() {
   );
 
   $items['admin/settings/custom/transport/applications'] = array(
-    'title' => t('Applications'),
+    'title' => 'Applications',
     'type' => MENU_DEFAULT_LOCAL_TASK,
     'weight' => -10,
   );
 
   $items['admin/settings/custom/transport/form'] = array(
-    'title' => t('Create application'),
+    'title' => 'Create application',
     'page callback' => '_tpf_form_wrapper',
     'page arguments' => array('transportpulje_form'),
     'type' => MENU_LOCAL_TASK,
@@ -57,13 +58,13 @@ function transportpulje_form_menu() {
   );
 
   $items['admin/settings/custom/transport/texts'] = array(
-    'title' => t('Help texts'),
+    'title' => 'Help texts',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('transportpulje_form_backend'),
     'type' => MENU_LOCAL_TASK,
     'access arguments' => array('administer tpf'),
     'file' => 'transportpulje_form.backend.inc',
-		'file path' => drupal_get_path('module', 'transportpulje_form'),
+    'file path' => drupal_get_path('module', 'transportpulje_form'),
   );
 
   return $items;
@@ -121,7 +122,8 @@ function transportpulje_form_action_info() {
 /**
  * Custom action for bulk operation. (Accepted)
  *
- * @param $entity
+ * @param object $entity
+ *   The entity to act on.
  */
 function _tpf_change_status_accepted($entity) {
   _tpf_change_entity($entity, 'accepted');
@@ -130,7 +132,8 @@ function _tpf_change_status_accepted($entity) {
 /**
  * Custom action for bulk operation. (Accepted and send mail)
  *
- * @param $entity
+ * @param object $entity
+ *   The entity to act on.
  */
 function _tpf_accept($entity) {
   _tpf_change_entity($entity, 'accepted_mail');
@@ -139,7 +142,8 @@ function _tpf_accept($entity) {
 /**
  * Custom action for bulk operation. (Refused)
  *
- * @param $entity
+ * @param object $entity
+ *   The entity to act on.
  */
 function _tpf_change_status_refused($entity) {
   _tpf_change_entity($entity, 'refused');
@@ -148,7 +152,8 @@ function _tpf_change_status_refused($entity) {
 /**
  * Custom action for bulk operation. (Refused and send mail)
  *
- * @param $entity
+ * @param object $entity
+ *   The entity to act on.
  */
 function _tpf_refuse($entity) {
   _tpf_change_entity($entity, 'refused_mail');
@@ -157,26 +162,31 @@ function _tpf_refuse($entity) {
 /**
  * Set status and send mail based on action selected.
  *
- * @param $entity
- * @param $action
+ * @param object $entity
+ *   The entity to change.
+ * @param string $action
+ *   The action to take on the entity.
  */
 function _tpf_change_entity($entity, $action) {
   $wrapper = entity_metadata_wrapper('entityform', $entity);
   switch ($action) {
-    case 'accepted' :
+    case 'accepted':
       $wrapper->field_tpf_status = 'accepted';
       $wrapper->save();
       break;
-    case 'accepted_mail' :
+
+    case 'accepted_mail':
       $wrapper->field_tpf_status = 'accepted';
       $wrapper->save();
       _transportpulje_form_notify($wrapper, 'on_change_accepted');
       break;
-    case 'refused' :
+
+    case 'refused':
       $wrapper->field_tpf_status = 'refused';
       $wrapper->save();
       break;
-    case 'refused_mail' :
+
+    case 'refused_mail':
       $wrapper->field_tpf_status = 'refused';
       $wrapper->save();
       _transportpulje_form_notify($wrapper, 'on_change_refused');
@@ -187,8 +197,11 @@ function _tpf_change_entity($entity, $action) {
 /**
  * Display form in backend.
  *
- * @param $bundle
+ * @param string $bundle
+ *   The type of the bundle of the entity form to load.
+ *
  * @return bool|string
+ *   A render array from entity_view or a string message.
  */
 function _tpf_form_wrapper($bundle) {
   module_load_include('inc', 'entityform', 'entityform.admin');
@@ -197,9 +210,10 @@ function _tpf_form_wrapper($bundle) {
 }
 
 /**
- * Add new permission
+ * Add new permission.
  *
  * @return array
+ *   An array defining a permission.
  */
 function transportpulje_form_permission() {
   return array(
@@ -211,9 +225,10 @@ function transportpulje_form_permission() {
 }
 
 /**
- * Add new role
+ * Add new role.
  *
  * @return array
+ *   An array defining a role
  */
 function transportpulje_form_secure_permissions_roles() {
   return array(
@@ -222,10 +237,7 @@ function transportpulje_form_secure_permissions_roles() {
 }
 
 /**
- * Add tpf related permissions to roles.
- * 
- * @param $role
- * @return mixed
+ * Implements hook_secure_permissions().
  */
 function transportpulje_form_secure_permissions($role) {
   $permissions = array(
@@ -247,7 +259,7 @@ function transportpulje_form_secure_permissions($role) {
 }
 
 /**
- * Implements hook_form_FORM_ID_alter()
+ * Implements hook_form_FORM_ID_alter().
  *
  * Add help text to transport application editors.
  */
@@ -258,7 +270,7 @@ function transportpulje_form_form_user_profile_form_alter(&$form, &$form_state) 
 }
 
 /**
- * Implements hook_form_FORM_ID_alter()
+ * Implements hook_form_FORM_ID_alter().
  *
  * Hide transport fields for most users and on youth items.
  */
@@ -269,17 +281,18 @@ function transportpulje_form_form_course_node_form_alter(&$form, &$form_state, $
     'js' => array(
       array(
         'type' => 'file',
-        'data' => drupal_get_path('module', 'transportpulje_form'). '/js/course-form-alter.js',
+        'data' => drupal_get_path('module', 'transportpulje_form') . '/js/course-form-alter.js',
       ),
       array(
         'type' => 'setting',
-        'data' => array('user' => $user, 'target_group' => $youth_term_id)),
-    )
+        'data' => array('user' => $user, 'target_group' => $youth_term_id),
+      ),
+    ),
   );
 }
 
 /**
- * Implements hook_form_FORM_ID_alter()
+ * Implements hook_form_FORM_ID_alter().
  *
  * Cleanup taxonomy_term_form for institutions.
  */
@@ -295,6 +308,7 @@ function transportpulje_form_form_taxonomy_form_term_alter(&$form, &$form_state,
  * Provide variable for confirmation page.
  *
  * @return mixed
+ *   The output for the confirmation page.
  */
 function _tpf_transport_application_sent() {
   return variable_get('confirmation', array('value' => '', 'format' => NULL))['value'];
@@ -303,7 +317,11 @@ function _tpf_transport_application_sent() {
 /**
  * Provide html for confirmation page.
  *
+ * @param string $output
+ *   The output to be displayed in a page.
+ *
  * @return mixed
+ *   A full page display with reqions wrapping content.
  */
 function _tpf_transport_application_sent_output($output) {
   drupal_deliver_html_page($output);
@@ -313,14 +331,12 @@ function _tpf_transport_application_sent_output($output) {
  * Implements hook_preprocess().
  *
  * Add css file to entityform submission display and node display.
- *
- * @param $variables
  */
 function transportpulje_form_preprocess(&$variables) {
   if (isset($variables['entity_type']) && $variables['entity_type'] == 'entityform') {
-    if(isset($variables['view_mode']) && $variables['view_mode'] == 'full') {
-      if(isset($variables['elements']['#bundle']) && $variables['elements']['#bundle'] == 'transportpulje_form') {
-        drupal_add_css(drupal_get_path('module', 'transportpulje_form'). '/css/form.css');
+    if (isset($variables['view_mode']) && $variables['view_mode'] == 'full') {
+      if (isset($variables['elements']['#bundle']) && $variables['elements']['#bundle'] == 'transportpulje_form') {
+        drupal_add_css(drupal_get_path('module', 'transportpulje_form') . '/css/form.css');
       }
     }
   }
@@ -330,11 +346,9 @@ function transportpulje_form_preprocess(&$variables) {
  * Implements hook_preprocess_node().
  *
  * Add css to node display.
- *
- * @param $variables
  */
 function transportpulje_form_preprocess_node(&$variables) {
   if ($variables['type'] == 'course' && $variables['view_mode'] == 'full') {
-    drupal_add_css(drupal_get_path('module', 'transportpulje_form'). '/css/form.css');
+    drupal_add_css(drupal_get_path('module', 'transportpulje_form') . '/css/form.css');
   }
 }

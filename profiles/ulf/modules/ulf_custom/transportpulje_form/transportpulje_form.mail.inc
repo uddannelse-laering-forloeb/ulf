@@ -3,17 +3,20 @@
 /**
  * @file
  * transportpulje_form.mail.inc
- * 
+ *
  * Handle the sending of mails.
  */
 
 /**
  * Create mail template.
  *
- * @param $wrapper
+ * @param EntityMetadataWrapper $wrapper
+ *   The wrapper of an entity.
+ *
  * @return string
+ *   The values of the submitted form grouped into a string.
  */
-function _transportpulje_form_build_mail_confirmation($wrapper) {
+function _transportpulje_form_build_mail_confirmation(EntityMetadataWrapper $wrapper) {
   global $language;
 
   $application = '<h2>';
@@ -26,7 +29,7 @@ function _transportpulje_form_build_mail_confirmation($wrapper) {
 
   $application .= '<p>';
 
-  if($wrapper->field_tpf_course_not_found->value()) {
+  if ($wrapper->field_tpf_course_not_found->value()) {
     $application .= '<strong>';
     $application .= t('What is the course', array(), array('langcode' => $language->language));
     $application .= ':</strong> ';
@@ -38,7 +41,8 @@ function _transportpulje_form_build_mail_confirmation($wrapper) {
     $application .= ':</strong> ';
     $application .= $wrapper->field_tpf_purpose_course->value();
     $application .= '<br/>';
-  } else {
+  }
+  else {
     $course = $wrapper->field_tpf_course_select->value();
 
     $application .= '<strong>';
@@ -114,10 +118,12 @@ function _transportpulje_form_build_mail_confirmation($wrapper) {
 /**
  * Add the different cases in which to send mail.
  *
- * @param $wrapper
- * @param $action
+ * @param EntityMetadataWrapper $wrapper
+ *   The wrapper of an entity.
+ * @param string $action
+ *   The action related to the mail.
  */
-function _transportpulje_form_notify($wrapper, $action) {
+function _transportpulje_form_notify(EntityMetadataWrapper $wrapper, $action) {
   global $language;
   $to = variable_get('site_mail');
   $params = array();
@@ -127,39 +133,42 @@ function _transportpulje_form_notify($wrapper, $action) {
       $params['body'] = '<h2>' . t('Transport application recieved', array(), array('langcode' => $language->language)) . '</h2>';
       $params['body'] .= variable_get('confirmation_email', array(
         'value' => '',
-        'format' => NULL
+        'format' => NULL,
       ))['value'];
       $params['body'] .= _transportpulje_form_build_mail_confirmation($wrapper);
 
       $to = $wrapper->field_tpf_email->value();
       break;
+
     case 'on_submit_admin':
       $params['subject'] = t('Transport application recieved', array(), array('langcode' => $language->language));
       $params['body'] = '<h2>' . t('Transport application recieved', array(), array('langcode' => $language->language)) . '</h2>';
       $params['body'] .= variable_get('notify_admin_email', array(
         'value' => '',
-        'format' => NULL
+        'format' => NULL,
       ))['value'];
       $params['body'] .= _transportpulje_form_build_mail_confirmation($wrapper);
 
       $to = variable_get('secretary_email');
       break;
+
     case 'on_change_accepted':
       $params['subject'] = t('Request accepted', array(), array('langcode' => $language->language));
       $params['body'] = '<h2>' . t('Transport application request accepted', array(), array('langcode' => $language->language)) . '</h2>';
       $params['body'] .= variable_get('request_accepted_email', array(
         'value' => '',
-        'format' => NULL
+        'format' => NULL,
       ))['value'];
 
       $to = $wrapper->field_tpf_email->value();
       break;
+
     case 'on_change_refused':
       $params['subject'] = t('Request denied', array(), array('langcode' => $language->language));
       $params['body'] = '<h2>' . t('Transport application request denied', array(), array('langcode' => $language->language)) . '</h2>';
       $params['body'] .= variable_get('request_denied_email', array(
         'value' => '',
-        'format' => NULL
+        'format' => NULL,
       ))['value'];
 
       $to = $wrapper->field_tpf_email->value();

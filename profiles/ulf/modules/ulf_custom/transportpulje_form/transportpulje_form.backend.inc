@@ -11,13 +11,15 @@
  * Create custom backend form.
  *
  * @param array $form
- *
+ *   Custom backend form.
  * @param array $form_state
+ *   Form state of the backend form.
  *
  * @return mixed
+ *   The form displayed in the backend.
  */
-function transportpulje_form_backend($form, &$form_state) {
-  $form['groups'] = array (
+function transportpulje_form_backend(array $form, array &$form_state) {
+  $form['groups'] = array(
     '#type' => 'vertical_tabs',
   );
 
@@ -193,7 +195,7 @@ function transportpulje_form_backend($form, &$form_state) {
     '#title' => t('Mail to secretariat'),
     '#default_value' => variable_get('secretary_email'),
     '#weight' => 1,
-    '#size'=> 30,
+    '#size' => 30,
   );
 
   return system_settings_form($form);
