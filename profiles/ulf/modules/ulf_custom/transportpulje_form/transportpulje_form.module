@@ -281,7 +281,7 @@ function transportpulje_form_form_course_node_form_alter(&$form, &$form_state, $
     'js' => array(
       array(
         'type' => 'file',
-        'data' => drupal_get_path('module', 'transportpulje_form') . '/js/course-form-alter.js',
+        'data' => drupal_get_path('module', 'transportpulje_form') . '/js/transportpulje_course_form_alter.js',
       ),
       array(
         'type' => 'setting',
@@ -336,7 +336,7 @@ function transportpulje_form_preprocess(&$variables) {
   if (isset($variables['entity_type']) && $variables['entity_type'] == 'entityform') {
     if (isset($variables['view_mode']) && $variables['view_mode'] == 'full') {
       if (isset($variables['elements']['#bundle']) && $variables['elements']['#bundle'] == 'transportpulje_form') {
-        drupal_add_css(drupal_get_path('module', 'transportpulje_form') . '/css/form.css');
+        drupal_add_css(drupal_get_path('module', 'transportpulje_form') . '/css/transportpulje_form.css');
       }
     }
   }
@@ -349,6 +349,6 @@ function transportpulje_form_preprocess(&$variables) {
  */
 function transportpulje_form_preprocess_node(&$variables) {
   if ($variables['type'] == 'course' && $variables['view_mode'] == 'full') {
-    drupal_add_css(drupal_get_path('module', 'transportpulje_form') . '/css/form.css');
+    drupal_add_css(drupal_get_path('module', 'transportpulje_form') . '/css/transportpulje_form.css');
   }
 }

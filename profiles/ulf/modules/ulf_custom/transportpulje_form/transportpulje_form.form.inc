@@ -43,12 +43,12 @@ function transportpulje_form_add_application(array $form, array &$form_state) {
   // General form setup.
   $form['#attached'] = array(
     'css' => array(
-      drupal_get_path('module', 'transportpulje_form') . '/css/form.css',
+      drupal_get_path('module', 'transportpulje_form') . '/css/transportpulje_form.css',
     ),
     'js' => array(
       array(
         'type' => 'file',
-        'data' => drupal_get_path('module', 'transportpulje_form') . '/js/form.js',
+        'data' => drupal_get_path('module', 'transportpulje_form') . '/js/transportpulje_form.js',
       ),
       array(
         'type' => 'setting',
@@ -551,7 +551,7 @@ function _tpf_full_form_validate(array $form, array &$form_state) {
 
     // Add js on form validation error, so we show part two.
     if ($error) {
-      drupal_add_js(drupal_get_path('module', 'transportpulje_form') . '/js/form_validation_error.js');
+      drupal_add_js(drupal_get_path('module', 'transportpulje_form') . '/js/transportpulje_form_validation_error.js');
     }
   }
 }

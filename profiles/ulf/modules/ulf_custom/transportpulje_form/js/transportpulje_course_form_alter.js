@@ -6,7 +6,7 @@
   "use strict";
   Drupal.behaviors.course_form = {
     attach: function (context, settings) {
-      // Hide if not editor user.
+      // Hide fields if not editor user.
       var roles = Object.keys(settings.user.roles).map(function(e) {
         return settings.user.roles[e]
       });
@@ -24,7 +24,7 @@
         return false;
       }
 
-      // Hide on change if youth.
+      // Hide on change if youth. (settings.target_group is a taxonomy id)
       $(".field-name-field-target-group input").on( "change", function() {
         if ($(this).val() == settings.target_group) {
           $('.group-transport-app').hide();
