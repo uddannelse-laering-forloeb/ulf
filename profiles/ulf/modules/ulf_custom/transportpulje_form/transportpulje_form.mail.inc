@@ -2,7 +2,6 @@
 
 /**
  * @file
- * transportpulje_form.mail.inc
  *
  * Handle the sending of mails.
  */

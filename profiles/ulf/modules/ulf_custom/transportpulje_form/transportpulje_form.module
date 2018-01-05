@@ -2,7 +2,6 @@
 
 /**
  * @file
- * transportpulje_form.module
  *
  * Code for the Transportpulje form feature.
  */
@@ -17,6 +16,8 @@ include_once 'transportpulje_form.mail.inc';
  * Implements hook_menu().
  */
 function transportpulje_form_menu() {
+  $items = array();
+
   $items['transport_application'] = array(
     'page callback' => 'drupal_get_form',
     'page arguments' => array('transportpulje_form_add_application'),
@@ -76,6 +77,8 @@ function transportpulje_form_menu() {
  * Implements hook_action_info().
  */
 function transportpulje_form_action_info() {
+  $actions = array();
+  
   $actions['_tpf_change_status_accepted'] = array(
     'type' => 'entityform',
     'label' => t('Change status to accepted (No mail)'),

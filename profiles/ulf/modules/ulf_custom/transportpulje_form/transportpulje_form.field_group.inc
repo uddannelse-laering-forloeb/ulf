@@ -53,7 +53,7 @@ function transportpulje_form_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => '4. Kontaktoplysninger',
+    'label' => '4. Contact information',
     'weight' => '13',
     'children' => array(
       0 => 'field_tpf_email',
@@ -63,7 +63,7 @@ function transportpulje_form_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'label' => '4. Kontaktoplysninger',
+      'label' => '4. Contact information',
       'instance_settings' => array(
         'required_fields' => 1,
         'id' => '',
@@ -85,7 +85,7 @@ function transportpulje_form_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => '1. Vælg forløb',
+    'label' => '1. Select course',
     'weight' => '0',
     'children' => array(
       0 => 'field_tpf_address',
@@ -95,7 +95,7 @@ function transportpulje_form_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'label' => '1. Vælg forløb',
+      'label' => '1. Select course',
       'instance_settings' => array(
         'required_fields' => 0,
         'id' => '',
@@ -117,7 +117,7 @@ function transportpulje_form_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => '2. Vælg institution',
+    'label' => '2. Select institution',
     'weight' => '1',
     'children' => array(
       0 => 'field_tpf_grade',
@@ -126,7 +126,7 @@ function transportpulje_form_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'label' => '2. Vælg institution',
+      'label' => '2. Select institution',
       'instance_settings' => array(
         'required_fields' => 0,
         'id' => '',
@@ -148,7 +148,7 @@ function transportpulje_form_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => '3. Transportudgifter',
+    'label' => '3. Transport expenses',
     'weight' => '12',
     'children' => array(
       0 => 'field_tpf_date',
@@ -157,7 +157,7 @@ function transportpulje_form_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'label' => '3. Transportudgifter',
+      'label' => '3. Transport expenses',
       'instance_settings' => array(
         'required_fields' => 1,
         'id' => '',
@@ -179,7 +179,7 @@ function transportpulje_form_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Transportpulje indstillinger',
+    'label' => 'Transport pool settings',
     'weight' => '17',
     'children' => array(
       0 => 'field_tpf_in_list',
@@ -201,12 +201,12 @@ function transportpulje_form_field_group_info() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('1. Vælg forløb');
-  t('2. Vælg institution');
-  t('3. Transportudgifter');
-  t('4. Kontaktoplysninger');
+  t('1. Select course');
+  t('2. Select institution');
+  t('3. Transport expenses');
+  t('4. Contact information');
   t('Admin fields');
-  t('Transportpulje indstillinger');
+  t('Transport pool settings');
 
   return $field_groups;
 }

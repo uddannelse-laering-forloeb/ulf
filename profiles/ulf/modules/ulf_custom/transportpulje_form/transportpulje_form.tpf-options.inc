@@ -2,7 +2,6 @@
 
 /**
  * @file
- * transportpulje_form.tpf-options.inc
  *
  * Helper functions to decide transport options.
  */
@@ -46,7 +45,7 @@ function _tpf_get_type(array &$form_values) {
     return 'not_part_of_course_list';
   }
   if (_tpf_part_of_course_list()) {
-    return 'part_of_course_list';
+    return TRUE;
   }
 }
 
@@ -110,7 +109,10 @@ function _tpf_get_distance(array $form_values) {
   // Get the institutions address/location.
   $tpf_institution = taxonomy_term_load($form_values['institution_name']);
   $tpf_from = field_get_items('taxonomy_term', $tpf_institution, 'field_field_tpf_geo_location');
-  $pos_from = empty($tpf_from[0]) ? NULL : array('lat' => $tpf_from[0]['latitude'], 'lon' => $tpf_from[0]['longitude']);
+  $pos_from = empty($tpf_from[0]) ? NULL : array(
+    'lat' => $tpf_from[0]['latitude'],
+    'lon' => $tpf_from[0]['longitude']
+  );
 
   // Abort if we have no 'to' position.
   if (empty($pos_to) || '0.000000' === $pos_to['lat']) {
@@ -164,7 +166,7 @@ function _tpf_not_course(array $form_values) {
  *   The values entered in the form.
  *
  * @return bool
- *   True if the selected institution has a district.
+ *   True if the selected institution does not have a district.
  */
 function _tpf_has_no_district(array $form_values) {
   if (isset($form_values['institution_name'])) {
@@ -172,9 +174,7 @@ function _tpf_has_no_district(array $form_values) {
     $wrapper = entity_metadata_wrapper('taxonomy_term', $institution);
     $district = $wrapper->field_tpf_district->value();
     // If school (Has district)
-    if (!isset($district)) {
-      return TRUE;
-    }
+    return !isset($district);
   }
 
   return FALSE;
@@ -194,20 +194,8 @@ function _tpf_not_part_of_course_list(array $form_values) {
     $node_wrapper = entity_metadata_wrapper('node', $form_values['course_dropdown']);
     $in_list = $node_wrapper->field_tpf_in_list->value();
     // Requested course is part of courselist. (Checkbox on node)
-    if (!$in_list) {
-      return TRUE;
-    }
+    return !$in_list;
   }
 
   return FALSE;
-}
-
-/**
- * Since all other checks fail we conclude that we are part of the course list.
- *
- * @return bool
- *   Always true but only called if all others returned false.
- */
-function _tpf_part_of_course_list() {
-  return TRUE;
 }

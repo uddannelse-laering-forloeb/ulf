@@ -2,7 +2,6 @@
 
 /**
  * @file
- * transportpulje_form.form.inc
  *
  * Code for the Transportpulje custom form.
  */
@@ -28,7 +27,7 @@ function transportpulje_form_add_application(array $form, array &$form_state) {
     $term_ids[] = $term->tid;
   }
 
-  // Get terms from institutions list.
+  // Get terms with fields from institutions list.
   $terms = taxonomy_term_load_multiple($term_ids);
 
   // Get all courses with location hidden.
@@ -53,8 +52,10 @@ function transportpulje_form_add_application(array $form, array &$form_state) {
       array(
         'type' => 'setting',
         'data' => array(
-          'institutions' => $terms,
-          'hidden' => $hidden_courses,
+          'transportpulje_form' => array(
+            'institutions' => $terms,
+            'hidden' => $hidden_courses,
+          ),
         ),
       ),
     ),
@@ -71,8 +72,14 @@ function transportpulje_form_add_application(array $form, array &$form_state) {
     '#type' => 'container',
     '#weight' => 1,
   );
-  $form['fields']['part_one']['select_course'] = array('#type' => 'fieldset', '#title' => t('Select course'));
-  $form['fields']['part_one']['select_institution'] = array('#type' => 'fieldset', '#title' => t('Select institution'));
+  $form['fields']['part_one']['select_course'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Select course')
+  );
+  $form['fields']['part_one']['select_institution'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Select institution')
+  );
 
   // Set suffix and default selection based on query.
   $course_dropdown_default = isset($form_state['values']['course_dropdown']) ? $form_state['values']['course_dropdown'] : '';
@@ -131,6 +138,7 @@ function transportpulje_form_add_application(array $form, array &$form_state) {
       ),
     ),
   );
+
   $form['fields']['part_one']['select_course']['course_description'] = array(
     '#title' => t('Describe the learning target'),
     '#type' => 'textarea',
@@ -144,22 +152,26 @@ function transportpulje_form_add_application(array $form, array &$form_state) {
       ),
     ),
   );
+
   $form['fields']['part_one']['select_course']['course_address'] = array(
     '#type' => 'fieldset',
     '#title' => t('Course Address'),
   );
+
   $form['fields']['part_one']['select_course']['course_address']['street'] = array(
     '#title' => t('Street'),
     '#type' => 'textfield',
     '#required' => TRUE,
     '#default_value' => isset($form_state['values']['course_address']['street']) ? $form_state['values']['street'] : '',
   );
+
   $form['fields']['part_one']['select_course']['course_address']['postal_code'] = array(
     '#title' => t('Postal code'),
     '#type' => 'textfield',
     '#required' => TRUE,
     '#default_value' => isset($form_state['values']['course_address']['postal_code']) ? $form_state['values']['course_address']['postal_code'] : '',
   );
+
   $form['fields']['part_one']['select_course']['course_address']['city'] = array(
     '#title' => t('City'),
     '#type' => 'textfield',
@@ -176,6 +188,7 @@ function transportpulje_form_add_application(array $form, array &$form_state) {
     '#required' => TRUE,
     '#default_value' => isset($form_state['values']['institution_type']) ? $form_state['values']['institution_type'] : '',
   );
+
   $form['fields']['part_one']['select_institution']['institution_name'] = array(
     '#title' => t('Institution'),
     '#type' => 'select',
@@ -184,6 +197,7 @@ function transportpulje_form_add_application(array $form, array &$form_state) {
     '#required' => TRUE,
     '#default_value' => isset($form_state['values']['institution_name']) ? $form_state['values']['institution_name'] : '',
   );
+
   $form['fields']['part_one']['select_institution']['institution_grade'] = array(
     '#title' => t('Select grade'),
     '#type' => 'select',
@@ -227,6 +241,7 @@ function transportpulje_form_add_application(array $form, array &$form_state) {
     '#type' => 'container',
     '#weight' => 1,
   );
+
   $form['fields']['part_two']['message_wrapper']['messages'] = array();
 
   $form['fields']['part_two']['transport'] = array(
@@ -236,6 +251,7 @@ function transportpulje_form_add_application(array $form, array &$form_state) {
     '#suffix' => '</div>',
     '#weight' => 2,
   );
+
   $form['fields']['part_two']['contact'] = array(
     '#prefix' => '<div class="is-hidden">',
     '#type' => 'fieldset',
@@ -250,11 +266,13 @@ function transportpulje_form_add_application(array $form, array &$form_state) {
     '#type' => 'textfield',
     '#default_value' => isset($form_state['values']['expenses']) ? $form_state['values']['expenses'] : '',
   );
+
   $form['fields']['part_two']['transport']['participants'] = array(
     '#title' => t('Participants'),
     '#type' => 'textfield',
     '#default_value' => isset($form_state['values']['participants']) ? $form_state['values']['participants'] : '',
   );
+
   $form['fields']['part_two']['transport']['date'] = array(
     '#type' => 'date_popup',
     '#date_format' => 'd/m/Y',
@@ -274,11 +292,13 @@ function transportpulje_form_add_application(array $form, array &$form_state) {
     '#type' => 'textfield',
     '#default_value' => isset($form_state['values']['email']) ? $form_state['values']['email'] : '',
   );
+
   $form['fields']['part_two']['contact']['email_repeat'] = array(
     '#title' => t('Repeat email'),
     '#type' => 'textfield',
     '#default_value' => isset($form_state['values']['email_repeat']) ? $form_state['values']['email_repeat'] : '',
   );
+
   $form['fields']['part_two']['contact']['description'] = array(
     '#title' => t('Short description'),
     '#type' => 'textarea',
@@ -289,7 +309,12 @@ function transportpulje_form_add_application(array $form, array &$form_state) {
     '_tpf_states_required_form_validate',
     '_tpf_full_form_validate',
   );
-  $form['fields']['submit_wrapper'] = array('#type' => 'container', '#weight' => 5);
+
+  $form['fields']['submit_wrapper'] = array(
+    '#type' => 'container',
+    '#weight' => 5
+  );
+
   $form['fields']['submit_wrapper']['submit_button'] = array(
     '#type' => 'submit',
     '#value' => t('Send application'),
@@ -657,7 +682,8 @@ function _tpf_validate_participants(array $form_state) {
 function _tpf_modify_course_dropdown(array $courses) {
   // Cache the dropdown list.
   if (!isset($courses)) {
-    if ($cache = cache_get('tpf_dropdown_data')) {
+    $cache = cache_get('tpf_dropdown_data');
+    if ($cache && REQUEST_TIME < $cache->expire) {
       $courses = $cache->data;
     }
     else {
@@ -675,6 +701,7 @@ function _tpf_modify_course_dropdown(array $courses) {
     ->condition('bundle', 'course')
     ->condition('entity_id', array_keys($courses['course']), 'IN')
     ->execute();
+
   foreach ($results as $result) {
     $node_wrapper = entity_metadata_wrapper('node', $result->entity_id);
     $excluded = $node_wrapper->field_tpf_exclude->value();
@@ -741,7 +768,7 @@ function transportpulje_form_add_application_submit(array $form, array &$form_st
     $form_state['values']['course_dropdown'];
 
     // Set address from either selected node or user provided values.
-    $form_address = 'ERROR - NO VALID ADDRESS FOUND';
+    $form_address = t('ERROR - NO VALID ADDRESS FOUND');
     if (isset($form_state['values']['street']) && isset($form_state['values']['postal_code']) && isset($form_state['values']['city'])) {
       $form_address = $form_state['values']['street'] . ', ' . $form_state['values']['postal_code'] . ' ' . $form_state['values']['city'];
     }
@@ -788,14 +815,15 @@ function transportpulje_form_add_application_submit(array $form, array &$form_st
  *   True if course is selected and street, postal code and city vary from node.
  */
 function _tpf_address_variation(array $values) {
+  $ret = FALSE;
   if (!empty($values['course_dropdown']) && !empty($values['street']) && !empty($values['postal_code']) && !empty($values['city'])) {
     $node = node_load($values['course_dropdown']);
     if ($node->location['street'] == $values['street'] && $node->location['postal_code'] == $values['postal_code'] && $node->location['city'] == $values['city']) {
-      return FALSE;
+      return $ret;
     }
     else {
-      return TRUE;
+      $ret = TRUE;
     }
   }
-  return FALSE;
+  return $ret;
 }

@@ -13,7 +13,7 @@
         }).val();
         // Check if address is hidden for selected for node. If so, act as the
         // course had no address.
-        if (settings.hidden.indexOf(nid) !== -1) {
+        if (settings.transportpulje_form.hidden.indexOf(nid) !== -1) {
           $('#course_dropdown_address').load('fetch-address/' + nid, function () {
             if ($(this)[0].innerHTML.length === 0) {
               // When a course without address is selected.
@@ -79,8 +79,8 @@
 
       // Sort the institution dropdown list.
       var sort_arr = [];
-      for (var key in settings.institutions) {
-        sort_arr.push(settings.institutions[key]);
+      for (var key in settings.transportpulje_form.institutions) {
+        sort_arr.push(settings.transportpulje_form.institutions[key]);
       }
       var sorted = sort_arr.sort(function (a,b) {
         var nameA = a.name.toLowerCase(), nameB = b.name.toLowerCase();
