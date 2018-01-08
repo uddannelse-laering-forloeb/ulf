@@ -2,6 +2,15 @@
 
 # v2.5.x
 
+## 2.5.19
+* Transportpulje workflow fix
+
+## 2.5.18
+* Fix of failed array check
+
+## 2.5.17
+* Full release of transportpulje module
+
 ## 2.5.16
 * Temporarily denied access to transportpulje
 
