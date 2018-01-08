@@ -1,7 +1,24 @@
 <?php
 
-function transportpulje_form_backend($form, &$form_state) {
-  $form['groups'] = array (
+/**
+ * @file
+ * 
+ * Code for the backend form.
+ */
+
+/**
+ * Create custom backend form.
+ *
+ * @param array $form
+ *   Custom backend form.
+ * @param array $form_state
+ *   Form state of the backend form.
+ *
+ * @return mixed
+ *   The form displayed in the backend.
+ */
+function transportpulje_form_backend(array $form, array &$form_state) {
+  $form['groups'] = array(
     '#type' => 'vertical_tabs',
   );
 
@@ -61,18 +78,25 @@ function transportpulje_form_backend($form, &$form_state) {
     '#weight' => 0,
   );
 
-  $form['frontend_texts']['denial_grade'] = array(
+  $form['frontend_texts']['help_no_course'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Help text "I could not find course" checkbox'),
+    '#default_value' => variable_get('help_no_course'),
+    '#weight' => 0,
+  );
+
+  $form['frontend_texts']['denied_distance'] = array(
     '#type' => 'text_format',
-    '#title' => t('Denied 6th grade +'),
-    '#default_value' => variable_get('denial_grade', array('value' => '', 'format' => NULL))['value'],
+    '#title' => t('Denied for 6th grade+ because distance to course is less than 6 km.'),
+    '#default_value' => variable_get('denied_distance', array('value' => '', 'format' => NULL))['value'],
     '#format' => 'editor',
     '#weight' => 1,
   );
 
-  $form['frontend_texts']['denial_private'] = array(
+  $form['frontend_texts']['denied_private'] = array(
     '#type' => 'text_format',
-    '#title' => t('Denied for private institution not on arrangement list'),
-    '#default_value' => variable_get('denial_private', array('value' => '', 'format' => NULL))['value'],
+    '#title' => t('Denied for private institution requesting funding for public only courses'),
+    '#default_value' => variable_get('denied_private', array('value' => '', 'format' => NULL))['value'],
     '#format' => 'editor',
     '#weight' => 2,
   );
@@ -170,7 +194,7 @@ function transportpulje_form_backend($form, &$form_state) {
     '#title' => t('Mail to secretariat'),
     '#default_value' => variable_get('secretary_email'),
     '#weight' => 1,
-    '#size'=> 30,
+    '#size' => 30,
   );
 
   return system_settings_form($form);

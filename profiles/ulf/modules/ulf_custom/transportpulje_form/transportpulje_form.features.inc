@@ -8,9 +8,6 @@
  * Implements hook_ctools_plugin_api().
  */
 function transportpulje_form_ctools_plugin_api($module = NULL, $api = NULL) {
-  if ($module == "captcha" && $api == "captcha") {
-    return array("version" => "1");
-  }
   if ($module == "field_group" && $api == "field_group") {
     return array("version" => "1");
   }
@@ -52,9 +49,9 @@ function transportpulje_form_default_entityform_type() {
       "submissions_view" : "default",
       "user_submissions_view" : "default",
       "form_status" : "ENTITYFORM_OPEN",
-      "roles" : { "1" : "1", "2" : "2", "18" : 0, "19" : 0 },
+      "roles" : { "19" : "19", "22" : "22", "1" : 0, "2" : 0, "18" : 0 },
       "resubmit_action" : "new",
-      "redirect_path" : "",
+      "redirect_path" : "admin\\/settings\\/custom\\/transport",
       "instruction_pre" : { "value" : "", "format" : "editor" }
     },
     "weight" : "0",

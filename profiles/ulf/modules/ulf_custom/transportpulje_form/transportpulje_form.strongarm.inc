@@ -52,7 +52,7 @@ function transportpulje_form_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'chosen_jquery_selector';
-  $strongarm->value = 'select:visible';
+  $strongarm->value = '.form-item-course-dropdown select:visible';
   $export['chosen_jquery_selector'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -111,10 +111,11 @@ function transportpulje_form_strongarm() {
   $strongarm->value = array(
     'group_tpf_course|entityform|transportpulje_form|form' => FALSE,
     'group_tpf_institution|entityform|transportpulje_form|form' => FALSE,
-    'group_tpf_transport|entityform|transportpulje_form|form' => TRUE,
-    'group_tpf_contact|entityform|transportpulje_form|form' => TRUE,
+    'group_tpf_transport|entityform|transportpulje_form|form' => FALSE,
+    'group_tpf_contact|entityform|transportpulje_form|form' => FALSE,
     'group_tpf_part_two|entityform|transportpulje_form|form' => TRUE,
     'group_transport_app|node|course|form' => FALSE,
+    'group_tpf_admin|entityform|transportpulje_form|form' => FALSE,
   );
   $export['default_field_group'] = $strongarm;
 
@@ -123,11 +124,36 @@ function transportpulje_form_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'field_bundle_settings_entityform__transportpulje_form';
   $strongarm->value = array(
-    'view_modes' => array(),
+    'view_modes' => array(
+      'full' => array(
+        'custom_settings' => FALSE,
+      ),
+      'email' => array(
+        'custom_settings' => FALSE,
+      ),
+      'confirmation' => array(
+        'custom_settings' => FALSE,
+      ),
+      'download' => array(
+        'custom_settings' => FALSE,
+      ),
+      'table' => array(
+        'custom_settings' => FALSE,
+      ),
+      'review' => array(
+        'custom_settings' => FALSE,
+      ),
+      'diff_standard' => array(
+        'custom_settings' => FALSE,
+      ),
+      'token' => array(
+        'custom_settings' => FALSE,
+      ),
+    ),
     'extra_fields' => array(
       'form' => array(
         'redirect' => array(
-          'weight' => '11',
+          'weight' => '13',
         ),
       ),
       'display' => array(),

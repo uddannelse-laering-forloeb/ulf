@@ -1,5 +1,4 @@
-  <?php
-
+<?php
 /**
  * @file
  * Default theme implementation to display a node.
@@ -179,7 +178,6 @@
               <div class="block--field-wrapper">
                 <div class="block--field-label"><?php print t('Provider');?></div>
                 <p><a href="/user/<?php print $uid; ?>"><?php print $profile_name; ?></a></p>
-                <!--<a target="_blank" href="/transport_application?course_id=<?php print $nid; ?>"><?php print t('Create transport application'); ?></a>-->
               </div>
               <div class="block--field-wrapper is-inline">
                 <?php print render($content['field_offer_type']); ?>
@@ -240,6 +238,35 @@
               <?php endif; ?>
             </div>
           </div>
+          <?php if (module_exists('transportpulje_form') && $group_type != 'ungdomsuddannelse') : ?>
+            <?php if (!empty($field_tpf_exclude)) : ?>
+              <?php if ($field_tpf_exclude[LANGUAGE_NONE]['0']['value'] != 1) : ?>
+                <div class="block--dark block--transport-request-link">
+                  <h2 class="block--header">
+                    <?php print t('Transport');?>
+                  </h2>
+                  <div class="block--content">
+                    <div class="block--field-text"><?php print t('Create an application to request funding from the transport pool to attend this course'); ?></div>
+                    <p>
+                      <a target="_blank" href="/transport_application?course_id=<?php print $nid; ?>"><?php print t('Create transport application'); ?></a>
+                    </p>
+                  </div>
+                </div>
+              <?php endif; ?>
+            <?php else : ?>
+              <div class="block--dark block--transport-request-link">
+                <h2 class="block--header">
+                  <?php print t('Transport');?>
+                </h2>
+                <div class="block--content">
+                  <div class="block--field-text"><?php print t('Create an application to request funding from the transport pool to attend this course'); ?></div>
+                  <p>
+                    <a target="_blank" href="/transport_application?course_id=<?php print $nid; ?>"><?php print t('Create transport application'); ?></a>
+                  </p>
+                </div>
+              </div>
+            <?php endif; ?>
+          <?php endif; ?>
           <div class="block--dark">
             <h2 class="block--header">
               <?php print t('Contact organizer');?>

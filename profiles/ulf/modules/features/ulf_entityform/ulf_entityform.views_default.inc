@@ -26,7 +26,7 @@ function ulf_entityform_views_default_views() {
   $handler->display->display_options['use_ajax'] = TRUE;
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['access']['perm'] = 'view any entityform';
+  $handler->display->display_options['access']['perm'] = 'administer custom settings';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
@@ -200,6 +200,13 @@ function ulf_entityform_views_default_views() {
   $handler->display->display_options['filters']['combine']['fields'] = array(
     'title' => 'title',
     'field_profile_name' => 'field_profile_name',
+  );
+  /* Filter criterion: Entityform Submission: Entityform Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'entityform';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'end_user_message' => 'end_user_message',
   );
 
   /* Display: Table */
