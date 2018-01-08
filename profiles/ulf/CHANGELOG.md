@@ -2,6 +2,9 @@
 
 # v2.5.x
 
+## 2.5.18
+* Fix of failed array check
+
 ## 2.5.17
 * Full release of transportpulje module
 
