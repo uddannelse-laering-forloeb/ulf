@@ -44,9 +44,7 @@ function _tpf_get_type(array &$form_values) {
   if (_tpf_not_part_of_course_list($form_values)) {
     return 'not_part_of_course_list';
   }
-  if (_tpf_part_of_course_list()) {
-    return TRUE;
-  }
+  return 'part_of_course_list';
 }
 
 /**

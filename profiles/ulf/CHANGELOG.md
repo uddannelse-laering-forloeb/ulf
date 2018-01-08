@@ -2,6 +2,9 @@
 
 # v2.5.x
 
+## 2.5.19
+* Transportpulje workflow fix
+
 ## 2.5.18
 * Fix of failed array check
 
