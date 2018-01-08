@@ -234,11 +234,13 @@ function ulf_default_preprocess_user_profile(&$variables) {
   // Fetch location information from the user. Used in the information box to
   // the right when displaying the profile.
   $account = $variables['elements']['#account'];
-  $variables['location'] = array(
-    'street' => $account->location['street'],
-    'postal_code' => $account->location['postal_code'],
-    'city' => $account->location['city'],
-  );
+  if (isset($variables['location'])) {
+    $variables['location'] = array(
+      'street' => $account->location['street'],
+      'postal_code' => $account->location['postal_code'],
+      'city' => $account->location['city'],
+    );
+  }
 }
 
 /**

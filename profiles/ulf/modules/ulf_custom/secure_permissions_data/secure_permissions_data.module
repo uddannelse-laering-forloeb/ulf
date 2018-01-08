@@ -169,6 +169,7 @@ function secure_permissions_data_secure_permissions($role) {
       'view user map',
       'schedule publishing of nodes',
       'view scheduled content',
+      'administer custom settings',
     ),
   );
   if (isset($permissions[$role])) {
