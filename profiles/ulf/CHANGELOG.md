@@ -2,6 +2,9 @@
 
 # v2.5.x
 
+## 2.5.21
+* Fixed bug in 2.5.20 release
+
 ## 2.5.20
 * Transportpulje workflow fix in denied private institutions
 
