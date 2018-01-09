@@ -357,7 +357,7 @@ function _transportpulje_form_calculate_conditions(array $form, array &$form_sta
       $text = variable_get('denied_distance', array('value' => '', 'format' => NULL))['value'];
       break;
 
-    case 'is_private':a
+    case 'is_private':
       $passed = TRUE;
       $text = variable_get('free_choice', array('value' => '', 'format' => NULL))['value'];
       break;
