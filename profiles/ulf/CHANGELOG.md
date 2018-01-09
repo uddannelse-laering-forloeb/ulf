@@ -2,6 +2,15 @@
 
 # v2.5.x
 
+## 2.5.20
+* Transportpulje workflow fix in denied private institutions
+
+## 2.5.19
+* Transportpulje workflow fix
+
+## 2.5.18
+* Fix of failed array check
+
 ## 2.5.17
 * Full release of transportpulje module
 
