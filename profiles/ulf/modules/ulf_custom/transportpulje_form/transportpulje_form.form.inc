@@ -340,7 +340,7 @@ function _transportpulje_form_calculate_conditions(array $form, array &$form_sta
   $passed = FALSE;
 
   // If part one has form errors return without doing anything else.
-  if (!empty(form_get_errors())) {
+  if (!empty(form_get_errors())) {  
     $form_state['rebuild'] = TRUE;
     return $form['fields']['part_two'];
   }
@@ -349,7 +349,7 @@ function _transportpulje_form_calculate_conditions(array $form, array &$form_sta
   $type = _tpf_get_type($form_values);
   // The different messages to display.
   switch ($type) {
-    case 'denied_private':
+      case 'denied_private':
       $text = variable_get('denied_private', array('value' => '', 'format' => NULL))['value'];
       break;
 
@@ -357,7 +357,7 @@ function _transportpulje_form_calculate_conditions(array $form, array &$form_sta
       $text = variable_get('denied_distance', array('value' => '', 'format' => NULL))['value'];
       break;
 
-    case 'is_private':
+    case 'is_private':a
       $passed = TRUE;
       $text = variable_get('free_choice', array('value' => '', 'format' => NULL))['value'];
       break;

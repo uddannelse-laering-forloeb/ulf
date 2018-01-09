@@ -60,6 +60,11 @@ function _tpf_node_is_private(array $form_values) {
   $institution = taxonomy_term_load($form_values['institution_name']);
   $wrapper = entity_metadata_wrapper('taxonomy_term', $institution);
   $institution_type = $wrapper->field_tpf_relation->value();
+
+  // Deny if private requesting course they typed manually.
+  if ($form_values['course_not_found'] == 1 && $institution_type == 'tpf_relation_private') {
+    return TRUE;
+  }
   // Deny if private requesting municipal only course.
   if (!empty($form_values['course_dropdown'])) {
     $node_wrapper = entity_metadata_wrapper('node', $form_values['course_dropdown']);
@@ -68,12 +73,7 @@ function _tpf_node_is_private(array $form_values) {
       return TRUE;
     }
   }
-  // Deny if private requesting course they typed manually.
-  else {
-    if ($institution_type == 'tpf_relation_private') {
-      return TRUE;
-    }
-  }
+  
   return FALSE;
 }
 
