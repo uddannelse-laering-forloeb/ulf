@@ -11,12 +11,13 @@
         var nid = $('.form-item-course-dropdown option').filter(function() {
           return ($(this).text() === value)
         }).val();
-        // Check if address is hidden for selected for node. If so, act as the
-        // course had no address.
-        if (settings.transportpulje_form.hidden.indexOf(nid) !== -1) {
+        // Check if address is not hidden for selected for node. (Not in hidden array)
+        // If so, apply address else act as the course had no address.
+        // If address is not in hidden array.
+        if (settings.transportpulje_form.hidden.indexOf(nid) < 0) {
           $('#course_dropdown_address').load('fetch-address/' + nid, function () {
             if ($(this)[0].innerHTML.length === 0) {
-              // When a course without address is selected.
+              // When a course without address but not hidden is selected.
               $('#edit-course-not-found').prop('checked', false).trigger('change');
               resetFields();
             }
@@ -36,7 +37,7 @@
           });
         }
         else {
-          // Act as if address was hidden.
+          // Act as if address was hidden/ Had no address
           $('#edit-course-not-found').prop('checked', false).trigger('change');
           resetFields();
         }

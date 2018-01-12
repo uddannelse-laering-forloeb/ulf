@@ -480,10 +480,10 @@ function ulf_workflow_node_presave($node) {
     global $user;
 
     // If attached parameter is unpublish or we assume running cron (User check)
-    if ((isset($_REQUEST['op']) && $_REQUEST['op'] == 'T') || ($user->uid == 0)) {
+    if ((isset($_REQUEST['op']) && $_REQUEST['op'] == 'T') || ($user->uid == 0) || $node->workbench_moderation_state_new == 'draft') {
 
       // Presave is also run for each revision, we only want to act when we are saving the actual node.
-      if (!isset($node->revision) || $node->revision == 0) {
+      if (!isset($node->revision) || !$node->revision == 0 ) {
         // Get send_mail variable.
         $workflow_send_mail = variable_get('ulf_workflow_send_mail');
 
