@@ -2,6 +2,9 @@
 
 # v2.5.x
 
+## 2.5.22
+* SUPPORT-1399: Fixed bug in unpublis action
+
 ## 2.5.21
 * Fixed bug in 2.5.20 release
 
