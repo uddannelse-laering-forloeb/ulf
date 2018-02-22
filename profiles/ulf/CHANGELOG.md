@@ -2,6 +2,9 @@
 
 # v2.5.x
 
+## 2.5.25
+* SUPPORT-1461: Added drupal core 7.57
+
 ## 2.5.24
 * SUPPORT-1423: Added cache to news view
 
