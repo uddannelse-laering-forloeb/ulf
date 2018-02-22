@@ -2,6 +2,9 @@
 
 # v2.5.x
 
+## 2.5.26
+* SUPPORT-1461: Modified track mail module
+
 ## 2.5.25
 * SUPPORT-1461: Added drupal core 7.57
 

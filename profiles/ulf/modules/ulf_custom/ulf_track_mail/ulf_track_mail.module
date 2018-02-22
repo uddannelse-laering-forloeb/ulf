@@ -8,7 +8,7 @@ function ulf_track_mail_mail_alter(&$message) {
   db_insert('ulf_track_mail')
     ->fields(array(
       'headers' => implode("|", $message['headers']),
-      'body' => $message['body'],
+      'body' => isset($message['body']) ? $message['body'] : '',
       'context' => $message['key'],
       'timestamp' => time(),
     ))
