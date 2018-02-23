@@ -16,6 +16,10 @@
  *   The type of action to take next.
  */
 function _tpf_get_type(array &$form_values) {
+  if (_tpf_node_is_private($form_values)) {
+    return 'denied_private';
+  }
+
   if ('tpf_school' === $form_values['institution_type'] && 'grade_6' <= $form_values['institution_grade']) {
     $distance = _tpf_get_distance($form_values);
 
@@ -29,9 +33,6 @@ function _tpf_get_type(array &$form_values) {
     }
   }
 
-  if (_tpf_node_is_private($form_values)) {
-    return 'denied_private';
-  }
   if (_tpf_is_private($form_values)) {
     return 'is_private';
   }
