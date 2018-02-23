@@ -2,6 +2,18 @@
 
 # v2.5.x
 
+## 2.5.26
+* SUPPORT-1461: Modified track mail module
+
+## 2.5.25
+* SUPPORT-1461: Added drupal core 7.57
+
+## 2.5.24
+* SUPPORT-1423: Added cache to news view
+
+## 2.5.23
+* SUPPORT-1412: Added "modtagerklasse" to search filter templates
+
 ## 2.5.22
 * SUPPORT-1399: Fixed bug in unpublis action
 
