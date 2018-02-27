@@ -116,7 +116,26 @@ function ulf_workflow_update_7602() {
     }
 
   }
-
 }
 
+/**
+ * Update period end date for all nodes with full year checked.
+ */
+function ulf_workflow_update_7603() {
+  $result = array();
+  if (db_table_exists('scheduler') && db_table_exists('field_data_field_period_full_year')) {
+    $result = db_select('field_data_field_period_full_year', 'f')
+      ->fields('f', array('entity_id'))
+      ->condition('field_period_full_year_value', '1','=')
+      ->execute()
+      ->fetchAll();
+  }
 
+  foreach ($result as $value) {
+    $nid = $value->entity_id;
+    db_update('field_data_field_period')
+      ->fields(array('field_period_value2' => 1893452400))
+      ->condition('entity_id', $nid, '=')
+      ->execute();
+  }
+}

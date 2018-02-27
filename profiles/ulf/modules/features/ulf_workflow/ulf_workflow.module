@@ -265,7 +265,7 @@ function ulf_workflow_global_submit($form, &$form_state) {
       ->execute();
   }
 
-  // If "full year" not checked and "to date" and we are editing existing node(has nid) set scheduling options.
+  // If "full year" exists and is not checked and "to date" and we are editing existing node(has nid) set scheduling options.
   if (isset($form_state['values']['field_period_full_year']['und']['0']['value']) && !$form_state['values']['field_period_full_year']['und']['0']['value']) {
     if (isset($form_state['values']['field_period']['und']['0']['value2']) && isset($form_state['values']['nid'])) {
       // Get to date from period field.
@@ -289,6 +289,16 @@ function ulf_workflow_global_submit($form, &$form_state) {
         ))
         ->execute();
     }
+  }
+  // If full year field is missing (It shouldn't be) or is checked (It often is)
+  else {
+    $form_state['values']['field_period']['und']['0']['value2'] = 1893452400;
+
+    // Format the date according to scheduler requested format.
+    $formatted_to_date = format_date(1893452400, 'custom', 'Y-m-d');
+
+    // Set unpublishing date.
+    $form_state['values']['unpublish_on'] = $formatted_to_date . ' 23:59:59';
   }
 
   // Set the moderation form state depending on which button is clicked.
@@ -480,7 +490,7 @@ function ulf_workflow_node_presave($node) {
     global $user;
 
     // If attached parameter is unpublish or we assume running cron (User check)
-    if ((isset($_REQUEST['op']) && $_REQUEST['op'] == 'T') || ($user->uid == 0) || $node->workbench_moderation_state_new == 'draft') {
+    if ((isset($_REQUEST['op']) && $_REQUEST['op'] == 'T') || ($user->uid == 0) || (isset($node->workbench_moderation_state_new) && $node->workbench_moderation_state_new == 'draft')) {
 
       // Presave is also run for each revision, we only want to act when we are saving the actual node.
       if (!isset($node->revision) || !$node->revision == 0 ) {
@@ -513,28 +523,30 @@ function ulf_workflow_node_presave($node) {
 function _send_published_mail($node) {  
   // Get author fields.
   $user = user_load($node->uid);
-  $module = 'ulf_workflow';
+  if ($user->uid > 0) {
+    $module = 'ulf_workflow';
 
-  // Get language from user obj.
-  $language =_get_language_object($user->language);
+    // Get language from user obj.
+    $language =_get_language_object($user->language);
 
-  // Set recipient.
-  $to = $user->mail;
-  $key = 'published_mail_author';
+    // Set recipient.
+    $to = $user->mail;
+    $key = 'published_mail_author';
 
 
-  // If site mail recipient is active override receiving email address.
-  $site_mail_recipient = variable_get('ulf_workflow_local_recipient');
-  if ($site_mail_recipient > 0) {
-    $site_mail_recipient = variable_get('mimemail_mail');
-    $to = $site_mail_recipient;
+    // If site mail recipient is active override receiving email address.
+    $site_mail_recipient = variable_get('ulf_workflow_local_recipient');
+    if ($site_mail_recipient > 0) {
+      $site_mail_recipient = variable_get('mimemail_mail');
+      $to = $site_mail_recipient;
+    }
+
+    // Provide additional parameters.
+    $params['user'] = $user;
+    $params['node'] = $node;
+
+    drupal_mail($module, $key, $to, $language, $params);
   }
-
-  // Provide additional parameters.
-  $params['user'] = $user;
-  $params['node'] = $node;
-
-  drupal_mail($module, $key, $to, $language, $params);
 }
 
 
@@ -545,30 +557,31 @@ function _send_published_mail($node) {
  *
  * */
 function _send_unpublished_mail($node) {
-
   // Get author fields.
   $user = user_load($node->uid);
-  $module = 'ulf_workflow';
+  if ($user->uid > 0) {
+    $module = 'ulf_workflow';
 
-  // Get language from user obj.
-  $language =_get_language_object($user->language);
+    // Get language from user obj.
+    $language =_get_language_object($user->language);
 
-  // Set recipient.
-  $to = $user->mail;
-  $key = 'unpublished_mail_author';
+    // Set recipient.
+    $to = $user->mail;
+    $key = 'unpublished_mail_author';
 
-  // If site mail recipient is active override receiving email address.
-  $site_mail_recipient = variable_get('ulf_workflow_local_recipient');
-  if ($site_mail_recipient > 0) {
-    $site_mail_recipient = variable_get('mimemail_mail');
-    $to = $site_mail_recipient;
+    // If site mail recipient is active override receiving email address.
+    $site_mail_recipient = variable_get('ulf_workflow_local_recipient');
+    if ($site_mail_recipient > 0) {
+      $site_mail_recipient = variable_get('mimemail_mail');
+      $to = $site_mail_recipient;
+    }
+
+    // Provide additional parameters.
+    $params['user'] = $user;
+    $params['node'] = $node;
+
+    drupal_mail($module, $key, $to, $language, $params);
   }
-
-  // Provide additional parameters.
-  $params['user'] = $user;
-  $params['node'] = $node;
-
-  drupal_mail($module, $key, $to, $language, $params);
 }
 
 
@@ -585,17 +598,19 @@ function _send_revision_ready_mail($node) {
   // Get author fields.
   $user = user_load($node->uid);
 
-  // Get language from user obj.
-  $language =_get_language_object($user->language);
+  if ($user->uid > 0) {
+    // Get language from user obj.
+    $language =_get_language_object($user->language);
 
-  // Set recipient.
-  $to = variable_get('mimemail_mail');
+    // Set recipient.
+    $to = variable_get('mimemail_mail');
 
-  // Provide additional parameters.
-  $params['user'] = $user;
-  $params['node'] = $node;
+    // Provide additional parameters.
+    $params['user'] = $user;
+    $params['node'] = $node;
 
-  drupal_mail($module, $key, $to, $language, $params);
+    drupal_mail($module, $key, $to, $language, $params);
+  }
 }
 
 
@@ -606,19 +621,20 @@ function _send_revision_ready_mail($node) {
  *
  * */
 function _send_user_edited_mail($user) {
+  if ($user->uid > 0) {
+    $module = 'ulf_workflow';
+    $key = 'user_edited_mail_admin';
 
-  $module = 'ulf_workflow';
-  $key = 'user_edited_mail_admin';
+    // Get language from user obj.
+    $language =_get_language_object($user->language);
 
-  // Get language from user obj.
-  $language =_get_language_object($user->language);
+    // Set recipient.
+    $to = variable_get('mimemail_mail');;
 
-  // Set recipient.
-  $to = variable_get('mimemail_mail');;
-
-  // Provide additional parameters.
-  $params['user'] = $user;
-  drupal_mail($module, $key, $to, $language, $params);
+    // Provide additional parameters.
+    $params['user'] = $user;
+    drupal_mail($module, $key, $to, $language, $params);
+  }
 }
 
 
@@ -732,7 +748,7 @@ function ulf_workflow_mail_edit_token_types($mailkey) {
  * @param $language
  * @return mixed
  */
-function _get_language_object($language) {
+function _get_language_object($language = 'da') {
   $installed_languages = language_list();
   return $installed_languages[$language];
 }
