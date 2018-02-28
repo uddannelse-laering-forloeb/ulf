@@ -27,10 +27,10 @@ function ulf_base_default_fe_block_settings() {
         'theme' => 'seven',
         'weight' => 0,
       ),
-      'ulf_aarhus' => array(
+      'ud_og_laer' => array(
         'region' => 'footer',
         'status' => 1,
-        'theme' => 'ulf_aarhus',
+        'theme' => 'ud_og_laer',
         'weight' => 0,
       ),
     ),

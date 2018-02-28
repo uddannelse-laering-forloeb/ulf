@@ -52,7 +52,6 @@ features[variable][] = captcha_description_en
 features[variable][] = captcha_enable_stats
 features[variable][] = captcha_log_wrong_responses
 features[variable][] = captcha_persistence
-features[variable][] = captcha_placement_map_cache
 features[variable][] = captcha_response
 features[variable][] = captcha_sid
 features[variable][] = captcha_token
