@@ -2,6 +2,13 @@
 
 # v2.5.x
 
+## 2.5.27
+* Patched user roles.
+* SUPPORT-1466: Added .csv for user view export
+* SUPPORT-1465: Fixed bug that caused wrong unpublishing dates.
+* SUPPORT-1462: Fixed bug where node title wouldn't show in emails.
+* SUPPORT-1462: Fixed bug where we send empty emails.
+
 ## 2.5.26
 * SUPPORT-1461: Modified track mail module
 
