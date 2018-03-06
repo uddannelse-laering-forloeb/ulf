@@ -115,6 +115,67 @@ function _transportpulje_form_build_mail_confirmation(EntityMetadataWrapper $wra
 }
 
 /**
+ * Follow up mail template.
+ *
+ * @param EntityMetadataWrapper $wrapper
+ *   The wrapper of an entity.
+ *
+ * @return string
+ *   The values of the submitted form grouped into a string.
+ */
+function _transportpulje_form_build_mail_followup(EntityMetadataWrapper $wrapper) {
+  global $language;
+
+  $application = '<h3>';
+  $application .= t('Course', array(), array('langcode' => $language->language));
+  $application .= ':</h3>';
+
+  $application .= '<strong>';
+  $application .= t('Id', array(), array('langcode' => $language->language));
+  $application .= ':</strong> ';
+  $application .= $wrapper->entityform_id->value();
+  $application .= '<br/>';
+
+  $application .= '<strong>';
+  $application .= t('Date', array(), array('langcode' => $language->language));
+  $application .= ':</strong> ';
+  $application .= date('d/m/Y', $wrapper->field_tpf_date->value());
+  $application .= '<br/>';
+
+  if ($wrapper->field_tpf_course_not_found->value()) {
+    $application .= '<strong>';
+    $application .= t('What is the course', array(), array('langcode' => $language->language));
+    $application .= ':</strong> ';
+    $application .= $wrapper->field_tpf_what_course->value();
+    $application .= '<br/>';
+
+    $application .= '<strong>';
+    $application .= t('Describe the learning target', array(), array('langcode' => $language->language));
+    $application .= ':</strong> ';
+    $application .= $wrapper->field_tpf_purpose_course->value();
+    $application .= '<br/>';
+  }
+  else {
+    $course = $wrapper->field_tpf_course_select->value();
+
+    $application .= '<strong>';
+    $application .= t('Course', array(), array('langcode' => $language->language));
+    $application .= ':</strong> ';
+    $application .= $course->title;
+    $application .= '<br/>';
+  }
+
+  $application .= '<strong>';
+  $application .= t('Address', array(), array('langcode' => $language->language));
+  $application .= ':</strong> ';
+  $application .= $wrapper->field_tpf_address->value();
+  $application .= '<br/>';
+
+
+  return $application;
+}
+
+/**
  * Add the different cases in which to send mail.
  *
  * @param EntityMetadataWrapper $wrapper
@@ -158,6 +219,7 @@ function _transportpulje_form_notify(EntityMetadataWrapper $wrapper, $action) {
         'value' => '',
         'format' => NULL,
       ))['value'];
+      $params['body'] .= _transportpulje_form_build_mail_followup($wrapper);
 
       $to = $wrapper->field_tpf_email->value();
       break;
@@ -169,6 +231,7 @@ function _transportpulje_form_notify(EntityMetadataWrapper $wrapper, $action) {
         'value' => '',
         'format' => NULL,
       ))['value'];
+      $params['body'] .= _transportpulje_form_build_mail_followup($wrapper);
 
       $to = $wrapper->field_tpf_email->value();
       break;
