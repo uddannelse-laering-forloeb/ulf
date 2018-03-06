@@ -90,21 +90,6 @@ function ulf_base_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'captcha_placement_map_cache';
-  $strongarm->value = array(
-    'end_user_message_entityform_edit_form' => array(
-      'path' => array(
-        0 => 'actions',
-      ),
-      'key' => 'save',
-      'weight' => NULL,
-    ),
-  );
-  $export['captcha_placement_map_cache'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'captcha_response';
   $strongarm->value = 'G7tPR';
   $export['captcha_response'] = $strongarm;

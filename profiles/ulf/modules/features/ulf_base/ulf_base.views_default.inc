@@ -311,14 +311,6 @@ function ulf_base_views_default_views() {
     18 => 0,
     19 => 0,
   );
-  /* Filter criterion: User: Roles */
-  $handler->display->display_options['filters']['rid']['id'] = 'rid';
-  $handler->display->display_options['filters']['rid']['table'] = 'users_roles';
-  $handler->display->display_options['filters']['rid']['field'] = 'rid';
-  $handler->display->display_options['filters']['rid']['operator'] = 'not';
-  $handler->display->display_options['filters']['rid']['value'] = array(
-    19 => '19',
-  );
   /* Filter criterion: User: The user ID */
   $handler->display->display_options['filters']['uid_raw']['id'] = 'uid_raw';
   $handler->display->display_options['filters']['uid_raw']['table'] = 'users';
@@ -353,7 +345,7 @@ function ulf_base_views_default_views() {
   $handler->display->display_options['style_options']['newline_token'] = '1';
   $handler->display->display_options['style_options']['header'] = 0;
   $handler->display->display_options['style_options']['keep_html'] = 0;
-  $handler->display->display_options['path'] = 'admin/settings/custom/user-email-export/csv';
+  $handler->display->display_options['path'] = 'admin/settings/custom/user-email-export/csv.csv';
   $handler->display->display_options['displays'] = array(
     'page' => 'page',
     'default' => 0,
