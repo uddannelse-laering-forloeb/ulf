@@ -119,6 +119,17 @@ function transportpulje_form_action_info() {
     'pass rows' => TRUE,
   );
 
+  $actions['_tpf_close'] = array(
+    'type' => 'entityform',
+    'label' => t('Close'),
+    'configurable' => FALSE,
+    'triggers' => array('any'),
+    'behavior' => array('changes_property'),
+    'vbo_configurable' => FALSE,
+    'pass rows' => TRUE,
+  );
+
+
   return $actions;
 }
 
@@ -160,6 +171,18 @@ function _tpf_change_status_refused($entity) {
  */
 function _tpf_refuse($entity) {
   _tpf_change_entity($entity, 'refused_mail');
+}
+
+/**
+ * Custom action for bulk operation. (Refused and send mail)
+ *
+ * @param object $entity
+ *   The entity to act on.
+ */
+function _tpf_close($entity) {
+  $wrapper = entity_metadata_wrapper('entityform', $entity);
+  $wrapper->field_tpf_status = 'closed';
+  $wrapper->save();
 }
 
 /**
