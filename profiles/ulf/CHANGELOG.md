@@ -3,6 +3,13 @@
 # v2.5.x
 
 ## 2.5.27
+* KVF-36: TPF - Add address date and ID to mails.
+* KVF-37: TPF - Status afsluttet med action.
+* KVF-38: TPF - Delete action.
+* KVF-40: TPF - CSV eksport: Beløb ønskes formateret.
+* KVF-41: TPF - CSV eksport: Tilføj beskrivelse/læringsmål.
+
+## 2.5.27
 * Patched user roles.
 * SUPPORT-1466: Added .csv for user view export
 * SUPPORT-1465: Fixed bug that caused wrong unpublishing dates.
