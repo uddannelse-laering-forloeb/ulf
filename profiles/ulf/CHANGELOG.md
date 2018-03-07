@@ -2,7 +2,7 @@
 
 # v2.5.x
 
-## 2.5.27
+## 2.5.28
 * KVF-36: TPF - Add address date and ID to mails.
 * KVF-37: TPF - Status afsluttet med action.
 * KVF-38: TPF - Delete action.
