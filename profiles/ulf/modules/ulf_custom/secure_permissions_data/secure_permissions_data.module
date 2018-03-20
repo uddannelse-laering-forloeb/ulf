@@ -113,6 +113,7 @@ function secure_permissions_data_secure_permissions($role) {
       'bypass workbench moderation',
       'change own username',
       'clone node',
+      'delete any entityform',
       'create course content',
       'create course_educators content',
       'create html_block content',
