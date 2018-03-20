@@ -35,7 +35,7 @@ function transportpulje_form_field_default_field_instances() {
       'user_register_form' => FALSE,
     ),
     'widget' => array(
-      'active' => 1,
+      'active' => 1,  
       'module' => 'text',
       'settings' => array(
         'maxlength_js' => 0,
@@ -700,10 +700,9 @@ function transportpulje_form_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 37,
+        'type' => 'hidden',
+        'weight' => 35,
       ),
       'full' => array(
         'label' => 'above',
@@ -749,10 +748,9 @@ function transportpulje_form_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 36,
+        'type' => 'hidden',
+        'weight' => 32,
       ),
       'full' => array(
         'label' => 'above',
@@ -798,10 +796,9 @@ function transportpulje_form_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
-        'weight' => 35,
+        'type' => 'hidden',
+        'weight' => 33,
       ),
       'full' => array(
         'label' => 'above',

@@ -89,7 +89,7 @@
       <?php endif; ?>
       <div class="content is-<?php print $group_type; ?>">
         <div class="content--image">
-          <?php if ($field_free['0']['value'] == 1) : ?>
+          <?php if (isset($field_free['0']) && $field_free['0']['value'] == 1) : ?>
             <div class="ribbon-wrapper left is-content">
               <div class="ribbon is-content">
                 <div class="ribbon--course is-content"><?php print t('Free'); ?></div>
@@ -206,7 +206,7 @@
                       <div class="block--field-text"><?php print render($content['field_duration_description']); ?></div>
                     <?php endif; ?>
                   <?php endif;?>
-                  <?php if ($field_free['0']['value'] == 0 ) : ?>
+                  <?php if (isset($field_free['0']) && $field_free['0']['value'] == 0 ) : ?>
                     <div class="block--field-label"><?php print t('Price');?></div>
                     <?php print render($content['field_collection_price']); ?>
                   <?php else : ?>
