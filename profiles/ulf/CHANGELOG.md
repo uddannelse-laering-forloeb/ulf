@@ -2,6 +2,9 @@
 
 # v2.5.x
 
+## 2.5.29
+* KVF-55: TPF - Add ID to confirmation mails
+
 ## 2.5.28
 * KVF-36: TPF - Add address date and ID to mails.
 * KVF-37: TPF - Status afsluttet med action.
