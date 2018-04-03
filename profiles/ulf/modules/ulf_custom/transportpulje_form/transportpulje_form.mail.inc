@@ -28,6 +28,12 @@ function _transportpulje_form_build_mail_confirmation(EntityMetadataWrapper $wra
 
   $application .= '<p>';
 
+  $application .= '<strong>';
+  $application .= t('Id', array(), array('langcode' => $language->language));
+  $application .= ':</strong> ';
+  $application .= $wrapper->entityform_id->value();
+  $application .= '<br/>';
+
   if ($wrapper->field_tpf_course_not_found->value()) {
     $application .= '<strong>';
     $application .= t('What is the course', array(), array('langcode' => $language->language));
