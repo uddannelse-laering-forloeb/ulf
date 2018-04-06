@@ -2,6 +2,10 @@
 
 # v2.5.x
 
+## 2.5.30
+* Updated Drupal core to 7.58
+* SUPPORT-1507: Changed image help text
+
 ## 2.5.29
 * KVF-55: TPF - Add ID to confirmation mails
 
