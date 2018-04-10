@@ -270,6 +270,7 @@ function transportpulje_form_secure_permissions($role) {
     'transport pool editor' => array(
       'view the administration theme',
       'administer tpf',
+      'delete any entityform',
       'view any entityform',
       'edit any entityform',
     ),
@@ -277,6 +278,7 @@ function transportpulje_form_secure_permissions($role) {
       'administer tpf',
       'view any entityform',
       'edit any entityform',
+      'delete any entityform',
     ),
   );
   if (isset($permissions[$role])) {

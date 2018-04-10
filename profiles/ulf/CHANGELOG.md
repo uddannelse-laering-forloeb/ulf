@@ -2,6 +2,9 @@
 
 # v2.5.x
 
+## 2.5.31
+* KVF-38: TPF - Changed entityform permissions
+
 ## 2.5.30
 * Updated Drupal core to 7.58
 * SUPPORT-1507: Changed image help text
