@@ -2,6 +2,9 @@
 
 # v2.5.x
 
+## 2.5.32
+* KVF-38: Applied user roles patch
+
 ## 2.5.31
 * KVF-38: TPF - Changed entityform permissions
 
