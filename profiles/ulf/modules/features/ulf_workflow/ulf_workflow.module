@@ -504,9 +504,11 @@ function ulf_workflow_node_presave($node) {
         // Update changed timestamp.
         $node->changed = REQUEST_TIME;
 
-        // Send unpublished mail.
-        if ($workflow_send_mail > 0) {
-          _send_unpublished_mail($node);
+        // Send unpublished mail if using cron.
+        if((isset($_REQUEST['op']) && $_REQUEST['op'] == 'T') || ($user->uid == 0)) {
+          if ($workflow_send_mail > 0) {
+            _send_unpublished_mail($node);
+          }
         }
       }
     }
