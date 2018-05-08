@@ -1,6 +1,10 @@
 # ULF changelog
 
 # v2.5.x
+
+## 2.5.34
+* SUPPORT-1547: Fixed bug in workflow unpublish mail
+
 ## 2.5.33
 * SUPPORT-1536: Changed logo for KLC
 * SUPPORT-1529: Changed label for læringsplaner field
