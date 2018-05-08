@@ -1,6 +1,10 @@
 # ULF changelog
 
 # v2.5.x
+## 2.5.33
+* SUPPORT-1536: Changed logo for KLC
+* SUPPORT-1529: Changed label for læringsplaner field
+* SUPPORT-1524: Changed pdf display of free/price
 
 ## 2.5.32
 * KVF-38: Applied user roles patch
