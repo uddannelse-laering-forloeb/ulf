@@ -2,6 +2,9 @@
 
 # v2.5.x
 
+## 2.5.35
+* SUPPORT-1591: Removed default siteimprove from .info file
+
 ## 2.5.34
 * SUPPORT-1547: Fixed bug in workflow unpublish mail
 
