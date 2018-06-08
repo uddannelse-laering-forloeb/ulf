@@ -51,9 +51,7 @@
     <?php print $scripts; ?>
     <meta http-equiv="X-UA-Compatible" content="IE=9">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
-    <!--<link href="//fonts.googleapis.com/css?family=Asap:400,700,400italic,700italic" rel="stylesheet" type="text/css">-->
     <!--[if lt IE 10]>
-    <script type="text/javascript" src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <link rel="stylesheet" href="/profiles/ulf/themes/ulf_default/css/ie9.css" media="all">
     <![endif]-->
   </head>
