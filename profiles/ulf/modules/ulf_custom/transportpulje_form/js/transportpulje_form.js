@@ -5,6 +5,7 @@
   "use strict";
   Drupal.behaviors.transportpulje_form = {
     attach: function (context, settings) {
+
       // When the select course dropdown is changed we alter the address fields.
       $('.form-item-course-dropdown').change(function () {
         var value = $('.form-item-course-dropdown .chosen-single span').html();
@@ -14,27 +15,21 @@
         // Check if address is not hidden for selected for node. (Not in hidden array)
         // If so, apply address else act as the course had no address.
         // If address is not in hidden array.
-        if (settings.transportpulje_form.hidden.indexOf(nid) < 0) {
-          $('#course_dropdown_address').load('fetch-address/' + nid, function () {
-            if ($(this)[0].innerHTML.length === 0) {
-              // When a course without address but not hidden is selected.
-              $('#edit-course-not-found').prop('checked', false).trigger('change');
-              resetFields();
-            }
-            else {
-              if (nid) {
+        if (nid) {
+          if (settings.transportpulje_form.hidden.indexOf(nid) < 0) {
+            $('#course_dropdown_address').load('fetch-address/' + nid, function () {
+              if ($(this)[0].innerHTML.length === 0) {
+                // When a course without address but not hidden is selected.
+                $('#edit-course-not-found').prop('checked', false).trigger('change');
+                resetFields();
+              }
+              else {
                 // When a course with address is selected.
                 $('#edit-course-not-found').prop('checked', false).trigger('change');
                 populateFields(this);
               }
-              else {
-                // When no course (- Select -) selected.
-                $('#edit-course-not-found').prop('checked', true).trigger('change');
-                $('.form-item-course-dropdown .result-selected').removeClass('result-selected');
-                resetFields()
-              }
-            }
-          });
+            });
+          }
         }
         else {
           // Act as if address was hidden/ Had no address

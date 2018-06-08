@@ -2,6 +2,9 @@
 
 # v2.5.x
 
+## 2.5.36
+* SUPPORT-1589: TPF - Fixed bug in dropdown frontend form
+
 ## 2.5.35
 * SUPPORT-1591: Removed default siteimprove from .info file
 
