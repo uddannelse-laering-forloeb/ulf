@@ -226,14 +226,14 @@ function ulf_base_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'image_captcha_distortion_amplitude';
-  $strongarm->value = '4';
+  $strongarm->value = '2';
   $export['image_captcha_distortion_amplitude'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'image_captcha_dot_noise';
-  $strongarm->value = 1;
+  $strongarm->value = 0;
   $export['image_captcha_dot_noise'] = $strongarm;
 
   $strongarm = new stdClass();

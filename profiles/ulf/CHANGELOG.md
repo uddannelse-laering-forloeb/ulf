@@ -2,6 +2,11 @@
 
 # v2.5.x
 
+## 2.5.37
+* SUPPORT-1645: Eased captcha difficulty and removed captcha from config
+* SUPPORT-1646: Added option to set email config
+* SUPPORT-1627: Changed contactform setup
+
 ## 2.5.36
 * SUPPORT-1589: TPF - Fixed bug in dropdown frontend form
 
