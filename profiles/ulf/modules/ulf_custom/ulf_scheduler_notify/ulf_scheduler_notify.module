@@ -26,7 +26,7 @@ function ulf_scheduler_notify_cron() {
 
     // If site mail recipient is active override receiving email address.
     if ($site_mail_recipient > 0) {
-      $site_mail_recipient = variable_get('mimemail_mail');
+      $site_mail_recipient = !empty(variable_get('email_workflow_recipient')) ? variable_get('email_workflow_recipient') : variable_get('mimemail_mail');
       $to = $site_mail_recipient;
     }
 

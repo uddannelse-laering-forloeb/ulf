@@ -5,7 +5,6 @@
  * Track the mails sent from the system.
  */
 function ulf_track_mail_mail_alter(&$message) {
-  $a =1;
   db_insert('ulf_track_mail')
     ->fields(array(
       'headers' => implode("|", $message['headers']),

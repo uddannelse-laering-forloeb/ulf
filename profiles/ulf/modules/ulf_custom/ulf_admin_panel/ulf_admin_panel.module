@@ -34,10 +34,32 @@ function ulf_admin_panel_menu () {
 function _ulf_admin_panel_form($form) {
   $form['ulf_admin_panel'] = array(
     '#type' => 'vertical_tabs',
-    '#default_tab' => 'edit-images',
+    '#default_tab' => 'ulf_email_settings',
     '#weight' => 1,
     '#collapsible' => TRUE,
     '#collapsed' => FALSE,
+  );
+
+  $form['ulf_email_settings'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Email settings'),
+    '#weight' => 0,
+    '#collapsible' => TRUE,
+    '#group' => 'ulf_admin_panel',
+  );
+
+  $form['ulf_email_settings']['email_site_from'] = array(
+      '#title' => t('Email [FROM:]'),
+      '#type' => 'emailfield',
+      '#default_value' => variable_get('email_site_from', ''),
+      '#description' => t('Email used as the default FROM: address when this site sends emails.')
+  );
+
+  $form['ulf_email_settings']['email_workflow_recipient'] = array(
+    '#title' => t('Email admin notifications recipient'),
+    '#type' => 'emailfield',
+    '#default_value' => variable_get('email_workflow_recipient', ''),
+    '#description' => t('The email address used to receive admin notifications when content changes. This should be an email address accessible to editors in the daily workflow.'),
   );
 
   $form['images'] = array(
@@ -63,7 +85,6 @@ function _ulf_admin_panel_form($form) {
   return system_settings_form($form);
 }
 
-
 /**
  * Custom submit handler for admin panel form to store the an image file properly.
  * @param $form
@@ -80,6 +101,11 @@ function _ulf_admin_panel_form_submit($form, $form_state) {
     // Record that the module (in this example, user module) is using the file.
     file_usage_add($file, 'user', 'user', 1);
   }
+
+  if(!empty($form_state['values']['email_site_from'])) {
+    variable_set('mimemail_mail', $form_state['values']['email_site_from']);
+    variable_set('site_mail', $form_state['values']['email_site_from']);
+  }
 }
 
 /**
@@ -94,4 +120,26 @@ function ulf_admin_panel_permission() {
       'description' => t('Access administration tasks for customized settings.'),
     ),
   );
+}
+
+/**
+ * Implements hook_form_FORMID_alter().
+ *
+ * Disable email settings form item.
+ */
+function ulf_admin_panel_form_mimemail_admin_settings_alter(&$form, $form_state) {
+  $form['mimemail']['mimemail_mail']['#attributes']['readonly'] = 'readonly';
+  $form['mimemail']['mimemail_mail']['#attributes']['style'] = 'background:#efefef;';
+  $form['mimemail']['mimemail_mail']['#description'] .= '<p><strong>! ' . t('This setting should be modified in the admin panel module. See site administration') . ' !</strong></p>';
+}
+
+/**
+ * Implements hook_form_FORMID_alter().
+ *
+ * Disable email settings form item.
+ */
+function ulf_admin_panel_form_system_site_information_settings_alter(&$form, $form_state) {
+  $form['site_information']['site_mail']['#attributes']['readonly'] = 'readonly';
+  $form['site_information']['site_mail']['#attributes']['style'] = 'background:#efefef;';
+  $form['site_information']['site_mail']['#description'] .= '<p><strong>! ' . t('This setting should be modified in the admin panel module. See site administration') . ' !</strong></p>';
 }
