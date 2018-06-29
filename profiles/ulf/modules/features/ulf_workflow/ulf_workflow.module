@@ -605,7 +605,7 @@ function _send_revision_ready_mail($node) {
     $language =_get_language_object($user->language);
 
     // Set recipient.
-    $to = variable_get('mimemail_mail');
+    $to = !empty(variable_get('email_workflow_recipient')) ? variable_get('email_workflow_recipient') : variable_get('mimemail_mail');
 
     // Provide additional parameters.
     $params['user'] = $user;
@@ -631,7 +631,7 @@ function _send_user_edited_mail($user) {
     $language =_get_language_object($user->language);
 
     // Set recipient.
-    $to = variable_get('mimemail_mail');;
+    $to = !empty(variable_get('email_workflow_recipient')) ? variable_get('email_workflow_recipient') : variable_get('mimemail_mail');
 
     // Provide additional parameters.
     $params['user'] = $user;
