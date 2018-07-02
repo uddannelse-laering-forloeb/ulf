@@ -28,7 +28,6 @@ dependencies[] = toolbar
 dependencies[] = ulf_social_media
 dependencies[] = views
 dependencies[] = views_data_export
-features[captcha_points][] = end_user_message_entityform_edit_form
 features[ctools][] = captcha:captcha:1
 features[ctools][] = strongarm:strongarm:1
 features[ctools][] = views:views_default:3.0
