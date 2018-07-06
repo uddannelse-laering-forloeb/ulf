@@ -16,12 +16,26 @@ function ulf_course_providers_menu_alter(&$items) {
 }
 
 /**
+ * Implements hook_permission().
+ *
+ * A permission to view blocked users
+ */
+function ulf_course_providers_permission() {
+  return array(
+    'view_blocked_users' => array(
+      'title' => t('View blocked users'),
+      'description' => t('View blocked users.'),
+    ),
+  );
+}
+
+/**
  * Custom access callback for user profiles.
  *
  * Allow view access to blocked users.
  */
-function _ulf_course_providers_profile_access() {
-  if (user_access('access content')) {
+function _ulf_course_providers_profile_access($user) {
+  if (user_access('view_blocked_users') || $user->status > 0) {
     return TRUE;
   }
   else {

@@ -2,6 +2,9 @@
 
 # v2.5.x
 
+## 2.5.39
+* SUPPORT-1604: Remove access to users for non-editors.
+
 ## 2.5.38
 * SUPPORT-1645: Eased captcha difficulty and removed captcha from config
 
