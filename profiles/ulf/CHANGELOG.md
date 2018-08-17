@@ -3,6 +3,7 @@
 # v2.5.x
 
 ## 2.5.40
+* SUPPORT-1651: Changed "Save as draft" text
 * SUPPORT-1704: Allowed DUS as sub target group for preschool.
 
 ## 2.5.39
