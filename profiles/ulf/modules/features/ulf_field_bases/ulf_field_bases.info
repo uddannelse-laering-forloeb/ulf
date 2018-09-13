@@ -21,6 +21,7 @@ features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:2
 features[field_base][] = field_activities
 features[field_base][] = field_background_knowledge
+features[field_base][] = field_bypass_workflow
 features[field_base][] = field_catering
 features[field_base][] = field_collection_price
 features[field_base][] = field_contact_home_page

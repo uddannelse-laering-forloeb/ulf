@@ -7,29 +7,7 @@
 include_once 'ulf_workflow.features.inc';
 include_once 'ulf_workflow_submit_handlers.inc';
 include_once 'ulf_workflow_form_moderations.inc';
-
-/**
- * Implements hook_preprocess_hook().
- *
- * Hide stuff for version comparison.
- *
- * @param $variables
- */
-function ulf_workflow_preprocess_page(&$variables) {
-  // Quick check to ensure we don't search array on all page calls.
-  if ($GLOBALS['theme'] == 'seven') {
-    if (in_array('page__node__revisions__view', $variables['theme_hook_suggestions'])) {
-      if (isset($variables['page']['content']['system_main']['diff_preview'])) {
-        unset($variables['page']['content']['system_main']['diff_preview']);
-      }
-      if (isset($variables['page']['content']['system_main']['diff_table'])) {
-        unset($variables['page']['content']['system_main']['diff_table']['#rows']['logs']);
-        unset($variables['page']['content']['system_main']['diff_table']['#rows']['navigation']);
-        unset($variables['page']['content']['system_main']['diff_table']['#rows']['states']);
-      }
-    }
-  }
-}
+include_once 'ulf_workflow_mail.inc';
 
 /**
  * Implements hook_menu().
@@ -80,6 +58,28 @@ function _ulf_workflow_admin() {
   return system_settings_form($form);
 }
 
+/**
+ * Implements hook_preprocess_hook().
+ *
+ * Hide stuff for version comparison on diff pages.
+ *
+ * @param $variables
+ */
+function ulf_workflow_preprocess_page(&$variables) {
+  // Quick check to ensure we don't search array on all page calls.
+  if ($GLOBALS['theme'] == 'seven') {
+    if (in_array('page__node__revisions__view', $variables['theme_hook_suggestions'])) {
+      if (isset($variables['page']['content']['system_main']['diff_preview'])) {
+        unset($variables['page']['content']['system_main']['diff_preview']);
+      }
+      if (isset($variables['page']['content']['system_main']['diff_table'])) {
+        unset($variables['page']['content']['system_main']['diff_table']['#rows']['logs']);
+        unset($variables['page']['content']['system_main']['diff_table']['#rows']['navigation']);
+        unset($variables['page']['content']['system_main']['diff_table']['#rows']['states']);
+      }
+    }
+  }
+}
 
 /**
  * Implements hook_menu_link_alter().
@@ -92,6 +92,11 @@ function ulf_workflow_menu_alter(&$items) {
   }
 }
 
+/**
+ * Deny access to workbench.
+ *
+ * @return bool
+ */
 function ulf_workflow_workbench_access() {
   return FALSE;
 }
@@ -127,7 +132,6 @@ function ulf_workflow_menu_local_tasks_alter(&$data) {
   }
 }
 
-
 /**
  * Implements hook_form_FORM_ID_alter().
  *
@@ -138,6 +142,12 @@ function ulf_workflow_menu_local_tasks_alter(&$data) {
  * @param $form_id
  */
 function ulf_workflow_form_node_form_alter(&$form, &$form_state, $form_id) {
+  // Inform of current workflow state
+  if (isset($form['workbench_moderation_state_current']['#value'])) {
+    $readable_state = workbench_moderation_state_load($form['workbench_moderation_state_current']['#value']);
+    drupal_set_message(t('The current workflow state for this content is: @state.', array('@state' => $readable_state->label)), 'warning');
+  }
+
   $content_type = $form['#node']->type;
 
   // Content types that have workflow enabled.
@@ -160,234 +170,6 @@ function ulf_workflow_form_node_form_alter(&$form, &$form_state, $form_id) {
     }
   }
 }
-/*function ulf_workflow_form_node_form_alter(&$form, &$form_state, $form_id) {
-  $content_type = $form['#node']->type;
-
-  // Enable workflow for courses and courses for educators.
-  if ($content_type == 'course' || $content_type == 'course_educators') {
-    // Disable workbench dropdown widget and revision log.
-    $form['options']['workbench_moderation_state_new']['#access'] = FALSE;
-    $form['options']['log']['#access'] = FALSE;
-    $form['revision_information']['workbench_moderation_state_new']['#access'] = FALSE;
-    $form['revision_information']['#access'] = FALSE;
-
-
-    // Add a save draft action button.
-    $form['actions']['save'] = array(
-      '#type' => 'submit',
-      '#access' => !user_access('moderate content from needs_review to published'),
-      '#value' => t('Save as draft and unpublish'),
-      '#weight' => 7,
-      '#submit' => array(
-        'ulf_workflow_course_node_form_draft_submit',
-        'node_form_submit',
-      ),
-    );
-
-    // Add a save & publish action button.
-    $form['actions']['publish'] = array(
-      '#type' => 'submit',
-      '#access' => user_access('moderate content from needs_review to published'),
-      '#value' => t('Save & publish'),
-      '#weight' => 8,
-      '#submit' => array(
-        'ulf_workflow_course_node_form_publish_submit',
-        'node_form_submit',
-      ),
-    );
-
-
-    // -- Modify form if node is published. -- //
-    // Add unpublish button.
-    if ($form['#node']->status == '1') {
-      $form['actions']['unpublish'] = array(
-        '#type' => 'submit',
-        '#access' => user_access('view own unpublished content'),
-        '#value' => t('Unpublish'),
-        '#weight' => 9,
-        '#submit' => array(
-          'node_form_submit',
-          'ulf_workflow_course_node_form_unpublish_submit',
-        ),
-      );
-
-      // Change the label of "Save and publish to "Save"
-      $form['actions']['publish']['#value'] = t('Save');
-
-      // Don't run publishing submit function when resaving published content.
-      foreach ($form['actions']['publish']['#submit'] as $key => $value) {
-        if ($form['actions']['publish']['#submit'][$key] == 'ulf_workflow_course_node_form_publish_submit') {
-          unset($form['actions']['publish']['#submit'][$key]);
-        }
-      }
-    }
-
-
-    // -- Additional submit handlers -- //
-    // Change default submit to "Send to revision" or "Save as draft" (Editor).
-    if (user_access('moderate content from needs_review to published')) {
-      $form['actions']['submit']['#value'] = t('Save as draft');
-    }
-    else {
-      $form['actions']['submit']['#value'] = t('Send to revision');
-
-      // Add send to revision submit handler.
-      $form['actions']['submit']['#submit'][] = 'ulf_workflow_course_node_form_send_to_revision';
-    }
-
-    // Add a destination parameter if it's a new node. (See hook_node_insert for destination on new nodes.)
-    if (!empty($form['nid']['#value'])) {
-      $form['#action'] = '/node/' . $form['nid']['#value'] . '/edit?destination=node/' . $form['nid']['#value'] . '/edit';
-    }
-
-    // Add a submit handler to the form that is unrelated to the save action selected on that form.
-    $form['#submit'][] = 'ulf_workflow_global_submit';
-  }
-}*/
-
-
-/**
- * Custom submit handler/function to the course & course_educators form.
- *
- * Contains changes done to the node regardless of action selected for saving.
- * This function is called before custom submit handlers.
- */
-/*function ulf_workflow_global_submit($form, &$form_state) {
-
-  // Remove old node entry from scheduled notifications so we don't create more entries for sending "a week prior mail".
-  if (isset($form_state['values']['nid'])) {
-    db_delete('scheduler_notify')
-      ->condition('nid', $form_state['values']['nid'])
-      ->execute();
-  }
-
-  // If "full year" exists and is not checked and "to date" and we are editing existing node(has nid) set scheduling options.
-  if (isset($form_state['values']['field_period_full_year']['und']['0']['value']) && !$form_state['values']['field_period_full_year']['und']['0']['value']) {
-    if (isset($form_state['values']['field_period']['und']['0']['value2']) && isset($form_state['values']['nid'])) {
-      // Get to date from period field.
-      $period_timestamp_to_date = $form_state['values']['field_period']['und']['0']['value2'];
-
-      // Format the date according to scheduler requested format.
-      $formatted_to_date = format_date($period_timestamp_to_date, 'custom', 'Y-m-d');
-
-      // Set unpublishing date.
-      $form_state['values']['unpublish_on'] = $formatted_to_date . ' 23:59:59';
-
-      // Register timestamp a week prior for sending email.
-      $week_prior = $period_timestamp_to_date - 604800;
-
-      // Create new entry from form state.
-      db_insert('scheduler_notify')
-        ->fields(array(
-          'nid' => $form_state['values']['nid'],
-          'uid' => $form_state['values']['uid'],
-          'send_mail_on' => $week_prior,
-        ))
-        ->execute();
-    }
-  }
-  // If full year field is missing (It shouldn't be) or is checked (It often is)
-  else {
-    $form_state['values']['field_period']['und']['0']['value2'] = 1893452400;
-
-    // Format the date according to scheduler requested format.
-    $formatted_to_date = format_date(1893452400, 'custom', 'Y-m-d');
-
-    // Set unpublishing date.
-    $form_state['values']['unpublish_on'] = $formatted_to_date . ' 23:59:59';
-  }
-
-  // Set the moderation form state depending on which button is clicked.
-  switch ($form_state['clicked_button']['#id']) {
-    // Unpublish button.
-    case 'edit-unpublish':
-      $form_state['values']['workbench_moderation_state_new'] = 'draft';
-      break;
-
-    // Publish button
-    case "edit-publish":
-      $form_state['values']['workbench_moderation_state_new'] = 'published';
-      break;
-  }
-}*/
-
-
-/**
- * Custom submit handler/function to the course & course_educators form.
- *
- * This will save the node as a draft.
- */
-/*function ulf_workflow_course_node_form_draft_submit($form, &$form_state) {
-  $form_state['values']['workbench_moderation_state_new'] = 'draft';
-  // Tell the end user what is happening.
-  drupal_set_message(t('The content has been saved as a draft. REMEMBER: The content will not be published before it is sent to revision'));
-}*/
-
-
-/**
- * Custom submit handler/function to the course & course_educators form.
- *
- * This will save the node and publish the changes.
- */
-/*function ulf_workflow_course_node_form_publish_submit($form, &$form_state) {
-  $workflow_send_mail = variable_get('ulf_workflow_send_mail');
-
-  // Tell the end user what is happening.
-  $_GET['destination'] = 'node/' . $form['nid']['#value'];
-  drupal_set_message(t('The content has been published'));
-
-  // If send mail is active.
-  if ($workflow_send_mail > 0) {
-    _send_published_mail($form['#node']);
-  }
-  else {
-    drupal_set_message(t('No mail sent. Mail functionality is disabled.'), 'warning');
-  }
-}*/
-
-
-/**
- * Custom submit handler/function to the course & course_educators form.
- *
- * This will save the node unpublish the node and set the modereation state to draft.
- */
-/*function ulf_workflow_course_node_form_unpublish_submit($form, &$form_state) {
-  $workflow_send_mail = variable_get('ulf_workflow_send_mail');
-
-  // Provide unpublish parameter. (See node presave).
-  // We bypass workbench moderation module workflow by unpublishing in presave function instead.
-  $_GET['unpublish'] = TRUE;
-
-  // Tell the end user what is happening.
-  drupal_set_message(t('The content has been unpublished'));
-
-  // If send mail is active.
-  if ($workflow_send_mail > 0) {
-    _send_unpublished_mail($form['#node']);
-  }
-  else {
-    drupal_set_message(t('No mail sent. Mail functionality is disabled.'), 'warning');
-  }
-}*/
-
-
-/**
- * Custom submit handler/function to the course & course_educators form.
- *
- * This will save the node and send to revision by admin.
- */
-/*function ulf_workflow_course_node_form_send_to_revision($form, &$form_state) {
-  $workflow_send_mail = variable_get('ulf_workflow_send_mail');
-
-  // Send mail when content is ready for revision if send mail is active.
-  if ($workflow_send_mail > 0) {
-    _send_revision_ready_mail($form['#node']);
-  }
-  else {
-    drupal_set_message(t('No mail sent. Mail functionality is disabled.'), 'warning');
-  }
-}*/
-
 
 /**
  * Implements hook_user_update().
@@ -396,357 +178,55 @@ function ulf_workflow_form_node_form_alter(&$form, &$form_state, $form_id) {
  * @param $account
  * @param $category
  */
-/*function ulf_workflow_user_update(&$edit, $account, $category) {
-  $workflow_send_mail = variable_get('ulf_workflow_send_mail');
-  global $user;
+function ulf_workflow_user_update(&$edit, $account, $category) {
+  _send_user_edited_mail($account);
+}
 
-  // Send user edited mails to site mail when a user is changed.
-  if (!in_array('editor', $user->roles)) {
 
-    // If send mail is active.
-    if ($workflow_send_mail > 0) {
-      _send_user_edited_mail($account);
-    }
-    else {
-      drupal_set_message(t('No mail sent. Mail functionality is disabled.'), 'warning');
-    }
+/**
+ * Implements hook_scheduler_api().
+ *
+ * Send mails when publishing and unpublishing content through scheduler.
+ */
+function ulf_workflow_scheduler_api($node, $action) {
+  switch ($action) {
+    case 'publish' :
+      _send_published_mail($node);
+      break;
+    case 'unpublish' :
+      _send_unpublished_mail($node);
+      break;
+    default:
   }
-}*/
-
+}
 
 /**
  * Implements hook_node_insert().
  *
  * Set a destination parameter when the node is first saved.
- * @todo There might be a better way, to avoid running this on all new node save calls.
  *
  * @param $node
  */
-/*function ulf_workflow_node_insert($node) {
-  if (($node->type == 'course' || $node->type == 'course_educators')) {
+function ulf_workflow_node_insert($node) {
+  // Content types that have workflow enabled.
+  $workflow_enabled_types = array(
+    'course',
+    'course_educators',
+    'news_course_provider'
+  );
+
+  if (in_array($node->type, $workflow_enabled_types)) {
+    // Send mail on creation.
+    // We can't use form submit on node add to send mail, since we need a full
+    // node entity for displaying the mail and it is not created before now.
+    if ($node->workbench_moderation_state_new == 'published' && user_access('moderate content from needs_review to published')) {
+      _send_published_mail($node);
+    }
+
+    if ($node->workbench_moderation_state_new == 'needs_review') {
+      _send_revision_ready_mail($node);
+    }
+    
     $_GET['destination'] = 'node/' . $node->nid . '/edit';
-
-    // Remove old nid entry element.
-    if (db_table_exists('scheduler')) {
-      db_delete('scheduler')
-        ->condition('nid', $node->nid)
-        ->execute();
-    }
-
-    // Remove old node entry from scheduled notifications so we don't create more entries for sending "a week prior mail".
-    db_delete('scheduler_notify')
-      ->condition('nid', $node->nid)
-      ->execute();
-
-
-    // If ´full year" is not checked then set scheduler date (We need to do this for newly created nodes after they have been assigned a nid.)
-    // Existing nodes are assigned unscheduling in ulf_workflow_global_submit() function.
-    if (isset($node->field_period_full_year['und']['0']['value']) && !$node->field_period_full_year['und']['0']['value']) {
-      if (isset($node->field_period['und']['0']['value2'])) {
-        // Get to date from period field.
-        $period_timestamp_to_date = $node->field_period['und']['0']['value2'];
-
-        // Register timestamp a week prior for sending email.
-        $week_prior = $period_timestamp_to_date - 604800;
-
-        if (db_table_exists('scheduler')) {
-          // Create new entry from nid.
-          db_insert('scheduler')
-            ->fields(array(
-              'nid' => $node->nid,
-              'publish_on' => 0,
-              'unpublish_on' => $period_timestamp_to_date,
-            ))
-            ->execute();
-        }
-
-        // Create new entry from form state.
-        db_insert('scheduler_notify')
-          ->fields(array(
-            'nid' => $node->nid,
-            'uid' => $node->uid,
-            'send_mail_on' => $week_prior,
-          ))
-          ->execute();
-      }
-    }
   }
-}*/
-
-
-/**
- * Implements hook_node_presave().
- * Unpublish content when it is scheduled to be unpublished or if unpublish is clicked on node form.
- *
- * @param $node
- */
-/*function ulf_workflow_node_presave($node) {
-  // Node types with workflow enabled.
-  if (($node->type == 'course' || $node->type == 'course_educators')) {
-    global $user;
-
-    // If attached parameter is unpublish or we assume running cron (User check)
-    if ((isset($_REQUEST['op']) && $_REQUEST['op'] == 'T') || ($user->uid == 0) || (isset($node->workbench_moderation_state_new) && $node->workbench_moderation_state_new == 'draft')) {
-
-      // Presave is also run for each revision, we only want to act when we are saving the actual node.
-      if (!isset($node->revision) || !$node->revision == 0 ) {
-        // Get send_mail variable.
-        $workflow_send_mail = variable_get('ulf_workflow_send_mail');
-
-        // Set status to unpublished.
-        $node->status = 0;
-        $node->workbench_moderation_state_new = 'draft';
-
-        // Update changed timestamp.
-        $node->changed = REQUEST_TIME;
-
-        // Send unpublished mail if using cron.
-        if((isset($_REQUEST['op']) && $_REQUEST['op'] == 'T') || ($user->uid == 0)) {
-          if ($workflow_send_mail > 0) {
-            _send_unpublished_mail($node);
-          }
-        }
-      }
-    }
-  }
-}*/
-
-
-/**
- * Create and send mail to author when new draft is published.
- *
- * @param $node
- *
- * */
-/*function _send_published_mail($node) {
-  // Get author fields.
-  $user = user_load($node->uid);
-  if ($user->uid > 0) {
-    $module = 'ulf_workflow';
-
-    // Get language from user obj.
-    $language =_get_language_object($user->language);
-
-    // Set recipient.
-    $to = $user->mail;
-    $key = 'published_mail_author';
-
-
-    // If site mail recipient is active override receiving email address.
-    $site_mail_recipient = variable_get('ulf_workflow_local_recipient');
-    if ($site_mail_recipient > 0) {
-      $site_mail_recipient = variable_get('mimemail_mail');
-      $to = $site_mail_recipient;
-    }
-
-    // Provide additional parameters.
-    $params['user'] = $user;
-    $params['node'] = $node;
-
-    drupal_mail($module, $key, $to, $language, $params);
-  }
-}*/
-
-
-/**
- * Create and send mail to author when new draft is unpublished.
- *
- * @param $node
- *
- * */
-/*function _send_unpublished_mail($node) {
-  // Get author fields.
-  $user = user_load($node->uid);
-  if ($user->uid > 0) {
-    $module = 'ulf_workflow';
-
-    // Get language from user obj.
-    $language =_get_language_object($user->language);
-
-    // Set recipient.
-    $to = $user->mail;
-    $key = 'unpublished_mail_author';
-
-    // If site mail recipient is active override receiving email address.
-    $site_mail_recipient = variable_get('ulf_workflow_local_recipient');
-    if ($site_mail_recipient > 0) {
-      $site_mail_recipient = variable_get('mimemail_mail');
-      $to = $site_mail_recipient;
-    }
-
-    // Provide additional parameters.
-    $params['user'] = $user;
-    $params['node'] = $node;
-
-    drupal_mail($module, $key, $to, $language, $params);
-  }
-}*/
-
-
-/**
- * Create and send mail to editor when new draft is ready for publishing.
- *
- * @param $node
- *
- * */
-/*function _send_revision_ready_mail($node) {
-  $module = 'ulf_workflow';
-  $key = 'revision_ready_mail_admin';
-
-  // Get author fields.
-  $user = user_load($node->uid);
-
-  if ($user->uid > 0) {
-    // Get language from user obj.
-    $language =_get_language_object($user->language);
-
-    // Set recipient.
-    $to = !empty(variable_get('email_workflow_recipient')) ? variable_get('email_workflow_recipient') : variable_get('mimemail_mail');
-
-    // Provide additional parameters.
-    $params['user'] = $user;
-    $params['node'] = $node;
-
-    drupal_mail($module, $key, $to, $language, $params);
-  }
-}*/
-
-
-/**
- * Create and send mail to editor when a user has been changed.
- *
- * @param $user
- *
- * */
-/*function _send_user_edited_mail($user) {
-  if ($user->uid > 0) {
-    $module = 'ulf_workflow';
-    $key = 'user_edited_mail_admin';
-
-    // Get language from user obj.
-    $language =_get_language_object($user->language);
-
-    // Set recipient.
-    $to = !empty(variable_get('email_workflow_recipient')) ? variable_get('email_workflow_recipient') : variable_get('mimemail_mail');
-
-    // Provide additional parameters.
-    $params['user'] = $user;
-    drupal_mail($module, $key, $to, $language, $params);
-  }
-}*/
-
-
-/**
- * Implements hook_mailkeys().
- *
- * @return array
- */
-/*function ulf_workflow_mailkeys() {
-  return array(
-    'revision_ready_mail_admin' => t('Mail sent to admin(Site mail address) when a new draft is ready for revision.'),
-    'published_mail_author' => t('Mail sent to author when an editor publishes the content.'),
-    'unpublished_mail_author' => t('Mail sent to author when an editor unpublishes the content.'),
-    'user_edited_mail_admin' => t('Mail sent to admin(Site mail address) when a user has changed its account.'),
-  );
-}*/
-
-
-/**
- * Implements hook_mail_edit_text().
- *
- * @param string $mailkey
- * @param object $language
- *
- * @return array
- */
-/*function ulf_workflow_mail_edit_text($mailkey, $language) {
-  $return = array();
-  switch ($mailkey) {
-
-    // Revision ready mail.
-    case 'revision_ready_mail_admin':
-      $return['subject'] = 'A new draft is ready for publishing by [user:field_profile_name]';
-      $return['body'] =
-        '[user:field-profile-name] has marked a draft ready for publishing.
-
-This is an automated message created by [site:name].';
-      return $return;
-      break;
-
-    // Content published mail.
-    case 'published_mail_author':
-      $return['subject'] = 'Content you sent to revision has been published by an admin on [site:name]';
-      $return['body'] =
-        'Some content you sent to revision has now been published on [site:name].
-
-Go to [site:login-url] and login to see what has been published.
-
-This is an automated message created by [site:name].';
-      return $return;
-      break;
-
-
-    // Content unpublished mail.
-    case 'unpublished_mail_author':
-      $return['subject'] = 'Content that was published on [site:name] has now been unpublished';
-      $return['body'] =
-        'Some content that was published on [site:name] has now been unpublished.
-
-Go to [site:login-url] and login to see what has been unpublished.
-
-This is an automated message created by [site:name].';
-      return $return;
-      break;
-
-    // User edited mail.
-    case 'user_edited_mail_admin':
-      $return['subject'] = 'The organisation: [user:field_profile_name] has made changes to its profile';
-      $return['body'] =
-        'The organisation: [user:field_profile_name] has made changes to its profile [current-date:short].
-
-Go to [user:url] to see the changes.
-
-This is an automated message created by [site:name].';
-      return $return;
-      break;
-  }
-}*/
-
-
-/**
- * Alter the token tree in mail edit functionality to represent nodes and users.
- *
- * @param $form
- * @param $form_state
- * @param $form_id
- */
-/*function ulf_workflow_form_mail_edit_template_form_alter(&$form, &$form_state, $form_id) {
-  $form['mail']['token_tree'] = array(
-    '#theme' => 'token_tree_link',
-    '#token_types' => array('node', 'user'),
-    '#global_types' => TRUE,
-    '#click_insert' => TRUE,
-  );
-}*/
-
-/**
- * Implements hook_mail_edit_token_types().
- *
- * @param string $mailkey
- *
- * @return array
- */
-/*function ulf_workflow_mail_edit_token_types($mailkey) {
-  return user_mail_edit_token_types($mailkey);
-}*/
-
-/**
- * Get language object from string.
- *
- * @param $language
- * @return mixed
- */
-/*function _get_language_object($language = 'da') {
-  $installed_languages = language_list();
-  return $installed_languages[$language];
-}*/
+}

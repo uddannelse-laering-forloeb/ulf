@@ -43,20 +43,22 @@ function ulf_maps_form_alter(&$form, &$form_state, $form_id) {
       // available for JS during form editing.
       if (!empty($form['uid']['#value'])) {
         $author = user_load($form['uid']['#value']);
-        $form['#attached']['js'][] = array(
-          'data' => array(
-            'ulf_maps' => array(
-              'is_new' => $form['nid']['#value'] == NULL,
-              'provider' => array(
-                'street' => $author->locations['0']['street'],
-                'additional' => $author->locations['0']['additional'],
-                'postal_code' => $author->locations['0']['postal_code'],
-                'city' => $author->locations['0']['city'],
+        if(isset($author->locations['0'])) {
+          $form['#attached']['js'][] = array(
+            'data' => array(
+              'ulf_maps' => array(
+                'is_new' => $form['nid']['#value'] == NULL,
+                'provider' => array(
+                  'street' => $author->locations['0']['street'],
+                  'additional' => $author->locations['0']['additional'],
+                  'postal_code' => $author->locations['0']['postal_code'],
+                  'city' => $author->locations['0']['city'],
+                ),
               ),
             ),
-          ),
-          'type' => 'setting',
-        );
+            'type' => 'setting',
+          );
+        }
       }
 
       // Extra submit handler to ensure that content selected to not be
@@ -89,10 +91,10 @@ function _ulf_maps_profile_submit($form, &$form_state) {
       // provider address form the user field and fill in the fields.
       if (is_null($values['nid'])) {
         if ($account = user_load_by_name($values['name'])) {
-          $form_state['values']['locations'][0]['name'] = $account->location['name'];
-          $form_state['values']['locations'][0]['street'] = $account->location['street'];
-          $form_state['values']['locations'][0]['city'] = $account->location['city'];
-          $form_state['values']['locations'][0]['postal_code'] = $account->location['postal_code'];
+          $form_state['values']['locations'][0]['name'] = isset($account->location['name']) ? $account->location['name'] : '';
+          $form_state['values']['locations'][0]['street'] = isset($account->location['street']) ? $account->location['street'] : '';
+          $form_state['values']['locations'][0]['city'] = isset($account->location['city']) ? $account->location['city'] : '';
+          $form_state['values']['locations'][0]['postal_code'] = isset($account->location['postal_code']) ? $account->location['postal_code'] : '';
         }
       }
       break;
