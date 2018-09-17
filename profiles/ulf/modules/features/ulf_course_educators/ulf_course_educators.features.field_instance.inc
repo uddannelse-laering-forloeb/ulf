@@ -1241,7 +1241,7 @@ function ulf_course_educators_field_default_field_instances() {
       'module' => 'html5_tools',
       'settings' => array(),
       'type' => 'emailwidget',
-      'weight' => 58,
+      'weight' => 57,
     ),
   );
 

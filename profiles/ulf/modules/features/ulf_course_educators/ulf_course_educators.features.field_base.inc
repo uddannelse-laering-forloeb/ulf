@@ -27,8 +27,7 @@ function ulf_course_educators_field_default_field_bases() {
     'settings' => [],
     'translatable' => 0,
     'type' => 'text_long',
-  ];
-
+  );
 
   // Exported field_base: 'field_catering'
   $field_bases['field_catering'] = array(
