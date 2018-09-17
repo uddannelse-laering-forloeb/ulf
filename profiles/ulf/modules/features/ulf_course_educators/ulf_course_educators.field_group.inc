@@ -302,6 +302,7 @@ function ulf_course_educators_field_group_info() {
       0 => 'field_last_signup_date',
       1 => 'field_signup_email',
       2 => 'field_signup_link',
+      3 => 'field_signup_description',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
