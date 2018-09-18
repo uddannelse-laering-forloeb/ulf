@@ -1914,18 +1914,18 @@ function ulf_maps_strongarm() {
       'collapsible' => 0,
       'collapsed' => 0,
       'fields' => array(
-        'street' => array(
+        'name' => array(
           'collect' => '1',
           'default' => '',
           'weight' => '-100',
         ),
-        'additional' => array(
-          'collect' => '0',
+        'street' => array(
+          'collect' => '1',
           'default' => '',
           'weight' => '-99',
         ),
-        'name' => array(
-          'collect' => '1',
+        'additional' => array(
+          'collect' => '0',
           'default' => '',
           'weight' => '-98',
         ),
@@ -1996,18 +1996,18 @@ function ulf_maps_strongarm() {
       'collapsible' => 0,
       'collapsed' => 0,
       'fields' => array(
-        'street' => array(
+        'name' => array(
           'collect' => '1',
           'default' => '',
           'weight' => '-100',
         ),
-        'additional' => array(
-          'collect' => '0',
+        'street' => array(
+          'collect' => '1',
           'default' => '',
           'weight' => '-99',
         ),
-        'name' => array(
-          'collect' => '1',
+        'additional' => array(
+          'collect' => '0',
           'default' => '',
           'weight' => '-98',
         ),
