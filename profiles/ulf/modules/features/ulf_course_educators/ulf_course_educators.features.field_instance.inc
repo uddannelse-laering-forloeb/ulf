@@ -1066,16 +1066,14 @@ function ulf_course_educators_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_relevance_educators',
     'label' => 'Målgruppe',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(
-        'apply_chosen' => '',
-      ),
+      'settings' => array(),
       'type' => 'options_select',
       'weight' => 6,
     ),
@@ -1107,16 +1105,14 @@ function ulf_course_educators_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_relevance_primary_school',
     'label' => 'Kurset er relevant for lærere, der underviser i fagene',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(
-        'apply_chosen' => '',
-      ),
+      'settings' => array(),
       'type' => 'options_select',
       'weight' => 4,
     ),
@@ -1148,16 +1144,14 @@ function ulf_course_educators_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_relevance_upper_school',
     'label' => 'Kurset er relevant for undervisere i fagene',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(
-        'apply_chosen' => '',
-      ),
+      'settings' => array(),
       'type' => 'options_select',
       'weight' => 5,
     ),
