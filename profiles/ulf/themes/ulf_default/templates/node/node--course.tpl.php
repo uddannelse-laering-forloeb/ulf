@@ -164,6 +164,7 @@
                       <?php print render($content['field_last_signup_date']); ?>
                       <?php print render($content['field_signup_link']); ?>
                       <?php print render($content['field_signup_email']); ?>
+                      <?php print render($content['field_signup_description']); ?>
                     </div>
                   </div>
                 </div>

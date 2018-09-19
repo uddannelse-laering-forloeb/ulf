@@ -1467,6 +1467,56 @@ At opnå kendskab til...
     ),
   );
 
+  // Exported field_instance: 'node-course-field_signup_description'.
+  $field_instances['node-course-field_signup_description'] = array(
+    'bundle' => 'course',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Beskriv hvordan man tilmelder sig og andre instruktioner i forbindelse med tilmelding.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 38,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_signup_description',
+    'label' => 'Tilmeldingsbeskrivelse',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'maxlength_js' => '',
+        'maxlength_js_enforce' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'maxlength_js_truncate_html' => 0,
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 40,
+    ),
+  );
+
   // Exported field_instance: 'node-course-field_signup_email'.
   $field_instances['node-course-field_signup_email'] = array(
     'bundle' => 'course',
@@ -1884,6 +1934,7 @@ At opnå kendskab til...
   t('Angiv max. antal deltagere');
   t('Antal');
   t('Baggrundsviden');
+  t('Beskriv hvordan man tilmelder sig og andre instruktioner i forbindelse med tilmelding.');
   t('Beskrivelse');
   t('Beskrivelse til pris');
   t('Beskrivelse til varighed');
@@ -1913,6 +1964,7 @@ At opnå kendskab til...
   t('Sted (ekstraoplysninger): Eks. \'Store Sal\', \'Brug højre indgang - ring på dørklokken\' ');
   t('Sæt kryds i alle de aldre, som besøget/forløbet er relevant for.');
   t('Tilmelding');
+  t('Tilmeldingsbeskrivelse');
   t('Tilmeldingsemail');
   t('Tilmeldingsfrist');
   t('Undervisningsmateriale');
