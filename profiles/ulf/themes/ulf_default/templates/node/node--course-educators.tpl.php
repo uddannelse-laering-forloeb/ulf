@@ -139,6 +139,18 @@
               </div>
             </div>
           <?php endif; ?>
+          <?php if ($field_place || $field_map_placement['und']['0']['value'] == 'provider'): ?>
+            <div class="field--collection-wrapper">
+              <div class="field--collection-label"><?php print t('Place');?></div>
+              <div class="field--collection-content">
+                <div class="field--collection-item">
+                  <div><?php print $profile_name; ?></div>
+                  <div><?php print $profile_address; ?></div>
+                  <div><?php print $profile_postal_code; ?> <?php print $profile_city; ?></div>
+                </div>
+              </div>
+            </div>
+          <?php endif; ?>
           <?php if ($field_last_signup_date || $field_signup_link || $field_signup_email) : ?>
             <div class="field--collection-wrapper">
               <div class="field--collection-label"><?php print t('Signup');?></div>
