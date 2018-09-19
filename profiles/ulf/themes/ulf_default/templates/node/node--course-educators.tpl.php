@@ -114,6 +114,9 @@
               <div class="field--collection-content">
                 <div class="field--collection-item">
                   <?php if ($field_map_placement['und']['0']['value'] == 'alternative' ) : ?>
+                    <?php if (!empty($location['name'])) : ?>
+                      <div><?php print $location['name'] ?></div>
+                    <?php endif; ?>
                     <?php if (!empty($location['street'])) : ?>
                       <div><?php print $location['street'] ?></div>
                     <?php endif; ?>
@@ -126,15 +129,24 @@
                     <?php if (!empty($location['city'])) : ?>
                       <span><?php print $location['city'] ?></span>
                     <?php endif; ?>
-                    <?php if (!empty($location['name'])) : ?>
-                      <div><?php print $location['name'] ?></div>
-                    <?php endif; ?>
                   <?php endif; ?>
                   <?php if ($field_place): ?>
                     <p>
                       <?php print render($content['field_place']); ?>
                     </p>
                   <?php endif; ?>
+                </div>
+              </div>
+            </div>
+          <?php endif; ?>
+          <?php if ($field_place || $field_map_placement['und']['0']['value'] == 'provider'): ?>
+            <div class="field--collection-wrapper">
+              <div class="field--collection-label"><?php print t('Place');?></div>
+              <div class="field--collection-content">
+                <div class="field--collection-item">
+                  <div><?php print $profile_name; ?></div>
+                  <div><?php print $profile_address; ?></div>
+                  <div><?php print $profile_postal_code; ?> <?php print $profile_city; ?></div>
                 </div>
               </div>
             </div>
@@ -149,6 +161,7 @@
                       <?php print render($content['field_last_signup_date']); ?>
                       <?php print render($content['field_signup_link']); ?>
                       <?php print render($content['field_signup_email']); ?>
+                      <?php print render($content['field_signup_description']); ?>
                     </div>
                   </div>
                 </div>
