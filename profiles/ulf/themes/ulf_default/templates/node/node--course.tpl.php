@@ -103,7 +103,7 @@
           <?php print render($content['field_full_description']); ?>
           <?php print render($content['field_purpose']); ?>
           <?php print render($content['field_video']); ?>
-          <?php if ($field_place || $field_map_placement['und']['0']['value'] == 'alternative'): ?>
+          <?php if ($field_place || $field_map_placement['und']['0']['value'] == 'alternative' || $field_map_placement['und']['0']['value'] == 'provider'): ?>
             <div class="field--collection-wrapper">
               <div class="field--collection-label"><?php print t('Place');?></div>
               <div class="field--collection-content">
@@ -124,6 +124,11 @@
                     <?php if (!empty($location['city'])) : ?>
                       <span><?php print $location['city'] ?></span>
                     <?php endif; ?>
+                  <?php endif; ?>
+                  <?php if ($field_map_placement['und']['0']['value'] == 'provider'): ?>
+                    <div><?php print $profile_name; ?></div>
+                    <div><?php print $profile_address; ?></div>
+                    <div><?php print $profile_postal_code; ?> <?php print $profile_city; ?></div>
                   <?php endif; ?>
                   <?php if (!empty($field_place)): ?>
                     <p>
