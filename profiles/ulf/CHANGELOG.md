@@ -1,5 +1,13 @@
 # ULF changelog
 
+## In development
+
+* ULF-2184: Made course and target audience fields mandatory (126).
+* ULF-2185: Added place = user address when "show provider address" is selected (129).
+* ULF-2186: Added rich text area (signup description) (130).
+* ULF-2188: Moved "location name" to top of address (138).
+* ULF-2189: Changed texts for "target audience" field (143).
+
 # v2.5.x
 
 ## 2.5.40
