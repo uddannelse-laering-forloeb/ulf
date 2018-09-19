@@ -1046,7 +1046,7 @@ function ulf_course_educators_field_default_field_instances() {
     'bundle' => 'course_educators',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Vuggestue, børnehave, SFO, klub, ungdomsskole, indskoling, mellemtrin, udskoling, ungdomsuddannelse.',
+    'description' => 'Vælg den relevante målgruppe for dit kursus.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1065,7 +1065,7 @@ function ulf_course_educators_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_relevance_educators',
-    'label' => 'Kurset er relevant for lærere og pædagoger, der arbejder med målgruppen',
+    'label' => 'Målgruppe',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -1163,6 +1163,50 @@ function ulf_course_educators_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-course_educators-field_signup_description'.
+  $field_instances['node-course_educators-field_signup_description'] = array(
+    'bundle' => 'course_educators',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Beskriv hvordan man tilmelder sig og andre instruktioner i forbindelse med tilmelding.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 30,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_signup_description',
+    'label' => 'Tilmeldingsbeskrivelse',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'maxlength_js' => '',
+        'maxlength_js_enforce' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'maxlength_js_truncate_html' => 0,
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 58,
+    ),
+  );
+
   // Exported field_instance: 'node-course_educators-field_signup_email'.
   $field_instances['node-course_educators-field_signup_email'] = array(
     'bundle' => 'course_educators',
@@ -1197,7 +1241,7 @@ function ulf_course_educators_field_default_field_instances() {
       'module' => 'html5_tools',
       'settings' => array(),
       'type' => 'emailwidget',
-      'weight' => 58,
+      'weight' => 57,
     ),
   );
 
@@ -1354,6 +1398,7 @@ function ulf_course_educators_field_default_field_instances() {
   t('Angiv oplysninger om, hvordan man tilmelder sig, om kurset er med forplejning osv.');
   t('Angiv tidspunkt for kursets afvikling.');
   t('Angiv url til mail eller link til side.');
+  t('Beskriv hvordan man tilmelder sig og andre instruktioner i forbindelse med tilmelding.');
   t('Beskrivelse');
   t('Beskrivelse til pris');
   t('Beskrivelse til varighed');
@@ -1364,7 +1409,7 @@ function ulf_course_educators_field_default_field_instances() {
   t('Hele året');
   t('Her kan du uploade materiale til kurset.');
   t('Kontakt');
-  t('Kurset er relevant for lærere og pædagoger, der arbejder med målgruppen');
+  t('Målgruppe');
   t('Kurset er relevant for lærere, der underviser i fagene');
   t('Kurset er relevant for undervisere i fagene');
   t('Message form');
@@ -1377,6 +1422,7 @@ function ulf_course_educators_field_default_field_instances() {
   t('Sted (ekstraoplysninger): Eks. \'Store Sal\', \'Brug højre indgang - ring på dørklokken\' ');
   t('Telefonnummer');
   t('Tilmelding');
+  t('Tilmeldingsbeskrivelse');
   t('Tilmeldingsemail');
   t('Tilmeldingsfrist');
   t('Undervisningsmateriale');
@@ -1384,7 +1430,7 @@ function ulf_course_educators_field_default_field_instances() {
   t('Varighed');
   t('Video');
   t('Visning på kort');
-  t('Vuggestue, børnehave, SFO, klub, ungdomsskole, indskoling, mellemtrin, udskoling, ungdomsuddannelse.');
+  t('Vælg den relevante målgruppe for dit kursus.');
   t('Vælg enhed');
   t('Vælg indstilling for visning af kontaktformular i kontaktboks');
   t('Vælg omfattede fag for grundskoler.');

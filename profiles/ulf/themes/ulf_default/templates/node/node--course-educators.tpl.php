@@ -114,6 +114,9 @@
               <div class="field--collection-content">
                 <div class="field--collection-item">
                   <?php if ($field_map_placement['und']['0']['value'] == 'alternative' ) : ?>
+                    <?php if (!empty($location['name'])) : ?>
+                      <div><?php print $location['name'] ?></div>
+                    <?php endif; ?>
                     <?php if (!empty($location['street'])) : ?>
                       <div><?php print $location['street'] ?></div>
                     <?php endif; ?>
@@ -125,9 +128,6 @@
                     <?php endif; ?>
                     <?php if (!empty($location['city'])) : ?>
                       <span><?php print $location['city'] ?></span>
-                    <?php endif; ?>
-                    <?php if (!empty($location['name'])) : ?>
-                      <div><?php print $location['name'] ?></div>
                     <?php endif; ?>
                   <?php endif; ?>
                   <?php if ($field_place): ?>
@@ -161,6 +161,7 @@
                       <?php print render($content['field_last_signup_date']); ?>
                       <?php print render($content['field_signup_link']); ?>
                       <?php print render($content['field_signup_email']); ?>
+                      <?php print render($content['field_signup_description']); ?>
                     </div>
                   </div>
                 </div>
