@@ -400,7 +400,7 @@ function ulf_course_educators_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_educational_material',
-    'label' => 'Undervisningsmateriale',
+    'label' => 'Materialer',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -1403,6 +1403,7 @@ function ulf_course_educators_field_default_field_instances() {
   t('Hele året');
   t('Her kan du uploade materiale til kurset.');
   t('Kontakt');
+  t('Materialer');
   t('Målgruppe');
   t('Kurset er relevant for lærere, der underviser i fagene');
   t('Kurset er relevant for undervisere i fagene');
@@ -1419,7 +1420,6 @@ function ulf_course_educators_field_default_field_instances() {
   t('Tilmeldingsbeskrivelse');
   t('Tilmeldingsemail');
   t('Tilmeldingsfrist');
-  t('Undervisningsmateriale');
   t('Upload et billede/illustration');
   t('Varighed');
   t('Video');

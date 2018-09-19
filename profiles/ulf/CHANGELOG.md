@@ -8,6 +8,7 @@
 * ULF-2188: Moved "location name" to top of address (138).
 * ULF-2189: Changed texts for "target audience" field (143).
 * ULF-2191: Changed buttons for rich text editor (150).
+* ULF-2192: Changed text for material box (160).
 
 # v2.5.x
 
