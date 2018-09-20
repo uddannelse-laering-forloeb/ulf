@@ -107,6 +107,7 @@
             <?php print render($content['field_activities']); ?>
             <?php print render($content['field_background_knowledge']); ?>
             <?php print render($content['field_post_work']); ?>
+            <?php print render($content['field_material_suggestions']); ?>
           </div>
 
           <?php print render($content['field_video']); ?>
@@ -146,17 +147,6 @@
               </div>
             </div>
           <?php endif; ?>
-          <?php if ($field_material_suggestions): ?>
-            <div class="field--collection-wrapper">
-              <div class="field--collection-label"><?php print t('Yderligere information');?></div>
-              <div class="field--collection-content">
-                <div class="field--collection-item">
-                  <?php print render($content['field_material_suggestions']); ?>
-                </div>
-              </div>
-            </div>
-          <?php endif; ?>
-
           <?php print render($content['field_educational_material']); ?>
           <?php print render($content['field_inspirational_material']); ?>
           <?php if ($field_last_signup_date || $field_signup_link || $field_signup_email || $field_signup_description): ?>
