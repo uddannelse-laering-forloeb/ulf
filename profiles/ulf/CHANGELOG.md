@@ -9,6 +9,9 @@
 * ULF-2189: Changed texts for "target audience" field (143).
 * ULF-2191: Changed buttons for rich text editor (150).
 * ULF-2192: Changed text for material box (160).
+* ULF-2193: Moved fields and relabeled field (172).
+* Added package.json to ulf_default for installing gulp.
+* Changed ulf_default gulp setup to minify scss and removed sourcemaps.
 
 # v2.5.x
 
