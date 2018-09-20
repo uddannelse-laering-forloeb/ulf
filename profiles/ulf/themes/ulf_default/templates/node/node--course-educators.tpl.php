@@ -144,7 +144,7 @@
               </div>
             </div>
           <?php endif; ?>
-          <?php if ($field_last_signup_date || $field_signup_link || $field_signup_email) : ?>
+          <?php if ($field_last_signup_date || $field_signup_link || $field_signup_email || $field_signup_description): ?>
             <div class="field--collection-wrapper">
               <div class="field--collection-label"><?php print t('Signup');?></div>
               <div class="field--collection-content">

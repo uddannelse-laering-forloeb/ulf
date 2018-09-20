@@ -21,7 +21,7 @@ function ulf_course_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Vis kontaktformular / Skjul kontaktformular',
-    'weight' => '42',
+    'weight' => '12',
     'children' => array(
       0 => 'field_message_form',
     ),
@@ -49,8 +49,8 @@ function ulf_course_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Aktiviteter, baggrundsviden og efterbehandling',
-    'weight' => '8',
+    'label' => 'Aktiviteter, forberedelse og efterbehandling',
+    'weight' => '1',
     'children' => array(
       0 => 'field_activities',
       1 => 'field_background_knowledge',
@@ -59,9 +59,10 @@ function ulf_course_field_group_info() {
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
-      'label' => 'Aktiviteter, baggrundsviden og efterbehandling',
+      'label' => 'Aktiviteter, forberedelse og efterbehandling',
       'instance_settings' => array(
         'required_fields' => 1,
+        'id' => '',
         'classes' => 'form-layout--epsilon',
         'description' => '',
       ),
@@ -117,7 +118,7 @@ function ulf_course_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Varighed og pris',
-    'weight' => '2',
+    'weight' => '3',
     'children' => array(
       0 => 'field_collection_price',
       1 => 'field_duration_unit',
@@ -150,7 +151,7 @@ function ulf_course_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Faciliteter',
-    'weight' => '6',
+    'weight' => '7',
     'children' => array(
       0 => 'field_facilities',
       1 => 'field_facilities_info',
@@ -179,7 +180,7 @@ function ulf_course_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Materialer',
-    'weight' => '7',
+    'weight' => '8',
     'children' => array(
       0 => 'field_educational_material',
       1 => 'field_inspirational_material',
@@ -208,7 +209,7 @@ function ulf_course_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Billeder/medier',
-    'weight' => '5',
+    'weight' => '6',
     'children' => array(
       0 => 'field_image',
       1 => 'field_video',
@@ -237,7 +238,7 @@ function ulf_course_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Periode',
-    'weight' => '4',
+    'weight' => '5',
     'children' => array(
       0 => 'field_period',
       1 => 'field_period_full_year',
@@ -297,7 +298,7 @@ function ulf_course_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Praktisk information',
-    'weight' => '1',
+    'weight' => '2',
     'children' => array(
       0 => 'field_count',
       1 => 'field_educational_goals',
@@ -331,7 +332,7 @@ function ulf_course_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Tilmelding',
-    'weight' => '3',
+    'weight' => '4',
     'children' => array(
       0 => 'field_last_signup_date',
       1 => 'field_signup_email',
@@ -354,7 +355,7 @@ function ulf_course_field_group_info() {
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Aktiviteter, baggrundsviden og efterbehandling');
+  t('Aktiviteter, forberedelse og efterbehandling');
   t('Billeder/medier');
   t('Faciliteter');
   t('Forløbet');

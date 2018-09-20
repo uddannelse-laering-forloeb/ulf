@@ -18,8 +18,8 @@ var compass = require('gulp-compass');
 
 var browserSync = require('browser-sync').create();
 browserSync.init({
-  proxy: "ulf.vm",
-  host: "ulf.vm"
+  proxy: "ulf_profile.vm",
+  host: "ulf_profile.vm"
 });
 
 
@@ -59,14 +59,12 @@ gulp.task('uglify', function() {
  */
 gulp.task('sass', function () {
   gulp.src(sassPath)
-    .pipe(sourcemaps.init())
     .pipe(sass({
-      // outputStyle: 'compressed',
+      outputStyle: 'compressed',
       includePaths: [
         '/usr/lib/node_modules/compass-mixins/lib'
       ]
     }).on('error', sass.logError))
-    .pipe(sourcemaps.write())
     .pipe(gulp.dest('./css'))
     .pipe(browserSync.stream());
 });
