@@ -102,6 +102,13 @@
         <div class="content--main">
           <?php print render($content['field_full_description']); ?>
           <?php print render($content['field_purpose']); ?>
+
+          <div class="course-activity">
+            <?php print render($content['field_activities']); ?>
+            <?php print render($content['field_background_knowledge']); ?>
+            <?php print render($content['field_post_work']); ?>
+          </div>
+
           <?php print render($content['field_video']); ?>
           <?php if ($field_place || $field_map_placement['und']['0']['value'] == 'alternative' || $field_map_placement['und']['0']['value'] == 'provider'): ?>
             <div class="field--collection-wrapper">
@@ -139,22 +146,20 @@
               </div>
             </div>
           <?php endif; ?>
-          <?php if ($field_activities || $field_background_knowledge || $field_post_work || $field_material_suggestions) : ?>
+          <?php if ($field_material_suggestions): ?>
             <div class="field--collection-wrapper">
               <div class="field--collection-label"><?php print t('Yderligere information');?></div>
               <div class="field--collection-content">
                 <div class="field--collection-item">
-                  <?php print render($content['field_activities']); ?>
-                  <?php print render($content['field_background_knowledge']); ?>
-                  <?php print render($content['field_post_work']); ?>
                   <?php print render($content['field_material_suggestions']); ?>
                 </div>
               </div>
             </div>
           <?php endif; ?>
+
           <?php print render($content['field_educational_material']); ?>
           <?php print render($content['field_inspirational_material']); ?>
-          <?php if ($field_last_signup_date || $field_signup_link || $field_signup_email) : ?>
+          <?php if ($field_last_signup_date || $field_signup_link || $field_signup_email || $field_signup_description): ?>
             <div class="field--collection-wrapper">
               <div class="field--collection-label"><?php print t('Signup');?></div>
               <div class="field--collection-content">
