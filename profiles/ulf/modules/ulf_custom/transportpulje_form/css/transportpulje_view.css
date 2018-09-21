@@ -1,0 +1,14 @@
+.form-item-field-tpf-date-value-value-date > .description,
+.form-item-field-tpf-date-value-1-value-date > .description {
+  display: none;
+}
+
+.views-widget-filter-field_tpf_date_value_1 .container-inline-date,
+.views-widget-filter-field_tpf_date_value .container-inline-date{
+  padding-right: 0;
+}
+
+.views-widget-filter-field_tpf_date_value_1 input[type='text'],
+.views-widget-filter-field_tpf_date_value input[type='text'] {
+  margin-top: 6px;
+}

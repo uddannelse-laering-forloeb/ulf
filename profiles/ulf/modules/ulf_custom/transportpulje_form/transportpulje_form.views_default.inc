@@ -373,6 +373,126 @@ function transportpulje_form_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'transportpulje_form' => 'transportpulje_form',
   );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Entityform Submission: Entityform submission ID */
+  $handler->display->display_options['filters']['entityform_id']['id'] = 'entityform_id';
+  $handler->display->display_options['filters']['entityform_id']['table'] = 'entityform';
+  $handler->display->display_options['filters']['entityform_id']['field'] = 'entityform_id';
+  $handler->display->display_options['filters']['entityform_id']['group'] = 1;
+  $handler->display->display_options['filters']['entityform_id']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['entityform_id']['expose']['operator_id'] = 'entityform_id_op';
+  $handler->display->display_options['filters']['entityform_id']['expose']['label'] = 'ID';
+  $handler->display->display_options['filters']['entityform_id']['expose']['operator'] = 'entityform_id_op';
+  $handler->display->display_options['filters']['entityform_id']['expose']['identifier'] = 'entityform_id';
+  $handler->display->display_options['filters']['entityform_id']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+  );
+  /* Filter criterion: Entityform Submission: Institution (field_tpf_institution) */
+  $handler->display->display_options['filters']['field_tpf_institution_tid']['id'] = 'field_tpf_institution_tid';
+  $handler->display->display_options['filters']['field_tpf_institution_tid']['table'] = 'field_data_field_tpf_institution';
+  $handler->display->display_options['filters']['field_tpf_institution_tid']['field'] = 'field_tpf_institution_tid';
+  $handler->display->display_options['filters']['field_tpf_institution_tid']['value'] = '';
+  $handler->display->display_options['filters']['field_tpf_institution_tid']['group'] = 1;
+  $handler->display->display_options['filters']['field_tpf_institution_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_tpf_institution_tid']['expose']['operator_id'] = 'field_tpf_institution_tid_op';
+  $handler->display->display_options['filters']['field_tpf_institution_tid']['expose']['label'] = 'Institution';
+  $handler->display->display_options['filters']['field_tpf_institution_tid']['expose']['operator'] = 'field_tpf_institution_tid_op';
+  $handler->display->display_options['filters']['field_tpf_institution_tid']['expose']['identifier'] = 'field_tpf_institution_tid';
+  $handler->display->display_options['filters']['field_tpf_institution_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+  );
+  $handler->display->display_options['filters']['field_tpf_institution_tid']['group_info']['label'] = 'Institution (field_tpf_institution)';
+  $handler->display->display_options['filters']['field_tpf_institution_tid']['group_info']['identifier'] = 'field_tpf_institution_tid';
+  $handler->display->display_options['filters']['field_tpf_institution_tid']['group_info']['optional'] = FALSE;
+  $handler->display->display_options['filters']['field_tpf_institution_tid']['group_info']['group_items'] = array(
+    1 => array(
+      'title' => '',
+      'operator' => 'or',
+      'value' => '',
+    ),
+    2 => array(
+      'title' => '',
+      'operator' => 'or',
+      'value' => '',
+    ),
+    3 => array(
+      'title' => '',
+      'operator' => 'or',
+      'value' => '',
+    ),
+  );
+  $handler->display->display_options['filters']['field_tpf_institution_tid']['reduce_duplicates'] = TRUE;
+  $handler->display->display_options['filters']['field_tpf_institution_tid']['vocabulary'] = 'tpf_institutions_list';
+  /* Filter criterion: Entityform Submission: Navn (field_tpf_name) */
+  $handler->display->display_options['filters']['field_tpf_name_value']['id'] = 'field_tpf_name_value';
+  $handler->display->display_options['filters']['field_tpf_name_value']['table'] = 'field_data_field_tpf_name';
+  $handler->display->display_options['filters']['field_tpf_name_value']['field'] = 'field_tpf_name_value';
+  $handler->display->display_options['filters']['field_tpf_name_value']['group'] = 1;
+  $handler->display->display_options['filters']['field_tpf_name_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_tpf_name_value']['expose']['operator_id'] = 'field_tpf_name_value_op';
+  $handler->display->display_options['filters']['field_tpf_name_value']['expose']['label'] = 'Navn';
+  $handler->display->display_options['filters']['field_tpf_name_value']['expose']['operator'] = 'field_tpf_name_value_op';
+  $handler->display->display_options['filters']['field_tpf_name_value']['expose']['identifier'] = 'field_tpf_name_value';
+  $handler->display->display_options['filters']['field_tpf_name_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+  );
+  $handler->display->display_options['filters']['field_tpf_name_value']['group_info']['label'] = 'Navn (field_tpf_name)';
+  $handler->display->display_options['filters']['field_tpf_name_value']['group_info']['identifier'] = 'field_tpf_name_value';
+  $handler->display->display_options['filters']['field_tpf_name_value']['group_info']['remember'] = FALSE;
+  $handler->display->display_options['filters']['field_tpf_name_value']['group_info']['group_items'] = array(
+    1 => array(),
+    2 => array(),
+    3 => array(),
+    4 => array(),
+  );
+  /* Filter criterion: Entityform Submission: Dato (field_tpf_date) */
+  $handler->display->display_options['filters']['field_tpf_date_value']['id'] = 'field_tpf_date_value';
+  $handler->display->display_options['filters']['field_tpf_date_value']['table'] = 'field_data_field_tpf_date';
+  $handler->display->display_options['filters']['field_tpf_date_value']['field'] = 'field_tpf_date_value';
+  $handler->display->display_options['filters']['field_tpf_date_value']['operator'] = '>=';
+  $handler->display->display_options['filters']['field_tpf_date_value']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_tpf_date_value']['expose']['operator_id'] = 'field_tpf_date_value_op';
+  $handler->display->display_options['filters']['field_tpf_date_value']['expose']['label'] = 'Dato fra';
+  $handler->display->display_options['filters']['field_tpf_date_value']['expose']['operator'] = 'field_tpf_date_value_op';
+  $handler->display->display_options['filters']['field_tpf_date_value']['expose']['identifier'] = 'field_tpf_date_value';
+  $handler->display->display_options['filters']['field_tpf_date_value']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+  );
+  $handler->display->display_options['filters']['field_tpf_date_value']['form_type'] = 'date_popup';
+  /* Filter criterion: Entityform Submission: Dato (field_tpf_date) */
+  $handler->display->display_options['filters']['field_tpf_date_value_1']['id'] = 'field_tpf_date_value_1';
+  $handler->display->display_options['filters']['field_tpf_date_value_1']['table'] = 'field_data_field_tpf_date';
+  $handler->display->display_options['filters']['field_tpf_date_value_1']['field'] = 'field_tpf_date_value';
+  $handler->display->display_options['filters']['field_tpf_date_value_1']['operator'] = '<=';
+  $handler->display->display_options['filters']['field_tpf_date_value_1']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_tpf_date_value_1']['expose']['operator_id'] = 'field_tpf_date_value_1_op';
+  $handler->display->display_options['filters']['field_tpf_date_value_1']['expose']['label'] = 'Dato til';
+  $handler->display->display_options['filters']['field_tpf_date_value_1']['expose']['operator'] = 'field_tpf_date_value_1_op';
+  $handler->display->display_options['filters']['field_tpf_date_value_1']['expose']['identifier'] = 'field_tpf_date_value_1';
+  $handler->display->display_options['filters']['field_tpf_date_value_1']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+    5 => 0,
+  );
+  $handler->display->display_options['filters']['field_tpf_date_value_1']['form_type'] = 'date_popup';
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
@@ -550,6 +670,10 @@ function transportpulje_form_views_default_views() {
 (Ekstra besked)[field_tpf_what_course] '),
     t('<a href="/entityform/[entityform_id_1] " target="_blank">Se ansøgning</a>[field_tpf_what_course] '),
     t('Status'),
+    t('Institution (field_tpf_institution)'),
+    t('Navn (field_tpf_name)'),
+    t('Dato fra'),
+    t('Dato til'),
     t('Page'),
     t('more'),
     t('Data export'),

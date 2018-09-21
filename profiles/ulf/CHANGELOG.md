@@ -12,6 +12,8 @@
 * ULF-2193: Moved fields and relabeled field (172).
 * Added package.json to ulf_default for installing gulp.
 * Changed ulf_default gulp setup to minify scss and removed sourcemaps.
+* KVF-58: Added filtering to top of transportpulje view.
+* KVF-59: Added pagination to top of transportpulje view.
 
 # v2.5.x
 
