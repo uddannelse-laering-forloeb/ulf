@@ -650,7 +650,7 @@ function ulf_course_educators_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 28,
+        'weight' => 31,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -970,7 +970,7 @@ function ulf_course_educators_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 29,
+        'weight' => 28,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1169,7 +1169,7 @@ function ulf_course_educators_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 30,
+        'weight' => 29,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1349,9 +1349,8 @@ function ulf_course_educators_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'list',
         'settings' => array(),
-        'type' => 'list_default',
+        'type' => 'hidden',
         'weight' => 30,
       ),
       'teaser' => array(
@@ -1446,11 +1445,11 @@ function ulf_course_educators_field_default_field_instances() {
   t('Hele året');
   t('Her kan du uploade materiale til kurset.');
   t('Kontakt');
-  t('Materialer');
-  t('Målgruppe');
   t('Kurset er relevant for lærere, der underviser i fagene');
   t('Kurset er relevant for undervisere i fagene');
+  t('Materialer');
   t('Message form');
+  t('Målgruppe');
   t('Navn');
   t('Periode');
   t('Pris');
@@ -1464,7 +1463,6 @@ function ulf_course_educators_field_default_field_instances() {
   t('Tilmeldingsemail');
   t('Tilmeldingsfrist');
   t('Trashed');
-  t('Undervisningsmateriale');
   t('Upload et billede/illustration');
   t('Varighed');
   t('Video');
