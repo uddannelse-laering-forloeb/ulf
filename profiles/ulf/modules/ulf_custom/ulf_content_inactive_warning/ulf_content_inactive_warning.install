@@ -1,0 +1,50 @@
+<?php
+/**
+* Implements hook_install().
+*/
+function ulf_content_inactive_warning_schema() {
+  $schema['inactive_warning'] = array (
+    'description' => 'States of content related to content inactivity',
+    'fields' => array (
+      'nid' => array (
+        'description' => 'The node that the inactivity concerns',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE
+      ),
+      'inactivity_state' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'description' => 'The state of the note in relation to its inactivity',
+      ),
+      'inactivity_state_date' => array(
+        'description' => 'The UNIX timestamp when the inactivity state changed',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+    ),
+    'primary key' => array('nid'),
+  );
+
+  return $schema;
+}
+
+/**
+ * Set variables for content inactivity.
+ */
+function ulf_content_inactive_warning_install() {
+  variable_set('ulf_content_inactive_warning_period', 365);
+  variable_set('ulf_content_inactive_warning_period_two', 7);
+  variable_set('ulf_content_inactive_warning_unpublish', 7);
+}
+
+/**
+ * Set variables for content inactivity.
+ */
+function ulf_content_inactive_warning_update_7100() {
+  variable_set('ulf_content_inactive_warning_period', 365);
+  variable_set('ulf_content_inactive_warning_period_two', 7);
+  variable_set('ulf_content_inactive_warning_unpublish', 7);
+}

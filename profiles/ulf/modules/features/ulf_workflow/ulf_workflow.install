@@ -139,3 +139,10 @@ function ulf_workflow_update_7603() {
       ->execute();
   }
 }
+
+/**
+ * Set variable for checking to send mail.
+ */
+function ulf_workflow_update_7604() {
+  variable_set('trash_can_delete_timer', 365);
+}

@@ -23,10 +23,16 @@ function ulf_course_views_default_views() {
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
   $handler->display->display_options['use_more_always'] = FALSE;
+  $handler->display->display_options['use_more_text'] = 'mere';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['exposed_form']['options']['submit_button'] = 'Udfør';
+  $handler->display->display_options['exposed_form']['options']['reset_button_label'] = 'Gendan';
+  $handler->display->display_options['exposed_form']['options']['exposed_sorts_label'] = 'Sortér efter';
+  $handler->display->display_options['exposed_form']['options']['sort_asc_label'] = 'Stigende';
+  $handler->display->display_options['exposed_form']['options']['sort_desc_label'] = 'Faldende';
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'default';
@@ -38,7 +44,6 @@ function ulf_course_views_default_views() {
   $handler->display->display_options['relationships']['field_target_group_sub_tid']['id'] = 'field_target_group_sub_tid';
   $handler->display->display_options['relationships']['field_target_group_sub_tid']['table'] = 'field_data_field_target_group_sub';
   $handler->display->display_options['relationships']['field_target_group_sub_tid']['field'] = 'field_target_group_sub_tid';
-  $handler->display->display_options['relationships']['field_target_group_sub_tid']['label'] = 'term fra field_target_group_sub';
   /* Field: Taxonomy term: Rendered Taxonomy term */
   $handler->display->display_options['fields']['rendered_entity']['id'] = 'rendered_entity';
   $handler->display->display_options['fields']['rendered_entity']['table'] = 'views_entity_taxonomy_term';
@@ -79,16 +84,17 @@ function ulf_course_views_default_views() {
   $handler = $view->new_display('block', 'Blok', 'block_1');
   $translatables['ulf_course_target_groups'] = array(
     t('Master'),
-    t('more'),
-    t('Apply'),
-    t('Reset'),
-    t('Sort by'),
-    t('Asc'),
-    t('Desc'),
-    t('term fra field_target_group_sub'),
+    t('mere'),
+    t('Udfør'),
+    t('Gendan'),
+    t('Sortér efter'),
+    t('Stigende'),
+    t('Faldende'),
+    t('term from field_target_group_sub'),
     t('[rendered_entity]<br>'),
     t('Alle'),
     t('Blok'),
+    t('more'),
   );
   $export['ulf_course_target_groups'] = $view;
 

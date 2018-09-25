@@ -30,9 +30,28 @@ function ulf_scheduler_notify_schema() {
         'unsigned' => TRUE,
         'not null' => TRUE,
       ),
+      'latest_unpublish_date' => array (
+        'description' => 'The unpublish date for the node when cron was last run',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => FALSE,
+      ),
     ),
     'primary key' => array('job_id'),
   );
 
   return $schema;
+}
+
+/**
+ * Add scheduler unpublish date field to table.
+ */
+function ulf_scheduler_notify_update_7100 () {
+  $spec = array(
+    'type' => 'int',
+    'description' => 'The unpublish date for the node when cron was last run',
+    'unsigned' => TRUE,
+    'not null' => FALSE,
+  );
+  db_add_field('scheduler_notify', 'latest_unpublish_date', $spec);
 }
