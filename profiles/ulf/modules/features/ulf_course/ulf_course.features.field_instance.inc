@@ -892,7 +892,7 @@ function ulf_course_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 36,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1483,9 +1483,10 @@ At opnå kendskab til...
       ),
       'full' => array(
         'label' => 'above',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'type' => 'text_default',
+        'weight' => 34,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1871,7 +1872,7 @@ At opnå kendskab til...
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 35,
       ),
       'teaser' => array(
         'label' => 'above',
