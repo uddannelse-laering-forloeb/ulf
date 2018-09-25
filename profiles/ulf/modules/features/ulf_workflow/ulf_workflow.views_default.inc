@@ -575,7 +575,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['fields']['field_subjects_primary_school']['table'] = 'field_data_field_subjects_primary_school';
   $handler->display->display_options['fields']['field_subjects_primary_school']['field'] = 'field_subjects_primary_school';
   $handler->display->display_options['fields']['field_subjects_primary_school']['delta_offset'] = '0';
-  /* Field: Content: Læreplanstemaer */
+  /* Field: Content: Pædagogiske læreplanstemaer */
   $handler->display->display_options['fields']['field_educational_goals']['id'] = 'field_educational_goals';
   $handler->display->display_options['fields']['field_educational_goals']['table'] = 'field_data_field_educational_goals';
   $handler->display->display_options['fields']['field_educational_goals']['field'] = 'field_educational_goals';
@@ -620,7 +620,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['filters']['field_subjects_youth_tid_1']['reduce_duplicates'] = TRUE;
   $handler->display->display_options['filters']['field_subjects_youth_tid_1']['type'] = 'select';
   $handler->display->display_options['filters']['field_subjects_youth_tid_1']['vocabulary'] = 'subjects_youth';
-  /* Filter criterion: Content: Læreplanstemaer (field_educational_goals) */
+  /* Filter criterion: Content: Pædagogiske læreplanstemaer (field_educational_goals) */
   $handler->display->display_options['filters']['field_educational_goals_tid']['id'] = 'field_educational_goals_tid';
   $handler->display->display_options['filters']['field_educational_goals_tid']['table'] = 'field_data_field_educational_goals';
   $handler->display->display_options['filters']['field_educational_goals_tid']['field'] = 'field_educational_goals_tid';
@@ -638,7 +638,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['filters']['field_subjects_primary_school_tid_1']['reduce_duplicates'] = TRUE;
   $handler->display->display_options['filters']['field_subjects_primary_school_tid_1']['type'] = 'select';
   $handler->display->display_options['filters']['field_subjects_primary_school_tid_1']['vocabulary'] = 'subjects_primary_school';
-  /* Filter criterion: Content: Læreplanstemaer (field_educational_goals) */
+  /* Filter criterion: Content: Pædagogiske læreplanstemaer (field_educational_goals) */
   $handler->display->display_options['filters']['field_educational_goals_tid_1']['id'] = 'field_educational_goals_tid_1';
   $handler->display->display_options['filters']['field_educational_goals_tid_1']['table'] = 'field_data_field_educational_goals';
   $handler->display->display_options['filters']['field_educational_goals_tid_1']['field'] = 'field_educational_goals_tid';
@@ -675,7 +675,7 @@ function ulf_workflow_views_default_views() {
     t('Page'),
     t('Bilag'),
     t('Fag'),
-    t('Læreplanstemaer'),
+    t('Pædagogiske læreplanstemaer'),
   );
   $export['ulf_editor_tool'] = $view;
 
@@ -1022,10 +1022,6 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['relationship'] = 'nid';
   $handler->display->display_options['fields']['edit_node']['label'] = 'Redigér-link';
-  /* Field: Workbench Moderation: Moderation links */
-  $handler->display->display_options['fields']['moderation_actions']['id'] = 'moderation_actions';
-  $handler->display->display_options['fields']['moderation_actions']['table'] = 'workbench_moderation_node_history';
-  $handler->display->display_options['fields']['moderation_actions']['field'] = 'moderation_actions';
   /* Field: Content: Clone link */
   $handler->display->display_options['fields']['clone_node']['id'] = 'clone_node';
   $handler->display->display_options['fields']['clone_node']['table'] = 'node';
@@ -1680,7 +1676,6 @@ function ulf_workflow_views_default_views() {
     t('Forløbstype'),
     t('Opdateringsdato'),
     t('Redigér-link'),
-    t('Moderation links'),
     t('Unpublished drafts'),
     t('Unpublished'),
     t('Shows your unpublished drafts'),
