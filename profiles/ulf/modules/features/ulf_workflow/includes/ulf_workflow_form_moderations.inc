@@ -12,6 +12,7 @@ function _ulf_workflow_cleanup_form(&$form) {
   $form['actions']['submit']['#access'] = FALSE;
   $form['actions']['preview']['#access'] = FALSE;
   $form['actions']['delete']['#access'] = FALSE;
+  $form['field_trashed']['#access'] = FALSE;
 }
 
 function _ulf_workflow_provide_add_actions(&$form) {
@@ -137,8 +138,22 @@ function _ulf_workflow_provide_edit_actions(&$form) {
     )
   );
 
-  foreach ($actions as $action) {
+  // If content is trashed only allow "Draft from trash" as option.
+  $trashed = isset($form['#node']->field_trashed['und'][0]['value']) ? $form['#node']->field_trashed['und'][0]['value'] : FALSE;
+  if ($trashed) {
+    $action = array (
+      'name' =>'draft_from_trash',
+      'value' => t('Draft from trash'),
+      'submit_handler' => '_ulf_workflow_draft_from_trash',
+      'weight' => '2',
+      'access' => $content_moderator,
+    );
     $form['actions'][$action['name']] = _ulf_workflow_create_action($action);
+  }
+  else {
+    foreach ($actions as $action) {
+      $form['actions'][$action['name']] = _ulf_workflow_create_action($action);
+    }
   }
 }
 
@@ -153,20 +168,4 @@ function _ulf_workflow_create_action($action) {
       'node_form_submit',
     )
   );
-}
-
-function _ulf_workflow_check_publish_permission() {
-  global $user;
-  $full_user = user_load($user->uid);
-  $user_wrapper = entity_metadata_wrapper('user', $full_user);
-
-  // Check if user can bypass workflow.
-  // Done this way since we need clean true or false (We don't want empty when field is not filled).
-  $user_bypass = $user_wrapper->field_bypass_workflow->value() == TRUE ? TRUE : FALSE;
-
-  if (user_access('moderate content from needs_review to published') || $user_bypass) {
-    return TRUE;
-  }
-
-  return FALSE;
 }

@@ -4,8 +4,8 @@
  * Implements hook_cron().
  */
 function ulf_scheduler_notify_cron() {
-  _ulf_scheduler_notify_cron_send_mail();
   _ulf_scheduler_notify_cron_cleanup();
+  _ulf_scheduler_notify_cron_send_mail();
 }
 
 /**
@@ -28,18 +28,21 @@ function _ulf_scheduler_notify_cron_send_mail() {
     if (!isset($job->send_mail_on)) {
       // Get related node.
       $node = node_load($job->nid);
-      // Send mail
-      _send_schedule_notification_warning_mail($node);
-      // Set send_mail_on date to now (The time where a warning mail was sent)
-      // This way we don't send another on next cron run.
-      db_insert('scheduler_notify')
-        ->fields(array(
-          'nid' => $node->nid,
-          'uid' => $node->uid,
-          'send_mail_on' => $now,
-          'latest_unpublish_date' => $job->unpublish_on
-        ))
-        ->execute();
+      // Check for node type.
+      if($node->type != 'news') {
+        // Send mail
+        _send_schedule_notification_warning_mail($node);
+        // Set send_mail_on date to now (The time where a warning mail was sent)
+        // This way we don't send another on next cron run.
+        db_insert('scheduler_notify')
+          ->fields(array(
+            'nid' => $node->nid,
+            'uid' => $node->uid,
+            'send_mail_on' => $now,
+            'latest_unpublish_date' => $job->unpublish_on
+          ))
+          ->execute();
+      }
     }
   }
 }
@@ -60,7 +63,8 @@ function _ulf_scheduler_notify_cron_cleanup() {
 
   foreach ($results as $result) {
     // If scheduler does not have a node id for the schedule_notify id
-    // we can safely delete it since there is no upcomming unpublishing.
+    // we can safely delete it from notify table since there is no upcomming
+    // unpublishing.
     if (!array_key_exists($result->nid, $scheduler_results)) {
       // Remove entry so we can create a new in the future
       db_delete('scheduler_notify')
@@ -121,6 +125,7 @@ function ulf_scheduler_notify_mail_edit_text($mailkey, $language) {
   $return = array();
   if ($mailkey == 'week_prior_unpublishing') {
     $return['subject'] = 'Some of your content is about to be unpublished on [site:name]';
+    $return['always'] = TRUE;
     $return['body'] =
       'The content "[node:title]" will be unpublished in seven days.
 

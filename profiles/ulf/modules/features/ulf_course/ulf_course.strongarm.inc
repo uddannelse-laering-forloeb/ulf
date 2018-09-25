@@ -84,7 +84,7 @@ function ulf_course_strongarm() {
           'weight' => '15',
         ),
         'scheduler_settings' => array(
-          'weight' => '11',
+          'weight' => '3',
         ),
       ),
       'display' => array(

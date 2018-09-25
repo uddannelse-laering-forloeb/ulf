@@ -21,7 +21,7 @@ function ulf_course_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Vis kontaktformular / Skjul kontaktformular',
-    'weight' => '42',
+    'weight' => '13',
     'children' => array(
       0 => 'field_message_form',
     ),

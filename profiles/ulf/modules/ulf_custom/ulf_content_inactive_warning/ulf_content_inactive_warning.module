@@ -1,0 +1,300 @@
+<?php
+
+/**
+ * Implements hook_cron().
+ */
+function ulf_content_inactive_warning_cron() {
+  _ulf_content_inactive_mail_cleanup();
+  _ulf_content_inactive_mail_send();
+}
+
+/**
+ * Remove from inactivity table if content has been updated.
+ */
+function _ulf_content_inactive_mail_cleanup() {
+  $now = time();
+  // Warning period 1 year.
+  $warning_period = variable_get('ulf_content_inactive_warning_period')*60*60*24;
+
+  // Get all content that changed within the last year.
+  $query = db_select('node', 'n');
+  $query->fields('n');
+  $query->condition('n.changed', $now - $warning_period, '>');
+  $result = $query->execute()->fetchAllAssoc('nid');
+  foreach ($result as $item) {
+    // Remove entry from inactive warning and prepare for next warning mail.
+    db_delete('inactive_warning')
+      ->condition('nid', $item->nid)
+      ->execute();
+  }
+}
+
+/**
+ * Send a mail relating to content inactivity.
+ */
+function _ulf_content_inactive_mail_send() {
+  $now = time();
+  // Inactive warning period.
+  $warning_period = variable_get('ulf_content_inactive_warning_period')*60*60*24;
+  // Inactive warning two period.
+  $warning_two_period = variable_get('ulf_content_inactive_warning_period_two')*60*60*24;
+  // Unpublish period.
+  $unpublish_period = variable_get('ulf_content_inactive_warning_unpublish')*60*60*24;
+
+  $workflow_enabled_types = array(
+    'course',
+    'course_educators',
+    'news_course_provider'
+  );
+
+  $query = db_select('node', 'n');
+  $query->leftJoin('inactive_warning', 'i', 'i.nid = n.nid');
+  $query->fields('n');
+  $query->fields('i', array('inactivity_state', 'inactivity_state_date'));
+  $query->condition('n.changed', $now - $warning_period, '<');
+  $query->condition('n.status', 1, '=');
+  $query->condition('n.type', $workflow_enabled_types, 'IN');
+  $result = $query->execute()->fetchAllAssoc('nid');
+
+  // Send different mails depending on the inactivity state.
+  foreach ($result as $item) {
+    switch ($item->inactivity_state) {
+      case NULL:
+        // Send inactivity mail
+        // Add db entry inactivity_mail_sent
+        db_insert('inactive_warning')
+          ->fields(array(
+            'nid' => $item->nid,
+            'inactivity_state' => 'inactivity_mail_sent',
+            'inactivity_state_date' => $now,
+          ))
+          ->execute();
+        $node = node_load($item->nid);
+
+        _send_inactivity_warning_mail($node);
+        break;
+      case 'inactivity_mail_sent':
+        if ($item->inactivity_state_date < $now - $warning_two_period) {
+          // Send warning mail
+          // Add db entry warning_mail_sent
+          db_update('inactive_warning')
+            ->fields(array(
+              'inactivity_state' => 'warning_mail_sent',
+              'inactivity_state_date' => $now,
+            ))
+            ->condition('nid', $item->nid, '=')
+            ->execute();
+          $node = node_load($item->nid);
+          // Send mail.
+          if ($unpublish_period > 0) {
+            _send_unpublish_warning_mail($node);
+          }
+        }
+
+        break;
+      case 'warning_mail_sent':
+        if ($item->inactivity_state_date < $now - $unpublish_period) {
+          // If unpublish period is unset we assume they don't want to unpublish their content.
+          // Remove entry from inactivity flow.
+          $node = node_load($item->nid);
+          // Set publishing state for node.
+          $node->status = $unpublish_period > 0 ? 1 : 0;
+          // Save the node, thus updating the changed date.
+          node_save($node);
+
+          // Send mail.
+          if ($unpublish_period > 0) {
+            _send_inactivity_unpublish_mail($node);
+          }
+
+          // Remove entry and prepare for next warning mail.
+          db_delete('inactive_warning')
+            ->condition('nid', $item->nid, '=')
+            ->execute();
+        }
+        break;
+    }
+  }
+}
+
+/**
+ * Create and send mail to author when their content is considered inactive.
+ *
+ * @param $node
+ *   The node that the mail relates to.
+ */
+function _send_inactivity_warning_mail($node) {
+  // Get author fields.
+  $user = user_load($node->uid);
+
+  // Set recipient.
+  $to = $user->mail;
+
+  _ulf_content_inactive_warning_mail_send_mail('inactivity_warning_mail', $to, $user, $node);
+}
+
+/**
+ * Create and send mail to author when their content is about to be unpublished.
+ *
+ * @param $node
+ *   The node that the mail relates to.
+ */
+function _send_unpublish_warning_mail($node) {
+  // Get author fields.
+  $user = user_load($node->uid);
+
+  // Set recipient.
+  $to = $user->mail;
+
+  _ulf_content_inactive_warning_mail_send_mail('unpublish_warning_mail', $to, $user, $node);
+}
+
+/**
+ * Create and send mail to author when their content is unpublished.
+ *
+ * @param $node
+ *   The node that the mail relates to.
+ */
+function _send_inactivity_unpublish_mail($node) {
+  // Get author fields.
+  $user = user_load($node->uid);
+
+  // Set recipient.
+  $to = $user->mail;
+
+  _ulf_content_inactive_warning_mail_send_mail('inactivity_unpublished_mail', $to, $user, $node);
+}
+
+
+/**
+ * Implements hook_mailkeys().
+ */
+function ulf_content_inactive_warning_mailkeys() {
+  return array(
+    'inactivity_warning_mail' => t('Mail sent to author when the content has been inactive for too long.'),
+    'unpublish_warning_mail' => t('Warning number two sent to author when their content is about to be unpublished.'),
+    'inactivity_unpublished_mail' => t('Mail sent to author when their content has been unpublished.'),
+  );
+}
+
+/**
+ * Implements hook_mail_edit_text().
+ */
+function ulf_content_inactive_warning_mail_edit_text($mailkey, $language) {
+  $return = array();
+  switch ($mailkey) {
+    // Inactivity warning mail.
+    case 'inactivity_warning_mail':
+      $return['subject'] = 'Your content has been untouched for too long on [site:name]';
+      $return['always'] = TRUE;
+      $return['body'] =
+        'Please take time to visit "[node:title]" to make sure the content is still relevant.
+
+This is an automated message created by [site:name].';
+      break;
+    // Unpublish warning mail.
+    case 'unpublish_warning_mail':
+      $return['subject'] = 'Your content is about to be unpublished on [site:name]';
+      $return['always'] = TRUE;
+      $return['body'] =
+        'The content: "[node:title]" is about to be unpublished due to inactivity.
+
+This is an automated message created by [site:name].';
+      break;
+    // Unpublished mail.
+    case 'inactivity_unpublished_mail':
+      $return['subject'] = 'Your content has been unpublished on [site:name]';
+      $return['always'] = TRUE;
+      $return['body'] =
+        'The content: "[node:title]" was unpublished due to inactivity.
+
+This is an automated message created by [site:name].';
+      break;
+  }
+  return $return;
+}
+
+/**
+ * Implements hook_mail_edit_token_types().
+ */
+function ulf_content_inactive_warning_mail_edit_token_types($mailkey) {
+  return user_mail_edit_token_types($mailkey);
+}
+
+/**
+ * Get language object from string.
+ *
+ * @param $language
+ *  The language code.
+ * @return mixed
+ *   An array of languages.
+ */
+function _ulf_content_inactive_warning_get_language_object($language = 'da') {
+  $installed_languages = language_list();
+  return $installed_languages[$language];
+}
+
+/**
+ * Send the mail
+ *
+ * @param $key
+ *  The mail key to identify the mail by.
+ * @param $to
+ *  The email address to send to.
+ * @param $user
+ *   The user that the mail relates to.
+ * @param null $node
+ *   The node that the mail relates to.
+ */
+function _ulf_content_inactive_warning_mail_send_mail($key, $to, $user, $node = NULL) {
+  $module = 'ulf_content_inactive_warning';
+  // Get language from user obj.
+  $language = _ulf_content_inactive_warning_get_language_object($user->language);
+
+  // Provide additional parameters.
+  $params['user'] = $user;
+  $params['node'] = $node;
+  drupal_mail($module, $key, $to, $language, $params);
+}
+
+/**
+ * Implements hook_form_FORMID_alter().
+ * 
+ * Add inactivity part to admin module.
+ */
+function ulf_content_inactive_warning_form__ulf_admin_panel_form_alter(&$form, $form_state) {
+  $form['inactivity_warning'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Inactivity warning'),
+    '#weight' => 1,
+    '#collapsible' => TRUE,
+    '#group' => 'ulf_admin_panel',
+  );
+
+  $form['inactivity_warning']['ulf_content_inactive_warning_period'] = array(
+    '#type' => 'numberfield',
+    '#title' => t('Content inactivity timer'),
+    '#default_value' => variable_get('ulf_content_inactive_warning_period', '365'),
+    '#size' => 60,
+    '#maxlength' => 128,
+    '#description' => t('The duration in days that content can be inactive without warning the user'),
+  );
+
+  $form['inactivity_warning']['ulf_content_inactive_warning_period_two'] = array(
+    '#type' => 'numberfield',
+    '#title' => t('Content inactivity timer warning two'),
+    '#default_value' => variable_get('ulf_content_inactive_warning_period_two', '7'),
+    '#size' => 60,
+    '#maxlength' => 128,
+    '#description' => t('The duration in days from the first warning to the second'),
+  );
+
+  $form['inactivity_warning']['ulf_content_inactive_warning_unpublish'] = array(
+    '#type' => 'numberfield',
+    '#title' => t('Content unpublishing timer'),
+    '#default_value' => variable_get('ulf_content_inactive_warning_unpublish', '7'),
+    '#size' => 60,
+    '#maxlength' => 128,
+    '#description' => t('The duration in days from the second warning until content will be unpublished. <br>Leave empty to disable automatic unpublishing. One year will go before the next warning mails will be sent.'),
+  );
+}

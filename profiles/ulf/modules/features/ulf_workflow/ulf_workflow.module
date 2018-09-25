@@ -5,58 +5,11 @@
  */
 
 include_once 'ulf_workflow.features.inc';
-include_once 'ulf_workflow_submit_handlers.inc';
-include_once 'ulf_workflow_form_moderations.inc';
-include_once 'ulf_workflow_mail.inc';
-
-/**
- * Implements hook_menu().
- *
- * @return array.
- */
-function ulf_workflow_menu() {
-  $items = array();
-
-  $items['admin/settings/custom/ulf_workflow'] = array(
-    'title' => 'Workflow settings',
-    'description' => 'Settings related to ulf workflow module',
-    'page callback' => 'drupal_get_form',
-    'page arguments' => array('_ulf_workflow_admin'),
-    'access arguments' => array('administer site configuration'),
-    'type' => MENU_LOCAL_TASK,
-  );
-
-  return $items;
-}
-
-/**
- * Implements custom admin page.
- *
- * @return array.
- */
-function _ulf_workflow_admin() {
-  $active = array(0 => t('Email deactivated'), 1 => t('Email activated'));
-  $recipient = array(0 => t('Author as recipient'), 1 => t('Site mail as recipient'));
-  $form = array();
-
-  $form['ulf_workflow_send_mail'] = array(
-    '#type' => 'radios',
-    '#title' => t('Email active'),
-    '#default_value' => variable_get('ulf_workflow_send_mail'),
-    '#options' => $active,
-    '#description' => t("Allow ULF workflow module to send emails"),
-  );
-
-  $form['ulf_workflow_local_recipient'] = array(
-    '#type' => 'radios',
-    '#title' => t('Site email as recipient'),
-    '#default_value' => variable_get('ulf_workflow_local_recipient'),
-    '#options' => $recipient,
-    '#description' => t("Set recipient to site email, to ensure ulf receives emails related to workflow"),
-  );
-
-  return system_settings_form($form);
-}
+include_once 'includes/ulf_workflow_submit_handlers.inc';
+include_once 'includes/ulf_workflow_form_validation.inc';
+include_once 'includes/ulf_workflow_form_moderations.inc';
+include_once 'includes/ulf_workflow_cron.inc';
+include_once 'includes/ulf_workflow_mail.inc';
 
 /**
  * Implements hook_preprocess_hook().
@@ -142,12 +95,6 @@ function ulf_workflow_menu_local_tasks_alter(&$data) {
  * @param $form_id
  */
 function ulf_workflow_form_node_form_alter(&$form, &$form_state, $form_id) {
-  // Inform of current workflow state
-  if (isset($form['workbench_moderation_state_current']['#value'])) {
-    $readable_state = workbench_moderation_state_load($form['workbench_moderation_state_current']['#value']);
-    drupal_set_message(t('The current workflow state for this content is: @state.', array('@state' => $readable_state->label)), 'warning');
-  }
-
   $content_type = $form['#node']->type;
 
   // Content types that have workflow enabled.
@@ -159,6 +106,24 @@ function ulf_workflow_form_node_form_alter(&$form, &$form_state, $form_id) {
 
   // Check for workflow.
   if (in_array($content_type, $workflow_enabled_types)) {
+    // Inform of current workflow state
+    $trashed = isset($form['#node']->field_trashed['und'][0]['value']) ? $form['#node']->field_trashed['und'][0]['value'] : FALSE;
+    if($trashed) {
+      drupal_set_message(t('The current workflow state for this content is: Trash'), 'warning');
+    }
+    elseif(isset($form['clone_from_original_nid']['#value'])){
+      global $user;
+      $node = node_load($form['clone_from_original_nid']['#value']);
+      drupal_set_message(t('This is a clone of "@title."', array('@title' => $node->title)), 'warning');
+      if ($form['uid']['#value'] != $user->uid) {
+        drupal_set_message(t('Remember to change the author of this content to assign it to the right course provider.') ,'warning');
+      }
+    }
+    elseif(isset($form['workbench_moderation_state_current']['#value'])) {
+      $readable_state = workbench_moderation_state_load($form['workbench_moderation_state_current']['#value']);
+      drupal_set_message(t('The current workflow state for this content is: @state.', array('@state' => $readable_state->label)), 'warning');
+    }
+    
     $node_action = isset($form['#node']->nid) ? 'edit' : 'add';
     // Remove unused fields and actions.
     _ulf_workflow_cleanup_form($form);
@@ -168,6 +133,9 @@ function ulf_workflow_form_node_form_alter(&$form, &$form_state, $form_id) {
     else {
       _ulf_workflow_provide_edit_actions($form);
     }
+
+    // Add image form validation.
+    $form['#validate'][] = '_ulf_workflow_form_validate_image';
   }
 }
 
@@ -204,6 +172,7 @@ function ulf_workflow_scheduler_api($node, $action) {
  * Implements hook_node_insert().
  *
  * Set a destination parameter when the node is first saved.
+ * Send mail on node creation.
  *
  * @param $node
  */
@@ -229,4 +198,46 @@ function ulf_workflow_node_insert($node) {
     
     $_GET['destination'] = 'node/' . $node->nid . '/edit';
   }
+}
+
+/**
+ * Implements hook_node_update().
+ *
+ * Set a destination parameter when the node is updated.
+ */
+function ulf_workflow_node_update($node) {
+  global $user;
+
+  if ($user->uid > 0) {
+    $_GET['destination'] = 'node/' . $node->nid . '/edit';
+  }
+}
+
+/**
+ * Check if user can publish their own content.
+ *
+ * @return bool
+ *   Whether the user can publish own content.
+ */
+function _ulf_workflow_check_publish_permission() {
+  global $user;
+  $full_user = user_load($user->uid);
+  $user_wrapper = entity_metadata_wrapper('user', $full_user);
+
+  // Check if user can bypass workflow.
+  // Done this way since we need clean true or false (We don't want empty when field is not filled).
+  $user_bypass = $user_wrapper->field_bypass_workflow->value() == TRUE ? TRUE : FALSE;
+
+  if (user_access('moderate content from needs_review to published') || $user_bypass) {
+    return TRUE;
+  }
+
+  return FALSE;
+}
+
+/**
+ * Implements hook_cron().
+ */
+function ulf_workflow_cron() {
+  _ulf_workflow_cron_empty_trash();
 }

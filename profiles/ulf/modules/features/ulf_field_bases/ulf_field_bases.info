@@ -81,4 +81,5 @@ features[field_base][] = field_subjects_youth
 features[field_base][] = field_target_group
 features[field_base][] = field_target_group_sub
 features[field_base][] = field_teaser
+features[field_base][] = field_trashed
 features[field_base][] = field_video

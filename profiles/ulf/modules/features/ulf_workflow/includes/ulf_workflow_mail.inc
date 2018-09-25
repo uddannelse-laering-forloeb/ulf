@@ -65,6 +65,43 @@ function _send_user_edited_mail($user) {
 }
 
 
+
+/**
+ * Create and send mail to editor when an element has been trashed.
+ *
+ * @param $node
+ *   The node that the mail relates to.
+ */
+function _send_editor_content_trashed_mail($node) {
+  // Get author fields.
+  $user = user_load($node->uid);
+
+  // Set recipient.
+  $to = !empty(variable_get('email_workflow_recipient')) ? variable_get('email_workflow_recipient') : variable_get('mimemail_mail');
+
+  _ulf_workflow_mail_send_mail('trashed_mail_admin', $to, $user, $node);
+}
+
+
+
+/**
+ * Create and send mail to author when an element has been trashed.
+ *
+ * @param $node
+ *   The node that the mail relates to.
+ */
+function _send_author_content_trashed_mail($node) {
+  // Get author fields.
+  $user = user_load($node->uid);
+
+  // Set recipient.
+  $to = $user->mail;
+
+  _ulf_workflow_mail_send_mail('trashed_mail_author', $to, $user, $node);
+}
+
+
+
 /**
  * Implements hook_mailkeys().
  */
@@ -74,6 +111,8 @@ function ulf_workflow_mailkeys() {
     'published_mail_author' => t('Mail sent to author when an editor publishes the content.'),
     'unpublished_mail_author' => t('Mail sent to author when an editor unpublishes the content.'),
     'user_edited_mail_admin' => t('Mail sent to admin(Site mail address) when a user has changed its account.'),
+    'trashed_mail_author' => t('Mail sent to author when an editor trashes the content.'),
+    'trashed_mail_admin' => t('Mail sent to admin(Site mail address) when a user trashes their content.'),
   );
 }
 
@@ -88,54 +127,74 @@ function ulf_workflow_mail_edit_text($mailkey, $language) {
     // Revision ready mail.
     case 'revision_ready_mail_admin':
       $return['subject'] = 'A new draft is ready for publishing by [user:field_profile_name]';
+      $return['always'] = TRUE;
       $return['body'] =
         '[user:field-profile-name] has marked a draft ready for publishing.
 
 This is an automated message created by [site:name].';
-      return $return;
       break;
 
     // Content published mail.
     case 'published_mail_author':
       $return['subject'] = 'Content you sent to revision has been published by an admin on [site:name]';
+      $return['always'] = TRUE;
       $return['body'] =
         'Some content you sent to revision has now been published on [site:name].
 
 Go to [site:login-url] and login to see what has been published.
 
 This is an automated message created by [site:name].';
-      return $return;
       break;
-
-
+    
     // Content unpublished mail.
     case 'unpublished_mail_author':
       $return['subject'] = 'Content that was published on [site:name] has now been unpublished';
+      $return['always'] = TRUE;
       $return['body'] =
         'Some content that was published on [site:name] has now been unpublished.
 
 Go to [site:login-url] and login to see what has been unpublished.
 
 This is an automated message created by [site:name].';
-      return $return;
       break;
 
     // User edited mail.
     case 'user_edited_mail_admin':
       $return['subject'] = 'The organisation: [user:field_profile_name] has made changes to its profile';
+      $return['always'] = TRUE;
       $return['body'] =
         'The organisation: [user:field_profile_name] has made changes to its profile [current-date:short].
 
 Go to [user:url] to see the changes.
 
 This is an automated message created by [site:name].';
-      return $return;
+      break;
+
+    // User edited mail.
+    case 'trashed_mail_author':
+      $return['subject'] = 'Content you created has been trashed by an admin on [site:name]';
+      $return['always'] = TRUE;
+      $return['body'] =
+        'The content: [node:title] has been trashed by an admin.
+
+This is an automated message created by [site:name].';
+      break;
+
+  // User edited mail.
+    case 'trashed_mail_admin':
+      $return['subject'] = 'The organisation: [user:field_profile_name] has trashed some content';
+      $return['always'] = TRUE;
+      $return['body'] =
+        'The organisation: [user:field_profile_name] has trashed [node:title].
+
+This is an automated message created by [site:name].';
       break;
   }
+  return $return;
 }
 
 /**
- * Implements hook_form_FROMID_alter().
+ * Implements hook_form_FORMID_alter().
  *
  * Alter the token tree in mail edit functionality to represent nodes and users.
  */

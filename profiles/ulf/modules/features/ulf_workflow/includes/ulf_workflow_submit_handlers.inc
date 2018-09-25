@@ -46,11 +46,12 @@ function _ulf_workflow_editor_unpublish($form, &$form_state) {
  * Trash action for editors.
  */
 function _ulf_workflow_editor_trash($form, &$form_state) {
-  // Latest revision: State => Draft
-  // Published state: Unpublished.
-  // Trash state: Trashed
-  // Mail to course provider.
-  $a =1;
+  drupal_set_message(t('The content has been trashed'));
+  $form_state['values']['workbench_moderation_state_new'] = 'draft';
+  $form_state['values']['workbench_moderation_state_current'] = 'draft';
+  $form_state['values']['status'] = 0;
+  $form_state['values']['field_trashed']['und'][0]['value'] = 1;
+  _send_author_content_trashed_mail($form['#node']);
 }
 
 /**
@@ -105,10 +106,21 @@ function _ulf_workflow_course_provider_unpublish($form, &$form_state) {
  * Trash action for course providers.
  */
 function _ulf_workflow_course_provider_trash($form, &$form_state) {
-  // Latest revision: State => Draft
-  // Published state: Unpublished.
-  // Trash state: Trashed
-  // Mail to course editor.
-  $a =1;
+  drupal_set_message(t('The content has been trashed'));
+  $form_state['values']['workbench_moderation_state_new'] = 'draft';
+  $form_state['values']['workbench_moderation_state_current'] = 'draft';
+  $form_state['values']['status'] = 0;
+  $form_state['values']['field_trashed']['und'][0]['value'] = 1;
+  _send_editor_content_trashed_mail($form['#node']);
 }
 
+/**
+ * Draft from trash action.
+ */
+function _ulf_workflow_draft_from_trash($form, &$form_state) {
+  drupal_set_message(t('A draft has been created from trash'));
+  $form_state['values']['workbench_moderation_state_new'] = 'draft';
+  $form_state['values']['workbench_moderation_state_current'] = 'draft';
+  $form_state['values']['status'] = 0;
+  $form_state['values']['field_trashed']['und'][0]['value'] = 0;
+}
