@@ -10,7 +10,7 @@
 function ulf_wysiwyg_wysiwyg_default_profiles() {
   $profiles = array();
 
-  // Exported profile: editor
+  // Exported profile: editor.
   $profiles['editor'] = array(
     'format' => 'editor',
     'editor' => 'ckeditor',
@@ -54,11 +54,11 @@ function ulf_wysiwyg_wysiwyg_default_profiles() {
       'stylesSet' => '',
     ),
     'preferences' => array(
-      'add_to_summaries' => NULL,
+      'add_to_summaries' => FALSE,
       'default' => NULL,
       'show_toggle' => NULL,
       'user_choose' => NULL,
-      'version' => NULL,
+      'version' => '4.6.2.20af917',
     ),
     'name' => 'formateditor',
   );
