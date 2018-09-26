@@ -892,7 +892,7 @@ function ulf_course_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 36,
+        'weight' => 37,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1147,7 +1147,7 @@ function ulf_course_field_default_field_instances() {
         'year_range' => '-0:+5',
       ),
       'type' => 'date_select',
-      'weight' => 2,
+      'weight' => 43,
     ),
   );
 
@@ -1198,7 +1198,7 @@ function ulf_course_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 1,
+      'weight' => 42,
     ),
   );
 
@@ -1249,7 +1249,7 @@ function ulf_course_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 4,
+      'weight' => 45,
     ),
   );
 
@@ -1514,7 +1514,7 @@ At opnå kendskab til...
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 40,
+      'weight' => 41,
     ),
   );
 
@@ -1624,6 +1624,51 @@ At opnå kendskab til...
       'settings' => array(),
       'type' => 'link_field',
       'weight' => 38,
+    ),
+  );
+
+  // Exported field_instance: 'node-course-field_signup_phone'.
+  $field_instances['node-course-field_signup_phone'] = array(
+    'bundle' => 'course',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Telefonnummer til tilmelding.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 37,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 35,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_signup_phone',
+    'label' => 'Tilmeldingstelefonnummer',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'html5_tools',
+      'settings' => array(),
+      'type' => 'telwidget',
+      'weight' => 40,
     ),
   );
 
@@ -1871,7 +1916,7 @@ At opnå kendskab til...
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 35,
+        'weight' => 36,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2011,10 +2056,12 @@ At opnå kendskab til...
   t('Skriv ikke jeres faste fysiske adresse her, den har vi allerede. Anvend dette felt til ekstraoplysninger om forløbets sted: Eks. \'Store Sal\', \'Brug højre indgang - ring på dørklokken\' eller en alternativ adresse end jeres faste fysiske adresse.');
   t('Sted (ekstraoplysninger): Eks. \'Store Sal\', \'Brug højre indgang - ring på dørklokken\' ');
   t('Sæt kryds i alle de aldre, som besøget/forløbet er relevant for.');
+  t('Telefonnummer til tilmelding.');
   t('Tilmelding');
   t('Tilmeldingsbeskrivelse');
   t('Tilmeldingsemail');
   t('Tilmeldingsfrist');
+  t('Tilmeldingstelefonnummer');
   t('Trashed');
   t('Undervisningsmateriale');
   t('Upload et billede/illustration');

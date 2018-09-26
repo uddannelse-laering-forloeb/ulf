@@ -14,6 +14,7 @@
 * Changed ulf_default gulp setup to minify scss and removed sourcemaps.
 * KVF-58: Added filtering to top of transportpulje view.
 * KVF-59: Added pagination to top of transportpulje view.
+* ULF-2194: Added signup_phone field (179).
 
 # v2.5.x
 

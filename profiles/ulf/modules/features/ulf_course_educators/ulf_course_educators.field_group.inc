@@ -304,6 +304,7 @@ function ulf_course_educators_field_group_info() {
       1 => 'field_signup_email',
       2 => 'field_signup_link',
       3 => 'field_signup_description',
+      4 => 'field_signup_phone',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

@@ -773,7 +773,7 @@ function ulf_course_educators_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_select',
-      'weight' => 53,
+      'weight' => 54,
     ),
   );
 
@@ -860,7 +860,7 @@ function ulf_course_educators_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 55,
+      'weight' => 56,
     ),
   );
 
@@ -1197,7 +1197,7 @@ function ulf_course_educators_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 58,
+      'weight' => 59,
     ),
   );
 
@@ -1293,6 +1293,44 @@ function ulf_course_educators_field_default_field_instances() {
       'settings' => array(),
       'type' => 'link_field',
       'weight' => 56,
+    ),
+  );
+
+  // Exported field_instance: 'node-course_educators-field_signup_phone'.
+  $field_instances['node-course_educators-field_signup_phone'] = array(
+    'bundle' => 'course_educators',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Telefonnummer til tilmelding.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 32,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_signup_phone',
+    'label' => 'Tilmeldingstelefonnummer',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'html5_tools',
+      'settings' => array(),
+      'type' => 'telwidget',
+      'weight' => 58,
     ),
   );
 
@@ -1458,10 +1496,12 @@ function ulf_course_educators_field_default_field_instances() {
   t('Skriv ikke jeres faste fysiske adresse her, den har vi allerede. Anvend dette felt til ekstraoplysninger om forløbets sted: Eks. \'Store Sal\', \'Brug højre indgang - ring på dørklokken\' eller en alternativ adresse end jeres faste fysiske adresse.');
   t('Sted (ekstraoplysninger): Eks. \'Store Sal\', \'Brug højre indgang - ring på dørklokken\' ');
   t('Telefonnummer');
+  t('Telefonnummer til tilmelding.');
   t('Tilmelding');
   t('Tilmeldingsbeskrivelse');
   t('Tilmeldingsemail');
   t('Tilmeldingsfrist');
+  t('Tilmeldingstelefonnummer');
   t('Trashed');
   t('Upload et billede/illustration');
   t('Varighed');
