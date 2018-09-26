@@ -15,6 +15,7 @@
 * KVF-58: Added filtering to top of transportpulje view.
 * KVF-59: Added pagination to top of transportpulje view.
 * ULF-2194: Added signup_phone field (179).
+* ULF-2199: Added "pr. hour" to price (139).
 
 # v2.5.x
 
