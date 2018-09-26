@@ -17,6 +17,7 @@
 * ULF-2194: Added signup_phone field (179).
 * ULF-2199: Added "pr. hour" and "pr. half hour" to price (139).
 * ULF-2200: Moved field and changed label (171).
+* ULF-2201: Restyled form and changed help text (173).
 
 # v2.5.x
 

@@ -56,7 +56,7 @@ function ulf_base_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'captcha_description_da';
-  $strongarm->value = 'Dette kal sikre at du ikke er en robot';
+  $strongarm->value = 'Dette skal sikre at du ikke er en robot';
   $export['captcha_description_da'] = $strongarm;
 
   $strongarm = new stdClass();
