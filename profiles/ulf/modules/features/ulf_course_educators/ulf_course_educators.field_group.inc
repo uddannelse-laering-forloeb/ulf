@@ -120,7 +120,8 @@ function ulf_course_educators_field_group_info() {
       2 => 'field_relevance_primary_school',
       3 => 'field_relevance_upper_school',
       4 => 'field_subject',
-      5 => 'title',
+      5 => 'field_educational_goals',
+      6 => 'title',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -151,8 +152,7 @@ function ulf_course_educators_field_group_info() {
       0 => 'field_course_contact_mail',
       1 => 'field_course_contact_name',
       2 => 'field_course_phone',
-      3 => 'field_educational_goals',
-      4 => 'field_profile_contact',
+      3 => 'field_profile_contact',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
