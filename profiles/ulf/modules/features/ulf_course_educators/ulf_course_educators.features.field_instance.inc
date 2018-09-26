@@ -360,7 +360,7 @@ function ulf_course_educators_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_educational_goals',
-    'label' => 'Pædagogiske læreplanstemaer',
+    'label' => 'Kurset er relevant for pædagoger, der arbejder med læreplanstemaerne',
     'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
@@ -1484,6 +1484,7 @@ function ulf_course_educators_field_default_field_instances() {
   t('Her kan du uploade materiale til kurset.');
   t('Kontakt');
   t('Kurset er relevant for lærere, der underviser i fagene');
+  t('Kurset er relevant for pædagoger, der arbejder med læreplanstemaerne');
   t('Kurset er relevant for undervisere i fagene');
   t('Materialer');
   t('Message form');
@@ -1491,7 +1492,6 @@ function ulf_course_educators_field_default_field_instances() {
   t('Navn');
   t('Periode');
   t('Pris');
-  t('Pædagogiske læreplanstemaer');
   t('Skriv en beskrivelse af kursets indhold');
   t('Skriv ikke jeres faste fysiske adresse her, den har vi allerede. Anvend dette felt til ekstraoplysninger om forløbets sted: Eks. \'Store Sal\', \'Brug højre indgang - ring på dørklokken\' eller en alternativ adresse end jeres faste fysiske adresse.');
   t('Sted (ekstraoplysninger): Eks. \'Store Sal\', \'Brug højre indgang - ring på dørklokken\' ');
