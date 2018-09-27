@@ -2,10 +2,12 @@
 
 # v2.5.x
 
+## 2.5.42
+* SUPPORT-1772: Changed content overview
+
 ## 2.5.41
 * SUPPORT-1731: Added special menu items module.
 * SUPPORT-1719: Changed label on draft button.
-* SUPPORT-1772: Changed content overview
 * SUPPORT-1773: Moved DUS for Aalborg
 
 ## 2.5.40
