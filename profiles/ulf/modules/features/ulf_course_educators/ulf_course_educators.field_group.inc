@@ -21,7 +21,7 @@ function ulf_course_educators_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Vis kontaktformular / Skjul kontaktformular',
-    'weight' => '61',
+    'weight' => '13',
     'children' => array(
       0 => 'field_message_form',
     ),
@@ -85,7 +85,7 @@ function ulf_course_educators_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Yderligere information',
-    'weight' => '7',
+    'weight' => '8',
     'children' => array(
       0 => 'field_catering',
     ),
@@ -153,6 +153,8 @@ function ulf_course_educators_field_group_info() {
       1 => 'field_course_contact_name',
       2 => 'field_course_phone',
       3 => 'field_profile_contact',
+      4 => 'field_count',
+      5 => 'field_count_description',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -179,7 +181,7 @@ function ulf_course_educators_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Materialer',
-    'weight' => '6',
+    'weight' => '7',
     'children' => array(
       0 => 'field_educational_material',
     ),
@@ -207,7 +209,7 @@ function ulf_course_educators_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Billeder/medier',
-    'weight' => '5',
+    'weight' => '6',
     'children' => array(
       0 => 'field_image',
       1 => 'field_video',
@@ -268,7 +270,7 @@ function ulf_course_educators_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Lokation',
-    'weight' => '8',
+    'weight' => '9',
     'children' => array(
       0 => 'field_map_placement',
       1 => 'field_place',

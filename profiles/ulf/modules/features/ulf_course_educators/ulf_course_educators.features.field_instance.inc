@@ -46,7 +46,7 @@ function ulf_course_educators_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 3,
+      'weight' => 61,
     ),
   );
 
@@ -85,7 +85,97 @@ function ulf_course_educators_field_default_field_instances() {
       'module' => 'field_collection',
       'settings' => array(),
       'type' => 'field_collection_embed',
-      'weight' => 41,
+      'weight' => 63,
+    ),
+  );
+
+  // Exported field_instance: 'node-course_educators-field_count'.
+  $field_instances['node-course_educators-field_count'] = array(
+    'bundle' => 'course_educators',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'prefix_suffix' => TRUE,
+          'scale' => 0,
+          'thousand_separator' => '',
+        ),
+        'type' => 'number_integer',
+        'weight' => 33,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_count',
+    'label' => 'Antal',
+    'required' => 0,
+    'settings' => array(
+      'max' => '',
+      'min' => '',
+      'prefix' => '',
+      'suffix' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'number',
+      'settings' => array(),
+      'type' => 'number',
+      'weight' => 47,
+    ),
+  );
+
+  // Exported field_instance: 'node-course_educators-field_count_description'.
+  $field_instances['node-course_educators-field_count_description'] = array(
+    'bundle' => 'course_educators',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 34,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_count_description',
+    'label' => 'Beskrivelse til antal',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'maxlength_js' => '',
+        'maxlength_js_enforce' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'maxlength_js_truncate_html' => 0,
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 48,
     ),
   );
 
@@ -123,7 +213,7 @@ function ulf_course_educators_field_default_field_instances() {
       'module' => 'html5_tools',
       'settings' => array(),
       'type' => 'emailwidget',
-      'weight' => 46,
+      'weight' => 50,
     ),
   );
 
@@ -165,7 +255,7 @@ function ulf_course_educators_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 45,
+      'weight' => 49,
     ),
   );
 
@@ -203,7 +293,7 @@ function ulf_course_educators_field_default_field_instances() {
       'module' => 'html5_tools',
       'settings' => array(),
       'type' => 'telwidget',
-      'weight' => 47,
+      'weight' => 51,
     ),
   );
 
@@ -249,7 +339,7 @@ function ulf_course_educators_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 42,
+      'weight' => 64,
     ),
   );
 
@@ -294,7 +384,7 @@ function ulf_course_educators_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 45,
+      'weight' => 67,
     ),
   );
 
@@ -333,7 +423,7 @@ function ulf_course_educators_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 43,
+      'weight' => 65,
     ),
   );
 
@@ -454,7 +544,7 @@ function ulf_course_educators_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 39,
+      'weight' => 61,
     ),
   );
 
@@ -904,7 +994,7 @@ function ulf_course_educators_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 15,
+      'weight' => 16,
     ),
   );
 
@@ -954,7 +1044,7 @@ function ulf_course_educators_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 40,
+      'weight' => 62,
     ),
   );
 
@@ -998,7 +1088,7 @@ function ulf_course_educators_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 44,
+      'weight' => 66,
     ),
   );
 
@@ -1037,7 +1127,7 @@ function ulf_course_educators_field_default_field_instances() {
       'module' => 'field_collection',
       'settings' => array(),
       'type' => 'field_collection_embed',
-      'weight' => 48,
+      'weight' => 52,
     ),
   );
 
@@ -1412,7 +1502,7 @@ function ulf_course_educators_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 60,
+      'weight' => 12,
     ),
   );
 
@@ -1472,8 +1562,10 @@ function ulf_course_educators_field_default_field_instances() {
   t('Angiv oplysninger om, hvordan man tilmelder sig, om kurset er med forplejning osv.');
   t('Angiv tidspunkt for kursets afvikling.');
   t('Angiv url til mail eller link til side.');
+  t('Antal');
   t('Beskriv hvordan man tilmelder sig og andre instruktioner i forbindelse med tilmelding.');
   t('Beskrivelse');
+  t('Beskrivelse til antal');
   t('Beskrivelse til pris');
   t('Beskrivelse til varighed');
   t('Email');
