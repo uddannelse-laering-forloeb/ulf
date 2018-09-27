@@ -76,6 +76,14 @@ function _ulf_workflow_course_provider_revision($form, &$form_state) {
 }
 
 /**
+ * Pull revision action for course providers.
+ */
+function _ulf_workflow_course_provider_pull_revision($form, &$form_state) {
+  drupal_set_message(t('The content has been pulled'));
+  $form_state['values']['workbench_moderation_state_new'] = 'draft';
+}
+
+/**
  * Save action for course providers.
  */
 function _ulf_workflow_course_provider_save($form, &$form_state) {
