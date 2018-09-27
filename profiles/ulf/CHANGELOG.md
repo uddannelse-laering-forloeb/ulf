@@ -18,6 +18,8 @@
 * ULF-2199: Added "pr. hour" and "pr. half hour" to price (139).
 * ULF-2200: Moved field and changed label (171).
 * ULF-2201: Restyled form and changed help text (173).
+* ULF-2133: Updated workflow, refacturing of code.
+* ULF-2183: Added registration module
 
 # v2.5.x
 
