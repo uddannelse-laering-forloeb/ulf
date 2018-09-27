@@ -47,7 +47,7 @@ function ulf_course_providers_permission() {
  * Allow view access to blocked users.
  */
 function _ulf_course_providers_profile_access() {
-  global $user;
+  $user = user_load(arg(1));
   if (user_access('view_blocked_users') || $user->status > 0) {
     return TRUE;
   }
