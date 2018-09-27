@@ -66,7 +66,7 @@ function _ulf_workflow_provide_add_actions(&$form) {
 
 function _ulf_workflow_provide_edit_actions(&$form) {
   $publish_permission = _ulf_workflow_check_publish_permission();
-  $current_state = $form['workbench_moderation_state_current']['#value'];
+  $current_state = $form['#node']->workbench_moderation['current']->state;
   $content_moderator = user_access('moderate content from needs_review to published');
 
   // Create array of possible actions.

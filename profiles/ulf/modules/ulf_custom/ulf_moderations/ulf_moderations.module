@@ -17,6 +17,9 @@ function ulf_moderations_menu_local_tasks_alter(&$data, $router_item, $root_path
     'node/%/edit',
     'node/%/draft',
     'node/%/revisions/view',
+    'node/%/registrations',
+    'node/%/registrations/settings',
+    'node/%/registrations/broadcast',
   );
 
   // Change tab on selected paths.
@@ -48,6 +51,9 @@ function ulf_moderations_menu_local_tasks_alter(&$data, $router_item, $root_path
         } else {
           unset($data['tabs']['0']['output'][$key]);
         }
+      }
+      if ($value['#link']['path'] == 'node/%/revisions') {
+        $data['tabs']['0']['output'][$key]['#access'] = FALSE;
       }
     }
   }
