@@ -104,7 +104,7 @@ function ulf_workflow_form_node_form_alter(&$form, &$form_state, $form_id) {
     'news_course_provider'
   );
 
-  // Check for workflow.
+  // Check for workflow enabled.
   if (in_array($content_type, $workflow_enabled_types)) {
     // Inform of current workflow state
     $trashed = isset($form['#node']->field_trashed['und'][0]['value']) ? $form['#node']->field_trashed['und'][0]['value'] : FALSE;
