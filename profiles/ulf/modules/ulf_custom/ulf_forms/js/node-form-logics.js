@@ -105,7 +105,7 @@
       function selectionPreschool() {
         // The sub target group field selection values.
         displayRelevantSubgroupByKeyword(function (text) {
-          return (text.indexOf('år') != -1 || text.indexOf('DUS') != -1);
+          return (text.indexOf('år') != -1);
         });
 
         $('.field-name-field-inspirational-material').show();
@@ -122,7 +122,7 @@
       function selectionPrimarySchool() {
         // The sub target group field selection values.
         displayRelevantSubgroupByKeyword(function (text) {
-          return (text.indexOf('klasse') != -1);
+          return (text.indexOf('klasse') != -1 || text.indexOf('DUS') != -1);
         });
 
         $('.field-name-field-post-work').show();

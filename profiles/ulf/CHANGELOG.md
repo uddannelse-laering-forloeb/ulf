@@ -2,6 +2,9 @@
 
 # v2.5.x
 
+## 2.5.43
+* SUPPORT-1773: Moved DUS for Aalborg in form
+
 ## 2.5.42
 * SUPPORT-1772: Changed content overview
 
