@@ -1,1 +1,12 @@
 <?php
+
+/**
+ * Enable special menu items module.
+ */
+function ulf_update_7100() {
+  $module_enable = array(
+    'special_menu_items'
+  );
+  module_enable($module_enable);
+}
+
