@@ -180,7 +180,7 @@ function ulf_workflow_form_node_form_alter(&$form, &$form_state, $form_id) {
     $form['actions']['save'] = array(
       '#type' => 'submit',
       '#access' => !user_access('moderate content from needs_review to published'),
-      '#value' => t('Save as draft and unpublish'),
+      '#value' => !empty($form['nid']['#value']) ? t('Save as draft and unpublish') : t('Save as draft'),
       '#weight' => 7,
       '#submit' => array(
         'ulf_workflow_course_node_form_draft_submit',
