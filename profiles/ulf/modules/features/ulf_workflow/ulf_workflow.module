@@ -125,7 +125,7 @@ function ulf_workflow_form_node_form_alter(&$form, &$form_state, $form_id) {
     }
     
     $node_action = isset($form['#node']->nid) ? 'edit' : 'add';
-    // Remove unused fields and actions.
+    // Remove unused fields and  actions.
     _ulf_workflow_cleanup_form($form);
     if ($node_action == 'add'){
       _ulf_workflow_provide_add_actions($form);
