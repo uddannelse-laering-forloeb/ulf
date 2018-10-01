@@ -1,6 +1,6 @@
 # ULF changelog
 
-## In development
+## 2.6.0
 
 * ULF-2190: Added count and count description (149).
 
