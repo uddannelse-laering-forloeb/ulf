@@ -81,7 +81,8 @@ function ulf_default_menu_link__main_menu($variables){
   // If item is a child.
   if($element['#original_link']['plid'] > 0) {
     $element['#attributes']['class'][] = 'nav--list-item-sub';
-  } else {
+  }
+  else {
     $element['#attributes']['class'][] = 'nav--list-item';
     $element['#localized_options']['attributes']['class'][] = 'nav--list-link';
   }
