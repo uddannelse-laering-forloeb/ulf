@@ -252,7 +252,7 @@ function ulf_workflow_cron() {
  * Implements hook_entity_update().
  */
 function ulf_workflow_entity_update($entity, $type) {
-  if ($type == 'field_collection_item') {
+  if ($type == 'field_collection_item' && $entity->field_name = 'field_profile_contact') {
     _ulf_workflow_mail_field_collection_changes($entity);
   }
 }

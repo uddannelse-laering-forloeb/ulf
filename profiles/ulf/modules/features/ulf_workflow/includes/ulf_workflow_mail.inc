@@ -61,9 +61,9 @@ function _send_user_edited_mail($user, $user_changes) {
   // Set recipient.
   $to = !empty(variable_get('email_workflow_recipient')) ? variable_get('email_workflow_recipient') : variable_get('mimemail_mail');
 
-  _ulf_workflow_mail_send_mail('user_edited_mail_admin', $to, $user, NULL, $user_changes);
+  _ulf_workflow_mail_send_mail('user_edited_mail_admin', $to, $user, NULL,
+    $user_changes);
 }
-
 
 
 /**
@@ -83,7 +83,6 @@ function _send_editor_content_trashed_mail($node) {
 }
 
 
-
 /**
  * Create and send mail to author when an element has been trashed.
  *
@@ -101,19 +100,18 @@ function _send_author_content_trashed_mail($node) {
 }
 
 
-
 /**
  * Implements hook_mailkeys().
  */
 function ulf_workflow_mailkeys() {
-  return array(
+  return [
     'revision_ready_mail_admin' => t('Mail sent to admin(Site mail address) when a new draft is ready for revision.'),
     'published_mail_author' => t('Mail sent to author when an editor publishes the content.'),
     'unpublished_mail_author' => t('Mail sent to author when an editor unpublishes the content.'),
     'user_edited_mail_admin' => t('Mail sent to admin(Site mail address) when a user has changed its account.'),
     'trashed_mail_author' => t('Mail sent to author when an editor trashes the content.'),
     'trashed_mail_admin' => t('Mail sent to admin(Site mail address) when a user trashes their content.'),
-  );
+  ];
 }
 
 
@@ -121,7 +119,7 @@ function ulf_workflow_mailkeys() {
  * Implements hook_mail_edit_text().
  */
 function ulf_workflow_mail_edit_text($mailkey, $language) {
-  $return = array();
+  $return = [];
   switch ($mailkey) {
 
     // Revision ready mail.
@@ -183,7 +181,7 @@ This is an automated message created by [site:name].';
 This is an automated message created by [site:name].';
       break;
 
-  // User edited mail.
+    // User edited mail.
     case 'trashed_mail_admin':
       $return['subject'] = 'The organisation: [user:field_profile_name] has trashed some content';
       $return['always'] = TRUE;
@@ -201,13 +199,17 @@ This is an automated message created by [site:name].';
  *
  * Alter the token tree in mail edit functionality to represent nodes and users.
  */
-function ulf_workflow_form_mail_edit_template_form_alter(&$form, &$form_state, $form_id) {
-  $form['mail']['token_tree'] = array(
+function ulf_workflow_form_mail_edit_template_form_alter(
+  &$form,
+  &$form_state,
+  $form_id
+) {
+  $form['mail']['token_tree'] = [
     '#theme' => 'token_tree_link',
-    '#token_types' => array('node', 'user', 'ulf_workflow'),
+    '#token_types' => ['node', 'user', 'ulf_workflow'],
     '#global_types' => TRUE,
     '#click_insert' => TRUE,
-  );
+  ];
 }
 
 /**
@@ -222,6 +224,7 @@ function ulf_workflow_mail_edit_token_types($mailkey) {
  *
  * @param $language
  *  The language code.
+ *
  * @return mixed
  *   An array of languages.
  */
@@ -244,7 +247,13 @@ function _ulf_workflow_get_language_object($language = 'da') {
  * @param null $user_changes
  *   Array of User changes.
  */
-function _ulf_workflow_mail_send_mail($key, $to, $user, $node = NULL, $user_changes = NULL) {
+function _ulf_workflow_mail_send_mail(
+  $key,
+  $to,
+  $user,
+  $node = NULL,
+  $user_changes = NULL
+) {
   $module = 'ulf_workflow';
   // Get language from user obj.
   $language = _ulf_workflow_get_language_object($user->language);
@@ -260,21 +269,26 @@ function _ulf_workflow_mail_send_mail($key, $to, $user, $node = NULL, $user_chan
  * Implements hook_token_info().
  */
 function ulf_workflow_token_info() {
-  $info['types']['ulf_workflow'] = array(
+  $info['types']['ulf_workflow'] = [
     'name' => t('Ulf workflow'),
-  );
-  $info['tokens']['ulf_workflow']['user_changes'] = array(
+  ];
+  $info['tokens']['ulf_workflow']['user_changes'] = [
     'name' => t('User changes'),
     'description' => t("Lists the user changes."),
-  );
+  ];
   return $info;
 }
 
 /**
  * Implements hook_tokens().
  */
-function ulf_workflow_tokens($type, $tokens, array $data = array(), array $options = array()) {
-  $replacements = array();
+function ulf_workflow_tokens(
+  $type,
+  $tokens,
+  array $data = [],
+  array $options = []
+) {
+  $replacements = [];
 
   if ($type == 'ulf_workflow' && !empty($data['user_changes'])) {
     $user_changes = $data['user_changes'];
@@ -315,7 +329,7 @@ function _ulf_workflow_mail_get_user_changes($account) {
     'field_profile_mail',
     'field_editor_info',
     'field_profile_map_placement',
-    'field_bypass_workflow'
+    'field_bypass_workflow',
   ];
 
   $accountArray = (array) $account;
@@ -383,10 +397,12 @@ function _ulf_workflow_mail_get_user_changes($account) {
     if (isset($GLOBALS['conf']['ulf_workflox_field_profile_contact_diff'])) {
       $field_profile_contact = $GLOBALS['conf']['ulf_workflox_field_profile_contact_diff'];
 
-      $field_profile_contact_info = field_info_instance('user', 'field_profile_contact', 'user');
+      $field_profile_contact_info = field_info_instance('user',
+        'field_profile_contact', 'user');
 
       foreach ($field_profile_contact as $key => $field) {
-        $info = field_info_instance('field_collection_item', $key, 'field_profile_contact');
+        $info = field_info_instance('field_collection_item', $key,
+          'field_profile_contact');
         $changes_array[$key] = $field_profile_contact_info['label'] . ' - ' . $info['label'];
       }
     }
@@ -400,34 +416,34 @@ function _ulf_workflow_mail_get_user_changes($account) {
  * field_profile_contact has changed.
  *
  * @param $entity
+ *   The changed entity.
  */
 function _ulf_workflow_mail_field_collection_changes($entity) {
-  if ($entity->field_name = 'field_profile_contact') {
-    $entity_changes = [];
+  $entity_changes = [];
 
-    $fields = [
-      'field_contact_email',
-      'field_contact_name',
-      'field_contact_phone',
-      'field_contact_office_hours',
-      'field_contact_title',
-      'field_contact_home_page',
-    ];
+  $fields = [
+    'field_contact_email',
+    'field_contact_name',
+    'field_contact_phone',
+    'field_contact_office_hours',
+    'field_contact_title',
+    'field_contact_home_page',
+  ];
 
-    foreach ($fields as $field) {
-      if (
-        $entity->{$field}['und'][0]['value'] != $entity->original->{$field}['und'][0]['value']) {
-        $entity_changes[$field] = $field;
-      }
+  foreach ($fields as $field) {
+    if (
+      $entity->{$field}['und'][0]['value'] != $entity->original->{$field}['und'][0]['value']) {
+      $entity_changes[$field] = $field;
     }
-
-    global $conf;
-    $conf['ulf_workflox_field_profile_contact_diff'] = $entity_changes;
   }
+
+  global $conf;
+  $conf['ulf_workflox_field_profile_contact_diff'] = $entity_changes;
 }
 
 /**
- * Recursively does an array_diff_assoc, which will calculate differences on a multi-dimensional level.
+ * Recursively does an array_diff_assoc, which will calculate differences on a
+ * multi-dimensional level.
  *
  * @from http://php.net/manual/en/function.array-diff-assoc.php#114297
  *
@@ -446,7 +462,8 @@ function _ulf_workflow_array_diff_assoc_recursive($array1, $array2) {
         $difference[$key] = $value;
       }
       else {
-        $new_diff = _ulf_workflow_array_diff_assoc_recursive($value, $array2[$key]);
+        $new_diff = _ulf_workflow_array_diff_assoc_recursive($value,
+          $array2[$key]);
         if ($new_diff != FALSE) {
           $difference[$key] = $new_diff;
         }
