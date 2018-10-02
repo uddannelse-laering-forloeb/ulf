@@ -3,6 +3,7 @@
 ## 2.6.0
 
 * ULF-2190: Added count and count description (149).
+* ULF-2203: Revised user changed notifications (57).
 
 ## In release/2.6.0
 
