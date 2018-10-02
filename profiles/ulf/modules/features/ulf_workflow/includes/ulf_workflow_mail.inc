@@ -61,9 +61,7 @@ function _send_user_edited_mail($user, $user_changes) {
   // Set recipient.
   $to = !empty(variable_get('email_workflow_recipient')) ? variable_get('email_workflow_recipient') : variable_get('mimemail_mail');
 
-  $custom_tokens = ['[ulf_workflow:user_changes]' => $user_changes];
-
-  _ulf_workflow_mail_send_mail('user_edited_mail_admin', $to, $user, NULL, $custom_tokens);
+  _ulf_workflow_mail_send_mail('user_edited_mail_admin', $to, $user, NULL, $user_changes);
 }
 
 
@@ -284,7 +282,7 @@ function ulf_workflow_tokens($type, $tokens, array $data = array(), array $optio
     foreach ($tokens as $name => $original) {
       switch ($name) {
         case 'user_changes':
-          $replacements[$original] = implode("\r\n", $user_changes['[ulf_workflow:user_changes]']);
+          $replacements[$original] = implode("\r\n", $user_changes);
           break;
       }
     }
