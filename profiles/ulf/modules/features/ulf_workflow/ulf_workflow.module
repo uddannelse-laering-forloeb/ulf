@@ -123,7 +123,7 @@ function ulf_workflow_form_node_form_alter(&$form, &$form_state, $form_id) {
       $readable_state = workbench_moderation_state_load($form['workbench_moderation_state_current']['#value']);
       drupal_set_message(t('The current workflow state for this content is: @state.', array('@state' => $readable_state->label)), 'warning');
     }
-    
+
     $node_action = isset($form['#node']->nid) ? 'edit' : 'add';
     // Remove unused fields and actions.
     _ulf_workflow_cleanup_form($form);
@@ -147,9 +147,15 @@ function ulf_workflow_form_node_form_alter(&$form, &$form_state, $form_id) {
  * @param $category
  */
 function ulf_workflow_user_update(&$edit, $account, $category) {
-  _send_user_edited_mail($account);
-}
+  $changes_array = _ulf_workflow_mail_get_user_changes($account);
 
+  // If no changes should be reported, bail out.
+  if (count($changes_array) == 0) {
+    return;
+  }
+
+  _send_user_edited_mail($account, $changes_array);
+}
 
 /**
  * Implements hook_scheduler_api().
@@ -195,7 +201,7 @@ function ulf_workflow_node_insert($node) {
     if ($node->workbench_moderation_state_new == 'needs_review') {
       _send_revision_ready_mail($node);
     }
-    
+
     $_GET['destination'] = 'node/' . $node->nid . '/edit';
   }
 }
@@ -240,4 +246,13 @@ function _ulf_workflow_check_publish_permission() {
  */
 function ulf_workflow_cron() {
   _ulf_workflow_cron_empty_trash();
+}
+
+/**
+ * Implements hook_entity_update().
+ */
+function ulf_workflow_entity_update($entity, $type) {
+  if ($type == 'field_collection_item') {
+    _ulf_workflow_mail_field_collection_changes($entity);
+  }
 }

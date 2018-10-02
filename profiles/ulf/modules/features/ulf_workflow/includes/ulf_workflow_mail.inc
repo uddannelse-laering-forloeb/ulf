@@ -57,11 +57,13 @@ function _send_revision_ready_mail($node) {
  * @param $user
  *   The user that the mail relates to.
  */
-function _send_user_edited_mail($user) {
+function _send_user_edited_mail($user, $user_changes) {
   // Set recipient.
   $to = !empty(variable_get('email_workflow_recipient')) ? variable_get('email_workflow_recipient') : variable_get('mimemail_mail');
 
-  _ulf_workflow_mail_send_mail('user_edited_mail_admin', $to, $user);
+  $custom_tokens = ['[ulf_workflow:user_changes]' => $user_changes];
+
+  _ulf_workflow_mail_send_mail('user_edited_mail_admin', $to, $user, NULL, $custom_tokens);
 }
 
 
@@ -145,7 +147,7 @@ Go to [site:login-url] and login to see what has been published.
 
 This is an automated message created by [site:name].';
       break;
-    
+
     // Content unpublished mail.
     case 'unpublished_mail_author':
       $return['subject'] = 'Content that was published on [site:name] has now been unpublished';
@@ -164,6 +166,9 @@ This is an automated message created by [site:name].';
       $return['always'] = TRUE;
       $return['body'] =
         'The organisation: [user:field_profile_name] has made changes to its profile [current-date:short].
+
+The following fields were changed:
+[ulf_workflow:user_changes]
 
 Go to [user:url] to see the changes.
 
@@ -201,7 +206,7 @@ This is an automated message created by [site:name].';
 function ulf_workflow_form_mail_edit_template_form_alter(&$form, &$form_state, $form_id) {
   $form['mail']['token_tree'] = array(
     '#theme' => 'token_tree_link',
-    '#token_types' => array('node', 'user'),
+    '#token_types' => array('node', 'user', 'ulf_workflow'),
     '#global_types' => TRUE,
     '#click_insert' => TRUE,
   );
@@ -238,8 +243,10 @@ function _ulf_workflow_get_language_object($language = 'da') {
  *   The user that the mail relates to.
  * @param null $node
  *   The node that the mail relates to.
+ * @param null $user_changes
+ *   Array of User changes.
  */
-function _ulf_workflow_mail_send_mail($key, $to, $user, $node = NULL) {
+function _ulf_workflow_mail_send_mail($key, $to, $user, $node = NULL, $user_changes = NULL) {
   $module = 'ulf_workflow';
   // Get language from user obj.
   $language = _ulf_workflow_get_language_object($user->language);
@@ -247,5 +254,209 @@ function _ulf_workflow_mail_send_mail($key, $to, $user, $node = NULL) {
   // Provide additional parameters.
   $params['user'] = $user;
   $params['node'] = $node;
+  $params['user_changes'] = $user_changes;
   drupal_mail($module, $key, $to, $language, $params);
+}
+
+/**
+ * Implements hook_token_info().
+ */
+function ulf_workflow_token_info() {
+  $info['types']['ulf_workflow'] = array(
+    'name' => t('Ulf workflow'),
+  );
+  $info['tokens']['ulf_workflow']['user_changes'] = array(
+    'name' => t('User changes'),
+    'description' => t("Lists the user changes."),
+  );
+  return $info;
+}
+
+/**
+ * Implements hook_tokens().
+ */
+function ulf_workflow_tokens($type, $tokens, array $data = array(), array $options = array()) {
+  $replacements = array();
+
+  if ($type == 'ulf_workflow' && !empty($data['user_changes'])) {
+    $user_changes = $data['user_changes'];
+
+    foreach ($tokens as $name => $original) {
+      switch ($name) {
+        case 'user_changes':
+          $replacements[$original] = implode("\r\n", $user_changes['[ulf_workflow:user_changes]']);
+          break;
+      }
+    }
+  }
+
+  return $replacements;
+}
+
+/**
+ * Calculate changes to the user that should be notified for.
+ *
+ * @param $account
+ *   The user account.
+ *
+ * @return array
+ */
+function _ulf_workflow_mail_get_user_changes($account) {
+  $changes_array = [];
+
+  $keys_to_monitor = [
+    'locations',
+    'field_image',
+    'field_profile_description',
+    'field_profile_educat_profi',
+    'field_profile_entry',
+    'field_profile_home_page',
+    'field_profile_logo',
+    'field_profile_name',
+    'field_profile_phone',
+    'field_profile_mail',
+    'field_editor_info',
+    'field_profile_map_placement',
+    'field_bypass_workflow'
+  ];
+
+  $accountArray = (array) $account;
+  $originalArray = (array) $account->original;
+
+  // Figure out what fields should be notified about.
+  $diff = _ulf_workflow_array_diff_assoc_recursive($accountArray,
+    $originalArray);
+  if (is_array($diff)) {
+    foreach ($diff as $key => $value) {
+      if (in_array($key, $keys_to_monitor)) {
+        $addToChanges = FALSE;
+
+        if (is_array($value)) {
+          // Locations field is different from other fields.
+          if ($key == 'locations' && isset($value[0])) {
+            if (array_key_exists('name', $value[0]) ||
+              array_key_exists('street', $value[0]) ||
+              array_key_exists('city', $value[0]) ||
+              array_key_exists('postal_code', $value[0])) {
+              $addToChanges = TRUE;
+            }
+          }
+          else {
+            if (!array_key_exists('und', $value)) {
+              continue;
+            }
+            else {
+              foreach ($value['und'] as $entryKey => $entry) {
+                if (array_key_exists('value', $entry) ||
+                  array_key_exists('fid', $entry) ||
+                  array_key_exists('title', $entry) ||
+                  array_key_exists('url', $entry)) {
+                  $addToChanges = TRUE;
+                  break;
+                }
+              }
+            }
+          }
+        }
+        else {
+          $addToChanges = TRUE;
+        }
+
+        if (!$addToChanges) {
+          continue;
+        }
+
+        $info = field_info_instance('user', $key, 'user');
+
+        if (!is_null($info)) {
+          $label = $info['label'];
+        }
+        else {
+          $label = t(ucfirst($key));
+        }
+
+        $changes_array[$key] = $label;
+      }
+    }
+
+    // Get field_profile_contact from global variable set in
+    // _ulf_workflow_mail_field_collection_changes since it the field collection
+    // is save before the user.
+    if (isset($GLOBALS['conf']['ulf_workflox_field_profile_contact_diff'])) {
+      $field_profile_contact = $GLOBALS['conf']['ulf_workflox_field_profile_contact_diff'];
+
+      $field_profile_contact_info = field_info_instance('user', 'field_profile_contact', 'user');
+
+      foreach ($field_profile_contact as $key => $field) {
+        $info = field_info_instance('field_collection_item', $key, 'field_profile_contact');
+        $changes_array[$key] = $field_profile_contact_info['label'] . ' - ' . $info['label'];
+      }
+    }
+  }
+
+  return $changes_array;
+}
+
+/**
+ * Set the global $conf['ulf_workflox_field_profile_contact_diff'] if the
+ * field_profile_contact has changed.
+ *
+ * @param $entity
+ */
+function _ulf_workflow_mail_field_collection_changes($entity) {
+  if ($entity->field_name = 'field_profile_contact') {
+    $entity_changes = [];
+
+    $fields = [
+      'field_contact_email',
+      'field_contact_name',
+      'field_contact_phone',
+      'field_contact_office_hours',
+      'field_contact_title',
+      'field_contact_home_page',
+    ];
+
+    foreach ($fields as $field) {
+      if (
+        $entity->{$field}['und'][0]['value'] != $entity->original->{$field}['und'][0]['value']) {
+        $entity_changes[$field] = $field;
+      }
+    }
+
+    global $conf;
+    $conf['ulf_workflox_field_profile_contact_diff'] = $entity_changes;
+  }
+}
+
+/**
+ * Recursively does an array_diff_assoc, which will calculate differences on a multi-dimensional level.
+ *
+ * @from http://php.net/manual/en/function.array-diff-assoc.php#114297
+ *
+ * @param $array1
+ * @param $array2
+ *
+ * @return int
+ */
+function _ulf_workflow_array_diff_assoc_recursive($array1, $array2) {
+  foreach ($array1 as $key => $value) {
+    if (is_array($value)) {
+      if (!isset($array2[$key])) {
+        $difference[$key] = $value;
+      }
+      elseif (!is_array($array2[$key])) {
+        $difference[$key] = $value;
+      }
+      else {
+        $new_diff = _ulf_workflow_array_diff_assoc_recursive($value, $array2[$key]);
+        if ($new_diff != FALSE) {
+          $difference[$key] = $new_diff;
+        }
+      }
+    }
+    elseif (!array_key_exists($key, $array2) || $array2[$key] != $value) {
+      $difference[$key] = $value;
+    }
+  }
+  return !isset($difference) ? 0 : $difference;
 }
