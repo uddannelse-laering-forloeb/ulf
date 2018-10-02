@@ -1,6 +1,6 @@
 # ULF changelog
 
-## In development
+## 2.6.0
 
 * ULF-2190: Added count and count description (149).
 * ULF-2203: Revised user changed notifications (57).
@@ -27,6 +27,17 @@
 * ULF-2183: Added registration module
 
 # v2.5.x
+
+## 2.5.43
+* SUPPORT-1773: Moved DUS for Aalborg in form
+
+## 2.5.42
+* SUPPORT-1772: Changed content overview
+
+## 2.5.41
+* SUPPORT-1731: Added special menu items module.
+* SUPPORT-1719: Changed label on draft button.
+* SUPPORT-1773: Moved DUS for Aalborg
 
 ## 2.5.40
 * SUPPORT-1651: Changed "Save as draft" text

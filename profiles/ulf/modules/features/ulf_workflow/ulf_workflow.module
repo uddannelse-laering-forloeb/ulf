@@ -96,7 +96,7 @@ function ulf_workflow_menu_local_tasks_alter(&$data) {
  */
 function ulf_workflow_form_node_form_alter(&$form, &$form_state, $form_id) {
   $content_type = $form['#node']->type;
-
+  
   // Content types that have workflow enabled.
   $workflow_enabled_types = array(
     'course',

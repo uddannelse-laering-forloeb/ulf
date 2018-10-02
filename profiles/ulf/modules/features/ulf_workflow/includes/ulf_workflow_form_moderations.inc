@@ -80,6 +80,13 @@ function _ulf_workflow_provide_edit_actions(&$form) {
       'access' => !$publish_permission,
     ),
     array (
+      'name' =>'pull_revision_course_provider',
+      'value' => t('Pull back revision'),
+      'submit_handler' => '_ulf_workflow_course_provider_pull_revision',
+      'weight' => '1',
+      'access' => !$publish_permission && $current_state == 'needs_review',
+    ),
+    array (
       'name' =>'publish_course_provider',
       'value' => t('Publish'),
       'submit_handler' => '_ulf_workflow_course_provider_publish',
