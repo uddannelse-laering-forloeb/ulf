@@ -422,18 +422,18 @@ function _ulf_workflow_mail_field_collection_changes($entity) {
   $entity_changes = [];
 
   $fields = [
-    'field_contact_email',
-    'field_contact_name',
-    'field_contact_phone',
-    'field_contact_office_hours',
-    'field_contact_title',
-    'field_contact_home_page',
+    'field_contact_email' => 'value',
+    'field_contact_name' => 'value',
+    'field_contact_phone' => 'value',
+    'field_contact_office_hours' => 'value',
+    'field_contact_title' => 'value',
+    'field_contact_home_page' => 'url',
   ];
 
-  foreach ($fields as $field) {
+  foreach ($fields as $key => $field) {
     if (
-      $entity->{$field}['und'][0]['value'] != $entity->original->{$field}['und'][0]['value']) {
-      $entity_changes[$field] = $field;
+      $entity->{$key}['und'][0][$field] != $entity->original->{$key}['und'][0][$field]) {
+      $entity_changes[$key] = $key;
     }
   }
 
