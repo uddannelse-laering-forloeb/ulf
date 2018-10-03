@@ -493,3 +493,32 @@ function ulf_base_update_7101(&$sandbox) {
     db_drop_table($table);
   }
 }
+
+/**
+ * Activates better_field_descriptions and sets variables.
+ */
+function ulf_base_update_7102() {
+  $module_enable = [
+    'better_field_descriptions'
+  ];
+  module_enable($module_enable);
+
+  variable_set('better_field_descriptions_default_entity', 'node');
+
+  $fields = [];
+  $bundles = ['html_block', 'course_educators', 'news', 'static_page', 'course'];
+
+  foreach ($bundles as $bundle) {
+    $field_info = field_info_instances('node', $bundle);
+
+    $fields[$bundle] = [];
+
+    foreach (array_keys($field_info) as $key) {
+      $fields[$bundle][$key] = $key;
+    }
+
+    $fields[$bundle]['title'] = 'title';
+  }
+
+  variable_set('better_field_descriptions_settings', $fields);
+}
