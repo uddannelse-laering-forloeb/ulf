@@ -97,6 +97,19 @@ function _ulf_admin_panel_form($form) {
     '#description' => t('The duration in days that content must stay untouched in trash before being deleted from the system.'),
   );
 
+  // Better field descriptions
+  $form['better_field_descriptions'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Better field descriptions'),
+    '#weight' => 10,
+    '#collapsible' => TRUE,
+    '#group' => 'ulf_admin_panel',
+  );
+
+  $form['better_field_descriptions']['link'] = array(
+    '#markup' => t('Edit the descriptions here: <a href="@link">@link</a>', ['@link' => '/admin/config/content/better_field_descriptions/bundles']),
+  );
+
   // Custom submit.
   $form['#submit'] = array('_ulf_admin_panel_form_submit');
 

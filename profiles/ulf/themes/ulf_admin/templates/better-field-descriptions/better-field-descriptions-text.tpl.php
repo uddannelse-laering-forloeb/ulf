@@ -12,4 +12,4 @@
 <?php if (empty($variables['label']) == FALSE): ?>
   <label ><?php print ($variables['label']); ?></label>
 <?php endif; ?>
-  <div class="description better-field-descriptions-text"><?php print ($variables['description']); ?></div>
+  <div class="description better-field-descriptions-text"><?php print str_replace("\r\n", '<br>', $variables['description']); ?></div>

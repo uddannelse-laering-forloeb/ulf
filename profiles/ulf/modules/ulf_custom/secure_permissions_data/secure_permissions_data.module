@@ -167,6 +167,7 @@ function secure_permissions_data_secure_permissions($role) {
       'view scheduled content',
       'view_blocked_users',
       'administer custom settings',
+      'add better descriptions to fields',
     ),
   );
   if (isset($permissions[$role])) {
