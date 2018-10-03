@@ -564,7 +564,8 @@ function _ulf_default_create_ranges($arr) {
   $rangeStart = null;
   $current = null;
   $currentEntry = null;
-  $stringEnd = ". klasse";
+  $stringEnd = '. klasse';
+  $separator = ' - ';
 
   foreach ($arr as $key => $entry) {
     $currentEntry = (int) $entry;
@@ -581,7 +582,7 @@ function _ulf_default_create_ranges($arr) {
     }
     else {
       if ($rangeStart < $current) {
-        $ranges[] = $rangeStart . "-" . $current . $stringEnd;
+        $ranges[] = $rangeStart . $separator . $current . $stringEnd;
       }
       else {
         $ranges[] = $rangeStart . $stringEnd;
@@ -592,7 +593,7 @@ function _ulf_default_create_ranges($arr) {
   }
 
   if ($rangeStart < $current) {
-    $ranges[] = $rangeStart . "-" . $current . $stringEnd;
+    $ranges[] = $rangeStart . $separator . $current . $stringEnd;
   }
   else {
     $ranges[] = $rangeStart . $stringEnd;

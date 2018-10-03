@@ -27,6 +27,7 @@ features[field_base][] = field_collection_price
 features[field_base][] = field_contact_home_page
 features[field_base][] = field_content
 features[field_base][] = field_count
+features[field_base][] = field_count_description
 features[field_base][] = field_course_contact_mail
 features[field_base][] = field_course_contact_name
 features[field_base][] = field_course_phone

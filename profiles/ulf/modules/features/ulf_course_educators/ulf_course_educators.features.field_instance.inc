@@ -730,7 +730,7 @@ function ulf_course_educators_field_default_field_instances() {
     'bundle' => 'course_educators',
     'default_value' => array(
       0 => array(
-        'value' => 'provider',
+        'value' => 'hide',
       ),
     ),
     'deleted' => 0,

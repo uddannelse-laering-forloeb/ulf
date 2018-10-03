@@ -927,7 +927,7 @@ function ulf_course_field_default_field_instances() {
     'bundle' => 'course',
     'default_value' => array(
       0 => array(
-        'value' => 'provider',
+        'value' => 'hide',
       ),
     ),
     'deleted' => 0,
