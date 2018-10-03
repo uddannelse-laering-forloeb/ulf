@@ -516,10 +516,87 @@ function _ulf_default_teaser_filter($str) {
   return $trimmed;
 }
 
-
 /**
  * Form alter
  */
 function ulf_default_form_mailchimp_signup_subscribe_block_signup_to_newsletter_form_alter(&$form, &$form_state, $form_id) {
   $form['mergevars']['EMAIL']['#attributes']['placeholder'] = t('Email');
+}
+
+/**
+ * Implements hook_views_post_render().
+ */
+function ulf_default_views_post_render(&$view, &$output, &$cache) {
+  // Modify the target groups to collapse "X. klasse" to ranges.
+  if ($view->name == 'ulf_course_target_groups') {
+    $classes = [];
+    $other_results = [];
+
+    foreach ($view->result as $result) {
+      $name = $result->_entity_properties['field_target_group_sub_tid:entity object']->name;
+
+      if (preg_match('/.{1,2}\. klasse/', $name) ) {
+        $classes[] = str_replace('. klasse', '', $name);
+      }
+      else {
+        $other_results[] = $name;
+      }
+    }
+
+    $ranges = _ulf_default_create_ranges($classes);
+
+    $output = implode('<br>', $ranges) . '<br>' . implode('<br>', $other_results);
+  }
+}
+
+/**
+ * Creates X. klasse ranges from array of numbers.
+ *
+ * @param $arr
+ *   Array of numbers.
+ *
+ * @return array
+ */
+function _ulf_default_create_ranges($arr) {
+  asort($arr);
+
+  $ranges = [];
+  $rangeStart = null;
+  $current = null;
+  $currentEntry = null;
+  $stringEnd = ". klasse";
+
+  foreach ($arr as $key => $entry) {
+    $currentEntry = (int) $entry;
+
+    if (is_null($rangeStart)) {
+      $rangeStart = $currentEntry;
+      $current = $currentEntry;
+      continue;
+    }
+
+    if ($entry - 1 == $current) {
+      $current = $currentEntry;
+      continue;
+    }
+    else {
+      if ($rangeStart < $current) {
+        $ranges[] = $rangeStart . "-" . $current . $stringEnd;
+      }
+      else {
+        $ranges[] = $rangeStart . $stringEnd;
+      }
+      $rangeStart = $currentEntry;
+      $current = $currentEntry;
+    }
+  }
+
+  if ($rangeStart < $current) {
+    $ranges[] = $rangeStart . "-" . $current . $stringEnd;
+  }
+  else {
+    $ranges[] = $rangeStart . $stringEnd;
+  }
+
+  return $ranges;
 }

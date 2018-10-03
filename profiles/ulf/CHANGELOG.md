@@ -4,6 +4,7 @@
 
 * ULF-2190: Added count and count description (149).
 * ULF-2203: Revised user changed notifications (57).
+* ULF-2204: Changed X. klasse entries to ranges (63).
 
 ## In release/2.6.0
 
