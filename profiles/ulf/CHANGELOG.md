@@ -6,8 +6,10 @@
 * ULF-2203: Revised user changed notifications (57).
 * ULF-2204: Changed X. klasse entries to ranges (63).
 * ULF-2205: Added content view of more than 40 count (141).
+* ULF-2206: Added better_field_descriptions (148).
 * ULF-2207: Changed field_map_placement default (158).
 * Fixed configuration issues with field_count_description.
+* Added ulf_admin theme to override administration templates.
 
 ## In release/2.6.0
 

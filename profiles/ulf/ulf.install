@@ -1,6 +1,14 @@
 <?php
 
 /**
+ * Implements hook_install().
+ */
+function ulf_install() {
+  theme_enable(['ulf_admin']);
+  variable_set('admin_theme', 'ulf_admin');
+}
+
+/**
  * Enable special menu items module.
  */
 function ulf_update_7100() {
@@ -10,3 +18,17 @@ function ulf_update_7100() {
   module_enable($module_enable);
 }
 
+/**
+ * Enable ulf_admin theme and set as standard.
+ */
+function ulf_update_7101() {
+  theme_enable(['ulf_admin']);
+  variable_set('admin_theme', 'ulf_admin');
+}
+
+/**
+ * Disable seven theme.
+ */
+function ulf_update_7102() {
+  theme_disable(['ulf_admin']);
+}
