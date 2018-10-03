@@ -704,6 +704,78 @@ function ulf_workflow_views_default_views() {
   );
   $handler->display->display_options['attachment_position'] = 'after';
   $handler->display->display_options['inherit_arguments'] = FALSE;
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page_1');
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'title' => 'title',
+    'edit_node' => 'edit_node',
+    'field_count' => 'field_count',
+  );
+  $handler->display->display_options['style_options']['default'] = 'field_count';
+  $handler->display->display_options['style_options']['info'] = array(
+    'title' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'edit_node' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_count' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'desc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Field: Content: Edit link */
+  $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
+  $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node']['label'] = 'Redigér-link';
+  /* Field: Content: Antal */
+  $handler->display->display_options['fields']['field_count']['id'] = 'field_count';
+  $handler->display->display_options['fields']['field_count']['table'] = 'field_data_field_count';
+  $handler->display->display_options['fields']['field_count']['field'] = 'field_count';
+  $handler->display->display_options['fields']['field_count']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['filter_groups']['operator'] = 'OR';
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Antal (field_count) */
+  $handler->display->display_options['filters']['field_count_value']['id'] = 'field_count_value';
+  $handler->display->display_options['filters']['field_count_value']['table'] = 'field_data_field_count';
+  $handler->display->display_options['filters']['field_count_value']['field'] = 'field_count_value';
+  $handler->display->display_options['filters']['field_count_value']['operator'] = '>';
+  $handler->display->display_options['filters']['field_count_value']['value']['value'] = '40';
+  $handler->display->display_options['path'] = 'admin/settings/custom/ulf-editor-tool-signups';
+  $handler->display->display_options['menu']['type'] = 'tab';
+  $handler->display->display_options['menu']['title'] = 'Content overview - Signups';
+  $handler->display->display_options['menu']['weight'] = '0';
+  $handler->display->display_options['menu']['name'] = 'management';
+  $handler->display->display_options['menu']['context'] = 0;
+  $handler->display->display_options['menu']['context_only_inline'] = 0;
   $translatables['ulf_editor_tool'] = array(
     t('Master'),
     t('Editor tool'),
@@ -729,6 +801,7 @@ function ulf_workflow_views_default_views() {
     t('Bilag'),
     t('Fag'),
     t('Læreplanstemaer'),
+    t('Antal'),
   );
   $export['ulf_editor_tool'] = $view;
 
