@@ -498,11 +498,27 @@ function ulf_base_update_7101(&$sandbox) {
  * Activates better_field_descriptions and sets variables.
  */
 function ulf_base_update_7102() {
-  $module_enable = array(
+  $module_enable = [
     'better_field_descriptions'
-  );
+  ];
   module_enable($module_enable);
 
   variable_set('better_field_descriptions_default_entity', 'node');
-  variable_set('better_field_descriptions_settings', json_decode('{"html_block":{"title":"title","field_html_code":"field_html_code","field_html_custom_image":"field_html_custom_image"},"course_educators":{"title":"title","field_catering":"field_catering","field_course_contact_mail":"field_course_contact_mail","field_course_contact_name":"field_course_contact_name","field_educational_material":"field_educational_material","field_free":"field_free","field_full_description":"field_full_description","field_image":"field_image","field_period":"field_period","field_period_full_year":"field_period_full_year","field_price":"field_price","field_relevance_educators":"field_relevance_educators","field_relevance_primary_school":"field_relevance_primary_school","field_relevance_upper_school":"field_relevance_upper_school","field_subject":"field_subject","field_video":"field_video","field_collection_price":"field_collection_price","field_course_phone":"field_course_phone","field_duration":"field_duration","field_duration_description":"field_duration_description","field_duration_unit":"field_duration_unit","field_educational_goals":"field_educational_goals","field_last_signup_date":"field_last_signup_date","field_map_placement":"field_map_placement","field_period_info":"field_period_info","field_place":"field_place","field_profile_contact":"field_profile_contact","field_signup_email":"field_signup_email","field_signup_link":"field_signup_link","field_message_form":"field_message_form","field_price_description":"field_price_description","field_signup_description":"field_signup_description","field_signup_phone":"field_signup_phone","field_trashed":"field_trashed","field_count":"field_count","field_count_description":"field_count_description"},"news":{"title":"title","field_content":"field_content","field_image":"field_image","field_teaser":"field_teaser","field_further_information":"field_further_information"},"static_page":{"title":"title","field_content":"field_content","field_image":"field_image","field_further_information":"field_further_information"},"course":{"title":"title","field_activities":"field_activities","field_background_knowledge":"field_background_knowledge","field_collection_price":"field_collection_price","field_count":"field_count","field_duration_unit":"field_duration_unit","field_educational_goals":"field_educational_goals","field_educational_material":"field_educational_material","field_facilities":"field_facilities","field_facilities_info":"field_facilities_info","field_free":"field_free","field_full_description":"field_full_description","field_image":"field_image","field_inspirational_material":"field_inspirational_material","field_material_suggestions":"field_material_suggestions","field_offer_type":"field_offer_type","field_period":"field_period","field_period_full_year":"field_period_full_year","field_period_info":"field_period_info","field_post_work":"field_post_work","field_purpose":"field_purpose","field_subject":"field_subject","field_subjects_primary_school":"field_subjects_primary_school","field_subjects_youth":"field_subjects_youth","field_target_group":"field_target_group","field_target_group_sub":"field_target_group_sub","field_video":"field_video","field_duration":"field_duration","field_duration_description":"field_duration_description","field_price_description":"field_price_description","field_place":"field_place","field_last_signup_date":"field_last_signup_date","field_map_placement":"field_map_placement","field_signup_email":"field_signup_email","field_signup_link":"field_signup_link","field_message_form":"field_message_form","field_signup_description":"field_signup_description","field_signup_phone":"field_signup_phone","field_trashed":"field_trashed","field_count_description":"field_count_description"}}'));
+
+  $fields = [];
+  $bundles = ['html_block', 'course_educators', 'news', 'static_page', 'course'];
+
+  foreach ($bundles as $bundle) {
+    $field_info = field_info_instances('node', $bundle);
+
+    $fields[$bundle] = [];
+
+    foreach (array_keys($field_info) as $key) {
+      $fields[$bundle][$key] = $key;
+    }
+
+    $fields[$bundle]['title'] = 'title';
+  }
+
+  variable_set('better_field_descriptions_settings', $fields);
 }
