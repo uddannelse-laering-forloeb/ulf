@@ -642,6 +642,7 @@ function ulf_course_educators_field_default_field_instances() {
         'insert_default' => 'image',
         'insert_styles' => array(
           'image' => 0,
+          'image_facebook_open_graph' => 0,
           'image_node_display' => 0,
           'image_teaser_display' => 0,
         ),
@@ -657,6 +658,7 @@ function ulf_course_educators_field_default_field_instances() {
         'manualcrop_maximize_default_crop_area' => 1,
         'manualcrop_require_cropping' => array(),
         'manualcrop_styles_list' => array(
+          'facebook_open_graph' => 'facebook_open_graph',
           'node_display' => 'node_display',
           'teaser_display' => 'teaser_display',
         ),

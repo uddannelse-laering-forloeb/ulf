@@ -24,7 +24,7 @@ function ulf_default_preprocess_html(&$variables) {
     );
     drupal_add_html_head($meta_description, 'meta_title');
 
-    $imagePath = image_style_url('node_display', $node['field_image'][0]['#item']['uri']);
+    $imagePath = image_style_url('facebook_open_graph', $node['field_image'][0]['#item']['uri']);
 
     $meta_description['#attributes']['name'] = 'og:image';
     $meta_description['#attributes']['content'] = $imagePath;
