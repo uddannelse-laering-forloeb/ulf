@@ -121,7 +121,8 @@ function ulf_course_educators_field_group_info() {
       3 => 'field_relevance_upper_school',
       4 => 'field_subject',
       5 => 'field_educational_goals',
-      6 => 'title',
+      6 => 'field_teaser',
+      7 => 'title',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -238,7 +239,7 @@ function ulf_course_educators_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Periode',
-    'weight' => '4',
+    'weight' => '5',
     'children' => array(
       0 => 'field_period',
       1 => 'field_period_full_year',

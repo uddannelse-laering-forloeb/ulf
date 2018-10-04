@@ -8,6 +8,7 @@
 * ULF-2205: Added content view of more than 40 count (141).
 * ULF-2206: Added better_field_descriptions (148).
 * ULF-2207: Changed field_map_placement default (158).
+* ULF-2208: Added field_teaser to content types and added Open Graph tags (165).
 * Fixed configuration issues with field_count_description.
 * Added ulf_admin theme to override administration templates.
 

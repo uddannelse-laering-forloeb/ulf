@@ -75,10 +75,13 @@ function ulf_static_page_strongarm() {
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '5',
+          'weight' => '6',
         ),
         'redirect' => array(
-          'weight' => '4',
+          'weight' => '5',
+        ),
+        'locations' => array(
+          'weight' => '7',
         ),
       ),
       'display' => array(),

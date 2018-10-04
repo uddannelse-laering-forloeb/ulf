@@ -69,6 +69,7 @@ features[field_instance][] = node-course_educators-field_signup_email
 features[field_instance][] = node-course_educators-field_signup_link
 features[field_instance][] = node-course_educators-field_signup_phone
 features[field_instance][] = node-course_educators-field_subject
+features[field_instance][] = node-course_educators-field_teaser
 features[field_instance][] = node-course_educators-field_trashed
 features[field_instance][] = node-course_educators-field_video
 features[node][] = course_educators

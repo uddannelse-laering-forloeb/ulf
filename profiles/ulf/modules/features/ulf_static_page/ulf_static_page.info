@@ -15,6 +15,7 @@ features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:2
 features[field_instance][] = node-static_page-field_content
 features[field_instance][] = node-static_page-field_image
+features[field_instance][] = node-static_page-field_teaser
 features[node][] = static_page
 features[variable][] = additional_settings__active_tab_static_page
 features[variable][] = diff_enable_revisions_page_node_static_page
