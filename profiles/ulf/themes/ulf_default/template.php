@@ -9,8 +9,9 @@
  */
 function ulf_default_preprocess_html(&$variables) {
   // Set Open Graph tags for nodes.
-  $nodes = $variables['page']['content']['system_main']['nodes'];
-  if (count($nodes) > 0) {
+  if (isset($variables['page']['content']['system_main']['nodes']) &&
+      count($variables['page']['content']['system_main']['nodes']) > 0) {
+    $nodes = $variables['page']['content']['system_main']['nodes'];
     $node = reset($nodes);
 
     $meta_description = array(
