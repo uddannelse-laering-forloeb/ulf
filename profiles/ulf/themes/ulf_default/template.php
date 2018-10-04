@@ -8,6 +8,36 @@
  * Implements hook_preprocess_html().
  */
 function ulf_default_preprocess_html(&$variables) {
+  // Set Open Graph tags for nodes.
+  $nodes = $variables['page']['content']['system_main']['nodes'];
+  if (count($nodes) > 0) {
+    $node = reset($nodes);
+
+    $meta_description = array(
+      '#type' => 'html_tag',
+      '#tag' => 'meta',
+      '#attributes' => array(
+        'name' => 'og:title',
+        'content' => $variables['head_title_array']['title'],
+      )
+    );
+    drupal_add_html_head($meta_description, 'meta_title');
+
+    $imagePath = image_style_url('node_display', $node['field_image'][0]['#item']['uri']);
+
+    $meta_description['#attributes']['name'] = 'og:image';
+    $meta_description['#attributes']['content'] = $imagePath;
+    drupal_add_html_head($meta_description, 'meta_image');
+
+    $meta_description['#attributes']['name'] = 'og:description';
+    $meta_description['#attributes']['content'] = $node['field_full_description']['#items'][0]['value'];
+    drupal_add_html_head($meta_description, 'meta_description');
+
+    $meta_description['#attributes']['name'] = 'og:url';
+    $meta_description['#attributes']['content'] = url(current_path(), array('absolute' => TRUE));
+    drupal_add_html_head($meta_description, 'meta_url');
+  }
+
   if (isset($variables['page']['content']['system_main']['field_profile_name']['0']['#markup'])) {
     $variables['head_title'] = $variables['page']['content']['system_main']['field_profile_name']['0']['#markup'] . ' | ' . $variables['head_title_array']['name'];
   }
@@ -601,3 +631,4 @@ function _ulf_default_create_ranges($arr) {
 
   return $ranges;
 }
+
