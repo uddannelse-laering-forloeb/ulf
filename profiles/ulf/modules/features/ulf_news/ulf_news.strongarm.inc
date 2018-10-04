@@ -53,6 +53,9 @@ function ulf_news_strongarm() {
         'redirect' => array(
           'weight' => '5',
         ),
+        'locations' => array(
+          'weight' => '30',
+        ),
       ),
       'display' => array(),
     ),

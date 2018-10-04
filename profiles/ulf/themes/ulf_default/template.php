@@ -29,13 +29,19 @@ function ulf_default_preprocess_html(&$variables) {
     $meta_description['#attributes']['content'] = $imagePath;
     drupal_add_html_head($meta_description, 'meta_image');
 
-    $meta_description['#attributes']['name'] = 'og:description';
-    $meta_description['#attributes']['content'] = $node['field_full_description']['#items'][0]['value'];
-    drupal_add_html_head($meta_description, 'meta_description');
+    if (isset($node['#node']->field_teaser['und'][0]['value'])) {
+      $meta_description['#attributes']['name'] = 'og:description';
+      $meta_description['#attributes']['content'] = $node['#node']->field_teaser['und'][0]['value'];
+      drupal_add_html_head($meta_description, 'meta_description');
+    }
 
     $meta_description['#attributes']['name'] = 'og:url';
     $meta_description['#attributes']['content'] = url(current_path(), array('absolute' => TRUE));
     drupal_add_html_head($meta_description, 'meta_url');
+
+    $meta_description['#attributes']['name'] = 'og:locale';
+    $meta_description['#attributes']['content'] = 'da_DK';
+    drupal_add_html_head($meta_description, 'meta_locale');
   }
 
   if (isset($variables['page']['content']['system_main']['field_profile_name']['0']['#markup'])) {
