@@ -2,6 +2,9 @@
 
 # v2.5.x
 
+## 2.5.44
+* SUPPORT-1792: Updated print module
+
 ## 2.5.43
 * SUPPORT-1773: Moved DUS for Aalborg in form
 
