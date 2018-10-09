@@ -23,6 +23,11 @@
 
 # v2.5.x
 
+## 2.5.44
+* SUPPORT-1792: Updated print module
+* SUPPORT-1788: Opdatering af search course providers
+* SUPPORT-1780: Tilføjelse af moms validering og ændring i content view
+
 ## 2.5.43
 * SUPPORT-1773: Moved DUS for Aalborg in form
 
