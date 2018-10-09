@@ -10,6 +10,7 @@
 * ULF-2207: Changed field_map_placement default (158).
 * ULF-2208: Added field_teaser to content types and added Open Graph tags (165).
 * ULF-2208: Added Facebook Open Graph image style (165).
+* ULF-2187: Moved taxonomy term to other field (133).
 * Fixed configuration issues with field_count_description.
 * Added ulf_admin theme to override administration templates.
 

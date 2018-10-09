@@ -5,12 +5,11 @@
  * A lot of fields change due to the selection of the target group field.
  */
 (function($) {
-  // Array to hold subgroup checkboxes
-  var subgroup = [];
-
   // Called when the document has finished loading.
   Drupal.behaviors.ulfCourseFormAlter = {
     attach: function (context, settings) {
+      // Array to hold subgroup checkboxes
+      var subgroup = [];
 
       /**
        * Initialize the form by hiding elements and attaching event handlers.
@@ -88,7 +87,7 @@
           var value = arr[1];
 
           // If the accept_callback, accepts the text show the input, else hide
-          // it.
+          // and uncheck the field.
           var field = $('.field-name-field-target-group-sub input[value=' + value + ']');
           if (accept_callback(text)) {
             field.parent().show();
@@ -105,7 +104,7 @@
       function selectionPreschool() {
         // The sub target group field selection values.
         displayRelevantSubgroupByKeyword(function (text) {
-          return (text.indexOf('år') != -1);
+          return text.indexOf('år') != -1 || text.indexOf('Børn og unge med særlige behov') != -1;
         });
 
         $('.field-name-field-inspirational-material').show();
@@ -122,7 +121,7 @@
       function selectionPrimarySchool() {
         // The sub target group field selection values.
         displayRelevantSubgroupByKeyword(function (text) {
-          return (text.indexOf('klasse') != -1 || text.indexOf('DUS') != -1);
+          return text.indexOf('klasse') != -1 || text.indexOf('DUS') != -1 || text.indexOf('Børn og unge med særlige behov') != -1;
         });
 
         $('.field-name-field-post-work').show();
