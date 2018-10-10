@@ -95,6 +95,11 @@ function _vat_not_empty_validate($form, &$form_state) {
       empty($value['field_moms'][LANGUAGE_NONE][0]['value'])) {
       form_set_error('field_collection_price][' . LANGUAGE_NONE . '][' . $delta . '][field_moms', t('You must set a VAT value to save your changes.'));
     }
+
+    if (empty($value['field_price'][LANGUAGE_NONE][0]['value']) &&
+      !empty($value['field_moms'][LANGUAGE_NONE][0]['value'])) {
+      form_set_error('field_collection_price][' . LANGUAGE_NONE . '][' . $delta . '][field_price', t('You must set a price value or remove the VAT specification.'));
+    }
   }
 }
 

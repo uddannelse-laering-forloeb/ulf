@@ -867,7 +867,7 @@ function ulf_course_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_popup',
-      'weight' => 37,
+      'weight' => 42,
     ),
   );
 
@@ -1482,7 +1482,7 @@ At opnå kendskab til...
         'weight' => 32,
       ),
       'full' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
@@ -1497,7 +1497,7 @@ At opnå kendskab til...
     ),
     'entity_type' => 'node',
     'field_name' => 'field_signup_description',
-    'label' => 'Tilmeldingsbeskrivelse',
+    'label' => 'Beskrivelse af tilmeldingsprocedure',
     'required' => 0,
     'settings' => array(
       'text_processing' => 1,
@@ -1523,7 +1523,7 @@ At opnå kendskab til...
     'bundle' => 'course',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Email til tilmelding',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -1548,7 +1548,7 @@ At opnå kendskab til...
     ),
     'entity_type' => 'node',
     'field_name' => 'field_signup_email',
-    'label' => 'Tilmeldingsemail',
+    'label' => 'Email',
     'required' => 0,
     'settings' => array(
       'text_processing' => 0,
@@ -1559,7 +1559,7 @@ At opnå kendskab til...
       'module' => 'html5_tools',
       'settings' => array(),
       'type' => 'emailwidget',
-      'weight' => 39,
+      'weight' => 44,
     ),
   );
 
@@ -1623,7 +1623,7 @@ At opnå kendskab til...
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 38,
+      'weight' => 43,
     ),
   );
 
@@ -1642,7 +1642,7 @@ At opnå kendskab til...
         'weight' => 37,
       ),
       'full' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
@@ -1657,7 +1657,7 @@ At opnå kendskab til...
     ),
     'entity_type' => 'node',
     'field_name' => 'field_signup_phone',
-    'label' => 'Tilmeldingstelefonnummer',
+    'label' => 'Tlf.nr.',
     'required' => 0,
     'settings' => array(
       'text_processing' => 0,
@@ -1668,7 +1668,7 @@ At opnå kendskab til...
       'module' => 'html5_tools',
       'settings' => array(),
       'type' => 'telwidget',
-      'weight' => 40,
+      'weight' => 45,
     ),
   );
 
@@ -2029,11 +2029,14 @@ At opnå kendskab til...
   t('Antal');
   t('Beskriv hvordan man tilmelder sig og andre instruktioner i forbindelse med tilmelding.');
   t('Beskrivelse');
+  t('Beskrivelse af tilmeldingsprocedure');
   t('Beskrivelse til pris');
   t('Beskrivelse til varighed');
   t('Efterbehandling');
   t('Eksempeltekst (bør skiftes, så målgruppen afspejles): Spørg i familien om nogen har gamle ”Himmelbjerg-souvenirs” og lav en lille udstilling i klassen med dem.');
   t('Eksempeltekst (bør skiftes, så målgruppen afspejles): Øvelse med håndtering af oldsager, som skal beskrives, tegnes og berøres i grupper. Gåtur til Galgebakken, hvor vi hører om stedets historie (hængninger). På hjemturen samler vi en stok, som skal snittes til en ”Himmelbjergstok” i snitteværksted på Gl. Rye Mølle.');
+  t('Email');
+  t('Email til tilmelding');
   t('Emneområde');
   t('Er der inspirationsmateriale tilknyttet besøget/forløbet? Her kan du uploade materialet.');
   t('Er der undervisningsmateriale tilknyttet besøget/forløbet? Her kan du uploade materialet');
@@ -2058,10 +2061,8 @@ At opnå kendskab til...
   t('Sæt kryds i alle de aldre, som besøget/forløbet er relevant for.');
   t('Telefonnummer til tilmelding.');
   t('Tilmelding');
-  t('Tilmeldingsbeskrivelse');
-  t('Tilmeldingsemail');
   t('Tilmeldingsfrist');
-  t('Tilmeldingstelefonnummer');
+  t('Tlf.nr.');
   t('Trashed');
   t('Undervisningsmateriale');
   t('Upload et billede/illustration');

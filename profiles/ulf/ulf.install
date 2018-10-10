@@ -10,3 +10,28 @@ function ulf_update_7100() {
   module_enable($module_enable);
 }
 
+/**
+ * Remove VAT value if no price is set.
+ */
+
+function ulf_update_7101() {
+  $query = db_select('field_data_field_moms', 'm');
+  $query->condition('m.bundle', 'field_collection_price', '=');
+  $query->leftJoin('field_data_field_price', 'p', "m.entity_id = p.entity_id AND p.bundle = 'field_collection_price'");
+  $query->fields('m');
+  $query->fields('p', array('field_price_value'));
+  $result = $query->execute()->fetchAllAssoc('entity_id');
+  $counter = 0;
+  foreach ($result as $field_values) {
+    if ($field_values->field_price_value == null && ($field_values->field_moms_value == 'incl_vat' || $field_values->field_moms_value == 'vat_free')) {
+      db_delete('field_data_field_moms')
+        ->condition('entity_id', $field_values->entity_id, '=')
+        ->execute();
+      db_delete('field_revision_field_moms')
+        ->condition('entity_id', $field_values->entity_id, '=')
+        ->execute();
+      $counter++;
+    }
+  }
+  return t('Removed ' . $counter . ' entries from field_data_field_moms table');
+}
