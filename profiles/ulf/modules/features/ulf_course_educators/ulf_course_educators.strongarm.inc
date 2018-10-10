@@ -75,7 +75,7 @@ function ulf_course_educators_strongarm() {
           'weight' => '10',
         ),
         'locations' => array(
-          'weight' => '14',
+          'weight' => '63',
         ),
         'scheduler_settings' => array(
           'weight' => '55',

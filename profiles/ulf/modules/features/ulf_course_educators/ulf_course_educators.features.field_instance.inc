@@ -294,7 +294,7 @@ function ulf_course_educators_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 45,
+      'weight' => 46,
     ),
   );
 
@@ -333,7 +333,7 @@ function ulf_course_educators_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 43,
+      'weight' => 44,
     ),
   );
 
@@ -671,7 +671,7 @@ function ulf_course_educators_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 13,
+      'weight' => 62,
     ),
   );
 
@@ -719,6 +719,46 @@ function ulf_course_educators_field_default_field_instances() {
       ),
       'type' => 'options_select',
       'weight' => 13,
+    ),
+  );
+
+  // Exported field_instance: 'node-course_educators-field_ny_m_lgruppe'.
+  $field_instances['node-course_educators-field_ny_m_lgruppe'] = array(
+    'bundle' => 'course_educators',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 33,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_ny_m_lgruppe',
+    'label' => 'Målgruppe',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'autocomplete_path' => 'taxonomy/autocomplete',
+        'size' => 60,
+      ),
+      'type' => 'options_buttons',
+      'weight' => 8,
     ),
   );
 
@@ -904,7 +944,7 @@ function ulf_course_educators_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 15,
+      'weight' => 64,
     ),
   );
 
@@ -998,7 +1038,7 @@ function ulf_course_educators_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 44,
+      'weight' => 45,
     ),
   );
 
@@ -1374,6 +1414,43 @@ function ulf_course_educators_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-course_educators-field_target_audience'.
+  $field_instances['node-course_educators-field_target_audience'] = array(
+    'bundle' => 'course_educators',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Vælg hvilke målgrupper der skal være på dette kursus.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 34,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_target_audience',
+    'label' => 'Målgruppe',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(),
+      'type' => 'options_buttons',
+      'weight' => 8,
+    ),
+  );
+
   // Exported field_instance: 'node-course_educators-field_trashed'.
   $field_instances['node-course_educators-field_trashed'] = array(
     'bundle' => 'course_educators',
@@ -1509,6 +1586,7 @@ function ulf_course_educators_field_default_field_instances() {
   t('Visning på kort');
   t('Vælg den relevante målgruppe for dit kursus.');
   t('Vælg enhed');
+  t('Vælg hvilke målgrupper der skal være på dette kursus.');
   t('Vælg indstilling for visning af kontaktformular i kontaktboks');
   t('Vælg omfattede fag for grundskoler.');
   t('Vælg omfattede fag for ungdomsuddannelser.');
