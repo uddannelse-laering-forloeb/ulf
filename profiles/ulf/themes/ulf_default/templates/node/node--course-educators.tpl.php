@@ -146,7 +146,7 @@
           <?php endif; ?>
           <?php if ($field_last_signup_date || $field_signup_link || $field_signup_email || $field_signup_phone || $field_signup_description || !empty($field_registration_form)): ?>
             <div class="field--collection-wrapper">
-              <div class="field--collection-label"><?php print t('Signup');?></div> 
+              <div class="field--collection-label"><?php print t('Signup');?></div>
               <div class="field--collection-content">
                 <div class="field--collection-item">
                   <div class="field--collection-item-inner">
@@ -188,6 +188,7 @@
                   <?php print render($content['field_relevance_primary_school']); ?>
                   <?php print render($content['field_relevance_upper_school']); ?>
                   <?php print render($content['field_relevance_educators']); ?>
+                  <?php print render($content['field_target_audience']); ?>
                 </div>
               <?php endif;?>
               <?php /* If any of the fields in this wrapper contain data */ ?>

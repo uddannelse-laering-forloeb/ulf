@@ -722,46 +722,6 @@ function ulf_course_educators_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-course_educators-field_ny_m_lgruppe'.
-  $field_instances['node-course_educators-field_ny_m_lgruppe'] = array(
-    'bundle' => 'course_educators',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
-        'weight' => 33,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_ny_m_lgruppe',
-    'label' => 'Målgruppe',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(
-        'autocomplete_path' => 'taxonomy/autocomplete',
-        'size' => 60,
-      ),
-      'type' => 'options_buttons',
-      'weight' => 8,
-    ),
-  );
-
   // Exported field_instance: 'node-course_educators-field_period'.
   $field_instances['node-course_educators-field_period'] = array(
     'bundle' => 'course_educators',
@@ -1425,7 +1385,7 @@ function ulf_course_educators_field_default_field_instances() {
         'label' => 'above',
         'module' => 'taxonomy',
         'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
+        'type' => 'taxonomy_term_reference_plain',
         'weight' => 34,
       ),
       'teaser' => array(
