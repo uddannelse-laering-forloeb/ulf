@@ -39,7 +39,7 @@ Hvis du vil booke et forløb, så angiv venligst så mange informationer som mul
       'settings' => array(
         'maxlength_js' => 500,
         'maxlength_js_enforce' => 0,
-        'maxlength_js_label' => '<strong>@remaining</strong>/@limit.',
+        'maxlength_js_label' => '<strong>@remaining</strong>/@limit',
         'maxlength_js_truncate_html' => 0,
         'rows' => 5,
       ),
