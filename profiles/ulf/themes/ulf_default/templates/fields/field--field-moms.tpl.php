@@ -45,5 +45,10 @@
  */
 ?>
 <?php foreach ($items as $delta => $item): ?>
-  (<?php print render($item); ?>)
+  <?php if($element['#items'][0]['value'] == 'incl_vat') : ?>
+    (<?php print t('incl. VAT'); ?>)
+  <?php else : ?>
+    (<?php print render($item); ?>)
+  <?php endif; ?>
+
 <?php endforeach; ?>
