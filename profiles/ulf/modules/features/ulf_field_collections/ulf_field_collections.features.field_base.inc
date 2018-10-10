@@ -223,7 +223,7 @@ function ulf_field_collections_field_default_field_bases() {
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
-        'incl_vat' => 'Inklusiv moms',
+        'incl_vat' => 'inkl. moms',
         'vat_free' => 'Momsfrit',
       ),
       'allowed_values_function' => '',
