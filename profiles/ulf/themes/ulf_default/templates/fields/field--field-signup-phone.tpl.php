@@ -1,8 +1,8 @@
 <?php
 
 /**
- * @file field--field-moms.tpl.php
- * Template for fields displaying only field values.
+ * @file field.tpl.php
+ * Default template implementation to display the value of a field.
  *
  * This file is not used and is here as a starting point for customization only.
  * @see theme_field()
@@ -44,11 +44,8 @@
  * @ingroup themeable
  */
 ?>
-<?php foreach ($items as $delta => $item): ?>
-  <?php if($element['#items'][0]['value'] == 'incl_vat') : ?>
-    (<?php print t('incl. VAT'); ?>)
-  <?php else : ?>
-    (<?php print render($item); ?>)
-  <?php endif; ?>
-
-<?php endforeach; ?>
+<div class="block--field-text inline-label"<?php print $content_attributes; ?>>
+  <?php foreach ($items as $delta => $item): ?>
+    <span class="block--field-label"><?php print $label ?></span> <?php print render($item); ?>
+  <?php endforeach; ?>
+</div>

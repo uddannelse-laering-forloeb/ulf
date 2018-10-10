@@ -267,7 +267,7 @@ function ulf_course_educators_field_default_field_instances() {
     'description' => 'Værdier fra dette felt bør flyttes til kontakt.',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
@@ -723,7 +723,7 @@ function ulf_course_educators_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_popup',
-      'weight' => 55,
+      'weight' => 60,
     ),
   );
 
@@ -1257,7 +1257,7 @@ function ulf_course_educators_field_default_field_instances() {
     'description' => 'Beskriv hvordan man tilmelder sig og andre instruktioner i forbindelse med tilmelding.',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
@@ -1272,7 +1272,7 @@ function ulf_course_educators_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_signup_description',
-    'label' => 'Tilmeldingsbeskrivelse',
+    'label' => 'Beskrivelse af tilmeldingsprocedure',
     'required' => 0,
     'settings' => array(
       'text_processing' => 1,
@@ -1298,7 +1298,7 @@ function ulf_course_educators_field_default_field_instances() {
     'bundle' => 'course_educators',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Email til tilmelding',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -1316,7 +1316,7 @@ function ulf_course_educators_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_signup_email',
-    'label' => 'Tilmeldingsemail',
+    'label' => 'Email',
     'required' => 0,
     'settings' => array(
       'text_processing' => 0,
@@ -1327,7 +1327,7 @@ function ulf_course_educators_field_default_field_instances() {
       'module' => 'html5_tools',
       'settings' => array(),
       'type' => 'emailwidget',
-      'weight' => 57,
+      'weight' => 62,
     ),
   );
 
@@ -1384,7 +1384,7 @@ function ulf_course_educators_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 56,
+      'weight' => 61,
     ),
   );
 
@@ -1411,7 +1411,7 @@ function ulf_course_educators_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_signup_phone',
-    'label' => 'Tilmeldingstelefonnummer',
+    'label' => 'Tlf.nr.',
     'required' => 0,
     'settings' => array(
       'text_processing' => 0,
@@ -1422,7 +1422,7 @@ function ulf_course_educators_field_default_field_instances() {
       'module' => 'html5_tools',
       'settings' => array(),
       'type' => 'telwidget',
-      'weight' => 58,
+      'weight' => 63,
     ),
   );
 
@@ -1611,10 +1611,11 @@ function ulf_course_educators_field_default_field_instances() {
   t('Antal');
   t('Beskriv hvordan man tilmelder sig og andre instruktioner i forbindelse med tilmelding.');
   t('Beskrivelse');
-  t('Beskrivelse til antal');
+  t('Beskrivelse af tilmeldingsprocedure');
   t('Beskrivelse til pris');
   t('Beskrivelse til varighed');
   t('Email');
+  t('Email til tilmelding');
   t('Emneområde');
   t('Forplejning');
   t('Gratis');
@@ -1638,10 +1639,8 @@ function ulf_course_educators_field_default_field_instances() {
   t('Telefonnummer');
   t('Telefonnummer til tilmelding.');
   t('Tilmelding');
-  t('Tilmeldingsbeskrivelse');
-  t('Tilmeldingsemail');
   t('Tilmeldingsfrist');
-  t('Tilmeldingstelefonnummer');
+  t('Tlf.nr.');
   t('Trashed');
   t('Upload et billede/illustration');
   t('Varighed');

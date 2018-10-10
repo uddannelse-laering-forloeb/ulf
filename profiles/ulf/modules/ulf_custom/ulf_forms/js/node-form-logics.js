@@ -113,6 +113,7 @@
         $('.is-preschool').show();
         clearSubjectsValues('subjects-primary-school');
         clearSubjectsValues('subjects-youth');
+        setLabel('field-background-knowledge', 'Baggrundsviden');
       }
 
       /**
@@ -130,6 +131,7 @@
         $('.is-school').show();
         clearSubjectsValues('educational-goals');
         clearSubjectsValues('subjects-youth');
+        setLabel('field-background-knowledge', 'Forberedelse');
       }
 
       /**
@@ -147,6 +149,7 @@
         $('.is-school').show();
         clearSubjectsValues('educational-goals');
         clearSubjectsValues('subjects-primary-school');
+        setLabel('field-background-knowledge', 'Forberedelse');
       }
 
       /**
@@ -250,11 +253,28 @@
         if ($(':checked', field).length) {
           $('.field-name-field-collection-price').hide();
           $('.field-name-field-vary-price').hide();
+          $('.field-name-field-price input').val('');
+          $('.field-name-field-moms select').val('_none');
+          $('.field-name-field-unit-price select').val('_none');
         }
         else {
           $('.field-name-field-collection-price').show();
           $('.field-name-field-vary-price').show();
         }
+      }
+
+      /**
+       * Change label for form elements.
+       *
+       * @param fieldName
+       *   The field for which to change label
+       * @param labelNew
+       *   The new value for the label
+       *
+       */
+      function setLabel(fieldName, labelNew) {
+        console.log('123');
+        $('#edit-' + fieldName + ' label').html(labelNew);
       }
 
       // Get the show on the road.

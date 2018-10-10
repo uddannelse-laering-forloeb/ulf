@@ -33,9 +33,15 @@
 * ULF-2200: Moved field and changed label (171).
 * ULF-2201: Restyled form and changed help text (173).
 * ULF-2133: Updated workflow, refacturing of code.
-* ULF-2183: Added registration module
+* ULF-2183: Added registration module.
+* ULF-2230: Removed dot.
 
 # v2.5.x
+
+## 2.5.44
+* SUPPORT-1792: Updated print module
+* SUPPORT-1788: Opdatering af search course providers
+* SUPPORT-1780: Tilføjelse af moms validering og ændring i content view
 
 ## 2.5.43
 * SUPPORT-1773: Moved DUS for Aalborg in form

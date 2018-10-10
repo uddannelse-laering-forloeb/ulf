@@ -64,6 +64,15 @@
       width: 60%;
     }
 
+    // First header of content should not have margin top.
+    .block--field-label {
+      margin-top: 1.5em;
+    }
+
+    > .block--field-label:first-child {
+      margin-top: 0;
+    }
+
     // Display of html elements inside main content. (Through Wysiwyg)
 
     h2:not(.block--field-label) {
@@ -103,6 +112,10 @@
         top: 0;
         left: .3em;
       }
+    }
+
+    .inline-label {
+      margin-top: 1.5em;
     }
   }
 }
