@@ -1046,7 +1046,7 @@ function ulf_course_educators_field_default_field_instances() {
     'bundle' => 'course_educators',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Vælg den relevante målgruppe for dit kursus.',
+    'description' => 'Vælg de relevante målgrupper for dit kursus.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1074,7 +1074,7 @@ function ulf_course_educators_field_default_field_instances() {
       'active' => 1,
       'module' => 'options',
       'settings' => array(),
-      'type' => 'options_select',
+      'type' => 'options_buttons',
       'weight' => 7,
     ),
   );
@@ -1374,43 +1374,6 @@ function ulf_course_educators_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-course_educators-field_target_audience'.
-  $field_instances['node-course_educators-field_target_audience'] = array(
-    'bundle' => 'course_educators',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => 'Vælg hvilke målgrupper der skal være på dette kursus.',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'taxonomy',
-        'settings' => array(),
-        'type' => 'taxonomy_term_reference_plain',
-        'weight' => 34,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_target_audience',
-    'label' => 'Målgruppe',
-    'required' => 0,
-    'settings' => array(
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'options',
-      'settings' => array(),
-      'type' => 'options_buttons',
-      'weight' => 8,
-    ),
-  );
-
   // Exported field_instance: 'node-course_educators-field_trashed'.
   $field_instances['node-course_educators-field_trashed'] = array(
     'bundle' => 'course_educators',
@@ -1544,9 +1507,8 @@ function ulf_course_educators_field_default_field_instances() {
   t('Varighed');
   t('Video');
   t('Visning på kort');
-  t('Vælg den relevante målgruppe for dit kursus.');
+  t('Vælg de relevante målgrupper for dit kursus.');
   t('Vælg enhed');
-  t('Vælg hvilke målgrupper der skal være på dette kursus.');
   t('Vælg indstilling for visning af kontaktformular i kontaktboks');
   t('Vælg omfattede fag for grundskoler.');
   t('Vælg omfattede fag for ungdomsuddannelser.');
