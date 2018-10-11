@@ -303,6 +303,7 @@ function ulf_field_bases_field_default_field_bases() {
         'lesson' => 'lektion',
         'lessons' => 'lektioner',
         'minutes' => 'minutter',
+        'day' => 'dag',
         'days' => 'dage',
       ),
       'allowed_values_function' => '',
