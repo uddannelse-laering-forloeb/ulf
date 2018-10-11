@@ -1,9 +1,11 @@
 # ULF changelog
 
 ## In development
-
-* ULF-2233: Removed links to taxonomy terms insearch results
-* ULF-2232: Added target group in PDF
+* ULF-2235: Changed dropdowns to checkboxes in backend forms (197)
+* ULF-2236: Added day as option in duration dropdown (198)
+* ULF-2234: Added option for multiple workflow mail recipients (195)
+* ULF-2233: Removed links to taxonomy terms insearch results (193)
+* ULF-2232: Added target group in PDF (189)
 * ULF-2190: Added count and count description (149)
 * ULF-2203: Revised user changed notifications (57).
 * ULF-2204: Changed X. klasse entries to ranges (63).
