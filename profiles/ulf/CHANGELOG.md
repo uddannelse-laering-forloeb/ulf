@@ -2,6 +2,7 @@
 
 ## In development
 
+* ULF-2233: Removed links to taxonomy terms insearch results
 * ULF-2232: Added target group in PDF
 * ULF-2190: Added count and count description (149)
 * ULF-2203: Revised user changed notifications (57).
