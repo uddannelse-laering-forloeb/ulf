@@ -1,8 +1,10 @@
 # ULF changelog
 
-## 2.6.0
+## In development
 
-* ULF-2190: Added count and count description (149).
+* ULF-2233: Removed links to taxonomy terms insearch results
+* ULF-2232: Added target group in PDF
+* ULF-2190: Added count and count description (149)
 * ULF-2203: Revised user changed notifications (57).
 * ULF-2204: Changed X. klasse entries to ranges (63).
 * ULF-2205: Added content view of more than 40 count (141).

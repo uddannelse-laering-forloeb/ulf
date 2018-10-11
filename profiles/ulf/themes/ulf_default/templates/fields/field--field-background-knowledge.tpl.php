@@ -44,7 +44,7 @@
  * @ingroup themeable
  */
 ?>
-<?php if ($element['#object']->field_target_group['und'][0]['taxonomy_term']->name == 'Dagtilbud') : ?>
+<?php if (!empty($element['#object']->field_target_group['und'][0]['taxonomy_term']->name) && $element['#object']->field_target_group['und'][0]['taxonomy_term']->name == 'Dagtilbud') : ?>
   <?php $label = t('Background knowledge');?>
 <?php endif; ?>
 <?php if (!$label_hidden): ?>

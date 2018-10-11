@@ -188,7 +188,7 @@
                 <?php print render($content['field_offer_type']); ?>
                 <?php if (!empty($view__target_group_sub)) : ?>
                   <div class="block--field-label"><?php print t('Target group');?></div>
-                  <div class="block--field-text"><?php print $view__target_group_sub; ?></div>
+                  <div class="block--field-text"><?php print render($view__target_group_sub); ?></div>
                 <?php endif;?>
               </div>
               <?php /* If any of the fields in this wrapper contain data */ ?>
