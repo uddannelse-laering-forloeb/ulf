@@ -1122,7 +1122,7 @@ function ulf_course_field_default_field_instances() {
       'settings' => array(
         'apply_chosen' => '',
       ),
-      'type' => 'options_select',
+      'type' => 'options_buttons',
       'weight' => 28,
     ),
   );
@@ -1767,7 +1767,7 @@ At opnå kendskab til...
       'settings' => array(
         'apply_chosen' => '',
       ),
-      'type' => 'options_select',
+      'type' => 'options_buttons',
       'weight' => 27,
     ),
   );
