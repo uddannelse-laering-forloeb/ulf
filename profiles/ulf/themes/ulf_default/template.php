@@ -193,7 +193,8 @@ function ulf_default_preprocess_node(&$variables) {
       }
 
       // Add view for displaying target group sub
-      $variables['view__target_group_sub'] = views_embed_view('ulf_course_target_groups', 'block_1');
+      $variables['view__target_group_sub'] = module_invoke('views', 'block_view', 'ulf_course_target_groups-block_1');
+
 
       // Display of duration remove 0's in decimal.
       if (isset($variables['content']['field_duration']['0']['#markup'])) {
@@ -638,4 +639,3 @@ function _ulf_default_create_ranges($arr) {
 
   return $ranges;
 }
-
