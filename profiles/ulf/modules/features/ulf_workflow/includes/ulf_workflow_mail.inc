@@ -412,7 +412,7 @@ function _ulf_workflow_mail_get_user_changes($account) {
 }
 
 /**
- * Set the global $conf['ulf_workflox_field_profile_contact_diff'] if the
+ * Set the global $conf['ulf_workflow_field_profile_contact_diff'] if the
  * field_profile_contact has changed.
  *
  * @param $entity
@@ -449,7 +449,9 @@ function _ulf_workflow_mail_field_collection_changes($entity) {
  * @from http://php.net/manual/en/function.array-diff-assoc.php#114297
  *
  * @param $array1
+ *   First array to compare.
  * @param $array2
+ *   2nd Array to compare
  *
  * @return int
  */
@@ -475,4 +477,24 @@ function _ulf_workflow_array_diff_assoc_recursive($array1, $array2) {
     }
   }
   return !isset($difference) ? 0 : $difference;
+}
+
+
+/**
+ * Implements hook_mail_alter().
+ *
+ * Add additional recipients for admin mails related to workflow.
+ */
+function ulf_workflow_mail_alter(&$message) {
+  $workflow_email_keys = array(
+    'revision_ready_mail_admin',
+    'user_edited_mail_admin',
+    'trashed_mail_admin',
+  );
+
+  if (in_array($message['key'], $workflow_email_keys)) {
+    $recipients = variable_get('email_workflow_additional_recipients', '');
+    $additional_recipients = implode(",", preg_split('/\r\n|\r|\n/', $recipients));
+    $message['to'] = $message['to'] . ',' . $additional_recipients;
+  }
 }

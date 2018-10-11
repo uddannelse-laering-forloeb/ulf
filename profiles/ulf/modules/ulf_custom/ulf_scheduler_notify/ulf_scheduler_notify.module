@@ -4,7 +4,6 @@
  * Implements hook_cron().
  */
 function ulf_scheduler_notify_cron() {
-  testtestests();
   _ulf_scheduler_notify_cron_cleanup();
   _ulf_scheduler_notify_cron_send_mail();
 
