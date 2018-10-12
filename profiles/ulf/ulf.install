@@ -57,3 +57,16 @@ function ulf_update_7102() {
 function ulf_update_7103() {
   theme_disable(['ulf_admin']);
 }
+
+/**
+ * Enable autosave module.
+ */
+function ulf_update_7104() {
+  $module_enable = array(
+    'autosave'
+  );
+  module_enable($module_enable);
+
+  variable_set('autosave_course', 1);
+  variable_set('autosave_course_educators', 1);
+}
