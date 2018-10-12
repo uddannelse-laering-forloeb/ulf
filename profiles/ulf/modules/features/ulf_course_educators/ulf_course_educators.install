@@ -49,10 +49,33 @@ function ulf_course_educators_update_7001 () {
         $term->parent = $parent_id;
         taxonomy_term_save($term);
       }
+      else {
+        continue;
+      }
+
+      $query = new EntityFieldQuery;
+      $query->entityCondition('entity_type', 'node')
+        ->fieldCondition('field_relevance_educators', 'tid', $term->tid);
+      $result = $query->execute();
+      if ($result) {
+        $nids = array_keys($result['node']);
+      }
+
+      if (is_array($nids)) {
+        $nodes = node_load_multiple($nids, array(), TRUE);
+
+        // For each node that has $term, also make sure the parent term is selected.
+        foreach ($nodes as $node) {
+          $res = array_filter($node->field_relevance_educators['und'], function($t) use ($parent_id) {
+            return $t['tid'] == $parent_id;
+          });
+
+          if (count($res) == 0) {
+            $node->field_relevance_educators['und'][] = ['tid' => $parent_id];
+            node_save($node);
+          }
+        }
+      }
     }
   }
-
-  // Add 'Dagtilbud' term to nodes where child is selected.
-
-  // Add 'Grundskole' term to nodes where child is selected.
 }

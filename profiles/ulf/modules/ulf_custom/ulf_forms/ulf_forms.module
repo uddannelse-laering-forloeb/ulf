@@ -49,8 +49,8 @@ function ulf_forms_form_alter(&$form, &$form_state, $form_id) {
       $form['#prefix'] = '<div class="node--form is-default-form">';
       $form['#suffix'] = '</div>';
 
-      // Set class on field_target_audience to make it a multidimensional select. See js attached below.
-      $form['field_target_audience']['#attributes']['class'][] = 'ulf-forms--multidimensional-select';
+      // Set class on field_relevance_educators to make it a multidimensional select. See js attached below.
+      $form['field_relevance_educators']['#attributes']['class'][] = 'ulf-forms--multidimensional-select';
       $form['#attached']['js'][] = $path . '/js/modify_select.js';
       break;
 
