@@ -273,7 +273,6 @@
        *
        */
       function setLabel(fieldName, labelNew) {
-        console.log('123');
         $('#edit-' + fieldName + ' label').html(labelNew);
       }
 

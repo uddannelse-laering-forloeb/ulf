@@ -1,0 +1,81 @@
+<?php
+
+/**
+ * Add terms to taxonomy and rearrange taxonomy.
+ */
+function ulf_course_educators_update_7001 () {
+  // Create 'Dagtilbud' and 'Grundskole' terms.
+  $vocabulary = taxonomy_vocabulary_machine_name_load('course_relevancy_educators');
+
+  $daycare_term = taxonomy_get_term_by_name('Dagtilbud', 'course_relevancy_educators');
+  if (count($daycare_term) == 0) {
+    $daycare_term = new stdClass();
+    $daycare_term->name = 'Dagtilbud';
+    $daycare_term->format = 'plain_text';
+    $daycare_term->vid = $vocabulary->vid;
+    taxonomy_term_save($daycare_term);
+  }
+  else {
+    $daycare_term = reset($daycare_term);
+  }
+
+  $school_term = taxonomy_get_term_by_name('Grundskole', 'course_relevancy_educators');
+  if (count($school_term) == 0) {
+    $school_term = new stdClass();
+    $school_term->name = 'Grundskole';
+    $school_term->format = 'plain_text';
+    $school_term->vid = $vocabulary->vid;
+    taxonomy_term_save($school_term);
+  }
+  else {
+    $school_term = reset($school_term);
+  }
+
+  $terms_to_change = [
+    $daycare_term->tid => [
+      'Vuggestue', 'Børnehave'
+    ],
+    $school_term->tid => [
+      'Indskoling', 'Mellemtrin', 'Udskoling'
+    ]
+  ];
+
+  foreach ($terms_to_change as $parent_id => $term_names) {
+    foreach ($term_names as $term_name) {
+      $term = taxonomy_get_term_by_name($term_name, 'course_relevancy_educators');
+
+      if (count($term) == 1) {
+        $term = reset($term);
+        $term->parent = $parent_id;
+        taxonomy_term_save($term);
+      }
+      else {
+        continue;
+      }
+
+      $query = new EntityFieldQuery;
+      $query->entityCondition('entity_type', 'node')
+        ->fieldCondition('field_relevance_educators', 'tid', $term->tid);
+      $result = $query->execute();
+      if ($result) {
+        $nids = array_keys($result['node']);
+      }
+
+      if (is_array($nids)) {
+        $nodes = node_load_multiple($nids, array(), TRUE);
+
+        // For each node that has $term, also make sure the parent term is selected.
+        foreach ($nodes as $node) {
+          $res = array_filter($node->field_relevance_educators['und'], function($t) use ($parent_id) {
+            return $t['tid'] == $parent_id;
+          });
+
+          if (count($res) == 0) {
+            $node->field_relevance_educators['und'][] = ['tid' => $parent_id];
+            node_save($node);
+          }
+        }
+      }
+    }
+  }
+}

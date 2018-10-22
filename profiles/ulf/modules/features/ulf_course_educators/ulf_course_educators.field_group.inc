@@ -121,8 +121,9 @@ function ulf_course_educators_field_group_info() {
       3 => 'field_relevance_upper_school',
       4 => 'field_subject',
       5 => 'field_educational_goals',
-      6 => 'field_teaser',
-      7 => 'title',
+      6 => 'field_target_audience',
+      7 => 'field_teaser',
+      8 => 'title',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

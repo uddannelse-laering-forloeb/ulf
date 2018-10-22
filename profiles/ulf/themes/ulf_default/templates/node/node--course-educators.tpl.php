@@ -188,6 +188,7 @@
                   <?php print render($content['field_relevance_primary_school']); ?>
                   <?php print render($content['field_relevance_upper_school']); ?>
                   <?php print render($content['field_relevance_educators']); ?>
+                  <?php print render($content['field_target_audience']); ?>
                 </div>
               <?php endif;?>
               <?php /* If any of the fields in this wrapper contain data */ ?>
