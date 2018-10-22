@@ -47,3 +47,25 @@
     left: -34px;
     top: 32px;
 }
+
+.ulf-forms--child-select {
+    margin-left: 15px !important;
+}
+
+.ulf-forms--child-select-hidden {
+    display: none;
+}
+
+.ulf-forms--parent-select:not(.is-checked) > label::after {
+    content: "▼";
+}
+
+.ulf-forms--parent-select.is-checked > label::after {
+    content: "▲";
+}
+
+/*
+.ulf-forms--parent-select:not(.is-checked) > label {
+    font-weight: bold;
+}
+*/

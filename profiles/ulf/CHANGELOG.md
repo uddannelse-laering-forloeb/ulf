@@ -17,6 +17,8 @@
 * ULF-2187: Moved taxonomy term to other field (133).
 * Fixed configuration issues with field_count_description.
 * Added ulf_admin theme to override administration templates.
+* ULF-2224: Changed target audience for course_educators.
+* Removed unintensional console.log.
 
 ## In release/2.6.0
 

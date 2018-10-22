@@ -73,5 +73,13 @@ function ulf_taxonomies_taxonomy_default_vocabularies() {
       'module' => 'taxonomy',
       'weight' => -10,
     ),
+    'course_educators_target_audience' => array(
+      'name' => 'Kursusmålgrupper',
+      'machine_name' => 'course_educators_target_audience',
+      'description' => 'Målgrupper til kurser',
+      'hierarchy' => 0,
+      'module' => 'taxonomy',
+      'weight' => 0,
+    ),
   );
 }

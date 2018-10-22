@@ -438,7 +438,7 @@ function ulf_course_educators_field_default_field_instances() {
         'label' => 'above',
         'module' => 'taxonomy',
         'settings' => array(),
-        'type' => 'taxonomy_term_reference_link',
+        'type' => 'taxonomy_term_reference_plain',
         'weight' => 19,
       ),
       'teaser' => array(
@@ -763,7 +763,7 @@ function ulf_course_educators_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 13,
+      'weight' => 62,
     ),
   );
 
@@ -1138,7 +1138,7 @@ function ulf_course_educators_field_default_field_instances() {
     'bundle' => 'course_educators',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Vælg den relevante målgruppe for dit kursus.',
+    'description' => 'Vælg de relevante målgrupper for dit kursus.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1166,7 +1166,7 @@ function ulf_course_educators_field_default_field_instances() {
       'active' => 1,
       'module' => 'options',
       'settings' => array(),
-      'type' => 'options_select',
+      'type' => 'options_buttons',
       'weight' => 8,
     ),
   );
@@ -1647,7 +1647,7 @@ function ulf_course_educators_field_default_field_instances() {
   t('Varighed');
   t('Video');
   t('Visning på kort');
-  t('Vælg den relevante målgruppe for dit kursus.');
+  t('Vælg de relevante målgrupper for dit kursus.');
   t('Vælg enhed');
   t('Vælg indstilling for visning af kontaktformular i kontaktboks');
   t('Vælg omfattede fag for grundskoler.');
