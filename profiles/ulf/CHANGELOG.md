@@ -3,16 +3,13 @@
 # v2.5.x
 
 
-## 2.5.47
+## 2.5.46
 * SERV-215: Added module updates to contrib modules
     - Captcha
     - Entity
     - Entityreference
     - Mimemail
     - UUID
-
-## 2.5.46
-* SERV-215: Added core updates 7.59 and 7.60
 
 ## 2.5.45
 * Added core updates 7.59 and 7.60
