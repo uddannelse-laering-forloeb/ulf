@@ -2,6 +2,9 @@
 
 # v2.5.x
 
+## 2.5.45
+* Added core updates 7.59 and 7.60
+
 ## 2.5.44
 * SUPPORT-1792: Updated print module
 * SUPPORT-1788: Opdatering af search course providers
