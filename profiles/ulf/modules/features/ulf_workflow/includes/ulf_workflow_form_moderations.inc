@@ -68,6 +68,7 @@ function _ulf_workflow_provide_edit_actions(&$form) {
   $publish_permission = _ulf_workflow_check_publish_permission();
   $current_state = $form['#node']->workbench_moderation['current']->state;
   $content_moderator = user_access('moderate content from needs_review to published');
+  $has_published_version = $form['#node']->status;
 
   // Create array of possible actions.
   $actions = array (
@@ -105,7 +106,7 @@ function _ulf_workflow_provide_edit_actions(&$form) {
       'value' => t('Unpublish'),
       'submit_handler' => '_ulf_workflow_course_provider_unpublish',
       'weight' => '4',
-      'access' => !$content_moderator,
+      'access' => !$content_moderator && $has_published_version,
     ),
     array (
       'name' =>'trash_course_provider',
@@ -134,7 +135,7 @@ function _ulf_workflow_provide_edit_actions(&$form) {
       'value' => t('Unpublish'),
       'submit_handler' => '_ulf_workflow_editor_unpublish',
       'weight' => '3',
-      'access' => $content_moderator && $current_state != 'draft',
+      'access' => $content_moderator && $has_published_version,
     ),
     array (
       'name' =>'trash_editor',
