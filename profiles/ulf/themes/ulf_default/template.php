@@ -171,7 +171,6 @@ function ulf_default_preprocess_node(&$variables) {
       }
       break;
 
-
     case 'static_page':
       // Provide menu block for static page nodes.
       $variables['static_page_menu'] = module_invoke('menu_block', 'block_view', 'ulf_base-1');
@@ -256,6 +255,48 @@ function ulf_default_preprocess_field(&$variables) {
     'field_price_description',
     'field_duration_description'
   );
+
+  if ($variables['element']['#field_name'] == 'field_relevance_educators') {
+    $items = $variables['element']['#items'];
+
+    // Get parents for taxonomy terms.
+    foreach ($items as $item) {
+      $term = taxonomy_term_load($item['tid']);
+      $query = db_select('taxonomy_term_hierarchy', 'tth')
+        ->fields('tth', array('parent'))
+        ->condition('tth.tid', $item['tid']);
+      $parents = $query->execute()->fetchCol();
+      if (count($parents) == 1) {
+        $parents = reset($parents);
+      }
+      $term->parent = $parents;
+    }
+
+    // Create hierarchy array.
+    $hierarchy = [];
+    foreach ($items as $item) {
+      $hierarchy[$item['taxonomy_term']->parent][] = $item;
+    }
+
+    // Render hierarchy.
+    $rendered_items = [];
+    foreach ($hierarchy[0] as $item) {
+      $rendered_items[] = [
+        '#markup' => $item['taxonomy_term']->name
+      ];
+
+      if (isset($hierarchy[$item['tid']])) {
+        foreach ($hierarchy[$item['tid']] as $sub_item) {
+          $rendered_items[] = [
+            '#markup' => '&nbsp;- ' . $sub_item['taxonomy_term']->name
+          ];
+        }
+      }
+    }
+
+    // Override rendering.
+    $variables['items'] = $rendered_items;
+  }
 
   // Strip teaser fields.
   if ($variables['element']['#view_mode'] == 'teaser') {
