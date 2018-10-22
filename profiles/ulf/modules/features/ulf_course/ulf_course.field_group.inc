@@ -87,7 +87,8 @@ function ulf_course_field_group_info() {
       0 => 'field_full_description',
       1 => 'field_purpose',
       2 => 'field_target_group',
-      3 => 'title',
+      3 => 'field_teaser',
+      4 => 'title',
     ),
     'format_type' => 'div',
     'format_settings' => array(
@@ -308,6 +309,7 @@ function ulf_course_field_group_info() {
       4 => 'field_subjects_primary_school',
       5 => 'field_subjects_youth',
       6 => 'field_target_group_sub',
+      7 => 'field_count_description',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

@@ -67,7 +67,6 @@ function _ulf_workflow_editor_trash($form, &$form_state) {
 function _ulf_workflow_course_provider_revision($form, &$form_state) {
   drupal_set_message(t('The content has been sent to editorial review'));
   $form_state['values']['workbench_moderation_state_new'] = 'needs_review';
-  _send_revision_ready_mail($form['#node']);
   // Don't attempt to send mail on node create.
   // This is handled in hook_node_insert to ensure full node entity.
   if (property_exists($form_state['node'], 'nid')) {

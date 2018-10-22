@@ -8,6 +8,43 @@
  * Implements hook_preprocess_html().
  */
 function ulf_default_preprocess_html(&$variables) {
+  // Set Open Graph tags for nodes.
+  if (isset($variables['page']['content']['system_main']['nodes']) &&
+      count($variables['page']['content']['system_main']['nodes']) > 0) {
+    $nodes = $variables['page']['content']['system_main']['nodes'];
+    $node = reset($nodes);
+
+    $meta_description = array(
+      '#type' => 'html_tag',
+      '#tag' => 'meta',
+      '#attributes' => array(
+        'name' => 'og:title',
+        'content' => $variables['head_title_array']['title'],
+      )
+    );
+    drupal_add_html_head($meta_description, 'meta_title');
+
+    $imagePath = image_style_url('facebook_open_graph', $node['field_image'][0]['#item']['uri']);
+
+    $meta_description['#attributes']['name'] = 'og:image';
+    $meta_description['#attributes']['content'] = $imagePath;
+    drupal_add_html_head($meta_description, 'meta_image');
+
+    if (isset($node['#node']->field_teaser['und'][0]['value'])) {
+      $meta_description['#attributes']['name'] = 'og:description';
+      $meta_description['#attributes']['content'] = $node['#node']->field_teaser['und'][0]['value'];
+      drupal_add_html_head($meta_description, 'meta_description');
+    }
+
+    $meta_description['#attributes']['name'] = 'og:url';
+    $meta_description['#attributes']['content'] = url(current_path(), array('absolute' => TRUE));
+    drupal_add_html_head($meta_description, 'meta_url');
+
+    $meta_description['#attributes']['name'] = 'og:locale';
+    $meta_description['#attributes']['content'] = 'da_DK';
+    drupal_add_html_head($meta_description, 'meta_locale');
+  }
+
   if (isset($variables['page']['content']['system_main']['field_profile_name']['0']['#markup'])) {
     $variables['head_title'] = $variables['page']['content']['system_main']['field_profile_name']['0']['#markup'] . ' | ' . $variables['head_title_array']['name'];
   }
@@ -156,7 +193,8 @@ function ulf_default_preprocess_node(&$variables) {
       }
 
       // Add view for displaying target group sub
-      $variables['view__target_group_sub'] = views_embed_view('ulf_course_target_groups', 'block_1');
+      $variables['view__target_group_sub'] = module_invoke('views', 'block_view', 'ulf_course_target_groups-block_1');
+
 
       // Display of duration remove 0's in decimal.
       if (isset($variables['content']['field_duration']['0']['#markup'])) {
@@ -557,10 +595,88 @@ function _ulf_default_teaser_filter($str) {
   return $trimmed;
 }
 
-
 /**
  * Form alter
  */
 function ulf_default_form_mailchimp_signup_subscribe_block_signup_to_newsletter_form_alter(&$form, &$form_state, $form_id) {
   $form['mergevars']['EMAIL']['#attributes']['placeholder'] = t('Email');
+}
+
+/**
+ * Implements hook_views_post_render().
+ */
+function ulf_default_views_post_render(&$view, &$output, &$cache) {
+  // Modify the target groups to collapse "X. klasse" to ranges.
+  if ($view->name == 'ulf_course_target_groups') {
+    $classes = [];
+    $other_results = [];
+
+    foreach ($view->result as $result) {
+      $name = $result->_entity_properties['field_target_group_sub_tid:entity object']->name;
+
+      if (preg_match('/.{1,2}\. klasse/', $name) ) {
+        $classes[] = str_replace('. klasse', '', $name);
+      }
+      else {
+        $other_results[] = $name;
+      }
+    }
+
+    $ranges = _ulf_default_create_ranges($classes);
+
+    $output = implode('<br>', $ranges) . '<br>' . implode('<br>', $other_results);
+  }
+}
+
+/**
+ * Creates X. klasse ranges from array of numbers.
+ *
+ * @param $arr
+ *   Array of numbers.
+ *
+ * @return array
+ */
+function _ulf_default_create_ranges($arr) {
+  asort($arr);
+
+  $ranges = [];
+  $rangeStart = null;
+  $current = null;
+  $currentEntry = null;
+  $stringEnd = '. klasse';
+  $separator = ' - ';
+
+  foreach ($arr as $key => $entry) {
+    $currentEntry = (int) $entry;
+
+    if (is_null($rangeStart)) {
+      $rangeStart = $currentEntry;
+      $current = $currentEntry;
+      continue;
+    }
+
+    if ($entry - 1 == $current) {
+      $current = $currentEntry;
+      continue;
+    }
+    else {
+      if ($rangeStart < $current) {
+        $ranges[] = $rangeStart . $separator . $current . $stringEnd;
+      }
+      else {
+        $ranges[] = $rangeStart . $stringEnd;
+      }
+      $rangeStart = $currentEntry;
+      $current = $currentEntry;
+    }
+  }
+
+  if ($rangeStart < $current) {
+    $ranges[] = $rangeStart . $separator . $current . $stringEnd;
+  }
+  else {
+    $ranges[] = $rangeStart . $stringEnd;
+  }
+
+  return $ranges;
 }

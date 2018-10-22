@@ -149,18 +149,18 @@
           <?php endif; ?>
           <?php print render($content['field_educational_material']); ?>
           <?php print render($content['field_inspirational_material']); ?>
-          <?php if ($field_last_signup_date || $field_signup_link || $field_signup_email || $field_signup_phone || $field_signup_description || !empty($field_registration_form) ) : ?>
+          <?php if ($field_last_signup_date || $field_signup_link || $field_signup_email || $field_signup_phone || $field_signup_description || !empty($field_registration_form['und'][0]['registration_type']) ) : ?>
             <div class="field--collection-wrapper">
               <div class="field--collection-label"><?php print t('Signup');?></div>
               <div class="field--collection-content">
                 <div class="field--collection-item">
                   <div class="field--collection-item-inner">
                     <div class="field--collection-description">
-                      <?php print render($content['field_last_signup_date']); ?>
+                      <?php print render($content['field_signup_description']); ?>
                       <?php print render($content['field_signup_link']); ?>
                       <?php print render($content['field_signup_email']); ?>
                       <?php print render($content['field_signup_phone']); ?>
-                      <?php print render($content['field_signup_description']); ?>
+                      <?php print render($content['field_last_signup_date']); ?>
                     </div>
                   </div>
                   <?php if (isset($content['field_registration_form'])) : ?>
@@ -188,11 +188,12 @@
                 <?php print render($content['field_offer_type']); ?>
                 <?php if (!empty($view__target_group_sub)) : ?>
                   <div class="block--field-label"><?php print t('Target group');?></div>
-                  <div class="block--field-text"><?php print $view__target_group_sub; ?></div>
+                  <div class="block--field-text"><?php print render($view__target_group_sub); ?></div>
                 <?php endif;?>
-                <?php print render($content['field_count']); ?>
               </div>
               <?php /* If any of the fields in this wrapper contain data */ ?>
+              <?php print render($content['field_count']); ?>
+              <?php print render($content['field_count_description']); ?>
               <?php if ($field_duration || $field_period_full_year['0']['value'] == 0 || $field_collection_price || $field_free['0']['value'] == 1 || $field_price_description || $field_duration_description || $field_period_info ) : ?>
                 <div class="block--field-wrapper">
                   <?php if ($field_period_full_year['0']['value'] == 0 ) : ?>

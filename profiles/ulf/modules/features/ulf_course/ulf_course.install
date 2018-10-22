@@ -7,3 +7,61 @@ function ulf_course_update_7001 () {
   field_delete_field('field_special_needs');
   field_purge_batch(5);
 }
+
+/**
+ * Add term to target_group_sub. Moved terms of the same name from offer_type.
+ * Lastly, remove term from offer_type.
+ */
+function ulf_course_update_7002() {
+  // Load offer_type taxonomy term.
+  $offer_type_taxonomy_terms = taxonomy_get_term_by_name('Børn og unge med særlige behov', 'offer_type');
+
+  if (count($offer_type_taxonomy_terms) != 1) {
+    return;
+  }
+
+  $offer_type_taxonomy_term = reset($offer_type_taxonomy_terms);
+
+  $vocabulary = taxonomy_vocabulary_machine_name_load('target_group_sub');
+
+  $newTerms = taxonomy_get_term_by_name('Børn og unge med særlige behov', 'target_group_sub');
+
+  if (count($newTerms) == 0) {
+    $term = new stdClass();
+    $term->name = 'Børn og unge med særlige behov';
+    $term->format = 'plain_text';
+    $term->vid = $vocabulary->vid;
+    taxonomy_term_save($term);
+  }
+  else {
+    $term = reset($newTerms);
+  }
+
+  // Move values from 'offer_type' to 'target_group_sub'.
+  $nids = db_query('SELECT nid FROM {node} WHERE type =  :type', array(
+    ':type' => 'course',
+  ))->fetchCol();
+
+  $nodes = node_load_multiple($nids);
+
+  foreach ($nodes as $node) {
+    $foundMatch = FALSE;
+
+    if (isset($node->field_offer_type['und']) && is_array($node->field_offer_type['und'])) {
+      foreach ($node->field_offer_type['und'] as &$field_offer_type) {
+        if ($field_offer_type['tid'] == $offer_type_taxonomy_term->tid) {
+          unset($field_offer_type);
+          $foundMatch = TRUE;
+        }
+      }
+    }
+
+    if ($foundMatch) {
+      $node->field_target_group_sub['und'][] = ['tid' => $term->tid];
+      node_save($node);
+    }
+  }
+
+  // Remove offer_type term.
+  taxonomy_term_delete($offer_type_taxonomy_term->tid);
+}

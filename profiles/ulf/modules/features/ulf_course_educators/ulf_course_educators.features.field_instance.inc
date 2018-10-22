@@ -46,7 +46,7 @@ function ulf_course_educators_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 3,
+      'weight' => 61,
     ),
   );
 
@@ -85,7 +85,97 @@ function ulf_course_educators_field_default_field_instances() {
       'module' => 'field_collection',
       'settings' => array(),
       'type' => 'field_collection_embed',
-      'weight' => 41,
+      'weight' => 63,
+    ),
+  );
+
+  // Exported field_instance: 'node-course_educators-field_count'.
+  $field_instances['node-course_educators-field_count'] = array(
+    'bundle' => 'course_educators',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'prefix_suffix' => TRUE,
+          'scale' => 0,
+          'thousand_separator' => '',
+        ),
+        'type' => 'number_integer',
+        'weight' => 33,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_count',
+    'label' => 'Antal',
+    'required' => 0,
+    'settings' => array(
+      'max' => '',
+      'min' => '',
+      'prefix' => '',
+      'suffix' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'number',
+      'settings' => array(),
+      'type' => 'number',
+      'weight' => 47,
+    ),
+  );
+
+  // Exported field_instance: 'node-course_educators-field_count_description'.
+  $field_instances['node-course_educators-field_count_description'] = array(
+    'bundle' => 'course_educators',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 34,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_count_description',
+    'label' => 'Beskrivelse til antal',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'maxlength_js' => '',
+        'maxlength_js_enforce' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'maxlength_js_truncate_html' => 0,
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 48,
     ),
   );
 
@@ -123,7 +213,7 @@ function ulf_course_educators_field_default_field_instances() {
       'module' => 'html5_tools',
       'settings' => array(),
       'type' => 'emailwidget',
-      'weight' => 46,
+      'weight' => 50,
     ),
   );
 
@@ -165,7 +255,7 @@ function ulf_course_educators_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 45,
+      'weight' => 49,
     ),
   );
 
@@ -177,7 +267,7 @@ function ulf_course_educators_field_default_field_instances() {
     'description' => 'Værdier fra dette felt bør flyttes til kontakt.',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'inline',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
@@ -203,7 +293,7 @@ function ulf_course_educators_field_default_field_instances() {
       'module' => 'html5_tools',
       'settings' => array(),
       'type' => 'telwidget',
-      'weight' => 47,
+      'weight' => 51,
     ),
   );
 
@@ -249,7 +339,7 @@ function ulf_course_educators_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 42,
+      'weight' => 64,
     ),
   );
 
@@ -294,7 +384,7 @@ function ulf_course_educators_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 46,
+      'weight' => 67,
     ),
   );
 
@@ -333,7 +423,7 @@ function ulf_course_educators_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 44,
+      'weight' => 65,
     ),
   );
 
@@ -370,7 +460,7 @@ function ulf_course_educators_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 4,
+      'weight' => 5,
     ),
   );
 
@@ -454,7 +544,7 @@ function ulf_course_educators_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 39,
+      'weight' => 61,
     ),
   );
 
@@ -552,6 +642,7 @@ function ulf_course_educators_field_default_field_instances() {
         'insert_default' => 'image',
         'insert_styles' => array(
           'image' => 0,
+          'image_facebook_open_graph' => 0,
           'image_node_display' => 0,
           'image_teaser_display' => 0,
         ),
@@ -567,6 +658,7 @@ function ulf_course_educators_field_default_field_instances() {
         'manualcrop_maximize_default_crop_area' => 1,
         'manualcrop_require_cropping' => array(),
         'manualcrop_styles_list' => array(
+          'facebook_open_graph' => 'facebook_open_graph',
           'node_display' => 'node_display',
           'teaser_display' => 'teaser_display',
         ),
@@ -576,7 +668,7 @@ function ulf_course_educators_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 2,
+      'weight' => 69,
     ),
   );
 
@@ -631,7 +723,7 @@ function ulf_course_educators_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_popup',
-      'weight' => 55,
+      'weight' => 60,
     ),
   );
 
@@ -640,7 +732,7 @@ function ulf_course_educators_field_default_field_instances() {
     'bundle' => 'course_educators',
     'default_value' => array(
       0 => array(
-        'value' => 'provider',
+        'value' => 'hide',
       ),
     ),
     'deleted' => 0,
@@ -904,7 +996,7 @@ function ulf_course_educators_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 64,
+      'weight' => 16,
     ),
   );
 
@@ -954,7 +1046,7 @@ function ulf_course_educators_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 40,
+      'weight' => 62,
     ),
   );
 
@@ -998,7 +1090,7 @@ function ulf_course_educators_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 45,
+      'weight' => 66,
     ),
   );
 
@@ -1037,7 +1129,7 @@ function ulf_course_educators_field_default_field_instances() {
       'module' => 'field_collection',
       'settings' => array(),
       'type' => 'field_collection_embed',
-      'weight' => 48,
+      'weight' => 53,
     ),
   );
 
@@ -1075,7 +1167,7 @@ function ulf_course_educators_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 7,
+      'weight' => 8,
     ),
   );
 
@@ -1113,8 +1205,8 @@ function ulf_course_educators_field_default_field_instances() {
       'active' => 1,
       'module' => 'options',
       'settings' => array(),
-      'type' => 'options_select',
-      'weight' => 5,
+      'type' => 'options_buttons',
+      'weight' => 6,
     ),
   );
 
@@ -1152,8 +1244,8 @@ function ulf_course_educators_field_default_field_instances() {
       'active' => 1,
       'module' => 'options',
       'settings' => array(),
-      'type' => 'options_select',
-      'weight' => 6,
+      'type' => 'options_buttons',
+      'weight' => 7,
     ),
   );
 
@@ -1165,7 +1257,7 @@ function ulf_course_educators_field_default_field_instances() {
     'description' => 'Beskriv hvordan man tilmelder sig og andre instruktioner i forbindelse med tilmelding.',
     'display' => array(
       'default' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
@@ -1180,7 +1272,7 @@ function ulf_course_educators_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_signup_description',
-    'label' => 'Tilmeldingsbeskrivelse',
+    'label' => 'Beskrivelse af tilmeldingsprocedure',
     'required' => 0,
     'settings' => array(
       'text_processing' => 1,
@@ -1206,7 +1298,7 @@ function ulf_course_educators_field_default_field_instances() {
     'bundle' => 'course_educators',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Email til tilmelding',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -1224,7 +1316,7 @@ function ulf_course_educators_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_signup_email',
-    'label' => 'Tilmeldingsemail',
+    'label' => 'Email',
     'required' => 0,
     'settings' => array(
       'text_processing' => 0,
@@ -1235,7 +1327,7 @@ function ulf_course_educators_field_default_field_instances() {
       'module' => 'html5_tools',
       'settings' => array(),
       'type' => 'emailwidget',
-      'weight' => 57,
+      'weight' => 62,
     ),
   );
 
@@ -1292,7 +1384,7 @@ function ulf_course_educators_field_default_field_instances() {
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 56,
+      'weight' => 61,
     ),
   );
 
@@ -1319,7 +1411,7 @@ function ulf_course_educators_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_signup_phone',
-    'label' => 'Tilmeldingstelefonnummer',
+    'label' => 'Tlf.nr.',
     'required' => 0,
     'settings' => array(
       'text_processing' => 0,
@@ -1330,7 +1422,7 @@ function ulf_course_educators_field_default_field_instances() {
       'module' => 'html5_tools',
       'settings' => array(),
       'type' => 'telwidget',
-      'weight' => 58,
+      'weight' => 63,
     ),
   );
 
@@ -1374,6 +1466,50 @@ function ulf_course_educators_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-course_educators-field_teaser'.
+  $field_instances['node-course_educators-field_teaser'] = array(
+    'bundle' => 'course_educators',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Skriv en kort og præcis beskrivelse. Denne bruges til visning på f.eks. Facebook, så undlad information om praktiske forhold.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 35,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_teaser',
+    'label' => 'Manchet',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'maxlength_js' => 200,
+        'maxlength_js_enforce' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'maxlength_js_truncate_html' => 0,
+        'rows' => 2,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 4,
+    ),
+  );
+
   // Exported field_instance: 'node-course_educators-field_trashed'.
   $field_instances['node-course_educators-field_trashed'] = array(
     'bundle' => 'course_educators',
@@ -1412,7 +1548,7 @@ function ulf_course_educators_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 60,
+      'weight' => 12,
     ),
   );
 
@@ -1459,7 +1595,7 @@ function ulf_course_educators_field_default_field_instances() {
       'module' => 'video_embed_field',
       'settings' => array(),
       'type' => 'video_embed_field_video',
-      'weight' => 4,
+      'weight' => 70,
     ),
   );
 
@@ -1472,11 +1608,15 @@ function ulf_course_educators_field_default_field_instances() {
   t('Angiv oplysninger om, hvordan man tilmelder sig, om kurset er med forplejning osv.');
   t('Angiv tidspunkt for kursets afvikling.');
   t('Angiv url til mail eller link til side.');
+  t('Antal');
   t('Beskriv hvordan man tilmelder sig og andre instruktioner i forbindelse med tilmelding.');
   t('Beskrivelse');
+  t('Beskrivelse af tilmeldingsprocedure');
+  t('Beskrivelse til antal');
   t('Beskrivelse til pris');
   t('Beskrivelse til varighed');
   t('Email');
+  t('Email til tilmelding');
   t('Emneområde');
   t('Forplejning');
   t('Gratis');
@@ -1486,6 +1626,7 @@ function ulf_course_educators_field_default_field_instances() {
   t('Kurset er relevant for lærere, der underviser i fagene');
   t('Kurset er relevant for pædagoger, der arbejder med læreplanstemaerne');
   t('Kurset er relevant for undervisere i fagene');
+  t('Manchet');
   t('Materialer');
   t('Message form');
   t('Målgruppe');
@@ -1493,15 +1634,14 @@ function ulf_course_educators_field_default_field_instances() {
   t('Periode');
   t('Pris');
   t('Skriv en beskrivelse af kursets indhold');
+  t('Skriv en kort og præcis beskrivelse. Denne bruges til visning på f.eks. Facebook, så undlad information om praktiske forhold.');
   t('Skriv ikke jeres faste fysiske adresse her, den har vi allerede. Anvend dette felt til ekstraoplysninger om forløbets sted: Eks. \'Store Sal\', \'Brug højre indgang - ring på dørklokken\' eller en alternativ adresse end jeres faste fysiske adresse.');
   t('Sted (ekstraoplysninger): Eks. \'Store Sal\', \'Brug højre indgang - ring på dørklokken\' ');
   t('Telefonnummer');
   t('Telefonnummer til tilmelding.');
   t('Tilmelding');
-  t('Tilmeldingsbeskrivelse');
-  t('Tilmeldingsemail');
   t('Tilmeldingsfrist');
-  t('Tilmeldingstelefonnummer');
+  t('Tlf.nr.');
   t('Trashed');
   t('Upload et billede/illustration');
   t('Varighed');

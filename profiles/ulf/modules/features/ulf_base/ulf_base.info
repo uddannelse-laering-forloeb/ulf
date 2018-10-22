@@ -32,6 +32,7 @@ features[ctools][] = captcha:captcha:1
 features[ctools][] = strongarm:strongarm:1
 features[ctools][] = views:views_default:3.0
 features[features_api][] = api:2
+features[image][] = facebook_open_graph
 features[image][] = node_display
 features[image][] = teaser_display
 features[menu_custom][] = main-menu

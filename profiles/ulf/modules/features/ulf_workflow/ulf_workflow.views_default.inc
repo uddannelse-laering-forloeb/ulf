@@ -594,6 +594,11 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['filters']['field_moms_value']['field'] = 'field_moms_value';
   $handler->display->display_options['filters']['field_moms_value']['relationship'] = 'field_collection_price_value';
   $handler->display->display_options['filters']['field_moms_value']['operator'] = 'empty';
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = '1';
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
@@ -626,7 +631,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['fields']['field_subjects_primary_school']['table'] = 'field_data_field_subjects_primary_school';
   $handler->display->display_options['fields']['field_subjects_primary_school']['field'] = 'field_subjects_primary_school';
   $handler->display->display_options['fields']['field_subjects_primary_school']['delta_offset'] = '0';
-  /* Field: Content: Læreplanstemaer */
+  /* Field: Content: Kurset er relevant for pædagoger, der arbejder med læreplanstemaerne */
   $handler->display->display_options['fields']['field_educational_goals']['id'] = 'field_educational_goals';
   $handler->display->display_options['fields']['field_educational_goals']['table'] = 'field_data_field_educational_goals';
   $handler->display->display_options['fields']['field_educational_goals']['field'] = 'field_educational_goals';
@@ -671,7 +676,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['filters']['field_subjects_youth_tid_1']['reduce_duplicates'] = TRUE;
   $handler->display->display_options['filters']['field_subjects_youth_tid_1']['type'] = 'select';
   $handler->display->display_options['filters']['field_subjects_youth_tid_1']['vocabulary'] = 'subjects_youth';
-  /* Filter criterion: Content: Læreplanstemaer (field_educational_goals) */
+  /* Filter criterion: Content: Kurset er relevant for pædagoger, der arbejder med læreplanstemaerne (field_educational_goals) */
   $handler->display->display_options['filters']['field_educational_goals_tid']['id'] = 'field_educational_goals_tid';
   $handler->display->display_options['filters']['field_educational_goals_tid']['table'] = 'field_data_field_educational_goals';
   $handler->display->display_options['filters']['field_educational_goals_tid']['field'] = 'field_educational_goals_tid';
@@ -689,7 +694,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['filters']['field_subjects_primary_school_tid_1']['reduce_duplicates'] = TRUE;
   $handler->display->display_options['filters']['field_subjects_primary_school_tid_1']['type'] = 'select';
   $handler->display->display_options['filters']['field_subjects_primary_school_tid_1']['vocabulary'] = 'subjects_primary_school';
-  /* Filter criterion: Content: Læreplanstemaer (field_educational_goals) */
+  /* Filter criterion: Content: Kurset er relevant for pædagoger, der arbejder med læreplanstemaerne (field_educational_goals) */
   $handler->display->display_options['filters']['field_educational_goals_tid_1']['id'] = 'field_educational_goals_tid_1';
   $handler->display->display_options['filters']['field_educational_goals_tid_1']['table'] = 'field_data_field_educational_goals';
   $handler->display->display_options['filters']['field_educational_goals_tid_1']['field'] = 'field_educational_goals_tid';
@@ -704,6 +709,78 @@ function ulf_workflow_views_default_views() {
   );
   $handler->display->display_options['attachment_position'] = 'after';
   $handler->display->display_options['inherit_arguments'] = FALSE;
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page_1');
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'title' => 'title',
+    'edit_node' => 'edit_node',
+    'field_count' => 'field_count',
+  );
+  $handler->display->display_options['style_options']['default'] = 'field_count';
+  $handler->display->display_options['style_options']['info'] = array(
+    'title' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'edit_node' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_count' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'desc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Field: Content: Edit link */
+  $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
+  $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node']['label'] = 'Redigér-link';
+  /* Field: Content: Antal */
+  $handler->display->display_options['fields']['field_count']['id'] = 'field_count';
+  $handler->display->display_options['fields']['field_count']['table'] = 'field_data_field_count';
+  $handler->display->display_options['fields']['field_count']['field'] = 'field_count';
+  $handler->display->display_options['fields']['field_count']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['filter_groups']['operator'] = 'OR';
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Antal (field_count) */
+  $handler->display->display_options['filters']['field_count_value']['id'] = 'field_count_value';
+  $handler->display->display_options['filters']['field_count_value']['table'] = 'field_data_field_count';
+  $handler->display->display_options['filters']['field_count_value']['field'] = 'field_count_value';
+  $handler->display->display_options['filters']['field_count_value']['operator'] = '>';
+  $handler->display->display_options['filters']['field_count_value']['value']['value'] = '40';
+  $handler->display->display_options['path'] = 'admin/settings/custom/ulf-editor-tool-signups';
+  $handler->display->display_options['menu']['type'] = 'tab';
+  $handler->display->display_options['menu']['title'] = 'Content overview - Signups';
+  $handler->display->display_options['menu']['weight'] = '0';
+  $handler->display->display_options['menu']['name'] = 'management';
+  $handler->display->display_options['menu']['context'] = 0;
+  $handler->display->display_options['menu']['context_only_inline'] = 0;
   $translatables['ulf_editor_tool'] = array(
     t('Master'),
     t('Editor tool'),
@@ -728,7 +805,8 @@ function ulf_workflow_views_default_views() {
     t('Page'),
     t('Bilag'),
     t('Fag'),
-    t('Læreplanstemaer'),
+    t('Kurset er relevant for pædagoger, der arbejder med læreplanstemaerne'),
+    t('Antal'),
   );
   $export['ulf_editor_tool'] = $view;
 

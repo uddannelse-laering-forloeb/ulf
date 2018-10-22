@@ -1,0 +1,6 @@
+name = Ulf Admin
+version = VERSION
+core = 7.x
+base theme = seven
+
+stylesheets[all][] = css/ulf_admin.css

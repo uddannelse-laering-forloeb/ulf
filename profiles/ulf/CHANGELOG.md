@@ -1,6 +1,26 @@
 # ULF changelog
 
-## 2.6.0
+## In development
+* ULF-2235: Changed dropdowns to checkboxes in backend forms (197)
+* ULF-2236: Added day as option in duration dropdown (198)
+* ULF-2234: Added option for multiple workflow mail recipients (195)
+* ULF-2233: Removed links to taxonomy terms insearch results (193)
+* ULF-2232: Added target group in PDF (189)
+* ULF-2190: Added count and count description (149)
+* ULF-2203: Revised user changed notifications (57).
+* ULF-2204: Changed X. klasse entries to ranges (63).
+* ULF-2205: Added content view of more than 40 count (141).
+* ULF-2206: Added better_field_descriptions (148).
+* ULF-2207: Changed field_map_placement default (158).
+* ULF-2208: Added field_teaser to content types and added Open Graph tags (165).
+* ULF-2208: Added Facebook Open Graph image style (165).
+* ULF-2187: Moved taxonomy term to other field (133).
+* Fixed configuration issues with field_count_description.
+* Added ulf_admin theme to override administration templates.
+* ULF-2224: Changed target audience for course_educators.
+* Removed unintensional console.log.
+
+## In release/2.6.0
 
 * ULF-2184: Made course and target audience fields mandatory (126).
 * ULF-2185: Added place = user address when "show provider address" is selected (129).
@@ -23,6 +43,14 @@
 * ULF-2230: Removed dot.
 
 # v2.5.x
+
+## 2.5.45
+* Added core updates 7.59 and 7.60
+
+## 2.5.44
+* SUPPORT-1792: Updated print module
+* SUPPORT-1788: Opdatering af search course providers
+* SUPPORT-1780: Tilføjelse af moms validering og ændring i content view
 
 ## 2.5.43
 * SUPPORT-1773: Moved DUS for Aalborg in form

@@ -11,10 +11,9 @@ If you want to add a translation string simply edit the translation file
 related to this module (ulf_translations-7.x-1.0.da.po).
 
 For translations to appear run:
-´
+
+```
 drush l10n-update-refresh
-
 drush l10n-update
-
 drush cc all
-´
+```

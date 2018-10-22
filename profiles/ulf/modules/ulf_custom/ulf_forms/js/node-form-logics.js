@@ -5,12 +5,11 @@
  * A lot of fields change due to the selection of the target group field.
  */
 (function($) {
-  // Array to hold subgroup checkboxes
-  var subgroup = [];
-
   // Called when the document has finished loading.
   Drupal.behaviors.ulfCourseFormAlter = {
     attach: function (context, settings) {
+      // Array to hold subgroup checkboxes
+      var subgroup = [];
 
       /**
        * Initialize the form by hiding elements and attaching event handlers.
@@ -88,7 +87,7 @@
           var value = arr[1];
 
           // If the accept_callback, accepts the text show the input, else hide
-          // it.
+          // and uncheck the field.
           var field = $('.field-name-field-target-group-sub input[value=' + value + ']');
           if (accept_callback(text)) {
             field.parent().show();
@@ -105,7 +104,7 @@
       function selectionPreschool() {
         // The sub target group field selection values.
         displayRelevantSubgroupByKeyword(function (text) {
-          return (text.indexOf('år') != -1);
+          return text.indexOf('år') != -1 || text.indexOf('Børn og unge med særlige behov') != -1;
         });
 
         $('.field-name-field-inspirational-material').show();
@@ -114,6 +113,7 @@
         $('.is-preschool').show();
         clearSubjectsValues('subjects-primary-school');
         clearSubjectsValues('subjects-youth');
+        setLabel('field-background-knowledge', 'Baggrundsviden');
       }
 
       /**
@@ -122,7 +122,7 @@
       function selectionPrimarySchool() {
         // The sub target group field selection values.
         displayRelevantSubgroupByKeyword(function (text) {
-          return (text.indexOf('klasse') != -1 || text.indexOf('DUS') != -1);
+          return text.indexOf('klasse') != -1 || text.indexOf('DUS') != -1 || text.indexOf('Børn og unge med særlige behov') != -1;
         });
 
         $('.field-name-field-post-work').show();
@@ -131,6 +131,7 @@
         $('.is-school').show();
         clearSubjectsValues('educational-goals');
         clearSubjectsValues('subjects-youth');
+        setLabel('field-background-knowledge', 'Forberedelse');
       }
 
       /**
@@ -148,6 +149,7 @@
         $('.is-school').show();
         clearSubjectsValues('educational-goals');
         clearSubjectsValues('subjects-primary-school');
+        setLabel('field-background-knowledge', 'Forberedelse');
       }
 
       /**
@@ -251,11 +253,27 @@
         if ($(':checked', field).length) {
           $('.field-name-field-collection-price').hide();
           $('.field-name-field-vary-price').hide();
+          $('.field-name-field-price input').val('');
+          $('.field-name-field-moms select').val('_none');
+          $('.field-name-field-unit-price select').val('_none');
         }
         else {
           $('.field-name-field-collection-price').show();
           $('.field-name-field-vary-price').show();
         }
+      }
+
+      /**
+       * Change label for form elements.
+       *
+       * @param fieldName
+       *   The field for which to change label
+       * @param labelNew
+       *   The new value for the label
+       *
+       */
+      function setLabel(fieldName, labelNew) {
+        $('#edit-' + fieldName + ' label').html(labelNew);
       }
 
       // Get the show on the road.
