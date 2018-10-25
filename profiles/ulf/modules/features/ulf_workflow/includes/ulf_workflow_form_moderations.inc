@@ -82,7 +82,7 @@ function _ulf_workflow_provide_edit_actions(&$form) {
     ),
     array (
       'name' =>'pull_revision_course_provider',
-      'value' => t('Pull back revision'),
+      'value' => t('Remove from redaction'),
       'submit_handler' => '_ulf_workflow_course_provider_pull_revision',
       'weight' => '1',
       'access' => !$publish_permission && $current_state == 'needs_review',
@@ -110,7 +110,7 @@ function _ulf_workflow_provide_edit_actions(&$form) {
     ),
     array (
       'name' =>'trash_course_provider',
-      'value' => t('Trash'),
+      'value' => t('Move to trash'),
       'submit_handler' => '_ulf_workflow_course_provider_trash',
       'weight' => '5',
       'access' => !$content_moderator,
@@ -139,7 +139,7 @@ function _ulf_workflow_provide_edit_actions(&$form) {
     ),
     array (
       'name' =>'trash_editor',
-      'value' => t('Trash'),
+      'value' => t('Move to trash'),
       'submit_handler' => '_ulf_workflow_editor_trash',
       'weight' => '4',
       'access' => $content_moderator,
