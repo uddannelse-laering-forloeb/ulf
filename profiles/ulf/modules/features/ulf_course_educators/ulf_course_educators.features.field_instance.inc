@@ -650,7 +650,7 @@ function ulf_course_educators_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 31,
+        'weight' => 34,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -718,6 +718,48 @@ function ulf_course_educators_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
+      'weight' => 13,
+    ),
+  );
+
+  // Exported field_instance: 'node-course_educators-field_passed_review'.
+  $field_instances['node-course_educators-field_passed_review'] = array(
+    'bundle' => 'course_educators',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 32,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_passed_review',
+    'label' => 'Passed review',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
       'weight' => 13,
     ),
   );
@@ -1308,7 +1350,7 @@ function ulf_course_educators_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 32,
+        'weight' => 30,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1389,7 +1431,7 @@ function ulf_course_educators_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 30,
+        'weight' => 33,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1412,7 +1454,7 @@ function ulf_course_educators_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 60,
+      'weight' => 12,
     ),
   );
 
@@ -1492,6 +1534,7 @@ function ulf_course_educators_field_default_field_instances() {
   t('Message form');
   t('Målgruppe');
   t('Navn');
+  t('Passed review');
   t('Periode');
   t('Pris');
   t('Skriv en beskrivelse af kursets indhold');

@@ -575,7 +575,7 @@ function ulf_course_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 35,
+        'weight' => 38,
       ),
       'full' => array(
         'label' => 'above',
@@ -886,7 +886,7 @@ function ulf_course_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 34,
+        'weight' => 37,
       ),
       'full' => array(
         'label' => 'above',
@@ -1071,6 +1071,54 @@ function ulf_course_field_default_field_instances() {
       ),
       'type' => 'options_select',
       'weight' => 27,
+    ),
+  );
+
+  // Exported field_instance: 'node-course-field_passed_review'.
+  $field_instances['node-course-field_passed_review'] = array(
+    'bundle' => 'course',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 35,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_passed_review',
+    'label' => 'Passed review',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 47,
     ),
   );
 
@@ -1639,7 +1687,7 @@ At opnå kendskab til...
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 37,
+        'weight' => 34,
       ),
       'full' => array(
         'label' => 'inline',
@@ -1818,7 +1866,7 @@ At opnå kendskab til...
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 36,
+        'weight' => 39,
       ),
       'full' => array(
         'label' => 'above',
@@ -1910,7 +1958,7 @@ At opnå kendskab til...
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 33,
+        'weight' => 36,
       ),
       'full' => array(
         'label' => 'above',
@@ -2054,6 +2102,7 @@ At opnå kendskab til...
   t('Message form');
   t('Målgruppe');
   t('Overordnet målgruppe');
+  t('Passed review');
   t('Periode');
   t('Pris');
   t('Skriv ikke jeres faste fysiske adresse her, den har vi allerede. Anvend dette felt til ekstraoplysninger om forløbets sted: Eks. \'Store Sal\', \'Brug højre indgang - ring på dørklokken\' eller en alternativ adresse end jeres faste fysiske adresse.');

@@ -14,11 +14,7 @@ function ulf_field_collections_field_default_field_instances() {
   // 'field_collection_item-field_collection_price-field_moms'.
   $field_instances['field_collection_item-field_collection_price-field_moms'] = array(
     'bundle' => 'field_collection_price',
-    'default_value' => array(
-      0 => array(
-        'value' => 'incl_vat',
-      ),
-    ),
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(

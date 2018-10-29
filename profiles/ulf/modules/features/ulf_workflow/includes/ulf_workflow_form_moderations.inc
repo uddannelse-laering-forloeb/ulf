@@ -13,6 +13,8 @@ function _ulf_workflow_cleanup_form(&$form) {
   $form['actions']['preview']['#access'] = FALSE;
   $form['actions']['delete']['#access'] = FALSE;
   $form['field_trashed']['#access'] = FALSE;
+  $form['field_passed_review']['#access'] = FALSE;
+
 }
 
 function _ulf_workflow_provide_add_actions(&$form) {
@@ -69,6 +71,7 @@ function _ulf_workflow_provide_edit_actions(&$form) {
   $current_state = $form['#node']->workbench_moderation['current']->state;
   $content_moderator = user_access('moderate content from needs_review to published');
   $has_published_version = $form['#node']->status;
+  $has_scheduled_publishing = property_exists($form['#node'], 'publish_on') ? TRUE : FALSE;
 
   // Create array of possible actions.
   $actions = array (
@@ -78,7 +81,7 @@ function _ulf_workflow_provide_edit_actions(&$form) {
       'value' => t('Send to revision'),
       'submit_handler' => '_ulf_workflow_course_provider_revision',
       'weight' => '1',
-      'access' => !$publish_permission,
+      'access' => !$publish_permission && !$has_scheduled_publishing,
     ),
     array (
       'name' =>'pull_revision_course_provider',
@@ -99,7 +102,7 @@ function _ulf_workflow_provide_edit_actions(&$form) {
       'value' => t('Save'),
       'submit_handler' => '_ulf_workflow_course_provider_save',
       'weight' => '3',
-      'access' => !$content_moderator,
+      'access' => !$content_moderator && !$has_scheduled_publishing,
     ),
     array (
       'name' =>'unpublish_course_provider',
@@ -154,7 +157,7 @@ function _ulf_workflow_provide_edit_actions(&$form) {
       'value' => t('Draft from trash'),
       'submit_handler' => '_ulf_workflow_draft_from_trash',
       'weight' => '2',
-      'access' => $content_moderator,
+      'access' => TRUE,
     );
     $form['actions'][$action['name']] = _ulf_workflow_create_action($action);
   }

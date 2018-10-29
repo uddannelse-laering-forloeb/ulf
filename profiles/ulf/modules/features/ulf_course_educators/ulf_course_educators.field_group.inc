@@ -21,7 +21,7 @@ function ulf_course_educators_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Vis kontaktformular / Skjul kontaktformular',
-    'weight' => '61',
+    'weight' => '14',
     'children' => array(
       0 => 'field_message_form',
     ),
@@ -241,7 +241,6 @@ function ulf_course_educators_field_group_info() {
       0 => 'field_period',
       1 => 'field_period_full_year',
       2 => 'field_period_info',
-      3 => 'scheduler_settings',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

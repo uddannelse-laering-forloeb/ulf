@@ -160,6 +160,8 @@
                   </div>
                   <?php if (isset($content['field_registration_form'])) : ?>
                     <?php print render($content['field_registration_form']); ?>
+                  <?php else : ?>
+                    <?php print t('Registration closed'); ?>
                   <?php endif; ?>
                 </div>
               </div>
@@ -279,6 +281,7 @@
       </div>
       <?php
       // We hide the comments and links now so that we can render them later.
+      hide($content['field_registration_form']);
       hide($content['field_duration']);
       hide($content['field_duration_unit']);
       hide($content['field_period']);

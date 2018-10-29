@@ -26,7 +26,7 @@ function ulf_registration_configuration_field_default_field_instances() {
         'module' => 'registration',
         'settings' => array(),
         'type' => 'registration_form',
-        'weight' => 37,
+        'weight' => 33,
       ),
       'full' => array(
         'label' => 'above',
@@ -97,7 +97,7 @@ function ulf_registration_configuration_field_default_field_instances() {
         'module' => 'registration',
         'settings' => array(),
         'type' => 'registration_form',
-        'weight' => 32,
+        'weight' => 31,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -141,7 +141,7 @@ function ulf_registration_configuration_field_default_field_instances() {
       'module' => 'registration',
       'settings' => array(),
       'type' => 'registration_select',
-      'weight' => 59,
+      'weight' => 11,
     ),
   );
 

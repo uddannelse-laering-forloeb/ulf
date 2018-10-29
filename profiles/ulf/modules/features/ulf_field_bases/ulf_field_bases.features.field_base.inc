@@ -73,7 +73,7 @@ function ulf_field_bases_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_catering'
+  // Exported field_base: 'field_catering'.
   $field_bases['field_catering'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -181,7 +181,7 @@ function ulf_field_bases_field_default_field_bases() {
     'type' => 'number_integer',
   );
 
-  // Exported field_base: 'field_course_contact_mail'
+  // Exported field_base: 'field_course_contact_mail'.
   $field_bases['field_course_contact_mail'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -202,7 +202,7 @@ function ulf_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_course_contact_name'
+  // Exported field_base: 'field_course_contact_name'.
   $field_bases['field_course_contact_name'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -794,6 +794,31 @@ function ulf_field_bases_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
+  // Exported field_base: 'field_passed_review'.
+  $field_bases['field_passed_review'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_passed_review',
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => '',
+        1 => '',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_boolean',
+  );
+
   // Exported field_base: 'field_period'.
   $field_bases['field_period'] = array(
     'active' => 1,
@@ -1165,7 +1190,7 @@ function ulf_field_bases_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_relevance_educators'
+  // Exported field_base: 'field_relevance_educators'.
   $field_bases['field_relevance_educators'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -1191,7 +1216,7 @@ function ulf_field_bases_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_relevance_primary_school'
+  // Exported field_base: 'field_relevance_primary_school'.
   $field_bases['field_relevance_primary_school'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -1217,7 +1242,7 @@ function ulf_field_bases_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_relevance_upper_school'
+  // Exported field_base: 'field_relevance_upper_school'.
   $field_bases['field_relevance_upper_school'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -1248,7 +1273,7 @@ function ulf_field_bases_field_default_field_bases() {
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
-    'entity_types' => [],
+    'entity_types' => array(),
     'field_name' => 'field_signup_description',
     'indexes' => array(
       'format' => array(
@@ -1257,7 +1282,7 @@ function ulf_field_bases_field_default_field_bases() {
     ),
     'locked' => 0,
     'module' => 'text',
-    'settings' => [],
+    'settings' => array(),
     'translatable' => 0,
     'type' => 'text_long',
   );
@@ -1310,6 +1335,27 @@ function ulf_field_bases_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'link_field',
+  );
+
+  // Exported field_base: 'field_signup_phone'.
+  $field_bases['field_signup_phone'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_signup_phone',
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'max_length' => 255,
+    ),
+    'translatable' => 0,
+    'type' => 'text',
   );
 
   // Exported field_base: 'field_subject'.
@@ -1499,27 +1545,6 @@ function ulf_field_bases_field_default_field_bases() {
     'settings' => array(),
     'translatable' => 0,
     'type' => 'video_embed_field',
-  );
-
-  // Exported field_base: 'field_signup_phone'.
-  $field_bases['field_signup_phone'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_signup_phone',
-    'indexes' => array(
-      'format' => array(
-        0 => 'format',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'text',
-    'settings' => array(
-      'max_length' => 255,
-    ),
-    'translatable' => 0,
-    'type' => 'text',
   );
 
   return $field_bases;
