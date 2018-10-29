@@ -435,6 +435,7 @@ function transportpulje_form_views_default_views() {
   $handler->display->display_options['filters']['field_tpf_name_value']['id'] = 'field_tpf_name_value';
   $handler->display->display_options['filters']['field_tpf_name_value']['table'] = 'field_data_field_tpf_name';
   $handler->display->display_options['filters']['field_tpf_name_value']['field'] = 'field_tpf_name_value';
+  $handler->display->display_options['filters']['field_tpf_name_value']['operator'] = 'contains';
   $handler->display->display_options['filters']['field_tpf_name_value']['group'] = 1;
   $handler->display->display_options['filters']['field_tpf_name_value']['exposed'] = TRUE;
   $handler->display->display_options['filters']['field_tpf_name_value']['expose']['operator_id'] = 'field_tpf_name_value_op';

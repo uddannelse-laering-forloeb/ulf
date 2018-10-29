@@ -19,6 +19,7 @@
 * Added ulf_admin theme to override administration templates.
 * ULF-2224: Changed target audience for course_educators.
 * Removed unintensional console.log.
+* KVF-60: Changed name filter to contains filter.
 
 ## In release/2.6.0
 
