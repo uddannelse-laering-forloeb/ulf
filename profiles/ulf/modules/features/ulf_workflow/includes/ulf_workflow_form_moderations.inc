@@ -71,8 +71,7 @@ function _ulf_workflow_provide_edit_actions(&$form) {
   $current_state = $form['#node']->workbench_moderation['current']->state;
   $content_moderator = user_access('moderate content from needs_review to published');
   $has_published_version = $form['#node']->status;
-  $has_scheduled_publishing = property_exists($form['#node'], 'publish_on') ? TRUE : FALSE;
-
+  $has_scheduled_publishing = property_exists($form['#node'], 'publish_on') && $form['#node']->publish_on > 0 ? TRUE : FALSE;
   // Create array of possible actions.
   $actions = array (
     // Course provider actions.
@@ -95,7 +94,7 @@ function _ulf_workflow_provide_edit_actions(&$form) {
       'value' => t('Publish'),
       'submit_handler' => '_ulf_workflow_course_provider_publish',
       'weight' => '2',
-      'access' => $publish_permission && !$content_moderator && $current_state != 'published',
+      'access' => $publish_permission && !$content_moderator,
     ),
     array (
       'name' =>'save_course_provider',
@@ -124,7 +123,7 @@ function _ulf_workflow_provide_edit_actions(&$form) {
       'value' => t('Publish'),
       'submit_handler' => '_ulf_workflow_editor_publish',
       'weight' => '1',
-      'access' => $content_moderator && $current_state != 'published',
+      'access' => $content_moderator,
     ),
     array (
       'name' =>'save_editor',
