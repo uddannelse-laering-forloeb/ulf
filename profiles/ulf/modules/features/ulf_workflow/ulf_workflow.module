@@ -43,10 +43,6 @@ function ulf_workflow_menu_alter(&$items) {
   if (array_key_exists('admin/workbench/content', $items)) {
     $items['admin/workbench/content']['access callback'] = 'ulf_workflow_workbench_access';
   }
-
-  if (array_key_exists('admin/content/scheduler', $items)) {
-    $items['admin/content/scheduler']['access callback'] = 'ulf_workflow_workbench_access';
-  }
 }
 
 /**
@@ -243,8 +239,8 @@ function ulf_workflow_node_insert($node) {
 function ulf_workflow_node_update($node) {
   global $user;
 
-  // Send mail to course provider if an editor changed author of content.
-  if ($node->uid <> $node->original->uid && $node->uid <> $user->uid) {
+  // Send mail to course provider if an editor created content on their behalf.
+  if ($node->uid <> $user->uid) {
     if (!user_access('administer nodes', user_load($node->uid)) && user_access('administer nodes', $user)) {
       _send_content_assigned_mail($node);
     }
