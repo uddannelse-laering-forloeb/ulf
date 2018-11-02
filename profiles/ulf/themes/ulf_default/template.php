@@ -315,7 +315,7 @@ function ulf_default_preprocess_panels_pane(&$variables) {
   }
   if ($variables['pane']->subtype == 'group_course') {
     // Provide newsletter block for front page.
- //   $variables['newsletter_block'] = module_invoke('mailchimp_signup', 'block_view', 'signup_to_newsletter');
+    $variables['newsletter_block'] = module_invoke('mailchimp_signup', 'block_view', 'signup_to_newsletter');
   }
 }
 
