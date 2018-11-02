@@ -179,12 +179,12 @@ function ulf_default_preprocess_node(&$variables) {
         $variables['static_page_menu'] = FALSE;
       }
       // Provide newsletter block for static pages.
-    //  $variables['newsletter_block'] = module_invoke('mailchimp_signup', 'block_view', 'signup_to_newsletter');
+      $variables['newsletter_block'] = module_invoke('mailchimp_signup', 'block_view', 'signup_to_newsletter');
       break;
 
     case 'news':
       // Provide newsletter block for news pages.
-    //  $variables['newsletter_block'] = module_invoke('mailchimp_signup', 'block_view', 'signup_to_newsletter');
+      $variables['newsletter_block'] = module_invoke('mailchimp_signup', 'block_view', 'signup_to_newsletter');
       $variables['latest_news_titles'] = module_invoke('views', 'block_view', 'ulf_news_archive-block_1');
       $variables['group_type'] = 'news';
       break;
