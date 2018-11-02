@@ -2,9 +2,7 @@
 
 namespace Mailchimp\Tests;
 
-use PHPUnit\Framework\TestCase;
-
-class MailchimpAutomationsTest extends TestCase {
+class MailchimpAutomationsTest extends \PHPUnit_Framework_TestCase {
 
   /**
    * Tests library functionality for automations.

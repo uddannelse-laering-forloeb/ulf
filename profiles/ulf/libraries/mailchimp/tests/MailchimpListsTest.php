@@ -2,14 +2,12 @@
 
 namespace Mailchimp\Tests;
 
-use PHPUnit\Framework\TestCase;
-
 /**
  * MailChimp Lists test library.
  *
  * @package Mailchimp\Tests
  */
-class MailchimpListsTest extends TestCase {
+class MailchimpListsTest extends \PHPUnit_Framework_TestCase {
 
   /**
    * Tests library functionality for lists information.
@@ -73,26 +71,6 @@ class MailchimpListsTest extends TestCase {
 
     $this->assertEquals('GET', $mc->getClient()->method);
     $this->assertEquals($mc->getEndpoint() . '/lists/' . $list_id . '/merge-fields', $mc->getClient()->uri);
-  }
-
-  /**
-   * Tests library functionality for adding a merge field.
-   */
-  public function testAddMergeField() {
-    $list_id = '57afe96172';
-    $name = 'Phone number';
-    $type = 'phone';
-
-    $mc = new MailchimpLists();
-    $mc->addMergeField($list_id, $name, $type);
-
-    $this->assertEquals('POST', $mc->getClient()->method);
-    $this->assertEquals($mc->getEndpoint() . '/lists/' . $list_id . '/merge-fields', $mc->getClient()->uri);
-
-    $request_body = $mc->getClient()->options['json'];
-
-    $this->assertEquals($name, $request_body->name);
-    $this->assertEquals($type, $request_body->type);
   }
 
   /**

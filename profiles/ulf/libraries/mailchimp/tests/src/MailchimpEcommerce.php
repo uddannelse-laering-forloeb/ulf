@@ -36,7 +36,7 @@ class MailchimpEcommerce extends \Mailchimp\MailchimpEcommerce {
    * @inheritdoc
    */
   public function __construct($api_key = 'apikey', $api_user = 'apikey', $http_options = []) {
-    $this->client = new MailchimpTestHttpClient();
+    $this->client = new Client();
   }
 
   public function getClient() {
