@@ -325,10 +325,18 @@ function ulf_workflow_default_page_manager_pages() {
       0 => array(
         'name' => 'perm',
         'settings' => array(
-          'perm' => 'view all unpublished content',
+          'perm' => 'access content overview',
         ),
         'context' => 'logged-in-user',
         'not' => TRUE,
+      ),
+      1 => array(
+        'name' => 'perm',
+        'settings' => array(
+          'perm' => 'create course content',
+        ),
+        'context' => 'logged-in-user',
+        'not' => FALSE,
       ),
     ),
     'logic' => 'and',
@@ -408,6 +416,25 @@ function ulf_workflow_default_page_manager_pages() {
   $display->content['new-8d7a7ee2-6bd0-4bf2-bd00-b87817bd5a71'] = $pane;
   $display->panels['middle'][0] = 'new-8d7a7ee2-6bd0-4bf2-bd00-b87817bd5a71';
   $pane = new stdClass();
+  $pane->pid = 'new-ff478cc6-9cf6-4f2a-be67-b25130f5cffa';
+  $pane->panel = 'middle';
+  $pane->type = 'views_panes';
+  $pane->subtype = 'ulf_workbench_edits_by_user-panel_pane_8';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array();
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 1;
+  $pane->locks = array();
+  $pane->uuid = 'ff478cc6-9cf6-4f2a-be67-b25130f5cffa';
+  $display->content['new-ff478cc6-9cf6-4f2a-be67-b25130f5cffa'] = $pane;
+  $display->panels['middle'][1] = 'new-ff478cc6-9cf6-4f2a-be67-b25130f5cffa';
+  $pane = new stdClass();
   $pane->pid = 'new-c693b040-028d-4e78-a021-4d33d996c2b8';
   $pane->panel = 'middle';
   $pane->type = 'views_panes';
@@ -421,11 +448,11 @@ function ulf_workflow_default_page_manager_pages() {
   );
   $pane->css = array();
   $pane->extras = array();
-  $pane->position = 1;
+  $pane->position = 2;
   $pane->locks = array();
   $pane->uuid = 'c693b040-028d-4e78-a021-4d33d996c2b8';
   $display->content['new-c693b040-028d-4e78-a021-4d33d996c2b8'] = $pane;
-  $display->panels['middle'][1] = 'new-c693b040-028d-4e78-a021-4d33d996c2b8';
+  $display->panels['middle'][2] = 'new-c693b040-028d-4e78-a021-4d33d996c2b8';
   $pane = new stdClass();
   $pane->pid = 'new-ef1cb3ae-c84f-422c-999d-2d672c07a385';
   $pane->panel = 'middle';
@@ -440,11 +467,11 @@ function ulf_workflow_default_page_manager_pages() {
   );
   $pane->css = array();
   $pane->extras = array();
-  $pane->position = 2;
+  $pane->position = 3;
   $pane->locks = array();
   $pane->uuid = 'ef1cb3ae-c84f-422c-999d-2d672c07a385';
   $display->content['new-ef1cb3ae-c84f-422c-999d-2d672c07a385'] = $pane;
-  $display->panels['middle'][2] = 'new-ef1cb3ae-c84f-422c-999d-2d672c07a385';
+  $display->panels['middle'][3] = 'new-ef1cb3ae-c84f-422c-999d-2d672c07a385';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = 'new-8d7a7ee2-6bd0-4bf2-bd00-b87817bd5a71';
   $handler->conf['display'] = $display;

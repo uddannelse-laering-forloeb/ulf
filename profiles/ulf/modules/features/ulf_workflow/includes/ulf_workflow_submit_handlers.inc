@@ -43,7 +43,7 @@ function _ulf_workflow_editor_save($form, &$form_state) {
   if ($form['workbench_moderation_state_current']['#value'] == 'needs_review') {
     $form_state['values']['workbench_moderation_state_new'] = 'needs_review';
   } elseif ($form['workbench_moderation_state_current']['#value'] == 'published') {
-    $form_state['values']['workbench_moderation_state_new'] = 'published';
+    $form_state['values']['workbench_moderation_state_new'] = 'draft';
   } elseif ($form['workbench_moderation_state_current']['#value'] == 'draft') {
     $form_state['values']['workbench_moderation_state_new'] = 'draft';
   }
@@ -85,7 +85,6 @@ function _ulf_workflow_editor_trash($form, &$form_state) {
 function _ulf_workflow_course_provider_revision($form, &$form_state) {
   drupal_set_message(t('The content has been sent to editorial review'));
   $form_state['values']['workbench_moderation_state_new'] = 'needs_review';
-  _send_revision_ready_mail($form['#node']);
   // Don't attempt to send mail on node create (Form node has no nid).
   // This is handled in hook_node_insert to ensure full node entity.
   if (property_exists($form_state['node'], 'nid')) {
