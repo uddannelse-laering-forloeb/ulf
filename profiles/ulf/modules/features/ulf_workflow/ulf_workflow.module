@@ -137,7 +137,7 @@ function ulf_workflow_form_node_form_alter(&$form, &$form_state, $form_id) {
     
     $node_action = isset($form['#node']->nid) ? 'edit' : 'add';
 
-    // Remove unused fields and  actions.
+    // Remove unused fields and actions.
     _ulf_workflow_cleanup_form($form);
 
     // Provide actions depending on node create or node update.
@@ -275,6 +275,25 @@ function _ulf_workflow_check_publish_permission() {
   }
 
   return FALSE;
+}
+
+/**
+ * Set unpublishing date.
+ */
+function _ulf_workflow_set_unpublishing_date($form, &$form_state, $reset = FALSE) {
+  if ($form['#node']->type == 'course' || $form['#node']->type == 'course_educators') {
+    if ($reset) {
+      $form_state['values']['unpublish_on'] = null;
+    }
+    else {
+      if ($form_state['values']['field_period_full_year']['und'][0]['value'] == FALSE) {
+        $form_state['values']['unpublish_on'] = format_date($form_state['values']['field_period']['und'][0]['value2'], 'custom', 'Y-m-d H:i:s');
+      }
+      else {
+        $form_state['values']['unpublish_on'] = null;
+      }
+    }
+  }
 }
 
 /**

@@ -14,7 +14,10 @@ function _ulf_workflow_cleanup_form(&$form) {
   $form['actions']['delete']['#access'] = FALSE;
   $form['field_trashed']['#access'] = FALSE;
   $form['field_passed_review']['#access'] = FALSE;
-
+  if ($form['#node']->type == 'course' || $form['#node']->type == 'course_educators') {
+    $form['scheduler_settings']['unpublish_on']['#attributes'] = array('disabled' => 'disabled');
+    $form['scheduler_settings']['unpublish_on']['#description'] = t('The value of this field is set by period end date when content is saved.');
+  }
 }
 
 function _ulf_workflow_provide_add_actions(&$form) {

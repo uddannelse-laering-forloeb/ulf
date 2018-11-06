@@ -6,6 +6,7 @@ include_once 'ulf_workflow_mail.inc';
  * Publish action for editors.
  */
 function _ulf_workflow_editor_publish($form, &$form_state) {
+  _ulf_workflow_set_unpublishing_date($form, $form_state);
   // Check for scheduled publishing.
   if (!empty($form_state['values']['publish_on'])) {
     $now = time();
@@ -40,6 +41,7 @@ function _ulf_workflow_editor_publish($form, &$form_state) {
  * Save action for editors.
  */
 function _ulf_workflow_editor_save($form, &$form_state) {
+  _ulf_workflow_set_unpublishing_date($form, $form_state);
   if ($form['workbench_moderation_state_current']['#value'] == 'needs_review') {
     $form_state['values']['workbench_moderation_state_new'] = 'needs_review';
   } elseif ($form['workbench_moderation_state_current']['#value'] == 'published') {
@@ -53,6 +55,7 @@ function _ulf_workflow_editor_save($form, &$form_state) {
  * Unpublish action for editors.
  */
 function _ulf_workflow_editor_unpublish($form, &$form_state) {
+  _ulf_workflow_set_unpublishing_date($form, $form_state, TRUE);
   drupal_set_message(t('The content has been unpublished'));
   $form_state['values']['workbench_moderation_state_new'] = 'draft';
   $form_state['values']['workbench_moderation_state_current'] = 'draft';
@@ -67,6 +70,7 @@ function _ulf_workflow_editor_unpublish($form, &$form_state) {
  * Trash action for editors.
  */
 function _ulf_workflow_editor_trash($form, &$form_state) {
+  _ulf_workflow_set_unpublishing_date($form, $form_state, TRUE);
   drupal_set_message(t('The content has been trashed'));
   $form_state['values']['workbench_moderation_state_new'] = 'draft';
   $form_state['values']['workbench_moderation_state_current'] = 'draft';
@@ -83,6 +87,7 @@ function _ulf_workflow_editor_trash($form, &$form_state) {
  * Send to revision action for course providers.
  */
 function _ulf_workflow_course_provider_revision($form, &$form_state) {
+  _ulf_workflow_set_unpublishing_date($form, $form_state);
   drupal_set_message(t('The content has been sent to editorial review'));
   $form_state['values']['workbench_moderation_state_new'] = 'needs_review';
   // Don't attempt to send mail on node create (Form node has no nid).
@@ -96,6 +101,7 @@ function _ulf_workflow_course_provider_revision($form, &$form_state) {
  * Pull revision action for course providers.
  */
 function _ulf_workflow_course_provider_pull_revision($form, &$form_state) {
+  _ulf_workflow_set_unpublishing_date($form, $form_state);
   drupal_set_message(t('The content has been pulled'));
   $form_state['values']['workbench_moderation_state_new'] = 'draft';
   $form_state['values']['field_passed_review']['und'][0]['value'] = FALSE;
@@ -106,6 +112,7 @@ function _ulf_workflow_course_provider_pull_revision($form, &$form_state) {
  * Save action for course providers.
  */
 function _ulf_workflow_course_provider_save($form, &$form_state) {
+  _ulf_workflow_set_unpublishing_date($form, $form_state);
   if ($form['workbench_moderation_state_current']['#value'] == 'needs_review') {
     $form_state['values']['workbench_moderation_state_new'] = 'needs_review';
     $form_state['values']['field_passed_review']['und'][0]['value'] = FALSE;
@@ -129,6 +136,7 @@ function _ulf_workflow_course_provider_save($form, &$form_state) {
  * Publish action for course providers.
  */
 function _ulf_workflow_course_provider_publish($form, &$form_state) {
+  _ulf_workflow_set_unpublishing_date($form, $form_state);
   // Check for scheduled publishing.
   if (!empty($form_state['values']['publish_on'])) {
     $now = time();
@@ -164,6 +172,7 @@ function _ulf_workflow_course_provider_publish($form, &$form_state) {
  * Unpublish action for course providers.
  */
 function _ulf_workflow_course_provider_unpublish($form, &$form_state) {
+  _ulf_workflow_set_unpublishing_date($form, $form_state, TRUE);
   drupal_set_message(t('The content has been unpublished'));
   $form_state['values']['workbench_moderation_state_new'] = 'draft';
   $form_state['values']['workbench_moderation_state_current'] = 'draft';
@@ -177,6 +186,7 @@ function _ulf_workflow_course_provider_unpublish($form, &$form_state) {
  * Trash action for course providers.
  */
 function _ulf_workflow_course_provider_trash($form, &$form_state) {
+  _ulf_workflow_set_unpublishing_date($form, $form_state, TRUE);
   drupal_set_message(t('The content has been trashed'));
   $form_state['values']['workbench_moderation_state_new'] = 'draft';
   $form_state['values']['workbench_moderation_state_current'] = 'draft';
@@ -193,6 +203,7 @@ function _ulf_workflow_course_provider_trash($form, &$form_state) {
  * Draft from trash action.
  */
 function _ulf_workflow_draft_from_trash($form, &$form_state) {
+  _ulf_workflow_set_unpublishing_date($form, $form_state);
   drupal_set_message(t('A draft has been created from trash'));
   $form_state['values']['workbench_moderation_state_new'] = 'draft';
   $form_state['values']['workbench_moderation_state_current'] = 'draft';

@@ -1147,7 +1147,7 @@ function ulf_course_educators_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_relevance_primary_school',
     'label' => 'Kurset er relevant for lærere, der underviser i fagene',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
@@ -1186,7 +1186,7 @@ function ulf_course_educators_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_relevance_upper_school',
     'label' => 'Kurset er relevant for undervisere i fagene',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
