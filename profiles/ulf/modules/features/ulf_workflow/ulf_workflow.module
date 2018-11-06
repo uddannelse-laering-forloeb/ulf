@@ -301,4 +301,5 @@ function _ulf_workflow_set_unpublishing_date($form, &$form_state, $reset = FALSE
  */
 function ulf_workflow_cron() {
   _ulf_workflow_cron_empty_trash();
+  _ulf_workflow_cron_set_unpublishing_date();
 }

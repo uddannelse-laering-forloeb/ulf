@@ -31,3 +31,35 @@ function _ulf_workflow_cron_empty_trash() {
     }
   }
 }
+
+/**
+ * Set unpublishing date based on period end
+ */
+function _ulf_workflow_cron_set_unpublishing_date() {
+  // Content types that have workflow enabled.
+  $node_types = array(
+    'course',
+    'course_educators',
+  );
+
+  // Get all relevant nodes that have not been updated recently.
+  $query = db_select('node', 'n');
+  $query->leftJoin("field_data_field_period", "f", "(f.entity_type = 'node' AND f.entity_id = n.nid)");
+  $query->fields('f');
+  $query->fields('n', array('nid', 'status'));
+  $query->condition('n.type', $node_types, 'IN');
+  $query->condition('n.status', 1, '=');
+  $result = $query->execute()->fetchAllAssoc('nid');
+
+  // Check for end period and set unpublishing
+  foreach ($result as $key => $node) {
+    if (isset($node->field_period_value2)) {
+      db_update('scheduler')
+        ->fields(array(
+          'unpublish_on' => $node->field_period_value2
+        ))
+        ->condition('nid', $node->nid)
+        ->execute();
+    }
+  }
+}

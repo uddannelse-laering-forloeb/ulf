@@ -109,7 +109,7 @@
             <?php print render($content['field_material_suggestions']); ?>
             <?php print render($content['field_purpose']); ?>
           </div>
-
+  
           <?php print render($content['field_video']); ?>
           <?php if ($field_place || $field_map_placement['und']['0']['value'] == 'alternative' || $field_map_placement['und']['0']['value'] == 'provider'): ?>
             <div class="field--collection-wrapper">
