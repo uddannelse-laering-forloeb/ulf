@@ -144,7 +144,7 @@
               </div>
             </div>
           <?php endif; ?>
-          <?php if ($field_last_signup_date || $field_signup_link || $field_signup_email || $field_signup_phone || $field_signup_description || !empty($field_registration_form['und'][0]['registration_type'])): ?>
+          <?php if ($field_last_signup_date || $field_signup_link || $field_signup_email || $field_signup_phone || $field_signup_description): ?>
             <div class="field--collection-wrapper">
               <div class="field--collection-label"><?php print t('Signup');?></div> 
               <div class="field--collection-content">
@@ -158,11 +158,6 @@
                       <?php print render($content['field_last_signup_date']); ?>
                     </div>
                   </div>
-                  <?php if (isset($content['field_registration_form'])) : ?>
-                    <?php print render($content['field_registration_form']); ?>
-                  <?php else : ?>
-                    <?php print t('Registration closed'); ?>
-                  <?php endif; ?>
                 </div>
               </div>
             </div>
