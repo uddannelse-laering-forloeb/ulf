@@ -106,8 +106,8 @@
             <?php print render($content['field_activities']); ?>
             <?php print render($content['field_background_knowledge']); ?>
             <?php print render($content['field_post_work']); ?>
-            <?php print render($content['field_purpose']); ?>
             <?php print render($content['field_material_suggestions']); ?>
+            <?php print render($content['field_purpose']); ?>
           </div>
 
           <?php print render($content['field_video']); ?>
