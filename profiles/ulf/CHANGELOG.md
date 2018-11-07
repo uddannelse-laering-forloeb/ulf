@@ -19,7 +19,6 @@
 * ULF-2200: Moved field and changed label (171).
 * ULF-2201: Restyled form and changed help text (173).
 * ULF-2133: Updated workflow, refacturing of code.
-* ULF-2183: Added registration module.
 * ULF-2230: Removed dot.
 
 # v2.5.x
