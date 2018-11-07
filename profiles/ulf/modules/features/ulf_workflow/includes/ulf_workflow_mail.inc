@@ -16,6 +16,21 @@ function _send_published_mail($node) {
   _ulf_workflow_mail_send_mail('published_mail_author', $to, $user, $node);
 }
 
+/**
+ * Create and send mail to admin when course provider publishes content.
+ *
+ * @param $node
+ *   The node that the mail relates to.
+ */
+function _send_published_mail_course_provider($node) {
+  // Get author fields.
+  $user = user_load($node->uid);
+
+  // Set recipient.
+  $to = !empty(variable_get('email_workflow_recipient')) ? variable_get('email_workflow_recipient') : variable_get('mimemail_mail');
+
+  _ulf_workflow_mail_send_mail('published_mail_admin', $to, $user, $node);
+}
 
 /**
  * Create and send mail to author when content is unpublished.
@@ -67,23 +82,6 @@ function _send_user_edited_mail($user, $user_changes) {
 
 
 /**
- * Create and send mail to editor when an element has been trashed.
- *
- * @param $node
- *   The node that the mail relates to.
- */
-function _send_editor_content_trashed_mail($node) {
-  // Get author fields.
-  $user = user_load($node->uid);
-
-  // Set recipient.
-  $to = !empty(variable_get('email_workflow_recipient')) ? variable_get('email_workflow_recipient') : variable_get('mimemail_mail');
-
-  _ulf_workflow_mail_send_mail('trashed_mail_admin', $to, $user, $node);
-}
-
-
-/**
  * Create and send mail to author when an element has been trashed.
  *
  * @param $node
@@ -101,6 +99,22 @@ function _send_author_content_trashed_mail($node) {
 
 
 /**
+ * Create and send mail to content provider when an element has been assigned to them.
+ *
+ * @param $node
+ *   The node that the mail relates to.
+ */
+function _send_content_assigned_mail($node) {
+  // Get author fields.
+  $user = user_load($node->uid);
+
+  // Set recipient.
+  $to = $user->mail;
+
+  _ulf_workflow_mail_send_mail('content_assigned_mail', $to, $user, $node);
+}
+
+/**
  * Implements hook_mailkeys().
  */
 function ulf_workflow_mailkeys() {
@@ -111,6 +125,8 @@ function ulf_workflow_mailkeys() {
     'user_edited_mail_admin' => t('Mail sent to admin(Site mail address) when a user has changed its account.'),
     'trashed_mail_author' => t('Mail sent to author when an editor trashes the content.'),
     'trashed_mail_admin' => t('Mail sent to admin(Site mail address) when a user trashes their content.'),
+    'content_assigned_mail' => t('Mail sent to course providers when an editor creates content and assigns it to them.'),
+    'published_mail_admin' => t('Mail sent to admin when a course provider publishes content.'),
   ];
 }
 
@@ -121,6 +137,16 @@ function ulf_workflow_mailkeys() {
 function ulf_workflow_mail_edit_text($mailkey, $language) {
   $return = [];
   switch ($mailkey) {
+
+    // Revision ready mail.
+    case 'published_mail_admin':
+      $return['subject'] = 'New content has been published by [user:field_profile_name]';
+      $return['always'] = TRUE;
+      $return['body'] =
+        '[user:field-profile-name] has published new content.
+
+This is an automated message created by [site:name].';
+      break;
 
     // Revision ready mail.
     case 'revision_ready_mail_admin':
@@ -156,6 +182,18 @@ Go to [site:login-url] and login to see what has been unpublished.
 This is an automated message created by [site:name].';
       break;
 
+    // Content assigned to course provider mail.
+    case 'content_assigned_mail':
+      $return['subject'] = 'New content was created on your behalf by an admin on [site:name]';
+      $return['always'] = TRUE;
+      $return['body'] =
+        'An admin created new content on your behalf on [site:name].
+
+Go to [site:login-url] and login to see what was created.
+
+This is an automated message created by [site:name].';
+      break;
+
     // User edited mail.
     case 'user_edited_mail_admin':
       $return['subject'] = 'The organisation: [user:field_profile_name] has made changes to its profile';
@@ -180,7 +218,7 @@ This is an automated message created by [site:name].';
 
 This is an automated message created by [site:name].';
       break;
-
+    
     // User edited mail.
     case 'trashed_mail_admin':
       $return['subject'] = 'The organisation: [user:field_profile_name] has trashed some content';

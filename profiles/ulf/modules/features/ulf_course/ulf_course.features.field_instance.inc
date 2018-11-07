@@ -1127,6 +1127,54 @@ function ulf_course_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-course-field_passed_review'.
+  $field_instances['node-course-field_passed_review'] = array(
+    'bundle' => 'course',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 35,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_passed_review',
+    'label' => 'Passed review',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 47,
+    ),
+  );
+
   // Exported field_instance: 'node-course-field_period'.
   $field_instances['node-course-field_period'] = array(
     'bundle' => 'course',
@@ -2159,6 +2207,7 @@ At opnå kendskab til...
   t('Message form');
   t('Målgruppe');
   t('Overordnet målgruppe');
+  t('Passed review');
   t('Periode');
   t('Pris');
   t('Skriv en kort og præcis beskrivelse. Denne bruges til visning på f.eks. Facebook, så undlad information om praktiske forhold.');

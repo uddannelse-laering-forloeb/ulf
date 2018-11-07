@@ -8,13 +8,12 @@
  * Implements hook_form_alter().
  */
 function ulf_forms_form_alter(&$form, &$form_state, $form_id) {
-
-  // @TODO: Why is this add to all forms across the whole site? Please add
-  //        comment!
-  $path = drupal_get_path('module', 'ulf_forms');
-  $form['#attached']['js'][] = $path . '/js/jquery.imagesloaded.js';
-  $form['#attached']['js'][] = $path . '/js/jquery.imgareaselect.dev.js';
-  $form['#attached']['css'][] = $path . '/css/node-form-styles.css';
+  if (isset($form['#node_edit_form'])) {
+    $path = drupal_get_path('module', 'ulf_forms');
+    $form['#attached']['js'][] = $path . '/js/jquery.imagesloaded.js';
+    $form['#attached']['js'][] = $path . '/js/jquery.imgareaselect.dev.js';
+    $form['#attached']['css'][] = $path . '/css/node-form-styles.css';
+  }
 
   switch ($form_id) {
     // Course node form.
@@ -97,11 +96,6 @@ function _vat_not_empty_validate($form, &$form_state) {
     if (!empty($value['field_price'][LANGUAGE_NONE][0]['value']) &&
       empty($value['field_moms'][LANGUAGE_NONE][0]['value'])) {
       form_set_error('field_collection_price][' . LANGUAGE_NONE . '][' . $delta . '][field_moms', t('You must set a VAT value to save your changes.'));
-    }
-
-    if (empty($value['field_price'][LANGUAGE_NONE][0]['value']) &&
-      !empty($value['field_moms'][LANGUAGE_NONE][0]['value'])) {
-      form_set_error('field_collection_price][' . LANGUAGE_NONE . '][' . $delta . '][field_price', t('You must set a price value or remove the VAT specification.'));
     }
   }
 }

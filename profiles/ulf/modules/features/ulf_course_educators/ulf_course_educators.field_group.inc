@@ -245,7 +245,6 @@ function ulf_course_educators_field_group_info() {
       0 => 'field_period',
       1 => 'field_period_full_year',
       2 => 'field_period_info',
-      3 => 'scheduler_settings',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

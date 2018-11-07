@@ -101,15 +101,15 @@
         </div>
         <div class="content--main">
           <?php print render($content['field_full_description']); ?>
-          <?php print render($content['field_purpose']); ?>
 
           <div class="course-activity">
             <?php print render($content['field_activities']); ?>
             <?php print render($content['field_background_knowledge']); ?>
             <?php print render($content['field_post_work']); ?>
             <?php print render($content['field_material_suggestions']); ?>
+            <?php print render($content['field_purpose']); ?>
           </div>
-
+  
           <?php print render($content['field_video']); ?>
           <?php if ($field_place || $field_map_placement['und']['0']['value'] == 'alternative' || $field_map_placement['und']['0']['value'] == 'provider'): ?>
             <div class="field--collection-wrapper">
@@ -149,7 +149,7 @@
           <?php endif; ?>
           <?php print render($content['field_educational_material']); ?>
           <?php print render($content['field_inspirational_material']); ?>
-          <?php if ($field_last_signup_date || $field_signup_link || $field_signup_email || $field_signup_phone || $field_signup_description || !empty($field_registration_form['und'][0]['registration_type']) ) : ?>
+          <?php if ($field_last_signup_date || $field_signup_link || $field_signup_email || $field_signup_phone || $field_signup_description ) : ?>
             <div class="field--collection-wrapper">
               <div class="field--collection-label"><?php print t('Signup');?></div>
               <div class="field--collection-content">
@@ -163,9 +163,6 @@
                       <?php print render($content['field_last_signup_date']); ?>
                     </div>
                   </div>
-                  <?php if (isset($content['field_registration_form'])) : ?>
-                    <?php print render($content['field_registration_form']); ?>
-                  <?php endif; ?>
                 </div>
               </div>
             </div>
@@ -320,6 +317,7 @@
       </div>
       <?php
       // We hide the comments and links now so that we can render them later.
+      hide($content['field_registration_form']);
       hide($content['field_target_group_sub']);
       hide($content['field_duration']);
       hide($content['field_duration_unit']);

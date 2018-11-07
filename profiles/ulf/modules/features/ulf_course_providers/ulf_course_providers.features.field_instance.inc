@@ -455,7 +455,7 @@ function ulf_course_providers_field_default_field_instances() {
       ),
     ),
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Hvorvidt udbyderprofilen skal vises på udbyderkortet.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -555,6 +555,7 @@ function ulf_course_providers_field_default_field_instances() {
   t('Henvendelser via kontaktformularen på forløbene sendes til denne adresse.');
   t('Hjemmeside');
   t('Husk at inkludere http:// i webadressen');
+  t('Hvorvidt udbyderprofilen skal vises på udbyderkortet.');
   t('Indholdet i dette felt er kun tilgængeligt fra denne formular og vises ikke til slutbrugere.');
   t('Kontakt');
   t('Kort præsentation af forløbsudbyder');

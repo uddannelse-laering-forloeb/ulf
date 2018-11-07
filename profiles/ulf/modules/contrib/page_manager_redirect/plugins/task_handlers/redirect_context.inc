@@ -260,7 +260,9 @@ function page_manager_redirect_redirect_context_admin_summary($handler, $task, $
   if (is_array($handler->conf)) {
     foreach ($handler->conf as $part => $value) {
       // Remove spaces - this will allow spaces to be used to delimit the context 'tokens' that need to be replaced!
-      $handler->conf[$part] = str_replace(' ', '', $value);
+      if (is_string($value)) {
+        $handler->conf[$part] = str_replace(' ', '', $value);
+      }
     }
   }
 

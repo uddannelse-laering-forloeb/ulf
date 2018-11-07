@@ -98,6 +98,15 @@ label.option {
   margin-top: 1.5em;
 }
 
-.entitytype-end_user_message-form label {
+.page-user form label,
+.entitytype-end_user_message-form form label {
   font-weight: bold;
+
+  &.option {
+    font-weight: normal;
+  }
+}
+
+.page-user form fieldset{
+  margin: 1.5em 0;
 }
