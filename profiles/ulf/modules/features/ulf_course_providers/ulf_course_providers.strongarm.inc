@@ -53,7 +53,7 @@ function ulf_course_providers_strongarm() {
       'display' => array(
         'summary' => array(
           'default' => array(
-            'weight' => '12',
+            'weight' => '13',
             'visible' => FALSE,
           ),
         ),

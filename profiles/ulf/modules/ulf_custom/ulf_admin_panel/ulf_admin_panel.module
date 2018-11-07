@@ -79,6 +79,24 @@ function _ulf_admin_panel_form($form) {
     '#upload_location' => 'public://',
   );
 
+  // Trash can
+  $form['trash_can'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Trash can'),
+    '#weight' => 1,
+    '#collapsible' => TRUE,
+    '#group' => 'ulf_admin_panel',
+  );
+
+  $form['trash_can']['trash_can_delete_timer'] = array(
+    '#type' => 'numberfield',
+    '#title' => t('Trash delete timer'),
+    '#default_value' => variable_get('trash_can_delete_timer', '365'),
+    '#size' => 60,
+    '#maxlength' => 128,
+    '#description' => t('The duration in days that content must stay untouched in trash before being deleted from the system.'),
+  );
+
   // Custom submit.
   $form['#submit'] = array('_ulf_admin_panel_form_submit');
 

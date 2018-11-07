@@ -66,7 +66,7 @@ function ulf_course_field_default_field_instances() {
     'bundle' => 'course',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Eksempeltekst (bør skiftes, så målgruppen afspejles): Skovene omkring Gl. Rye gemmer på mange spor af tidligere tiders udnyttelse af skoven - skoven gav og giver stadig menneskene såvel materialer som oplevelser. Vi hører om fortidens brug af skoven fra bondestenalderens svedjebrug til middelalderens munke.',
+    'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -91,7 +91,7 @@ function ulf_course_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_background_knowledge',
-    'label' => 'Baggrundsviden',
+    'label' => 'Forberedelse',
     'required' => 0,
     'settings' => array(
       'text_processing' => 1,
@@ -461,7 +461,7 @@ function ulf_course_field_default_field_instances() {
       'module' => 'field_collection',
       'settings' => array(),
       'type' => 'field_collection_embed',
-      'weight' => 5,
+      'weight' => 4,
     ),
   );
 
@@ -575,7 +575,7 @@ function ulf_course_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 36,
+        'weight' => 38,
       ),
       'full' => array(
         'label' => 'above',
@@ -659,7 +659,7 @@ function ulf_course_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 5,
+      'weight' => 3,
     ),
   );
 
@@ -704,7 +704,7 @@ function ulf_course_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_image',
     'label' => 'Upload et billede/illustration',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'alt_field' => 1,
       'default_image' => 0,
@@ -798,7 +798,7 @@ function ulf_course_field_default_field_instances() {
       'module' => 'field_collection',
       'settings' => array(),
       'type' => 'field_collection_embed',
-      'weight' => 7,
+      'weight' => 5,
     ),
   );
 
@@ -867,7 +867,7 @@ function ulf_course_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_popup',
-      'weight' => 37,
+      'weight' => 42,
     ),
   );
 
@@ -886,13 +886,13 @@ function ulf_course_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 34,
+        'weight' => 37,
       ),
       'full' => array(
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 37,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1022,7 +1022,7 @@ function ulf_course_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 14,
+      'weight' => 4,
     ),
   );
 
@@ -1071,6 +1071,54 @@ function ulf_course_field_default_field_instances() {
       ),
       'type' => 'options_select',
       'weight' => 27,
+    ),
+  );
+
+  // Exported field_instance: 'node-course-field_passed_review'.
+  $field_instances['node-course-field_passed_review'] = array(
+    'bundle' => 'course',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 35,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_passed_review',
+    'label' => 'Passed review',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 47,
     ),
   );
 
@@ -1147,7 +1195,7 @@ function ulf_course_field_default_field_instances() {
         'year_range' => '-0:+5',
       ),
       'type' => 'date_select',
-      'weight' => 9,
+      'weight' => 43,
     ),
   );
 
@@ -1198,7 +1246,7 @@ function ulf_course_field_default_field_instances() {
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 8,
+      'weight' => 42,
     ),
   );
 
@@ -1249,7 +1297,7 @@ function ulf_course_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 11,
+      'weight' => 45,
     ),
   );
 
@@ -1467,12 +1515,63 @@ At opnå kendskab til...
     ),
   );
 
+  // Exported field_instance: 'node-course-field_signup_description'.
+  $field_instances['node-course-field_signup_description'] = array(
+    'bundle' => 'course',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Beskriv hvordan man tilmelder sig og andre instruktioner i forbindelse med tilmelding.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 32,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 34,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_signup_description',
+    'label' => 'Beskrivelse af tilmeldingsprocedure',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'maxlength_js' => '',
+        'maxlength_js_enforce' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'maxlength_js_truncate_html' => 0,
+        'rows' => 5,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 41,
+    ),
+  );
+
   // Exported field_instance: 'node-course-field_signup_email'.
   $field_instances['node-course-field_signup_email'] = array(
     'bundle' => 'course',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Email til tilmelding',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -1497,7 +1596,7 @@ At opnå kendskab til...
     ),
     'entity_type' => 'node',
     'field_name' => 'field_signup_email',
-    'label' => 'Tilmeldingsemail',
+    'label' => 'Email',
     'required' => 0,
     'settings' => array(
       'text_processing' => 0,
@@ -1508,7 +1607,7 @@ At opnå kendskab til...
       'module' => 'html5_tools',
       'settings' => array(),
       'type' => 'emailwidget',
-      'weight' => 39,
+      'weight' => 44,
     ),
   );
 
@@ -1572,7 +1671,52 @@ At opnå kendskab til...
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 38,
+      'weight' => 43,
+    ),
+  );
+
+  // Exported field_instance: 'node-course-field_signup_phone'.
+  $field_instances['node-course-field_signup_phone'] = array(
+    'bundle' => 'course',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Telefonnummer til tilmelding.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 34,
+      ),
+      'full' => array(
+        'label' => 'inline',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 35,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_signup_phone',
+    'label' => 'Tlf.nr.',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'html5_tools',
+      'settings' => array(),
+      'type' => 'telwidget',
+      'weight' => 45,
     ),
   );
 
@@ -1663,7 +1807,7 @@ At opnå kendskab til...
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 30,
+      'weight' => 31,
     ),
   );
 
@@ -1707,7 +1851,7 @@ At opnå kendskab til...
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 31,
+      'weight' => 32,
     ),
   );
 
@@ -1722,7 +1866,7 @@ At opnå kendskab til...
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 37,
+        'weight' => 39,
       ),
       'full' => array(
         'label' => 'above',
@@ -1796,6 +1940,54 @@ At opnå kendskab til...
       'settings' => array(),
       'type' => 'options_buttons',
       'weight' => 28,
+    ),
+  );
+
+  // Exported field_instance: 'node-course-field_trashed'.
+  $field_instances['node-course-field_trashed'] = array(
+    'bundle' => 'course',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 36,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 36,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_trashed',
+    'label' => 'Trashed',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 12,
     ),
   );
 
@@ -1883,19 +2075,22 @@ At opnå kendskab til...
   t('Angiv enhed');
   t('Angiv max. antal deltagere');
   t('Antal');
-  t('Baggrundsviden');
+  t('Beskriv hvordan man tilmelder sig og andre instruktioner i forbindelse med tilmelding.');
   t('Beskrivelse');
+  t('Beskrivelse af tilmeldingsprocedure');
   t('Beskrivelse til pris');
   t('Beskrivelse til varighed');
   t('Efterbehandling');
-  t('Eksempeltekst (bør skiftes, så målgruppen afspejles): Skovene omkring Gl. Rye gemmer på mange spor af tidligere tiders udnyttelse af skoven - skoven gav og giver stadig menneskene såvel materialer som oplevelser. Vi hører om fortidens brug af skoven fra bondestenalderens svedjebrug til middelalderens munke.');
   t('Eksempeltekst (bør skiftes, så målgruppen afspejles): Spørg i familien om nogen har gamle ”Himmelbjerg-souvenirs” og lav en lille udstilling i klassen med dem.');
   t('Eksempeltekst (bør skiftes, så målgruppen afspejles): Øvelse med håndtering af oldsager, som skal beskrives, tegnes og berøres i grupper. Gåtur til Galgebakken, hvor vi hører om stedets historie (hængninger). På hjemturen samler vi en stok, som skal snittes til en ”Himmelbjergstok” i snitteværksted på Gl. Rye Mølle.');
+  t('Email');
+  t('Email til tilmelding');
   t('Emneområde');
   t('Er der inspirationsmateriale tilknyttet besøget/forløbet? Her kan du uploade materialet.');
   t('Er der undervisningsmateriale tilknyttet besøget/forløbet? Her kan du uploade materialet');
   t('Faciliteter');
   t('Fag');
+  t('Forberedelse');
   t('Forløbstype');
   t('Formål');
   t('Forslag til forberedelse og/eller efterbehandling i daginstitutionen');
@@ -1907,14 +2102,17 @@ At opnå kendskab til...
   t('Message form');
   t('Målgruppe');
   t('Overordnet målgruppe');
+  t('Passed review');
   t('Periode');
   t('Pris');
   t('Skriv ikke jeres faste fysiske adresse her, den har vi allerede. Anvend dette felt til ekstraoplysninger om forløbets sted: Eks. \'Store Sal\', \'Brug højre indgang - ring på dørklokken\' eller en alternativ adresse end jeres faste fysiske adresse.');
   t('Sted (ekstraoplysninger): Eks. \'Store Sal\', \'Brug højre indgang - ring på dørklokken\' ');
   t('Sæt kryds i alle de aldre, som besøget/forløbet er relevant for.');
+  t('Telefonnummer til tilmelding.');
   t('Tilmelding');
-  t('Tilmeldingsemail');
   t('Tilmeldingsfrist');
+  t('Tlf.nr.');
+  t('Trashed');
   t('Undervisningsmateriale');
   t('Upload et billede/illustration');
   t('Varighed');

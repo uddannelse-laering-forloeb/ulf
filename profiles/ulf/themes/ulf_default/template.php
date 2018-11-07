@@ -213,9 +213,9 @@ function ulf_default_preprocess_node(&$variables) {
     // Fetch location information from the user. Used in the information box to
     // the right when displaying the profile.
     $account = $variables['author'];
-    $variables['profile_address'] = $account->location['street'];
-    $variables['profile_postal_code'] = $account->location['postal_code'];
-    $variables['profile_city'] = $account->location['city'];
+    $variables['profile_address'] = isset($account->location['street']) ? $account->location['street'] : '';
+    $variables['profile_postal_code'] = isset($account->location['postal_code']) ? $account->location['postal_code'] : '';
+    $variables['profile_city'] = isset($account->location['city']) ? $account->location['city'] : '';
   }
 
   // Transport application form

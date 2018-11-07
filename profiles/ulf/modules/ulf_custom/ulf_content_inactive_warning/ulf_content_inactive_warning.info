@@ -1,0 +1,8 @@
+name = Ulf content inactive warning
+description = Notify users of inactive content by mail
+dependencies[] = mail_edit
+dependencies[] = ulf_workflow
+dependencies[] = ulf_admin_panel
+dependencies[] = mimemail
+package = Ulf base
+core = 7.x

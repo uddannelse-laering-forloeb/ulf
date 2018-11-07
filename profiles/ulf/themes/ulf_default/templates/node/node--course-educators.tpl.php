@@ -108,12 +108,15 @@
             <?php print render($content['field_profile_contact']); ?>
           <?php endif; ?>
           <?php print render($content['field_educational_material']); ?>
-          <?php if ($field_place || $field_map_placement['und']['0']['value'] == 'alternative'): ?>
+          <?php if ($field_place || $field_map_placement['und']['0']['value'] == 'alternative' || $field_map_placement['und']['0']['value'] == 'provider'): ?>
             <div class="field--collection-wrapper">
               <div class="field--collection-label"><?php print t('Place');?></div>
               <div class="field--collection-content">
                 <div class="field--collection-item">
                   <?php if ($field_map_placement['und']['0']['value'] == 'alternative' ) : ?>
+                    <?php if (!empty($location['name'])) : ?>
+                      <div><?php print $location['name'] ?></div>
+                    <?php endif; ?>
                     <?php if (!empty($location['street'])) : ?>
                       <div><?php print $location['street'] ?></div>
                     <?php endif; ?>
@@ -126,9 +129,11 @@
                     <?php if (!empty($location['city'])) : ?>
                       <span><?php print $location['city'] ?></span>
                     <?php endif; ?>
-                    <?php if (!empty($location['name'])) : ?>
-                      <div><?php print $location['name'] ?></div>
-                    <?php endif; ?>
+                  <?php endif; ?>
+                  <?php if ($field_map_placement['und']['0']['value'] == 'provider'): ?>
+                    <div><?php print $profile_name; ?></div>
+                    <div><?php print $profile_address; ?></div>
+                    <div><?php print $profile_postal_code; ?> <?php print $profile_city; ?></div>
                   <?php endif; ?>
                   <?php if ($field_place): ?>
                     <p>
@@ -139,16 +144,18 @@
               </div>
             </div>
           <?php endif; ?>
-          <?php if ($field_last_signup_date || $field_signup_link || $field_signup_email) : ?>
+          <?php if ($field_last_signup_date || $field_signup_link || $field_signup_email || $field_signup_phone || $field_signup_description): ?>
             <div class="field--collection-wrapper">
-              <div class="field--collection-label"><?php print t('Signup');?></div>
+              <div class="field--collection-label"><?php print t('Signup');?></div> 
               <div class="field--collection-content">
                 <div class="field--collection-item">
                   <div class="field--collection-item-inner">
                     <div class="field--collection-description">
-                      <?php print render($content['field_last_signup_date']); ?>
+                      <?php print render($content['field_signup_description']); ?>
                       <?php print render($content['field_signup_link']); ?>
                       <?php print render($content['field_signup_email']); ?>
+                      <?php print render($content['field_signup_phone']); ?>
+                      <?php print render($content['field_last_signup_date']); ?>
                     </div>
                   </div>
                 </div>
@@ -269,6 +276,7 @@
       </div>
       <?php
       // We hide the comments and links now so that we can render them later.
+      hide($content['field_registration_form']);
       hide($content['field_duration']);
       hide($content['field_duration_unit']);
       hide($content['field_period']);

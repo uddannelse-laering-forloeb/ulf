@@ -78,7 +78,7 @@ function transportpulje_form_menu() {
  */
 function transportpulje_form_action_info() {
   $actions = array();
-  
+
   $actions['_tpf_change_status_accepted'] = array(
     'type' => 'entityform',
     'label' => t('Change status to accepted (No mail)'),
@@ -379,4 +379,17 @@ function transportpulje_form_preprocess_node(&$variables) {
   if ($variables['type'] == 'course' && $variables['view_mode'] == 'full') {
     drupal_add_css(drupal_get_path('module', 'transportpulje_form') . '/css/transportpulje_form.css');
   }
+}
+
+function transportpulje_form_preprocess_views_view(&$vars) {
+  if ($vars['name'] != 'tpf_requests') {
+    return;
+  }
+
+  // Attach js that adds page to top of table.
+  drupal_add_js(drupal_get_path('module', 'transportpulje_form') . '/js/pager_to_top.js');
+  $variables['scripts'] = drupal_get_js();
+
+  // Add css to style date filter
+  drupal_add_css(drupal_get_path('module', 'transportpulje_form') . '/css/transportpulje_view.css');
 }

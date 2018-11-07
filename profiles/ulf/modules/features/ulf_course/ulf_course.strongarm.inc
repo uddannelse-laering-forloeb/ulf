@@ -14,7 +14,7 @@ function ulf_course_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'additional_settings__active_tab_course';
-  $strongarm->value = 'edit-workflow';
+  $strongarm->value = 'edit-scheduler';
   $export['additional_settings__active_tab_course'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -83,6 +83,9 @@ function ulf_course_strongarm() {
         'locations' => array(
           'weight' => '15',
         ),
+        'scheduler_settings' => array(
+          'weight' => '44',
+        ),
       ),
       'display' => array(
         'ulf_author_pane_entity_view_1' => array(
@@ -110,6 +113,13 @@ function ulf_course_strongarm() {
   $strongarm->name = 'language_content_type_course';
   $strongarm->value = '0';
   $export['language_content_type_course'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'linkchecker_scan_node_course';
+  $strongarm->value = 1;
+  $export['linkchecker_scan_node_course'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
@@ -173,8 +183,78 @@ function ulf_course_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_expand_fieldset_course';
+  $strongarm->value = '0';
+  $export['scheduler_expand_fieldset_course'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_publish_enable_course';
+  $strongarm->value = 1;
+  $export['scheduler_publish_enable_course'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_publish_past_date_course';
+  $strongarm->value = 'publish';
+  $export['scheduler_publish_past_date_course'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_publish_required_course';
+  $strongarm->value = 0;
+  $export['scheduler_publish_required_course'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_publish_revision_course';
+  $strongarm->value = 1;
+  $export['scheduler_publish_revision_course'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_publish_touch_course';
+  $strongarm->value = 0;
+  $export['scheduler_publish_touch_course'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_unpublish_enable_course';
+  $strongarm->value = 1;
+  $export['scheduler_unpublish_enable_course'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_unpublish_required_course';
+  $strongarm->value = 0;
+  $export['scheduler_unpublish_required_course'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_unpublish_revision_course';
+  $strongarm->value = 1;
+  $export['scheduler_unpublish_revision_course'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'scheduler_use_vertical_tabs_course';
+  $strongarm->value = '1';
+  $export['scheduler_use_vertical_tabs_course'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'workbench_moderation_default_state_course';
-  $strongarm->value = 'needs_review';
+  $strongarm->value = 'draft';
   $export['workbench_moderation_default_state_course'] = $strongarm;
 
   return $export;

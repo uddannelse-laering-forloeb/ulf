@@ -1,5 +1,26 @@
 # ULF changelog
 
+## 2.6.0
+
+* ULF-2184: Made course and target audience fields mandatory (126).
+* ULF-2185: Added place = user address when "show provider address" is selected (129).
+* ULF-2186: Added rich text area (signup description) (130).
+* ULF-2188: Moved "location name" to top of address (138).
+* ULF-2189: Changed texts for "target audience" field (143).
+* ULF-2191: Changed buttons for rich text editor (150).
+* ULF-2192: Changed text for material box (160).
+* ULF-2193: Moved fields and relabeled field (172).
+* Added package.json to ulf_default for installing gulp.
+* Changed ulf_default gulp setup to minify scss and removed sourcemaps.
+* KVF-58: Added filtering to top of transportpulje view.
+* KVF-59: Added pagination to top of transportpulje view.
+* ULF-2194: Added signup_phone field (179).
+* ULF-2199: Added "pr. hour" and "pr. half hour" to price (139).
+* ULF-2200: Moved field and changed label (171).
+* ULF-2201: Restyled form and changed help text (173).
+* ULF-2133: Updated workflow, refacturing of code.
+* ULF-2230: Removed dot.
+
 # v2.5.x
 
 

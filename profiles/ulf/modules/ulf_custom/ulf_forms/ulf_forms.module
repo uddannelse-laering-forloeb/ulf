@@ -8,13 +8,12 @@
  * Implements hook_form_alter().
  */
 function ulf_forms_form_alter(&$form, &$form_state, $form_id) {
-
-  // @TODO: Why is this add to all forms across the whole site? Please add
-  //        comment!
-  $path = drupal_get_path('module', 'ulf_forms');
-  $form['#attached']['js'][] = $path . '/js/jquery.imagesloaded.js';
-  $form['#attached']['js'][] = $path . '/js/jquery.imgareaselect.dev.js';
-  $form['#attached']['css'][] = $path . '/css/node-form-styles.css';
+  if (isset($form['#node_edit_form'])) {
+    $path = drupal_get_path('module', 'ulf_forms');
+    $form['#attached']['js'][] = $path . '/js/jquery.imagesloaded.js';
+    $form['#attached']['js'][] = $path . '/js/jquery.imgareaselect.dev.js';
+    $form['#attached']['css'][] = $path . '/css/node-form-styles.css';
+  }
 
   switch ($form_id) {
     // Course node form.

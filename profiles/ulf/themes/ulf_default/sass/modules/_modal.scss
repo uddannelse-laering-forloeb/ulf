@@ -8,7 +8,7 @@
 
 .modal {
   &--wrapper {
-    @include modal-dialog();
+    @include modal-dialog(800px);
   }
 
   &--header {

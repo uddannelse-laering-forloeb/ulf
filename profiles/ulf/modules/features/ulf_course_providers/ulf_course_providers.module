@@ -12,7 +12,20 @@ include_once 'ulf_course_providers.features.inc';
  * @param $items
  */
 function ulf_course_providers_menu_alter(&$items) {
-  $items['user/%user']['access callback'] = '_ulf_course_providers_profile_access';
+  $items['user/%user/view']['access callback'] = '_ulf_course_providers_profile_access';
+}
+
+
+/**
+ * Implements hook_form_FORMID_alter().
+ */
+function ulf_course_providers_form_user_register_form_alter(&$form, &$form_state) {
+  _ulf_course_providers_cleanup_form($form);
+  _ulf_course_providers_cleanup_register_form($form);
+}
+
+function ulf_course_providers_form_user_profile_form_alter(&$form, &$form_state) {
+  _ulf_course_providers_cleanup_form($form);
 }
 
 /**
@@ -34,11 +47,54 @@ function ulf_course_providers_permission() {
  *
  * Allow view access to blocked users.
  */
-function _ulf_course_providers_profile_access($user) {
+function _ulf_course_providers_profile_access() {
+  $user = user_load(arg(1));
   if (user_access('view_blocked_users') || $user->status > 0) {
     return TRUE;
   }
   else {
     return FALSE;
   }
+}
+
+/**
+ * Modify the user form.
+ *
+ * @param $form
+ *   The form we modify.
+ */
+function _ulf_course_providers_cleanup_form(&$form) {
+  if (!user_access('administer users')) {
+    $form['#fieldgroups']['group_editor_settings']->format_type = 'hidden';
+    $form['field_bypass_workflow']['#access'] = FALSE;
+    $form['field_editor_info']['#access'] = FALSE;
+    $form['#after_build'][] = '_ulf_course_providers_user_form_after_build';
+  }
+}
+
+/**
+ * Modify the user form.
+ *
+ * @param $form
+ *   The form we modify.
+ */
+function _ulf_course_providers_cleanup_register_form(&$form) {
+  $form['field_profile_description'][LANGUAGE_NONE]['0']['format']['#access'] = FALSE;
+
+}
+
+
+/**
+ * Modify signup form.
+ *
+ * @param $form
+ * @return mixed
+ */
+function _ulf_course_providers_user_form_after_build($form) {
+  if (isset($form['field_profile_description'])) {
+    $form['field_profile_description'][LANGUAGE_NONE]['0']['format']['#access'] = FALSE;
+  }
+  $form['field_profile_map_placement']['#access'] = FALSE;
+
+  return $form;
 }

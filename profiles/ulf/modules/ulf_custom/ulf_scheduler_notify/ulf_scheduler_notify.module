@@ -1,47 +1,104 @@
 <?php
+
 /**
-* Implements hook_cron().
- *
- *
-*/
+ * Implements hook_cron().
+ */
 function ulf_scheduler_notify_cron() {
+  _ulf_scheduler_notify_cron_cleanup();
+  _ulf_scheduler_notify_cron_send_mail();
+
+}
+
+/**
+ * Send notification mail warning before unpublishing content.
+ */
+function _ulf_scheduler_notify_cron_send_mail() {
   $now = time();
-  $workflow_send_mail = variable_get('ulf_workflow_send_mail');
-  $site_mail_recipient = variable_get('ulf_workflow_local_recipient');
-
-  // Get comment related to this order profile.
-  $query = db_select('scheduler_notify', 's');
+  // Warning period 1 week.
+  $warning_period = 604800;
+  // CHeck scheduler db for unpublish on date.
+  $query = db_select('scheduler', 's');
+  $query->leftJoin('scheduler_notify', 'n', 's.nid = n.nid');
   $query->fields('s');
-  $query ->condition('s.send_mail_on', $now, '<');
-  $result = $query->execute();
+  $query->fields('n', array('send_mail_on'));
+  $query->condition('s.unpublish_on', $now + $warning_period, '<');
+  $result = $query->execute()->fetchAllAssoc('nid');
+
   foreach ($result as $job) {
-    $nid = $job->nid;
-    $uid = $job->uid;
-    $jobid = $job->job_id;
-
-    $node = node_load($nid);
-    $user = user_load($uid);
-
-    $to = $user->mail;
-
-    // If site mail recipient is active override receiving email address.
-    if ($site_mail_recipient > 0) {
-      $site_mail_recipient = !empty(variable_get('email_workflow_recipient')) ? variable_get('email_workflow_recipient') : variable_get('mimemail_mail');
-      $to = $site_mail_recipient;
+    // If no date is set. Send mail.
+    if (!isset($job->send_mail_on)) {
+      // Get related node.
+      $node = node_load($job->nid);
+      // Check for node type.
+      if($node->type != 'news') {
+        // Send mail
+        _send_schedule_notification_warning_mail($node);
+        // Set send_mail_on date to now (The time where a warning mail was sent)
+        // This way we don't send another on next cron run.
+        db_insert('scheduler_notify')
+          ->fields(array(
+            'nid' => $node->nid,
+            'uid' => $node->uid,
+            'send_mail_on' => $now,
+            'latest_unpublish_date' => $job->unpublish_on
+          ))
+          ->execute();
+      }
     }
-
-    // Provide additional parameters.
-    $params['user'] = $user;
-    $params['node'] = $node;
-
-    if ($workflow_send_mail > 0 && !empty($node) && !empty($to)) {
-      drupal_mail('ulf_scheduler_notify', 'week_prior_unpublishing', $to, 'da', $params);
-    }
-    // Remove entry so we don't send more mails.
-    db_delete('scheduler_notify')
-      ->condition('job_id', $jobid)
-      ->execute();
   }
+}
+
+/**
+ * Cleanup database to prepare for a new warning mail form the same node.
+ */
+function _ulf_scheduler_notify_cron_cleanup() {
+  // Get all entries from scheduler and scheduler notify tables.
+  $query = db_select('scheduler_notify', 'n');
+  $query->fields('n');
+  $results = $query->execute()->fetchAllAssoc('nid');
+
+  $scheduler_query = db_select('scheduler', 'n');
+  $scheduler_query->fields('n');
+  $scheduler_results = $scheduler_query->execute()->fetchAllAssoc('nid');
+
+
+  foreach ($results as $result) {
+    // If scheduler does not have a node id for the schedule_notify id
+    // we can safely delete it from notify table since there is no upcomming
+    // unpublishing.
+    if (!array_key_exists($result->nid, $scheduler_results)) {
+      // Remove entry so we can create a new in the future
+      db_delete('scheduler_notify')
+        ->condition('job_id', $result->job_id)
+        ->execute();
+    }
+    else {
+      // If dates between scheduler and schedular_notify are not identical we
+      // can assume the scheduled unpublishing date has changed. We delete the
+      // scheduler notify entry and prepare for a new eventual warning mail.
+      if ($result->latest_unpublish_date != $scheduler_results[$result->nid]->unpublish_on) {
+        db_delete('scheduler_notify')
+          ->condition('job_id', $result->job_id)
+          ->execute();
+      }
+    }
+  }
+}
+
+/**
+ * Create and send mail to author when their content is about to be automatically unpublished.
+ *
+ * @param $node
+ *   The node that the mail relates to.
+ */
+function _send_schedule_notification_warning_mail($node) {
+  // Get author fields.
+  $user = user_load($node->uid);
+
+  // Set recipient.
+  $to = $user->mail;
+
+  _ulf_scheduler_notify_mail_send_mail('week_prior_unpublishing', $to, $user, $node);
 }
 
 
@@ -69,6 +126,7 @@ function ulf_scheduler_notify_mail_edit_text($mailkey, $language) {
   $return = array();
   if ($mailkey == 'week_prior_unpublishing') {
     $return['subject'] = 'Some of your content is about to be unpublished on [site:name]';
+    $return['always'] = TRUE;
     $return['body'] =
       'The content "[node:title]" will be unpublished in seven days.
 
@@ -76,7 +134,6 @@ This is an automated message created by [site:name].';
     return $return;
   }
 }
-
 
 /**
  * Implements hook_mail_edit_token_types().
@@ -87,4 +144,40 @@ This is an automated message created by [site:name].';
  */
 function ulf_scheduler_notify_mail_edit_token_types($mailkey) {
   return user_mail_edit_token_types($mailkey);
+}
+
+/**
+ * Get language object from string.
+ *
+ * @param $language
+ *  The language code.
+ * @return mixed
+ *   An array of languages.
+ */
+function _ulf_scheduler_workflow_get_language_object($language = 'da') {
+  $installed_languages = language_list();
+  return $installed_languages[$language];
+}
+
+/**
+ * Send the mail
+ *
+ * @param $key
+ *  The mail key to identify the mail by.
+ * @param $to
+ *  The email address to send to.
+ * @param $user
+ *   The user that the mail relates to.
+ * @param null $node
+ *   The node that the mail relates to.
+ */
+function _ulf_scheduler_notify_mail_send_mail($key, $to, $user, $node = NULL) {
+  $module = 'ulf_scheduler_notify';
+  // Get language from user obj.
+  $language = _ulf_scheduler_workflow_get_language_object($user->language);
+
+  // Provide additional parameters.
+  $params['user'] = $user;
+  $params['node'] = $node;
+  drupal_mail($module, $key, $to, $language, $params);
 }

@@ -85,3 +85,28 @@ label.option {
 .form-wrapper.captcha {
   margin-bottom: $boxlist-padding;
 }
+
+.entitytype-end_user_message-form .counter {
+  position: absolute;
+  right: 1.5em;
+  left: auto;
+  font-size: 0.8em;
+}
+
+.entitytype-end_user_message-form .field-name-field-message-body .description {
+  margin-bottom: 1em;
+  margin-top: 1.5em;
+}
+
+.page-user form label,
+.entitytype-end_user_message-form form label {
+  font-weight: bold;
+
+  &.option {
+    font-weight: normal;
+  }
+}
+
+.page-user form fieldset{
+  margin: 1.5em 0;
+}

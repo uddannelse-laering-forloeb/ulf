@@ -35,7 +35,7 @@ function transportpulje_form_field_default_field_instances() {
       'user_register_form' => FALSE,
     ),
     'widget' => array(
-      'active' => 1,  
+      'active' => 1,
       'module' => 'text',
       'settings' => array(
         'maxlength_js' => 0,
