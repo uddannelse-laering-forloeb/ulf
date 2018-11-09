@@ -55,7 +55,7 @@ function ulf_update_7102() {
  * Disable seven theme.
  */
 function ulf_update_7103() {
-  theme_disable(['ulf_admin']);
+  theme_disable(['seven']);
 }
 
 /**
