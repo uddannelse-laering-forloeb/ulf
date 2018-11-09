@@ -104,6 +104,7 @@
         <?php print $content_by_user_school; ?>
         <?php print $content_by_user_youth; ?>
         <?php print $content_by_user_courses; ?>
+        <?php print $content_by_user_news; ?>
       </div>
     </div>
   </div>

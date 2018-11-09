@@ -1,18 +1,18 @@
 <?php
 /**
  * @file
- * ulf_news.features.field_instance.inc
+ * ulf_course_provider_news.features.field_instance.inc
  */
 
 /**
  * Implements hook_field_default_field_instances().
  */
-function ulf_news_field_default_field_instances() {
+function ulf_course_provider_news_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-news-field_content'.
-  $field_instances['node-news-field_content'] = array(
-    'bundle' => 'news',
+  // Exported field_instance: 'node-news_course_provider-field_content'.
+  $field_instances['node-news_course_provider-field_content'] = array(
+    'bundle' => 'news_course_provider',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -22,14 +22,7 @@ function ulf_news_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 2,
-      ),
-      'full' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 2,
+        'weight' => 1,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -42,7 +35,7 @@ function ulf_news_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_content',
     'label' => 'Indhold',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'text_processing' => 1,
       'user_register_form' => FALSE,
@@ -62,9 +55,49 @@ function ulf_news_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-news-field_image'.
-  $field_instances['node-news-field_image'] = array(
-    'bundle' => 'news',
+  // Exported field_instance:
+  // 'node-news_course_provider-field_further_information'.
+  $field_instances['node-news_course_provider-field_further_information'] = array(
+    'bundle' => 'news_course_provider',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Add further information',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'field_collection',
+        'settings' => array(
+          'view_mode' => 'full',
+        ),
+        'type' => 'field_collection_fields',
+        'weight' => 3,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_further_information',
+    'label' => 'Yderligere information',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'field_collection',
+      'settings' => array(),
+      'type' => 'field_collection_embed',
+      'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance: 'node-news_course_provider-field_image'.
+  $field_instances['node-news_course_provider-field_image'] = array(
+    'bundle' => 'news_course_provider',
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -76,17 +109,7 @@ function ulf_news_field_default_field_instances() {
           'image_style' => 'node_display',
         ),
         'type' => 'image',
-        'weight' => 0,
-      ),
-      'full' => array(
-        'label' => 'hidden',
-        'module' => 'image',
-        'settings' => array(
-          'image_link' => '',
-          'image_style' => 'panorama',
-        ),
-        'type' => 'image',
-        'weight' => 0,
+        'weight' => 2,
       ),
       'teaser' => array(
         'label' => 'hidden',
@@ -154,9 +177,51 @@ function ulf_news_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-news-field_teaser'.
-  $field_instances['node-news-field_teaser'] = array(
-    'bundle' => 'news',
+  // Exported field_instance: 'node-news_course_provider-field_passed_review'.
+  $field_instances['node-news_course_provider-field_passed_review'] = array(
+    'bundle' => 'news_course_provider',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 5,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 3,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_passed_review',
+    'label' => 'Passed review',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 9,
+    ),
+  );
+
+  // Exported field_instance: 'node-news_course_provider-field_teaser'.
+  $field_instances['node-news_course_provider-field_teaser'] = array(
+    'bundle' => 'news_course_provider',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -166,14 +231,7 @@ function ulf_news_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 1,
-      ),
-      'full' => array(
-        'label' => 'hidden',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 1,
+        'weight' => 0,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -195,6 +253,10 @@ function ulf_news_field_default_field_instances() {
       'active' => 1,
       'module' => 'text',
       'settings' => array(
+        'maxlength_js' => '',
+        'maxlength_js_enforce' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'maxlength_js_truncate_html' => 0,
         'rows' => 5,
       ),
       'type' => 'text_textarea',
@@ -202,11 +264,57 @@ function ulf_news_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-news_course_provider-field_trashed'.
+  $field_instances['node-news_course_provider-field_trashed'] = array(
+    'bundle' => 'news_course_provider',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 4,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 4,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_trashed',
+    'label' => 'Trashed',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 11,
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
+  t('Add further information');
   t('Indhold');
   t('Manchet');
+  t('Passed review');
+  t('Trashed');
   t('Upload et billede/illustration');
+  t('Yderligere information');
 
   return $field_instances;
 }

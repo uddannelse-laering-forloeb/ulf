@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Ulf course provider news feature.
+ */
+
+include_once 'ulf_course_provider_news.features.inc';

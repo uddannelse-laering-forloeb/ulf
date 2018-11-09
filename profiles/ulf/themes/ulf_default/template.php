@@ -138,7 +138,7 @@ function ulf_default_preprocess_node(&$variables) {
     $variables['theme_hook_suggestions'][] = 'node__default_teaser';
 
     // Set teaser text and new teaser template suggestion for news.
-    if ($variables['type'] == 'news') {
+    if ($variables['type'] == 'news' || $variables['type'] == 'news_course_provider' ) {
       $variables['teaser_content'] = _ulf_default_teaser_filter($variables['content']['field_teaser']['0']['#markup']);
       $variables['theme_hook_suggestions'][] = 'node__news_teaser';
     }
@@ -225,6 +225,12 @@ function ulf_default_preprocess_node(&$variables) {
       $variables['latest_news_titles'] = module_invoke('views', 'block_view', 'ulf_news_archive-block_1');
       $variables['group_type'] = 'news';
       break;
+    case 'news_course_provider':
+      // Provide newsletter block for news pages.
+      $variables['newsletter_block'] = module_invoke('mailchimp_signup', 'block_view', 'signup_to_newsletter');
+      $variables['latest_news_titles'] = module_invoke('views', 'block_view', 'ulf_news_archive-block_1');
+      $variables['group_type'] = 'news';
+      break;
   }
 
   // Add publishing action
@@ -241,7 +247,7 @@ function ulf_default_preprocess_node(&$variables) {
   $variables['profile_name'] = $author_wrapper->field_profile_name->value();
 
   // Display author meta data for courses.
-  if (($variables['type'] == 'course'|| $variables['type'] == 'course_educators') &&
+  if (($variables['type'] == 'course'|| $variables['type'] == 'course_educators' || $variables['type'] == 'news_course_provider' ) &&
     ($variables['view_mode'] == 'full' || $variables['view_mode'] == 'print')) {
 
     $variables['profile_phone'] = $author_wrapper->field_profile_phone->value();
@@ -268,6 +274,7 @@ function ulf_default_preprocess_user_profile(&$variables) {
   $variables['content_by_user_school'] = views_embed_view('ulf_content_by_user', 'block_3');
   $variables['content_by_user_youth'] = views_embed_view('ulf_content_by_user', 'block_1');
   $variables['content_by_user_courses'] = views_embed_view('ulf_content_by_user', 'block_2');
+  $variables['content_by_user_news'] = views_embed_view('ulf_content_by_user', 'block');
 
   // Fetch location information from the user. Used in the information box to
   // the right when displaying the profile.

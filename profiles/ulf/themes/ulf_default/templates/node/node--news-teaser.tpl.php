@@ -82,7 +82,12 @@
 <article class="teaser is-<?php print $group_type; ?>">
   <header>
     <h2 class="teaser--header"><a href="/node/<?php print $nid; ?>"><?php print render($title); ?></a></h2>
-    <p class="teaser--type"><?php print format_date($created, 'dmy'); ?></p>
+    <p class="teaser--type">
+      <?php if($type == 'news_course_provider') : ?>
+        Af <?php print $profile_name; ?> - 
+      <?php endif; ?>
+      <?php print format_date($created, 'dmy'); ?>
+    </p>
     <p><?php print $teaser_content; ?></p>
     <p class="teaser--type-read-more"><a href="/node/<?php print $nid; ?>"><?php print t('Read more'); ?></a></p>
   </header>
