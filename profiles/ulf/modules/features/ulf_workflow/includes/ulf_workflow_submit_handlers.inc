@@ -33,7 +33,10 @@ function _ulf_workflow_editor_publish($form, &$form_state) {
   // Don't attempt to send mail on node create (Form node has no nid).
   // This is handled in hook_node_insert to ensure full node entity.
   if (property_exists($form_state['node'], 'nid')) {
-    _send_published_mail($form['#node']);
+    _send_published_mail(
+      $form['#node'],
+      isset($form_state['values']['publish_on']) ? strtotime($form_state['values']['publish_on']) : FALSE
+    );
   }
 }
 

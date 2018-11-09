@@ -6,14 +6,17 @@
  * @param $node
  *   The node that the mail relates to.
  */
-function _send_published_mail($node) {
+function _send_published_mail($node, $planned = FALSE) {
   // Get author fields.
   $user = user_load($node->uid);
 
   // Set recipient.
   $to = $user->mail;
-
-  _ulf_workflow_mail_send_mail('published_mail_author', $to, $user, $node);
+  if ($planned) {
+    _ulf_workflow_mail_send_mail('planned_publishing_author', $to, $user, $node, NULL, $planned);
+  } else {
+    _ulf_workflow_mail_send_mail('published_mail_author', $to, $user, $node);
+  }
 }
 
 /**
@@ -48,7 +51,6 @@ function _send_unpublished_mail($node) {
   _ulf_workflow_mail_send_mail('unpublished_mail_author', $to, $user, $node);
 }
 
-
 /**
  * Create and send mail to editor when new draft needs review.
  *
@@ -65,7 +67,6 @@ function _send_revision_ready_mail($node) {
   _ulf_workflow_mail_send_mail('revision_ready_mail_admin', $to, $user, $node);
 }
 
-
 /**
  * Create and send mail to editor when a user has been changed.
  *
@@ -79,7 +80,6 @@ function _send_user_edited_mail($user, $user_changes) {
   _ulf_workflow_mail_send_mail('user_edited_mail_admin', $to, $user, NULL,
     $user_changes);
 }
-
 
 /**
  * Create and send mail to author when an element has been trashed.
@@ -96,7 +96,6 @@ function _send_author_content_trashed_mail($node) {
 
   _ulf_workflow_mail_send_mail('trashed_mail_author', $to, $user, $node);
 }
-
 
 /**
  * Create and send mail to content provider when an element has been assigned to them.
@@ -127,9 +126,9 @@ function ulf_workflow_mailkeys() {
     'trashed_mail_admin' => t('Mail sent to admin(Site mail address) when a user trashes their content.'),
     'content_assigned_mail' => t('Mail sent to course providers when an editor creates content and assigns it to them.'),
     'published_mail_admin' => t('Mail sent to admin when a course provider publishes content.'),
+    'planned_publishing_author' => t('Mail sent when a node is planned for publishing, and not immediately published')
   ];
 }
-
 
 /**
  * Implements hook_mail_edit_text().
@@ -228,6 +227,16 @@ This is an automated message created by [site:name].';
 
 This is an automated message created by [site:name].';
       break;
+
+    // Planned publishing mail.
+    case 'planned_publishing_author':
+      $return['subject'] = 'Content passed review and is planned for publishing on [site:name]';
+      $return['always'] = TRUE;
+      $return['body'] =
+        'The content: [node:title] has passed review and is planned for publishing on [ulf_workflow:publishing_date].
+
+This is an automated message created by [site:name].';
+      break;
   }
   return $return;
 }
@@ -290,7 +299,8 @@ function _ulf_workflow_mail_send_mail(
   $to,
   $user,
   $node = NULL,
-  $user_changes = NULL
+  $user_changes = NULL,
+  $publishing_date = NULL
 ) {
   $module = 'ulf_workflow';
   // Get language from user obj.
@@ -300,6 +310,7 @@ function _ulf_workflow_mail_send_mail(
   $params['user'] = $user;
   $params['node'] = $node;
   $params['user_changes'] = $user_changes;
+  $params['publishing_date'] = date('d/m/Y - H:i', $publishing_date);
   drupal_mail($module, $key, $to, $language, $params);
 }
 
@@ -313,6 +324,10 @@ function ulf_workflow_token_info() {
   $info['tokens']['ulf_workflow']['user_changes'] = [
     'name' => t('User changes'),
     'description' => t("Lists the user changes."),
+  ];
+  $info['tokens']['ulf_workflow']['publishing_date'] = [
+    'name' => t('Publishing date'),
+    'description' => t("Display publishing date from form."),
   ];
   return $info;
 }
@@ -335,6 +350,17 @@ function ulf_workflow_tokens(
       switch ($name) {
         case 'user_changes':
           $replacements[$original] = implode("\r\n", $user_changes);
+          break;
+      }
+    }
+  }
+  if ($type == 'ulf_workflow' && !empty($data['publishing_date'])) {
+    $publishing_date = $data['publishing_date'];
+
+    foreach ($tokens as $name => $original) {
+      switch ($name) {
+        case 'publishing_date':
+          $replacements[$original] = $publishing_date;
           break;
       }
     }
@@ -528,6 +554,8 @@ function ulf_workflow_mail_alter(&$message) {
     'revision_ready_mail_admin',
     'user_edited_mail_admin',
     'trashed_mail_admin',
+    'published_mail_admin',
+    'register_pending_approval_admin'
   );
 
   if (in_array($message['key'], $workflow_email_keys)) {

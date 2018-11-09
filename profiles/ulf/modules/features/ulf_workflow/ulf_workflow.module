@@ -236,7 +236,13 @@ function ulf_workflow_node_insert($node) {
       _send_published_mail($node);
     }
 
-    if ($node->workbench_moderation_state_new == 'needs_review') {
+    // Send mail for planned publishing.
+    if ($node->workbench_moderation_state_new == 'needs_review' && user_access('moderate content from needs_review to published' && $node->publish_on > 0)) {
+      _send_published_mail($node, $node->publish_on);
+    }
+
+    // Senned mail for revisioning
+    if ($node->workbench_moderation_state_new == 'needs_review' && $node->publish_on == 0) {
       _send_revision_ready_mail($node);
     }
 

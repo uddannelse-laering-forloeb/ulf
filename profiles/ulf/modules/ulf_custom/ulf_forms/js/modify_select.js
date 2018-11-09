@@ -30,7 +30,7 @@
 
         var input = parent.find('input');
 
-        if (input.attr('checked') !== 'checked') {
+        if (!input.prop('checked')) {
           parent.addClass('ulf-forms--child-select-hidden');
         }
 
@@ -50,13 +50,14 @@
       // Set listeners and classes for parent elements.
       $('.ulf-forms--parent-select').each(function () {
         var self = $(this);
-        var classes = self.attr('class');
+        var classes = self.prop('class');
         var group = classes.match(/ulf-forms--select-group-\d+/g);
+        var selfInput = self.find('input');
 
-        self.find('input').on('change', function () {
+        selfInput.on('change', function () {
           var input = $(this);
 
-          if (input.attr('checked') !== 'checked') {
+          if (!input.prop('checked')) {
             var child_selects = $('.' + group + '.ulf-forms--child-select');
 
             child_selects.addClass('ulf-forms--child-select-hidden');
@@ -74,7 +75,7 @@
           }
         });
 
-        if (self.find('input').attr('checked') === 'checked') {
+        if (selfInput.prop('checked')) {
           $('.' + group + '.ulf-forms--child-select')
           .removeClass('ulf-forms--child-select-hidden');
           self.addClass('is-checked');

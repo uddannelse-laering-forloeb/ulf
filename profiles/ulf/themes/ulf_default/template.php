@@ -624,7 +624,15 @@ function ulf_default_views_post_render(&$view, &$output, &$cache) {
 
     $ranges = _ulf_default_create_ranges($classes);
 
-    $output = implode('<br>', $ranges) . '<br>' . implode('<br>', $other_results);
+    $output = '';
+
+    if (!empty($ranges)) {
+      $output .= implode('<br>', $ranges) . '<br>';
+    }
+
+    if (!empty($other_results)) {
+      $output .= implode('<br>', $other_results);
+    }
   }
 }
 
@@ -637,6 +645,10 @@ function ulf_default_views_post_render(&$view, &$output, &$cache) {
  * @return array
  */
 function _ulf_default_create_ranges($arr) {
+  if (empty($arr)) {
+    return $arr;
+  }
+
   asort($arr);
 
   $ranges = [];
