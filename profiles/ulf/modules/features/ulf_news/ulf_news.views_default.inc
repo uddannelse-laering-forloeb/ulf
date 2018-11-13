@@ -124,6 +124,7 @@ function ulf_news_views_default_views() {
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
+    'news_course_provider' => 'news_course_provider',
     'news' => 'news',
   );
   /* Filter criterion: Content: Published */
@@ -271,6 +272,7 @@ function ulf_news_views_default_views() {
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
+    'news_course_provider' => 'news_course_provider',
     'news' => 'news',
   );
   /* Filter criterion: Global: Combine fields filter */

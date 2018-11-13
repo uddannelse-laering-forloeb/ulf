@@ -893,6 +893,7 @@ function ulf_workflow_views_default_views() {
     t('Bilag'),
     t('Fag'),
     t('Kurset er relevant for pædagoger, der arbejder med læreplanstemaerne'),
+    t('Redigér-link'),
     t('Antal'),
   );
   $export['ulf_editor_tool'] = $view;
@@ -1247,6 +1248,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['filters']['type']['relationship'] = 'vid';
   $handler->display->display_options['filters']['type']['value'] = array(
     'course_educators' => 'course_educators',
+    'news_course_provider' => 'news_course_provider',
     'course' => 'course',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
@@ -1393,6 +1395,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['filters']['type']['relationship'] = 'vid';
   $handler->display->display_options['filters']['type']['value'] = array(
     'course_educators' => 'course_educators',
+    'news_course_provider' => 'news_course_provider',
     'course' => 'course',
   );
   /* Filter criterion: Content: Published */
@@ -1541,6 +1544,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['filters']['type']['relationship'] = 'vid';
   $handler->display->display_options['filters']['type']['value'] = array(
     'course_educators' => 'course_educators',
+    'news_course_provider' => 'news_course_provider',
     'course' => 'course',
   );
   /* Filter criterion: Content: Published */
@@ -1700,6 +1704,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['filters']['type']['relationship'] = 'vid';
   $handler->display->display_options['filters']['type']['value'] = array(
     'course_educators' => 'course_educators',
+    'news_course_provider' => 'news_course_provider',
     'course' => 'course',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
@@ -2434,6 +2439,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['filters']['type']['relationship'] = 'vid';
   $handler->display->display_options['filters']['type']['value'] = array(
     'course_educators' => 'course_educators',
+    'news_course_provider' => 'news_course_provider',
     'course' => 'course',
   );
   /* Filter criterion: Content: Trashed (field_trashed) */

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Default theme implementation to display a node.
@@ -79,17 +80,69 @@
  * @ingroup themeable
  */
 ?>
-<article class="teaser is-<?php print $group_type; ?>">
-  <header>
-    <h2 class="teaser--header"><a href="/node/<?php print $nid; ?>"><?php print render($title); ?></a></h2>
-    <p class="teaser--type">
-      <?php if($type == 'news_course_provider') : ?>
-        Af <?php print $profile_name; ?> - 
-      <?php endif; ?>
-      <?php print format_date($created, 'dmy'); ?>
-    </p>
-    <p><?php print $teaser_content; ?></p>
-    <p class="teaser--type-read-more"><a href="/node/<?php print $nid; ?>"><?php print t('Read more'); ?></a></p>
-  </header>
-  <figure><a href="/node/<?php print $nid; ?>"><?php print render($content['field_image']); ?></a></figure>
-</article>
+<div class="layout-node">
+  <div class="layout-element-alpha">
+    <div class="layout-element-alpha-inner">
+      <div class="content">
+        <div class="content--image">
+          <h1 class="field--title"><?php print render($title); ?></h1>
+          <?php print render($content['field_image']); ?>
+        </div>
+        <div class="content--main">
+          <p class="teaser--type">Af <?php print $profile_name; ?> - <?php print format_date($created, 'dmy'); ?> </p>
+          <?php
+          // We hide the comments and links now so that we can render them later.
+          hide($content['comments']);
+          hide($content['links']);
+          print render($content);
+          ?>
+        </div>
+        <div class="content--meta">
+          <div class="block--default">
+            <h2 class="block--header">
+              <?php print t('Latest news'); ?>
+            </h2>
+            <div class="block--content">
+              <div class="block--field-text">
+                <?php print render($latest_news_titles['content']); ?>
+              </div>
+            </div>
+          </div>
+          <?php if($newsletter_block) : ?>
+            <div class="block--light">
+              <h2 class="block--header">
+                <?php print t('Signup to newsletter'); ?>
+              </h2>
+              <div class="block--content">
+                <ul class="block--field-text">
+                  <?php print render($newsletter_block['content']); ?>
+                </ul>
+              </div>
+            </div>
+          <?php endif; ?>
+          <div class="block--dark">
+            <div class="block--content">
+              <div class="block--field-label"><?php print $profile_name; ?></div>
+              <div class="block--field-text"><?php print $profile_address; ?></div>
+              <div class="block--field-text"><?php print $profile_postal_code; ?> <?php print $profile_city; ?></div>
+              <br>
+              <?php if (isset($profile_phone)) : ?>
+                <div class="block--field-text">
+                  <p>
+                    <?php print t('Phone')?> <?php print $profile_phone; ?>
+                  </p>
+                </div>
+              <?php endif; ?>
+              <p>
+                <a href="/user/<?php print $uid ?>"><?php print t('View organizer profile'); ?></a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<?php hide($content['links']); ?>
+<?php hide($content['comments']); ?>

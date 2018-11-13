@@ -93,7 +93,7 @@ function ulf_workflow_default_page_manager_pages() {
   );
   $page->menu = array(
     'type' => 'tab',
-    'title' => 'All courses',
+    'title' => 'All workflow content',
     'name' => 'management',
     'weight' => '0',
     'parent' => array(

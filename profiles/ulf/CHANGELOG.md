@@ -20,6 +20,7 @@
 * ULF-2224: Changed target audience for course_educators.
 * Removed unintensional console.log.
 * KVF-60: Changed name filter to contains filter.
+* ULF-2248: Added news for course providers (119)
 
 ## 2.6.0
 
@@ -43,7 +44,6 @@
 * ULF-2230: Removed dot.
 
 # v2.5.x
-
 
 ## 2.5.46
 * SERV-215: Added module updates to contrib modules
