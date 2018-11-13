@@ -51,12 +51,13 @@ function _ulf_workflow_cron_set_unpublishing_date() {
   $query->condition('n.status', 1, '=');
   $result = $query->execute()->fetchAllAssoc('nid');
 
-  // Check for end period and set unpublishing
+  // Check for end period and set unpublishing.
   foreach ($result as $key => $node) {
     if (isset($node->field_period_value2)) {
+      // Set unpublihsing date and add 24 hours minus one second.
       db_update('scheduler')
         ->fields(array(
-          'unpublish_on' => $node->field_period_value2
+          'unpublish_on' => $node->field_period_value2 + 86399
         ))
         ->condition('nid', $node->nid)
         ->execute();
