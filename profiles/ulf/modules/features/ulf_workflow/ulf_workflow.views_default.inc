@@ -1199,11 +1199,12 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['fields']['timestamp']['label'] = 'Last updated';
   $handler->display->display_options['fields']['timestamp']['date_format'] = 'time ago';
   $handler->display->display_options['fields']['timestamp']['second_date_format'] = 'html5_tools_iso8601';
-  /* Field: Content revision: Log message */
-  $handler->display->display_options['fields']['log']['id'] = 'log';
-  $handler->display->display_options['fields']['log']['table'] = 'node_revision';
-  $handler->display->display_options['fields']['log']['field'] = 'log';
-  $handler->display->display_options['fields']['log']['label'] = 'Logbesked';
+  /* Field: Content: Latest log message */
+  $handler->display->display_options['fields']['latest_log_message']['id'] = 'latest_log_message';
+  $handler->display->display_options['fields']['latest_log_message']['table'] = 'node';
+  $handler->display->display_options['fields']['latest_log_message']['field'] = 'latest_log_message';
+  $handler->display->display_options['fields']['latest_log_message']['relationship'] = 'vid';
+  $handler->display->display_options['fields']['latest_log_message']['label'] = 'Seneste kommentar';
   /* Field: Content: Edit link */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
@@ -1655,11 +1656,12 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['fields']['timestamp']['label'] = 'Last updated';
   $handler->display->display_options['fields']['timestamp']['date_format'] = 'time ago';
   $handler->display->display_options['fields']['timestamp']['second_date_format'] = 'html5_tools_iso8601';
-  /* Field: Content revision: Log message */
-  $handler->display->display_options['fields']['log']['id'] = 'log';
-  $handler->display->display_options['fields']['log']['table'] = 'node_revision';
-  $handler->display->display_options['fields']['log']['field'] = 'log';
-  $handler->display->display_options['fields']['log']['label'] = 'Logbesked';
+  /* Field: Content: Latest log message */
+  $handler->display->display_options['fields']['latest_log_message']['id'] = 'latest_log_message';
+  $handler->display->display_options['fields']['latest_log_message']['table'] = 'node';
+  $handler->display->display_options['fields']['latest_log_message']['field'] = 'latest_log_message';
+  $handler->display->display_options['fields']['latest_log_message']['relationship'] = 'vid';
+  $handler->display->display_options['fields']['latest_log_message']['label'] = 'Seneste kommentar';
   /* Field: Content: Edit link */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
@@ -2085,11 +2087,12 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['fields']['field_target_group']['field'] = 'field_target_group';
   $handler->display->display_options['fields']['field_target_group']['relationship'] = 'nid';
   $handler->display->display_options['fields']['field_target_group']['type'] = 'taxonomy_term_reference_plain';
-  /* Field: Content revision: Log message */
-  $handler->display->display_options['fields']['log']['id'] = 'log';
-  $handler->display->display_options['fields']['log']['table'] = 'node_revision';
-  $handler->display->display_options['fields']['log']['field'] = 'log';
-  $handler->display->display_options['fields']['log']['label'] = 'Seneste aktivitet';
+  /* Field: Content: Latest log message */
+  $handler->display->display_options['fields']['latest_log_message']['id'] = 'latest_log_message';
+  $handler->display->display_options['fields']['latest_log_message']['table'] = 'node';
+  $handler->display->display_options['fields']['latest_log_message']['field'] = 'latest_log_message';
+  $handler->display->display_options['fields']['latest_log_message']['relationship'] = 'nid';
+  $handler->display->display_options['fields']['latest_log_message']['label'] = 'Seneste kommentar';
   /* Field: Content: Updated date */
   $handler->display->display_options['fields']['changed']['id'] = 'changed';
   $handler->display->display_options['fields']['changed']['table'] = 'node';
@@ -2825,7 +2828,7 @@ function ulf_workflow_views_default_views() {
     t('Nid'),
     t('Titel'),
     t('Afsender'),
-    t('Logbesked'),
+    t('Seneste kommentar'),
     t('View panes'),
     t('Editor - Unpublished drafts'),
     t('Unpublished drafts'),
@@ -2845,7 +2848,6 @@ function ulf_workflow_views_default_views() {
     t('Shows your content awaiting revisioning or content that you may need to act on before publishing.'),
     t('moderator user'),
     t('Hent indholdet fra en indholdsversion.'),
-    t('Seneste aktivitet'),
     t('Senest opdateret'),
     t('Unpublished'),
     t('Shows your unpublished drafts'),

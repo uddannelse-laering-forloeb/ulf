@@ -37,29 +37,3 @@ function _ulf_workflow_form_validate_image($form, &$form_state) {
     }
   }
 }
-
-
-/**
- * Custom form validation for publishing date set.
- * If a publishing date is set on content users should not be able to manually publish it.
- *
- * @param $form
- *  The form element.
- * @param $form_state
- *  The state of the form.
- */
-function _ulf_workflow_form_validate_publishing_date($form, &$form_state) {
-  /*
-  $clicked_id = $form_state['clicked_button']['#id'];
-  if (!empty($form_state['values']['publish_on'])) {
-    switch ($clicked_id) {
-      case 'edit-publish-editor':
-        form_set_error('publish_on', 'A scheduled publishing date has been set. If you want to manually publish the content you should unset the scheduled publishing date.');
-        break;
-      case 'edit-publish-course-provider':
-        form_set_error('publish_on', 'A scheduled publishing date has been set. If you want to manually publish the content you should unset the scheduled publishing date.');
-        break;
-    }
-  }
-  */
-}

@@ -134,7 +134,8 @@ function ulf_workflow_form_node_form_alter(&$form, &$form_state, $form_id) {
       $readable_state = workbench_moderation_state_load($form['workbench_moderation_state_current']['#value']);
       drupal_set_message(t('The current workflow state for this content is: @state.', array('@state' => $readable_state->label)), 'warning');
     }
-
+    
+    // Set the node action to take.
     $node_action = isset($form['#node']->nid) ? 'edit' : 'add';
 
     // Remove unused fields and actions.
@@ -150,9 +151,6 @@ function ulf_workflow_form_node_form_alter(&$form, &$form_state, $form_id) {
 
     // Add image form validation.
     $form['#validate'][] = '_ulf_workflow_form_validate_image';
-
-    // Add publishing date form validation
-    $form['#validate'][] = '_ulf_workflow_form_validate_publishing_date';
   }
 }
 
@@ -193,6 +191,7 @@ function ulf_workflow_scheduler_api($node, $action) {
       $node_wrapper->save();
       break;
     case 'unpublish' :
+      $node->workbench_moderation_state_new = 'draft';
       _send_unpublished_mail($node);
       break;
     default:
@@ -269,6 +268,30 @@ function ulf_workflow_node_update($node) {
     $_GET['destination'] = 'node/' . $node->nid . '/edit';
   }
 }
+
+/**
+ * Implements hook_node_presave().
+ *
+ * Prevent log from being written twice when saving a new draft for a published node.
+ */
+function ulf_workflow_node_presave($node) {
+  // We use a global variable to check if we are dealing with two log messages
+  // and that we have not written a log message yet.
+  // See the submit handlers
+  global $ulf_workflow_global_log_message;
+  if (isset($ulf_workflow_global_log_message)) {
+    if ($ulf_workflow_global_log_message == 'written') {
+      // Node module will safely handle empty log messages.
+      unset($node->log);
+    }
+    else {
+      $ulf_workflow_global_log_message = 'written';
+    }
+  }
+}
+
+
+
 
 /**
  * Check if user can publish their own content.

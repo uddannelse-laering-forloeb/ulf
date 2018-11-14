@@ -188,7 +188,7 @@ function ulf_default_preprocess_node(&$variables) {
 
         if (isset($term)) {
           $term_wrapper = entity_metadata_wrapper('taxonomy_term', $term);
-          $variables['group_type'] = strtolower($term_wrapper->name->value());
+            $variables['group_type'] = strtolower($term_wrapper->name->value());
         }
       }
 

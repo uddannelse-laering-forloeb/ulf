@@ -44,6 +44,10 @@ function _ulf_workflow_editor_publish($form, &$form_state) {
  * Save action for editors.
  */
 function _ulf_workflow_editor_save($form, &$form_state) {
+  // See ulf_workflow_node_presave about the global scope.
+  global $ulf_workflow_global_log_message;
+  $ulf_workflow_global_log_message = 'writing_twice';
+
   _ulf_workflow_set_unpublishing_date($form, $form_state);
   if ($form['workbench_moderation_state_current']['#value'] == 'needs_review') {
     $form_state['values']['workbench_moderation_state_new'] = 'needs_review';
@@ -90,6 +94,10 @@ function _ulf_workflow_editor_trash($form, &$form_state) {
  * Send to revision action for course providers.
  */
 function _ulf_workflow_course_provider_revision($form, &$form_state) {
+  // See ulf_workflow_node_presave about the global scope.
+  global $ulf_workflow_global_log_message;
+  $ulf_workflow_global_log_message = 'writing_twice';
+
   _ulf_workflow_set_unpublishing_date($form, $form_state);
   drupal_set_message(t('The content has been sent to editorial review'));
   $form_state['values']['workbench_moderation_state_new'] = 'needs_review';
@@ -115,6 +123,10 @@ function _ulf_workflow_course_provider_pull_revision($form, &$form_state) {
  * Save action for course providers.
  */
 function _ulf_workflow_course_provider_save($form, &$form_state) {
+  // See ulf_workflow_node_presave about the global scope.
+  global $ulf_workflow_global_log_message;
+  $ulf_workflow_global_log_message = 'writing_twice';
+
   _ulf_workflow_set_unpublishing_date($form, $form_state);
   if ($form['workbench_moderation_state_current']['#value'] == 'needs_review') {
     $form_state['values']['workbench_moderation_state_new'] = 'needs_review';

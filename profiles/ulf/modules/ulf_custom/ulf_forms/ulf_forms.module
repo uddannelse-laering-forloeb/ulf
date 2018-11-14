@@ -34,7 +34,7 @@ function ulf_forms_form_alter(&$form, &$form_state, $form_id) {
 
       // Latest moderation log.
       if (!empty($form['vid']['#value'])) {
-        $latest_log_message = t('Latest message') . ': ' . ulf_forms_fetch_moderation_log_latest($form['vid']['#value']);
+        $latest_log_message = t('Latest message') . ': ' . ulf_forms_fetch_moderation_log_latest($form['nid']['#value']);
         drupal_set_message($latest_log_message);
       }
 
@@ -114,11 +114,13 @@ function ulf_forms_wysiwyg_editor_settings_alter(&$settings, $context) {
 /**
  * Fetch the latest moderation log.
  */
-function ulf_forms_fetch_moderation_log_latest($vid) {
-  $result = db_select('node_revision', 'n')
-    ->fields('n', array('log'))
-    ->condition('vid', $vid,'=')
-    ->execute()
-    ->fetchAssoc();
-  return $result['log'];
+function ulf_forms_fetch_moderation_log_latest($nid) {
+  $query = db_select('node_revision', 'n');
+  $query->fields('n', array('nid', 'log'));
+  $query->condition('n.nid', $nid, '=');
+  $query->condition('n.log', '', '<>');
+  $query->orderby('n.vid','DESC');
+  $query->range(0,1);
+  $result = $query->execute()->fetchCol(1);
+  return $result[0];
 }
