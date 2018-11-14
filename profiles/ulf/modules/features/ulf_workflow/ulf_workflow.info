@@ -44,3 +44,4 @@ features[workbench_moderation_transitions][] = needs_review:draft
 features[workbench_moderation_transitions][] = needs_review:published
 features[workbench_moderation_transitions][] = published:draft
 features_exclude[dependencies][ctools] = ctools
+files[] = ulf_workflow_handler_latest_log_message.inc

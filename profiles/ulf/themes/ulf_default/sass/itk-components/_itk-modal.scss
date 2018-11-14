@@ -84,9 +84,11 @@
     min-height: 60%;
     width: $width;
     max-width: 90%;
+    max-height: 80vh;
 
+    overflow-y: auto;
     margin: 0 auto;
-    top: -150%;  // Dialog hidden just outside screen display
+    top: -100vw;  // Dialog hidden just outside screen display
     left: 0;
     right: 0;
     position: fixed;
@@ -96,7 +98,6 @@
     transition-timing-function: ease-in-out;
 
     &.is-visible {
-      overflow-y: auto;
       max-height: 90%;
       top: 5%;
 

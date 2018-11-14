@@ -1,7 +1,12 @@
 # ULF changelog
 
-## 2.6.0
+## 2.6.1
+* SUPPORT-1836: Changed workflow state for auto unpublishing.
+* SUPPORT-1835: Changed Contact form mobile display.
+* SUPPORT-1833: Changed log message.
+* SUPPORT-1832: Changed unpublishing time to 23.59.
 
+## 2.6.0
 * ULF-2184: Made course and target audience fields mandatory (126).
 * ULF-2185: Added place = user address when "show provider address" is selected (129).
 * ULF-2186: Added rich text area (signup description) (130).
