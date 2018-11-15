@@ -420,11 +420,7 @@ function ulf_search_settings_default_search_api_server() {
     "machine_name" : "search_node",
     "description" : "",
     "class" : "search_api_search_node_service",
-    "options" : {
-      "host" : "https:\\/\\/riptide.aakb.dk",
-      "apikey" : "17a0605248cee7105cdba634d6604f28",
-      "apikey_readonly" : "dc52d28f7530eb208047c7c422fa8fbf"
-    },
+    "options" : {},
     "enabled" : "1"
   }');
   return $items;
