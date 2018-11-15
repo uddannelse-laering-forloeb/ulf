@@ -441,7 +441,11 @@ function ulf_search_settings_default_search_api_server() {
     "machine_name" : "search_node",
     "description" : "",
     "class" : "search_api_search_node_service",
-    "options" : {},
+    "options" : {
+      "host" : "",
+      "apikey" : "",
+      "apikey_readonly" : ""
+    },
     "enabled" : "1"
   }');
   return $items;
