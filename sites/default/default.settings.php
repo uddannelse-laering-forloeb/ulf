@@ -559,35 +559,34 @@ $conf['search_template_box_course_providers'] = ''; * from being logged in the D
 /**
  * ULF Specific settings
  */
-
 // Search settings
-$conf['search_api_search_node_apikey'] = '';
-$conf['search_api_search_node_apikey_readonly'] = '';
-$conf['search_api_search_node_index_courses'] = '';
-$conf['search_api_search_node_index_educators'] = '';
-$conf['search_api_search_node_index_users'] = '';
+# $conf['search_api_search_node_apikey'] = '';
+# $conf['search_api_search_node_apikey_readonly'] = '';
+# $conf['search_api_search_node_index_courses'] = '';
+# $conf['search_api_search_node_index_educators'] = '';
+# $conf['search_api_search_node_index_users'] = '';
 
 // Search templates
-$conf['search_template_box_courses_dagtilbud'] = '';
-$conf['search_template_box_courses_grundskole'] = '';
-$conf['search_template_box_courses_ungdomsuddannelse'] = '';
-$conf['search_template_box_users'] = '';
-$conf['search_template_box_educators'] = '';
+# $conf['search_template_box_courses_dagtilbud'] = '';
+# $conf['search_template_box_courses_grundskole'] = '';
+# $conf['search_template_box_courses_ungdomsuddannelse'] = '';
+# $conf['search_template_box_users'] = '';
+# $conf['search_template_box_educators'] = '';
 
-$conf['search_template_result_courses_dagtilbud'] = '';
-$conf['search_template_result_courses_grundskole'] = '';
-$conf['search_template_result_courses_ungdomsuddannelse'] = '';
-$conf['search_template_result_users'] = '';
-$conf['search_template_result_educators'] = '';
+# $conf['search_template_result_courses_dagtilbud'] = '';
+# $conf['search_template_result_courses_grundskole'] = '';
+# $conf['search_template_result_courses_ungdomsuddannelse'] = '';
+# $conf['search_template_result_users'] = '';
+# $conf['search_template_result_educators'] = '';
 
-$conf['search_template_pager_courses_dagtilbud'] = '';
-$conf['search_template_pager_courses_grundskole'] = '';
-$conf['search_template_pager_courses_ungdomsuddannelse'] = '';
-$conf['search_template_pager_users'] = '';
-$conf['search_template_pager_educators'] = '';
+# $conf['search_template_pager_courses_dagtilbud'] = '';
+# $conf['search_template_pager_courses_grundskole'] = '';
+# $conf['search_template_pager_courses_ungdomsuddannelse'] = '';
+# $conf['search_template_pager_users'] = '';
+# $conf['search_template_pager_educators'] = '';
 
-$conf['search_template_popup_courses_dagtilbud'] = '';
-$conf['search_template_popup_courses_grundskole'] = '';
-$conf['search_template_popup_courses_ungdomsuddannelse'] = '';
-$conf['search_template_popup_users'] = '';
-$conf['search_template_popup_educators'] = '';
+# $conf['search_template_popup_courses_dagtilbud'] = '';
+# $conf['search_template_popup_courses_grundskole'] = '';
+# $conf['search_template_popup_courses_ungdomsuddannelse'] = '';
+# $conf['search_template_popup_users'] = '';
+# $conf['search_template_popup_educators'] = '';
