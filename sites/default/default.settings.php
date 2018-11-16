@@ -501,7 +501,11 @@ $conf['404_fast_html'] = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN"
  * You can choose to return a fast 404 page earlier for missing pages (as soon
  * as settings.php is loaded) by uncommenting the line below. This speeds up
  * server response time when loading 404 error pages and prevents the 404 error
- * from being logged in the Drupal system log. In order to prevent valid pages
+	$conf['search_template_box_course_dagtilbud'] = '';
+$conf['search_template_box_course_grundskole'] = '';
+$conf['search_template_box_course_ungdomsuddannelse'] = '';
+$conf['search_template_box_users'] = '';
+$conf['search_template_box_course_providers'] = ''; * from being logged in the Drupal system log. In order to prevent valid pages
  * such as image styles and other generated content that may match the
  * '404_fast_html' regular expression from returning 404 errors, it is necessary
  * to add them to the '404_fast_paths_exclude' regular expression above. Make
@@ -551,3 +555,39 @@ $conf['404_fast_html'] = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN"
  * Remove the leading hash signs to disable.
  */
 # $conf['allow_authorize_operations'] = FALSE;
+
+/**
+ * ULF Specific settings
+ */
+
+// Search settings
+$conf['search_api_search_node_apikey'] = '';
+$conf['search_api_search_node_apikey_readonly'] = '';
+$conf['search_api_search_node_index_courses'] = '';
+$conf['search_api_search_node_index_educators'] = '';
+$conf['search_api_search_node_index_users'] = '';
+
+// Search templates
+$conf['search_template_box_courses_dagtilbud'] = '';
+$conf['search_template_box_courses_grundskole'] = '';
+$conf['search_template_box_courses_ungdomsuddannelse'] = '';
+$conf['search_template_box_users'] = '';
+$conf['search_template_box_educators'] = '';
+
+$conf['search_template_result_courses_dagtilbud'] = '';
+$conf['search_template_result_courses_grundskole'] = '';
+$conf['search_template_result_courses_ungdomsuddannelse'] = '';
+$conf['search_template_result_users'] = '';
+$conf['search_template_result_educators'] = '';
+
+$conf['search_template_pager_courses_dagtilbud'] = '';
+$conf['search_template_pager_courses_grundskole'] = '';
+$conf['search_template_pager_courses_ungdomsuddannelse'] = '';
+$conf['search_template_pager_users'] = '';
+$conf['search_template_pager_educators'] = '';
+
+$conf['search_template_popup_courses_dagtilbud'] = '';
+$conf['search_template_popup_courses_grundskole'] = '';
+$conf['search_template_popup_courses_ungdomsuddannelse'] = '';
+$conf['search_template_popup_users'] = '';
+$conf['search_template_popup_educators'] = '';
