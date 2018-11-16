@@ -579,12 +579,6 @@ $conf['search_template_box_course_providers'] = ''; * from being logged in the D
 # $conf['search_template_result_users'] = '';
 # $conf['search_template_result_educators'] = '';
 
-# $conf['search_template_pager_courses_dagtilbud'] = '';
-# $conf['search_template_pager_courses_grundskole'] = '';
-# $conf['search_template_pager_courses_ungdomsuddannelse'] = '';
-# $conf['search_template_pager_users'] = '';
-# $conf['search_template_pager_educators'] = '';
-
 # $conf['search_template_popup_courses_dagtilbud'] = '';
 # $conf['search_template_popup_courses_grundskole'] = '';
 # $conf['search_template_popup_courses_ungdomsuddannelse'] = '';
