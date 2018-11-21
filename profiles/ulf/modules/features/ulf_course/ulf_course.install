@@ -65,3 +65,20 @@ function ulf_course_update_7002() {
   // Remove offer_type term.
   taxonomy_term_delete($offer_type_taxonomy_term->tid);
 }
+
+/**
+ * Change terms order.
+ */
+function ulf_course_update_7100() {
+  $vocabulary = taxonomy_vocabulary_machine_name_load('target_group_sub');
+  if ($vocabulary) {
+    $tree = taxonomy_get_tree($vocabulary->vid);
+    foreach ($tree as $term) {
+      if ($term->name == 'Børn og unge med særlige behov') {
+        $term = taxonomy_term_load($term->tid);
+        $term->weight = -1;
+        taxonomy_term_save($term);
+      }
+    }
+  }
+}

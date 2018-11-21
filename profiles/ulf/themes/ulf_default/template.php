@@ -298,7 +298,8 @@ function ulf_default_preprocess_field(&$variables) {
     'field_duration_unit',
     'field_unit_price',
     'field_price_description',
-    'field_duration_description'
+    'field_duration_description',
+    'field_count_description',
   );
 
   if ($variables['element']['#field_name'] == 'field_relevance_educators') {
@@ -616,12 +617,16 @@ function ulf_default_views_post_render(&$view, &$output, &$cache) {
   // Modify the target groups to collapse "X. klasse" to ranges.
   if ($view->name == 'ulf_course_target_groups') {
     $classes = [];
+    $years = [];
     $other_results = [];
 
     foreach ($view->result as $result) {
       $name = $result->_entity_properties['field_target_group_sub_tid:entity object']->name;
 
-      if (preg_match('/.{1,2}\. klasse/', $name) ) {
+      if (preg_match('/.{1,2} år/', $name) ) {
+        $years[] = str_replace('. år', '', $name);
+      }
+      else if (preg_match('/.{1,2}\. klasse/', $name) ) {
         $classes[] = str_replace('. klasse', '', $name);
       }
       else {
@@ -629,12 +634,17 @@ function ulf_default_views_post_render(&$view, &$output, &$cache) {
       }
     }
 
-    $ranges = _ulf_default_create_ranges($classes);
+    $ranges = _ulf_default_create_ranges($classes, '. klasse');
+    $yearRanges = _ulf_default_create_ranges($years, ' år');
 
     $output = '';
 
     if (!empty($ranges)) {
       $output .= implode('<br>', $ranges) . '<br>';
+    }
+
+    if (!empty($yearRanges)) {
+      $output .= implode('<br>', $yearRanges) . '<br>';
     }
 
     if (!empty($other_results)) {
@@ -651,7 +661,7 @@ function ulf_default_views_post_render(&$view, &$output, &$cache) {
  *
  * @return array
  */
-function _ulf_default_create_ranges($arr) {
+function _ulf_default_create_ranges($arr, $stringEnd) {
   if (empty($arr)) {
     return $arr;
   }
@@ -662,7 +672,6 @@ function _ulf_default_create_ranges($arr) {
   $rangeStart = null;
   $current = null;
   $currentEntry = null;
-  $stringEnd = '. klasse';
   $separator = ' - ';
 
   foreach ($arr as $key => $entry) {

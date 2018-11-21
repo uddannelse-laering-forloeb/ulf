@@ -927,11 +927,7 @@ function ulf_course_field_default_field_instances() {
   // Exported field_instance: 'node-course-field_map_placement'.
   $field_instances['node-course-field_map_placement'] = array(
     'bundle' => 'course',
-    'default_value' => array(
-      0 => array(
-        'value' => 'hide',
-      ),
-    ),
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(

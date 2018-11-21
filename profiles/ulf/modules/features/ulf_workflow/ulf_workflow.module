@@ -170,11 +170,6 @@ function ulf_workflow_user_update(&$edit, $account, $category) {
   }
 
   _send_user_edited_mail($account, $changes_array);
-  
-  global $user;
-  if ($account->uid == $user->uid && !user_access('administer users')) {
-    _send_user_edited_mail($account, $user);
-  }
 }
 
 /**

@@ -730,11 +730,7 @@ function ulf_course_educators_field_default_field_instances() {
   // Exported field_instance: 'node-course_educators-field_map_placement'.
   $field_instances['node-course_educators-field_map_placement'] = array(
     'bundle' => 'course_educators',
-    'default_value' => array(
-      0 => array(
-        'value' => 'hide',
-      ),
-    ),
+    'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
     'display' => array(
@@ -1038,7 +1034,7 @@ function ulf_course_educators_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 16,
+      'weight' => 64,
     ),
   );
 
@@ -1503,7 +1499,7 @@ function ulf_course_educators_field_default_field_instances() {
       'settings' => array(
         'apply_chosen' => '',
       ),
-      'type' => 'options_select',
+      'type' => 'options_buttons',
       'weight' => 2,
     ),
   );

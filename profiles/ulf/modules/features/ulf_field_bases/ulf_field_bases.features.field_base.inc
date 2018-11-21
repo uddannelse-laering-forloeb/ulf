@@ -181,6 +181,25 @@ function ulf_field_bases_field_default_field_bases() {
     'type' => 'number_integer',
   );
 
+  // Exported field_base: 'field_count_description'.
+  $field_bases['field_count_description'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_count_description',
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'text_long',
+  );
+
   // Exported field_base: 'field_course_contact_mail'.
   $field_bases['field_course_contact_mail'] = array(
     'active' => 1,
@@ -610,9 +629,9 @@ function ulf_field_bases_field_default_field_bases() {
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
-        'provider' => 'Vis udbyderadresse',
-        'alternative' => 'Vis alternativ adresse',
-        'hide' => 'Vis ikke på kort',
+        'provider' => 'Vis udbyderadresse (forløbet foregår på jeres udbyderadresse)',
+        'alternative' => 'Vis alternativ adresse (forløbet foregår på en specifik adresse, der er forskellig fra jeres udbyderadresse)',
+        'hide' => 'Vis ikke på kort (forløbet foregår hvorsomhelst - typisk ude på skolen eller i institutionen)',
       ),
       'allowed_values_function' => '',
     ),
@@ -1546,25 +1565,6 @@ function ulf_field_bases_field_default_field_bases() {
     'settings' => array(),
     'translatable' => 0,
     'type' => 'video_embed_field',
-  );
-
-  // Exported field_base: 'field_count_description'.
-  $field_bases['field_count_description'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_count_description',
-    'indexes' => array(
-      'format' => array(
-        0 => 'format',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'text',
-    'settings' => array(),
-    'translatable' => 0,
-    'type' => 'text_long',
   );
 
   return $field_bases;
