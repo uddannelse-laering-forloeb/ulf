@@ -67,7 +67,6 @@ function ulf_forms_form_alter(&$form, &$form_state, $form_id) {
           if (isset($element[LANGUAGE_NONE]) && isset($element[LANGUAGE_NONE]['#value_key'])) {
             if ($element[LANGUAGE_NONE]['#value_key'] == 'tid') {
               $vocabulary = field_info_field($element[LANGUAGE_NONE]['#field_name'])['settings']['allowed_values'][0]['vocabulary'];
-              print $vocabulary;
               $form[$key]['#attributes']['data-vocabulary-id'][] = taxonomy_vocabulary_machine_name_load($vocabulary)->vid;
             }
           }
