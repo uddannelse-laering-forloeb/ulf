@@ -506,7 +506,7 @@ function ulf_base_update_7102() {
   variable_set('better_field_descriptions_default_entity', 'node');
 
   $fields = [];
-  $bundles = ['html_block', 'course_educators', 'news', 'static_page', 'course'];
+  $bundles = ['html_block', 'course_educators', 'news', 'static_page', 'course', 'news_course_provider'];
 
   foreach ($bundles as $bundle) {
     $field_info = field_info_instances('node', $bundle);
@@ -514,7 +514,9 @@ function ulf_base_update_7102() {
     $fields[$bundle] = [];
 
     foreach (array_keys($field_info) as $key) {
-      $fields[$bundle][$key] = $key;
+      if($field_info[$key]['display']['default']['type'] != 'hidden') {
+        $fields[$bundle][$key] = $key;
+      }
     }
 
     $fields[$bundle]['title'] = 'title';

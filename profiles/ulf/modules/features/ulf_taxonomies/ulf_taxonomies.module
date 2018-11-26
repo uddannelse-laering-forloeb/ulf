@@ -5,3 +5,37 @@
  */
 
 include_once 'ulf_taxonomies.features.inc';
+
+function ulf_taxonomies_form_taxonomy_form_term_alter(&$form, $form_state) {
+  $form['description']['#access'] = user_access('administer site configuration');
+  $form['path']['#access'] = user_access('administer site configuration');
+  $form['relations']['#access'] = user_access('administer site configuration');
+  if ($form['#bundle'] == 'course_educators_target_group') {
+    $vocabularies = array(
+      taxonomy_vocabulary_machine_name_load('educational_goals')->vid => taxonomy_vocabulary_machine_name_load('educational_goals'),
+      taxonomy_vocabulary_machine_name_load('subjects_primary_school')->vid => taxonomy_vocabulary_machine_name_load('subjects_primary_school'),
+      taxonomy_vocabulary_machine_name_load('subjects_youth')->vid => taxonomy_vocabulary_machine_name_load('subjects_youth')
+    );
+    $vocabularies_names = [];
+
+    foreach ($vocabularies as $value) {
+      $vocabularies_names[] = $value->name;
+    }
+
+    foreach ($form['field_taxonomy_subject_reference'][LANGUAGE_NONE]['#options'] as $key => $taxonomy_name) {
+      if(!in_array($taxonomy_name, $vocabularies_names)) {
+        unset($form['field_taxonomy_subject_reference'][LANGUAGE_NONE]['#options'][$key]);
+      }
+      else {
+        if(array_key_exists($key, $vocabularies)) {
+          if ($vocabularies[$key]->machine_name == 'subjects_primary_school') {
+            $form['field_taxonomy_subject_reference'][LANGUAGE_NONE]['#options'][$key] = $taxonomy_name . ' - ' . t('Primary school');
+          }
+          if ($vocabularies[$key]->machine_name == 'subjects_youth') {
+            $form['field_taxonomy_subject_reference'][LANGUAGE_NONE]['#options'][$key] = $taxonomy_name . ' - ' . t('Youth education');
+          }
+        }
+      }
+    }
+  }
+}

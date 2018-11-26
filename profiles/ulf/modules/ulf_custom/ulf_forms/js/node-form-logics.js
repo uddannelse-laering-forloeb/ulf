@@ -23,7 +23,9 @@
 
         // Hide specific fields only relevant for certain target groups.
         $('.field-name-field-post-work').hide();
-        $('.field-name-field-educational-goals').hide();
+        if (typeof settings.primary_target_group == 'undefined') {
+          $('.field-name-field-educational-goals').hide();
+        }
         $('.field-name-field-subjects-primary-school').hide();
         $('.field-name-field-subjects-youth').hide();
         $('.node-course-form .field-name-field-educational-material').hide();
@@ -109,7 +111,9 @@
 
         $('.field-name-field-inspirational-material').show();
         $('.field-name-field-material-suggestions').show();
-        $('.field-name-field-educational-goals').show();
+        if (typeof settings.primary_target_group == 'undefined') {
+          $('.field-name-field-educational-goals').show();
+        }
         $('.is-preschool').show();
         clearSubjectsValues('subjects-primary-school');
         clearSubjectsValues('subjects-youth');
@@ -129,7 +133,9 @@
         $('.field-name-field-educational-material').show();
         $('.field-name-field-subjects-primary-school').show();
         $('.is-school').show();
-        clearSubjectsValues('educational-goals');
+        if (typeof settings.primary_target_group == 'undefined') {
+          clearSubjectsValues('educational-goals');
+        }
         clearSubjectsValues('subjects-youth');
         setLabel('field-background-knowledge', 'Forberedelse');
       }
@@ -147,7 +153,9 @@
         $('.field-name-field-educational-material').show();
         $('.field-name-field-subjects-youth').show();
         $('.is-school').show();
-        clearSubjectsValues('educational-goals');
+        if (typeof settings.primary_target_group == 'undefined') {
+          clearSubjectsValues('educational-goals');
+        }
         clearSubjectsValues('subjects-primary-school');
         setLabel('field-background-knowledge', 'Forberedelse');
       }
@@ -168,7 +176,9 @@
 
         // Hide specific fields only relevant for certain target groups.
         $('.field-name-field-post-work').hide();
-        $('.field-name-field-educational-goals').hide();
+        if (typeof settings.primary_target_group == 'undefined') {
+          $('.field-name-field-educational-goals').hide();
+        }
         $('.field-name-field-subjects-primary-school').hide();
         $('.field-name-field-subjects-youth').hide();
         $('.node-course-form .field-name-field-educational-material').hide();
@@ -280,4 +290,20 @@
       initializeFormElements();
     }
   };
+
+  /**
+   * A simple in array check function.
+   *
+   * @param needle
+   * @param haystack
+   * @returns {boolean}
+   */
+  function inArray(needle, haystack) {
+    var length = haystack.length;
+    for(var i = 0; i < length; i++) {
+      if(haystack[i] == needle) return true;
+    }
+    return false;
+  }
+
 }(jQuery));

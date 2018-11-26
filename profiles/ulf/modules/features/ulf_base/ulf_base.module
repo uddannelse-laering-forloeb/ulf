@@ -33,3 +33,67 @@ function ulf_base_menu_block_blocks() {
 function ulf_base_pathauto_alias_alter(&$alias, array &$context) {
   $context['language'] = LANGUAGE_NONE;
 }
+
+/**
+ * Implements hook_form_alter().
+ *
+ * Simplify the better field descriptions form.
+ */
+function ulf_base_form_better_field_descriptions_fields_form_alter(&$form, $form_state) {
+  $help_text = t('Allowed HTML-tags') . check_plain(' <a> <b> <big> <code> <del> <em> <i> <ins> <pre> <q> <small> <span> <strong> <sub> <sup> <tt> <ol> <ul> <li> <p> <br> <img>');
+  $content_types = node_type_get_names();
+  // Hide administrative fields
+  $form['bundles']['template']['#access'] = user_access('administer site configuration');
+  $form['bundles']['default_label']['#access'] = user_access('administer site configuration');
+  $form['bundles']['hide_default_descriptions']['#access'] = user_access('administer site configuration');
+  //Loop thought field groups
+  foreach ($form['bundles'] as $key => $content_type) {
+    if (array_key_exists($key, $content_types)) {
+      $fields = array();
+      // Set help text
+      $form['bundles'][$key]['help_texts']['#markup'] =  $help_text;
+      $form['bundles'][$key]['help_texts']['#weight'] = -1;
+      // Loop throught fields.
+      unset($form['bundles'][$key]['field_course_contact_mail']);
+      unset($form['bundles'][$key]['field_price']);
+      foreach ($content_type as $field_name => $field) {
+        if (is_array($field)) {
+          // Identify fields.
+          $fields[$field_name] = $field;
+          // Hide label, description and positioning for field
+          $form['bundles'][$key][$field_name]['label']['#access'] = FALSE;
+          $form['bundles'][$key][$field_name]['position']['#access'] = FALSE;
+          unset($form['bundles'][$key][$field_name]['description']['#description']);
+
+          // Remove machine name in paranthesis.
+          $form['bundles'][$key][$field_name]['description']['#title'] = preg_replace("/\([^)]+\)/", "", $content_type[$field_name]['description']['#title']);
+
+          // Remove field from array  (Added in sorted order below)
+          array_pop($form['bundles'][$key][$field_name]);
+        }
+      }
+      // Sort fields by label.
+      uasort($fields, 'ulf_base_form_better_field_descriptions_sort');
+      // Replace old bundle with reordered bundle.
+      $form['bundles'][$key] = array_merge($fields, $form['bundles'][$key]);
+    }
+  }
+}
+
+/**
+ * Sort two arrays by sub array title.
+ *
+ * @param $a
+ *   The first array.
+ * @param $b
+ *   The seccond array
+ * @return int
+ *   The order.
+ */
+function ulf_base_form_better_field_descriptions_sort($a, $b) {
+  if (is_array($a) && is_array($b)) {
+    if (isset($a['description']['#title']) && isset($b['description']['#title'])) {
+      return strcmp($a['description']['#title'], $b['description']['#title']);
+    }
+  }
+}

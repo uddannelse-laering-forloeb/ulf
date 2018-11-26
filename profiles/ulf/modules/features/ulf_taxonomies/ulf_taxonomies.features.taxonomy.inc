@@ -9,6 +9,14 @@
  */
 function ulf_taxonomies_taxonomy_default_vocabularies() {
   return array(
+    'course_educators_target_group' => array(
+      'name' => 'Kursus målgruppe',
+      'machine_name' => 'course_educators_target_group',
+      'description' => '',
+      'hierarchy' => 0,
+      'module' => 'taxonomy',
+      'weight' => 0,
+    ),
     'course_relevancy_educators' => array(
       'name' => 'Kursus relevans (undervisere)',
       'machine_name' => 'course_relevancy_educators',
@@ -72,14 +80,6 @@ function ulf_taxonomies_taxonomy_default_vocabularies() {
       'hierarchy' => 0,
       'module' => 'taxonomy',
       'weight' => -10,
-    ),
-    'course_educators_target_audience' => array(
-      'name' => 'Kursusmålgrupper',
-      'machine_name' => 'course_educators_target_audience',
-      'description' => 'Målgrupper til kurser',
-      'hierarchy' => 0,
-      'module' => 'taxonomy',
-      'weight' => 0,
     ),
   );
 }
