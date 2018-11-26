@@ -9,11 +9,11 @@
  */
 function ulf_taxonomies_field_default_field_instances() {
   $field_instances = array();
-
+  
   // Exported field_instance:
-  // 'taxonomy_term-course_educators_target_group-field_taxonomy_subject_reference'.
-  $field_instances['taxonomy_term-course_educators_target_group-field_taxonomy_subject_reference'] = array(
-    'bundle' => 'course_educators_target_group',
+  // 'taxonomy_term-course_relevancy_educators-field_taxonomy_subject_reference'.
+  $field_instances['taxonomy_term-course_relevancy_educators-field_taxonomy_subject_reference'] = array(
+    'bundle' => 'course_relevancy_educators',
     'default_value' => NULL,
     'deleted' => 0,
     'description' => '',
@@ -41,7 +41,7 @@ function ulf_taxonomies_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 31,
+      'weight' => 32,
     ),
   );
 

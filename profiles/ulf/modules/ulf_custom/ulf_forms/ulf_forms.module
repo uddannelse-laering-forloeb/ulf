@@ -54,10 +54,14 @@ function ulf_forms_form_alter(&$form, &$form_state, $form_id) {
       $form['field_relevance_educators']['#attributes']['class'][] = 'ulf-forms--multidimensional-select';
       $form['#attached']['js'][] = $path . '/js/modify_select.js';
       $form['#validate'][] = '_vat_not_empty_validate';
-      $primary_target_group_vocab = taxonomy_vocabulary_machine_name_load('course_educators_target_group');
-      $primary_target_group_references = taxonomy_get_tree($primary_target_group_vocab->vid, 0, NULL, TRUE);
-      drupal_add_js(drupal_get_path('module', 'ulf_forms') . '/js/course_target_group_select.js');
-      drupal_add_js(array('primary_target_group' => array('vocabulary' => $primary_target_group_references)), 'setting');
+      $primary_target_group_vocab = taxonomy_vocabulary_machine_name_load('course_relevancy_educators');
+      if ($primary_target_group_vocab) {
+        $primary_target_group_references = taxonomy_get_tree($primary_target_group_vocab->vid, 0, NULL, TRUE);
+        drupal_add_js(drupal_get_path('module', 'ulf_forms') . '/js/course_target_group_select.js');
+        drupal_add_js(array('primary_target_group' => array('vocabulary' => $primary_target_group_references)), 'setting');
+      }
+
+      // Vocabulary id as attribute to taxonomy references.
       foreach ($form as $key => $element) {
         if (is_array($element)) {
           if (isset($element[LANGUAGE_NONE]) && isset($element[LANGUAGE_NONE]['#value_key'])) {

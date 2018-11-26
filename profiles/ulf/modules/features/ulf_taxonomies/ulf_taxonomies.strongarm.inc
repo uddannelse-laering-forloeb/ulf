@@ -13,7 +13,7 @@ function ulf_taxonomies_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'field_bundle_settings_taxonomy_term__course_educators_target_group';
+  $strongarm->name = 'field_bundle_settings_taxonomy_term__course_relevancy_educators';
   $strongarm->value = array(
     'view_modes' => array(),
     'extra_fields' => array(
@@ -34,7 +34,7 @@ function ulf_taxonomies_strongarm() {
       'display' => array(),
     ),
   );
-  $export['field_bundle_settings_taxonomy_term__course_educators_target_group'] = $strongarm;
+  $export['field_bundle_settings_taxonomy_term__course_relevancy_educators'] = $strongarm;
 
   return $export;
 }
