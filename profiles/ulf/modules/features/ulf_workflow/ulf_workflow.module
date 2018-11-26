@@ -285,9 +285,6 @@ function ulf_workflow_node_presave($node) {
   }
 }
 
-
-
-
 /**
  * Check if user can publish their own content.
  *

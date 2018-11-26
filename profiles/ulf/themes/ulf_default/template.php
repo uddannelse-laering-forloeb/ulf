@@ -30,9 +30,12 @@ function ulf_default_preprocess_html(&$variables) {
     $meta_description['#attributes']['content'] = $imagePath;
     drupal_add_html_head($meta_description, 'meta_image');
 
-    if (isset($node['#node']->field_teaser['und'][0]['value'])) {
+    if (isset($node['#node']->field_full_description['und'][0]['value'])) {
       $meta_description['#attributes']['name'] = 'og:description';
-      $meta_description['#attributes']['content'] = $node['#node']->field_teaser['und'][0]['value'];
+      $teaser = str_replace('&nbsp;', '', strip_tags($node['#node']->field_full_description['und'][0]['value']));
+      $meta_description_cut = substr($teaser, 0,strpos($teaser,'.')) . '...';
+      $meta_description['#attributes']['content'] = $meta_description_cut;
+
       drupal_add_html_head($meta_description, 'meta_description');
     }
 
