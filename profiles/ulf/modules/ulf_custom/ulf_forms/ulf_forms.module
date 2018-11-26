@@ -54,6 +54,7 @@ function ulf_forms_form_alter(&$form, &$form_state, $form_id) {
       $form['field_relevance_educators']['#attributes']['class'][] = 'ulf-forms--multidimensional-select';
       $form['#attached']['js'][] = $path . '/js/modify_select.js';
       $form['#validate'][] = '_vat_not_empty_validate';
+      $form['#validate'][] = '_ulf_forms_course_educators_target_group_empty_validate';
       $primary_target_group_vocab = taxonomy_vocabulary_machine_name_load('course_relevancy_educators');
       if ($primary_target_group_vocab) {
         $primary_target_group_references = taxonomy_get_tree($primary_target_group_vocab->vid, 0, NULL, TRUE);
@@ -115,6 +116,20 @@ function _vat_not_empty_validate($form, &$form_state) {
       empty($value['field_moms'][LANGUAGE_NONE][0]['value'])) {
       form_set_error('field_collection_price][' . LANGUAGE_NONE . '][' . $delta . '][field_moms', t('You must set a VAT value to save your changes.'));
     }
+  }
+}
+
+/**
+ * Course educators target group not empty validation.
+ *
+ * @param $form
+ * @param $form_state
+ */
+function _ulf_forms_course_educators_target_group_empty_validate($form, &$form_state) {
+  if (empty($form_state['values']['field_educational_goals'][LANGUAGE_NONE][0]['tid']) &&
+    empty($form_state['values']['field_relevance_primary_school'][LANGUAGE_NONE][0]['tid']) &&
+    empty($form_state['values']['field_relevance_upper_school'][LANGUAGE_NONE][0]['tid'])){
+      form_set_error('field_educational_goals', t('You must set a value for subject or educational goals to save your changes.'));
   }
 }
 
