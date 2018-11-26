@@ -529,7 +529,7 @@ function ulf_base_update_7102() {
  * Translate strings.
  */
 function ulf_base_update_7103() {
-  $result = db_update('menu_links', 'm')
+  $result = db_update('menu_links')
     ->fields(array(
       'link_title' => 'Find indhold',
     ))
@@ -537,10 +537,10 @@ function ulf_base_update_7103() {
     ->condition('router_path', 'admin/content', '=')
     ->execute();
 
-  $result = db_update('locales_target', 'l')
+  $result = db_update('locales_target')
     ->fields(array(
       'translation' => 'Afpublisér',
     ))
     ->condition('translation', 'Træk tilbage', '=')
     ->execute();
-} 
+}
