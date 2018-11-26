@@ -524,3 +524,23 @@ function ulf_base_update_7102() {
 
   variable_set('better_field_descriptions_settings', $fields);
 }
+
+/**
+ * Translate strings.
+ */
+function ulf_base_update_7103() {
+  $result = db_update('menu_links', 'm')
+    ->fields(array(
+      'link_title' => 'Find indhold',
+    ))
+    ->condition('menu_name', 'shortcut-set-1', '=')
+    ->condition('router_path', 'admin/content', '=')
+    ->execute();
+
+  $result = db_update('locales_target', 'l')
+    ->fields(array(
+      'translation' => 'Afpublisér',
+    ))
+    ->condition('translation', 'Træk tilbage', '=')
+    ->execute();
+} 

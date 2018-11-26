@@ -31,7 +31,6 @@ features[field_base][] = field_count_description
 features[field_base][] = field_course_contact_mail
 features[field_base][] = field_course_contact_name
 features[field_base][] = field_course_phone
-features[field_base][] = field_course_target_group
 features[field_base][] = field_duration
 features[field_base][] = field_duration_description
 features[field_base][] = field_duration_unit
