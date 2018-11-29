@@ -291,19 +291,4 @@
     }
   };
 
-  /**
-   * A simple in array check function.
-   *
-   * @param needle
-   * @param haystack
-   * @returns {boolean}
-   */
-  function inArray(needle, haystack) {
-    var length = haystack.length;
-    for(var i = 0; i < length; i++) {
-      if(haystack[i] == needle) return true;
-    }
-    return false;
-  }
-
 }(jQuery));

@@ -7,7 +7,7 @@
 /**
  * Implements hook_form_alter().
  */
-function ulf_forms_form_alter(&$form, &$form_state, $form_id) {
+function ulf_forms_form_alter(&$form, $form_state, $form_id) {
   if (isset($form['#node_edit_form'])) {
     $path = drupal_get_path('module', 'ulf_forms');
     $form['#attached']['js'][] = $path . '/js/jquery.imagesloaded.js';
@@ -18,34 +18,26 @@ function ulf_forms_form_alter(&$form, &$form_state, $form_id) {
   switch ($form_id) {
     // Course node form.
     case 'course_node_form':
+      $form['intro_information']['#weight'] = -10;
+      $form['intro_information']['#markup'] = '<div class="messages status">';
       $form['#attached']['js'][] = $path . '/js/node-form-logics.js';
 
-      // Assist on node add.
-      if (empty($form['nid']['#value'])) {
-        $message_required = '<p>' . t('Required fields are marked with a star and can be found in the "Practical information" field group.') . '</p>';
-        drupal_set_message($message_required);
-      }
-
-      // Assist on lacking image.
-      if ($form_state['field']['field_image'][LANGUAGE_NONE]['items_count'] == 0) {
-        $message_image = '<p>' . t('You will need to add an image to your course, before the content can be published.') . '</p>';
-        drupal_set_message($message_image);
-      }
-
-      // Latest moderation log.
-      if (!empty($form['vid']['#value'])) {
-        $latest_log_message = t('Latest message') . ': ' . ulf_forms_fetch_moderation_log_latest($form['nid']['#value']);
-        drupal_set_message($latest_log_message);
-      }
+      _ulf_forms_set_intro_text($form, $form_state);
 
       $form['#validate'][] = '_vat_not_empty_validate';
 
       $form['#prefix'] = '<div class="node--form is-default-form">';
       $form['#suffix'] = '</div>';
+      $form['intro_information']['#markup'] .= '</div>';
       break;
 
     // Course educators node form.
     case 'course_educators_node_form':
+      $form['intro_information']['#weight'] = -10;
+      $form['intro_information']['#markup'] = '<div class="messages status">';
+
+      _ulf_forms_set_intro_text($form, $form_state);
+
       $form['#attached']['js'][] = $path . '/js/node-form-logics.js';
       $form['#prefix'] = '<div class="node--form is-default-form">';
       $form['#suffix'] = '</div>';
@@ -54,14 +46,12 @@ function ulf_forms_form_alter(&$form, &$form_state, $form_id) {
       $form['field_relevance_educators']['#attributes']['class'][] = 'ulf-forms--multidimensional-select';
       $form['#attached']['js'][] = $path . '/js/modify_select.js';
       $form['#validate'][] = '_vat_not_empty_validate';
-      $form['#validate'][] = '_ulf_forms_course_educators_target_group_empty_validate';
       $primary_target_group_vocab = taxonomy_vocabulary_machine_name_load('course_relevancy_educators');
       if ($primary_target_group_vocab) {
         $primary_target_group_references = taxonomy_get_tree($primary_target_group_vocab->vid, 0, NULL, TRUE);
         drupal_add_js(drupal_get_path('module', 'ulf_forms') . '/js/course_target_group_select.js');
         drupal_add_js(array('primary_target_group' => array('vocabulary' => $primary_target_group_references)), 'setting');
       }
-
       // Vocabulary id as attribute to taxonomy references.
       foreach ($form as $key => $element) {
         if (is_array($element)) {
@@ -73,6 +63,7 @@ function ulf_forms_form_alter(&$form, &$form_state, $form_id) {
           }
         }
       }
+      $form['intro_information']['#markup'] .= '</div>';
       break;
 
     // User anonymous forms (Login, request pass and create account)
@@ -102,6 +93,7 @@ function ulf_forms_form_alter(&$form, &$form_state, $form_id) {
       $form['actions']['submit']['#attributes']['class'][] = 'form-module--user-submit';
       break;
   }
+
 }
 
 /**
@@ -116,20 +108,6 @@ function _vat_not_empty_validate($form, &$form_state) {
       empty($value['field_moms'][LANGUAGE_NONE][0]['value'])) {
       form_set_error('field_collection_price][' . LANGUAGE_NONE . '][' . $delta . '][field_moms', t('You must set a VAT value to save your changes.'));
     }
-  }
-}
-
-/**
- * Course educators target group not empty validation.
- *
- * @param $form
- * @param $form_state
- */
-function _ulf_forms_course_educators_target_group_empty_validate($form, &$form_state) {
-  if (empty($form_state['values']['field_educational_goals'][LANGUAGE_NONE][0]['tid']) &&
-    empty($form_state['values']['field_relevance_primary_school'][LANGUAGE_NONE][0]['tid']) &&
-    empty($form_state['values']['field_relevance_upper_school'][LANGUAGE_NONE][0]['tid'])){
-      form_set_error('field_educational_goals', t('You must set a value for subject or educational goals to save your changes.'));
   }
 }
 
@@ -156,4 +134,24 @@ function ulf_forms_fetch_moderation_log_latest($nid) {
   $query->range(0,1);
   $result = $query->execute()->fetchCol(1);
   return $result[0];
+}
+
+function _ulf_forms_set_intro_text(&$form, $form_state) {
+  // Assist on node add.
+  if (empty($form['nid']['#value'])) {
+    $message_required = '<div>' . t('Required fields are marked with a star and can be found in the "Practical information" field group.') . '</div>';
+    $form['intro_information']['#markup'] .= $message_required;
+  }
+
+  // Assist on lacking image.
+  if ($form_state['field']['field_image'][LANGUAGE_NONE]['items_count'] == 0) {
+    $message_image = '<div>' . t('You will need to add an image to your course, before the content can be published.') . '</div>';
+    $form['intro_information']['#markup'] .= $message_image;
+  }
+
+  // Latest moderation log.
+  if (!empty($form['vid']['#value'])) {
+    $latest_log_message = '<div>' . t('Latest message') . ': ' . ulf_forms_fetch_moderation_log_latest($form['nid']['#value']) . '</div>';
+    $form['intro_information']['#markup'] .= $latest_log_message;
+  }
 }

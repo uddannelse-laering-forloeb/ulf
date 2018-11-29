@@ -110,12 +110,16 @@ function ulf_workflow_form_node_form_alter(&$form, &$form_state, $form_id) {
 
   // Check for workflow enabled.
   if (in_array($content_type, $workflow_enabled_types)) {
+    // Set a text in top of form related to workflow state.
+    $form['workflow_information']['#weight'] = -15;
+    $form['workflow_information']['#markup'] = '<div class="messages warning">';
+
     $node_wrapper = entity_metadata_wrapper('node', $form['#node']);
     $passed_review = $node_wrapper->field_passed_review->value();
     // Inform of current workflow state.
     $trashed = isset($form['#node']->field_trashed['und'][0]['value']) ? $form['#node']->field_trashed['und'][0]['value'] : FALSE;
     if($trashed) {
-      drupal_set_message(t('The current workflow state for this content is: Trash'), 'warning');
+      $form['workflow_information']['#markup'] .= '<div>' . t('The current workflow state for this content is: Trash') . '</div>';
     }
     elseif(isset($form['clone_from_original_nid']['#value'])){
       // In case of a cloning action.
@@ -127,12 +131,12 @@ function ulf_workflow_form_node_form_alter(&$form, &$form_state, $form_id) {
       }
     }
     elseif($passed_review){
-      drupal_set_message(t('The current workflow state for this content is: Passed review.'), 'warning');
+      $form['workflow_information']['#markup'] .= '<div>' . t('The current workflow state for this content is: Passed review.') . '</div>';
     }
 
     elseif(isset($form['workbench_moderation_state_current']['#value'])) {
       $readable_state = workbench_moderation_state_load($form['workbench_moderation_state_current']['#value']);
-      drupal_set_message(t('The current workflow state for this content is: @state.', array('@state' => $readable_state->label)), 'warning');
+      $form['workflow_information']['#markup'] .= '<div>' . t('The current workflow state for this content is: @state.', array('@state' => $readable_state->label)) . '</div>';
     }
     
     // Set the node action to take.
@@ -151,6 +155,9 @@ function ulf_workflow_form_node_form_alter(&$form, &$form_state, $form_id) {
 
     // Add image form validation.
     $form['#validate'][] = '_ulf_workflow_form_validate_image';
+
+    // End workflow related message
+    $form['workflow_information']['#markup'] .= '</div>';
   }
 }
 

@@ -20,21 +20,6 @@
     }
   };
 
-  /**
-   * A simple in array check function.
-   *
-   * @param needle
-   * @param haystack
-   * @returns {boolean}
-   */
-  function inArray(needle, haystack) {
-    var length = haystack.length;
-    for(var i = 0; i < length; i++) {
-      if(haystack[i] == needle) return true;
-    }
-    return false;
-  }
-
   function showCourseRelevancy(settings) {
     var selected = [];
     var fields_to_display = [];
@@ -60,7 +45,7 @@
     settings.primary_target_group.vocabulary.forEach(function(element) {
       if (typeof element.field_taxonomy_subject_reference.und !== 'undefined') {
         element.field_taxonomy_subject_reference.und.forEach(function(values) {
-          $('.field-type-taxonomy-term-reference[data-vocabulary-id=' + values.target_id + ']').hide();
+          $('.field-type-taxonomy-term-reference[data-vocabulary-id=' + values.target_id + ']').hide().addClass('subjects-is-hidden');
         });
       }
 
@@ -69,9 +54,26 @@
     // Show vocabularies from fields_to_display list.
     $('.field-type-taxonomy-term-reference').each(function() {
       if (inArray($(this).data('vocabulary-id'), fields_to_display)) {
-        $('.field-type-taxonomy-term-reference[data-vocabulary-id=' + $(this).data('vocabulary-id') + ']').show();
+        $('.field-type-taxonomy-term-reference[data-vocabulary-id=' + $(this).data('vocabulary-id') + ']').show().removeClass('subjects-is-hidden');
       }
     });
+
+    // Unset hidden checkboxes.
+    $('.field-type-taxonomy-term-reference.subjects-is-hidden input').prop('checked', false);
   }
 
+  /**
+   * A simple in array check function.
+   *
+   * @param needle
+   * @param haystack
+   * @returns {boolean}
+   */
+  function inArray(needle, haystack) {
+    var length = haystack.length;
+    for(var i = 0; i < length; i++) {
+      if(haystack[i] == needle) return true;
+    }
+    return false;
+  }
 }(jQuery));

@@ -637,7 +637,7 @@ function ulf_default_views_post_render(&$view, &$output, &$cache) {
       }
     }
 
-    $ranges = _ulf_default_create_ranges($classes, '. klasse');
+    $ranges = _ulf_default_create_ranges($classes, '. klasse', '. - ');
     $yearRanges = _ulf_default_create_ranges($years, ' år');
 
     $output = '';
@@ -664,7 +664,7 @@ function ulf_default_views_post_render(&$view, &$output, &$cache) {
  *
  * @return array
  */
-function _ulf_default_create_ranges($arr, $stringEnd) {
+function _ulf_default_create_ranges($arr, $stringEnd, $separator = ' - ') {
   if (empty($arr)) {
     return $arr;
   }
@@ -675,7 +675,7 @@ function _ulf_default_create_ranges($arr, $stringEnd) {
   $rangeStart = null;
   $current = null;
   $currentEntry = null;
-  $separator = ' - ';
+   ;
 
   foreach ($arr as $key => $entry) {
     $currentEntry = (int) $entry;

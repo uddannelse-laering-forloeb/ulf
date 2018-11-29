@@ -603,11 +603,11 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['columns'] = array(
     'title' => 'title',
-    'field_duration' => 'field_duration',
-    'field_duration_unit' => 'field_duration_unit',
     'edit_node' => 'edit_node',
+    'field_price' => 'field_price',
+    'field_moms' => 'field_moms',
   );
-  $handler->display->display_options['style_options']['default'] = 'field_duration';
+  $handler->display->display_options['style_options']['default'] = '-1';
   $handler->display->display_options['style_options']['info'] = array(
     'title' => array(
       'sortable' => 1,
@@ -616,21 +616,21 @@ function ulf_workflow_views_default_views() {
       'separator' => '',
       'empty_column' => 0,
     ),
-    'field_duration' => array(
-      'sortable' => 1,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'field_duration_unit' => array(
-      'sortable' => 1,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
     'edit_node' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_price' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_moms' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
@@ -723,7 +723,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['fields']['field_subjects_primary_school']['table'] = 'field_data_field_subjects_primary_school';
   $handler->display->display_options['fields']['field_subjects_primary_school']['field'] = 'field_subjects_primary_school';
   $handler->display->display_options['fields']['field_subjects_primary_school']['delta_offset'] = '0';
-  /* Field: Content: Læreplanstemaer */
+  /* Field: Content: Kurset er relevant for pædagoger, der arbejder med læreplanstemaerne */
   $handler->display->display_options['fields']['field_educational_goals']['id'] = 'field_educational_goals';
   $handler->display->display_options['fields']['field_educational_goals']['table'] = 'field_data_field_educational_goals';
   $handler->display->display_options['fields']['field_educational_goals']['field'] = 'field_educational_goals';
@@ -767,7 +767,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['filters']['field_subjects_youth_tid_1']['reduce_duplicates'] = TRUE;
   $handler->display->display_options['filters']['field_subjects_youth_tid_1']['type'] = 'select';
   $handler->display->display_options['filters']['field_subjects_youth_tid_1']['vocabulary'] = 'subjects_youth';
-  /* Filter criterion: Content: Læreplanstemaer (field_educational_goals) */
+  /* Filter criterion: Content: Kurset er relevant for pædagoger, der arbejder med læreplanstemaerne (field_educational_goals) */
   $handler->display->display_options['filters']['field_educational_goals_tid']['id'] = 'field_educational_goals_tid';
   $handler->display->display_options['filters']['field_educational_goals_tid']['table'] = 'field_data_field_educational_goals';
   $handler->display->display_options['filters']['field_educational_goals_tid']['field'] = 'field_educational_goals_tid';
@@ -785,7 +785,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['filters']['field_subjects_primary_school_tid_1']['reduce_duplicates'] = TRUE;
   $handler->display->display_options['filters']['field_subjects_primary_school_tid_1']['type'] = 'select';
   $handler->display->display_options['filters']['field_subjects_primary_school_tid_1']['vocabulary'] = 'subjects_primary_school';
-  /* Filter criterion: Content: Læreplanstemaer (field_educational_goals) */
+  /* Filter criterion: Content: Kurset er relevant for pædagoger, der arbejder med læreplanstemaerne (field_educational_goals) */
   $handler->display->display_options['filters']['field_educational_goals_tid_1']['id'] = 'field_educational_goals_tid_1';
   $handler->display->display_options['filters']['field_educational_goals_tid_1']['table'] = 'field_data_field_educational_goals';
   $handler->display->display_options['filters']['field_educational_goals_tid_1']['field'] = 'field_educational_goals_tid';
@@ -809,6 +809,8 @@ function ulf_workflow_views_default_views() {
     'title' => 'title',
     'edit_node' => 'edit_node',
     'field_count' => 'field_count',
+    'name' => 'name',
+    'mail' => 'mail',
   );
   $handler->display->display_options['style_options']['default'] = 'field_count';
   $handler->display->display_options['style_options']['info'] = array(
@@ -827,6 +829,20 @@ function ulf_workflow_views_default_views() {
     'field_count' => array(
       'sortable' => 1,
       'default_sort_order' => 'desc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'name' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'mail' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
@@ -909,7 +925,7 @@ function ulf_workflow_views_default_views() {
     t('more'),
     t('Bilag'),
     t('Fag'),
-    t('Læreplanstemaer'),
+    t('Kurset er relevant for pædagoger, der arbejder med læreplanstemaerne'),
     t('Redigér-link'),
     t('Antal'),
     t('Navn'),

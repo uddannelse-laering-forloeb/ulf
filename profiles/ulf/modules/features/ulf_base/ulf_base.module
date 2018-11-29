@@ -97,3 +97,12 @@ function ulf_base_form_better_field_descriptions_sort($a, $b) {
     }
   }
 }
+
+/**
+ * Correct faulty autosave template definitions. To allow template override.
+ *
+ * @param $theme_registry
+ */
+function ulf_base_theme_registry_alter(&$theme_registry) {
+  $theme_registry['autosave_restore_popup']['path'] = 'profiles/ulf/themes/ulf_admin/templates/autosave';
+}

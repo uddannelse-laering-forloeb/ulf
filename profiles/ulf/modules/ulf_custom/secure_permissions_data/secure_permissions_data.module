@@ -117,7 +117,6 @@ function secure_permissions_data_secure_permissions($role) {
       'clone node',
       'create course content',
       'create course_educators content',
-      'create news_course_provider content',
       'create html_block content',
       'create news content',
       'create static_page content',
