@@ -21,6 +21,7 @@
 * Removed unintensional console.log.
 * KVF-60: Changed name filter to contains filter.
 * ULF-2248: Added news for course providers (119)
+* SUPPORT-1862: Set content to draft when auto unpublishing.
 
 ## 2.6.1
 * SUPPORT-1836: Changed workflow state for auto unpublishing.

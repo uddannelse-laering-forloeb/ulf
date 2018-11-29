@@ -970,24 +970,39 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['pager']['options']['tags']['last'] = 'sidste »';
   $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['columns'] = array(
+    'uid' => 'uid',
     'nid' => 'nid',
-    'title_1' => 'title_1',
+    'title' => 'title',
+    'field_profile_name' => 'field_profile_name',
     'type' => 'type',
-    'log' => 'log',
-    'changed' => 'changed',
+    'field_target_group' => 'field_target_group',
+    'timestamp' => 'timestamp',
+    'latest_log_message' => 'latest_log_message',
     'edit_node' => 'edit_node',
     'clone_node' => 'clone_node',
   );
-  $handler->display->display_options['style_options']['default'] = 'changed';
+  $handler->display->display_options['style_options']['default'] = '-1';
   $handler->display->display_options['style_options']['info'] = array(
+    'uid' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
     'nid' => array(
-      'sortable' => 0,
+      'sortable' => 1,
       'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
     ),
-    'title_1' => array(
+    'title' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_profile_name' => array(
       'sortable' => 1,
       'default_sort_order' => 'asc',
       'align' => '',
@@ -1001,14 +1016,21 @@ function ulf_workflow_views_default_views() {
       'separator' => '',
       'empty_column' => 0,
     ),
-    'log' => array(
+    'field_target_group' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
     ),
-    'changed' => array(
+    'timestamp' => array(
       'sortable' => 1,
-      'default_sort_order' => 'desc',
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'latest_log_message' => array(
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
@@ -1833,14 +1855,14 @@ function ulf_workflow_views_default_views() {
       'empty_column' => 0,
     ),
     'type' => array(
-      'sortable' => 0,
+      'sortable' => 1,
       'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
     ),
     'field_target_group' => array(
-      'sortable' => 0,
+      'sortable' => 1,
       'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
@@ -2547,14 +2569,14 @@ function ulf_workflow_views_default_views() {
       'empty_column' => 0,
     ),
     'publish_on' => array(
-      'sortable' => 0,
+      'sortable' => 1,
       'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
     ),
     'unpublish_on' => array(
-      'sortable' => 0,
+      'sortable' => 1,
       'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
