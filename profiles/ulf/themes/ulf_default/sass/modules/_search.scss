@@ -440,11 +440,11 @@
   &--type {
     @extend %teaser--type;
 
-    &-item:after {
+    > span:after {
       content: ','
     }
 
-    &-item:last-child:after {
+    > span:last-child:after {
       content: '';
     }
   }
@@ -452,7 +452,6 @@
   &--type:last-child {
     @extend %teaser--type-last-child;
   }
-
 }
 
 
