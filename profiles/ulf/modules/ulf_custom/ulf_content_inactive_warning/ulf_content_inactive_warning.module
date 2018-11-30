@@ -97,8 +97,8 @@ function _ulf_content_inactive_mail_send() {
           // If unpublish period is unset we assume they don't want to unpublish their content.
           // Remove entry from inactivity flow.
           $node = node_load($item->nid);
-          // Set publishing state for node.
-          $node->status = $unpublish_period > 0 ? 1 : 0;
+          // Set publishing state for node to unpublished if unpublish period is not 0.
+          $node->status = $unpublish_period > 0 ? 0 : 1;
           // Save the node, thus updating the changed date.
           node_save($node);
 

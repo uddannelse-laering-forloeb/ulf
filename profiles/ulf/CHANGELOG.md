@@ -1,6 +1,6 @@
 # ULF changelog
 
-## In development
+## Release 2.7.0
 * ULF-2235: Changed dropdowns to checkboxes in backend forms (197)
 * ULF-2236: Added day as option in duration dropdown (198)
 * ULF-2234: Added option for multiple workflow mail recipients (195)
@@ -22,6 +22,9 @@
 * KVF-60: Changed name filter to contains filter.
 * ULF-2248: Added news for course providers (119)
 * SUPPORT-1862: Set content to draft when auto unpublishing.
+
+## 2.6.2
+* SUPPORT-1865: Fixed bug in inactivity unpublishing.
 
 ## 2.6.1
 * SUPPORT-1836: Changed workflow state for auto unpublishing.
