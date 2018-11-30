@@ -1,5 +1,8 @@
 # ULF changelog
 
+## 2.6.2
+* SUPPORT-1865: Fixed bug in inactivity unpublishing.
+
 ## 2.6.1
 * SUPPORT-1836: Changed workflow state for auto unpublishing.
 * SUPPORT-1835: Changed Contact form mobile display.
