@@ -95,28 +95,28 @@ function ulf_base_views_default_views() {
       'empty_column' => 0,
     ),
   );
-  /* Header: Global: Text area */
+  /* Overskrift: Global: Tekstområde */
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['content'] = '<a href="/admin/people/create">+ Tilføj bruger</a>';
   $handler->display->display_options['header']['area']['format'] = 'editor';
-  /* Field: User: Name */
+  /* Felt: Bruger: Navn */
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'users';
   $handler->display->display_options['fields']['name']['field'] = 'name';
   $handler->display->display_options['fields']['name']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['name']['alter']['ellipsis'] = FALSE;
-  /* Field: User: Active */
+  /* Felt: Bruger: Aktiv */
   $handler->display->display_options['fields']['status']['id'] = 'status';
   $handler->display->display_options['fields']['status']['table'] = 'users';
   $handler->display->display_options['fields']['status']['field'] = 'status';
   $handler->display->display_options['fields']['status']['not'] = 0;
-  /* Field: User: Roles */
+  /* Felt: Bruger: Roller */
   $handler->display->display_options['fields']['rid']['id'] = 'rid';
   $handler->display->display_options['fields']['rid']['table'] = 'users_roles';
   $handler->display->display_options['fields']['rid']['field'] = 'rid';
-  /* Field: User: Created date */
+  /* Felt: Bruger: Oprettelsesdato */
   $handler->display->display_options['fields']['created']['id'] = 'created';
   $handler->display->display_options['fields']['created']['table'] = 'users';
   $handler->display->display_options['fields']['created']['field'] = 'created';
@@ -125,24 +125,24 @@ function ulf_base_views_default_views() {
   $handler->display->display_options['fields']['created']['alter']['strip_tags'] = TRUE;
   $handler->display->display_options['fields']['created']['date_format'] = 'time span';
   $handler->display->display_options['fields']['created']['second_date_format'] = 'html5_tools_iso8601';
-  /* Field: User: Last access */
+  /* Felt: Bruger: Seneste tilgang */
   $handler->display->display_options['fields']['access']['id'] = 'access';
   $handler->display->display_options['fields']['access']['table'] = 'users';
   $handler->display->display_options['fields']['access']['field'] = 'access';
   $handler->display->display_options['fields']['access']['empty'] = 'aldrig';
   $handler->display->display_options['fields']['access']['date_format'] = 'time span';
   $handler->display->display_options['fields']['access']['second_date_format'] = 'html5_tools_iso8601';
-  /* Field: User: Edit link */
+  /* Felt: Bruger: Redigér-link */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'users';
   $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['label'] = 'Handlinger';
-  /* Sort criterion: User: Created date */
+  /* Sorteringskriterie: Bruger: Oprettelsesdato */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'users';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Filter criterion: User: Roles */
+  /* Filterkriterie: Bruger: Roller */
   $handler->display->display_options['filters']['rid']['id'] = 'rid';
   $handler->display->display_options['filters']['rid']['table'] = 'users_roles';
   $handler->display->display_options['filters']['rid']['field'] = 'rid';
@@ -157,7 +157,7 @@ function ulf_base_views_default_views() {
     18 => 0,
     19 => 0,
   );
-  /* Filter criterion: User: Active */
+  /* Filterkriterie: Bruger: Aktiv */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'users';
   $handler->display->display_options['filters']['status']['field'] = 'status';
@@ -173,13 +173,13 @@ function ulf_base_views_default_views() {
     18 => 0,
     19 => 0,
   );
-  /* Filter criterion: User: The user ID */
+  /* Filterkriterie: Bruger: Bruger ID */
   $handler->display->display_options['filters']['uid_raw']['id'] = 'uid_raw';
   $handler->display->display_options['filters']['uid_raw']['table'] = 'users';
   $handler->display->display_options['filters']['uid_raw']['field'] = 'uid_raw';
   $handler->display->display_options['filters']['uid_raw']['operator'] = '!=';
   $handler->display->display_options['filters']['uid_raw']['value']['value'] = '0';
-  /* Filter criterion: Global: Combine fields filter */
+  /* Filterkriterie: Global: Kombinér felter filter */
   $handler->display->display_options['filters']['combine']['id'] = 'combine';
   $handler->display->display_options['filters']['combine']['table'] = 'views';
   $handler->display->display_options['filters']['combine']['field'] = 'combine';
@@ -228,18 +228,16 @@ function ulf_base_views_default_views() {
     t('næste ›'),
     t('sidste »'),
     t('<a href="/admin/people/create">+ Tilføj bruger</a>'),
-    t('Name'),
-    t('Active'),
-    t('Roles'),
+    t('Navn'),
+    t('Aktiv'),
+    t('Roller'),
     t('Oprettelse'),
-    t('Last access'),
+    t('Seneste tilgang'),
     t('aldrig'),
     t('Handlinger'),
-    t('Roller'),
     t('Aktiv bruger'),
     t('Søg'),
     t('Page'),
-    t('more'),
   );
   $export['ulf_admin_people'] = $view;
 
@@ -284,17 +282,17 @@ function ulf_base_views_default_views() {
       'empty_column' => 0,
     ),
   );
-  /* Field: User: E-mail */
+  /* Felt: Bruger: E-mail */
   $handler->display->display_options['fields']['mail']['id'] = 'mail';
   $handler->display->display_options['fields']['mail']['table'] = 'users';
   $handler->display->display_options['fields']['mail']['field'] = 'mail';
   $handler->display->display_options['fields']['mail']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['mail']['link_to_user'] = 'user';
-  /* Sort criterion: User: E-mail */
+  /* Sorteringskriterie: Bruger: E-mail */
   $handler->display->display_options['sorts']['mail']['id'] = 'mail';
   $handler->display->display_options['sorts']['mail']['table'] = 'users';
   $handler->display->display_options['sorts']['mail']['field'] = 'mail';
-  /* Filter criterion: User: Active */
+  /* Filterkriterie: Bruger: Aktiv */
   $handler->display->display_options['filters']['status_1']['id'] = 'status_1';
   $handler->display->display_options['filters']['status_1']['table'] = 'users';
   $handler->display->display_options['filters']['status_1']['field'] = 'status';
@@ -311,7 +309,7 @@ function ulf_base_views_default_views() {
     18 => 0,
     19 => 0,
   );
-  /* Filter criterion: User: The user ID */
+  /* Filterkriterie: Bruger: Bruger ID */
   $handler->display->display_options['filters']['uid_raw']['id'] = 'uid_raw';
   $handler->display->display_options['filters']['uid_raw']['table'] = 'users';
   $handler->display->display_options['filters']['uid_raw']['field'] = 'uid_raw';
@@ -363,7 +361,6 @@ function ulf_base_views_default_views() {
     t('Aktiv bruger?'),
     t('Er brugeren aktiv eller blokeret?'),
     t('User email list'),
-    t('more'),
     t('User email export'),
   );
   $export['ulf_user_export'] = $view;

@@ -349,8 +349,25 @@ function ulf_course_providers_views_default_views() {
   $handler->display->display_options['filters']['name']['relationship'] = 'field_target_group_tid';
   $handler->display->display_options['filters']['name']['value'] = 'Ungdomsuddannelse';
 
-  /* Display: Block */
-  $handler = $view->new_display('block', 'Block', 'block');
+  /* Display: Nyheder */
+  $handler = $view->new_display('block', 'Nyheder', 'block');
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['content'] = '<h3 class="teaser--content-header">Nyheder</h3>';
+  $handler->display->display_options['header']['area']['format'] = 'editor';
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Content: Post date */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'node';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Sort criterion: Content: Title */
+  $handler->display->display_options['sorts']['title']['id'] = 'title';
+  $handler->display->display_options['sorts']['title']['table'] = 'node';
+  $handler->display->display_options['sorts']['title']['field'] = 'title';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Type */
@@ -358,7 +375,7 @@ function ulf_course_providers_views_default_views() {
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
-    'course' => 'course',
+    'news_course_provider' => 'news_course_provider',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
   /* Filter criterion: Content: Published */
@@ -383,7 +400,8 @@ function ulf_course_providers_views_default_views() {
     t('Forløb - Dagtilbud'),
     t('Forløb - Grundskole'),
     t('Forløb - Ungdomsuddannelse'),
-    t('Block'),
+    t('Nyheder'),
+    t('<h3 class="teaser--content-header">Nyheder</h3>'),
   );
   $export['ulf_content_by_user'] = $view;
 

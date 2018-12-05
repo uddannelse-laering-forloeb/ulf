@@ -922,13 +922,27 @@ function search_node_page_build_search_box($configuration = array()) {
     $search_node_index = $index->options['search_node_indexes'];
     $search_node_index = variable_get('search_api_' . $server->machine_name . '_index_' . $index->machine_name, $search_node_index);
 
+    $search_subtype = '';
+    if ($configuration['forces']['field'] == 'field_target_group') {
+      foreach ($configuration['forces']['selected'] as $value) {
+        if (!empty($value)) {
+          $search_subtype = '_' . strtolower($value);
+        }
+      }
+    }
+
+    // Check for template overrides in settings.php.
+    $search_box_path = variable_get('search_template_box_' . $configuration['index'] . $search_subtype , $configuration['templates']['box']);
+    $search_result_path = variable_get('search_template_result_' . $configuration['index'] . $search_subtype, $configuration['templates']['result']);
+    $search_pager_path = variable_get('search_template_pager_' . $configuration['index'] . $search_subtype, $configuration['templates']['pager']);
+    
     // Build array to convert to json configuration.
     $conf = array(
       'id' => $configuration['id'],
       'templates' => array(
-        'box' => $configuration['templates']['box'],
-        'result' => $configuration['templates']['result'],
-        'pager' => $configuration['templates']['pager'],
+        'box' => $search_box_path,
+        'result' => $search_result_path,
+        'pager' => $search_pager_path,
       ),
       'provider' => array(
         'service' => 'searchNodeProvider',

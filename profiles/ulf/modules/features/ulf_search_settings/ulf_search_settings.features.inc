@@ -178,6 +178,7 @@ function ulf_search_settings_default_search_api_index() {
         "field_educational_goals" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_free" : { "type" : "boolean" },
         "field_image:file" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "file" },
+        "field_location" : { "type" : "string" },
         "field_offer_type" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_period:value" : { "type" : "date" },
         "field_period:value2" : { "type" : "date" },
@@ -202,16 +203,26 @@ function ulf_search_settings_default_search_api_index() {
         "url" : { "type" : "uri" }
       },
       "data_alter_callbacks" : {
-        "search_api_alter_node_access" : { "status" : 0, "weight" : "0", "settings" : [] },
+        "exclude" : {
+          "status" : 0,
+          "weight" : "-50",
+          "settings" : { "fields" : { "name" : "", "values" : "" } }
+        },
+        "location" : {
+          "status" : 1,
+          "weight" : "-50",
+          "settings" : { "field_name" : "field_location" }
+        },
         "search_api_alter_node_status" : { "status" : 1, "weight" : "0", "settings" : [] },
+        "search_api_alter_node_access" : { "status" : 0, "weight" : "0", "settings" : [] },
         "search_api_alter_language_control" : {
           "status" : 0,
           "weight" : "0",
           "settings" : { "lang_field" : "", "languages" : [] }
         },
-        "search_api_alter_add_hierarchy" : { "status" : 0, "weight" : "0", "settings" : { "fields" : [] } },
         "search_api_alter_add_aggregation" : { "status" : 0, "weight" : "0", "settings" : [] },
         "search_api_alter_add_viewed_entity" : { "status" : 0, "weight" : "0", "settings" : { "mode" : "full" } },
+        "search_api_alter_add_hierarchy" : { "status" : 0, "weight" : "0", "settings" : { "fields" : [] } },
         "search_api_alter_add_url" : { "status" : 0, "weight" : "0", "settings" : [] }
       },
       "processors" : {
@@ -319,6 +330,7 @@ function ulf_search_settings_default_search_api_index() {
           "weight" : "0",
           "settings" : { "lang_field" : "", "languages" : [] }
         },
+        "search_api_alter_user_status" : { "status" : 1, "weight" : "0", "settings" : [] },
         "search_api_alter_add_viewed_entity" : { "status" : 0, "weight" : "0", "settings" : { "mode" : "full" } },
         "search_api_alter_add_url" : { "status" : 0, "weight" : "0", "settings" : [] },
         "search_api_alter_add_aggregation" : { "status" : 0, "weight" : "0", "settings" : [] }
@@ -328,6 +340,8 @@ function ulf_search_settings_default_search_api_index() {
           "status" : 0,
           "weight" : "0",
           "settings" : { "fields" : {
+              "field_profile_address" : true,
+              "field_profile_city" : true,
               "field_profile_entry" : true,
               "field_profile_name" : true,
               "field_profile_phone" : true,
@@ -340,6 +354,8 @@ function ulf_search_settings_default_search_api_index() {
           "weight" : "10",
           "settings" : {
             "fields" : {
+              "field_profile_address" : true,
+              "field_profile_city" : true,
               "field_profile_entry" : true,
               "field_profile_name" : true,
               "field_profile_phone" : true,
@@ -354,7 +370,8 @@ function ulf_search_settings_default_search_api_index() {
           "status" : 0,
           "weight" : "15",
           "settings" : { "fields" : {
-
+              "field_profile_address" : true,
+              "field_profile_city" : true,
               "field_profile_entry" : true,
               "field_profile_name" : true,
               "field_profile_phone" : true,
@@ -367,6 +384,8 @@ function ulf_search_settings_default_search_api_index() {
           "weight" : "20",
           "settings" : {
             "fields" : {
+              "field_profile_address" : true,
+              "field_profile_city" : true,
               "field_profile_entry" : true,
               "field_profile_name" : true,
               "field_profile_phone" : true,
@@ -381,6 +400,8 @@ function ulf_search_settings_default_search_api_index() {
           "weight" : "30",
           "settings" : {
             "fields" : {
+              "field_profile_address" : true,
+              "field_profile_city" : true,
               "field_profile_entry" : true,
               "field_profile_name" : true,
               "field_profile_phone" : true,
@@ -421,9 +442,9 @@ function ulf_search_settings_default_search_api_server() {
     "description" : "",
     "class" : "search_api_search_node_service",
     "options" : {
-      "host" : "https:\\/\\/riptide.aakb.dk",
-      "apikey" : "17a0605248cee7105cdba634d6604f28",
-      "apikey_readonly" : "dc52d28f7530eb208047c7c422fa8fbf"
+      "host" : "",
+      "apikey" : "",
+      "apikey_readonly" : ""
     },
     "enabled" : "1"
   }');

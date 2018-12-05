@@ -69,168 +69,226 @@ function ulf_search_settings_default_page_manager_pages() {
   $display->cache = array();
   $display->title = '';
   $display->uuid = '638248a9-b3be-42cc-b840-e4e1e62f0114';
+  $display->storage_type = 'page_manager';
+  $display->storage_id = 'page_search_courses__panel';
   $display->content = array();
   $display->panels = array();
-    $pane = new stdClass();
-    $pane->pid = 'new-4e4e009d-a620-453a-acb5-98f13a7bbeb1';
-    $pane->panel = 'middle';
-    $pane->type = 'search_box';
-    $pane->subtype = 'search_box';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'search_node' => array(
-        'id' => '1443436570',
-        'server' => 'search_node',
-        'index' => 'educators',
-        'options' => array(
-          'cache_expire' => '300',
-          'size' => '8',
-          'initial_query_enable' => 1,
-          'initial_query_text' => '',
-          'fields' => array(
-            'author:field_profile_name' => 'author:field_profile_name',
-            'field_teaser' => 'field_teaser',
-            'title' => 'title',
-            'author:uid' => 0,
-            'author:url' => 0,
-            'changed' => 0,
-            'created' => 0,
-            'field_educational_goals' => 0,
-            'field_image:file' => 0,
-            'field_offer_type' => 0,
-            'field_period:value2' => 0,
-            'field_price' => 0,
-            'field_relevance_educators' => 0,
-            'field_relevance_primary_school' => 0,
-            'field_relevance_upper_school' => 0,
-            'field_subject' => 0,
-            'field_subject:url' => 0,
-            'field_subjects_primary_school' => 0,
-            'field_subjects_youth' => 0,
-            'field_target_group' => 0,
-            'field_target_group_sub' => 0,
-            'nid' => 0,
-            'search_api_language' => 0,
-            'type' => 0,
-            'url' => 0,
-          ),
-          'filters' => array(
-            'taxonomy' => array(
-              'field_subject' => 'field_subject',
-              'field_educational_goals' => 0,
-              'field_offer_type' => 0,
-              'field_relevance_educators' => 0,
-              'field_relevance_primary_school' => 0,
-              'field_relevance_upper_school' => 0,
-              'field_subjects_primary_school' => 0,
-              'field_subjects_youth' => 0,
-              'field_target_group' => 0,
-              'field_target_group_sub' => 0,
-            ),
-            'boolean' => array(),
-          ),
+  $pane = new stdClass();
+  $pane->pid = 'new-4e4e009d-a620-453a-acb5-98f13a7bbeb1';
+  $pane->panel = 'middle';
+  $pane->type = 'search_box';
+  $pane->subtype = 'search_box';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'search_node' => array(
+      'id' => '1443436570',
+      'server' => 'search_node',
+      'index' => 'educators',
+      'options' => array(
+        'match_type' => 'best_fields',
+        'match_operator' => 'or',
+        'cache_expire' => '300',
+        'size' => '8',
+        'initial_query_enable' => 1,
+        'initial_query_text' => '',
+        'fields' => array(
+          'author:field_profile_name' => 'author:field_profile_name',
+          'field_teaser' => 'field_teaser',
+          'title' => 'title',
+          'author:uid' => 0,
+          'author:url' => 0,
+          'changed' => 0,
+          'created' => 0,
+          'field_educational_goals' => 0,
+          'field_image:file' => 0,
+          'field_location' => 0,
+          'field_offer_type' => 0,
+          'field_period:value2' => 0,
+          'field_price' => 0,
+          'field_relevance_educators' => 0,
+          'field_relevance_educators:url' => 0,
+          'field_relevance_primary_school' => 0,
+          'field_relevance_primary_school:url' => 0,
+          'field_relevance_upper_school' => 0,
+          'field_relevance_upper_school:url' => 0,
+          'field_subject' => 0,
+          'field_subject:url' => 0,
+          'field_subjects_primary_school' => 0,
+          'field_subjects_youth' => 0,
+          'field_target_group' => 0,
+          'field_target_group_sub' => 0,
+          'nid' => 0,
+          'search_api_language' => 0,
+          'type' => 0,
+          'url' => 0,
         ),
         'filters' => array(
-          'type' => array(
-            'field_educational_goals' => 'or',
-            'field_offer_type' => 'or',
-            'field_relevance_educators' => 'or',
-            'field_relevance_primary_school' => 'or',
-            'field_relevance_upper_school' => 'or',
-            'field_subject' => 'or',
-            'field_subjects_primary_school' => 'or',
-            'field_subjects_youth' => 'or',
-            'field_target_group' => 'or',
-            'field_target_group_sub' => 'or',
-          ),
-        ),
-        'sorting' => array(
-          'field' => 'title',
-          'order' => 'asc',
-        ),
-        'dates' => array(
-          'fields' => array(
-            'field_period:value' => 'field_period:value',
-          ),
-        ),
-        'intervals' => array(
-          'fields' => array(
-            'author:field_profile_name' => 0,
-            'author:uid' => 0,
-            'author:url' => 0,
-            'changed' => 0,
-            'created' => 0,
+          'taxonomy' => array(
+            'field_subject' => 'field_subject',
             'field_educational_goals' => 0,
-            'field_image:file' => 0,
             'field_offer_type' => 0,
-            'field_period:value2' => 0,
-            'field_price' => 0,
             'field_relevance_educators' => 0,
             'field_relevance_primary_school' => 0,
             'field_relevance_upper_school' => 0,
-            'field_subject' => 0,
-            'field_subject:url' => 0,
             'field_subjects_primary_school' => 0,
             'field_subjects_youth' => 0,
             'field_target_group' => 0,
             'field_target_group_sub' => 0,
-            'field_teaser' => 0,
-            'nid' => 0,
-            'search_api_language' => 0,
-            'title' => 0,
-            'type' => 0,
-            'url' => 0,
+          ),
+          'boolean' => array(
+            'field_free' => 0,
           ),
         ),
-        'forces' => array(
-          'field' => '_none_',
-          'selected' => array(),
-        ),
-        'templates' => array(
-          'box' => '/profiles/ulf/themes/ulf_default/templates/search/angular/search-course.html',
-          'result' => '/profiles/ulf/themes/ulf_default/templates/search/angular/results-course.html',
-          'pager' => '/profiles/ulf/themes/ulf_default/templates/search/angular/pager.html',
+      ),
+      'filters' => array(
+        'type' => array(
+          'field_educational_goals' => 'or',
+          'field_offer_type' => 'or',
+          'field_relevance_educators' => 'or',
+          'field_relevance_primary_school' => 'or',
+          'field_relevance_upper_school' => 'or',
+          'field_subject' => 'or',
+          'field_subjects_primary_school' => 'or',
+          'field_subjects_youth' => 'or',
+          'field_target_group' => 'or',
+          'field_target_group_sub' => 'or',
         ),
       ),
-      'override_title' => 0,
-      'override_title_text' => '',
-      'override_title_heading' => 'h2',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 0;
-    $pane->locks = array();
-    $pane->uuid = '4e4e009d-a620-453a-acb5-98f13a7bbeb1';
-    $display->content['new-4e4e009d-a620-453a-acb5-98f13a7bbeb1'] = $pane;
-    $display->panels['middle'][0] = 'new-4e4e009d-a620-453a-acb5-98f13a7bbeb1';
-    $pane = new stdClass();
-    $pane->pid = 'new-6289d997-fcad-46e2-9e66-d34b03470b96';
-    $pane->panel = 'middle';
-    $pane->type = 'search_result';
-    $pane->subtype = 'search_result';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'override_title' => 0,
-      'override_title_text' => '',
-      'override_title_heading' => 'h2',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 1;
-    $pane->locks = array();
-    $pane->uuid = '6289d997-fcad-46e2-9e66-d34b03470b96';
-    $display->content['new-6289d997-fcad-46e2-9e66-d34b03470b96'] = $pane;
-    $display->panels['middle'][1] = 'new-6289d997-fcad-46e2-9e66-d34b03470b96';
+      'sorting' => array(
+        'field' => 'changed',
+        'order' => 'desc',
+      ),
+      'dates' => array(
+        'fields' => array(
+          'field_period:value' => 'field_period:value',
+        ),
+      ),
+      'intervals' => array(
+        'fields' => array(
+          'author:field_profile_name' => 0,
+          'author:uid' => 0,
+          'author:url' => 0,
+          'changed' => 0,
+          'created' => 0,
+          'field_educational_goals' => 0,
+          'field_image:file' => 0,
+          'field_location' => 0,
+          'field_offer_type' => 0,
+          'field_period:value2' => 0,
+          'field_price' => 0,
+          'field_relevance_educators' => 0,
+          'field_relevance_educators:url' => 0,
+          'field_relevance_primary_school' => 0,
+          'field_relevance_primary_school:url' => 0,
+          'field_relevance_upper_school' => 0,
+          'field_relevance_upper_school:url' => 0,
+          'field_subject' => 0,
+          'field_subject:url' => 0,
+          'field_subjects_primary_school' => 0,
+          'field_subjects_youth' => 0,
+          'field_target_group' => 0,
+          'field_target_group_sub' => 0,
+          'field_teaser' => 0,
+          'nid' => 0,
+          'search_api_language' => 0,
+          'title' => 0,
+          'type' => 0,
+          'url' => 0,
+        ),
+      ),
+      'forces' => array(
+        'field' => '_none_',
+        'selected' => array(),
+      ),
+      'highlight' => array(
+        'fields' => array(
+          'author:field_profile_name' => 0,
+          'author:uid' => 0,
+          'author:url' => 0,
+          'changed' => 0,
+          'created' => 0,
+          'field_educational_goals' => 0,
+          'field_image:file' => 0,
+          'field_location' => 0,
+          'field_offer_type' => 0,
+          'field_period:value2' => 0,
+          'field_price' => 0,
+          'field_relevance_educators' => 0,
+          'field_relevance_educators:url' => 0,
+          'field_relevance_primary_school' => 0,
+          'field_relevance_primary_school:url' => 0,
+          'field_relevance_upper_school' => 0,
+          'field_relevance_upper_school:url' => 0,
+          'field_subject' => 0,
+          'field_subject:url' => 0,
+          'field_subjects_primary_school' => 0,
+          'field_subjects_youth' => 0,
+          'field_target_group' => 0,
+          'field_target_group_sub' => 0,
+          'field_teaser' => 0,
+          'nid' => 0,
+          'search_api_language' => 0,
+          'title' => 0,
+          'type' => 0,
+          'url' => 0,
+        ),
+      ),
+      'templates' => array(
+        'box' => '/profiles/ulf/themes/ulf_default/templates/search/angular/search-course.html',
+        'result' => '/profiles/ulf/themes/ulf_default/templates/search/angular/results-course.html',
+        'pager' => '/profiles/ulf/themes/ulf_default/templates/search/angular/pager.html',
+        'popup' => '/profiles/ulf/themes/ulf_default/templates/search/angular/popup-course.html',
+      ),
+      'autocomplete' => array(
+        'index' => '_none_',
+        'field' => '_none_',
+        'minChars' => '3',
+        'size' => '1',
+      ),
+      'map' => array(
+        'points' => '50000',
+        'markers' => '/profiles/ulf/themes/ulf_default/images/leaflet/',
+      ),
+    ),
+    'override_title' => 0,
+    'override_title_text' => '',
+    'override_title_heading' => 'h2',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 0;
+  $pane->locks = array();
+  $pane->uuid = '4e4e009d-a620-453a-acb5-98f13a7bbeb1';
+  $display->content['new-4e4e009d-a620-453a-acb5-98f13a7bbeb1'] = $pane;
+  $display->panels['middle'][0] = 'new-4e4e009d-a620-453a-acb5-98f13a7bbeb1';
+  $pane = new stdClass();
+  $pane->pid = 'new-6289d997-fcad-46e2-9e66-d34b03470b96';
+  $pane->panel = 'middle';
+  $pane->type = 'search_result';
+  $pane->subtype = 'search_result';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'override_title' => 0,
+    'override_title_text' => '',
+    'override_title_heading' => 'h2',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 1;
+  $pane->locks = array();
+  $pane->uuid = '6289d997-fcad-46e2-9e66-d34b03470b96';
+  $display->content['new-6289d997-fcad-46e2-9e66-d34b03470b96'] = $pane;
+  $display->panels['middle'][1] = 'new-6289d997-fcad-46e2-9e66-d34b03470b96';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
@@ -298,164 +356,208 @@ function ulf_search_settings_default_page_manager_pages() {
   $display->cache = array();
   $display->title = '';
   $display->uuid = '628079a0-513c-4ad1-965b-dc9dd22943cc';
+  $display->storage_type = 'page_manager';
+  $display->storage_id = 'page_search_day_care__panel';
   $display->content = array();
   $display->panels = array();
-    $pane = new stdClass();
-    $pane->pid = 'new-dfa56415-9735-4149-b13c-fecff6fecb10';
-    $pane->panel = 'middle';
-    $pane->type = 'search_box';
-    $pane->subtype = 'search_box';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'text' => '',
-      'override_title' => 0,
-      'override_title_text' => '',
-      'override_title_heading' => 'h2',
-      'search_node' => array(
-        'id' => '1441278884',
-        'server' => 'search_node',
-        'index' => 'courses',
-        'options' => array(
-          'cache_expire' => '300',
-          'size' => '14',
-          'initial_query_enable' => 1,
-          'initial_query_text' => '',
-          'fields' => array(
-            'author:field_profile_name' => 'author:field_profile_name',
-            'field_educational_goals' => 'field_educational_goals',
-            'field_full_description:value' => 'field_full_description:value',
-            'field_subject' => 'field_subject',
-            'title' => 'title',
-            'author' => 0,
-            'author:url' => 0,
-            'changed' => 0,
-            'created' => 0,
-            'field_image:file' => 0,
-            'field_offer_type' => 0,
-            'field_period:value2' => 0,
-            'field_price' => 0,
-            'field_subject:url' => 0,
-            'field_subjects_primary_school' => 0,
-            'field_subjects_youth' => 0,
-            'field_target_group' => 0,
-            'field_target_group_sub' => 0,
-            'nid' => 0,
-            'search_api_language' => 0,
-            'type' => 0,
-            'url' => 0,
-          ),
-          'filters' => array(
-            'taxonomy' => array(
-              'field_educational_goals' => 'field_educational_goals',
-              'field_offer_type' => 'field_offer_type',
-              'field_subject' => 'field_subject',
-              'field_target_group_sub' => 'field_target_group_sub',
-              'field_subjects_primary_school' => 0,
-              'field_subjects_youth' => 0,
-              'field_target_group' => 0,
-            ),
-            'boolean' => array(
-              'field_free' => 'field_free',
-              'field_period_full_year' => 0,
-            ),
-          ),
+  $pane = new stdClass();
+  $pane->pid = 'new-dfa56415-9735-4149-b13c-fecff6fecb10';
+  $pane->panel = 'middle';
+  $pane->type = 'search_box';
+  $pane->subtype = 'search_box';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'text' => '',
+    'override_title' => 0,
+    'override_title_text' => '',
+    'override_title_heading' => 'h2',
+    'search_node' => array(
+      'id' => '1441278884',
+      'server' => 'search_node',
+      'index' => 'courses',
+      'options' => array(
+        'match_type' => 'best_fields',
+        'match_operator' => 'or',
+        'cache_expire' => '300',
+        'size' => '14',
+        'initial_query_enable' => 1,
+        'initial_query_text' => '',
+        'fields' => array(
+          'author:field_profile_name' => 'author:field_profile_name',
+          'field_educational_goals' => 'field_educational_goals',
+          'field_full_description:value' => 'field_full_description:value',
+          'field_subject' => 'field_subject',
+          'title' => 'title',
+          'author' => 0,
+          'author:url' => 0,
+          'changed' => 0,
+          'created' => 0,
+          'field_image:file' => 0,
+          'field_location' => 0,
+          'field_offer_type' => 0,
+          'field_period:value2' => 0,
+          'field_price' => 0,
+          'field_subject:url' => 0,
+          'field_subjects_primary_school' => 0,
+          'field_subjects_youth' => 0,
+          'field_target_group' => 0,
+          'field_target_group_sub' => 0,
+          'nid' => 0,
+          'search_api_language' => 0,
+          'type' => 0,
+          'url' => 0,
         ),
         'filters' => array(
-          'type' => array(
-            'field_educational_goals' => 'or',
-            'field_offer_type' => 'or',
-            'field_subject' => 'or',
-            'field_subjects_primary_school' => 'or',
-            'field_subjects_youth' => 'or',
-            'field_target_group' => 'or',
-            'field_target_group_sub' => 'or',
-          ),
-        ),
-        'sorting' => array(
-          'field' => 'title',
-          'order' => 'asc',
-        ),
-        'dates' => array(
-          'fields' => array(
-            'field_period:value' => 'field_period:value',
-          ),
-        ),
-        'intervals' => array(
-          'fields' => array(
-            'author' => 0,
-            'author:field_profile_name' => 0,
-            'author:url' => 0,
-            'changed' => 0,
-            'created' => 0,
-            'field_educational_goals' => 0,
-            'field_full_description:value' => 0,
-            'field_image:file' => 0,
-            'field_offer_type' => 0,
-            'field_period:value2' => 0,
-            'field_price' => 0,
-            'field_subject' => 0,
-            'field_subject:url' => 0,
+          'taxonomy' => array(
+            'field_educational_goals' => 'field_educational_goals',
+            'field_offer_type' => 'field_offer_type',
+            'field_subject' => 'field_subject',
+            'field_target_group_sub' => 'field_target_group_sub',
             'field_subjects_primary_school' => 0,
             'field_subjects_youth' => 0,
             'field_target_group' => 0,
-            'field_target_group_sub' => 0,
-            'nid' => 0,
-            'search_api_language' => 0,
-            'title' => 0,
-            'type' => 0,
-            'url' => 0,
           ),
-        ),
-        'forces' => array(
-          'field' => 'field_target_group',
-          'selected' => array(
-            'Dagtilbud' => 'Dagtilbud',
-            'Grundskole' => 0,
-            'Ungdomsuddannelse' => 0,
+          'boolean' => array(
+            'field_free' => 'field_free',
+            'field_period_full_year' => 0,
           ),
-        ),
-        'templates' => array(
-          'box' => '/profiles/ulf/themes/ulf_default/templates/search/angular/search-daycare.html',
-          'result' => '/profiles/ulf/themes/ulf_default/templates/search/angular/results-daycare.html',
-          'pager' => '/profiles/ulf/themes/ulf_default/templates/search/angular/pager.html',
         ),
       ),
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 0;
-    $pane->locks = array();
-    $pane->uuid = 'dfa56415-9735-4149-b13c-fecff6fecb10';
-    $display->content['new-dfa56415-9735-4149-b13c-fecff6fecb10'] = $pane;
-    $display->panels['middle'][0] = 'new-dfa56415-9735-4149-b13c-fecff6fecb10';
-    $pane = new stdClass();
-    $pane->pid = 'new-485b89b0-43a3-4592-8e8e-d0f5160a9288';
-    $pane->panel = 'middle';
-    $pane->type = 'search_result';
-    $pane->subtype = 'search_result';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'override_title' => 0,
-      'override_title_text' => '',
-      'override_title_heading' => 'h2',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 1;
-    $pane->locks = array();
-    $pane->uuid = '485b89b0-43a3-4592-8e8e-d0f5160a9288';
-    $display->content['new-485b89b0-43a3-4592-8e8e-d0f5160a9288'] = $pane;
-    $display->panels['middle'][1] = 'new-485b89b0-43a3-4592-8e8e-d0f5160a9288';
+      'filters' => array(
+        'type' => array(
+          'field_educational_goals' => 'or',
+          'field_offer_type' => 'or',
+          'field_subject' => 'or',
+          'field_subjects_primary_school' => 'or',
+          'field_subjects_youth' => 'or',
+          'field_target_group' => 'or',
+          'field_target_group_sub' => 'or',
+        ),
+      ),
+      'sorting' => array(
+        'field' => 'changed',
+        'order' => 'desc',
+      ),
+      'dates' => array(
+        'fields' => array(
+          'field_period:value' => 'field_period:value',
+        ),
+      ),
+      'intervals' => array(
+        'fields' => array(
+          'author' => 0,
+          'author:field_profile_name' => 0,
+          'author:url' => 0,
+          'changed' => 0,
+          'created' => 0,
+          'field_educational_goals' => 0,
+          'field_full_description:value' => 0,
+          'field_image:file' => 0,
+          'field_location' => 0,
+          'field_offer_type' => 0,
+          'field_period:value2' => 0,
+          'field_price' => 0,
+          'field_subject' => 0,
+          'field_subject:url' => 0,
+          'field_subjects_primary_school' => 0,
+          'field_subjects_youth' => 0,
+          'field_target_group' => 0,
+          'field_target_group_sub' => 0,
+          'nid' => 0,
+          'search_api_language' => 0,
+          'title' => 0,
+          'type' => 0,
+          'url' => 0,
+        ),
+      ),
+      'forces' => array(
+        'field' => 'field_target_group',
+        'selected' => array(
+          'Dagtilbud' => 'Dagtilbud',
+          'Grundskole' => 0,
+          'Ungdomsuddannelse' => 0,
+        ),
+      ),
+      'highlight' => array(
+        'fields' => array(
+          'author' => 0,
+          'author:field_profile_name' => 0,
+          'author:url' => 0,
+          'changed' => 0,
+          'created' => 0,
+          'field_educational_goals' => 0,
+          'field_full_description:value' => 0,
+          'field_image:file' => 0,
+          'field_location' => 0,
+          'field_offer_type' => 0,
+          'field_period:value2' => 0,
+          'field_price' => 0,
+          'field_subject' => 0,
+          'field_subject:url' => 0,
+          'field_subjects_primary_school' => 0,
+          'field_subjects_youth' => 0,
+          'field_target_group' => 0,
+          'field_target_group_sub' => 0,
+          'nid' => 0,
+          'search_api_language' => 0,
+          'title' => 0,
+          'type' => 0,
+          'url' => 0,
+        ),
+      ),
+      'templates' => array(
+        'box' => '/profiles/ulf/themes/ulf_default/templates/search/angular/search-daycare.html',
+        'result' => '/profiles/ulf/themes/ulf_default/templates/search/angular/results-daycare.html',
+        'pager' => '/profiles/ulf/themes/ulf_default/templates/search/angular/pager.html',
+        'popup' => '/profiles/ulf/themes/ulf_default/templates/search/angular/popup-daycare.html',
+      ),
+      'autocomplete' => array(
+        'index' => '_none_',
+        'field' => '_none_',
+        'minChars' => '3',
+        'size' => '1',
+      ),
+      'map' => array(
+        'points' => '50000',
+        'markers' => '/profiles/ulf/themes/ulf_default/images/leaflet/',
+      ),
+    ),
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 0;
+  $pane->locks = array();
+  $pane->uuid = 'dfa56415-9735-4149-b13c-fecff6fecb10';
+  $display->content['new-dfa56415-9735-4149-b13c-fecff6fecb10'] = $pane;
+  $display->panels['middle'][0] = 'new-dfa56415-9735-4149-b13c-fecff6fecb10';
+  $pane = new stdClass();
+  $pane->pid = 'new-485b89b0-43a3-4592-8e8e-d0f5160a9288';
+  $pane->panel = 'middle';
+  $pane->type = 'search_result';
+  $pane->subtype = 'search_result';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'override_title' => 0,
+    'override_title_text' => '',
+    'override_title_heading' => 'h2',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 1;
+  $pane->locks = array();
+  $pane->uuid = '485b89b0-43a3-4592-8e8e-d0f5160a9288';
+  $display->content['new-485b89b0-43a3-4592-8e8e-d0f5160a9288'] = $pane;
+  $display->panels['middle'][1] = 'new-485b89b0-43a3-4592-8e8e-d0f5160a9288';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
@@ -523,163 +625,207 @@ function ulf_search_settings_default_page_manager_pages() {
   $display->cache = array();
   $display->title = '';
   $display->uuid = 'c67ab2d8-1b5e-47fc-9df5-75bed018664e';
+  $display->storage_type = 'page_manager';
+  $display->storage_id = 'page_search_elementary_school__panel';
   $display->content = array();
   $display->panels = array();
-    $pane = new stdClass();
-    $pane->pid = 'new-a7e8be04-63a1-4381-a371-5a09951f34fe';
-    $pane->panel = 'middle';
-    $pane->type = 'search_box';
-    $pane->subtype = 'search_box';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'search_node' => array(
-        'id' => '1441278867',
-        'server' => 'search_node',
-        'index' => 'courses',
-        'options' => array(
-          'cache_expire' => '300',
-          'size' => '14',
-          'initial_query_enable' => 1,
-          'initial_query_text' => '',
-          'fields' => array(
-            'author:field_profile_name' => 'author:field_profile_name',
-            'field_full_description:value' => 'field_full_description:value',
-            'field_subject' => 'field_subject',
-            'field_subjects_primary_school' => 'field_subjects_primary_school',
-            'title' => 'title',
-            'author' => 0,
-            'author:url' => 0,
-            'changed' => 0,
-            'created' => 0,
-            'field_educational_goals' => 0,
-            'field_image:file' => 0,
-            'field_offer_type' => 0,
-            'field_period:value2' => 0,
-            'field_price' => 0,
-            'field_subject:url' => 0,
-            'field_subjects_youth' => 0,
-            'field_target_group' => 0,
-            'field_target_group_sub' => 0,
-            'nid' => 0,
-            'search_api_language' => 0,
-            'type' => 0,
-            'url' => 0,
-          ),
-          'filters' => array(
-            'taxonomy' => array(
-              'field_offer_type' => 'field_offer_type',
-              'field_subject' => 'field_subject',
-              'field_subjects_primary_school' => 'field_subjects_primary_school',
-              'field_target_group_sub' => 'field_target_group_sub',
-              'field_educational_goals' => 0,
-              'field_subjects_youth' => 0,
-              'field_target_group' => 0,
-            ),
-            'boolean' => array(
-              'field_free' => 'field_free',
-              'field_period_full_year' => 0,
-            ),
-          ),
+  $pane = new stdClass();
+  $pane->pid = 'new-a7e8be04-63a1-4381-a371-5a09951f34fe';
+  $pane->panel = 'middle';
+  $pane->type = 'search_box';
+  $pane->subtype = 'search_box';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'search_node' => array(
+      'id' => '1441278867',
+      'server' => 'search_node',
+      'index' => 'courses',
+      'options' => array(
+        'match_type' => 'best_fields',
+        'match_operator' => 'or',
+        'cache_expire' => '300',
+        'size' => '14',
+        'initial_query_enable' => 1,
+        'initial_query_text' => '',
+        'fields' => array(
+          'author:field_profile_name' => 'author:field_profile_name',
+          'field_full_description:value' => 'field_full_description:value',
+          'field_subject' => 'field_subject',
+          'field_subjects_primary_school' => 'field_subjects_primary_school',
+          'title' => 'title',
+          'author' => 0,
+          'author:url' => 0,
+          'changed' => 0,
+          'created' => 0,
+          'field_educational_goals' => 0,
+          'field_image:file' => 0,
+          'field_location' => 0,
+          'field_offer_type' => 0,
+          'field_period:value2' => 0,
+          'field_price' => 0,
+          'field_subject:url' => 0,
+          'field_subjects_youth' => 0,
+          'field_target_group' => 0,
+          'field_target_group_sub' => 0,
+          'nid' => 0,
+          'search_api_language' => 0,
+          'type' => 0,
+          'url' => 0,
         ),
         'filters' => array(
-          'type' => array(
-            'field_educational_goals' => 'or',
-            'field_offer_type' => 'or',
-            'field_subject' => 'or',
-            'field_subjects_primary_school' => 'or',
-            'field_subjects_youth' => 'or',
-            'field_target_group' => 'or',
-            'field_target_group_sub' => 'or',
-          ),
-        ),
-        'sorting' => array(
-          'field' => 'title',
-          'order' => 'asc',
-        ),
-        'dates' => array(
-          'fields' => array(
-            'field_period:value' => 'field_period:value',
-          ),
-        ),
-        'intervals' => array(
-          'fields' => array(
-            'author' => 0,
-            'author:field_profile_name' => 0,
-            'author:url' => 0,
-            'changed' => 0,
-            'created' => 0,
+          'taxonomy' => array(
+            'field_offer_type' => 'field_offer_type',
+            'field_subject' => 'field_subject',
+            'field_subjects_primary_school' => 'field_subjects_primary_school',
+            'field_target_group_sub' => 'field_target_group_sub',
             'field_educational_goals' => 0,
-            'field_full_description:value' => 0,
-            'field_image:file' => 0,
-            'field_offer_type' => 0,
-            'field_period:value2' => 0,
-            'field_price' => 0,
-            'field_subject' => 0,
-            'field_subject:url' => 0,
-            'field_subjects_primary_school' => 0,
             'field_subjects_youth' => 0,
             'field_target_group' => 0,
-            'field_target_group_sub' => 0,
-            'nid' => 0,
-            'search_api_language' => 0,
-            'title' => 0,
-            'type' => 0,
-            'url' => 0,
           ),
-        ),
-        'forces' => array(
-          'field' => 'field_target_group',
-          'selected' => array(
-            'Grundskole' => 'Grundskole',
-            'Dagtilbud' => 0,
-            'Ungdomsuddannelse' => 0,
+          'boolean' => array(
+            'field_free' => 'field_free',
+            'field_period_full_year' => 0,
           ),
-        ),
-        'templates' => array(
-          'box' => '/profiles/ulf/themes/ulf_default/templates/search/angular/search-school.html',
-          'result' => '/profiles/ulf/themes/ulf_default/templates/search/angular/results-school.html',
-          'pager' => '/profiles/ulf/themes/ulf_default/templates/search/angular/pager.html',
         ),
       ),
-      'override_title' => 0,
-      'override_title_text' => '',
-      'override_title_heading' => 'h2',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 0;
-    $pane->locks = array();
-    $pane->uuid = 'a7e8be04-63a1-4381-a371-5a09951f34fe';
-    $display->content['new-a7e8be04-63a1-4381-a371-5a09951f34fe'] = $pane;
-    $display->panels['middle'][0] = 'new-a7e8be04-63a1-4381-a371-5a09951f34fe';
-    $pane = new stdClass();
-    $pane->pid = 'new-8baed29e-d0f0-406c-80b5-9b8e61858e9c';
-    $pane->panel = 'middle';
-    $pane->type = 'search_result';
-    $pane->subtype = 'search_result';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'override_title' => 0,
-      'override_title_text' => '',
-      'override_title_heading' => 'h2',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 1;
-    $pane->locks = array();
-    $pane->uuid = '8baed29e-d0f0-406c-80b5-9b8e61858e9c';
-    $display->content['new-8baed29e-d0f0-406c-80b5-9b8e61858e9c'] = $pane;
-    $display->panels['middle'][1] = 'new-8baed29e-d0f0-406c-80b5-9b8e61858e9c';
+      'filters' => array(
+        'type' => array(
+          'field_educational_goals' => 'or',
+          'field_offer_type' => 'or',
+          'field_subject' => 'or',
+          'field_subjects_primary_school' => 'or',
+          'field_subjects_youth' => 'or',
+          'field_target_group' => 'or',
+          'field_target_group_sub' => 'or',
+        ),
+      ),
+      'sorting' => array(
+        'field' => 'changed',
+        'order' => 'desc',
+      ),
+      'dates' => array(
+        'fields' => array(
+          'field_period:value' => 'field_period:value',
+        ),
+      ),
+      'intervals' => array(
+        'fields' => array(
+          'author' => 0,
+          'author:field_profile_name' => 0,
+          'author:url' => 0,
+          'changed' => 0,
+          'created' => 0,
+          'field_educational_goals' => 0,
+          'field_full_description:value' => 0,
+          'field_image:file' => 0,
+          'field_location' => 0,
+          'field_offer_type' => 0,
+          'field_period:value2' => 0,
+          'field_price' => 0,
+          'field_subject' => 0,
+          'field_subject:url' => 0,
+          'field_subjects_primary_school' => 0,
+          'field_subjects_youth' => 0,
+          'field_target_group' => 0,
+          'field_target_group_sub' => 0,
+          'nid' => 0,
+          'search_api_language' => 0,
+          'title' => 0,
+          'type' => 0,
+          'url' => 0,
+        ),
+      ),
+      'forces' => array(
+        'field' => 'field_target_group',
+        'selected' => array(
+          'Grundskole' => 'Grundskole',
+          'Dagtilbud' => 0,
+          'Ungdomsuddannelse' => 0,
+        ),
+      ),
+      'highlight' => array(
+        'fields' => array(
+          'author' => 0,
+          'author:field_profile_name' => 0,
+          'author:url' => 0,
+          'changed' => 0,
+          'created' => 0,
+          'field_educational_goals' => 0,
+          'field_full_description:value' => 0,
+          'field_image:file' => 0,
+          'field_location' => 0,
+          'field_offer_type' => 0,
+          'field_period:value2' => 0,
+          'field_price' => 0,
+          'field_subject' => 0,
+          'field_subject:url' => 0,
+          'field_subjects_primary_school' => 0,
+          'field_subjects_youth' => 0,
+          'field_target_group' => 0,
+          'field_target_group_sub' => 0,
+          'nid' => 0,
+          'search_api_language' => 0,
+          'title' => 0,
+          'type' => 0,
+          'url' => 0,
+        ),
+      ),
+      'templates' => array(
+        'box' => '/profiles/ulf/themes/ulf_default/templates/search/angular/search-school.html',
+        'result' => '/profiles/ulf/themes/ulf_default/templates/search/angular/results-school.html',
+        'pager' => '/profiles/ulf/themes/ulf_default/templates/search/angular/pager.html',
+        'popup' => '/profiles/ulf/themes/ulf_default/templates/search/angular/popup-school.html',
+      ),
+      'autocomplete' => array(
+        'index' => '_none_',
+        'field' => '_none_',
+        'minChars' => '3',
+        'size' => '1',
+      ),
+      'map' => array(
+        'points' => '50000',
+        'markers' => '/profiles/ulf/themes/ulf_default/images/leaflet/',
+      ),
+    ),
+    'override_title' => 0,
+    'override_title_text' => '',
+    'override_title_heading' => 'h2',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 0;
+  $pane->locks = array();
+  $pane->uuid = 'a7e8be04-63a1-4381-a371-5a09951f34fe';
+  $display->content['new-a7e8be04-63a1-4381-a371-5a09951f34fe'] = $pane;
+  $display->panels['middle'][0] = 'new-a7e8be04-63a1-4381-a371-5a09951f34fe';
+  $pane = new stdClass();
+  $pane->pid = 'new-8baed29e-d0f0-406c-80b5-9b8e61858e9c';
+  $pane->panel = 'middle';
+  $pane->type = 'search_result';
+  $pane->subtype = 'search_result';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'override_title' => 0,
+    'override_title_text' => '',
+    'override_title_heading' => 'h2',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 1;
+  $pane->locks = array();
+  $pane->uuid = '8baed29e-d0f0-406c-80b5-9b8e61858e9c';
+  $display->content['new-8baed29e-d0f0-406c-80b5-9b8e61858e9c'] = $pane;
+  $display->panels['middle'][1] = 'new-8baed29e-d0f0-406c-80b5-9b8e61858e9c';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = 'new-a7e8be04-63a1-4381-a371-5a09951f34fe';
   $handler->conf['display'] = $display;
@@ -747,121 +893,130 @@ function ulf_search_settings_default_page_manager_pages() {
   $display->cache = array();
   $display->title = '';
   $display->uuid = '4f9c8e83-df13-485e-93a4-1100a46f8175';
+  $display->storage_type = 'page_manager';
+  $display->storage_id = 'page_search_users__panel';
   $display->content = array();
   $display->panels = array();
-    $pane = new stdClass();
-    $pane->pid = 'new-e528991d-a754-4b7d-a8f6-c9e0ab408e90';
-    $pane->panel = 'middle';
-    $pane->type = 'search_box';
-    $pane->subtype = 'search_box';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'search_node' => array(
-        'id' => '1443443194',
-        'server' => 'search_node',
-        'index' => 'users',
-        'options' => array(
-          'cache_expire' => '300',
-          'size' => '8',
-          'initial_query_enable' => 1,
-          'initial_query_text' => '',
-          'fields' => array(
-            'field_profile_name' => 'field_profile_name',
-            'created' => 0,
-            'field_image:file' => 0,
-            'field_profile_address' => 0,
-            'field_profile_city' => 0,
-            'field_profile_contact' => 0,
-            'field_profile_description:value' => 0,
-            'field_profile_entry' => 0,
-            'field_profile_mail' => 0,
-            'field_profile_phone' => 0,
-            'field_profile_postal_code' => 0,
-            'roles' => 0,
-            'search_api_language' => 0,
-            'uid' => 0,
-            'url' => 0,
-          ),
-          'filters' => array(
-            'taxonomy' => array(),
-            'boolean' => array(),
-          ),
+  $pane = new stdClass();
+  $pane->pid = 'new-e528991d-a754-4b7d-a8f6-c9e0ab408e90';
+  $pane->panel = 'middle';
+  $pane->type = 'search_box';
+  $pane->subtype = 'search_box';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'search_node' => array(
+      'id' => '1443443194',
+      'server' => 'search_node',
+      'index' => 'users',
+      'options' => array(
+        'cache_expire' => '300',
+        'size' => '8',
+        'initial_query_enable' => 1,
+        'initial_query_text' => '',
+        'fields' => array(
+          'field_profile_name' => 'field_profile_name',
+          'created' => 0,
+          'field_image:file' => 0,
+          'field_location' => 0,
+          'field_profile_address' => 0,
+          'field_profile_city' => 0,
+          'field_profile_contact' => 0,
+          'field_profile_description:value' => 0,
+          'field_profile_entry' => 0,
+          'field_profile_mail' => 0,
+          'field_profile_phone' => 0,
+          'field_profile_postal_code' => 0,
+          'roles' => 0,
+          'search_api_language' => 0,
+          'uid' => 0,
+          'url' => 0,
         ),
-        'sorting' => array(
-          'field' => 'field_profile_name',
-          'order' => 'asc',
-        ),
-        'dates' => array(
-          'fields' => array(),
-        ),
-        'intervals' => array(
-          'fields' => array(
-            'created' => 0,
-            'field_image:file' => 0,
-            'field_profile_address' => 0,
-            'field_profile_city' => 0,
-            'field_profile_contact' => 0,
-            'field_profile_description:value' => 0,
-            'field_profile_entry' => 0,
-            'field_profile_mail' => 0,
-            'field_profile_name' => 0,
-            'field_profile_phone' => 0,
-            'field_profile_postal_code' => 0,
-            'roles' => 0,
-            'search_api_language' => 0,
-            'uid' => 0,
-            'url' => 0,
-          ),
-        ),
-        'forces' => array(
-          'field' => '_none_',
-          'selected' => array(),
-        ),
-        'templates' => array(
-          'box' => '/profiles/ulf/themes/ulf_default/templates/search/angular/search-users.html',
-          'result' => '/profiles/ulf/themes/ulf_default/templates/search/angular/results-users.html',
-          'pager' => '/profiles/ulf/themes/ulf_default/templates/search/angular/pager.html',
+        'filters' => array(
+          'taxonomy' => array(),
+          'boolean' => array(),
         ),
       ),
-      'override_title' => 0,
-      'override_title_text' => '',
-      'override_title_heading' => 'h2',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 0;
-    $pane->locks = array();
-    $pane->uuid = 'e528991d-a754-4b7d-a8f6-c9e0ab408e90';
-    $display->content['new-e528991d-a754-4b7d-a8f6-c9e0ab408e90'] = $pane;
-    $display->panels['middle'][0] = 'new-e528991d-a754-4b7d-a8f6-c9e0ab408e90';
-    $pane = new stdClass();
-    $pane->pid = 'new-f596440d-6462-4d03-847c-00398f872783';
-    $pane->panel = 'middle';
-    $pane->type = 'search_result';
-    $pane->subtype = 'search_result';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'override_title' => 0,
-      'override_title_text' => '',
-      'override_title_heading' => 'h2',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 1;
-    $pane->locks = array();
-    $pane->uuid = 'f596440d-6462-4d03-847c-00398f872783';
-    $display->content['new-f596440d-6462-4d03-847c-00398f872783'] = $pane;
-    $display->panels['middle'][1] = 'new-f596440d-6462-4d03-847c-00398f872783';
+      'sorting' => array(
+        'field' => 'field_profile_name',
+        'order' => 'desc',
+      ),
+      'dates' => array(
+        'fields' => array(),
+      ),
+      'intervals' => array(
+        'fields' => array(
+          'created' => 0,
+          'field_image:file' => 0,
+          'field_location' => 0,
+          'field_profile_address' => 0,
+          'field_profile_city' => 0,
+          'field_profile_contact' => 0,
+          'field_profile_description:value' => 0,
+          'field_profile_entry' => 0,
+          'field_profile_mail' => 0,
+          'field_profile_name' => 0,
+          'field_profile_phone' => 0,
+          'field_profile_postal_code' => 0,
+          'roles' => 0,
+          'search_api_language' => 0,
+          'uid' => 0,
+          'url' => 0,
+        ),
+      ),
+      'forces' => array(
+        'field' => '_none_',
+        'selected' => array(),
+      ),
+      'templates' => array(
+        'box' => '/profiles/ulf/themes/ulf_default/templates/search/angular/search-users.html',
+        'result' => '/profiles/ulf/themes/ulf_default/templates/search/angular/results-users.html',
+        'pager' => '/profiles/ulf/themes/ulf_default/templates/search/angular/pager.html',
+        'popup' => '/profiles/ulf/themes/ulf_default/templates/search/angular/popup-users.html',
+      ),
+      'map' => array(
+        'points' => '50000',
+        'markers' => '/profiles/ulf/themes/ulf_default/images/leaflet/',
+      ),
+    ),
+    'override_title' => 0,
+    'override_title_text' => '',
+    'override_title_heading' => 'h2',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 0;
+  $pane->locks = array();
+  $pane->uuid = 'e528991d-a754-4b7d-a8f6-c9e0ab408e90';
+  $display->content['new-e528991d-a754-4b7d-a8f6-c9e0ab408e90'] = $pane;
+  $display->panels['middle'][0] = 'new-e528991d-a754-4b7d-a8f6-c9e0ab408e90';
+  $pane = new stdClass();
+  $pane->pid = 'new-f596440d-6462-4d03-847c-00398f872783';
+  $pane->panel = 'middle';
+  $pane->type = 'search_result';
+  $pane->subtype = 'search_result';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'override_title' => 0,
+    'override_title_text' => '',
+    'override_title_heading' => 'h2',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 1;
+  $pane->locks = array();
+  $pane->uuid = 'f596440d-6462-4d03-847c-00398f872783';
+  $display->content['new-f596440d-6462-4d03-847c-00398f872783'] = $pane;
+  $display->panels['middle'][1] = 'new-f596440d-6462-4d03-847c-00398f872783';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = 'new-e528991d-a754-4b7d-a8f6-c9e0ab408e90';
   $handler->conf['display'] = $display;
@@ -929,163 +1084,207 @@ function ulf_search_settings_default_page_manager_pages() {
   $display->cache = array();
   $display->title = '';
   $display->uuid = '18f053fb-58e2-4179-aa39-b7cd3636fd09';
+  $display->storage_type = 'page_manager';
+  $display->storage_id = 'page_search_youth__panel';
   $display->content = array();
   $display->panels = array();
-    $pane = new stdClass();
-    $pane->pid = 'new-19a1cbde-32f9-4961-913b-e912a8686148';
-    $pane->panel = 'middle';
-    $pane->type = 'search_box';
-    $pane->subtype = 'search_box';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'search_node' => array(
-        'id' => '1441950013',
-        'server' => 'search_node',
-        'index' => 'courses',
-        'options' => array(
-          'cache_expire' => '300',
-          'size' => '14',
-          'initial_query_enable' => 1,
-          'initial_query_text' => '',
-          'fields' => array(
-            'author:field_profile_name' => 'author:field_profile_name',
-            'field_full_description:value' => 'field_full_description:value',
-            'field_subject' => 'field_subject',
-            'field_subjects_youth' => 'field_subjects_youth',
-            'title' => 'title',
-            'author' => 0,
-            'author:url' => 0,
-            'changed' => 0,
-            'created' => 0,
-            'field_educational_goals' => 0,
-            'field_image:file' => 0,
-            'field_offer_type' => 0,
-            'field_period:value2' => 0,
-            'field_price' => 0,
-            'field_subject:url' => 0,
-            'field_subjects_primary_school' => 0,
-            'field_target_group' => 0,
-            'field_target_group_sub' => 0,
-            'nid' => 0,
-            'search_api_language' => 0,
-            'type' => 0,
-            'url' => 0,
-          ),
-          'filters' => array(
-            'taxonomy' => array(
-              'field_offer_type' => 'field_offer_type',
-              'field_subject' => 'field_subject',
-              'field_subjects_youth' => 'field_subjects_youth',
-              'field_target_group_sub' => 'field_target_group_sub',
-              'field_educational_goals' => 0,
-              'field_subjects_primary_school' => 0,
-              'field_target_group' => 0,
-            ),
-            'boolean' => array(
-              'field_free' => 'field_free',
-              'field_period_full_year' => 0,
-            ),
-          ),
+  $pane = new stdClass();
+  $pane->pid = 'new-19a1cbde-32f9-4961-913b-e912a8686148';
+  $pane->panel = 'middle';
+  $pane->type = 'search_box';
+  $pane->subtype = 'search_box';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'search_node' => array(
+      'id' => '1441950013',
+      'server' => 'search_node',
+      'index' => 'courses',
+      'options' => array(
+        'match_type' => 'best_fields',
+        'match_operator' => 'or',
+        'cache_expire' => '300',
+        'size' => '14',
+        'initial_query_enable' => 1,
+        'initial_query_text' => '',
+        'fields' => array(
+          'author:field_profile_name' => 'author:field_profile_name',
+          'field_full_description:value' => 'field_full_description:value',
+          'field_subject' => 'field_subject',
+          'field_subjects_youth' => 'field_subjects_youth',
+          'title' => 'title',
+          'author' => 0,
+          'author:url' => 0,
+          'changed' => 0,
+          'created' => 0,
+          'field_educational_goals' => 0,
+          'field_image:file' => 0,
+          'field_location' => 0,
+          'field_offer_type' => 0,
+          'field_period:value2' => 0,
+          'field_price' => 0,
+          'field_subject:url' => 0,
+          'field_subjects_primary_school' => 0,
+          'field_target_group' => 0,
+          'field_target_group_sub' => 0,
+          'nid' => 0,
+          'search_api_language' => 0,
+          'type' => 0,
+          'url' => 0,
         ),
         'filters' => array(
-          'type' => array(
-            'field_educational_goals' => 'or',
-            'field_offer_type' => 'or',
-            'field_subject' => 'or',
-            'field_subjects_primary_school' => 'or',
-            'field_subjects_youth' => 'or',
-            'field_target_group' => 'or',
-            'field_target_group_sub' => 'or',
-          ),
-        ),
-        'sorting' => array(
-          'field' => 'title',
-          'order' => 'asc',
-        ),
-        'dates' => array(
-          'fields' => array(
-            'field_period:value' => 'field_period:value',
-          ),
-        ),
-        'intervals' => array(
-          'fields' => array(
-            'author' => 0,
-            'author:field_profile_name' => 0,
-            'author:url' => 0,
-            'changed' => 0,
-            'created' => 0,
+          'taxonomy' => array(
+            'field_offer_type' => 'field_offer_type',
+            'field_subject' => 'field_subject',
+            'field_subjects_youth' => 'field_subjects_youth',
+            'field_target_group_sub' => 'field_target_group_sub',
             'field_educational_goals' => 0,
-            'field_full_description:value' => 0,
-            'field_image:file' => 0,
-            'field_offer_type' => 0,
-            'field_period:value2' => 0,
-            'field_price' => 0,
-            'field_subject' => 0,
-            'field_subject:url' => 0,
             'field_subjects_primary_school' => 0,
-            'field_subjects_youth' => 0,
             'field_target_group' => 0,
-            'field_target_group_sub' => 0,
-            'nid' => 0,
-            'search_api_language' => 0,
-            'title' => 0,
-            'type' => 0,
-            'url' => 0,
           ),
-        ),
-        'forces' => array(
-          'field' => 'field_target_group',
-          'selected' => array(
-            'Ungdomsuddannelse' => 'Ungdomsuddannelse',
-            'Dagtilbud' => 0,
-            'Grundskole' => 0,
+          'boolean' => array(
+            'field_free' => 'field_free',
+            'field_period_full_year' => 0,
           ),
-        ),
-        'templates' => array(
-          'box' => '/profiles/ulf/themes/ulf_default/templates/search/angular/search-youth.html',
-          'result' => '/profiles/ulf/themes/ulf_default/templates/search/angular/results-youth.html',
-          'pager' => '/profiles/ulf/themes/ulf_default/templates/search/angular/pager.html',
         ),
       ),
-      'override_title' => 0,
-      'override_title_text' => '',
-      'override_title_heading' => 'h2',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 0;
-    $pane->locks = array();
-    $pane->uuid = '19a1cbde-32f9-4961-913b-e912a8686148';
-    $display->content['new-19a1cbde-32f9-4961-913b-e912a8686148'] = $pane;
-    $display->panels['middle'][0] = 'new-19a1cbde-32f9-4961-913b-e912a8686148';
-    $pane = new stdClass();
-    $pane->pid = 'new-9d653cc5-9b10-4c19-9884-7da0e70281b7';
-    $pane->panel = 'middle';
-    $pane->type = 'search_result';
-    $pane->subtype = 'search_result';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'override_title' => 0,
-      'override_title_text' => '',
-      'override_title_heading' => 'h2',
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 1;
-    $pane->locks = array();
-    $pane->uuid = '9d653cc5-9b10-4c19-9884-7da0e70281b7';
-    $display->content['new-9d653cc5-9b10-4c19-9884-7da0e70281b7'] = $pane;
-    $display->panels['middle'][1] = 'new-9d653cc5-9b10-4c19-9884-7da0e70281b7';
+      'filters' => array(
+        'type' => array(
+          'field_educational_goals' => 'or',
+          'field_offer_type' => 'or',
+          'field_subject' => 'or',
+          'field_subjects_primary_school' => 'or',
+          'field_subjects_youth' => 'or',
+          'field_target_group' => 'or',
+          'field_target_group_sub' => 'or',
+        ),
+      ),
+      'sorting' => array(
+        'field' => 'changed',
+        'order' => 'desc',
+      ),
+      'dates' => array(
+        'fields' => array(
+          'field_period:value' => 'field_period:value',
+        ),
+      ),
+      'intervals' => array(
+        'fields' => array(
+          'author' => 0,
+          'author:field_profile_name' => 0,
+          'author:url' => 0,
+          'changed' => 0,
+          'created' => 0,
+          'field_educational_goals' => 0,
+          'field_full_description:value' => 0,
+          'field_image:file' => 0,
+          'field_location' => 0,
+          'field_offer_type' => 0,
+          'field_period:value2' => 0,
+          'field_price' => 0,
+          'field_subject' => 0,
+          'field_subject:url' => 0,
+          'field_subjects_primary_school' => 0,
+          'field_subjects_youth' => 0,
+          'field_target_group' => 0,
+          'field_target_group_sub' => 0,
+          'nid' => 0,
+          'search_api_language' => 0,
+          'title' => 0,
+          'type' => 0,
+          'url' => 0,
+        ),
+      ),
+      'forces' => array(
+        'field' => 'field_target_group',
+        'selected' => array(
+          'Ungdomsuddannelse' => 'Ungdomsuddannelse',
+          'Dagtilbud' => 0,
+          'Grundskole' => 0,
+        ),
+      ),
+      'highlight' => array(
+        'fields' => array(
+          'author' => 0,
+          'author:field_profile_name' => 0,
+          'author:url' => 0,
+          'changed' => 0,
+          'created' => 0,
+          'field_educational_goals' => 0,
+          'field_full_description:value' => 0,
+          'field_image:file' => 0,
+          'field_location' => 0,
+          'field_offer_type' => 0,
+          'field_period:value2' => 0,
+          'field_price' => 0,
+          'field_subject' => 0,
+          'field_subject:url' => 0,
+          'field_subjects_primary_school' => 0,
+          'field_subjects_youth' => 0,
+          'field_target_group' => 0,
+          'field_target_group_sub' => 0,
+          'nid' => 0,
+          'search_api_language' => 0,
+          'title' => 0,
+          'type' => 0,
+          'url' => 0,
+        ),
+      ),
+      'templates' => array(
+        'box' => '/profiles/ulf/themes/ulf_default/templates/search/angular/search-youth.html',
+        'result' => '/profiles/ulf/themes/ulf_default/templates/search/angular/results-youth.html',
+        'pager' => '/profiles/ulf/themes/ulf_default/templates/search/angular/pager.html',
+        'popup' => '/profiles/ulf/themes/ulf_default/templates/search/angular/popup-youth.html',
+      ),
+      'autocomplete' => array(
+        'index' => '_none_',
+        'field' => '_none_',
+        'minChars' => '3',
+        'size' => '1',
+      ),
+      'map' => array(
+        'points' => '50000',
+        'markers' => '/profiles/ulf/themes/ulf_default/images/leaflet/',
+      ),
+    ),
+    'override_title' => 0,
+    'override_title_text' => '',
+    'override_title_heading' => 'h2',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 0;
+  $pane->locks = array();
+  $pane->uuid = '19a1cbde-32f9-4961-913b-e912a8686148';
+  $display->content['new-19a1cbde-32f9-4961-913b-e912a8686148'] = $pane;
+  $display->panels['middle'][0] = 'new-19a1cbde-32f9-4961-913b-e912a8686148';
+  $pane = new stdClass();
+  $pane->pid = 'new-9d653cc5-9b10-4c19-9884-7da0e70281b7';
+  $pane->panel = 'middle';
+  $pane->type = 'search_result';
+  $pane->subtype = 'search_result';
+  $pane->shown = TRUE;
+  $pane->access = array();
+  $pane->configuration = array(
+    'override_title' => 0,
+    'override_title_text' => '',
+    'override_title_heading' => 'h2',
+  );
+  $pane->cache = array();
+  $pane->style = array(
+    'settings' => NULL,
+  );
+  $pane->css = array();
+  $pane->extras = array();
+  $pane->position = 1;
+  $pane->locks = array();
+  $pane->uuid = '9d653cc5-9b10-4c19-9884-7da0e70281b7';
+  $display->content['new-9d653cc5-9b10-4c19-9884-7da0e70281b7'] = $pane;
+  $display->panels['middle'][1] = 'new-9d653cc5-9b10-4c19-9884-7da0e70281b7';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = 'new-19a1cbde-32f9-4961-913b-e912a8686148';
   $handler->conf['display'] = $display;

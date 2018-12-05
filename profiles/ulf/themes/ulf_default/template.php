@@ -8,6 +8,46 @@
  * Implements hook_preprocess_html().
  */
 function ulf_default_preprocess_html(&$variables) {
+  // Set Open Graph tags for nodes.
+  if (isset($variables['page']['content']['system_main']['nodes']) &&
+      count($variables['page']['content']['system_main']['nodes']) > 0) {
+    $nodes = $variables['page']['content']['system_main']['nodes'];
+    $node = reset($nodes);
+
+    $meta_description = array(
+      '#type' => 'html_tag',
+      '#tag' => 'meta',
+      '#attributes' => array(
+        'name' => 'og:title',
+        'content' => $variables['head_title_array']['title'],
+      )
+    );
+    drupal_add_html_head($meta_description, 'meta_title');
+
+    $imagePath = image_style_url('facebook_open_graph', $node['field_image'][0]['#item']['uri']);
+
+    $meta_description['#attributes']['name'] = 'og:image';
+    $meta_description['#attributes']['content'] = $imagePath;
+    drupal_add_html_head($meta_description, 'meta_image');
+
+    if (isset($node['#node']->field_full_description['und'][0]['value'])) {
+      $meta_description['#attributes']['name'] = 'og:description';
+      $teaser = str_replace('&nbsp;', '', strip_tags($node['#node']->field_full_description['und'][0]['value']));
+      $meta_description_cut = substr($teaser, 0,strpos($teaser,'.')) . '...';
+      $meta_description['#attributes']['content'] = $meta_description_cut;
+
+      drupal_add_html_head($meta_description, 'meta_description');
+    }
+
+    $meta_description['#attributes']['name'] = 'og:url';
+    $meta_description['#attributes']['content'] = url(current_path(), array('absolute' => TRUE));
+    drupal_add_html_head($meta_description, 'meta_url');
+
+    $meta_description['#attributes']['name'] = 'og:locale';
+    $meta_description['#attributes']['content'] = 'da_DK';
+    drupal_add_html_head($meta_description, 'meta_locale');
+  }
+
   if (isset($variables['page']['content']['system_main']['field_profile_name']['0']['#markup'])) {
     $variables['head_title'] = $variables['page']['content']['system_main']['field_profile_name']['0']['#markup'] . ' | ' . $variables['head_title_array']['name'];
   }
@@ -101,7 +141,7 @@ function ulf_default_preprocess_node(&$variables) {
     $variables['theme_hook_suggestions'][] = 'node__default_teaser';
 
     // Set teaser text and new teaser template suggestion for news.
-    if ($variables['type'] == 'news') {
+    if ($variables['type'] == 'news' || $variables['type'] == 'news_course_provider' ) {
       $variables['teaser_content'] = _ulf_default_teaser_filter($variables['content']['field_teaser']['0']['#markup']);
       $variables['theme_hook_suggestions'][] = 'node__news_teaser';
     }
@@ -156,7 +196,8 @@ function ulf_default_preprocess_node(&$variables) {
       }
 
       // Add view for displaying target group sub
-      $variables['view__target_group_sub'] = views_embed_view('ulf_course_target_groups', 'block_1');
+      $variables['view__target_group_sub'] = module_invoke('views', 'block_view', 'ulf_course_target_groups-block_1');
+
 
       // Display of duration remove 0's in decimal.
       if (isset($variables['content']['field_duration']['0']['#markup'])) {
@@ -171,7 +212,6 @@ function ulf_default_preprocess_node(&$variables) {
       }
       break;
 
-
     case 'static_page':
       // Provide menu block for static page nodes.
       $variables['static_page_menu'] = module_invoke('menu_block', 'block_view', 'ulf_base-1');
@@ -183,6 +223,12 @@ function ulf_default_preprocess_node(&$variables) {
       break;
 
     case 'news':
+      // Provide newsletter block for news pages.
+      $variables['newsletter_block'] = module_invoke('mailchimp_signup', 'block_view', 'signup_to_newsletter');
+      $variables['latest_news_titles'] = module_invoke('views', 'block_view', 'ulf_news_archive-block_1');
+      $variables['group_type'] = 'news';
+      break;
+    case 'news_course_provider':
       // Provide newsletter block for news pages.
       $variables['newsletter_block'] = module_invoke('mailchimp_signup', 'block_view', 'signup_to_newsletter');
       $variables['latest_news_titles'] = module_invoke('views', 'block_view', 'ulf_news_archive-block_1');
@@ -204,7 +250,7 @@ function ulf_default_preprocess_node(&$variables) {
   $variables['profile_name'] = $author_wrapper->field_profile_name->value();
 
   // Display author meta data for courses.
-  if (($variables['type'] == 'course'|| $variables['type'] == 'course_educators') &&
+  if (($variables['type'] == 'course'|| $variables['type'] == 'course_educators' || $variables['type'] == 'news_course_provider' ) &&
     ($variables['view_mode'] == 'full' || $variables['view_mode'] == 'print')) {
 
     $variables['profile_phone'] = $author_wrapper->field_profile_phone->value();
@@ -231,6 +277,7 @@ function ulf_default_preprocess_user_profile(&$variables) {
   $variables['content_by_user_school'] = views_embed_view('ulf_content_by_user', 'block_3');
   $variables['content_by_user_youth'] = views_embed_view('ulf_content_by_user', 'block_1');
   $variables['content_by_user_courses'] = views_embed_view('ulf_content_by_user', 'block_2');
+  $variables['content_by_user_news'] = views_embed_view('ulf_content_by_user', 'block');
 
   // Fetch location information from the user. Used in the information box to
   // the right when displaying the profile.
@@ -254,8 +301,51 @@ function ulf_default_preprocess_field(&$variables) {
     'field_duration_unit',
     'field_unit_price',
     'field_price_description',
-    'field_duration_description'
+    'field_duration_description',
+    'field_count_description',
   );
+
+  if ($variables['element']['#field_name'] == 'field_relevance_educators') {
+    $items = $variables['element']['#items'];
+
+    // Get parents for taxonomy terms.
+    foreach ($items as $item) {
+      $term = taxonomy_term_load($item['tid']);
+      $query = db_select('taxonomy_term_hierarchy', 'tth')
+        ->fields('tth', array('parent'))
+        ->condition('tth.tid', $item['tid']);
+      $parents = $query->execute()->fetchCol();
+      if (count($parents) == 1) {
+        $parents = reset($parents);
+      }
+      $term->parent = $parents;
+    }
+
+    // Create hierarchy array.
+    $hierarchy = [];
+    foreach ($items as $item) {
+      $hierarchy[$item['taxonomy_term']->parent][] = $item;
+    }
+
+    // Render hierarchy.
+    $rendered_items = [];
+    foreach ($hierarchy[0] as $item) {
+      $rendered_items[] = [
+        '#markup' => $item['taxonomy_term']->name
+      ];
+
+      if (isset($hierarchy[$item['tid']])) {
+        foreach ($hierarchy[$item['tid']] as $sub_item) {
+          $rendered_items[] = [
+            '#markup' => '&nbsp;- ' . $sub_item['taxonomy_term']->name
+          ];
+        }
+      }
+    }
+
+    // Override rendering.
+    $variables['items'] = $rendered_items;
+  }
 
   // Strip teaser fields.
   if ($variables['element']['#view_mode'] == 'teaser') {
@@ -516,10 +606,108 @@ function _ulf_default_teaser_filter($str) {
   return $trimmed;
 }
 
-
 /**
  * Form alter
  */
 function ulf_default_form_mailchimp_signup_subscribe_block_signup_to_newsletter_form_alter(&$form, &$form_state, $form_id) {
   $form['mergevars']['EMAIL']['#attributes']['placeholder'] = t('Email');
+}
+
+/**
+ * Implements hook_views_post_render().
+ */
+function ulf_default_views_post_render(&$view, &$output, &$cache) {
+  // Modify the target groups to collapse "X. klasse" to ranges.
+  if ($view->name == 'ulf_course_target_groups') {
+    $classes = [];
+    $years = [];
+    $other_results = [];
+
+    foreach ($view->result as $result) {
+      $name = $result->_entity_properties['field_target_group_sub_tid:entity object']->name;
+
+      if (preg_match('/.{1,2} år/', $name) ) {
+        $years[] = str_replace('. år', '', $name);
+      }
+      else if (preg_match('/.{1,2}\. klasse/', $name) ) {
+        $classes[] = str_replace('. klasse', '', $name);
+      }
+      else {
+        $other_results[] = $name;
+      }
+    }
+
+    $ranges = _ulf_default_create_ranges($classes, '. klasse', '. - ');
+    $yearRanges = _ulf_default_create_ranges($years, ' år');
+
+    $output = '';
+
+    if (!empty($ranges)) {
+      $output .= implode('<br>', $ranges) . '<br>';
+    }
+
+    if (!empty($yearRanges)) {
+      $output .= implode('<br>', $yearRanges) . '<br>';
+    }
+
+    if (!empty($other_results)) {
+      $output .= implode('<br>', $other_results);
+    }
+  }
+}
+
+/**
+ * Creates X. klasse ranges from array of numbers.
+ *
+ * @param $arr
+ *   Array of numbers.
+ *
+ * @return array
+ */
+function _ulf_default_create_ranges($arr, $stringEnd, $separator = ' - ') {
+  if (empty($arr)) {
+    return $arr;
+  }
+
+  asort($arr);
+
+  $ranges = [];
+  $rangeStart = null;
+  $current = null;
+  $currentEntry = null;
+   ;
+
+  foreach ($arr as $key => $entry) {
+    $currentEntry = (int) $entry;
+
+    if (is_null($rangeStart)) {
+      $rangeStart = $currentEntry;
+      $current = $currentEntry;
+      continue;
+    }
+
+    if ($entry - 1 == $current) {
+      $current = $currentEntry;
+      continue;
+    }
+    else {
+      if ($rangeStart < $current) {
+        $ranges[] = $rangeStart . $separator . $current . $stringEnd;
+      }
+      else {
+        $ranges[] = $rangeStart . $stringEnd;
+      }
+      $rangeStart = $currentEntry;
+      $current = $currentEntry;
+    }
+  }
+
+  if ($rangeStart < $current) {
+    $ranges[] = $rangeStart . $separator . $current . $stringEnd;
+  }
+  else {
+    $ranges[] = $rangeStart . $stringEnd;
+  }
+
+  return $ranges;
 }

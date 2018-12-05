@@ -46,6 +46,7 @@ features[field_instance][] = node-course-field_activities
 features[field_instance][] = node-course-field_background_knowledge
 features[field_instance][] = node-course-field_collection_price
 features[field_instance][] = node-course-field_count
+features[field_instance][] = node-course-field_count_description
 features[field_instance][] = node-course-field_duration
 features[field_instance][] = node-course-field_duration_description
 features[field_instance][] = node-course-field_duration_unit

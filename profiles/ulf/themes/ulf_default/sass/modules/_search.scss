@@ -439,12 +439,19 @@
 
   &--type {
     @extend %teaser--type;
+
+    > span:after {
+      content: ','
+    }
+
+    > span:last-child:after {
+      content: '';
+    }
   }
 
   &--type:last-child {
     @extend %teaser--type-last-child;
   }
-
 }
 
 

@@ -603,27 +603,13 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['columns'] = array(
     'title' => 'title',
-    'field_duration' => 'field_duration',
-    'field_duration_unit' => 'field_duration_unit',
     'edit_node' => 'edit_node',
+    'field_price' => 'field_price',
+    'field_moms' => 'field_moms',
   );
-  $handler->display->display_options['style_options']['default'] = 'field_duration';
+  $handler->display->display_options['style_options']['default'] = '-1';
   $handler->display->display_options['style_options']['info'] = array(
     'title' => array(
-      'sortable' => 1,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'field_duration' => array(
-      'sortable' => 1,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'field_duration_unit' => array(
       'sortable' => 1,
       'default_sort_order' => 'asc',
       'align' => '',
@@ -635,12 +621,31 @@ function ulf_workflow_views_default_views() {
       'separator' => '',
       'empty_column' => 0,
     ),
+    'field_price' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_moms' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
   );
   /* Relationship: Content: Pris (field_collection_price) */
   $handler->display->display_options['relationships']['field_collection_price_value']['id'] = 'field_collection_price_value';
   $handler->display->display_options['relationships']['field_collection_price_value']['table'] = 'field_data_field_collection_price';
   $handler->display->display_options['relationships']['field_collection_price_value']['field'] = 'field_collection_price_value';
   $handler->display->display_options['relationships']['field_collection_price_value']['delta'] = '-1';
+  /* Relationship: Content: Author */
+  $handler->display->display_options['relationships']['uid']['id'] = 'uid';
+  $handler->display->display_options['relationships']['uid']['table'] = 'node';
+  $handler->display->display_options['relationships']['uid']['field'] = 'uid';
+  $handler->display->display_options['relationships']['uid']['label'] = 'forfatter';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -795,6 +800,105 @@ function ulf_workflow_views_default_views() {
   );
   $handler->display->display_options['attachment_position'] = 'after';
   $handler->display->display_options['inherit_arguments'] = FALSE;
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page_1');
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'title' => 'title',
+    'edit_node' => 'edit_node',
+    'field_count' => 'field_count',
+    'name' => 'name',
+    'mail' => 'mail',
+  );
+  $handler->display->display_options['style_options']['default'] = 'field_count';
+  $handler->display->display_options['style_options']['info'] = array(
+    'title' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'edit_node' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_count' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'desc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'name' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'mail' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Field: Content: Edit link */
+  $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
+  $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node']['label'] = 'Redigér-link';
+  /* Field: Content: Antal */
+  $handler->display->display_options['fields']['field_count']['id'] = 'field_count';
+  $handler->display->display_options['fields']['field_count']['table'] = 'field_data_field_count';
+  $handler->display->display_options['fields']['field_count']['field'] = 'field_count';
+  $handler->display->display_options['fields']['field_count']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
+  /* Field: User: Name */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'users';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['relationship'] = 'uid';
+  $handler->display->display_options['fields']['name']['label'] = 'Navn';
+  /* Field: User: E-mail */
+  $handler->display->display_options['fields']['mail']['id'] = 'mail';
+  $handler->display->display_options['fields']['mail']['table'] = 'users';
+  $handler->display->display_options['fields']['mail']['field'] = 'mail';
+  $handler->display->display_options['fields']['mail']['relationship'] = 'uid';
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['filter_groups']['operator'] = 'OR';
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Antal (field_count) */
+  $handler->display->display_options['filters']['field_count_value']['id'] = 'field_count_value';
+  $handler->display->display_options['filters']['field_count_value']['table'] = 'field_data_field_count';
+  $handler->display->display_options['filters']['field_count_value']['field'] = 'field_count_value';
+  $handler->display->display_options['filters']['field_count_value']['operator'] = '>';
+  $handler->display->display_options['filters']['field_count_value']['value']['value'] = '40';
+  $handler->display->display_options['path'] = 'admin/settings/custom/ulf-editor-tool-signups';
+  $handler->display->display_options['menu']['type'] = 'tab';
+  $handler->display->display_options['menu']['title'] = 'Content overview - Signups';
+  $handler->display->display_options['menu']['weight'] = '0';
+  $handler->display->display_options['menu']['name'] = 'management';
+  $handler->display->display_options['menu']['context'] = 0;
+  $handler->display->display_options['menu']['context_only_inline'] = 0;
   $translatables['ulf_editor_tool'] = array(
     t('Master'),
     t('Editor tool'),
@@ -812,6 +916,7 @@ function ulf_workflow_views_default_views() {
     t('næste ›'),
     t('sidste »'),
     t('field collection item from field_collection_price'),
+    t('forfatter'),
     t('Title'),
     t('Edit link'),
     t('Pris'),
@@ -821,6 +926,10 @@ function ulf_workflow_views_default_views() {
     t('Bilag'),
     t('Fag'),
     t('Kurset er relevant for pædagoger, der arbejder med læreplanstemaerne'),
+    t('Redigér-link'),
+    t('Antal'),
+    t('Navn'),
+    t('E-mail'),
   );
   $export['ulf_editor_tool'] = $view;
 
@@ -861,24 +970,39 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['pager']['options']['tags']['last'] = 'sidste »';
   $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['columns'] = array(
+    'uid' => 'uid',
     'nid' => 'nid',
-    'title_1' => 'title_1',
+    'title' => 'title',
+    'field_profile_name' => 'field_profile_name',
     'type' => 'type',
-    'log' => 'log',
-    'changed' => 'changed',
+    'field_target_group' => 'field_target_group',
+    'timestamp' => 'timestamp',
+    'latest_log_message' => 'latest_log_message',
     'edit_node' => 'edit_node',
     'clone_node' => 'clone_node',
   );
-  $handler->display->display_options['style_options']['default'] = 'changed';
+  $handler->display->display_options['style_options']['default'] = '-1';
   $handler->display->display_options['style_options']['info'] = array(
+    'uid' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
     'nid' => array(
-      'sortable' => 0,
+      'sortable' => 1,
       'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
     ),
-    'title_1' => array(
+    'title' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_profile_name' => array(
       'sortable' => 1,
       'default_sort_order' => 'asc',
       'align' => '',
@@ -892,14 +1016,21 @@ function ulf_workflow_views_default_views() {
       'separator' => '',
       'empty_column' => 0,
     ),
-    'log' => array(
+    'field_target_group' => array(
+      'sortable' => 1,
+      'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
     ),
-    'changed' => array(
+    'timestamp' => array(
       'sortable' => 1,
-      'default_sort_order' => 'desc',
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'latest_log_message' => array(
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
@@ -1175,6 +1306,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['filters']['type']['relationship'] = 'vid';
   $handler->display->display_options['filters']['type']['value'] = array(
     'course_educators' => 'course_educators',
+    'news_course_provider' => 'news_course_provider',
     'course' => 'course',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
@@ -1321,6 +1453,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['filters']['type']['relationship'] = 'vid';
   $handler->display->display_options['filters']['type']['value'] = array(
     'course_educators' => 'course_educators',
+    'news_course_provider' => 'news_course_provider',
     'course' => 'course',
   );
   /* Filter criterion: Content: Published */
@@ -1469,6 +1602,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['filters']['type']['relationship'] = 'vid';
   $handler->display->display_options['filters']['type']['value'] = array(
     'course_educators' => 'course_educators',
+    'news_course_provider' => 'news_course_provider',
     'course' => 'course',
   );
   /* Filter criterion: Content: Published */
@@ -1629,6 +1763,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['filters']['type']['relationship'] = 'vid';
   $handler->display->display_options['filters']['type']['value'] = array(
     'course_educators' => 'course_educators',
+    'news_course_provider' => 'news_course_provider',
     'course' => 'course',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
@@ -1720,14 +1855,14 @@ function ulf_workflow_views_default_views() {
       'empty_column' => 0,
     ),
     'type' => array(
-      'sortable' => 0,
+      'sortable' => 1,
       'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
     ),
     'field_target_group' => array(
-      'sortable' => 0,
+      'sortable' => 1,
       'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
@@ -2364,6 +2499,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['filters']['type']['relationship'] = 'vid';
   $handler->display->display_options['filters']['type']['value'] = array(
     'course_educators' => 'course_educators',
+    'news_course_provider' => 'news_course_provider',
     'course' => 'course',
   );
   /* Filter criterion: Content: Trashed (field_trashed) */
@@ -2433,14 +2569,14 @@ function ulf_workflow_views_default_views() {
       'empty_column' => 0,
     ),
     'publish_on' => array(
-      'sortable' => 0,
+      'sortable' => 1,
       'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',
       'empty_column' => 0,
     ),
     'unpublish_on' => array(
-      'sortable' => 0,
+      'sortable' => 1,
       'default_sort_order' => 'asc',
       'align' => '',
       'separator' => '',

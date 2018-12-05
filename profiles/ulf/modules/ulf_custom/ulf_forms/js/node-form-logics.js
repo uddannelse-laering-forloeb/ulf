@@ -5,12 +5,11 @@
  * A lot of fields change due to the selection of the target group field.
  */
 (function($) {
-  // Array to hold subgroup checkboxes
-  var subgroup = [];
-
   // Called when the document has finished loading.
   Drupal.behaviors.ulfCourseFormAlter = {
     attach: function (context, settings) {
+      // Array to hold subgroup checkboxes
+      var subgroup = [];
 
       /**
        * Initialize the form by hiding elements and attaching event handlers.
@@ -24,7 +23,9 @@
 
         // Hide specific fields only relevant for certain target groups.
         $('.field-name-field-post-work').hide();
-        $('.field-name-field-educational-goals').hide();
+        if (typeof settings.primary_target_group == 'undefined') {
+          $('.field-name-field-educational-goals').hide();
+        }
         $('.field-name-field-subjects-primary-school').hide();
         $('.field-name-field-subjects-youth').hide();
         $('.node-course-form .field-name-field-educational-material').hide();
@@ -88,7 +89,7 @@
           var value = arr[1];
 
           // If the accept_callback, accepts the text show the input, else hide
-          // it.
+          // and uncheck the field.
           var field = $('.field-name-field-target-group-sub input[value=' + value + ']');
           if (accept_callback(text)) {
             field.parent().show();
@@ -105,12 +106,14 @@
       function selectionPreschool() {
         // The sub target group field selection values.
         displayRelevantSubgroupByKeyword(function (text) {
-          return (text.indexOf('år') != -1);
+          return text.indexOf('år') != -1 || text.indexOf('Børn og unge med særlige behov') != -1;
         });
 
         $('.field-name-field-inspirational-material').show();
         $('.field-name-field-material-suggestions').show();
-        $('.field-name-field-educational-goals').show();
+        if (typeof settings.primary_target_group == 'undefined') {
+          $('.field-name-field-educational-goals').show();
+        }
         $('.is-preschool').show();
         clearSubjectsValues('subjects-primary-school');
         clearSubjectsValues('subjects-youth');
@@ -123,14 +126,16 @@
       function selectionPrimarySchool() {
         // The sub target group field selection values.
         displayRelevantSubgroupByKeyword(function (text) {
-          return (text.indexOf('klasse') != -1 || text.indexOf('DUS') != -1);
+          return text.indexOf('klasse') != -1 || text.indexOf('DUS') != -1 || text.indexOf('Børn og unge med særlige behov') != -1;
         });
 
         $('.field-name-field-post-work').show();
         $('.field-name-field-educational-material').show();
         $('.field-name-field-subjects-primary-school').show();
         $('.is-school').show();
-        clearSubjectsValues('educational-goals');
+        if (typeof settings.primary_target_group == 'undefined') {
+          clearSubjectsValues('educational-goals');
+        }
         clearSubjectsValues('subjects-youth');
         setLabel('field-background-knowledge', 'Forberedelse');
       }
@@ -148,7 +153,9 @@
         $('.field-name-field-educational-material').show();
         $('.field-name-field-subjects-youth').show();
         $('.is-school').show();
-        clearSubjectsValues('educational-goals');
+        if (typeof settings.primary_target_group == 'undefined') {
+          clearSubjectsValues('educational-goals');
+        }
         clearSubjectsValues('subjects-primary-school');
         setLabel('field-background-knowledge', 'Forberedelse');
       }
@@ -169,7 +176,9 @@
 
         // Hide specific fields only relevant for certain target groups.
         $('.field-name-field-post-work').hide();
-        $('.field-name-field-educational-goals').hide();
+        if (typeof settings.primary_target_group == 'undefined') {
+          $('.field-name-field-educational-goals').hide();
+        }
         $('.field-name-field-subjects-primary-school').hide();
         $('.field-name-field-subjects-youth').hide();
         $('.node-course-form .field-name-field-educational-material').hide();
@@ -274,7 +283,6 @@
        *
        */
       function setLabel(fieldName, labelNew) {
-        console.log('123');
         $('#edit-' + fieldName + ' label').html(labelNew);
       }
 
@@ -282,4 +290,5 @@
       initializeFormElements();
     }
   };
+
 }(jQuery));

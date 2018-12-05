@@ -1,0 +1,32 @@
+#autosave-status #autosave-wrapper{
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: .7;
+  z-index: 0;
+}
+
+
+#autosave-status #autosave-splash {
+  background: #fff;
+  color: #666;
+  padding: 2em;
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  right: 50%;
+  width: 400px;
+  margin: 0 -160px;
+  height: 140px;
+  z-index: 1;
+}
+
+
+#autosave-status #operations a{
+  color: #0074BD;
+}

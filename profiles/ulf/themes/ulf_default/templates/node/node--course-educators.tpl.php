@@ -146,7 +146,7 @@
           <?php endif; ?>
           <?php if ($field_last_signup_date || $field_signup_link || $field_signup_email || $field_signup_phone || $field_signup_description): ?>
             <div class="field--collection-wrapper">
-              <div class="field--collection-label"><?php print t('Signup');?></div> 
+              <div class="field--collection-label"><?php print t('Signup');?></div>
               <div class="field--collection-content">
                 <div class="field--collection-item">
                   <div class="field--collection-item-inner">
@@ -182,9 +182,10 @@
               <?php /* If any of the fields in this wrapper contain data */ ?>
               <?php if ($field_relevance_primary_school || $field_relevance_upper_school || $field_relevance_educators) : ?>
                 <div class="block--field-wrapper">
+                  <?php print render($content['field_relevance_educators']); ?>
+                  <?php print render($content['field_target_audience']); ?>
                   <?php print render($content['field_relevance_primary_school']); ?>
                   <?php print render($content['field_relevance_upper_school']); ?>
-                  <?php print render($content['field_relevance_educators']); ?>
                 </div>
               <?php endif;?>
               <?php /* If any of the fields in this wrapper contain data */ ?>
@@ -194,6 +195,8 @@
                   <?php print render($content['field_educational_goals']); ?>
                 </div>
               <?php endif;?>
+              <?php print render($content['field_count']); ?>
+              <?php print render($content['field_count_description']); ?>
               <?php if ($field_duration || $field_period_full_year['0']['value'] == 0 || $field_collection_price || $field_free['0']['value'] == 1 || $field_price_description || $field_duration_description || $field_period_info ) : ?>
                 <div class="block--field-wrapper">
                   <?php if ($field_period_full_year['0']['value'] == 0 ) : ?>

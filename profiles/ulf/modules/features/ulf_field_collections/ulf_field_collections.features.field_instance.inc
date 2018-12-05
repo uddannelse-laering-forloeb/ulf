@@ -902,7 +902,7 @@ function ulf_field_collections_field_default_field_instances() {
       'module' => 'field_collection',
       'settings' => array(),
       'type' => 'field_collection_embed',
-      'weight' => 3,
+      'weight' => 4,
     ),
   );
 

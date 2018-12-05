@@ -29,9 +29,27 @@ function ulf_base_views_api($module = NULL, $api = NULL) {
 function ulf_base_image_default_styles() {
   $styles = array();
 
+  // Exported image style: facebook_open_graph.
+  $styles['facebook_open_graph'] = array(
+    'label' => 'Facebook visning',
+    'effects' => array(
+      1 => array(
+        'name' => 'manualcrop_crop',
+        'data' => array(
+          'width' => 600,
+          'height' => 315,
+          'keepproportions' => 1,
+          'reuse_crop_style' => 'node_display',
+          'style_name' => 'facebook_open_graph',
+        ),
+        'weight' => 0,
+      ),
+    ),
+  );
+
   // Exported image style: node_display.
   $styles['node_display'] = array(
-    'label' => 'Node display',
+    'label' => 'Indholdsvisning',
     'effects' => array(
       6 => array(
         'name' => 'manualcrop_crop_and_scale',
@@ -59,7 +77,7 @@ function ulf_base_image_default_styles() {
 
   // Exported image style: teaser_display.
   $styles['teaser_display'] = array(
-    'label' => 'Teaser display',
+    'label' => 'Teaser visning',
     'effects' => array(
       3 => array(
         'name' => 'manualcrop_crop_and_scale',

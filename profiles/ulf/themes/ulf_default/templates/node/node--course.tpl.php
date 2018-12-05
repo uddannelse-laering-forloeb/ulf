@@ -185,11 +185,12 @@
                 <?php print render($content['field_offer_type']); ?>
                 <?php if (!empty($view__target_group_sub)) : ?>
                   <div class="block--field-label"><?php print t('Target group');?></div>
-                  <div class="block--field-text"><?php print $view__target_group_sub; ?></div>
+                  <div class="block--field-text"><?php print render($view__target_group_sub); ?></div>
                 <?php endif;?>
-                <?php print render($content['field_count']); ?>
               </div>
               <?php /* If any of the fields in this wrapper contain data */ ?>
+              <?php print render($content['field_count']); ?>
+              <?php print render($content['field_count_description']); ?>
               <?php if ($field_duration || $field_period_full_year['0']['value'] == 0 || $field_collection_price || $field_free['0']['value'] == 1 || $field_price_description || $field_duration_description || $field_period_info ) : ?>
                 <div class="block--field-wrapper">
                   <?php if ($field_period_full_year['0']['value'] == 0 ) : ?>

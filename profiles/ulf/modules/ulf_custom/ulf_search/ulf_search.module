@@ -157,5 +157,16 @@ function ulf_search_search_node_page_configuration_alter(&$conf, $configuration)
     'points' => isset($configuration['map']['points']) ? $configuration['map']['points'] : 50,
     'markers' => isset($default['map']['markers']) ? $default['map']['markers'] : '/profiles/ulf/themes/ulf_default/images/leaflet/',
   );
+
+  $search_subtype = '';
+  if ($configuration['forces']['field'] == 'field_target_group') {
+    foreach ($configuration['forces']['selected'] as $value) {
+      if (!empty($value)) {
+        $search_subtype = '_' . strtolower($value);
+      }
+    }
+  }
+
   $conf['templates']['popup'] = isset($configuration['templates']['popup']) ? $configuration['templates']['popup'] : '/profiles/ulf/themes/ulf_default/templates/search/angular/popup.html';
+  $conf['templates']['popup'] = variable_get('search_template_popup_' . $configuration['index'] . $search_subtype, $conf['templates']['popup']);
 }

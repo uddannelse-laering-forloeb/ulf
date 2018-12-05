@@ -12,6 +12,7 @@ function _ulf_workflow_cleanup_form(&$form) {
   $form['actions']['submit']['#access'] = FALSE;
   $form['actions']['preview']['#access'] = FALSE;
   $form['actions']['delete']['#access'] = FALSE;
+  $form['actions']['preview_changes']['#access'] = FALSE;
   $form['field_trashed']['#access'] = FALSE;
   $form['field_passed_review']['#access'] = FALSE;
   if ($form['#node']->type == 'course' || $form['#node']->type == 'course_educators') {

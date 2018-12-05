@@ -21,7 +21,7 @@ function ulf_course_educators_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Vis kontaktformular / Skjul kontaktformular',
-    'weight' => '14',
+    'weight' => '13',
     'children' => array(
       0 => 'field_message_form',
     ),
@@ -50,7 +50,7 @@ function ulf_course_educators_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Varighed og pris',
-    'weight' => '2',
+    'weight' => '3',
     'children' => array(
       0 => 'field_free',
       1 => 'field_price',
@@ -85,7 +85,7 @@ function ulf_course_educators_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Yderligere information',
-    'weight' => '7',
+    'weight' => '8',
     'children' => array(
       0 => 'field_catering',
     ),
@@ -113,15 +113,13 @@ function ulf_course_educators_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Kurset',
-    'weight' => '0',
+    'weight' => '1',
     'children' => array(
       0 => 'field_full_description',
       1 => 'field_relevance_educators',
-      2 => 'field_relevance_primary_school',
-      3 => 'field_relevance_upper_school',
-      4 => 'field_subject',
-      5 => 'field_educational_goals',
-      6 => 'title',
+      2 => 'field_teaser',
+      3 => 'field_course_target_group',
+      4 => 'title',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -147,12 +145,18 @@ function ulf_course_educators_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Praktisk information',
-    'weight' => '1',
+    'weight' => '2',
     'children' => array(
       0 => 'field_course_contact_mail',
       1 => 'field_course_contact_name',
-      2 => 'field_course_phone',
-      3 => 'field_profile_contact',
+      2 => 'field_relevance_primary_school',
+      3 => 'field_relevance_upper_school',
+      4 => 'field_subject',
+      5 => 'field_course_phone',
+      6 => 'field_educational_goals',
+      7 => 'field_profile_contact',
+      8 => 'field_count',
+      9 => 'field_count_description',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -179,7 +183,7 @@ function ulf_course_educators_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Materialer',
-    'weight' => '6',
+    'weight' => '7',
     'children' => array(
       0 => 'field_educational_material',
     ),
@@ -207,7 +211,7 @@ function ulf_course_educators_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Billeder/medier',
-    'weight' => '5',
+    'weight' => '6',
     'children' => array(
       0 => 'field_image',
       1 => 'field_video',
@@ -236,7 +240,7 @@ function ulf_course_educators_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Periode',
-    'weight' => '4',
+    'weight' => '5',
     'children' => array(
       0 => 'field_period',
       1 => 'field_period_full_year',
@@ -267,7 +271,7 @@ function ulf_course_educators_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Lokation',
-    'weight' => '8',
+    'weight' => '9',
     'children' => array(
       0 => 'field_map_placement',
       1 => 'field_place',
@@ -297,7 +301,7 @@ function ulf_course_educators_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Signup',
-    'weight' => '3',
+    'weight' => '4',
     'children' => array(
       0 => 'field_last_signup_date',
       1 => 'field_signup_email',
