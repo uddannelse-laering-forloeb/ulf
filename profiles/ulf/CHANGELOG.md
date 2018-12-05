@@ -1,6 +1,6 @@
 # ULF changelog
 
-## Release 2.7.0
+## 2.7.0
 * ULF-2235: Changed dropdowns to checkboxes in backend forms (197)
 * ULF-2236: Added day as option in duration dropdown (198)
 * ULF-2234: Added option for multiple workflow mail recipients (195)
