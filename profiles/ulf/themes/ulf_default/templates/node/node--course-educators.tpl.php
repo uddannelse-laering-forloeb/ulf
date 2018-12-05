@@ -182,10 +182,10 @@
               <?php /* If any of the fields in this wrapper contain data */ ?>
               <?php if ($field_relevance_primary_school || $field_relevance_upper_school || $field_relevance_educators) : ?>
                 <div class="block--field-wrapper">
-                  <?php print render($content['field_relevance_primary_school']); ?>
-                  <?php print render($content['field_relevance_upper_school']); ?>
                   <?php print render($content['field_relevance_educators']); ?>
                   <?php print render($content['field_target_audience']); ?>
+                  <?php print render($content['field_relevance_primary_school']); ?>
+                  <?php print render($content['field_relevance_upper_school']); ?>
                 </div>
               <?php endif;?>
               <?php /* If any of the fields in this wrapper contain data */ ?>
