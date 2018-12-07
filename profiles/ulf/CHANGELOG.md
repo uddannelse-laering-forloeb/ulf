@@ -1,5 +1,12 @@
 # ULF changelog
 
+## 2.7.1
+* SUPPORT-1872: Completely hid th contact box in frontend
+* SUPPORT-1871: Added "Børn og unge med særlige behov mangler på klcviborg.dk" to all search templates
+* SUPPORT-1870: Added imageinfo_cache module to generate all imagecaches for Open graph display
+* SUPPORT-1869: Removed required from "Fagliste/læreplanstemaer" in taxonomy
+* SUPPORT-1868: rebuilt permissions for News content type
+
 ## 2.7.0
 * ULF-2235: Changed dropdowns to checkboxes in backend forms (197)
 * ULF-2236: Added day as option in duration dropdown (198)

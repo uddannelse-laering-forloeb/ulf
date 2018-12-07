@@ -9,7 +9,7 @@
  */
 function ulf_taxonomies_field_default_field_instances() {
   $field_instances = array();
-  
+
   // Exported field_instance:
   // 'taxonomy_term-course_relevancy_educators-field_taxonomy_subject_reference'.
   $field_instances['taxonomy_term-course_relevancy_educators-field_taxonomy_subject_reference'] = array(
@@ -32,7 +32,7 @@ function ulf_taxonomies_field_default_field_instances() {
     'entity_type' => 'taxonomy_term',
     'field_name' => 'field_taxonomy_subject_reference',
     'label' => 'Fagliste/Læreplanstemaer',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
