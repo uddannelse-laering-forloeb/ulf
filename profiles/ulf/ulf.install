@@ -70,3 +70,20 @@ function ulf_update_7104() {
   variable_set('autosave_course', 1);
   variable_set('autosave_course_educators', 1);
 }
+
+/**
+ * Enable imageinfo cache module.
+ */
+function ulf_update_7105() {
+  $module_enable = array(
+    'imageinfo_cache'
+  );
+  module_enable($module_enable);
+}
+
+/**
+ * Rebuild secure permissions data
+ */
+function ulf_update_7106() {
+  secure_permissions_rebuild();
+}
