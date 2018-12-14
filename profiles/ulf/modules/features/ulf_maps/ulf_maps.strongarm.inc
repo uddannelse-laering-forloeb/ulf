@@ -13,66 +13,6 @@ function ulf_maps_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
-  $strongarm->name = 'gmap_markermanager';
-  $strongarm->value = array(
-    'markermanager' => array(
-      'filename' => 'markermanager_packed.js',
-      'borderPadding' => '256',
-      'maxZoom' => '4',
-      'trackMarkers' => 0,
-      'markerMinZoom' => '4',
-      'markerMaxZoom' => '0',
-    ),
-    'markerclusterer' => array(
-      'filename' => 'markerclusterer_packed.js',
-      'gridSize' => 60,
-      'maxZoom' => 17,
-      'styles' => array(),
-    ),
-    'clusterer' => array(
-      'filename' => 'Clusterer2.js',
-      'marker' => 'cluster',
-      'max_nocluster' => '150',
-      'cluster_min' => '5',
-      'max_lines' => '10',
-      'popup_mode' => 'orig',
-    ),
-    'clustermarker' => array(
-      'filename' => 'ClusterMarker.js',
-      'borderPadding' => '256',
-      'clusteringEnabled' => 1,
-      'clusterMarkerIcon' => '',
-      'clusterMarkerTitle' => '',
-      'fitMapMaxZoom' => '0',
-      'intersectPadding' => '0',
-    ),
-  );
-  $export['gmap_markermanager'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'gmap_marker_custom_dir';
-  $strongarm->value = 'no value';
-  $export['gmap_marker_custom_dir'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'gmap_marker_file';
-  $strongarm->value = '9455';
-  $export['gmap_marker_file'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'gmap_mm_type';
-  $strongarm->value = 'gmap';
-  $export['gmap_mm_type'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
   $strongarm->name = 'location_defaultnum_course';
   $strongarm->value = '1';
   $export['location_defaultnum_course'] = $strongarm;

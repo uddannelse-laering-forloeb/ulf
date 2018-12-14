@@ -36,6 +36,7 @@ function ulf_course_providers_image_default_styles() {
       2 => array(
         'name' => 'image_scale',
         'data' => array(
+          '#imageinfo_cache_effect_callback' => 'image_scale_effect',
           'width' => 300,
           'height' => '',
           'upscale' => 0,

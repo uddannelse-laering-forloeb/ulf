@@ -31,11 +31,13 @@ dependencies[] = ulf_admin_panel
 dependencies[] = ulf_html_blocks
 dependencies[] = ulf_maps
 dependencies[] = ulf_entityform
+dependencies[] = ulf_content_inactive_warning
+dependencies[] = ulf_translations
 
 ; ULF Search.
 dependencies[] = ulf_search
 
-; Contrib modules (Not enabled by ulf setup).
+; Contrib modules.
 dependencies[] = user
 dependencies[] = date_popup
 dependencies[] = entity_token
@@ -62,3 +64,10 @@ dependencies[] = entityform
 dependencies[] = entityreference
 dependencies[] = captcha
 dependencies[] = insert
+dependencies[] = panels_ipe
+dependencies[] = better_field_descriptions
+dependencies[] = special_menu_items
+dependencies[] = imageinfo_cache
+dependencies[] = image_captcha
+dependencies[] = ife
+dependencies[] = entity2text

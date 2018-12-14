@@ -37,6 +37,7 @@ function ulf_base_image_default_styles() {
         'name' => 'manualcrop_crop',
         'data' => array(
           'width' => 600,
+          '#imageinfo_cache_effect_callback' => 'manualcrop_crop_effect',
           'height' => 315,
           'keepproportions' => 1,
           'reuse_crop_style' => 'node_display',
@@ -55,6 +56,7 @@ function ulf_base_image_default_styles() {
         'name' => 'manualcrop_crop_and_scale',
         'data' => array(
           'width' => 1000,
+          '#imageinfo_cache_effect_callback' => 'manualcrop_crop_and_scale_effect',
           'height' => 320,
           'upscale' => 1,
           'respectminimum' => 1,
@@ -68,6 +70,7 @@ function ulf_base_image_default_styles() {
         'data' => array(
           'width' => 1000,
           'height' => '',
+          '#imageinfo_cache_effect_callback' => 'image_scale_effect',
           'upscale' => 1,
         ),
         'weight' => -10,
@@ -83,6 +86,7 @@ function ulf_base_image_default_styles() {
         'name' => 'manualcrop_crop_and_scale',
         'data' => array(
           'width' => 300,
+          '#imageinfo_cache_effect_callback' => 'manualcrop_crop_and_scale_effect', 
           'height' => 300,
           'upscale' => 1,
           'respectminimum' => 1,
