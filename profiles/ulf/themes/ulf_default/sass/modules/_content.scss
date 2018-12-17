@@ -14,6 +14,17 @@
   margin: 0 $spacing / 2;
   width: 100%;
 
+  ul {
+    list-style-type: disc;
+    padding-left: $spacing;
+    margin-bottom: 16px;
+  }
+
+  ol {
+    padding-left: 20px;
+    margin-bottom: 16px;
+  }
+
   @include flexbox;
   @include flex-wrap(wrap);
   @include flex-direction(row);
@@ -25,7 +36,6 @@
     position: relative;
     width: 100%;
   }
-
 
   &--meta {
     width: 100%;
@@ -83,17 +93,6 @@
     h3 {
       font-size: 1.1em;
       font-weight: bold;
-    }
-
-    ul {
-      list-style-type: disc;
-      padding-left: $spacing;
-      margin-bottom: 16px;
-    }
-
-    ol {
-      padding-left: 20px;
-      margin-bottom: 16px;
     }
 
     blockquote {
