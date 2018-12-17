@@ -87,3 +87,16 @@ function ulf_update_7105() {
 function ulf_update_7106() {
   secure_permissions_rebuild();
 }
+
+/**
+ * Enable honeypot module.
+ */
+function ulf_update_7107() {
+  $module_enable = array(
+    'honeypot'
+  );
+  module_enable($module_enable);
+  variable_set('honeypot_time_limit', '3');
+  variable_set('honeypot_form_user_pass', 1);
+  variable_set('honeypot_form_user_register_form', 1);
+}
