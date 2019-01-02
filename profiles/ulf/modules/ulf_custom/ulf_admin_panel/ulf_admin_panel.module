@@ -215,6 +215,7 @@ function _ulf_admin_panel_form_submit($form, $form_state) {
     }
     if (!empty($modules_enable)) {
       module_enable($modules_enable);
+      secure_permissions_rebuild();
     }
   }
 }

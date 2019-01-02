@@ -5,17 +5,18 @@
   "main": "gulpfile.js",
   "dependencies": {
     "browser-sync": "^2.24.7",
+    "compass-mixins": "^0.12.10",
+    "gulp": "^4.0.0",
     "gulp-compass": "^2.1.0",
-    "gulp": "^3.9.1",
     "gulp-concat": "^2.6.1",
-    "gulp-rename": "^1.4.0",
-    "gulp-ng-annotate": "^2.1.0",
-    "gulp-sass": "^4.0.1",
     "gulp-jshint": "^2.1.0",
+    "gulp-ng-annotate": "^2.1.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.1",
     "gulp-sourcemaps": "^2.6.4",
     "gulp-uglify": "^3.0.1",
-    "jshint-stylish": "^2.2.1",
-    "jshint": "^2.9.6"
+    "jshint": "^2.9.6",
+    "jshint-stylish": "^2.2.1"
   },
   "devDependencies": {},
   "scripts": {

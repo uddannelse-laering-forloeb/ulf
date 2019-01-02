@@ -245,3 +245,7 @@ msgid "You must set a value for subject or educational goals to save your change
 msgstr "Du skal angive en værdi for emne eller læringsmål for at kunne gemme dine ændringer."
 msgid "Required fields are marked with a star and can be found in the \"Practical information\" field group."
 msgstr "Påkrævede felter er markeret med en stjerne og kan findes under fanen \"Praktisk information\""
+msgid "Note! You will need to add an image to your course in the Images/Media tab, before the content can be published."
+msgstr "OBS! Du skal tilføje et billede til forløbet under Billeder/Medier, før indholdet kan udgives."
+msgid "Required fields are marked with a star."
+msgstr "Påkrævede felter er markeret med en stjerne."

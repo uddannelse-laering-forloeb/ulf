@@ -40,6 +40,7 @@ function ulf_course_providers_image_default_styles() {
           'width' => 300,
           'height' => '',
           'upscale' => 0,
+          '#imageinfo_cache_effect_callback' => 'image_scale_effect',
         ),
         'weight' => 1,
       ),

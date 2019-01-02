@@ -103,16 +103,6 @@ The install profile contains:
   - Setting up search JESPER @todo
   - Modify the site settings.php file uncommenting the needed lines.
 
-
-## Update/release guide steps using Drush-8.1
-- Uses [git flow](https://datasift.github.io/gitflow/IntroducingGitFlow.html) as branching model.
-```
-git pull
-git checkout [branch/tag]
-drush updatedb
-drush secure-permissions-rebuild
-drush features-revert-all -y
-drush l10n-update-refresh
-drush l10n-update
-drush cache-clear all
-```
+### Test results for php 7.0
+* Conducted with this tool: https://github.com/sstalle/php7cc
+* See : ./php7-0-test.json

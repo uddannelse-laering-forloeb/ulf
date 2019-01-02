@@ -1,0 +1,386 @@
+{
+  "files": [
+    {
+      "name": "\/libraries\/mailchimp\/vendor\/guzzlehttp\/promises\/tests\/functionsTest.php",
+      "errors": {},
+      "warnings": [
+        {
+          "line": 335,
+          "text": "\u0022yield\u0022 usage in expression context"
+        },
+        {
+          "line": 346,
+          "text": "\u0022yield\u0022 usage in expression context"
+        },
+        {
+          "line": 346,
+          "text": "\u0022yield\u0022 usage in expression context"
+        },
+        {
+          "line": 363,
+          "text": "\u0022yield\u0022 usage in expression context"
+        },
+        {
+          "line": 378,
+          "text": "\u0022yield\u0022 usage in expression context"
+        },
+        {
+          "line": 378,
+          "text": "\u0022yield\u0022 usage in expression context"
+        },
+        {
+          "line": 394,
+          "text": "\u0022yield\u0022 usage in expression context"
+        },
+        {
+          "line": 394,
+          "text": "\u0022yield\u0022 usage in expression context"
+        },
+        {
+          "line": 410,
+          "text": "\u0022yield\u0022 usage in expression context"
+        },
+        {
+          "line": 426,
+          "text": "\u0022yield\u0022 usage in expression context"
+        },
+        {
+          "line": 426,
+          "text": "\u0022yield\u0022 usage in expression context"
+        },
+        {
+          "line": 442,
+          "text": "\u0022yield\u0022 usage in expression context"
+        },
+        {
+          "line": 469,
+          "text": "\u0022yield\u0022 usage in expression context"
+        },
+        {
+          "line": 510,
+          "text": "\u0022yield\u0022 usage in expression context"
+        },
+        {
+          "line": 539,
+          "text": "\u0022yield\u0022 usage in expression context"
+        },
+        {
+          "line": 539,
+          "text": "\u0022yield\u0022 usage in expression context"
+        },
+        {
+          "line": 551,
+          "text": "\u0022yield\u0022 usage in expression context"
+        },
+        {
+          "line": 551,
+          "text": "\u0022yield\u0022 usage in expression context"
+        },
+        {
+          "line": 569,
+          "text": "\u0022yield\u0022 usage in expression context"
+        },
+        {
+          "line": 569,
+          "text": "\u0022yield\u0022 usage in expression context"
+        },
+        {
+          "line": 569,
+          "text": "\u0022yield\u0022 usage in expression context"
+        },
+        {
+          "line": 569,
+          "text": "\u0022yield\u0022 usage in expression context"
+        },
+        {
+          "line": 569,
+          "text": "\u0022yield\u0022 usage in expression context"
+        },
+        {
+          "line": 599,
+          "text": "\u0022yield\u0022 usage in expression context"
+        },
+        {
+          "line": 599,
+          "text": "\u0022yield\u0022 usage in expression context"
+        },
+        {
+          "line": 599,
+          "text": "\u0022yield\u0022 usage in expression context"
+        },
+        {
+          "line": 599,
+          "text": "\u0022yield\u0022 usage in expression context"
+        },
+        {
+          "line": 638,
+          "text": "\u0022yield\u0022 usage in expression context"
+        },
+        {
+          "line": 638,
+          "text": "\u0022yield\u0022 usage in expression context"
+        },
+        {
+          "line": 657,
+          "text": "\u0022yield\u0022 usage in expression context"
+        },
+        {
+          "line": 657,
+          "text": "\u0022yield\u0022 usage in expression context"
+        },
+        {
+          "line": 657,
+          "text": "\u0022yield\u0022 usage in expression context"
+        },
+        {
+          "line": 657,
+          "text": "\u0022yield\u0022 usage in expression context"
+        },
+        {
+          "line": 657,
+          "text": "\u0022yield\u0022 usage in expression context"
+        },
+        {
+          "line": 657,
+          "text": "\u0022yield\u0022 usage in expression context"
+        },
+        {
+          "line": 680,
+          "text": "\u0022yield\u0022 usage in expression context"
+        },
+        {
+          "line": 680,
+          "text": "\u0022yield\u0022 usage in expression context"
+        }
+      ]
+    },
+    {
+      "name": "\/libraries\/mailchimp\/vendor\/phpdocumentor\/type-resolver\/src\/Types\/Mixed.php",
+      "errors": {},
+      "warnings": [
+        {
+          "line": 20,
+          "text": "Name \u0022mixed\u0022 that is reserved for future use (does not cause an error in PHP 7) used as a class, interface or trait name"
+        }
+      ]
+    },
+    {
+      "name": "\/libraries\/mailchimp\/vendor\/phpdocumentor\/type-resolver\/src\/Types\/Resource.php",
+      "errors": {},
+      "warnings": [
+        {
+          "line": 20,
+          "text": "Name \u0022resource\u0022 that is reserved for future use (does not cause an error in PHP 7) used as a class, interface or trait name"
+        }
+      ]
+    },
+    {
+      "name": "\/libraries\/mailchimp\/vendor\/phpunit\/php-code-coverage\/src\/CodeCoverage\/Report\/Node\/File.php",
+      "errors": {},
+      "warnings": [
+        {
+          "line": 465,
+          "text": "Nested by-reference foreach loop, make sure that array modifications (if any) do what you expect"
+        },
+        {
+          "line": 499,
+          "text": "Nested by-reference foreach loop, make sure that array modifications (if any) do what you expect"
+        },
+        {
+          "line": 557,
+          "text": "Possible array element creation during by-reference assignment"
+        },
+        {
+          "line": 558,
+          "text": "Possible array element creation during by-reference assignment"
+        },
+        {
+          "line": 574,
+          "text": "Possible array element creation during by-reference assignment"
+        },
+        {
+          "line": 575,
+          "text": "Possible array element creation during by-reference assignment"
+        },
+        {
+          "line": 604,
+          "text": "Possible array element creation during by-reference assignment"
+        },
+        {
+          "line": 605,
+          "text": "Possible array element creation during by-reference assignment"
+        },
+        {
+          "line": 621,
+          "text": "Possible array element creation during by-reference assignment"
+        },
+        {
+          "line": 622,
+          "text": "Possible array element creation during by-reference assignment"
+        },
+        {
+          "line": 650,
+          "text": "Possible array element creation during by-reference assignment"
+        },
+        {
+          "line": 651,
+          "text": "Possible array element creation during by-reference assignment"
+        }
+      ]
+    },
+    {
+      "name": "\/libraries\/mailchimp\/vendor\/symfony\/yaml\/Parser.php",
+      "errors": {},
+      "warnings": [
+        {
+          "line": 74,
+          "text": "Function argument(s) returned by \u0022func_get_arg\u0022 might have been modified"
+        },
+        {
+          "line": 82,
+          "text": "Function argument(s) returned by \u0022func_get_arg\u0022 might have been modified"
+        },
+        {
+          "line": 342,
+          "text": "Possible object property creation during by-reference assignment"
+        }
+      ]
+    },
+    {
+      "name": "\/libraries\/mailchimp\/vendor\/symfony\/yaml\/Tests\/InlineTest.php",
+      "errors": {},
+      "warnings": [
+        {
+          "line": 295,
+          "text": "String containing number in hexadecimal notation"
+        },
+        {
+          "line": 370,
+          "text": "String containing number in hexadecimal notation"
+        }
+      ]
+    },
+    {
+      "name": "\/libraries\/mailchimp\/vendor\/symfony\/yaml\/Dumper.php",
+      "errors": {},
+      "warnings": [
+        {
+          "line": 77,
+          "text": "Function argument(s) returned by \u0022func_get_arg\u0022 might have been modified"
+        }
+      ]
+    },
+    {
+      "name": "\/libraries\/mailchimp\/vendor\/symfony\/yaml\/Inline.php",
+      "errors": {},
+      "warnings": [
+        {
+          "line": 65,
+          "text": "Function argument(s) returned by \u0022func_get_arg\u0022 might have been modified"
+        },
+        {
+          "line": 71,
+          "text": "Function argument(s) returned by \u0022func_get_arg\u0022 might have been modified"
+        },
+        {
+          "line": 143,
+          "text": "Function argument(s) returned by \u0022func_get_arg\u0022 might have been modified"
+        }
+      ]
+    },
+    {
+      "name": "\/libraries\/mailchimp\/vendor\/symfony\/yaml\/Yaml.php",
+      "errors": {},
+      "warnings": [
+        {
+          "line": 63,
+          "text": "Function argument(s) returned by \u0022func_get_arg\u0022 might have been modified"
+        },
+        {
+          "line": 71,
+          "text": "Function argument(s) returned by \u0022func_get_arg\u0022 might have been modified"
+        },
+        {
+          "line": 109,
+          "text": "Function argument(s) returned by \u0022func_get_arg\u0022 might have been modified"
+        }
+      ]
+    },
+    {
+      "name": "\/modules\/contrib\/ctools\/plugins\/export_ui\/ctools_export_ui.class.php",
+      "errors": {},
+      "warnings": [
+        {
+          "line": 664,
+          "text": "Function argument(s) returned by \u0022func_get_args\u0022 might have been modified"
+        },
+        {
+          "line": 700,
+          "text": "Function argument(s) returned by \u0022func_get_args\u0022 might have been modified"
+        },
+        {
+          "line": 754,
+          "text": "Function argument(s) returned by \u0022func_get_args\u0022 might have been modified"
+        },
+        {
+          "line": 1259,
+          "text": "Function argument(s) returned by \u0022func_get_args\u0022 might have been modified"
+        }
+      ]
+    },
+    {
+      "name": "\/modules\/contrib\/search_api\/contrib\/search_api_views\/search_api_views.api.php",
+      "errors": {},
+      "warnings": [
+        {
+          "line": 25,
+          "text": "Nested by-reference foreach loop, make sure that array modifications (if any) do what you expect"
+        }
+      ]
+    },
+    {
+      "name": "\/modules\/contrib\/entityreference\/plugins\/selection\/EntityReference_SelectionHandler_Generic.class.php",
+      "errors": {},
+      "warnings": [
+        {
+          "line": 462,
+          "text": "Nested by-reference foreach loop, make sure that array modifications (if any) do what you expect"
+        }
+      ]
+    },
+    {
+      "name": "\/modules\/contrib\/views\/plugins\/views_wizard\/views_ui_base_views_wizard.class.php",
+      "errors": {},
+      "warnings": [
+        {
+          "line": 565,
+          "text": "Nested by-reference foreach loop, make sure that array modifications (if any) do what you expect"
+        }
+      ]
+    },
+    {
+      "name": "\/modules\/contrib\/views\/plugins\/export_ui\/views_ui.class.php",
+      "errors": {},
+      "warnings": [
+        {
+          "line": 326,
+          "text": "Function argument(s) returned by \u0022func_get_args\u0022 might have been modified"
+        }
+      ]
+    },
+    {
+      "name": "\/modules\/contrib\/views\/views.api.php",
+      "errors": {},
+      "warnings": [
+        {
+          "line": 1077,
+          "text": "Nested by-reference foreach loop, make sure that array modifications (if any) do what you expect"
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "checkedFiles": 1474,
+    "elapsedTime": 61.71694898605347
+  }
+}

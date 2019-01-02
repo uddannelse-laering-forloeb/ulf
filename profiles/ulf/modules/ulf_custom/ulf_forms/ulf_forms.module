@@ -139,13 +139,13 @@ function ulf_forms_fetch_moderation_log_latest($nid) {
 function _ulf_forms_set_intro_text(&$form, $form_state) {
   // Assist on node add.
   if (empty($form['nid']['#value'])) {
-    $message_required = '<div>' . t('Required fields are marked with a star and can be found in the "Practical information" field group.') . '</div>';
+    $message_required = '<div>' . t('Required fields are marked with a star.') . '</div>';
     $form['intro_information']['#markup'] .= $message_required;
   }
 
   // Assist on lacking image.
   if ($form_state['field']['field_image'][LANGUAGE_NONE]['items_count'] == 0) {
-    $message_image = '<div>' . t('You will need to add an image to your course, before the content can be published.') . '</div>';
+      $message_image = '<div>' . t('Note! You will need to add an image to your course in the Images/Media tab, before the content can be published.') . '</div>';
     $form['intro_information']['#markup'] .= $message_image;
   }
 

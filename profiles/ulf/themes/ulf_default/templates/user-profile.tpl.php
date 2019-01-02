@@ -80,6 +80,7 @@
               <div class="block--content">
                 <div class="block--field-label"><?php print render($user_profile['field_profile_name']); ?></div>
                 <?php if (isset($location)) : ?>
+                  <div class="block--field-text"><?php print $location['name']; ?></div>
                   <div class="block--field-text"><?php print $location['street']; ?></div>
                   <div class="block--field-text"><?php print $location['postal_code']; ?> <?php print $location['city']; ?></div>
                   </br>
