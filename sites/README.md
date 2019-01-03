@@ -23,3 +23,17 @@ See INSTALL.txt in the Drupal root for information about single-site
 installation or multisite configuration.
 
 ## ULF multisite info
+- All sites should use the domain name as folder name.
+- The folder structure of each site follows the public D7 [documentation](https://www.drupal.org/docs/7/multisite/multi-site-sharing-the-same-code-base#site-specific-modules-themes) i.e:
+  + (Sitename)
+    + Modules
+      + (Site specific modules)
+    + Themes
+      + (Site specific themes)
+    + Files
+      + (Site specific files)
+  + settings.php (Site specific configuration)
+
+- The site specific modules and themes should be seperate git repositories.
+- The settings.php file should be copied from default/default.settings.php and manually configured for the site.
+- The default/default.settings.php file has been slightly modified to include search configuration variables.

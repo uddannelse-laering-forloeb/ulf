@@ -1,15 +1,16 @@
 # ULF README
 
 ## Specific README files
-- Search setup: JESPER @todo
-- Theme setup: https://github.com/uddannelse-laering-forloeb/ulf/blob/master/profiles/ulf/themes/ulf_default/README.md .
+- Theme setup documentation located in [the default theme folder](https://github.com/uddannelse-laering-forloeb/ulf/blob/master/profiles/ulf/themes/ulf_default/README.md).
 - Each custom module located in [the custom modules folder](https://github.com/uddannelse-laering-forloeb/ulf/tree/master/profiles/ulf/modules/ulf_custom) contains a README.md file describing it's functionality.
 - Each feature module located in [the feature modules folder](https://github.com/uddannelse-laering-forloeb/ulf/tree/master/profiles/ulf/modules/features) contains a README.md file describing it's functionality.
-- Multisite setup [https://github.com/uddannelse-laering-forloeb/ulf/blob/master/sites/README.md](https://github.com/uddannelse-laering-forloeb/ulf/tree/master/profiles/ulf/modules/features) .
+- Multisite setup documentation located in [the sites folder](https://github.com/uddannelse-laering-forloeb/ulf/tree/feature/profile-update/sites).
+- Search setup documentation: JESPER @todo
+- Changelog located in [the profile folder](https://github.com/uddannelse-laering-forloeb/ulf/tree/master/profiles/ulf/CHANGELOG.md).
 
 ## Tested and confirmed working serversetup
 Other server setups will also work, some with minor tweaks.
-- PHP 5.6 (For 7.0 compatibility the following updates are needed: [php 7.0 compatibility](https://github.com/uddannelse-laering-forloeb/ulf/blob/master/profiles/ulf/php7-0-test.json) )
+- PHP 5.6 (For 7.0 compatibility the following updates are needed: [php 7.0 compatibility](https://github.com/uddannelse-laering-forloeb/ulf/blob/master/profiles/ulf/php7-0-test.json))
 - Apache 2.4
 - Debian jessie
 - Mysql 15.1
@@ -27,7 +28,7 @@ The install profile contains:
 ### ulf_default theme
 - Uses Ulfiaarhus.dk original images, styles, and templates
 - Used as a base theme for all sites).
-- See [this readme](https://github.com/uddannelse-laering-forloeb/ulf/blob/master/profiles/ulf/themes/ulf_default/README.md) on info about theme setup
+- See [this readme](https://github.com/uddannelse-laering-forloeb/ulf/blob/master/profiles/ulf/themes/ulf_default/README.md) on info about theme setup.
 - Martin @todo
 
 ### ulf_admin theme
@@ -41,6 +42,7 @@ The install profile contains:
 - Each release should include a step where all features be reverted to their default code state.
 - Features modules may contain additional code related to the feature but not maintained through the features module.
 - Overridden features should be prevented by updating the features code. This should help to maintain a smooth release flow.
+- See the individual README.md files for each features module.
 
 ### Custom modules
 - See the individual README.md files for each module.
@@ -71,7 +73,7 @@ The install profile contains:
   - Used by the install profile
 
 ### Changelog
-- CHANGELOG.md located at: https://github.com/uddannelse-laering-forloeb/ulf/blob/master/profiles/ulf/CHANGELOG.md
+- CHANGELOG.md located in [the profile folder](https://github.com/uddannelse-laering-forloeb/ulf/tree/master/profiles/ulf/CHANGELOG.md)
 - Logs changes made to the ULF project across all repositories related to ULF.
 
 ### ulf.install
@@ -79,7 +81,7 @@ The install profile contains:
 
 ### ulf.profile
 - The install profile used for new site installations
-- Uses ulf.install_callcbacks.inc file for batch job callbacks
+- Uses ulf.install_callbacks.inc file for batch job callbacks
 - Uses profiler library
 
 ## Registered patches used
@@ -104,5 +106,5 @@ The install profile contains:
   - Modify the site settings.php file uncommenting the needed lines.
 
 ### Test results for php 7.0
-* Conducted with this tool: https://github.com/sstalle/php7cc
-* See : ./php7-0-test.json
+* Conducted using: [https://github.com/sstalle/php7cc](https://github.com/sstalle/php7cc)
+* See : [php 7.0 compatibility](https://github.com/uddannelse-laering-forloeb/ulf/blob/master/profiles/ulf/php7-0-test.json)

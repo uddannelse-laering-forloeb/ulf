@@ -18,6 +18,7 @@ dependencies[] = ulf_news
 dependencies[] = ulf_static_page
 dependencies[] = ulf_taxonomies
 dependencies[] = ulf_html_blocks
+dependencies[] = ulf_entityform
 
 ; Configuration.
 dependencies[] = ulf_forms
@@ -30,7 +31,6 @@ dependencies[] = ulf_wysiwyg
 dependencies[] = ulf_admin_panel
 dependencies[] = ulf_html_blocks
 dependencies[] = ulf_maps
-dependencies[] = ulf_entityform
 dependencies[] = ulf_content_inactive_warning
 dependencies[] = ulf_translations
 

@@ -231,7 +231,7 @@ function ulf_theme_selection_form_submit($form, &$form_state) {
   theme_disable($disable_themes);
 
 
-  // Enable desired themes themes and set seven as admin.
+  // Enable desired themes and set seven as admin.
   $enable = array(
     'theme_default' => $values['theme_selection'],
     'admin_theme' => 'ulf_admin',
@@ -268,7 +268,7 @@ function ulf_module_selection_form($form, &$form_state) {
   $form['modules'] = array(
     '#title' => st('Select ulf extras'),
     '#type' => 'fieldset',
-    '#description' => st('Select optional ulf extension. You can always enable/disable these in the administration interface.'),
+    '#description' => st('Select optional ulf extension.'),
   );
 
   $form['modules']['modules_selection'] = array(
@@ -345,7 +345,7 @@ function ulf_module_selection_form($form, &$form_state) {
     '#value' => st('Enable modules'),
   );
 
-  // Validate and submit logo, iOS logo and favicon.
+  // Validate and submit.
   $form['#submit'][] = 'ulf_module_selection_form_submit';
 
   return $form;
