@@ -5,11 +5,10 @@
 - Each custom module located in [the custom modules folder](https://github.com/uddannelse-laering-forloeb/ulf/tree/master/profiles/ulf/modules/ulf_custom) contains a README.md file describing it's functionality.
 - Each feature module located in [the feature modules folder](https://github.com/uddannelse-laering-forloeb/ulf/tree/master/profiles/ulf/modules/features) contains a README.md file describing it's functionality.
 - Multisite setup documentation located in [the sites folder](https://github.com/uddannelse-laering-forloeb/ulf/tree/feature/profile-update/sites).
-- Search setup documentation: JESPER @todo
+- Search setup documentation: [Installation instructions l.106-298](https://github.com/os2display/docs/blob/master/installation/prepare_server.sh#L106)
 - Changelog located in [the profile folder](https://github.com/uddannelse-laering-forloeb/ulf/tree/master/profiles/ulf/CHANGELOG.md).
 
-## Tested and confirmed working serversetup
-Other server setups will also work, some with minor tweaks.
+## Viable serversetup
 - PHP 5.6 (For 7.0 compatibility the following updates are needed: [php 7.0 compatibility](https://github.com/uddannelse-laering-forloeb/ulf/blob/master/profiles/ulf/php7-0-test.json))
 - Apache 2.4
 - Debian jessie
@@ -17,17 +16,19 @@ Other server setups will also work, some with minor tweaks.
 - Modules
   - wkhtmltopdf 0.12.5-dev (with patched qt)
     - Used by print module.
-  - Search
-    - JESPER @todo
-
-JESPER @todo
+- Search (If default search solution is used)
+  - Separate search server ([Example server setup script](https://github.com/os2display/docs/blob/master/installation/prepare_server.sh))
+    - Nginx
+    - NodeJs 6.x
+    - EleasticSearch v1.7.1
+    - Supervisor
 
 ## The profile setup
 The install profile contains:
 
 ### ulf_default theme
 - Uses Ulfiaarhus.dk original images, styles, and templates
-- Used as a base theme for all sites).
+- Used as a base theme for all sites). Each site provides
 - See [this readme](https://github.com/uddannelse-laering-forloeb/ulf/blob/master/profiles/ulf/themes/ulf_default/README.md) on info about theme setup.
 - Martin @todo
 
@@ -46,13 +47,14 @@ The install profile contains:
 
 ### Custom modules
 - See the individual README.md files for each module.
-- Martin @todo
 
 ### search_api_search_node module
-- JESPER @todo
+- Integration to search api.
+- Integration to nodejs application.
 
 ### search_node_page module
-- JESPER @todo
+- Provides default configuration for search.
+- Provides default frontend panel panes.
 
 ### Libraries
 - angular
@@ -95,15 +97,15 @@ The install profile contains:
   - It is advised to use and follow the ui installation steps @ /install.php
   - Use the ULF install profile
   - If drush is used to run the installation instead of the the advised UI approach, a default configuration is used. You must manually make sure that all the variables are set.
-  i.e:
+  e.g.:
     - map configuration
     - translations
     - optional module activation
     - themes
     - search modules
-- Setup search configuration
-  - Setting up search JESPER @todo
-  - Modify the site settings.php file uncommenting the needed lines.
+- Setup search
+  - Setting up search server [Installation instructions l.106-298](https://github.com/os2display/docs/blob/master/installation/prepare_server.sh#L106)
+  - Modify the site settings.php file uncommenting the needed lines. (See sites/default/default.settings.php)
 
 ### Test results for php 7.0
 * Conducted using: [https://github.com/sstalle/php7cc](https://github.com/sstalle/php7cc)

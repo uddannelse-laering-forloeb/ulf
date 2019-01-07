@@ -1,10 +1,13 @@
-# Git subtree
-git subtree pull --prefix profiles/ulf/modules/search_api_search_node git@github.com:search-node/search_api_search_node 7.x-1.x
-git subtree pull --prefix profiles/ulf/modules/search_node_page_ git@github.com:search-node/search_node_page 7.x-1.x
+# ULF Search
+## ULF project relation
+- Optional(Recommended) module
 
+## Description
+- Provides javascript frontend for search pages.
+- Holds default search templates for search result and search widget.
 
 # Search node mappings
-<pre>
+```
 {
   "e0ea2029a2ae62cae2614b85e4061819": {
     "name": "ULF Courses",
@@ -406,4 +409,4 @@ git subtree pull --prefix profiles/ulf/modules/search_node_page_ git@github.com:
     "tag": "private"
   }
 }
-</pre>
+```
