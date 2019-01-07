@@ -27,7 +27,6 @@ gulp.task('jshint', function(done) {
   done();
 });
 
-
 /**
  * Run Javascript through JSHint.
  */
@@ -41,7 +40,6 @@ gulp.task('uglify', function(done) {
     .pipe(gulp.dest('./scripts/min'))
   done();
 });
-
 
 /**
  * Process SCSS using libsass
@@ -66,7 +64,6 @@ gulp.task('watch', function() {
   gulp.watch(jsPath, gulp.series('jshint', 'uglify'));
   gulp.watch(sassPath, gulp.series('sass'));
 });
-
 
 /**
  * Watch javascript files for changes.
@@ -100,7 +97,6 @@ gulp.task('assetsJs', function (done) {
   done();
 });
 
-
 /**
  * Use compass
  */
@@ -115,7 +111,6 @@ gulp.task('compass', function(done) {
     .pipe(gulp.dest('html/css'));
   done();
 });
-
 
 // Tasks to compile sass and watch js file.
 gulp.task('default', gulp.parallel('sass', 'watch', 'uglify'));
