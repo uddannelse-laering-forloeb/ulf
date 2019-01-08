@@ -24,7 +24,7 @@ installation or multisite configuration.
 
 ## ULF multisite info
 - All sites should use the domain name as folder name.
-- The folder structure of each site follows the public D7 [documentation](https://www.drupal.org/docs/7/multisite/multi-site-sharing-the-same-code-base#site-specific-modules-themes) i.e:
+- The folder structure of each site follows the D7 [documentation](https://www.drupal.org/docs/7/multisite/multi-site-sharing-the-same-code-base#site-specific-modules-themes) i.e:
   + (Sitename)
     + Modules
       + (Site specific modules)
