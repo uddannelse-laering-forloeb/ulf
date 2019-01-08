@@ -422,7 +422,12 @@ function ulf_set_variables(&$install_state) {
   variable_set('autosave_course', 1);
   variable_set('autosave_course_educators', 1);
   variable_set('l10n_update_check_frequency', '7');
-
+  variable_set('print_css', '%t/css/print.css');
+  variable_set('print_sourceurl_enabled', 0);
+  variable_set('print_footer_options', '0');
+  variable_set('print_urls', 0);
+  variable_set('print_urls_anchors', 0);
+  
   // Disable workbench block.
   $blocks_updated = db_update('block')
   ->fields(array(
