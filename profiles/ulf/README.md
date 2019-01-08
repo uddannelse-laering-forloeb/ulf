@@ -8,7 +8,7 @@
 - Search setup documentation: [Installation instructions l.106-298](https://github.com/os2display/docs/blob/master/installation/prepare_server.sh#L106)
 - Changelog located in [the profile folder](https://github.com/uddannelse-laering-forloeb/ulf/tree/master/profiles/ulf/CHANGELOG.md).
 
-## Viable serversetup
+## A viable server setup
 - PHP 5.6 (For 7.0 compatibility the following updates are needed: [php 7.0 compatibility](https://github.com/uddannelse-laering-forloeb/ulf/blob/master/profiles/ulf/php7-0-test.json))
 - Apache 2.4
 - Debian jessie
@@ -28,9 +28,9 @@ The install profile contains:
 
 ### ulf_default theme
 - Uses Ulfiaarhus.dk original images, styles, and templates
-- Used as a base theme for all sites). Each site provides
+- Used as a base theme for all sites. Each site provides it's custom styles and
+html overrides in a subtheme with ulf_default as it's base theme.
 - See [this readme](https://github.com/uddannelse-laering-forloeb/ulf/blob/master/profiles/ulf/themes/ulf_default/README.md) on info about theme setup.
-- Martin @todo
 
 ### ulf_admin theme
 - A sub theme of seven
