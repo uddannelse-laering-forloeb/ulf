@@ -29,7 +29,7 @@ If these templates are customized in a subtheme that would result in that subthe
 
 Instead of adding theme template overrides in a subtheme it is advised that the changes in templates be made in the ulf_default base theme to benefit all ulf sites.
 
-New sites should strive to use the layout defined in ulf_default and not override it in the base theme. That would simplify the workflow of new releases and changes in configuration.
+New sites should strive to use the layout defined in ulf_default and not override it in the sub theme. That would simplify the workflow of new releases and changes in configuration.
  - Exception: The varying system specifications for each site in regard to search displays and metadata has resulted in a setup where each subtheme may contain it's own search template overrides.
  These overrides are referenced in that sites settings.php file.
 
