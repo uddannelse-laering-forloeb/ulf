@@ -1,11 +1,11 @@
 # ULF README
 
 ## Specific README files
-- Theme setup documentation located in [the default theme folder](https://github.com/uddannelse-laering-forloeb/ulf/blob/master/profiles/ulf/themes/ulf_default/README.md).
+- Theme setup documentation located in [the default theme folder](https://github.com/uddannelse-laering-forloeb/ulf/tree/master/profiles/ulf/themes/ulf_default).
 - Each custom module located in [the custom modules folder](https://github.com/uddannelse-laering-forloeb/ulf/tree/master/profiles/ulf/modules/ulf_custom) contains a README.md file describing it's functionality.
 - Each feature module located in [the feature modules folder](https://github.com/uddannelse-laering-forloeb/ulf/tree/master/profiles/ulf/modules/features) contains a README.md file describing it's functionality.
-- Multisite setup documentation located in [the sites folder](https://github.com/uddannelse-laering-forloeb/ulf/tree/feature/profile-update/sites).
-- Search setup documentation: [Installation instructions l.106-298](https://github.com/os2display/docs/blob/master/installation/prepare_server.sh#L106)
+- Multisite setup documentation located in [the sites folder](https://github.com/uddannelse-laering-forloeb/ulf/tree/master/profile-update/sites).
+- Search setup documentation: [Installation instructions l.106-298](https://github.com/os2display/docs/blob/master/installation/prepare_server.sh#L106) .
 - Changelog located in [the profile folder](https://github.com/uddannelse-laering-forloeb/ulf/tree/master/profiles/ulf/CHANGELOG.md).
 
 ## A viable server setup
@@ -30,7 +30,7 @@ The install profile contains:
 - Uses Ulfiaarhus.dk original images, styles, and templates
 - Used as a base theme for all sites. Each site provides it's custom styles and
 html overrides in a subtheme with ulf_default as it's base theme.
-- See [this readme](https://github.com/uddannelse-laering-forloeb/ulf/blob/master/profiles/ulf/themes/ulf_default/README.md) on info about theme setup.
+- See [this readme](https://github.com/uddannelse-laering-forloeb/ulf/tree/master/profiles/ulf/themes/ulf_default) on info about theme setup.
 
 ### ulf_admin theme
 - A sub theme of seven
@@ -90,7 +90,7 @@ html overrides in a subtheme with ulf_default as it's base theme.
 * https://www.drupal.org/files/issues/translate_role_names-2205581-1.patch
 
 ## Install guide
-- Setup a site file structure as described [here](https://github.com/uddannelse-laering-forloeb/ulf/blob/master/sites/README.md)
+- Setup a site file structure as described [here](https://github.com/uddannelse-laering-forloeb/ulf/tree/master/sites)
 - Setup a database
 - Create google maps API key as described [here](https://developers.google.com/maps/documentation/javascript/get-api-key)
 - Run the installation
