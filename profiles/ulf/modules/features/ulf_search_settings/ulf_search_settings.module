@@ -5,3 +5,14 @@
  */
 
 include_once 'ulf_search_settings.features.inc';
+
+/**
+ * Implements hook_default_search_api_index_alter().
+ *
+ * Change the default search api index from features export.
+ */
+function ulf_search_settings_default_search_api_index_alter(&$defaults) {
+  $defaults['courses']->options['search_node_indexes'] = variable_get('search_api_search_node_index_courses', '');
+  $defaults['educators']->options['search_node_indexes'] = variable_get('search_api_search_node_index_educators', '');
+  $defaults['users']->options['search_node_indexes'] = variable_get('search_api_search_node_index_users', '');
+}
