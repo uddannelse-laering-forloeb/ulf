@@ -495,7 +495,6 @@ function _ulf_workflow_mail_field_collection_changes($entity) {
   ];
 
   foreach ($fields as $key => $field) {
-    $a =1;
     if (
       !empty($entity->{$key}[LANGUAGE_NONE]) &&
       $entity->{$key}[LANGUAGE_NONE][0][$field] != $entity->original->{$key}[LANGUAGE_NONE][0][$field]) {

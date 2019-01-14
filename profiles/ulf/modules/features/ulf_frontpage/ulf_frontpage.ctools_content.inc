@@ -23,7 +23,7 @@ function ulf_frontpage_default_ctools_custom_content() {
     'body' => '<div class="teaser--group is-course">
 <a class="teaser--group-inner" href="/kurser">
 <div class="teaser--group-field">
-<img src="/profiles/ulf/themes/[site:current-user:theme]/images/frontpage-course.jpg" alt="Kursus">
+<img src="/sites/[site:url-brief]/themes/[site:current-user:theme]/images/frontpage-course.jpg" alt="Kursus">
 </div>
 <div class="teaser--group-text is-course">
 <div class="teaser--group-text-inner">Kurser</div>
@@ -48,7 +48,7 @@ function ulf_frontpage_default_ctools_custom_content() {
     'body' => '<div class="teaser--group">
 <a class="teaser--group-inner" href="/dagtilbud">
 <div class="teaser--group-field">
-<img src="/profiles/ulf/themes/[site:current-user:theme]/images/frontpage-dagtilbud.jpg" alt="Dagtilbud">
+<img src="/sites/[site:url-brief]/themes/[site:current-user:theme]/images/frontpage-dagtilbud.jpg" alt="Dagtilbud">
 </div>
 <div class="teaser--group-text is-dagtilbud">
 <div class="teaser--group-text-inner">Dagtilbud</div>
@@ -57,7 +57,7 @@ function ulf_frontpage_default_ctools_custom_content() {
 </div><div class="teaser--group">
 <a class="teaser--group-inner" href="/grundskole">
 <div class="teaser--group-field">
-<img src="/profiles/ulf/themes/[site:current-user:theme]/images/frontpage-grundskole.jpg" alt="Grundskole">
+<img src="/sites/[site:url-brief]/themes/[site:current-user:theme]/images/frontpage-grundskole.jpg" alt="Grundskole">
 </div>
 <div class="teaser--group-text is-grundskole">
 <div class="teaser--group-text-inner">Grundskolen</div>
@@ -66,7 +66,7 @@ function ulf_frontpage_default_ctools_custom_content() {
 </div><div class="teaser--group">
 <a class="teaser--group-inner" href="/ungdomsuddannelse">
 <div class="teaser--group-field">
-<img src="/profiles/ulf/themes/[site:current-user:theme]/images/frontpage-ungdomsudd.jpg" alt="Ungdomsuddannelse">
+<img src="/sites/[site:url-brief]/themes/[site:current-user:theme]/images/frontpage-ungdomsudd.jpg" alt="Ungdomsuddannelse">
 </div>
 <div class="teaser--group-text is-ungdomsuddannelse">
 <div class="teaser--group-text-inner">Ungdomsuddannelser</div>
@@ -91,7 +91,7 @@ function ulf_frontpage_default_ctools_custom_content() {
     'body' => '<div class="teaser--group">
 <a class="teaser--group-inner" href="/dagtilbud">
 <div class="teaser--group-field">
-<img src="/profiles/ulf/themes/[site:current-user:theme]/images/frontpage-dagtilbud.jpg" alt="Dagtilbud">
+<img src="/sites/[site:url-brief]/themes/[site:current-user:theme]/images/frontpage-dagtilbud.jpg" alt="Dagtilbud">
 </div>
 <div class="teaser--group-text is-dagtilbud">
 <div class="teaser--group-text-inner">Dagtilbud</div>
@@ -116,7 +116,7 @@ function ulf_frontpage_default_ctools_custom_content() {
     'body' => '<div class="teaser--group">
 <a class="teaser--group-inner" href="/grundskole">
 <div class="teaser--group-field">
-<img src="/profiles/ulf/themes/[site:current-user:theme]/images/frontpage-grundskole.jpg" alt="Grundskole">
+<img src="/sites/[site:url-brief]/themes/[site:current-user:theme]/images/frontpage-grundskole.jpg" alt="Grundskole">
 </div>
 <div class="teaser--group-text is-grundskole">
 <div class="teaser--group-text-inner">Grundskolen</div>
@@ -141,7 +141,7 @@ function ulf_frontpage_default_ctools_custom_content() {
     'body' => '<div class="teaser--group">
 <a class="teaser--group-inner" href="/ungdomsuddannelse">
 <div class="teaser--group-field">
-<img src="/profiles/ulf/themes/[site:current-user:theme]/images/frontpage-ungdomsudd.jpg" alt="Ungdomsuddannelse">
+<img src="/sites/[site:url-brief]/themes/[site:current-user:theme]/images/frontpage-ungdomsudd.jpg" alt="Ungdomsuddannelse">
 </div>
 <div class="teaser--group-text is-ungdomsuddannelse">
 <div class="teaser--group-text-inner">Ungdomsuddannelser</div>

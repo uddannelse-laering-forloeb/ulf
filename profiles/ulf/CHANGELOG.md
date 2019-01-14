@@ -1,5 +1,8 @@
 # ULF changelog
 
+## 2.8.0
+* ULF-2258: Changed to multisite setup.
+
 ## 2.7.3
 * SUPPORT-1880: Changed help messages.
 * SUPPORT-1879: Attached address to user profile.

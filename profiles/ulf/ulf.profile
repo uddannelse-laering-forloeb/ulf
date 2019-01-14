@@ -35,17 +35,6 @@ if (!function_exists("system_form_install_select_profile_form_alter")) {
 
 /**
  * Implements hook_form_alter().
- *
- * Remove #required attribute for form elements in the installer
- * as they prevent the install profile from being run using drush
- * site-install.
- *
- * These elements will usually be added by modules implementing
- * hook_ding_install_tasks and passing a default administration form. While
- * setting elements as required in the administration is reasonable, during
- * the installation we may present the users with required form elements
- * they do not know how to handle and thus prevent them from completing the
- * installation.
  */
 function ulf_form_alter(&$form, &$form_state, $form_id) {
   // Process all forms during installation except the Drupal default
@@ -94,7 +83,7 @@ function ulf_install_tasks(&$install_state) {
 
     // Add task to select provider and extra ulf modules.
     'ulf_module_selection_form' => array(
-      'display_name' => st('Module selection'),
+      'display_name' => st('Module selection and configuration'),
       'display' => TRUE,
       'type' => 'form',
       'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
@@ -103,6 +92,14 @@ function ulf_install_tasks(&$install_state) {
     // Enable modules.
     'ulf_module_enable' => array(
       'display_name' => st('Enable modules'),
+      'display' => TRUE,
+      'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
+      'type' => 'batch',
+    ),
+
+    // Set variables.
+    'ulf_set_variables' => array(
+      'display_name' => st('Set variables'),
       'display' => TRUE,
       'run' => INSTALL_TASK_RUN_IF_NOT_COMPLETED,
       'type' => 'batch',
@@ -234,10 +231,10 @@ function ulf_theme_selection_form_submit($form, &$form_state) {
   theme_disable($disable_themes);
 
 
-  // Enable desired themes themes and set seven as admin.
+  // Enable desired themes and set seven as admin.
   $enable = array(
     'theme_default' => $values['theme_selection'],
-    'admin_theme' => 'seven',
+    'admin_theme' => 'ulf_admin',
   );
   theme_enable($enable);
 
@@ -258,16 +255,20 @@ function ulf_theme_selection_form_submit($form, &$form_state) {
 function ulf_module_selection_form($form, &$form_state) {
   // Optional modules.
   $modules = array(
+    'googleanalytics' => st('Google analytics'),
+    'mailchimp_signup' => st('Mailchimp'),
+    'autosave' => st('Autosave'),
+    'secure_permissions_data' => st('Secure permissions'),
+    'ulf_track_mail' => st('Ulf track mail'),
     'ulf_pdf' => st('PDF module'),
     'ulf_cookie_compliance' => st('ULF cookie compliance module'),
-    'googleanalytics' => st('Google analytics'),
-    'mailchimp' => st('Mailchimp'),
+    'ulf_course_provider_news' => st('Course provider news'),
   );
 
   $form['modules'] = array(
     '#title' => st('Select ulf extras'),
     '#type' => 'fieldset',
-    '#description' => st('Select optional ulf extension. You can always enable/disable these in the administration interface.'),
+    '#description' => st('Select optional ulf extension.'),
   );
 
   $form['modules']['modules_selection'] = array(
@@ -277,6 +278,8 @@ function ulf_module_selection_form($form, &$form_state) {
     '#options' => $modules,
     '#default_value' => array(
       'ulf_pdf',
+      'ulf_track_mail',
+      'secure_permissions_data'
     ),
   );
 
@@ -288,12 +291,11 @@ function ulf_module_selection_form($form, &$form_state) {
   );
 
 
-  // Favicon, logo & iOS icon upload.
-  // Logo settings.
+  // Search settings
   $form['search'] = array(
     '#type' => 'fieldset',
     '#title' => st('Search settings'),
-    '#description' => st('Selected the search settings to use'),
+    '#description' => st('Select the search settings to use'),
   );
 
   $search_settings = array();
@@ -314,13 +316,36 @@ function ulf_module_selection_form($form, &$form_state) {
     '#default_value' => array('ulf_search_settings'),
   );
 
+  // Map settings
+  $form['map'] = array(
+    '#type' => 'fieldset',
+    '#title' => st('Map settings'),
+    '#description' => st('Define map settings. The google service is used when creating and editing content. You can bypass the map setup now and configure it later by visiting /admin/config/services/gmap'),
+  );
+
+  // Map settings
+  $form['map']['api_key'] = array(
+    '#type' => 'textfield',
+    '#title' => st('API Key'),
+    '#description' => st('To obtain an API key follow the steps described here:') . ' <a href="https://developers.google.com/maps/documentation/javascript/get-api-key" target="_blank">https://developers.google.com/maps/documentation/javascript/get-api-key</a>',
+    '#size' => 60,
+  );
+
+  // Map settings
+  $form['map']['starting_point'] = array(
+    '#type' => 'textfield',
+    '#title' => st('Map starting point'),
+    '#description' => st('A lat,long coordinate, seperated by comma. In a format similar to 56.130999,10.173044'),
+    '#size' => 60,
+  );
+
   // Submit the selections.
   $form['submit'] = array(
     '#type' => 'submit',
     '#value' => st('Enable modules'),
   );
 
-  // Validate and submit logo, iOS logo and favicon.
+  // Validate and submit.
   $form['#submit'][] = 'ulf_module_selection_form_submit';
 
   return $form;
@@ -328,9 +353,6 @@ function ulf_module_selection_form($form, &$form_state) {
 
 /**
  * Submit handler that enables the modules.
- *
- * It also enabled the provider selected in the form defined above.
- * And iOS upload handling.
  */
 function ulf_module_selection_form_submit($form, &$form_state) {
   // We depend on core system module.
@@ -342,8 +364,15 @@ function ulf_module_selection_form_submit($form, &$form_state) {
   // Get list of selected modules.
   if (!empty($values['modules_selection'])) {
     $module_list += array_filter($values['modules_selection']);
-    $module_list[$values['search_selection']] = $values['search_selection'];
+    $module_list['ulf_search_settings'] = 'ulf_search_settings';
   }
+
+  // Set lat/long and api key for maps.
+  $latlong = variable_get('gmap_default');
+  $latlong['latlong'] = $values['starting_point'];
+  $latlong['zoom'] = '10';
+  variable_set('gmap_default', $latlong);
+  variable_set('gmap_api_key', $values['api_key']);
 
   // Store selection to batch them in the next task.
   variable_set('ulf_module_selected', $module_list);
@@ -360,7 +389,6 @@ function ulf_module_selection_form_submit($form, &$form_state) {
  */
 function ulf_module_enable(&$install_state) {
   $modules = variable_get('ulf_module_selected', array());
-
   $operations = ulf_module_list_as_operations($modules);
 
   $batch = array(
@@ -369,9 +397,64 @@ function ulf_module_enable(&$install_state) {
     'file' => drupal_get_path('profile', 'ulf') . '/ulf.install_callbacks.inc',
   );
 
+  return $batch;
+}
+
+/**
+ * Set variables.
+ */
+function ulf_set_variables(&$install_state) {
+  $modules = variable_get('ulf_module_selected', array());
   variable_del('ulf_module_selected');
 
-  return $batch;
+  // Enable modules placed in sites/[sitename]/modules folder.
+  $existing_modules = drupal_system_listing("/\\.module\$/", "modules", 'name', 0);
+  foreach ($existing_modules as $existing_module) {
+    if($existing_module->uri) {
+      if (strpos($existing_module->uri, 'sites/') !== false) {
+        $modules[$existing_module->name] = $existing_module->name;
+      }
+    }
+  }
+
+  variable_set('secure_permissions_disable_forms', 1);
+  variable_set('autosave_period', 120);
+  variable_set('autosave_course', 1);
+  variable_set('autosave_course_educators', 1);
+  variable_set('l10n_update_check_frequency', '7');
+  variable_set('print_css', '%t/css/print.css');
+  variable_set('print_sourceurl_enabled', 0);
+  variable_set('print_footer_options', '0');
+  variable_set('print_urls', 0);
+  variable_set('print_urls_anchors', 0);
+  
+  // Disable workbench block.
+  $blocks_updated = db_update('block')
+  ->fields(array(
+    'region' => -1,
+    'weight' => 0,
+  ))
+    ->condition('module', 'workbench', '=')
+    ->execute();
+
+  // Set better field descriptions.
+  variable_set('better_field_descriptions_default_entity', 'node');
+  $fields = [];
+  $bundles = ['html_block', 'course_educators', 'news', 'static_page', 'course', 'news_course_provider'];
+  foreach ($bundles as $bundle) {
+    $field_info = field_info_instances('node', $bundle);
+    $fields[$bundle] = [];
+    foreach (array_keys($field_info) as $key) {
+      if($field_info[$key]['display']['default']['type'] != 'hidden') {
+        $fields[$bundle][$key] = $key;
+      }
+    }
+    $fields[$bundle]['title'] = 'title';
+  }
+  variable_set('better_field_descriptions_settings', $fields);
+
+  // Run features revert.
+  features_revert(array('ulf_taxonomies' => array('field_instance')));
 }
 
 
@@ -462,20 +545,27 @@ function ulf_module_list_as_operations($module_list) {
  * @return array
  *   List of batches.
  */
+
 function ulf_import_ulf_translations(&$install_state) {
   // Enable danish language.
   include_once DRUPAL_ROOT . '/includes/locale.inc';
-  locale_add_language('da', NULL, NULL, NULL, '', NULL, TRUE, FALSE);
+  locale_add_language('da', NULL, NULL, NULL, '', NULL, TRUE, TRUE);
 
-  // Add import of ulf translations.
   $operations = array();
-  $operations[] = array('_ulf_insert_translation',
-    array(
-      'default',
-      '/profiles/ulf/translations/da.po',
-    ),
-  );
 
+  // Get all translation files
+  $translation_dir = variable_get('l10n_update_download_store', 'sites/all/translations');
+  $files = file_scan_directory($translation_dir, '/.*\.po$/');
+  foreach ($files as $file) {
+    $operations[] = array(
+      '_ulf_insert_translation',
+      array(
+        'default',
+        '/' . $file->uri,
+      ),
+    );
+  }
+  
   $batch = array(
     'title' => st('Installing ulf translations'),
     'operations' => $operations,
@@ -484,7 +574,6 @@ function ulf_import_ulf_translations(&$install_state) {
 
   return $batch;
 }
-
 
 
 /**

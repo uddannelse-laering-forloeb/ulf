@@ -1,0 +1,7 @@
+# Ignore sites directories.
+# We assume a naming convention is used, where the domain is used as site folder name.
+*.dk
+*.vm
+*.eu
+*.com
+*.org

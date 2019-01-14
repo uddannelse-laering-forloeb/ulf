@@ -191,7 +191,7 @@
               <?php /* If any of the fields in this wrapper contain data */ ?>
               <?php print render($content['field_count']); ?>
               <?php print render($content['field_count_description']); ?>
-              <?php if ($field_duration || $field_period_full_year['0']['value'] == 0 || $field_collection_price || $field_free['0']['value'] == 1 || $field_price_description || $field_duration_description || $field_period_info ) : ?>
+              <?php if ($field_duration || $field_period_full_year['0']['value'] == 0 || $field_collection_price || (isset($field_free['0']) && $field_free['0']['value'] == 1) || $field_price_description || $field_duration_description || $field_period_info ) : ?>
                 <div class="block--field-wrapper">
                   <?php if ($field_period_full_year['0']['value'] == 0 ) : ?>
                     <?php print render($content['field_period']); ?>
