@@ -21,25 +21,6 @@ function _ulf_enable_module($module, $module_name, &$context) {
 
 
 /**
- * Import translation into the database.
- *
- * @param string $type
- *   Type of translation.
- * @param string $translation_file
- *   File with translation.
- * @param array $context
- *   The context of the batch job.
- */
-function _ulf_insert_translation($type, $translation_file, &$context) {
-  $file = new stdClass();
-  $file->uri = DRUPAL_ROOT . $translation_file;
-  $file->filename = basename($file->uri);
-  _locale_import_po($file, 'da', LOCALE_IMPORT_OVERWRITE, $type);
-  $context['message'] = st('Installed %type translation.', array('%type' => $type));
-}
-
-
-/**
  * Import default terms into the database. (Topic taxonomy).
  */
 function _ulf_import_tax_topic(&$context) {
@@ -48,12 +29,17 @@ function _ulf_import_tax_topic(&$context) {
     'Film, musik, teater og dans',
     'Hytter og lejrskoler',
     'Idræt og bevægelse',
+    'Innovation og entreprenørskab',
     'Kulturhistorie og tro',
     'Kunst, arkitektur og design',
+    'Litteratur og medier',
     'Natur og friluftsliv',
     'Naturvidenskab',
     'Sundheds- og seksualundervisning',
+    'Teknologiforståelse',
+    'Trivsel, fællesskab og mobning',
     'Tværfaglige tilbud',
+    'Uddannelse og job'
   );
   _ulf_create_taxonomy_terms($name, $taxonomy_terms);
   $context['message'] = st('Added topic terms.');
@@ -81,6 +67,7 @@ function _ulf_import_tax_target_group(&$context) {
 function _ulf_import_tax_target_group_sub(&$context) {
   $name = 'target_group_sub';
   $taxonomy_terms = array(
+    'Børn og unge med særlige behov',
     '0 år',
     '1 år',
     '2 år',
@@ -135,6 +122,7 @@ function _ulf_import_tax_subjects_primary_school(&$context) {
     'Musik',
     'Natur/teknologi',
     'Samfundsfag',
+    'Sundheds- og seksualundervisning',
     'Tysk',
   );
   _ulf_create_taxonomy_terms($name, $taxonomy_terms);
@@ -157,11 +145,12 @@ function _ulf_import_tax_subjects_youth_one(&$context) {
     'Astronomi',
     'Billedkunst',
     'Biologi',
-    'Bioteknologi (forsøg)',
+    'Bioteknologi',
     'Dans',
     'Dansk',
-    'Dansk som andetsprog (forsøg)',
     'Datalogi',
+    'Design',
+    'Design og arkitektur',
     'Design',
     'Dramatik',
     'Engelsk',
@@ -173,6 +162,7 @@ function _ulf_import_tax_subjects_youth_one(&$context) {
     'Fysik',
     'Geografi',
     'Græsk',
+    'Humanistiske fag',
     'Historie',
     'Idehistorie',
     'Idræt',
@@ -215,6 +205,7 @@ function _ulf_import_tax_subjects_youth_two(&$context) {
     'Organisation',
     'Programmering',
     'Psykologi',
+    'Produktudvikling',
     'Religion',
     'Retorik',
     'Russisk',
@@ -392,4 +383,22 @@ function _ulf_create_node($attributes) {
 
   // Save the node.
   node_save($node);
+}
+
+/**
+ * Import translation into the database.
+ *
+ * @param string $type
+ *   Type of translation.
+ * @param string $translation_file
+ *   File with translation.
+ * @param array $context
+ *   The context of the batch job.
+ */
+function _ulf_insert_translation($type, $translation_file, &$context) {
+  $file = new stdClass();
+  $file->uri = DRUPAL_ROOT . $translation_file;
+  $file->filename = basename($file->uri);
+  _locale_import_po($file, 'da', LOCALE_IMPORT_OVERWRITE, $type);
+  $context['message'] = st('Installed %type translation.', array('%type' => $type));
 }

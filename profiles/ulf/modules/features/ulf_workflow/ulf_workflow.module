@@ -159,6 +159,11 @@ function ulf_workflow_form_node_form_alter(&$form, &$form_state, $form_id) {
 
     // End workflow related message
     $form['workflow_information']['#markup'] .= '</div>';
+
+    // If no workflow information (Only empty div exists) hide box.
+    if (strlen($form['workflow_information']['#markup']) < 37) {
+      unset($form['workflow_information']);
+    }
   }
 }
 
