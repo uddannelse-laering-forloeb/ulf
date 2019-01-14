@@ -939,7 +939,7 @@ function ulf_search_settings_default_page_manager_pages() {
       ),
       'sorting' => array(
         'field' => 'field_profile_name',
-        'order' => 'desc',
+        'order' => 'asc',
       ),
       'dates' => array(
         'fields' => array(),
