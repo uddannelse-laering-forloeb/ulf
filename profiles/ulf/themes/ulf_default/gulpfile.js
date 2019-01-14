@@ -10,19 +10,6 @@ var ngAnnotate = require('gulp-ng-annotate');
 var rename = require('gulp-rename');
 var compass = require('gulp-compass');
 
-/**
- * Setting up browsersync.
- * Proxy is the name of the vagrent.
- * Host is the the ip defined in "vagrantfile"
- */
-
-var browserSync = require('browser-sync').create();
-browserSync.init({
-  proxy: "ulf_profile.vm",
-  host: "ulf_profile.vm"
-});
-
-
 // We only want to process our own non-processed JavaScript files.
 var jsPath = ['./scripts/*.js', '!./js/*.min.*'];
 var sassPath = './sass/**/*.scss';
@@ -33,10 +20,11 @@ var buildDir = './js';
  * Run Javascript through JSHint.
  */
 
-gulp.task('jshint', function() {
-  return gulp.src(jsPath)
+gulp.task('jshint', function(done) {
+  gulp.src(jsPath)
     .pipe(jshint())
     .pipe(jshint.reporter(stylish));
+  done();
 });
 
 
@@ -44,29 +32,30 @@ gulp.task('jshint', function() {
  * Run Javascript through JSHint.
  */
 
-gulp.task('uglify', function() {
+gulp.task('uglify', function(done) {
   gulp.src(jsPath)
     .pipe(uglify())
     .pipe(rename({
       suffix: '-min'
     }))
     .pipe(gulp.dest('./scripts/min'))
+  done();
 });
 
 
 /**
  * Process SCSS using libsass
  */
-gulp.task('sass', function () {
+gulp.task('sass', function (done) {
   gulp.src(sassPath)
     .pipe(sass({
       outputStyle: 'compressed',
       includePaths: [
-        '/usr/lib/node_modules/compass-mixins/lib'
+        './node_modules/compass-mixins/lib'
       ]
     }).on('error', sass.logError))
-    .pipe(gulp.dest('./css'))
-    .pipe(browserSync.stream());
+    .pipe(gulp.dest('./css'));
+  done();
 });
 
 /**
@@ -74,10 +63,8 @@ gulp.task('sass', function () {
  */
 
 gulp.task('watch', function() {
-  gulp.watch(jsPath, ['jshint', 'uglify']);
-  gulp.watch(sassPath, ['sass']);
-  gulp.watch(phpPath).on('change', browserSync.reload);
-  gulp.watch(jsPath).on('change',browserSync.reload);
+  gulp.watch(jsPath, gulp.series('jshint', 'uglify'));
+  gulp.watch(sassPath, gulp.series('sass'));
 });
 
 
@@ -86,36 +73,38 @@ gulp.task('watch', function() {
  */
 
 gulp.task('js-watch', function() {
-  gulp.watch(jsPath, ['jshint']);
+  gulp.watch(jsPath, gulp.series('jshint'));
 });
 
 /**
  * Build single app.js file.
  */
-gulp.task('buildJs', function () {
+gulp.task('buildJs', function (done) {
   gulp.src(jsPath)
     .pipe(sourcemaps.init())
     .pipe(uglify())
     .pipe(sourcemaps.write('/maps'))
     .pipe(rename({extname: ".min.js"}))
     .pipe(gulp.dest(buildDir))
+  done();
 });
 
 /**
  * Build single app.js file.
  */
-gulp.task('assetsJs', function () {
+gulp.task('assetsJs', function (done) {
   gulp.src(jsAssets)
     .pipe(concat('assets.js'))
     .pipe(rename({extname: ".min.js"}))
     .pipe(gulp.dest(buildDir))
+  done();
 });
 
 
 /**
  * Use compass
  */
-gulp.task('compass', function() {
+gulp.task('compass', function(done) {
   gulp.src(sassPath)
     .pipe(compass({
       css: 'css',
@@ -124,9 +113,10 @@ gulp.task('compass', function() {
     }))
     .pipe(minifycss())
     .pipe(gulp.dest('html/css'));
+  done();
 });
 
 
 // Tasks to compile sass and watch js file.
-gulp.task('default', ['sass', 'watch', 'uglify']);
-gulp.task('build', ['buildJs', 'sass', 'uglify']);
+gulp.task('default', gulp.parallel('sass', 'watch', 'uglify'));
+gulp.task('build', gulp.parallel('buildJs', 'sass', 'uglify'));

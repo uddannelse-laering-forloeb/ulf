@@ -1,5 +1,14 @@
 # ULF changelog
 
+## 2.7.3
+* SUPPORT-1880: Changed help messages.
+* SUPPORT-1879: Attached address to user profile.
+* SUPPORT-1876:	Added list display in sidebar.
+* SUPPORT-1875:	Added honeypot contrib module.
+
+## 2.7.2
+* SUPPORT-1871: removed "Modtageklasser" from default template
+
 ## 2.7.1
 * SUPPORT-1872: Completely hid th contact box in frontend
 * SUPPORT-1871: Added "Børn og unge med særlige behov mangler på klcviborg.dk" to all search templates

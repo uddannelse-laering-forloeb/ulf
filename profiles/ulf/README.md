@@ -49,3 +49,6 @@ drush cc all
 - Each theme has theme specific styles that override specific selectors. But the default styles (ulf-styles.css) are always used.
 
 
+### Test results for php 7.0
+* Conducted with this tool: https://github.com/sstalle/php7cc
+* See : ./php7-0-test.json
