@@ -323,7 +323,7 @@ function ulf_search_settings_default_search_api_index() {
         "search_api_alter_role_filter" : {
           "status" : 1,
           "weight" : "-10",
-          "settings" : { "default" : "0", "roles" : { "18" : "18" } }
+          "settings" : { "default" : "0", "roles" : { "3" : "3" } }
         },
         "search_api_alter_language_control" : {
           "status" : 0,
