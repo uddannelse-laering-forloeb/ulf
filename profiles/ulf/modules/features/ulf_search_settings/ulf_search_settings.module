@@ -16,3 +16,9 @@ function ulf_search_settings_default_search_api_index_alter(&$defaults) {
   $defaults['educators']->options['search_node_indexes'] = variable_get('search_api_search_node_index_educators', '');
   $defaults['users']->options['search_node_indexes'] = variable_get('search_api_search_node_index_users', '');
 }
+
+function ulf_search_settings_default_search_api_server_alter(&$defaults) {
+  $defaults['search_node']->options['host'] = variable_get('search_api_search_node_host', '');
+  $defaults['search_node']->options['apikey'] = variable_get('search_api_search_node_apikey', '');
+  $defaults['search_node']->options['apikey_readonly'] = variable_get('search_api_search_node_apikey_readonly', '');
+}
