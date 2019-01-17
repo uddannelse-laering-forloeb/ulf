@@ -560,6 +560,7 @@ $conf['search_template_box_course_providers'] = ''; * from being logged in the D
  * ULF Specific settings
  */
 // Search settings
+# $conf['search_api_search_node_host'] = ''
 # $conf['search_api_search_node_apikey'] = '';
 # $conf['search_api_search_node_apikey_readonly'] = '';
 # $conf['search_api_search_node_index_courses'] = '';
