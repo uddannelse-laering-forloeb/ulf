@@ -1,5 +1,10 @@
 # ULF changelog
 
+## 2.8.1
+* SUPPORT-1923: Patched autosave module
+* SUPPORT-1920: Updated content sorting
+* SUPPORT-1896: Updated rich text for materials
+
 ## 2.8.0
 * ULF-2258: Changed to multisite setup.
 

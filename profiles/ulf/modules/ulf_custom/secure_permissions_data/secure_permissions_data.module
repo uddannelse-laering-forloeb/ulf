@@ -101,6 +101,7 @@ function secure_permissions_data_secure_permissions($role) {
       'administer EU Cookie Compliance popup',
       'administer mail templates',
       'administer mailchimp',
+      'administer mailchimp signup entities',
       'administer menu',
       'administer nodequeue',
       'administer nodes',

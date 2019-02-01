@@ -1,0 +1,13 @@
+diff --git a/maxlength.module b/maxlength.module
+index 47acde2..c172596 100644
+--- a/maxlength.module
++++ b/maxlength.module
+@@ -252,6 +252,8 @@ function maxlength_validate_input(&$element, &$form_state) {
+ function maxlength_form_alter(&$form, &$form_state, $form_id) {
+   // Attach maxlength to node title.
+   if (isset($form['#node']) && strpos($form_id, '_node_form') !== FALSE && variable_get('maxlength_js_' . $form['#node']->type, FALSE)) {
++    // disable Internet Explorer's internal maxlength validation.
++    $form['#attributes']['novalidate'] = 'novalidate';
+     if (!module_exists('title') || title_field_replacement_enabled('node', $form['#node']->type, 'title') !== TRUE) {
+       $form['title']['#maxlength_js'] = TRUE;
+       $form['title']['#maxlength'] = intval(variable_get('maxlength_js_' . $form['#node']->type, ''));

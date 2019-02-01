@@ -373,9 +373,14 @@
         var editor = $('#' + e.editor.name + '.maxlength');
         if (editor.length == 1) {
           if (editor.hasClass('maxlength_js_enforce')) {
-            ml.options[e.editor.element.getId()].enforce = true;
+            if (ml.options[e.editor.element.getId()]) {
+              ml.options[e.editor.element.getId()].enforce = true;
+            }
+
           } else {
-            ml.options[e.editor.element.getId()].enforce = false;
+            if (ml.options[e.editor.element.getId()]) {
+              ml.options[e.editor.element.getId()].enforce = false;
+            }
           }
           // Check if we should strip the tags when counting.
           if (editor.hasClass('maxlength_js_truncate_html')) {
