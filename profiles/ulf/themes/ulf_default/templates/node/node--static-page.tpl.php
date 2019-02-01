@@ -117,9 +117,7 @@
                 <?php print t('Signup to newsletter'); ?>
               </h2>
               <div class="block--content">
-                <ul class="block--field-text">
-                  <?php print render($newsletter_block['content']); ?>
-                </ul>
+                <?php print render($newsletter_block['content']); ?>
               </div>
             </div>
           <?php endif; ?>

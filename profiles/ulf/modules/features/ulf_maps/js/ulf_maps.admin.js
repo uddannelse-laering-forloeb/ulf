@@ -75,8 +75,10 @@
 
         // Change the map to center on the marker and trigger another resize
         // event to re-draw the map once more.
-        map.setCenter(location);
-        google.maps.event.trigger(map, 'resize');
+        if (map) {
+          map.setCenter(location);
+          google.maps.event.trigger(map, 'resize');
+        }
       }
     });
   }
