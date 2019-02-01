@@ -89,6 +89,7 @@ html overrides in a subtheme with ulf_default as it's base theme.
 ## Registered patches used
 * https://www.drupal.org/files/issues/translate_role_names-2205581-1.patch
 * https://www.drupal.org/files/issues/uncaught_typeerror_-2902337-5.patch (Autosave contrib module)
+* https://www.drupal.org/files/issues/incompatibility_with_ck-2570169-3.patch (Maxlength contrib module)
 
 ## Install guide
 - Setup a site file structure as described [here](https://github.com/uddannelse-laering-forloeb/ulf/tree/master/sites)
