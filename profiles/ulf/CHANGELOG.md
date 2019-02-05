@@ -1,5 +1,9 @@
 # ULF changelog
 
+## 2.8.2
+* Modified Readme file
+* Added Backup and migrate contrib module
+
 ## 2.8.1
 * SUPPORT-1923: Patched autosave module
 * SUPPORT-1920: Updated content sorting

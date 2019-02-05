@@ -4,7 +4,7 @@
 - Theme setup documentation located in [the default theme folder](https://github.com/uddannelse-laering-forloeb/ulf/tree/master/profiles/ulf/themes/ulf_default).
 - Each custom module located in [the custom modules folder](https://github.com/uddannelse-laering-forloeb/ulf/tree/master/profiles/ulf/modules/ulf_custom) contains a README.md file describing it's functionality.
 - Each feature module located in [the feature modules folder](https://github.com/uddannelse-laering-forloeb/ulf/tree/master/profiles/ulf/modules/features) contains a README.md file describing it's functionality.
-- Multisite setup documentation located in [the sites folder](https://github.com/uddannelse-laering-forloeb/ulf/tree/master/profile-update/sites).
+- Multisite setup documentation located in [the sites folder](https://github.com/uddannelse-laering-forloeb/ulf/tree/master/sites).
 - Search setup documentation: [Installation instructions l.106-298](https://github.com/os2display/docs/blob/master/installation/prepare_server.sh#L106) .
 - Changelog located in [the profile folder](https://github.com/uddannelse-laering-forloeb/ulf/tree/master/profiles/ulf/CHANGELOG.md).
 
