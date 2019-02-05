@@ -100,3 +100,14 @@ function ulf_update_7107() {
   variable_set('honeypot_form_user_pass', 1);
   variable_set('honeypot_form_user_register_form', 1);
 }
+
+
+/**
+ * Enable backup and migrate module.
+ */
+function ulf_update_7108() {
+  $module_enable = array(
+    'backup_migrate'
+  );
+  module_enable($module_enable);
+}

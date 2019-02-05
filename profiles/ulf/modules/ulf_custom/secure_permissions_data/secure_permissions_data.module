@@ -88,6 +88,7 @@ function secure_permissions_data_secure_permissions($role) {
     ),
     'editor' => array(
       'access administration pages',
+      'access backup and migrate',
       'access broken links report',
       'access content overview',
       'access contextual links',
@@ -146,6 +147,7 @@ function secure_permissions_data_secure_permissions($role) {
       'moderate content from draft to needs_review',
       'moderate content from needs_review to draft',
       'moderate content from needs_review to published',
+      'perform backup',
       'revert revisions',
       'set own user location',
       'submit latitude/longitude',
