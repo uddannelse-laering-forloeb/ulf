@@ -1,5 +1,8 @@
 # ULF changelog
 
+## 2.8.4
+* Removed wrong license
+
 ## 2.8.3
 * Updated Drupal core to 7.64
 
