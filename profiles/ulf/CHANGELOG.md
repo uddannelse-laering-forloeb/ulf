@@ -1,5 +1,8 @@
 # ULF changelog
 
+## 2.8.3
+* Updated Drupal core to 7.64
+
 ## 2.8.2
 * Modified Readme file
 * Added Backup and migrate contrib module
