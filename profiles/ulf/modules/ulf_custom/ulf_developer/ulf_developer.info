@@ -1,0 +1,4 @@
+name = Ulf Developer
+description = Holds definition of developer user role
+package = Ulf base
+core = 7.x

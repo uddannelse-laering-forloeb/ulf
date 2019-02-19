@@ -6,6 +6,14 @@
 function ulf_install() {
   theme_enable(['ulf_admin']);
   variable_set('admin_theme', 'ulf_admin');
+
+  variable_set('autosave_period', 120);
+  variable_set('autosave_course', 1);
+  variable_set('autosave_course_educators', 1);
+
+  variable_set('honeypot_time_limit', '3');
+  variable_set('honeypot_form_user_pass', 1);
+  variable_set('honeypot_form_user_register_form', 1);
 }
 
 /**
@@ -108,6 +116,18 @@ function ulf_update_7107() {
 function ulf_update_7108() {
   $module_enable = array(
     'backup_migrate'
+  );
+  module_enable($module_enable);
+}
+
+
+/**
+ * Enable role delegation and ulf developer module.
+ */
+function ulf_update_7109() {
+  $module_enable = array(
+    'role_delegation',
+    'ulf_developer'
   );
   module_enable($module_enable);
 }
