@@ -33,6 +33,7 @@ dependencies[] = ulf_html_blocks
 dependencies[] = ulf_maps
 dependencies[] = ulf_content_inactive_warning
 dependencies[] = ulf_translations
+dependencies[] = ulf_developer
 
 ; ULF Search.
 dependencies[] = ulf_search
@@ -71,3 +72,8 @@ dependencies[] = imageinfo_cache
 dependencies[] = image_captcha
 dependencies[] = ife
 dependencies[] = entity2text
+dependencies[] = role_delegation
+dependencies[] = honeypot
+dependencies[] = backup_migrate
+dependencies[] = autosave
+dependencies[] = imageinfo_cache

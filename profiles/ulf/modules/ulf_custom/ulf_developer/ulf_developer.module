@@ -1,0 +1,37 @@
+<?php
+
+/**
+ * @file
+ * Define ulf developer module.
+ */
+
+
+/**
+ * Add new role.
+ *
+ * @return array
+ *   An array defining a role
+ */
+function ulf_developer_secure_permissions_roles() {
+  return array(
+    'developer',
+  );
+}
+
+/**
+* Implements hook_secure_permissions().
+*/
+function ulf_developer_secure_permissions($role) {
+  $permissions = array(
+    'developer' => array(
+      'access administration pages',
+      'view the administration theme',
+      'access backup and migrate',
+      'perform backup',
+      'assign developer role',
+    ),
+  );
+  if (isset($permissions[$role])) {
+    return $permissions[$role];
+  }
+}
