@@ -1,5 +1,9 @@
 # ULF changelog
 
+## 2.8.5
+* Added role delegation module
+* Added ULF Developer module
+
 ## 2.8.4
 * Removed wrong license
 
