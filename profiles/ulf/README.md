@@ -112,3 +112,21 @@ html overrides in a subtheme with ulf_default as it's base theme.
 ### Test results for php 7.0
 * Conducted using: [https://github.com/sstalle/php7cc](https://github.com/sstalle/php7cc)
 * See : [php 7.0 compatibility](https://github.com/uddannelse-laering-forloeb/ulf/blob/master/profiles/ulf/php7-0-test.json)
+
+## Docker setup
+Docker related files:
+- ".docker"-folder
+  - Contains vhost configuration
+- ".env"-file
+  - Contains environment variables for use in Docker
+- docker-compose.yml
+  - Holds container setup.
+
+### About Docker setup
+- Does not contain search configuration setup.
+- Holds an nginx-service for each site in [docker-compose.yml](https://github.com/uddannelse-laering-forloeb/ulf/tree/master/docker-compose.yml).
+- Uses [mailhog/mailhog](https://hub.docker.com/r/mailhog/mailhog) container.
+- The [example.sites.php file](https://github.com/uddannelse-laering-forloeb/ulf/tree/master/sites/example.sites.php)
+holds references to docker hosts defined by nginx containers in [docker-compose.yml](https://github.com/uddannelse-laering-forloeb/ulf/tree/master/docker-compose.yml).
+  - This should be copied into a sites.php file with the sites lines uncommented.
+  - Uses the prod domain names as folder names.
