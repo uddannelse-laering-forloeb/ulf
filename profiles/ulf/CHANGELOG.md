@@ -1,5 +1,10 @@
 # ULF changelog
 
+## 2.8.6
+* Added docker configuration
+* Updated rules module.
+* Updated link module.
+
 ## 2.8.5
 * Added role delegation module
 * Added ULF Developer module
