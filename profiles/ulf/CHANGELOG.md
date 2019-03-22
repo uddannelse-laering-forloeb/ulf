@@ -1,5 +1,8 @@
 # ULF changelog
 
+## 2.8.7
+* SERV-234: Updated drupal core
+
 ## 2.8.6
 * Added docker configuration
 * Updated rules module.
