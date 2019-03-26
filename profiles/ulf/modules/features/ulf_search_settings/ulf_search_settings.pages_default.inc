@@ -247,7 +247,7 @@ function ulf_search_settings_default_page_manager_pages() {
         'size' => '1',
       ),
       'map' => array(
-        'points' => '50000',
+        'points' => '10000',
         'markers' => '/profiles/ulf/themes/ulf_default/images/leaflet/',
       ),
     ),
@@ -519,7 +519,7 @@ function ulf_search_settings_default_page_manager_pages() {
         'size' => '1',
       ),
       'map' => array(
-        'points' => '50000',
+        'points' => '10000',
         'markers' => '/profiles/ulf/themes/ulf_default/images/leaflet/',
       ),
     ),
@@ -784,7 +784,7 @@ function ulf_search_settings_default_page_manager_pages() {
         'size' => '1',
       ),
       'map' => array(
-        'points' => '50000',
+        'points' => '10000',
         'markers' => '/profiles/ulf/themes/ulf_default/images/leaflet/',
       ),
     ),
@@ -975,7 +975,7 @@ function ulf_search_settings_default_page_manager_pages() {
         'popup' => '/profiles/ulf/themes/ulf_default/templates/search/angular/popup-users.html',
       ),
       'map' => array(
-        'points' => '50000',
+        'points' => '10000',
         'markers' => '/profiles/ulf/themes/ulf_default/images/leaflet/',
       ),
     ),
@@ -1243,7 +1243,7 @@ function ulf_search_settings_default_page_manager_pages() {
         'size' => '1',
       ),
       'map' => array(
-        'points' => '50000',
+        'points' => '10000',
         'markers' => '/profiles/ulf/themes/ulf_default/images/leaflet/',
       ),
     ),
