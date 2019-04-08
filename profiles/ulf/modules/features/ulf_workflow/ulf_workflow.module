@@ -223,12 +223,12 @@ function ulf_workflow_node_insert($node) {
     'news_course_provider'
   );
 
-  // Send mail to admin if course provider published content.
-  if ($node->workbench_moderation_state_new == 'published' && !user_access('administer nodes', $user)) {
-    _send_published_mail_course_provider($node);
-  }
-
   if (in_array($node->type, $workflow_enabled_types)) {
+    // Send mail to admin if course provider published content.
+    if ($node->workbench_moderation_state_new == 'published' && !user_access('administer nodes', $user)) {
+      _send_published_mail_course_provider($node);
+    }
+
     // Send mail to course provider if an editor created content on their behalf.
     if ($node->uid <> $user->uid) {
       if (!user_access('administer nodes', user_load($node->uid)) && user_access('administer nodes', $user)) {
