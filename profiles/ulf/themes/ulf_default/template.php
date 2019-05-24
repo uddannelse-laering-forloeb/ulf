@@ -624,7 +624,8 @@ function ulf_default_views_post_render(&$view, &$output, &$cache) {
 
     foreach ($view->result as $result) {
       if (!empty($result->_entity_properties['field_target_group_sub_tid:entity object'])) {
-        $name = $result->_entity_properties['field_target_group_sub_tid:entity object']->name;
+          error_log(print_r($result->_entity_properties['field_target_group_sub_tid:entity object'], true));
+          $name = $result->_entity_properties['field_target_group_sub_tid:entity object']->name;
 
         if (preg_match('/.{1,2} år/', $name)) {
           $years[] = str_replace('. år', '', $name);
