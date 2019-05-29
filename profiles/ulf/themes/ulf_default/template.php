@@ -623,16 +623,21 @@ function ulf_default_views_post_render(&$view, &$output, &$cache) {
     $other_results = [];
 
     foreach ($view->result as $result) {
-      $name = $result->_entity_properties['field_target_group_sub_tid:entity object']->name;
+      if (!empty($result->_entity_properties['field_target_group_sub_tid:entity object'])) {
+          error_log(print_r($result->_entity_properties['field_target_group_sub_tid:entity object'], true));
+          $name = $result->_entity_properties['field_target_group_sub_tid:entity object']->name;
 
-      if (preg_match('/.{1,2} år/', $name) ) {
-        $years[] = str_replace('. år', '', $name);
-      }
-      else if (preg_match('/.{1,2}\. klasse/', $name) ) {
-        $classes[] = str_replace('. klasse', '', $name);
-      }
-      else {
-        $other_results[] = $name;
+        if (preg_match('/.{1,2} år/', $name)) {
+          $years[] = str_replace('. år', '', $name);
+        }
+        else {
+          if (preg_match('/.{1,2}\. klasse/', $name)) {
+            $classes[] = str_replace('. klasse', '', $name);
+          }
+          else {
+            $other_results[] = $name;
+          }
+        }
       }
     }
 
