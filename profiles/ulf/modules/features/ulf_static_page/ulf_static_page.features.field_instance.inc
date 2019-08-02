@@ -173,12 +173,61 @@ function ulf_static_page_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-static_page-field_video'.
+  $field_instances['node-static_page-field_video'] = array(
+    'bundle' => 'static_page',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Angiv URLen på en Youtube eller Vimeo video',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'video_embed_field',
+        'settings' => array(
+          'description' => 1,
+          'description_position' => 'bottom',
+          'video_style' => 'normal',
+        ),
+        'type' => 'video_embed_field',
+        'weight' => 4,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_video',
+    'label' => 'Video',
+    'required' => 0,
+    'settings' => array(
+      'allowed_providers' => array(
+        'vimeo' => 'vimeo',
+        'youtube' => 'youtube',
+      ),
+      'description_field' => 0,
+      'description_length' => 128,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'video_embed_field',
+      'settings' => array(),
+      'type' => 'video_embed_field_video',
+      'weight' => 9,
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
+  t('Angiv URLen på en Youtube eller Vimeo video');
   t('Indhold');
   t('Manchet');
   t('Skriv en kort og præcis beskrivelse. Denne bruges til visning på f.eks. Facebook, så undlad information om praktiske forhold.');
   t('Upload et billede/illustration');
+  t('Video');
 
   return $field_instances;
 }
