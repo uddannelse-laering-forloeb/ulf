@@ -29,22 +29,22 @@ function ulf_course_providers_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'redirect' => array(
-          'weight' => '12',
+          'weight' => '13',
         ),
         'account' => array(
           'weight' => '0',
         ),
         'timezone' => array(
-          'weight' => '13',
+          'weight' => '14',
         ),
         'locale' => array(
-          'weight' => '11',
+          'weight' => '12',
         ),
         'wysiwyg' => array(
-          'weight' => '10',
+          'weight' => '11',
         ),
         'mimemail' => array(
-          'weight' => '8',
+          'weight' => '9',
         ),
         'googleanalytics' => array(
           'weight' => '14',
@@ -53,13 +53,13 @@ function ulf_course_providers_strongarm() {
       'display' => array(
         'summary' => array(
           'default' => array(
-            'weight' => '13',
+            'weight' => '14',
             'visible' => FALSE,
           ),
         ),
         'mimemail' => array(
           'default' => array(
-            'weight' => '8',
+            'weight' => '9',
             'visible' => TRUE,
           ),
         ),
