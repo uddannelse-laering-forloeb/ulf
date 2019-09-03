@@ -167,6 +167,17 @@
               </div>
             </div>
           <?php endif;?>
+          <?php if(module_exists('ulf_pretix')) : ?>
+            <?php if(isset($pretix_widget)) : ?>
+              <div class="pretix-widget-wrapper">
+                <div class="field--collection-label"><?php print t('Signup'); ?></div>
+                <?php print $pretix_widget['stylesheet']; ?>
+                <?php print $pretix_widget['javascript']; ?>
+                <?php print $pretix_widget['widget']; ?>
+                <?php print $pretix_widget['noscript']; ?>
+              </div>
+            <?php endif;?>
+          <?php endif;?>
           <div class="block--pdf">
             <a class="block--pdf-link" target="_blank" href="/printpdf/<?php print $node->nid; ?>"><?php print t('Save this offer as pdf'); ?></a>
           </div>
