@@ -2,10 +2,27 @@ The full readme file for the project is located in the [ulf_profile folder](http
 
 
 ```sh
+cat > sites/default/settings.php <<'EOF'
+<?php
+
+$databases['default']['default'] = [
+  'database' => 'db',
+  'username' => 'db',
+  'password' => 'db',
+  'host' => 'mariadb',
+  'port' => '',
+  'driver' => 'mysql',
+  'prefix' => '',
+];
+EOF
+
+git clone --branch feature/pretix https://github.com/uddannelse-laering-forloeb/ulf_pretix sites/all/modules/ulf_pretix
+```
+
+
+```sh
 docker-compose up --detach
-docker-compose run --rm drush --root=/app status
 docker-compose run --rm drush --root=/app --yes pm-download field_group secure_permissions-7.x-2.x-dev
-docker-compose run --rm drush --root=/app --yes pm-enable field_group
 docker-compose run --rm drush --root=/app --yes pm-enable ulf_pretix
 docker-compose run --rm drush --root=/app --yes features-revert-all
 docker-compose run --rm drush --root=/app --yes secure-permissions on
@@ -21,10 +38,12 @@ docker-compose run --rm drush --root=/app --yes --uri=http://ulf.docker.localhos
 ```sh
 docker-compose exec pretix python /pretix/src/manage.py migrate
 docker-compose exec pretix python /pretix/src/manage.py compress
-docker-compose exec pretix python /pretix/src/manage.py collectstatic
+docker-compose exec pretix python /pretix/src/manage.py collectstatic --no-input
 ```
 
 ## Start pretix
+
+If pretix does not run smoothly, you can try starting the development server in stead:
 
 ```sh
 docker-compose exec -u 0 pretix bash -c "supervisorctl stop nginx";
