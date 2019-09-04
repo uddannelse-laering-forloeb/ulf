@@ -5,104 +5,40 @@ services:
     image: mariadb:10.3
     ports:
       - '3306'
+    volumes:
+      - .docker/dumps:/docker-entrypoint-initdb.d
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_USER: db
       MYSQL_PASSWORD: db
       MYSQL_DATABASE: db
 
-
   phpfpm:
-    image: itkdev/php7.2-fpm:latest
-    restart: always
+    image: itkdev/php7.0-fpm:latest
     environment:
       - PHP_XDEBUG=${PHP_XDEBUG:-0}
       - PHP_XDEBUG_REMOTE_AUTOSTART=${PHP_XDEBUG_REMOTE_AUTOSTART:-0}
       - PHP_XDEBUG_REMOTE_HOST=${PHP_XDEBUG_REMOTE_HOST:-0.0.0.0}
       - PHP_XDEBUG_REMOTE_CONNECT_BACK=${PHP_XDEBUG_REMOTE_CONNECT_BACK:-0}
-      - PHP_MAIL=1 # Uncomment to enable mailhog
+      - PHP_MAX_EXECUTION_TIME=300
+      - PHP_MEMORY_LIMIT=512M
+      - PHP_MAIL=1
     depends_on:
       - mariadb
     volumes:
       - .:/app:delegated
+      - drush-cache:/root/.drush
 
-  nginx:
+  ulf.docker.localhost:
     image: nginx:latest
     depends_on:
       - phpfpm
       - memcached
-    # ports:
-    #   - '80'
+    ports:
+      - '8080:8080'
     volumes:
       - ${PWD}/.docker/vhost.conf:/etc/nginx/conf.d/default.conf:ro
       - ./:/app:delegated
-    labels:
-      - "traefik.frontend.rule=Host:${COMPOSE_PROJECT_NAME}.docker.localhost"
-
-  nginx_ulfiaarhus:
-    image: nginx:latest
-    depends_on:
-      - phpfpm
-      - memcached
-    # ports:
-    #   - '80'
-    volumes:
-      - ${PWD}/.docker/vhost.conf:/etc/nginx/conf.d/default.conf:ro
-      - ./:/app:delegated
-    labels:
-      - "traefik.frontend.rule=Host:ulfiaarhus.docker.localhost"
-
-  nginx_klcviborg:
-    image: nginx:latest
-    depends_on:
-      - phpfpm
-      - memcached
-    # ports:
-    #   - '80'
-    volumes:
-      - ${PWD}/.docker/vhost.conf:/etc/nginx/conf.d/default.conf:ro
-      - ./:/app:delegated
-    labels:
-      - "traefik.frontend.rule=Host:klcviborg.docker.localhost"
-
-  nginx_rum_thisted:
-    image: nginx:latest
-    depends_on:
-      - phpfpm
-      - memcached
-    # ports:
-    #   - '80'
-    volumes:
-      - ${PWD}/.docker/vhost.conf:/etc/nginx/conf.d/default.conf:ro
-      - ./:/app:delegated
-    labels:
-      - "traefik.frontend.rule=Host:rum.thisted.docker.localhost"
-
-  nginx_udoglaer:
-    image: nginx:latest
-    depends_on:
-      - phpfpm
-      - memcached
-    # ports:
-    #   - '80'
-    volumes:
-      - ${PWD}/.docker/vhost.conf:/etc/nginx/conf.d/default.conf:ro
-      - ./:/app:delegated
-    labels:
-      - "traefik.frontend.rule=Host:udoglaer.docker.localhost"
-
-  nginx_aabenaalborg:
-    image: nginx:latest
-    depends_on:
-      - phpfpm
-      - memcached
-    # ports:
-    #   - '80'
-    volumes:
-      - ${PWD}/.docker/vhost.conf:/etc/nginx/conf.d/default.conf:ro
-      - ./:/app:delegated
-    labels:
-      - "traefik.frontend.rule=Host:aabenaalborg.docker.localhost"
 
   memcached:
     image: 'memcached:latest'
@@ -113,7 +49,6 @@ services:
 
   mailhog:
     image: mailhog/mailhog
-    restart: always
     ports:
       - "1025"
       - "8025"
@@ -128,14 +63,43 @@ services:
       - drush-cache:/root/.drush
       - ./:/app
 
-  reverse-proxy:
-    image: traefik  # The official Traefik docker image
-    command: --api --docker  # Enables the web UI and tells Traefik to listen to docker
+  pretix:
+    image: pretix/standalone:stable
+    depends_on:
+      - pretix_database
+      - redis
+      - mailhog
     ports:
       - "80"
-      - "8080"
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock  # So that Traefik can listen to the Docker events
+      - ${PWD}/.docker/pretix/etc/pretix.cfg:/etc/pretix/pretix.cfg
+
+  # Proxy to forward traffic on port 8000 to pretix (on port 80)
+  pretix.docker.localhost:
+    image: nginx:latest
+    depends_on:
+      - pretix
+    ports:
+      - '8081:8081'
+    volumes:
+      - ${PWD}/.docker/pretix/proxy.vhost.conf:/etc/nginx/conf.d/default.conf:ro
+
+  pretix_database:
+    image: mariadb:10.3
+    ports:
+      - '3306'
+    volumes:
+      - .docker/dumps/pretix:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_USER: pretix
+      MYSQL_PASSWORD: pretix
+      MYSQL_DATABASE: pretix
+
+  redis:
+    image: redis:latest
+    ports:
+      - "6379"
 
 # Drush cache volume to persist cache between runs.
 volumes:
