@@ -21,6 +21,7 @@ function _ulf_scheduler_notify_cron_send_mail() {
   $query->leftJoin('scheduler_notify', 'n', 's.nid = n.nid');
   $query->fields('s');
   $query->fields('n', array('send_mail_on'));
+  $query->condition('s.unpublish_on', 0, '>');
   $query->condition('s.unpublish_on', $now + $warning_period, '<');
   $result = $query->execute()->fetchAllAssoc('nid');
 
