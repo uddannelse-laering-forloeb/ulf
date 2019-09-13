@@ -90,13 +90,23 @@
       <?php endif; ?>
       <div class="content is-<?php print $group_type; ?>">
         <div class="content--image">
-          <?php if ($field_free['0']['value'] == 1) : ?>
+
+          <?php if (isset($ribbon_message)) : ?>
             <div class="ribbon-wrapper left is-content">
               <div class="ribbon is-content">
-                <div class="ribbon--course is-content"><?php print t('Free'); ?></div>
+                <div class="ribbon--course is-content"><?php print $ribbon_message; ?></div>
               </div>
             </div>
+          <?php else: ?>
+            <?php if (isset($field_free['0']) && $field_free['0']['value'] == 1) : ?>
+              <div class="ribbon-wrapper left is-content">
+                <div class="ribbon is-content">
+                  <div class="ribbon--course is-content"><?php print t('Free'); ?></div>
+                </div>
+              </div>
+            <?php endif;?>
           <?php endif;?>
+
           <h1 class="field--title is-<?php print $group_type; ?>"><?php print render($title); ?></h1>
           <?php print render($content['field_image']); ?>
         </div>
