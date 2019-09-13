@@ -183,6 +183,13 @@ function ulf_base_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'honeypot_protect_all_forms';
+  $strongarm->value = 1;
+  $export['honeypot_protect_all_forms'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'image_captcha_background_color';
   $strongarm->value = '#ffffff';
   $export['image_captcha_background_color'] = $strongarm;
@@ -473,13 +480,15 @@ example.org';
   $strongarm->name = 'linkchecker_filter_blacklist';
   $strongarm->value = array(
     'filter_autop' => 'filter_autop',
+    'filter_html' => 0,
     'ckeditor_link_filter' => 0,
+    'gmap_macro' => 0,
     'filter_url' => 0,
     'transliteration' => 0,
     'filter_htmlcorrector' => 0,
-    'filter_html_escape' => 0,
-    'filter_html' => 0,
+    'filter_tokens' => 0,
     'video_embed_field' => 0,
+    'filter_html_escape' => 0,
   );
   $export['linkchecker_filter_blacklist'] = $strongarm;
 

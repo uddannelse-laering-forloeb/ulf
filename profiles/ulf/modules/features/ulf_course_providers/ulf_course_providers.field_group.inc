@@ -23,8 +23,8 @@ function ulf_course_providers_field_group_info() {
     'label' => 'Editor settings',
     'weight' => '15',
     'children' => array(
-      0 => 'field_editor_info',
-      1 => 'field_bypass_workflow',
+      0 => 'field_bypass_workflow',
+      1 => 'field_editor_info',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -37,7 +37,7 @@ function ulf_course_providers_field_group_info() {
       ),
     ),
   );
-  $field_groups['group_editor_settings|user|user|form'] = $field_group;
+  $field_groups[''] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -50,12 +50,12 @@ function ulf_course_providers_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Organization',
-    'weight' => '7',
+    'weight' => '8',
     'children' => array(
       0 => 'field_profile_home_page',
       1 => 'field_profile_logo',
-      2 => 'field_profile_phone',
-      3 => 'field_profile_mail',
+      2 => 'field_profile_mail',
+      3 => 'field_profile_phone',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -68,7 +68,7 @@ function ulf_course_providers_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $field_groups['group_metadata|user|user|form'] = $field_group;
+  $field_groups[''] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -81,7 +81,7 @@ function ulf_course_providers_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Lokation',
-    'weight' => '9',
+    'weight' => '10',
     'children' => array(
       0 => 'field_profile_map_placement',
     ),
@@ -96,7 +96,7 @@ function ulf_course_providers_field_group_info() {
       ),
     ),
   );
-  $field_groups['group_placement|user|user|form'] = $field_group;
+  $field_groups[''] = $field_group;
 
   // Translatables
   // Included for use with string extractors like potx.

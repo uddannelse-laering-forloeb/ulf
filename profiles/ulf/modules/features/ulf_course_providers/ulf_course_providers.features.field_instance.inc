@@ -25,7 +25,7 @@ function ulf_course_providers_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 11,
+        'weight' => 12,
       ),
     ),
     'entity_type' => 'user',
@@ -57,7 +57,7 @@ function ulf_course_providers_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 14,
+        'weight' => 15,
       ),
     ),
     'entity_type' => 'user',
@@ -167,7 +167,7 @@ function ulf_course_providers_field_default_field_instances() {
           'view_mode' => 'full',
         ),
         'type' => 'field_collection_fields',
-        'weight' => 5,
+        'weight' => 6,
       ),
     ),
     'entity_type' => 'user',
@@ -182,7 +182,7 @@ function ulf_course_providers_field_default_field_instances() {
       'module' => 'field_collection',
       'settings' => array(),
       'type' => 'field_collection_embed',
-      'weight' => 6,
+      'weight' => 7,
     ),
   );
 
@@ -308,7 +308,7 @@ function ulf_course_providers_field_default_field_instances() {
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_default',
-        'weight' => 9,
+        'weight' => 10,
       ),
     ),
     'entity_type' => 'user',
@@ -361,7 +361,7 @@ function ulf_course_providers_field_default_field_instances() {
           'image_style' => 'logo',
         ),
         'type' => 'image',
-        'weight' => 6,
+        'weight' => 7,
       ),
     ),
     'entity_type' => 'user',
@@ -426,7 +426,7 @@ function ulf_course_providers_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 10,
+        'weight' => 11,
       ),
     ),
     'entity_type' => 'user',
@@ -461,7 +461,7 @@ function ulf_course_providers_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 12,
+        'weight' => 13,
       ),
     ),
     'entity_type' => 'user',
@@ -528,7 +528,7 @@ function ulf_course_providers_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 7,
+        'weight' => 8,
       ),
     ),
     'entity_type' => 'user',
@@ -548,8 +548,50 @@ function ulf_course_providers_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'user-user-field_video'.
+  $field_instances['user-user-field_video'] = array(
+    'bundle' => 'user',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Angiv URLen på en Youtube eller Vimeo video',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'video_embed_field',
+        'settings' => array(
+          'description' => 1,
+          'description_position' => 'bottom',
+          'video_style' => 'normal',
+        ),
+        'type' => 'video_embed_field',
+        'weight' => 5,
+      ),
+    ),
+    'entity_type' => 'user',
+    'field_name' => 'field_video',
+    'label' => 'Video',
+    'required' => 0,
+    'settings' => array(
+      'allowed_providers' => array(
+        'vimeo' => 'vimeo',
+        'youtube' => 'youtube',
+      ),
+      'description_field' => 0,
+      'description_length' => 128,
+      'user_register_form' => 0,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'video_embed_field',
+      'settings' => array(),
+      'type' => 'video_embed_field_video',
+      'weight' => 6,
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
+  t('Angiv URLen på en Youtube eller Vimeo video');
   t('Bypass workflow');
   t('Entré');
   t('Henvendelser via kontaktformularen på forløbene sendes til denne adresse.');
@@ -566,6 +608,7 @@ function ulf_course_providers_field_default_field_instances() {
   t('Redaktørfelt');
   t('Telefonnr.');
   t('Upload et billede/illustration');
+  t('Video');
   t('Visning på kort');
 
   return $field_instances;

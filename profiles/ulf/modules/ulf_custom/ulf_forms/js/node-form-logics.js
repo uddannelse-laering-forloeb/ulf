@@ -4,7 +4,7 @@
  *
  * A lot of fields change due to the selection of the target group field.
  */
-(function($) {
+(function ($) {
   // Called when the document has finished loading.
   Drupal.behaviors.ulfCourseFormAlter = {
     attach: function (context, settings) {
@@ -45,21 +45,25 @@
         // When "Full year" is unchecked show field group for duration else hide
         // the fields. This is also called when the form is initialized.
         var timeSelector = $('.field-name-field-period-full-year');
-        timeSelector.change(function () { timePeriodSelectionChanged(timeSelector) });
+        timeSelector.change(function () {
+          timePeriodSelectionChanged(timeSelector)
+        });
         timePeriodSelectionChanged(timeSelector);
 
         // Handle the price (free) checkboxes and show/hide price input fields
         // based on free field state.
         var priceSelector = $('.field-name-field-free');
-        priceSelector.click(function () { priceChanged(priceSelector) });
+        priceSelector.click(function () {
+          priceChanged(priceSelector)
+        });
         priceChanged(priceSelector);
 
         // Hide empty fields for old price and and contact on course educators
         // content type.
         // If fields have values the editor should manually move them. When all
-        // values have been moved the field should be deleted as part of a future
-        // patch.
-        // @TODO: This is still awaiting manual transfer of price field to field collection.
+        // values have been moved the field should be deleted as part of a
+        // future patch. @TODO: This is still awaiting manual transfer of price
+        // field to field collection.
         if (!$('.field-name-field-course-contact-name input').val()) {
           $('.field-name-field-course-contact-name').hide();
         }
@@ -70,7 +74,8 @@
           $('.field-name-field-course-phone ').hide();
         }
 
-        // Hides the price field outside the field collection wrapper if it is set to 0 so editors will not be confused.
+        // Hides the price field outside the field collection wrapper if it is
+        // set to 0 so editors will not be confused.
         if ($('.fieldset-wrapper > .field-name-field-price input').val() == '0' || $('.fieldset-wrapper > .field-name-field-price input').val() == '0.00' || !$('.fieldset-wrapper > .field-name-field-price input').val()) {
           $('.fieldset-wrapper > .field-name-field-price').hide();
         }
@@ -95,7 +100,7 @@
             field.parent().show();
           }
           else {
-            field.prop( "checked", false );
+            field.prop("checked", false);
           }
         });
       }
@@ -117,6 +122,10 @@
         $('.is-preschool').show();
         clearSubjectsValues('subjects-primary-school');
         clearSubjectsValues('subjects-youth');
+
+        clearCKEditorTextAreaValue('activities');
+        clearCKEditorTextAreaValue('background-knowledge');
+        clearCKEditorTextAreaValue('post-work');
         setLabel('field-background-knowledge', 'Baggrundsviden');
       }
 
@@ -137,6 +146,9 @@
           clearSubjectsValues('educational-goals');
         }
         clearSubjectsValues('subjects-youth');
+        clearCKEditorTextAreaValue('activities');
+        clearCKEditorTextAreaValue('background-knowledge');
+        clearCKEditorTextAreaValue('post-work');
         setLabel('field-background-knowledge', 'Forberedelse');
       }
 
@@ -157,6 +169,9 @@
           clearSubjectsValues('educational-goals');
         }
         clearSubjectsValues('subjects-primary-school');
+        clearCKEditorTextAreaValue('activities');
+        clearCKEditorTextAreaValue('background-knowledge');
+        clearCKEditorTextAreaValue('post-work');
         setLabel('field-background-knowledge', 'Forberedelse');
       }
 
@@ -164,7 +179,22 @@
        * Clear subjects and educational goals field field values.
        */
       function clearSubjectsValues(fieldValue) {
-        $('.field-name-field-' + fieldValue + ' input').prop( "checked", false );
+        $('.field-name-field-' + fieldValue + ' input').prop("checked", false);
+      }
+
+      /**
+       * Clear subjects and educational goals field field values.
+       */
+      function clearCKEditorTextAreaValue(fieldValue) {
+        // Create the name of the CKEditor field.
+        var ckeditor_field_name = 'edit-field-' + fieldValue + '-und-0-value';
+
+        // Get the CKEDITOR instance and empty the field.
+        var instance = CKEDITOR.instances[ckeditor_field_name];
+        if (instance) {
+          instance.setData('');
+          $('.field-name-field-' + fieldValue + ' textarea').val('');
+        }
       }
 
       /**
@@ -241,8 +271,8 @@
           // toggled the data fields is reset and pre-filled.
           var date = new Date();
           var start_date = ('0' + date.getDate()).slice(-2) + '/'
-            + ('0' + (date.getMonth()+1)).slice(-2) + '/'
-            + date.getFullYear();
+              + ('0' + (date.getMonth() + 1)).slice(-2) + '/'
+              + date.getFullYear();
           var time = ('0' + date.getHours()).slice(-2) + ':' + ('0' + date.getMinutes()).slice(-2);
 
           field_period.show();
