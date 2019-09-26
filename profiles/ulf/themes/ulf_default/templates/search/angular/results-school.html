@@ -24,7 +24,12 @@
 <span data-ng-if="!displayMap">
   <div class="search-results">
     <article class="search-results--result is-grundskole" data-ng-repeat="hit in hits.results">
-      <div class="ribbon-wrapper left" data-ng-if="hit.field_free == true">
+      <div class="ribbon-wrapper left {{ hit.ribbon_class_names }}" data-ng-if="hit.ribbon_message">
+        <div class="ribbon">
+          <a href="{{ hit.url }}">{{ hit.ribbon_message }}</a>
+        </div>
+      </div>
+      <div class="ribbon-wrapper left" data-ng-if="!hit.ribbon_message && hit.field_free == true">
         <div class="ribbon">
           <a href="{{ hit.url }}">Gratis</a>
         </div>
