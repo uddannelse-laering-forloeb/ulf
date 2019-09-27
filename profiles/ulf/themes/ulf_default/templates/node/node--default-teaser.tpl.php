@@ -81,13 +81,22 @@
 ?>
 <article class="teaser is-<?php print $group_type; ?>">
   <?php if ($type == 'course' || $type == 'course_educators') : ?>
-    <?php if (isset($content['field_free'])) : ?>
-      <?php if ($content['field_free']['#items']['0']['value'] == 1) : ?>
-        <div class="ribbon-wrapper left">
-          <div class="ribbon">
-            <a href="/node/<?php print $nid; ?>"><?php print t('Free'); ?></a>
-          </div>
+
+    <?php if (isset($ribbon_message)) : ?>
+      <div class="ribbon-wrapper left">
+        <div class="ribbon">
+          <a href="/node/<?php print $nid; ?>"><?php print $ribbon_message; ?></a>
         </div>
+      </div>
+    <?php else: ?>
+      <?php if (isset($content['field_free'])) : ?>
+        <?php if ($content['field_free']['#items']['0']['value'] == 1) : ?>
+          <div class="ribbon-wrapper left">
+            <div class="ribbon">
+              <a href="/node/<?php print $nid; ?>"><?php print t('Free'); ?></a>
+            </div>
+          </div>
+        <?php endif;?>
       <?php endif;?>
     <?php endif;?>
   <?php endif;?>
