@@ -177,6 +177,11 @@
               </div>
             </div>
           <?php endif;?>
+
+          <?php if (isset($content['field_pretix_date'])): ?>
+            <?php print render($content['field_pretix_date']); ?>
+          <?php endif; ?>
+
           <?php if(module_exists('ulf_pretix')) : ?>
             <?php if(isset($pretix_widget)) : ?>
               <div class="pretix-widget-wrapper">
