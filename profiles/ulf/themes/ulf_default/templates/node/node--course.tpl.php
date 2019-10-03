@@ -89,13 +89,23 @@
       <?php endif; ?>
       <div class="content is-<?php print $group_type; ?>">
         <div class="content--image">
-          <?php if (isset($field_free['0']) && $field_free['0']['value'] == 1) : ?>
+
+          <?php if (isset($ribbon_message)) : ?>
             <div class="ribbon-wrapper left is-content">
               <div class="ribbon is-content">
-                <div class="ribbon--course is-content"><?php print t('Free'); ?></div>
+                <div class="ribbon--course is-content"><?php print $ribbon_message; ?></div>
               </div>
             </div>
+          <?php else: ?>
+            <?php if (isset($field_free['0']) && $field_free['0']['value'] == 1) : ?>
+              <div class="ribbon-wrapper left is-content">
+                <div class="ribbon is-content">
+                  <div class="ribbon--course is-content"><?php print t('Free'); ?></div>
+                </div>
+              </div>
+            <?php endif;?>
           <?php endif;?>
+
           <h1 class="field--title is-<?php print $group_type; ?>"><?php print render($title); ?></h1>
           <?php print render($content['field_image']); ?>
         </div>
@@ -109,7 +119,7 @@
             <?php print render($content['field_material_suggestions']); ?>
             <?php print render($content['field_purpose']); ?>
           </div>
-  
+
           <?php print render($content['field_video']); ?>
           <?php if ($field_place || $field_map_placement['und']['0']['value'] == 'alternative' || $field_map_placement['und']['0']['value'] == 'provider'): ?>
             <div class="field--collection-wrapper">
@@ -166,6 +176,22 @@
                 </div>
               </div>
             </div>
+          <?php endif;?>
+
+          <?php if (isset($content['field_pretix_date'])): ?>
+            <?php print render($content['field_pretix_date']); ?>
+          <?php endif; ?>
+
+          <?php if(module_exists('ulf_pretix')) : ?>
+            <?php if(isset($pretix_widget)) : ?>
+              <div class="pretix-widget-wrapper">
+                <div class="field--collection-label"><?php print t('Signup'); ?></div>
+                <?php print $pretix_widget['stylesheet']; ?>
+                <?php print $pretix_widget['javascript']; ?>
+                <?php print $pretix_widget['widget']; ?>
+                <?php print $pretix_widget['noscript']; ?>
+              </div>
+            <?php endif;?>
           <?php endif;?>
           <div class="block--pdf">
             <a class="block--pdf-link" target="_blank" href="/printpdf/<?php print $node->nid; ?>"><?php print t('Save this offer as pdf'); ?></a>
