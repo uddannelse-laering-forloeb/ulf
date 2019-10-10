@@ -242,6 +242,8 @@ function secure_permissions_build_permissions() {
   foreach ($roles as $rid => $role) {
     $perms = array();
     $new_permissions = module_invoke_all('secure_permissions', $role);
+    // Change dynamically created permission values.
+    $new_permissions = secure_permissions_dynamic_permissions($new_permissions);
     foreach ($permissions as $perm) {
       $perms[$perm] = FALSE;
       if (in_array($perm, $new_permissions)) {
@@ -252,6 +254,61 @@ function secure_permissions_build_permissions() {
     user_role_change_permissions($rid, $perms);
   }
   return $permissions_rebuilt;
+}
+
+/**
+ * Check permissions for dynamic values and replace with consistent values.
+ *
+ * Right now this function can replace permissions for:
+ *   - Role IDs
+ *   - Taxonomy Vocabularies
+ *
+ * Logic has to be added for each check since database schemas differ.
+ *
+ * @param array $perms
+ *   An array of permissions to check for dynamic values.
+ */
+function secure_permissions_dynamic_permissions(array $perms = array()) {
+
+  // Get role IDs.
+  $role_ids = db_select('role', 'r')
+    ->fields('r', array('rid', 'name'))
+    ->execute()
+    ->fetchAllKeyed();
+
+  // Get vocabulary IDs.
+  $vocabulary_ids = db_select('taxonomy_vocabulary', 't')
+    ->fields('t', array('vid', 'machine_name'))
+    ->execute()
+    ->fetchAllKeyed();
+
+  // Check for role permissions and replace role names with role IDs.
+  foreach ($perms as $key => $perm) {
+    // Replace placeholders for Role IDs.
+    $role_split = preg_split('/((edit|cancel) users with role )/', $perm, -1, PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY);
+    // If there is more than one part, then assume permission is role based.
+    if (count($role_split) >= 2) {
+      // If there second part of the string is a role ID, don't proceed.
+      if (!is_numeric($role_split[2])) {
+        $role_id = array_search($role_split[2], $role_ids);
+        $perm_name = $role_split[0] . $role_id;
+        $perms[$key] = $perm_name;
+      }
+    }
+
+    // Replace placeholders for Vocabulary IDs.
+    $vocab_split = preg_split('/((edit|delete) terms in )/', $perm, -1, PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY);
+    // If there is more than one part, then assume permission is vocabulary based.
+    if (count($vocab_split) >= 2) {
+      // If there second part of the string is a vocabulary ID, don't proceed.
+      if (!is_numeric($vocab_split[2])) {
+        $vocab_id = array_search($vocab_split[2], $vocabulary_ids);
+        $perm_name = $vocab_split[0] . $vocab_id;
+        $perms[$key] = $perm_name;
+      }
+    }
+  }
+  return $perms;
 }
 
 /**
@@ -269,6 +326,7 @@ function secure_permissions_secure_permissions($role) {
   // Use the default permissions granted by Drupal core?
   if (secure_permissions_variable('secure_permissions_use_default')) {
     // Enable default permissions for system roles. See standard.install.
+    $filtered_html_format = filter_format_load('filtered_html');
     $filtered_html_permission = filter_permission_name($filtered_html_format);
     $permissions['anonymous user'] = array('access content', $filtered_html_permission);
     $permissions['authenticated user'] = array('access content', 'access comments', 'post comments', 'post comments without approval', $filtered_html_permission);
@@ -401,6 +459,7 @@ EOT;
   // Get roles.
   $roles = secure_permissions_get_existing_roles();
   $admin_rid = variable_get('user_admin_role', 0);
+  $secure_permissions_ignore_in_export = array(variable_get('secure_permissions_ignore_in_export'));
   // Do not export the administrative role.
   if (!empty($admin_rid) && isset($roles[$admin_rid])) {
     unset($roles[$admin_rid]);
@@ -429,12 +488,16 @@ EOT;
 EOT;
   $output .= 'function secure_permissions_data_secure_permissions($role) {';
   $output .= "\n  \$permissions = array(\n";
-
+  
+  
   foreach ($roles as $rid => $role) {
     $output .= "    '$role' => array(\n";
     $permissions = user_role_permissions(array($rid => $role));
     foreach (current($permissions) as $permission => $value) {
       if (!$value) {
+        continue;
+      }
+      if (in_array($permission, $secure_permissions_ignore_in_export)) {
         continue;
       }
       $output .= "      '$permission',\n";
@@ -463,6 +526,8 @@ EOT;
  */
 function secure_permissions_form() {
   $form = array();
+  $items = array();
+  
   // Check which modules run our hook,
   $modules = module_implements('secure_permissions');
   $files = system_rebuild_module_data();
@@ -523,6 +588,24 @@ function secure_permissions_form() {
     '#default_value' => secure_permissions_variable('secure_permissions_use_default'),
     '#title' => t('Reload default permissions on rebuild'),
     '#description' => t('Sets the default Drupal permissions for anonymous and authenticated users.'),
+  );
+  
+  $collapsed = (variable_get('secure_permissions_ignore_in_export')) ? FALSE : TRUE;
+
+  
+  $form['advanced_export'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Advanced export settings'),
+    '#collapsible' => TRUE,
+    '#collapsed' => $collapsed,
+  );
+  $form['advanced_export']['secure_permissions_ignore_in_export'] = array(
+    '#type' => 'textarea',
+    '#cols' => 40,
+    '#rows' => 5,
+    '#default_value' => variable_get('secure_permissions_ignore_in_export'),
+    '#title' => t('Ignore these permissions'),
+    '#description' => t('Comma seperated list of the machine names of the permissions to ignore like \'access devel information\'.'),
   );
   // Make sure the menu is rebuilt correctly.
   $form['#submit'][] = 'secure_permissions_form_submit';
