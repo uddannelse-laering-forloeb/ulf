@@ -249,7 +249,7 @@
       counterElement: 'div',
       cssWarning: 'messages warning',
       cssExceeded: 'error',
-      counterText: Drupal.t('Content limitedd to @limit characters, remaining: <strong>@remaining</strong>'),
+      counterText: Drupal.t('Content limited to @limit characters, remaining: <strong>@remaining</strong>'),
       action: 'attach',
       enforce: false,
       truncateHtml: false
@@ -265,7 +265,8 @@
       return 'removed';
     }
 
-    var counterElement = $('<' + options.counterElement + ' id="' + $(this).attr('id') + '-' + options.css + '" class="' + options.css + '"></' + options.counterElement + '>');
+    var sanitizedId = ($(this).attr('id') + '-' + options.css).replace(/[^0-9a-z-_]/gi, '');
+    var counterElement = $('<' + options.counterElement + ' id="' + sanitizedId + '" class="' + options.css + '"></' + options.counterElement + '>');
     if ($(this).next('div.grippie').length) {
       $(this).next('div.grippie').after(counterElement);
     } else {
@@ -373,14 +374,9 @@
         var editor = $('#' + e.editor.name + '.maxlength');
         if (editor.length == 1) {
           if (editor.hasClass('maxlength_js_enforce')) {
-            if (ml.options[e.editor.element.getId()]) {
-              ml.options[e.editor.element.getId()].enforce = true;
-            }
-
+            ml.options[e.editor.element.getId()].enforce = true;
           } else {
-            if (ml.options[e.editor.element.getId()]) {
-              ml.options[e.editor.element.getId()].enforce = false;
-            }
+            ml.options[e.editor.element.getId()].enforce = false;
           }
           // Check if we should strip the tags when counting.
           if (editor.hasClass('maxlength_js_truncate_html')) {
