@@ -113,7 +113,7 @@ function ulf_pretix_node_update($node) {
  */
 function _ulf_synchronize_pretix_event($node) {
   $wrapper = entity_metadata_wrapper('node', $node);
-  if (TRUE !== $wrapper->field_pretix_enable->value()) {
+  if (!isset($wrapper->field_pretix_enable) || TRUE !== $wrapper->field_pretix_enable->value()) {
     return;
   }
   $helper = EventHelper::create();
