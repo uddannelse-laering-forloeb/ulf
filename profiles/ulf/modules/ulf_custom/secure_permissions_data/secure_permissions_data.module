@@ -57,6 +57,7 @@ function secure_permissions_data_secure_permissions($role) {
       'use manualcrop',
       'view node map',
       'view user map',
+      'bypass honeypot protection',
     ),
     'course provider' => array(
       'access contextual links',
@@ -85,6 +86,7 @@ function secure_permissions_data_secure_permissions($role) {
       'view revisions',
       'view the administration theme',
       'view user map',
+      'bypass honeypot protection',
     ),
     'editor' => array(
       'access administration pages',
@@ -175,6 +177,7 @@ function secure_permissions_data_secure_permissions($role) {
       'view_blocked_users',
       'administer custom settings',
       'add better descriptions to fields',
+      'bypass honeypot protection',
     ),
   );
   if (isset($permissions[$role])) {
