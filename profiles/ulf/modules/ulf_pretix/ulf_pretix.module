@@ -383,16 +383,22 @@ function ulf_pretix_tokens($type, $tokens, array $data = [], array $options = []
       } elseif (preg_match('/^lines:(?P<index>\d+):questions$/', $name, $matches)) {
         $index = (int) $matches['index'];
         $line = $lines[$index];
+        $values = [];
+
+
+        error_log(print_r($line, true));
+
         foreach ($line->answers as $answer) {
           $values[] = t(
-            '@question'. "\r\n" . '@answer', [
+            '@question' . "\r\n" . '@answer', [
             '@question' => $order->questions[$answer->id],
             '@answer' => $answer->answer,
-          ]
-          );
+          ]);
         }
 
-        $value = implode("\r\n\r\n", $values);
+        if(isset($values)) {
+          $value = implode("\r\n\r\n", $values);
+        }
       }
       if (NULL !== $value) {
         $replacements[$original] = $value;
