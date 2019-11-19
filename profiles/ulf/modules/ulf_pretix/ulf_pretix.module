@@ -328,6 +328,9 @@ function ulf_pretix_tokens($type, $tokens, array $data = [], array $options = []
     $order = $data['pretix_order'];
     $lines = array_values($data['pretix_order_lines']);
     foreach ($tokens as $name => $original) {
+
+      error_log($name);
+
       $value = NULL;
       if ('lines:count' === $name) {
         $value = count($lines);
@@ -384,7 +387,6 @@ function ulf_pretix_tokens($type, $tokens, array $data = [], array $options = []
         $index = (int) $matches['index'];
         $line = $lines[$index];
         $values = [];
-
 
         error_log(print_r($line, true));
 
