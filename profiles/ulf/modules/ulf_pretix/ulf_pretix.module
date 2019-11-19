@@ -385,12 +385,14 @@ function ulf_pretix_tokens($type, $tokens, array $data = [], array $options = []
         $line = $lines[$index];
         foreach ($line->answers as $answer) {
           $values[] = t(
-            '@question: @answer', [
+            '@question'. "\r\n" . '@answer', [
             '@question' => $order->questions[$answer->id],
             '@answer' => $answer->answer,
           ]
           );
         }
+
+        $value = implode("\r\n\r\n", $values);
       }
       if (NULL !== $value) {
         $replacements[$original] = $value;
