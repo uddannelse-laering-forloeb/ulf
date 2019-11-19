@@ -118,7 +118,9 @@ class WebhookController {
         return $this->orderHelper->apiError($result, 'Cannot get order');
       }
       $order = $result->data;
+      $order->questions = $this->orderHelper->getQuestions($organizerSlug, $eventSlug);
       $orderLines = $this->orderHelper->getOrderLines($order);
+
       $content = $this->renderOrder($order, $orderLines);
 
       $wrapper = entity_metadata_wrapper('node', $node);
@@ -214,10 +216,25 @@ class WebhookController {
         ];
       }
 
+      if($line->answers) {
+        foreach($line->answers as $answer) {
+          $question = $order->questions[$answer->question] ?? NULL;
+          if($question) {
+            $block[] = [
+              t('@question:', ['@answer' => $question]),
+              t('@answer', ['@answer' => $answer->answer]),
+            ];
+          }
+        }
+      }
+
       $block[] = [''];
 
       $blocks[] = $block;
+
     }
+
+    error_log(print_r($blocks, true));
 
     return implode(PHP_EOL, array_map(static function ($line) {
       return 2 === count($line)

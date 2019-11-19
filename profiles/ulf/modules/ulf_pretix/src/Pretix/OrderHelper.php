@@ -6,18 +6,31 @@ namespace Drupal\ulf_pretix\Pretix;
  * Pretix order helper.
  */
 class OrderHelper extends AbstractHelper {
+
   const PRETIX_EVENT_ORDER_PLACED = 'pretix.event.order.placed';
+
   const PRETIX_EVENT_ORDER_PLACED_REQUIRE_APPROVAL = 'pretix.event.order.placed.require_approval';
+
   const PRETIX_EVENT_ORDER_PAID = 'pretix.event.order.paid';
+
   const PRETIX_EVENT_ORDER_CANCELED = 'pretix.event.order.canceled';
+
   const PRETIX_EVENT_ORDER_EXPIRED = 'pretix.event.order.expired';
+
   const PRETIX_EVENT_ORDER_MODIFIED = 'pretix.event.order.modified';
+
   const PRETIX_EVENT_ORDER_CONTACT_CHANGED = 'pretix.event.order.contact.changed';
+
   const PRETIX_EVENT_ORDER_CHANGED = 'pretix.event.order.changed.*';
+
   const PRETIX_EVENT_ORDER_REFUND_CREATED_EXTERNALLY = 'pretix.event.order.refund.created.externally';
+
   const PRETIX_EVENT_ORDER_APPROVED = 'pretix.event.order.approved';
+
   const PRETIX_EVENT_ORDER_DENIED = 'pretix.event.order.denied';
+
   const PRETIX_EVENT_CHECKIN = 'pretix.event.checkin';
+
   const PRETIX_EVENT_CHECKIN_REVERTED = 'pretix.event.checkin.reverted';
 
   /**
@@ -114,6 +127,7 @@ class OrderHelper extends AbstractHelper {
           'item_price' => $position->price,
           'total_price' => $position->price,
           'quotas' => $position->quotas,
+          'answers' => $position->answers,
         ];
       }
     }
@@ -146,9 +160,11 @@ class OrderHelper extends AbstractHelper {
     }
     $quotas = array_column($result->data->results, NULL, 'id');
 
-    $quotas = array_filter($quotas, static function ($quota) use ($subEvents) {
+    $quotas = array_filter(
+      $quotas, static function ($quota) use ($subEvents) {
       return isset($quota->subevent, $subEvents[$quota->subevent]);
-    });
+    }
+    );
 
     foreach ($quotas as $quota) {
       $result = $this->client->getQuotaAvailability($event, $quota);
@@ -172,7 +188,8 @@ class OrderHelper extends AbstractHelper {
    */
   public function getSubEventAvailability($subEvent) {
     $event = $subEvent->event;
-    $quotasResult = $this->client->getQuotas($event, ['query' => ['subevent' => $subEvent->id]]);
+    $quotasResult
+      = $this->client->getQuotas($event, ['query' => ['subevent' => $subEvent->id]]);
     if ($this->isApiError($quotasResult)) {
       return $this->apiError($quotasResult, 'Cannot get quotas for sub-event');
     }
@@ -187,6 +204,36 @@ class OrderHelper extends AbstractHelper {
     }
 
     return $quotasResult;
+  }
+
+  /**
+   * Get the questions for a particular event
+   *
+   * @param $organizer
+   *   The organizer slug.
+   * @param $event
+   *   The event slug.
+   *
+   * @return array
+   *   All questions for the event.
+   */
+  public function getQuestions($organizer, $event) {
+    $questions = [];
+    $data = $this->client->getQuestions($organizer, $event);
+
+    if($this->isApiError($data)) {
+      $this->apiError($data, 'Cannot get questions');
+    }
+
+    $data = $data->data->results;
+
+    if (!empty($data)) {
+      foreach ($data as $item) {
+        $questions[$item->id] = $item->question['da'];
+      }
+    }
+
+    return $questions;
   }
 
 }

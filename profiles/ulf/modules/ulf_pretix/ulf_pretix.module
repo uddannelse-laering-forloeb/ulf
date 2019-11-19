@@ -380,6 +380,17 @@ function ulf_pretix_tokens($type, $tokens, array $data = [], array $options = []
             $value = number_format($value, $decimals, $dec_point, $thousands_sep);
           }
         }
+      } elseif (preg_match('/^lines:(?P<index>\d+):questions$/', $name, $matches)) {
+        $index = (int) $matches['index'];
+        $line = $lines[$index];
+        foreach ($line->answers as $answer) {
+          $values[] = t(
+            '@question: @answer', [
+            '@question' => $order->questions[$answer->id],
+            '@answer' => $answer->answer,
+          ]
+          );
+        }
       }
       if (NULL !== $value) {
         $replacements[$original] = $value;
