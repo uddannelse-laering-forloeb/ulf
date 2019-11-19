@@ -221,7 +221,7 @@ class WebhookController {
           $question = $order->questions[$answer->question] ?? NULL;
           if($question) {
             $block[] = [
-              t('@question:', ['@answer' => $question]),
+              t('@question:', ['@question' => $question]),
               t('@answer', ['@answer' => $answer->answer]),
             ];
           }
