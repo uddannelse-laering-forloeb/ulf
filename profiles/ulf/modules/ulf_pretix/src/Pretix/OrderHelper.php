@@ -229,7 +229,7 @@ class OrderHelper extends AbstractHelper {
 
     if (!empty($data)) {
       foreach ($data as $item) {
-        $questions[$item->id] = $item->question['da'];
+        $questions[$item->id] = $item->question->da;
       }
     }
 
