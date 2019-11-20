@@ -356,6 +356,27 @@ function ulf_pretix_tokens($type, $tokens, array $data = [], array $options = []
         $index = (int) $matches['index'];
         $value = count($lines[$index]->quotas ?? []);
       }
+      elseif (preg_match('/^lines:(?P<index>\d+):questions$/', $name, $matches)) {
+        error_log('PVE 5');
+
+        $index = (int) $matches['index'];
+        $line = $lines[$index];
+        $values = [];
+
+        error_log(print_r($line, true));
+
+        foreach ($line->answers as $answer) {
+          $values[] = t(
+            '@question' . "\r\n" . '@answer', [
+            '@question' => $order->questions[$answer->id],
+            '@answer' => $answer->answer,
+          ]);
+        }
+
+        if(isset($values)) {
+          $value = implode("\r\n\r\n", $values);
+        }
+      }
       elseif (preg_match('/^lines:(?P<index>\d+):(?P<key>[^|]+)(?:\\|(?P<format>.+))?$/', $name, $matches)) {
         error_log('PVE 4');
 
@@ -390,29 +411,8 @@ function ulf_pretix_tokens($type, $tokens, array $data = [], array $options = []
             $value = number_format($value, $decimals, $dec_point, $thousands_sep);
           }
         }
-      } elseif (preg_match('/^lines:(?P<index>\d+):questions$/', $name, $matches)) {
-        error_log('PVE 5');
-
-        $index = (int) $matches['index'];
-        $line = $lines[$index];
-        $values = [];
-
-        error_log(print_r($line, true));
-
-        foreach ($line->answers as $answer) {
-          $values[] = t(
-            '@question' . "\r\n" . '@answer', [
-            '@question' => $order->questions[$answer->id],
-            '@answer' => $answer->answer,
-          ]);
-        }
-
-        if(isset($values)) {
-          $value = implode("\r\n\r\n", $values);
-        }
-      } else {
-        error_log('PVE 6');
       }
+
       if (NULL !== $value) {
         $replacements[$original] = $value;
       }
