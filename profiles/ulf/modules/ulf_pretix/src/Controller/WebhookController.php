@@ -118,7 +118,8 @@ class WebhookController {
         return $this->orderHelper->apiError($result, 'Cannot get order');
       }
       $order = $result->data;
-      $order->questions = $this->orderHelper->getQuestions($organizerSlug, $eventSlug);
+      $questions = $this->orderHelper->getQuestions($organizerSlug, $eventSlug);
+      $order->questions = $questions;
       $orderLines = $this->orderHelper->getOrderLines($order);
 
       $content = $this->renderOrder($order, $orderLines);
@@ -133,6 +134,7 @@ class WebhookController {
         'user' => user_load($node->uid),
         'pretix_order' => $order,
         'pretix_order_lines' => $orderLines,
+        'pretix_questions' => $questions
       ];
 
       $result = $this->mailer->send($mailKey, $to, $language, $params);
