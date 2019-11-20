@@ -147,7 +147,6 @@ function mail_edit_format($template, $data, $options = array(), $context = NULL)
   $context = (isset($context) ? $context : 'MAIL');
   $result = _mail_edit_preprocess($template, $data, $options, $context);
   $result = token_replace($result, $data, $options);
-  error_log($result);
   return $result;
 }
 

@@ -236,8 +236,6 @@ class WebhookController {
 
     }
 
-    error_log(print_r($blocks, true));
-
     return implode(PHP_EOL, array_map(static function ($line) {
       return 2 === count($line)
         ? sprintf('%-16s%s', $line[0], $line[1])
