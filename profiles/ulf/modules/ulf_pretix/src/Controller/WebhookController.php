@@ -68,6 +68,7 @@ class WebhookController {
     switch ($action) {
       case OrderHelper::PRETIX_EVENT_ORDER_PAID:
       case OrderHelper::PRETIX_EVENT_ORDER_CANCELED:
+        error_log($action);
         return $this->handleOrderUpdated($payload, $action);
     }
 
