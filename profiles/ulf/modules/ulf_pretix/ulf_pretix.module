@@ -62,6 +62,8 @@ function ulf_pretix_deliver_json($result) {
  *   The result.
  */
 function ulf_pretix_webhook($organizer_slug) {
+  error_log('Called');
+
   try {
     $controller = WebhookController::create();
 
