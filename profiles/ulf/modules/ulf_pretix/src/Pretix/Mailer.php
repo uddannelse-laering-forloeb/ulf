@@ -75,6 +75,7 @@ En ny bestilling på <a href="[node:url]">[node:title]</a> er blevet afgivet på
 Startdato: [pretix_order:lines:#0:date_from|date('Y-m-d')]
 Antal: [pretix_order:lines:#0:quantity]
 Tilgængelighed: [pretix_order:lines:#0:availability]
+Spørgsmål: [pretix_order:lines:#0:questions]
 Stykpris: [pretix_order:lines:#0:item_price|number_format(2, ',', '.')]
 Samlet pris: [pretix_order:lines:#0:total_price|number_format(2, ',', '.')]
 
@@ -93,6 +94,7 @@ An order for <a href="[node:url]">[node:title]</a> has been placed on <a href="[
 Start time: [pretix_order:lines:#0:date_from|date('Y-m-d')]
 Quantity: [pretix_order:lines:#0:quantity]
 Availability: [pretix_order:lines:#0:availability]
+Questions: [pretix_order:lines:#0:questions]
 Item price: [pretix_order:lines:#0:item_price|number_format(2, ',', '.')]
 Total price: [pretix_order:lines:#0:total_price|number_format(2, ',', '.')]
 
@@ -115,6 +117,7 @@ En bestilling af <a href="[node:url]">[node:title]</a> på <a href="[site:url]">
 Startdato: [pretix_order:lines:#0:date_from|date('Y-m-d')]
 Antal: [pretix_order:lines:#0:quantity]
 Tilgængelighed: [pretix_order:lines:#0:availability]
+Spørgsmål: [pretix_order:lines:#0:questions]
 Stykpris: [pretix_order:lines:#0:item_price|number_format(2, ',', '.')]
 Samlet pris: [pretix_order:lines:#0:total_price|number_format(2, ',', '.')]
 
@@ -133,6 +136,7 @@ An order for <a href="[node:url]">[node:title]</a> has been placed on <a href="[
 Start time: [pretix_order:lines:#0:date_from|date('Y-m-d')]
 Quantity: [pretix_order:lines:#0:quantity]
 Availability: [pretix_order:lines:#0:availability]
+Questions: [pretix_order:lines:#0:questions]
 Item price: [pretix_order:lines:#0:item_price|number_format(2, ',', '.')]
 Total price: [pretix_order:lines:#0:total_price|number_format(2, ',', '.')]
 

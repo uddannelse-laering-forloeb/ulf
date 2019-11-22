@@ -397,6 +397,24 @@ class Client {
   }
 
   /**
+   * Get questions.
+   *
+   * @param string|object $organizer
+   *   The organizer.
+   * @param string|object $event
+   *   The event.
+   *
+   * @return object
+   *   The result.
+   */
+  public function getQuestions($organizer, $event) {
+    $organizerSlug = $this->getSlug($organizer);
+    $eventSlug = $this->getSlug($event);
+
+    return $this->get('organizers/' . $organizerSlug . '/events/' . $eventSlug . '/questions/');
+  }
+
+  /**
    * Get request.
    *
    * @param string $path

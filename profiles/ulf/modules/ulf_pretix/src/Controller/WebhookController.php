@@ -68,6 +68,7 @@ class WebhookController {
     switch ($action) {
       case OrderHelper::PRETIX_EVENT_ORDER_PAID:
       case OrderHelper::PRETIX_EVENT_ORDER_CANCELED:
+        error_log($action);
         return $this->handleOrderUpdated($payload, $action);
     }
 
@@ -118,7 +119,10 @@ class WebhookController {
         return $this->orderHelper->apiError($result, 'Cannot get order');
       }
       $order = $result->data;
+      $questions = $this->orderHelper->getQuestions($organizerSlug, $eventSlug);
+      $order->questions = $questions;
       $orderLines = $this->orderHelper->getOrderLines($order);
+
       $content = $this->renderOrder($order, $orderLines);
 
       $wrapper = entity_metadata_wrapper('node', $node);
@@ -131,6 +135,7 @@ class WebhookController {
         'user' => user_load($node->uid),
         'pretix_order' => $order,
         'pretix_order_lines' => $orderLines,
+        'pretix_questions' => $questions
       ];
 
       $result = $this->mailer->send($mailKey, $to, $language, $params);
@@ -214,9 +219,22 @@ class WebhookController {
         ];
       }
 
+      if($line->answers) {
+        foreach($line->answers as $answer) {
+          $question = $order->questions[$answer->question] ?? NULL;
+          if($question) {
+            $block[] = [
+              t('@question', ['@question' => $question]),
+              t('@answer', ['@answer' => $answer->answer]),
+            ];
+          }
+        }
+      }
+
       $block[] = [''];
 
       $blocks[] = $block;
+
     }
 
     return implode(PHP_EOL, array_map(static function ($line) {

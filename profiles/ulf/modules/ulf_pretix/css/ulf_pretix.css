@@ -26,3 +26,22 @@
   border-radius: 0;
   border-top: 0;
 }
+
+.pretix-widget-item-price-col {
+  display: none;
+}
+.pretix-widget-item-row {
+  display: flex;
+  flex-direction: row;
+}
+.pretix-widget-item-info-col {
+  width: 50px;
+  float: none !important;
+  order: 2;
+}
+.pretix-widget-item-availability-col {
+  width: 50px !important;
+  text-align: left !important;
+  float: none !important;
+  order: 1;
+}
