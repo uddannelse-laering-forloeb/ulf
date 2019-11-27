@@ -58,7 +58,7 @@ print.tpl.php or the css/print.css files.
 
   format is either html, mail or pdf, and type is Drupal's node type (e.g.
   page, story, etc.)
-ULF-2202
+
 API
 ---
 
