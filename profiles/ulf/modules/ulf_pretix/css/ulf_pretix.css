@@ -55,6 +55,6 @@
   padding-right: 0;
 }
 
-.pretix-widget input[type="number"] {
+.pretix-widget .pretix-widget-item-info-col{
   padding: 0 35px;
 }
