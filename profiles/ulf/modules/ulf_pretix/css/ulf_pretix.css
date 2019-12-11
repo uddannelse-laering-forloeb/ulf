@@ -45,3 +45,16 @@
   float: none !important;
   order: 1;
 }
+
+.pretix-widget input[type="text"],
+.pretix-widget input[type="number"] {
+  width: 55px;
+}
+
+.pretix-widget input[type="number"] {
+  padding-right: 0;
+}
+
+.pretix-widget input[type="number"] {
+  padding: 0 35px;
+}
