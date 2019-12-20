@@ -616,7 +616,7 @@ class EventHelper extends AbstractHelper {
         if (module_exists('search_api')) {
           $index = search_api_index_load('courses');
           if (NULL !== $index) {
-            search_api_entity_update($node, 'node');
+            search_api_track_item_change('node', array($node->nid));
             search_api_index_items($index);
           }
         }
