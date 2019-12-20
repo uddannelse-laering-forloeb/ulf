@@ -64,7 +64,6 @@ function ulf_pretix_deliver_json($result) {
 function ulf_pretix_webhook($organizer_slug) {
   try {
     $controller = WebhookController::create();
-
     return $controller->handle($organizer_slug);
   }
   catch (\Exception $exception) {
@@ -392,7 +391,7 @@ function ulf_pretix_tokens($type, $tokens, array $data = [], array $options = []
                                                    \s*,\s*.(?P<dec_point>.).     # decimal point
                                                    \s*,\s*.(?P<thousands_sep>.). # thousands separator
                                                    )?
-                                                   \\)$/x', $format, $matches)) {
+                                                   \\)$/x', $format, $matches)) { 
             $decimals = (int) $matches['decimals'];
             $dec_point = $matches['dec_point'] ?? '.';
             $thousands_sep = $matches['thousands_sep'] ?? ',';
