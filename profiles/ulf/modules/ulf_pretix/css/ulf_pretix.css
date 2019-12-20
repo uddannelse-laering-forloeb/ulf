@@ -40,7 +40,7 @@
   order: 2;
 }
 .pretix-widget-item-availability-col {
-  width: 50px !important;
+  width: 60px !important;
   text-align: left !important;
   float: none !important;
   order: 1;
@@ -48,7 +48,7 @@
 
 .pretix-widget input[type="text"],
 .pretix-widget input[type="number"] {
-  width: 55px !important;
+  width: 65px !important;
 }
 
 .pretix-widget input[type="number"] {
