@@ -607,7 +607,6 @@ class EventHelper extends AbstractHelper {
         }
       }
 
-      error_log('Available:'. $available);
       if (!isset($info['available']) || $info['available'] !== $available) {
         $this->addPretixEventInfo($node, $event, ['available' => $available]);
         // Flush cache for node.
@@ -618,7 +617,7 @@ class EventHelper extends AbstractHelper {
           $index = search_api_index_load('courses');
           if (NULL !== $index) {
             search_api_track_item_change('node', array($node->nid));
-            search_api_index_items($index);
+//            search_api_index_items($index);
           }
         }
       }
