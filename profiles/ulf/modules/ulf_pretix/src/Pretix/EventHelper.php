@@ -864,7 +864,7 @@ class EventHelper extends AbstractHelper {
 
   public static function getSharedEvents($id) {
     $query = db_query('SELECT entity_id FROM {field_data_field_pretix_show_widget_from} WHERE field_pretix_show_widget_from_target_id = :id', ['id' => $id]);
-    $result = $query->fetchAllAssoc('entity_id');
+    $result = $query->fetchAllKeyed(0,0);
     return array_values($result);
   }
 }

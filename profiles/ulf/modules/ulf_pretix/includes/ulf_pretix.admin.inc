@@ -69,8 +69,6 @@ function ulf_pretix_admin_settings_form(array $form, array &$form_state) {
  */
 function ulf_pretix_admin_settings_form_validate(array $form, array &$form_state) {
 
-  error_log(print_r(\Drupal\ulf_pretix\Pretix\EventHelper::getSharedEvents(5362), true));
-
   $values = $form_state['values'];
   if (isset($values['ulf_pretix_user_manual']['url'])) {
     $url = url($values['ulf_pretix_user_manual']['url'], ['absolute' => TRUE]);
