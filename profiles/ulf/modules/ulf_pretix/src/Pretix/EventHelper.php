@@ -617,7 +617,7 @@ class EventHelper extends AbstractHelper {
           $index = search_api_index_load('courses');
           if (NULL !== $index) {
 
-            $events = $this->getSharedEvents($node>nid);
+            $events = $this->getSharedEvents($node->nid);
             $events[] = $node->id;
 
             search_api_track_item_change('node', $events);
@@ -862,8 +862,9 @@ class EventHelper extends AbstractHelper {
     return NULL;
   }
 
-  private function getSharedEvents($id) {
-    $result = db_query('SELECT entity_id FROM {field_data_field_pretix_show_widget_from} WHERE field_pretix_show_widget_from_target_id = :id', ['id' => $id]);
-    return $result->fetchCol();
+  public static function getSharedEvents($id) {
+    $query = db_query('SELECT entity_id FROM {field_data_field_pretix_show_widget_from} WHERE field_pretix_show_widget_from_target_id = :id', ['id' => $id]);
+    $result = $query->fetchAllAssoc('entity_id');
+    return array_values($result);
   }
 }
