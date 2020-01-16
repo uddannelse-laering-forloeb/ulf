@@ -13,6 +13,18 @@ function ulf_forms_form_alter(&$form, $form_state, $form_id) {
     $form['#attached']['js'][] = $path . '/js/jquery.imagesloaded.js';
     $form['#attached']['js'][] = $path . '/js/jquery.imgareaselect.dev.js';
     $form['#attached']['css'][] = $path . '/css/node-form-styles.css';
+
+    if(isset($form['scheduler_settings'])) {
+      // Check if user can bypass workflow.
+      global $user;
+      $full_user = user_load($user->uid);
+      $user_wrapper = entity_metadata_wrapper('user', $full_user);
+      $user_bypass = $user_wrapper->field_bypass_workflow->value() == TRUE ? TRUE : FALSE;
+      if (!user_access('moderate content from needs_review to published') && !$user_bypass) {
+        //user not allowed to bypass workflow, shouldn't be allowed to set publishing date
+        $form['scheduler_settings']['publish_on']['#access'] = FALSE;
+      }
+    }
   }
 
   switch ($form_id) {
