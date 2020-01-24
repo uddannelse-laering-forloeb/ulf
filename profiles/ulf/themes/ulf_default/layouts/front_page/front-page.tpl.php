@@ -21,6 +21,7 @@
  *   - $content['epsilon']: Fifth element
  */
 ?>
+
 <div class="layout-frontpage">
   <div class="layout-inner">
     <?php if(!empty ($content['alpha'])) : ?>
