@@ -860,3 +860,22 @@ function _ulf_default_create_ranges($arr, $stringEnd, $separator = ' - ')
 
     return $ranges;
 }
+
+
+/***********************************
+ * Page builder
+ **********************************/
+
+/**
+ * Implements hook_preprocess_entity().
+ */
+function ulf_default_preprocess_entity(&$variables) {
+  if ($variables['entity_type'] === 'paragraphs_item') {
+      switch ($variables['elements']['#bundle']) {
+        case 'hero':
+          $url = file_create_url($variables['content']['field_paragraph_background_image'][0]['#item']['uri']);
+          $variables['attributes_array']['style'] = 'background-image: url("'. $url . '")';
+          break;
+      }
+  }
+}

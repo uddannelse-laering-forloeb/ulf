@@ -112,9 +112,9 @@
     </div>
 
     <?php if ($is_front || isset($node) || (arg(0) == 'user' && is_numeric(arg(1)))) : ?>
-      <?php if ($tabs): ?>
+      <?php if ($tabs = render($tabs)): ?>
         <div class="tabs">
-          <?php print render($tabs); ?>
+          <?php print $tabs; ?>
         </div>
       <?php endif; ?>
       <?php print render($page['content']); ?>
