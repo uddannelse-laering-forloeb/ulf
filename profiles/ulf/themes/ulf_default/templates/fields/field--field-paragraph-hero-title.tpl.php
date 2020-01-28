@@ -44,8 +44,9 @@
  * @ingroup themeable
  */
 ?>
-<h1>
+
+<<?php print $tag; ?>>
   <?php foreach ($items as $delta => $item): ?>
     <?php print render($item); ?>
   <?php endforeach; ?>
-</h1>
+</<?php print $tag; ?>>

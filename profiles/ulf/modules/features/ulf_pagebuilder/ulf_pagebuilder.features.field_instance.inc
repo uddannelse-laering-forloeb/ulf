@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * ulf_pagebuilder.features.field_instance.inc
@@ -737,7 +738,7 @@ function ulf_pagebuilder_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 2,
+      'weight' => 3,
     ),
   );
 
@@ -782,7 +783,7 @@ function ulf_pagebuilder_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 1,
+      'weight' => 2,
     ),
   );
 
@@ -828,6 +829,133 @@ function ulf_pagebuilder_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance:
+  // 'paragraphs_item-hero-field_paragraph_inner_padding'.
+  $field_instances['paragraphs_item-hero-field_paragraph_inner_padding'] = array(
+    'bundle' => 'hero',
+    'default_value' => array(
+      0 => array(
+        'value' => 'sm',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 6,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'field_name' => 'field_paragraph_inner_padding',
+    'label' => 'Inner padding',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => 5,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'paragraphs_item-hero-field_paragraph_main_headline'.
+  $field_instances['paragraphs_item-hero-field_paragraph_main_headline'] = array(
+    'bundle' => 'hero',
+    'default_value' => array(
+      0 => array(
+        'value' => 1,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'It\'s very important that the page has only one main headline. If there is used multiple hero elements on a page, only one of them should have this option enabled.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 7,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'field_name' => 'field_paragraph_main_headline',
+    'label' => 'Main headline',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 0,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 1,
+    ),
+  );
+
+  // Exported field_instance: 'paragraphs_item-hero-field_textbox_color'.
+  $field_instances['paragraphs_item-hero-field_textbox_color'] = array(
+    'bundle' => 'hero',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 5,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'field_name' => 'field_textbox_color',
+    'label' => 'Textbox color',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => 4,
+    ),
+  );
+
   // Exported field_instance: 'paragraphs_item-link_list-field_links'.
   $field_instances['paragraphs_item-link_list-field_links'] = array(
     'bundle' => 'link_list',
@@ -838,7 +966,9 @@ function ulf_pagebuilder_field_default_field_instances() {
       'default' => array(
         'label' => 'hidden',
         'module' => 'link',
-        'settings' => array(),
+        'settings' => array(
+          'custom_title' => '',
+        ),
         'type' => 'link_default',
         'weight' => 2,
       ),
@@ -1692,10 +1822,14 @@ function ulf_pagebuilder_field_default_field_instances() {
   t('First column');
   t('Fourth column');
   t('Image');
+  t('Inner padding');
+  t('It\'s very important that the page has only one main headline. If there is used multiple hero elements on a page, only one of them should have this option enabled.');
   t('Links');
+  t('Main headline');
   t('Second column');
   t('Sections');
   t('Subline');
+  t('Textbox color');
   t('Third column');
   t('Title');
   t('Video');

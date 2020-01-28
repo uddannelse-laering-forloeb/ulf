@@ -27,9 +27,9 @@
  */
 ?>
 <div class="<?php print $classes; ?>"<?php print $attributes; ?>>
-  <div class="hero-wrapper"<?php print $content_attributes; ?>>
+  <div class="hero-wrapper">
 
-    <div class="hero--content">
+    <div <?php print $content_attributes; ?>>
         <?php print render($content['field_paragraph_hero_title']); ?>
         <?php print render($content['field_paragraph_hero_subline']); ?>
     </div>
