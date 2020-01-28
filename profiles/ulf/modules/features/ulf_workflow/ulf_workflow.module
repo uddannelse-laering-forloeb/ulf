@@ -139,7 +139,7 @@ function ulf_workflow_form_node_form_alter(&$form, &$form_state, $form_id) {
       $readable_state = workbench_moderation_state_load($form['workbench_moderation_state_current']['#value']);
       $form['workflow_information']['#markup'] .= '<div>' . t('The current workflow state for this content is: @state.', array('@state' => $readable_state->label)) . '</div>';
     }
-    
+
     // Set the node action to take.
     $node_action = isset($form['#node']->nid) ? 'edit' : 'add';
 
@@ -205,6 +205,33 @@ function ulf_workflow_scheduler_api($node, $action) {
     default:
   }
 }
+
+
+/**
+ * Implements hook_scheduler_nid_list_alter().
+ */
+function ulf_workflow_scheduler_nid_list_alter(&$nids, $action)
+{
+  if($action == 'publish') {
+    $nodes = node_load_multiple($nids);
+    //loop through all nodes scheduled for publishing
+    foreach ($nids as $key => $nid) {
+      if(isset($nodes[$nid])) {
+        //check if the node has passed review, before publishing it
+        $node = $nodes[$nid];
+        if($node->workbench_moderation['current']->state != 'published' && $node->field_passed_review['und'][0]['value'] != '1') {
+          //this node has not passed review - don't publish it
+          unset($nids[$key]);
+        }
+      } else {
+        //should never happen, but just in case
+        unset($nids[$key]);
+      }
+    }
+  }
+  return $nids;
+}
+
 
 /**
  * Implements hook_node_insert().
