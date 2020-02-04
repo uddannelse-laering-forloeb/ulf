@@ -426,3 +426,18 @@ function ulf_pretix_search_node_filtered_item_alter(&$filteredItem) {
     }
   }
 }
+
+/**
+ * Turn off Pretix on cloned nodes.
+ *
+ * @param $data
+ * @param $context
+ */
+function ulf_pretix_clone_node_alter(&$data, $context) {
+  if($context['original_node']->type === 'course') {
+    $data->field_pretix_enable = [];
+    $data->field_pretix_show_widget_from = [];
+    $data->field_pretix_synchronize = [];
+  }
+}
+
