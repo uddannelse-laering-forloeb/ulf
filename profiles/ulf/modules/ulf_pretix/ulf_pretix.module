@@ -434,7 +434,7 @@ function ulf_pretix_search_node_filtered_item_alter(&$filteredItem) {
  * @param $context
  */
 function ulf_pretix_clone_node_alter(&$data, $context) {
-  if($context['original_node']->type === 'course') {
+  if($context['original_node']->type === 'course' || $context['original_node']->type === 'course-educators') {
     $data->field_pretix_enable = [];
     $data->field_pretix_show_widget_from = [];
     $data->field_pretix_synchronize = [];
