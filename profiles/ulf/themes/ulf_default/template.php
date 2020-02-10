@@ -296,6 +296,23 @@ function ulf_default_preprocess_node(&$variables) {
         = module_invoke('views', 'block_view', 'ulf_news_archive-block_1');
       $variables['group_type'] = 'news';
       break;
+    case 'internship':
+      // Add view for displaying target group sub
+      $variables['view__target_group_sub'] = module_invoke(
+        'views',
+        'block_view',
+        'ulf_course_target_groups-block_1'
+      );
+
+      // Display of duration remove 0's in decimal.
+      if (isset($variables['content']['field_duration']['0']['#markup'])) {
+        $variables['stripped_duration'] = preg_replace(
+          '/[,\.]?0+$/',
+          '',
+          $variables['content']['field_duration']['0']['#markup']
+        );
+      }
+      break;
   }
 
   // Add publishing action
@@ -315,6 +332,8 @@ function ulf_default_preprocess_node(&$variables) {
 
   // Display author meta data for courses.
   if (($variables['type'] == 'course'
+      || $variables['type'] == 'internship'
+      || $variables['type'] == 'education'
       || $variables['type'] == 'course_educators'
       || $variables['type'] == 'news_course_provider')
     && ($variables['view_mode'] == 'full'

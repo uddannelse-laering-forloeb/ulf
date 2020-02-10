@@ -105,7 +105,9 @@ function ulf_workflow_form_node_form_alter(&$form, &$form_state, $form_id) {
   $workflow_enabled_types = array(
     'course',
     'course_educators',
-    'news_course_provider'
+    'news_course_provider',
+    'internship',
+    'education',
   );
 
   // Check for workflow enabled.
