@@ -44,7 +44,9 @@ function _ulf_content_inactive_mail_send() {
   $workflow_enabled_types = array(
     'course',
     'course_educators',
-    'news_course_provider'
+    'news_course_provider',
+    'internship',
+    'education',
   );
 
   $query = db_select('node', 'n');
@@ -259,7 +261,7 @@ function _ulf_content_inactive_warning_mail_send_mail($key, $to, $user, $node = 
 
 /**
  * Implements hook_form_FORMID_alter().
- * 
+ *
  * Add inactivity part to admin module.
  */
 function ulf_content_inactive_warning_form__ulf_admin_panel_form_alter(&$form, $form_state) {
