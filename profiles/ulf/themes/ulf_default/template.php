@@ -275,16 +275,6 @@ function ulf_default_preprocess_node(&$variables) {
       break;
 
     case 'news':
-      // Provide newsletter block for news pages.
-      $variables['newsletter_block'] = module_invoke(
-        'mailchimp_signup',
-        'block_view',
-        'signup_to_newsletter'
-      );
-      $variables['latest_news_titles']
-        = module_invoke('views', 'block_view', 'ulf_news_archive-block_1');
-      $variables['group_type'] = 'news';
-      break;
     case 'news_course_provider':
       // Provide newsletter block for news pages.
       $variables['newsletter_block'] = module_invoke(
@@ -296,6 +286,7 @@ function ulf_default_preprocess_node(&$variables) {
         = module_invoke('views', 'block_view', 'ulf_news_archive-block_1');
       $variables['group_type'] = 'news';
       break;
+    case 'education':
     case 'internship':
       // Add view for displaying target group sub
       $variables['view__target_group_sub'] = module_invoke(
@@ -306,11 +297,7 @@ function ulf_default_preprocess_node(&$variables) {
 
       // Display of duration remove 0's in decimal.
       if (isset($variables['content']['field_duration']['0']['#markup'])) {
-        $variables['stripped_duration'] = preg_replace(
-          '/[,\.]?0+$/',
-          '',
-          $variables['content']['field_duration']['0']['#markup']
-        );
+        $variables['stripped_duration'] = rtrim($variables['content']['field_duration']['0']['#markup'], ',.0');
       }
       break;
   }
