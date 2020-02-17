@@ -27,19 +27,24 @@ class SearchNodeExcludeItemsFilter extends SearchApiAbstractAlterCallback {
 
     foreach ($items as $id => $item) {
       // Check if field is empty and goto the next item if it is.
-      if (empty($item->$fields['name'])) {
+      $field_name = $fields['name'];
+      if (empty($item->$field_name)) {
         continue;
       }
 
       // Get field value.
-      $field_value = is_string($item->$fields['name']) ? $item->$fields['name'] : FALSE;
+      $field_value = is_string($item->$field_name) ? $item->$field_name : FALSE;
       if ($field_value === FALSE) {
-        $field_value = isset($field_name[LANGUAGE_NONE]['value']) ? $field_name[LANGUAGE_NONE]['value'] : FALSE;
+        $field_value = isset($item->$field_name[LANGUAGE_NONE]['value']) ? $item->$field_name[LANGUAGE_NONE]['value'] : FALSE;
+      }
+      if ($field_value === FALSE) {
+        $field_value = isset($item->$field_name[LANGUAGE_NONE][0]['value']) ? $item->$field_name[LANGUAGE_NONE][0]['value'] : FALSE;
       }
 
       // Check if item field has that value.
-      if ($field_value) {
+      if ($field_value !== FALSE) {
         foreach ($values as $value) {
+          $value = trim($value);
           if (preg_match('/' . $value . '/s', $field_value, $m)) {
             unset($items[$id]);
           }

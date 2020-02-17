@@ -299,6 +299,7 @@ function ulf_default_preprocess_node(&$variables) {
       if (isset($variables['content']['field_duration']['0']['#markup'])) {
         $variables['stripped_duration'] = rtrim($variables['content']['field_duration']['0']['#markup'], ',.0');
       }
+      $variables['group_type'] = $variables['type'];
       break;
   }
 
@@ -316,6 +317,9 @@ function ulf_default_preprocess_node(&$variables) {
   $variables['author'] = user_load($variables['uid']);
   $author_wrapper = entity_metadata_wrapper('user', $variables['author']);
   $variables['profile_name'] = $author_wrapper->field_profile_name->value();
+  if($author_wrapper->__isset('field_garantipartner')) {
+    $variables['garantipartner'] = $author_wrapper->field_garantipartner->value();
+  }
 
   // Display author meta data for courses.
   if (($variables['type'] == 'course'
@@ -349,7 +353,7 @@ function ulf_default_preprocess_node(&$variables) {
 
   // Set default node teaser template.
   if ($variables['view_mode'] == 'teaser') {
-    $variables['theme_hook_suggestions'][] = 'node__default_teaser';
+//    $variables['theme_hook_suggestions'][] = 'node__default_teaser';
 
     // Select first 3 field_relevance_educators values and prepare for print.
     if ($variables['type'] == 'course_educators') {

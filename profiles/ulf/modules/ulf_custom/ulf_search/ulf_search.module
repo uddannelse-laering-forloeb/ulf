@@ -103,7 +103,9 @@ function ulf_search_preprocess_search_node_page_search_box(&$variables) {
 function ulf_search_search_node_filtered_item_alter(&$filteredItem) {
   if (!empty($filteredItem['field_image:file'])) {
     $file = file_load($filteredItem['field_image:file']['fid']);
-    $filteredItem['field_image:file']['url'] = image_style_url('teaser_display', $file->uri);
+    if($file) {
+      $filteredItem['field_image:file']['url'] = image_style_url('teaser_display', $file->uri);
+    }
   }
 }
 

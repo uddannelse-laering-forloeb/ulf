@@ -9,7 +9,7 @@ angular.module('searchResultApp').filter('trimWordBoundary', function () {
 
   return function (str, len) {
     // Ensure that the string is defined and it's larger than required length.
-    if (str === undefined || str.length === 0 || str.length < len) {
+    if (str === undefined) {
       return;
     }
 
@@ -18,6 +18,10 @@ angular.module('searchResultApp').filter('trimWordBoundary', function () {
 
     // Clean out HTML.
     str = str.replace(/(<([^>]+)>)/gi, '');
+
+    if (str.length === 0 || str.length < len) {
+      return str;
+    }
 
     // Trim string to word boundery.
     var trimmedString = str.substr(0, len);
