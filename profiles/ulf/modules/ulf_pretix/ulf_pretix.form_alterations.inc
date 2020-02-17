@@ -139,7 +139,7 @@ function ulf_pretix_field_group_build_pre_render_alter(&$element) {
       );
     }
   }
-  if ($element['#form_id'] == 'course_node_form' || $element['#form_id'] == 'course_educators_node_form') {
+  if (in_array($element['#form_id'], ['course_node_form', 'course_educators_node_form', 'internship_node_form', 'education_node_form'])) {
     $user_wrapper =  entity_metadata_wrapper('user', $element['#node']->uid);
     $pretix_enabled = $user_wrapper->field_pretix_enable->value();
     if (!$pretix_enabled) {

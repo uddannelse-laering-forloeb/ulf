@@ -9,6 +9,8 @@ class EventHelper extends AbstractHelper {
   const PRETIX_CONTENT_TYPES = [
     'course',
     'course_educators',
+    'internship',
+    'education',
   ];
 
   /**
