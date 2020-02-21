@@ -19,3 +19,156 @@ function ulf_entityform_form_end_user_message_entityform_edit_form_alter(&$form,
 function _ulf_entityform_add_node_reference_submit(&$form, &$form_state) {
   $form_state['values']['field_message_parent_node']['und'][0]['target_id'] = $form['#parent_nid'];
 }
+
+/**
+ * Implements hook_secure_permissions().
+ */
+function ulf_entityform_secure_permissions($role)
+{
+  $permissions = [];
+
+  if(variable_get('ulf_entityform_enable_editor_forms', false)) {
+    if($role == 'editor') {
+      $permissions = [
+        'administer entityform types',
+        'view any entityform',
+        'edit any entityform',
+        'delete any entityform',
+        'administer fields',
+      ];
+    }
+  }
+
+  return $permissions;
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function ulf_entityform_form_alter(&$form, &$form_state, $form_id)
+{
+//  kint($form);die;
+
+  if(variable_get('ulf_entityform_enable_editor_forms', false)) {
+    $form_ids = [
+      'course_node_form',
+      'course_educators_node_form',
+      'internship_node_form',
+      'education_node_form'
+    ];
+    if(in_array($form_id, $form_ids)) {
+
+      $node = $form_state['node'];
+
+      $available_form_types = [];
+      foreach (entityform_get_types() as $entityform_type) {
+        if(isset($entityform_type->data['course_contact_form']['is_course_contact_form']) && $entityform_type->data['course_contact_form']['is_course_contact_form'] == 1) {
+          if(isset($entityform_type->data['course_contact_form']['providers'])) {
+            $providers = array_filter($entityform_type->data['course_contact_form']['providers']);
+          } else {
+            $providers = true;
+          }
+          $available_form_types[$entityform_type->id] = $providers ? $providers : true;
+        }
+      }
+
+      $form['author']['name']['#ajax'] = [
+        'callback' => 'dynamically_change_field_message_form_options',
+        'wrapper' => 'field-message-form-wrapper',
+        'method' => 'replace',
+        'effect' => 'fade',
+      ];
+
+      $form['field_message_form'][LANGUAGE_NONE]['#prefix'] = '<div id="field-message-form-wrapper">';
+      $form['field_message_form'][LANGUAGE_NONE]['#suffix'] = '</div>';
+
+      if(isset($form_state['values'])) {
+        //ajax request
+        $user = user_load_by_name($form_state['values']['name']);
+        if($user) {
+          $provider = $user->uid;
+        } else {
+          $provider = 0;
+        }
+      } else {
+        $provider = $node->uid;
+      }
+      $message_form_options = $form['field_message_form'][LANGUAGE_NONE]['#options'];
+      foreach ($message_form_options as $key => $value) {
+        if($key == '_none') {
+          continue;
+        }
+        if(isset($available_form_types[$key])) {
+          if(is_array($available_form_types[$key]) && !in_array($provider, $available_form_types[$key])) {
+            unset($message_form_options[$key]);
+          }
+        } else {
+          unset($message_form_options[$key]);
+        }
+      }
+
+      $form['field_message_form'][LANGUAGE_NONE]['#options'] = $message_form_options;
+      if(count($message_form_options) <= 1) {
+        $form['field_message_form'][LANGUAGE_NONE]['#description'] = t('No available forms for this provider');
+      }
+//      kint($message_form_options);die;
+    }
+  }
+}
+function dynamically_change_field_message_form_options($form, $form_state) {
+  return $form['field_message_form'];
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function ulf_entityform_form_entityform_type_form_alter(&$form, &$form_state)
+{
+  if(variable_get('ulf_entityform_enable_editor_forms', false)) {
+    $entityform_type = $form['#entityform_type'];
+
+    $form['data']['course_contact_form'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Course contact form'),
+      '#collapsible' => TRUE,
+      '#weight' => 20,
+    );
+    $form['data']['course_contact_form']['is_course_contact_form'] = array(
+      '#type' => 'checkbox',
+      '#title' => t('This form can be used as a course contact form'),
+      '#default_value' => empty($entityform_type->data['course_contact_form']['is_course_contact_form']) ? 0 : $entityform_type->data['course_contact_form']['is_course_contact_form'],
+  //    '#description' => t(''),
+    );
+    $query = db_select('users', 'u');
+    $query->fields('u', ['uid']);
+    $query->fields('n', ['field_profile_name_value']);
+    $query->leftJoin('users_roles', 'ur', 'u.uid = ur.uid');
+    $query->leftJoin('role', 'r', 'ur.rid = r.rid');
+    $query->leftJoin('field_data_field_profile_name', 'n', 'u.uid = n.entity_id');
+    $query->condition('r.name', ['company', 'course provider'], 'IN');
+    $query->condition('n.entity_type', 'user', '=');
+    $result = $query->execute()->fetchAllKeyed(0, 1);
+
+    $form['data']['course_contact_form']['providers'] = array(
+      '#type' => 'select',
+      '#title' => t('Only available to specific providers'),
+      '#multiple' => true,
+      '#options' => $result,
+      '#default_value' => empty($entityform_type->data['course_contact_form']['providers']) ? [] : $entityform_type->data['course_contact_form']['providers'],
+      '#description' => t('If none is selected, it will be available to all providers'),
+    );
+  }
+}
+
+/**
+ *
+ */
+function ulf_entityform_default_entityform_type_alter(&$entityform_types)
+{
+  if(variable_get('ulf_entityform_enable_editor_forms', false)) {
+    if(isset($entityform_types['end_user_message'])) {
+      $entityform_types['end_user_message']->data['course_contact_form']['is_course_contact_form'] = 1;
+    }
+  }
+}
+
