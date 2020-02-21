@@ -439,6 +439,8 @@ function ulf_pretix_clone_node_alter(&$data, $context) {
     $data->field_pretix_enable = [];
     $data->field_pretix_show_widget_from = [];
     $data->field_pretix_synchronize = [];
+    $data->field_pretix_date = [];
+    $data->field_pretix_email_recipient = [];
   }
 }
 
