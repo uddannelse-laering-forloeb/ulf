@@ -15,8 +15,8 @@ function ulf_maps_form_alter(&$form, &$form_state, $form_id) {
     'user_profile_form',
     'course_node_form',
     'course_educators_node_form',
-    'internship',
-    'education',
+    'internship_node_form',
+    'education_node_form',
   );
 
   // We have location information in the user profiles and there the location

@@ -30,6 +30,8 @@ function ulf_forms_form_alter(&$form, $form_state, $form_id) {
   switch ($form_id) {
     // Course node form.
     case 'course_node_form':
+    case 'internship_node_form':
+    case 'education_node_form':
       $form['intro_information']['#weight'] = -10;
       $form['intro_information']['#markup'] = '<div class="messages status">';
       $form['#attached']['js'][] = $path . '/js/node-form-logics.js';
