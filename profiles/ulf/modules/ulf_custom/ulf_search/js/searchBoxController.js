@@ -32,6 +32,12 @@ angular.module('searchBoxApp').controller('UlfBoxController', ['CONFIG', 'commun
       }
     });
 
+    $scope.greaterThan = function(prop, val){
+      return function(item){
+        return item[prop] > val;
+      }
+    };
+
     /**
      * Find the currently select filters/facets.
      *
