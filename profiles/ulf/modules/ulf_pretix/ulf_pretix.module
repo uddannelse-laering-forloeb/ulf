@@ -436,9 +436,9 @@ function ulf_pretix_search_node_filtered_item_alter(&$filteredItem) {
  */
 function ulf_pretix_clone_node_alter(&$data, $context) {
   if($context['original_node']->type === 'course' || $context['original_node']->type === 'course-educators') {
-    $data->field_pretix_enable = [];
+    $data->field_pretix_enable['und']['0']['value'] = FALSE;
     $data->field_pretix_show_widget_from = [];
-    $data->field_pretix_synchronize = [];
+    $data->field_pretix_synchronize['und']['0']['value'] = FALSE;
     $data->field_pretix_date = [];
     $data->field_pretix_email_recipient = [];
   }
