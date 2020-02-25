@@ -36,3 +36,11 @@ function ulf_entityform_update_7100(&$sandbox) {
   return t('Profile mail added for @count users', array('@count' => $count));
 
 }
+/**
+ * Enable field_permissions module.
+ */
+function ulf_entityform_update_7101(&$sandbox) {
+  if(variable_get('ulf_entityform_enable_editor_forms', false)) {
+    module_enable(['field_permissions']);
+  }
+}
