@@ -219,94 +219,97 @@ function ulf_entityform_default_entityform_type_alter(&$entityform_types)
 function ulf_entityform_field_default_field_bases_alter(&$fields)
 {
   if(variable_get('ulf_entityform_enable_editor_forms', false)) {
-    // Exported field_base: 'field_message_parent_node_nomail'.
-    $fields['field_message_parent_node_nomail'] = array(
-      'active' => 1,
-      'cardinality' => 1,
-      'deleted' => 0,
-      'entity_types' => array(),
-      'field_name' => 'field_message_parent_node_nomail',
-      'indexes' => array(
-        'target_id' => array(
-          0 => 'target_id',
-        ),
-      ),
-      'locked' => 0,
-      'module' => 'entityreference',
-      'settings' => array(
-        'handler' => 'base',
-        'handler_settings' => array(
-          'behaviors' => array(
-            'views-select-list' => array(
-              'status' => 0,
-            ),
-          ),
-          'sort' => array(
-            'type' => 'none',
-          ),
-          'target_bundles' => array(),
-        ),
-        'target_type' => 'node',
-      ),
-      'translatable' => 0,
-      'type' => 'entityreference',
-    );
+    if(isset($fields['field_message_parent_node'])) {
 
-    // Exported field_base: 'field_message_recipient_mail'.
-    $fields['field_message_recipient_mail'] = array(
-      'active' => 1,
-      'cardinality' => 1,
-      'deleted' => 0,
-      'entity_types' => array(),
-      'field_name' => 'field_message_recipient_mail',
-      'indexes' => array(
-        'format' => array(
-          0 => 'format',
+      // Exported field_base: 'field_message_parent_node_nomail'.
+      $fields['field_message_parent_node_nomail'] = array(
+        'active' => 1,
+        'cardinality' => 1,
+        'deleted' => 0,
+        'entity_types' => array(),
+        'field_name' => 'field_message_parent_node_nomail',
+        'indexes' => array(
+          'target_id' => array(
+            0 => 'target_id',
+          ),
         ),
-      ),
-      'locked' => 0,
-      'module' => 'text',
-      'settings' => array(
-        'max_length' => 255,
-      ),
-      'translatable' => 0,
-      'type' => 'text',
-    );
-
-    // Exported field_base: 'field_message_recipient_provider'.
-    $fields['field_message_recipient_provider'] = array(
-      'active' => 1,
-      'cardinality' => 1,
-      'deleted' => 0,
-      'entity_types' => array(),
-      'field_name' => 'field_message_recipient_provider',
-      'indexes' => array(
-        'target_id' => array(
-          0 => 'target_id',
-        ),
-      ),
-      'locked' => 0,
-      'module' => 'entityreference',
-      'settings' => array(
-        'handler' => 'base',
-        'handler_settings' => array(
-          'behaviors' => array(
-            'views-select-list' => array(
-              'status' => 0,
+        'locked' => 0,
+        'module' => 'entityreference',
+        'settings' => array(
+          'handler' => 'base',
+          'handler_settings' => array(
+            'behaviors' => array(
+              'views-select-list' => array(
+                'status' => 0,
+              ),
             ),
+            'sort' => array(
+              'type' => 'none',
+            ),
+            'target_bundles' => array(),
           ),
-          'sort' => array(
-            'direction' => 'ASC',
-            'property' => 'name',
-            'type' => 'property',
-          ),
-          'target_bundles' => array(),
+          'target_type' => 'node',
         ),
-        'target_type' => 'user',
-      ),
-      'translatable' => 0,
-      'type' => 'entityreference',
-    );
+        'translatable' => 0,
+        'type' => 'entityreference',
+      );
+
+      // Exported field_base: 'field_message_recipient_mail'.
+      $fields['field_message_recipient_mail'] = array(
+        'active' => 1,
+        'cardinality' => 1,
+        'deleted' => 0,
+        'entity_types' => array(),
+        'field_name' => 'field_message_recipient_mail',
+        'indexes' => array(
+          'format' => array(
+            0 => 'format',
+          ),
+        ),
+        'locked' => 0,
+        'module' => 'text',
+        'settings' => array(
+          'max_length' => 255,
+        ),
+        'translatable' => 0,
+        'type' => 'text',
+      );
+
+      // Exported field_base: 'field_message_recipient_provider'.
+      $fields['field_message_recipient_provider'] = array(
+        'active' => 1,
+        'cardinality' => 1,
+        'deleted' => 0,
+        'entity_types' => array(),
+        'field_name' => 'field_message_recipient_provider',
+        'indexes' => array(
+          'target_id' => array(
+            0 => 'target_id',
+          ),
+        ),
+        'locked' => 0,
+        'module' => 'entityreference',
+        'settings' => array(
+          'handler' => 'base',
+          'handler_settings' => array(
+            'behaviors' => array(
+              'views-select-list' => array(
+                'status' => 0,
+              ),
+            ),
+            'sort' => array(
+              'direction' => 'ASC',
+              'property' => 'name',
+              'type' => 'property',
+            ),
+            'target_bundles' => array(),
+          ),
+          'target_type' => 'user',
+        ),
+        'translatable' => 0,
+        'type' => 'entityreference',
+      );
+    }
   }
 }
 
@@ -316,100 +319,103 @@ function ulf_entityform_field_default_field_bases_alter(&$fields)
 function ulf_entityform_default_rules_configuration_alter(&$configs)
 {
   if(variable_get('ulf_entityform_enable_editor_forms', false)) {
-    $configs['ulf_entityform_send_email_on_end_user_message_email'] = entity_import('rules_config', '{ "ulf_entityform_send_email_on_end_user_message_email" : {
-        "LABEL" : "Send email on end user message to specific email address",
-        "PLUGIN" : "reaction rule",
-        "OWNER" : "rules",
-        "TAGS" : [ "Message" ],
-        "REQUIRES" : [ "rules", "mimemail", "entityform" ],
-        "ON" : { "entityform_insert" : [] },
-        "IF" : [
-          { "entity_has_field" : { "entity" : [ "entityform" ], "field" : "field_message_recipient_mail" } },
-          { "entity_has_field" : {
-              "entity" : [ "entityform" ],
-              "field" : "field_message_parent_node_nomail"
+    if(isset($configs['rules_send_email_on_end_user_message'])) {
+
+      $configs['ulf_entityform_send_email_on_end_user_message_email'] = entity_import('rules_config', '{ "ulf_entityform_send_email_on_end_user_message_email" : {
+          "LABEL" : "Send email on end user message to specific email address",
+          "PLUGIN" : "reaction rule",
+          "OWNER" : "rules",
+          "TAGS" : [ "Message" ],
+          "REQUIRES" : [ "rules", "mimemail", "entityform" ],
+          "ON" : { "entityform_insert" : [] },
+          "IF" : [
+            { "entity_has_field" : { "entity" : [ "entityform" ], "field" : "field_message_recipient_mail" } },
+            { "entity_has_field" : {
+                "entity" : [ "entityform" ],
+                "field" : "field_message_parent_node_nomail"
+              }
             }
-          }
-        ],
-        "DO" : [
-          { "entity_fetch" : {
-              "USING" : {
-                "type" : "node",
-                "id" : [ "entityform:field-message-parent-node-nomail:nid" ]
-              },
-              "PROVIDE" : { "entity_fetched" : { "parent_node" : "Parent node" } }
+          ],
+          "DO" : [
+            { "entity_fetch" : {
+                "USING" : {
+                  "type" : "node",
+                  "id" : [ "entityform:field-message-parent-node-nomail:nid" ]
+                },
+                "PROVIDE" : { "entity_fetched" : { "parent_node" : "Parent node" } }
+              }
+            },
+            { "mimemail" : {
+                "USING" : {
+                  "key" : "Send email on end user message",
+                  "to" : "[entityform:field-message-recipient-mail]",
+                  "from_name" : "[entityform:field-message-name]",
+                  "from_mail" : "[site:mail]",
+                  "reply_to" : "[entityform:field-message-email]",
+                  "subject" : "Henvendelse ang. [parent-node:title] fra [entityform:field-message-name]",
+                  "body" : "Henvendelse ang. [parent-node:title] ([parent-node:url]) fra [entityform:field-message-name]\\r\\n\\r\\n---\\r\\n\\u003Cstrong\\u003EFra:\\u003C\\/strong\\u003E [entityform:field-message-name]\\r\\n\\u003Cstrong\\u003EEmail:\\u003C\\/strong\\u003E [entityform:field-message-email]\\r\\n\\u003Cstrong\\u003E[parent-node:title]\\u003C\\/strong\\u003E\\r\\n\\u003Cstrong\\u003EBesked:\\u003C\\/strong\\u003E\\r\\n[entityform:field-message-body]\\r\\n\\r\\n---\\r\\n\\r\\nMed venlig hilsen\\r\\n[site:name]",
+                  "language" : [ "" ]
+                },
+                "PROVIDE" : { "send_status" : { "send_status" : "Send status" } }
+              }
             }
-          },
-          { "mimemail" : {
-              "USING" : {
-                "key" : "Send email on end user message",
-                "to" : "[entityform:field-message-recipient-mail]",
-                "from_name" : "[entityform:field-message-name]",
-                "from_mail" : "[site:mail]",
-                "reply_to" : "[entityform:field-message-email]",
-                "subject" : "Henvendelse ang. [parent-node:title] fra [entityform:field-message-name]",
-                "body" : "Henvendelse ang. [parent-node:title] ([parent-node:url]) fra [entityform:field-message-name]\\r\\n\\r\\n---\\r\\n\\u003Cstrong\\u003EFra:\\u003C\\/strong\\u003E [entityform:field-message-name]\\r\\n\\u003Cstrong\\u003EEmail:\\u003C\\/strong\\u003E [entityform:field-message-email]\\r\\n\\u003Cstrong\\u003E[parent-node:title]\\u003C\\/strong\\u003E\\r\\n\\u003Cstrong\\u003EBesked:\\u003C\\/strong\\u003E\\r\\n[entityform:field-message-body]\\r\\n\\r\\n---\\r\\n\\r\\nMed venlig hilsen\\r\\n[site:name]",
-                "language" : [ "" ]
-              },
-              "PROVIDE" : { "send_status" : { "send_status" : "Send status" } }
+          ]
+        }
+      }');
+      $configs['ulf_entityform_send_email_on_end_user_message_provider'] = entity_import('rules_config', '{ "ulf_entityform_send_email_on_end_user_message_provider" : {
+          "LABEL" : "Send email on end user message to specific provider",
+          "PLUGIN" : "reaction rule",
+          "OWNER" : "rules",
+          "TAGS" : [ "Message" ],
+          "REQUIRES" : [ "rules", "mimemail", "entityform" ],
+          "ON" : { "entityform_insert" : [] },
+          "IF" : [
+            { "entity_has_field" : {
+                "entity" : [ "entityform" ],
+                "field" : "field_message_recipient_provider"
+              }
+            },
+            { "entity_has_field" : {
+                "entity" : [ "entityform" ],
+                "field" : "field_message_parent_node_nomail"
+              }
             }
-          }
-        ]
-      }
-    }');
-    $configs['ulf_entityform_send_email_on_end_user_message_provider'] = entity_import('rules_config', '{ "ulf_entityform_send_email_on_end_user_message_provider" : {
-        "LABEL" : "Send email on end user message to specific provider",
-        "PLUGIN" : "reaction rule",
-        "OWNER" : "rules",
-        "TAGS" : [ "Message" ],
-        "REQUIRES" : [ "rules", "mimemail", "entityform" ],
-        "ON" : { "entityform_insert" : [] },
-        "IF" : [
-          { "entity_has_field" : {
-              "entity" : [ "entityform" ],
-              "field" : "field_message_recipient_provider"
+          ],
+          "DO" : [
+            { "entity_fetch" : {
+                "USING" : {
+                  "type" : "user",
+                  "id" : [ "entityform:field-message-recipient-provider:uid" ]
+                },
+                "PROVIDE" : { "entity_fetched" : { "message_recipient_provider" : "Message recipient provider" } }
+              }
+            },
+            { "entity_fetch" : {
+                "USING" : {
+                  "type" : "node",
+                  "id" : [ "entityform:field-message-parent-node-nomail:nid" ]
+                },
+                "PROVIDE" : { "entity_fetched" : { "parent_node" : "Parent node" } }
+              }
+            },
+            { "mimemail" : {
+                "USING" : {
+                  "key" : "Send email on end user message",
+                  "to" : "[message-recipient-provider:field-profile-mail]",
+                  "from_name" : "[entityform:field-message-name]",
+                  "from_mail" : "[site:mail]",
+                  "reply_to" : "[entityform:field-message-email]",
+                  "subject" : "Henvendelse ang. [parent-node:title] fra [entityform:field-message-name]",
+                  "body" : "Henvendelse ang. [parent-node:title] ([parent-node:url]) fra [entityform:field-message-name]\\r\\n\\r\\n---\\r\\n\\u003Cstrong\\u003EFra:\\u003C\\/strong\\u003E [entityform:field-message-name]\\r\\n\\u003Cstrong\\u003EEmail:\\u003C\\/strong\\u003E [entityform:field-message-email]\\r\\n\\u003Cstrong\\u003E[parent-node:title]\\u003C\\/strong\\u003E\\r\\n\\u003Cstrong\\u003EBesked:\\u003C\\/strong\\u003E\\r\\n[entityform:field-message-body]\\r\\n\\r\\n---\\r\\n\\r\\nMed venlig hilsen\\r\\n[site:name]",
+                  "language" : [ "" ]
+                },
+                "PROVIDE" : { "send_status" : { "send_status" : "Send status" } }
+              }
             }
-          },
-          { "entity_has_field" : {
-              "entity" : [ "entityform" ],
-              "field" : "field_message_parent_node_nomail"
-            }
-          }
-        ],
-        "DO" : [
-          { "entity_fetch" : {
-              "USING" : {
-                "type" : "user",
-                "id" : [ "entityform:field-message-recipient-provider:uid" ]
-              },
-              "PROVIDE" : { "entity_fetched" : { "message_recipient_provider" : "Message recipient provider" } }
-            }
-          },
-          { "entity_fetch" : {
-              "USING" : {
-                "type" : "node",
-                "id" : [ "entityform:field-message-parent-node-nomail:nid" ]
-              },
-              "PROVIDE" : { "entity_fetched" : { "parent_node" : "Parent node" } }
-            }
-          },
-          { "mimemail" : {
-              "USING" : {
-                "key" : "Send email on end user message",
-                "to" : "[message-recipient-provider:field-profile-mail]",
-                "from_name" : "[entityform:field-message-name]",
-                "from_mail" : "[site:mail]",
-                "reply_to" : "[entityform:field-message-email]",
-                "subject" : "Henvendelse ang. [parent-node:title] fra [entityform:field-message-name]",
-                "body" : "Henvendelse ang. [parent-node:title] ([parent-node:url]) fra [entityform:field-message-name]\\r\\n\\r\\n---\\r\\n\\u003Cstrong\\u003EFra:\\u003C\\/strong\\u003E [entityform:field-message-name]\\r\\n\\u003Cstrong\\u003EEmail:\\u003C\\/strong\\u003E [entityform:field-message-email]\\r\\n\\u003Cstrong\\u003E[parent-node:title]\\u003C\\/strong\\u003E\\r\\n\\u003Cstrong\\u003EBesked:\\u003C\\/strong\\u003E\\r\\n[entityform:field-message-body]\\r\\n\\r\\n---\\r\\n\\r\\nMed venlig hilsen\\r\\n[site:name]",
-                "language" : [ "" ]
-              },
-              "PROVIDE" : { "send_status" : { "send_status" : "Send status" } }
-            }
-          }
-        ]
-      }
-    }');
+          ]
+        }
+      }');
+    }
 
   }
 }
