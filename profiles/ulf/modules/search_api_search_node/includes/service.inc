@@ -325,6 +325,9 @@ class SearchApiSearchNodeService extends SearchApiAbstractService {
       'fid' => '',
       'url' => '',
     );
+    if(!is_array($fids)) {
+      $fids = [$fids];
+    }
 
     if (!empty($fids)) {
       $file = file_load(reset($fids));
