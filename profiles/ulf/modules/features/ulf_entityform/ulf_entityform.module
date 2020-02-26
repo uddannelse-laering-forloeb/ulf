@@ -31,6 +31,8 @@ function ulf_entityform_secure_permissions($role)
         'edit any entityform',
         'delete any entityform',
         'administer fields',
+        'administer field permissions',
+        'access private fields',
       ];
     }
   }
