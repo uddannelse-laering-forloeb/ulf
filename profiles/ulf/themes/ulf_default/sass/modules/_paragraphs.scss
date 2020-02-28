@@ -16,7 +16,7 @@
   .column-wrapper {
     margin: 0 auto;
     max-width: $layout-max-width;
-    padding: 1em 0;
+    padding: 1.3em 0;
     position: relative;
     width: 100%;
 
@@ -35,7 +35,7 @@
     .paragraphs-items {
       display: block;
       box-sizing: border-box;
-      padding: 0 1em;
+      padding: 0 1.3em;
       @include breakpoint(45em) {
         flex: 1;
       }
@@ -82,7 +82,7 @@
 
 .paragraphs-item-hero {
   height: 400px;
-  margin: 0 0 1em 0;
+  margin: 0 0 1.3em 0;
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -213,6 +213,14 @@
       list-style-type: none;
       padding-left: 0;
       padding-left: 0;
+
+      li {
+        padding-top: 5px;
+
+        &:first-child {
+          padding-top: 0;
+        }
+      }
     }
   }
 }
@@ -222,6 +230,28 @@
     &.download-list {
       list-style-type: none;
       padding-left: 0;
+
+      li {
+        padding-top: 5px;
+
+        &:first-child {
+          padding-top: 0;
+        }
+      }
+
+      span {
+        display: block;
+        position: relative;
+
+        img.file-icon {
+          position: absolute;
+        }
+
+        a {
+          display: block;
+          padding-left:25px;
+        }
+      }
     }
   }
 }
