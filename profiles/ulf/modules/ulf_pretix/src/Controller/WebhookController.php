@@ -66,7 +66,7 @@ class WebhookController {
 
     $action = $payload['action'] ?? NULL;
     switch ($action) {
-      case OrderHelper::PRETIX_EVENT_ORDER_PAID:
+      case OrderHelper::PRETIX_EVENT_ORDER_PLACED:
       case OrderHelper::PRETIX_EVENT_ORDER_CANCELED:
         return $this->handleOrderUpdated($payload, $action);
     }
@@ -96,7 +96,7 @@ class WebhookController {
 
     if (NULL !== $node) {
       switch ($action) {
-        case OrderHelper::PRETIX_EVENT_ORDER_PAID:
+        case OrderHelper::PRETIX_EVENT_ORDER_PLACED:
           $subject = t('New pretix order: @event_name',
             ['@event_name' => $node->title]);
           $mailKey = Mailer::PRETIX_EVENT_ORDER_PAID_TEMPLATE;
