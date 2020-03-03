@@ -57,7 +57,11 @@ function ulf_entityform_form_alter(&$form, &$form_state, $form_id)
         $form['#parent_nid'] = arg(1);
       }
       if (isset($form['actions']['submit'])) {
-        array_unshift($form['actions']['submit']['#submit'], '_ulf_entityform_add_node_reference_submit');
+        if(isset($form['actions']['submit']['#submit']) && is_array($form['actions']['submit']['#submit'])) {
+          array_unshift($form['actions']['submit']['#submit'], '_ulf_entityform_add_node_reference_submit');
+        } else {
+          $form['actions']['submit']['#submit'] = ['_ulf_entityform_add_node_reference_submit'];
+        }
       }
     }
     if(isset($form['field_message_recipient_mail'])) {
