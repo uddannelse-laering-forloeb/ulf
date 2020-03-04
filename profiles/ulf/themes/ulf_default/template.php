@@ -94,6 +94,11 @@ function ulf_default_preprocess_page(&$variables) {
     $variables['social_media_links']
       = module_invoke('ulf_social_media', 'block_view', 'ulf_social_media');
   }
+  
+  // Add social media links to header if selected.
+  if (variable_get('footer_siteinfo', FALSE) == TRUE) {
+    $variables['siteinfo'] = variable_get('footer_siteinfo', FALSE);
+  }
 }
 
 /**

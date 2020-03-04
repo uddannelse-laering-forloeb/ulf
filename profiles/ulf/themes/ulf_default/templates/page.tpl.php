@@ -135,6 +135,12 @@
       <div class="footer--inner">
         <?php print render($page['footer']); ?>
       </div>
+      <?php if (isset($siteinfo)): ?>
+        <div class="footer--after">
+          <?php print $siteinfo; ?>
+        </div>
+      <?php endif; ?>
+
     </footer>
   </div>
 </div>
