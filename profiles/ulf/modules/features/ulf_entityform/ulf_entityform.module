@@ -5,17 +5,53 @@
  */
 
 include_once 'ulf_entityform.features.inc';
+if(variable_get('ulf_entityform_enable_editor_forms', false)) {
+  include_once 'ulf_entityform.editorforms.inc';
+}
 
-function ulf_entityform_form_end_user_message_entityform_edit_form_alter(&$form, &$form_state) {
-  $form['field_message_parent_node']['#access'] = FALSE;
-  if (!empty(arg(0)) && arg(0) == 'node') {
-    $form['#parent_nid'] = arg(1);
+
+function _ulf_entityform_add_node_reference_submit(&$form, &$form_state) {
+  if(isset($form['field_message_parent_node'])) {
+    $form_state['values']['field_message_parent_node'][LANGUAGE_NONE][0]['target_id'] = $form['#parent_nid'];
   }
-  if (isset($form['actions']['submit'])) {
-    array_unshift($form['actions']['submit']['#submit'], '_ulf_entityform_add_node_reference_submit');
+  if(isset($form['field_message_parent_node_nomail'])) {
+    $form_state['values']['field_message_parent_node_nomail'][LANGUAGE_NONE][0]['target_id'] = $form['#parent_nid'];
   }
 }
 
-function _ulf_entityform_add_node_reference_submit(&$form, &$form_state) {
-  $form_state['values']['field_message_parent_node']['und'][0]['target_id'] = $form['#parent_nid'];
+/**
+ * Implements hook_form_alter().
+ */
+function ulf_entityform_form_alter(&$form, &$form_state, $form_id)
+{
+  if(strpos($form_id, '_entityform_edit_form') > 0) {
+    if(isset($form['field_message_parent_node']) || isset($form['field_message_parent_node_nomail'])) {
+      if(isset($form['field_message_parent_node'])) {
+        $form['field_message_parent_node']['#access'] = FALSE;
+      }
+      if(isset($form['field_message_parent_node_nomail'])) {
+        $form['field_message_parent_node_nomail']['#access'] = FALSE;
+      }
+      if (!empty(arg(0)) && arg(0) == 'node') {
+        $form['#parent_nid'] = arg(1);
+      }
+      if (isset($form['actions']['submit'])) {
+        if(isset($form['actions']['submit']['#submit']) && is_array($form['actions']['submit']['#submit'])) {
+          array_unshift($form['actions']['submit']['#submit'], '_ulf_entityform_add_node_reference_submit');
+        } else {
+          $form['actions']['submit']['#submit'] = ['_ulf_entityform_add_node_reference_submit'];
+        }
+      }
+    }
+    if(isset($form['field_message_recipient_mail'])) {
+      $form['field_message_recipient_mail']['#access'] = FALSE;
+    }
+    if(isset($form['field_message_recipient_provider'])) {
+      $form['field_message_recipient_provider']['#access'] = FALSE;
+    }
+  }
+
+  if(variable_get('ulf_entityform_enable_editor_forms', false)) {
+    _ulf_entityform_form_alter($form, $form_state, $form_id);
+  }
 }

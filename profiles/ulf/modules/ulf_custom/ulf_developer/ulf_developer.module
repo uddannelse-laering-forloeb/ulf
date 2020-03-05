@@ -35,3 +35,17 @@ function ulf_developer_secure_permissions($role) {
     return $permissions[$role];
   }
 }
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function ulf_developer_form_user_cancel_confirm_form_alter(&$form, &$form_state, $form_id) {
+  if(isset($form['user_cancel_method']['user_cancel_delete'])) {
+    global $user;
+//    if ($user->uid != '1' && !in_array('developer', $user->roles)) {
+    if ($user->uid != '1') {
+      $form['user_cancel_method']['user_cancel_delete']['#disabled'] = true;
+      $form['user_cancel_method']['user_cancel_delete']['#description'] = '(Only available to super admins)';
+    }
+  }
+}

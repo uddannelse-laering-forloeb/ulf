@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * ulf_pagebuilder.features.field_base.inc
@@ -210,6 +211,57 @@ function ulf_pagebuilder_field_default_field_bases() {
     'type' => 'image',
   );
 
+  // Exported field_base: 'field_paragraph_inner_padding'.
+  $field_bases['field_paragraph_inner_padding'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_paragraph_inner_padding',
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'sm' => 'Small',
+        'md' => 'Medium',
+        'lg' => 'Large',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
+  // Exported field_base: 'field_paragraph_main_headline'.
+  $field_bases['field_paragraph_main_headline'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_paragraph_main_headline',
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => 'Is not the main headline',
+        1 => 'Is the main headline',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_boolean',
+  );
+
   // Exported field_base: 'field_paragraph_title'.
   $field_bases['field_paragraph_title'] = array(
     'active' => 1,
@@ -274,6 +326,35 @@ function ulf_pagebuilder_field_default_field_bases() {
     'settings' => array(),
     'translatable' => 0,
     'type' => 'paragraphs',
+  );
+
+  // Exported field_base: 'field_textbox_color'.
+  $field_bases['field_textbox_color'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_textbox_color',
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'daycare' => 'Dagtilbud',
+        'school' => 'Grundskole',
+        'youth' => 'Ungdomsuddannelse',
+        'course' => 'Kursus',
+        'black' => 'Sort',
+        'white' => 'Hvid',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
   );
 
   // Exported field_base: 'field_third_column'.

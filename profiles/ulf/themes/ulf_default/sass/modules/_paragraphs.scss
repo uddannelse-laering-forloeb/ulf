@@ -16,22 +16,26 @@
   .column-wrapper {
     margin: 0 auto;
     max-width: $layout-max-width;
-    padding: 1em 0;
+    padding: 1.3em 0;
     position: relative;
     width: 100%;
 
 
     .row {
-      margin: 0 -10px;
       @include flexbox;
       @include flex-wrap(wrap);
       @include flex-direction(row);
+
+      margin: 0;
+      @include breakpoint(1000px) {
+        margin: 0 -10px;
+      }
     }
 
     .paragraphs-items {
       display: block;
       box-sizing: border-box;
-      padding: 0 1em;
+      padding: 0 1.3em;
       @include breakpoint(45em) {
         flex: 1;
       }
@@ -78,7 +82,7 @@
 
 .paragraphs-item-hero {
   height: 400px;
-  margin: 0 0 1em 0;
+  margin: 0 0 1.3em 0;
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -97,14 +101,7 @@
     max-width: 100%;
     box-sizing: border-box;
 
-    @include breakpoint(45em) {
-      width: 50%;
-    }
-
-    padding: 20px;
-    background-color: rgba(0,0,0,.5);
-
-    h1 {
+    h1, h2 {
       color: $white;
       font-size: 3em;
       font-weight: bold;
@@ -114,6 +111,51 @@
       color: $white;
       font-size: 2em;
       margin: 0;
+    }
+
+    @include breakpoint(45em) {
+      width: 50%;
+    }
+
+    &--theme {
+      &__daycare {
+        background-color: rgba($daycare-color, .7);
+      }
+
+      &__school {
+        background-color: rgba($school-color, .7);
+      }
+
+      &__youth {
+        background-color: rgba($youth-color, .7);
+      }
+
+      &__course {
+        background-color: rgba($course-color, .7);
+      }
+
+      &__black {
+        background-color: rgba($black, .7);
+      }
+
+      &__white {
+        background-color: rgba($white, .7);
+        h1, h2, p.subline {
+          color: $black;
+        }
+      }
+    }
+
+    &--padding {
+      &__sm {
+        padding: 20px;
+      }
+      &__md{
+        padding: 30px;
+      }
+      &__lg {
+        padding: 40px;
+      }
     }
   }
 }
@@ -171,6 +213,14 @@
       list-style-type: none;
       padding-left: 0;
       padding-left: 0;
+
+      li {
+        padding-top: 5px;
+
+        &:first-child {
+          padding-top: 0;
+        }
+      }
     }
   }
 }
@@ -180,6 +230,28 @@
     &.download-list {
       list-style-type: none;
       padding-left: 0;
+
+      li {
+        padding-top: 5px;
+
+        &:first-child {
+          padding-top: 0;
+        }
+      }
+
+      span {
+        display: block;
+        position: relative;
+
+        img.file-icon {
+          position: absolute;
+        }
+
+        a {
+          display: block;
+          padding-left:25px;
+        }
+      }
     }
   }
 }

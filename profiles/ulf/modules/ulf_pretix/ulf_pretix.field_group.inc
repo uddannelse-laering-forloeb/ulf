@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * ulf_pretix.field_group.inc
@@ -28,6 +29,7 @@ function ulf_pretix_field_group_info() {
       2 => 'field_pretix_synchronize',
       3 => 'field_pretix_show_widget_from',
       4 => 'field_pretix_enable',
+      5 => 'field_pretix_widget',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -61,6 +63,7 @@ function ulf_pretix_field_group_info() {
       2 => 'field_pretix_synchronize',
       3 => 'field_pretix_show_widget_from',
       4 => 'field_pretix_enable',
+      5 => 'field_pretix_widget',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

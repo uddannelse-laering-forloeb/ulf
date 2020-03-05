@@ -12,7 +12,9 @@ function _ulf_workflow_cron_empty_trash() {
   $workflow_enabled_types = array(
     'course',
     'course_educators',
-    'news_course_provider'
+    'news_course_provider',
+    'internship',
+    'education',
   );
 
   // Get all relevant nodes that have not been updated recently.

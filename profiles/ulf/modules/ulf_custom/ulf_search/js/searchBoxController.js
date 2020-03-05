@@ -32,6 +32,12 @@ angular.module('searchBoxApp').controller('UlfBoxController', ['CONFIG', 'commun
       }
     });
 
+    $scope.greaterThan = function(prop, val){
+      return function(item){
+        return item[prop] > val;
+      }
+    };
+
     /**
      * Find the currently select filters/facets.
      *
@@ -135,6 +141,13 @@ angular.module('searchBoxApp').controller('UlfBoxController', ['CONFIG', 'commun
       }
     }
 
+    // Resetting the pager
+    function resetPager() {
+      if (CONFIG.provider.hasOwnProperty('pager') || CONFIG.query.hasOwnProperty('pager')) {
+        $scope.query.pager = angular.copy(CONFIG.provider.pager);
+      }
+    }
+
     /**
      * Init the controller.
      */
@@ -177,10 +190,7 @@ angular.module('searchBoxApp').controller('UlfBoxController', ['CONFIG', 'commun
       }
       else {
         // Check if the provider supports an pager.
-        if (CONFIG.provider.hasOwnProperty('pager')) {
-          // Add pager information to the search query.
-          $scope.query.pager = angular.copy(CONFIG.provider.pager);
-        }
+        resetPager();
 
         // Check if an initial search should be executed.
         if (CONFIG.hasOwnProperty('initialQueryText')) {
@@ -228,11 +238,7 @@ angular.module('searchBoxApp').controller('UlfBoxController', ['CONFIG', 'commun
      * Click handel for searches.
      */
     $scope.searchClicked = function searchClicked() {
-      // Reset pager.
-      if ($scope.query.hasOwnProperty('pager')) {
-        $scope.query.pager = angular.copy(CONFIG.provider.pager);
-      }
-
+      resetPager();
       search();
     };
 
@@ -278,6 +284,7 @@ angular.module('searchBoxApp').controller('UlfBoxController', ['CONFIG', 'commun
         delete $scope.query.filters.taxonomy[field][filter];
 
         // Update search.
+        resetPager();
         search();
       }
     };
@@ -300,9 +307,7 @@ angular.module('searchBoxApp').controller('UlfBoxController', ['CONFIG', 'commun
       }
 
       // Reset pager.
-      if (CONFIG.provider.hasOwnProperty('pager')) {
-        $scope.query.pager = angular.copy(CONFIG.provider.pager);
-      }
+      resetPager();
 
       // Check if initail query exists.
       if (CONFIG.hasOwnProperty('initialQueryText')) {
@@ -345,6 +350,7 @@ angular.module('searchBoxApp').controller('UlfBoxController', ['CONFIG', 'commun
       }
 
       // Update search result.
+      resetPager();
       search();
     };
 
@@ -373,6 +379,7 @@ angular.module('searchBoxApp').controller('UlfBoxController', ['CONFIG', 'commun
       }
 
       // Update search result.
+      resetPager();
       search();
     };
 

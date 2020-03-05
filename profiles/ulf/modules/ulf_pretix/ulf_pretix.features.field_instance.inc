@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * ulf_pretix.features.field_instance.inc
@@ -237,6 +238,7 @@ function ulf_pretix_field_default_field_instances() {
           'delete' => 'Slet',
           'description' => TRUE,
           'edit' => 'Redigér',
+          'translate' => 'Oversæt',
           'view_mode' => 'full',
         ),
         'type' => 'field_collection_view',
@@ -450,6 +452,54 @@ function ulf_pretix_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-course-field_pretix_widget'.
+  $field_instances['node-course-field_pretix_widget'] = array(
+    'bundle' => 'course',
+    'default_value' => array(
+      0 => array(
+        'value' => 'list',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 35,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_pretix_widget',
+    'label' => 'Pretix Widget',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => 64,
+    ),
+  );
+
   // Exported field_instance: 'node-course_educators-field_pretix_date'.
   $field_instances['node-course_educators-field_pretix_date'] = array(
     'bundle' => 'course_educators',
@@ -465,6 +515,7 @@ function ulf_pretix_field_default_field_instances() {
           'delete' => 'Slet',
           'description' => TRUE,
           'edit' => 'Redigér',
+          'translate' => 'Oversæt',
           'view_mode' => 'full',
         ),
         'type' => 'field_collection_view',
@@ -653,6 +704,48 @@ function ulf_pretix_field_default_field_instances() {
       ),
       'type' => 'options_onoff',
       'weight' => 86,
+    ),
+  );
+
+  // Exported field_instance: 'node-course_educators-field_pretix_widget'.
+  $field_instances['node-course_educators-field_pretix_widget'] = array(
+    'bundle' => 'course_educators',
+    'default_value' => array(
+      0 => array(
+        'value' => 'list',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 34,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_pretix_widget',
+    'label' => 'Pretix Widget',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => 90,
     ),
   );
 
@@ -849,7 +942,7 @@ function ulf_pretix_field_default_field_instances() {
   t('Kun hvis dette er valgt, vil eventet i pretix automatisk blive opdateret med eventindstillinger på denne side. ');
   t('Organizer short form');
   t('Pladser');
-  t('pretix url');
+  t('Pretix Widget');
   t('Pris');
   t('Show pretix widget from another course.');
   t('Show widget from');
@@ -859,6 +952,7 @@ function ulf_pretix_field_default_field_instances() {
   t('The part of the url immediately after the domain name, e.g. "organizer-short-name" in "https://pretix.eu/control/organizer/organizer-short-name/"');
   t('The part of the url immediately after the organizer short form, e.g. "event-short-name" in "https://pretix.eu/control/event/organizer-short-name/event-short-name/"');
   t('Vedligehold event i pretix');
+  t('pretix url');
 
   return $field_instances;
 }

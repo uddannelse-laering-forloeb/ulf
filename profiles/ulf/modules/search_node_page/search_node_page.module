@@ -935,7 +935,7 @@ function search_node_page_build_search_box($configuration = array()) {
     $search_box_path = variable_get('search_template_box_' . $configuration['index'] . $search_subtype , $configuration['templates']['box']);
     $search_result_path = variable_get('search_template_result_' . $configuration['index'] . $search_subtype, $configuration['templates']['result']);
     $search_pager_path = variable_get('search_template_pager_' . $configuration['index'] . $search_subtype, $configuration['templates']['pager']);
-    
+
     // Build array to convert to json configuration.
     $conf = array(
       'id' => $configuration['id'],
@@ -980,6 +980,11 @@ function search_node_page_build_search_box($configuration = array()) {
     if (!empty($configuration['options']['filters']['taxonomy'])) {
       $filters = array();
       foreach (array_filter($configuration['options']['filters']['taxonomy']) as $field) {
+        $org_field = $field;
+        $pos = strpos($field, ':');
+        if($pos !== false) {
+          $field = substr($field, ($pos + 1));
+        }
         $info = field_info_field($field);
         $vocab = taxonomy_vocabulary_machine_name_load($info['settings']['allowed_values'][0]['vocabulary']);
 
@@ -995,7 +1000,7 @@ function search_node_page_build_search_box($configuration = array()) {
          */
         // Add filters.
         $filters[] = array(
-          'field' => $field,
+          'field' => $org_field,
           'name' => $vocab->name,
           'type' => isset($configuration['filters']['type'][$field]) ? $configuration['filters']['type'][$field] : 'and',
           'terms' => $terms,
@@ -1012,6 +1017,11 @@ function search_node_page_build_search_box($configuration = array()) {
     if (!empty($configuration['options']['filters']['boolean'])) {
       $filters = array();
       foreach (array_filter($configuration['options']['filters']['boolean']) as $field) {
+        $org_field = $field;
+        $pos = strpos($field, ':');
+        if($pos !== false) {
+          $field = substr($field, ($pos + 1));
+        }
         $info = field_info_field($field);
         $bundles = array_keys($info['bundles']);
         $entity_type = reset($bundles);
@@ -1020,7 +1030,7 @@ function search_node_page_build_search_box($configuration = array()) {
 
         // Add filters.
         $filters[] = array(
-          'field' => $field,
+          'field' => $org_field,
           'name' => $info['label'],
           'type' => 'and',
         );

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * ulf_pretix.features.field_base.inc
@@ -368,6 +369,31 @@ function ulf_pretix_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'text',
+  );
+
+  // Exported field_base: 'field_pretix_widget'.
+  $field_bases['field_pretix_widget'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_pretix_widget',
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'list' => 'Listevisning',
+        'calendar' => 'Kalendervisning',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
   );
 
   return $field_bases;

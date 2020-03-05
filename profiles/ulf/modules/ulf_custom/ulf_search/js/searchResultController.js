@@ -37,6 +37,19 @@ angular.module('searchResultApp').controller('UlfResultController', ['CONFIG', '
     $scope.hits = [];
     communicatorService.$on('hits', function onHits(event, data) {
       var phase = this.$root.$$phase;
+      if(CONFIG.provider.index === "54894398a98f973ec6a24936b72d3bf4") {
+        // hacky rewrite to accomodate the different design on
+        // the result page for ungegarantien.dk/udbydere
+        var alphabet = {};
+        for (let i = 0; i < data.hits.results.length; i++) {
+          let char = data.hits.results[i].field_profile_name.charAt(0).toUpperCase();
+          if(!alphabet.hasOwnProperty(char)) {
+            alphabet[char] = [];
+          }
+          alphabet[char].push(data.hits.results[i]);
+        }
+        $scope.alphabet = alphabet;
+      }
       if (phase === '$apply' || phase === '$digest') {
         $scope.hits = data.hits;
         $scope.pager = data.pager;
