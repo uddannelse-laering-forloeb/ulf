@@ -369,6 +369,22 @@
     width: 100%;
     padding: 0 1em;
     background: rgba(255,255,255,0.85);
+
+    .search--exercise {
+      position: relative;
+      width: 66%;
+      float: left;
+      display: block;
+      padding: 1em 0;
+
+        input[type="text"] {
+          max-width: 80%;
+          top: 0;
+          position: relative;
+          transform: none;
+          -webkit-transform: none;
+        }
+    }
   }
 
   &--widget-free {
