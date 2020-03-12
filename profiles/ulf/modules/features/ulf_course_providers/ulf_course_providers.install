@@ -121,3 +121,10 @@ function ulf_course_providers_update_7205() {
     )"
   );
 }
+
+/**
+ * Set show authored variable.
+ */
+function ulf_course_providers_update_7206() {
+  variable_set('ulf_users_admin_show_authored', TRUE);
+}
