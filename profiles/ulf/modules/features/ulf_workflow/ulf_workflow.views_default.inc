@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * ulf_workflow.views_default.inc
@@ -114,7 +115,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['footer']['result']['id'] = 'result';
   $handler->display->display_options['footer']['result']['table'] = 'views';
   $handler->display->display_options['footer']['result']['field'] = 'result';
-  /* Relationship: Content: Author */
+  /* Relationship: Content: Content author */
   $handler->display->display_options['relationships']['uid']['id'] = 'uid';
   $handler->display->display_options['relationships']['uid']['table'] = 'node';
   $handler->display->display_options['relationships']['uid']['field'] = 'uid';
@@ -206,7 +207,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['fields']['name']['field'] = 'name';
   $handler->display->display_options['fields']['name']['relationship'] = 'uid';
   $handler->display->display_options['fields']['name']['label'] = 'Author';
-  /* Field: Content: Published */
+  /* Field: Content: Published status */
   $handler->display->display_options['fields']['status']['id'] = 'status';
   $handler->display->display_options['fields']['status']['table'] = 'node';
   $handler->display->display_options['fields']['status']['field'] = 'status';
@@ -225,7 +226,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['fields']['clone_node']['table'] = 'node';
   $handler->display->display_options['fields']['clone_node']['field'] = 'clone_node';
   $handler->display->display_options['fields']['clone_node']['exclude'] = TRUE;
-  /* Field: Content: Edit link */
+  /* Field: Content: Link to edit content */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
@@ -251,7 +252,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['arguments']['uid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['uid']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['uid']['summary_options']['items_per_page'] = '25';
-  /* Filter criterion: Content: Published */
+  /* Filter criterion: Content: Published status */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
@@ -355,7 +356,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['fields']['name']['field'] = 'name';
   $handler->display->display_options['fields']['name']['relationship'] = 'uid';
   $handler->display->display_options['fields']['name']['label'] = 'Author';
-  /* Field: Content: Published */
+  /* Field: Content: Published status */
   $handler->display->display_options['fields']['status']['id'] = 'status';
   $handler->display->display_options['fields']['status']['table'] = 'node';
   $handler->display->display_options['fields']['status']['field'] = 'status';
@@ -369,7 +370,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['fields']['changed']['label'] = 'Updated';
   $handler->display->display_options['fields']['changed']['date_format'] = 'short';
   $handler->display->display_options['fields']['changed']['second_date_format'] = 'html5_tools_iso8601';
-  /* Field: Content: Edit link */
+  /* Field: Content: Link to edit content */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
@@ -383,7 +384,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: Content: Published */
+  /* Filter criterion: Content: Published status */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
@@ -488,7 +489,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['fields']['name']['field'] = 'name';
   $handler->display->display_options['fields']['name']['relationship'] = 'uid';
   $handler->display->display_options['fields']['name']['label'] = 'Author';
-  /* Field: Content: Published */
+  /* Field: Content: Published status */
   $handler->display->display_options['fields']['status']['id'] = 'status';
   $handler->display->display_options['fields']['status']['table'] = 'node';
   $handler->display->display_options['fields']['status']['field'] = 'status';
@@ -502,7 +503,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['fields']['changed']['label'] = 'Updated';
   $handler->display->display_options['fields']['changed']['date_format'] = 'short';
   $handler->display->display_options['fields']['changed']['second_date_format'] = 'html5_tools_iso8601';
-  /* Field: Content: Edit link */
+  /* Field: Content: Link to edit content */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
@@ -557,7 +558,7 @@ function ulf_workflow_views_default_views() {
     t('Status'),
     t('Updated'),
     t('Clone link'),
-    t('Edit link'),
+    t('Link to edit content'),
     t('Operations'),
     t('[edit_node] [clone_node] '),
     t('Alle'),
@@ -649,7 +650,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['relationships']['field_collection_price_value']['table'] = 'field_data_field_collection_price';
   $handler->display->display_options['relationships']['field_collection_price_value']['field'] = 'field_collection_price_value';
   $handler->display->display_options['relationships']['field_collection_price_value']['delta'] = '-1';
-  /* Relationship: Content: Author */
+  /* Relationship: Content: Content author */
   $handler->display->display_options['relationships']['uid']['id'] = 'uid';
   $handler->display->display_options['relationships']['uid']['table'] = 'node';
   $handler->display->display_options['relationships']['uid']['field'] = 'uid';
@@ -660,7 +661,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Field: Content: Edit link */
+  /* Field: Content: Link to edit content */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
@@ -694,7 +695,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['filters']['field_moms_value']['field'] = 'field_moms_value';
   $handler->display->display_options['filters']['field_moms_value']['relationship'] = 'field_collection_price_value';
   $handler->display->display_options['filters']['field_moms_value']['operator'] = 'empty';
-  /* Filter criterion: Content: Published */
+  /* Filter criterion: Content: Published status */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
@@ -731,12 +732,12 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['fields']['field_subjects_primary_school']['table'] = 'field_data_field_subjects_primary_school';
   $handler->display->display_options['fields']['field_subjects_primary_school']['field'] = 'field_subjects_primary_school';
   $handler->display->display_options['fields']['field_subjects_primary_school']['delta_offset'] = '0';
-  /* Field: Content: Kurset er relevant for pædagoger, der arbejder med læreplanstemaerne */
+  /* Field: Content: Læreplanstemaer */
   $handler->display->display_options['fields']['field_educational_goals']['id'] = 'field_educational_goals';
   $handler->display->display_options['fields']['field_educational_goals']['table'] = 'field_data_field_educational_goals';
   $handler->display->display_options['fields']['field_educational_goals']['field'] = 'field_educational_goals';
   $handler->display->display_options['fields']['field_educational_goals']['delta_offset'] = '0';
-  /* Field: Content: Edit link */
+  /* Field: Content: Link to edit content */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
@@ -775,7 +776,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['filters']['field_subjects_youth_tid_1']['reduce_duplicates'] = TRUE;
   $handler->display->display_options['filters']['field_subjects_youth_tid_1']['type'] = 'select';
   $handler->display->display_options['filters']['field_subjects_youth_tid_1']['vocabulary'] = 'subjects_youth';
-  /* Filter criterion: Content: Kurset er relevant for pædagoger, der arbejder med læreplanstemaerne (field_educational_goals) */
+  /* Filter criterion: Content: Læreplanstemaer (field_educational_goals) */
   $handler->display->display_options['filters']['field_educational_goals_tid']['id'] = 'field_educational_goals_tid';
   $handler->display->display_options['filters']['field_educational_goals_tid']['table'] = 'field_data_field_educational_goals';
   $handler->display->display_options['filters']['field_educational_goals_tid']['field'] = 'field_educational_goals_tid';
@@ -793,7 +794,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['filters']['field_subjects_primary_school_tid_1']['reduce_duplicates'] = TRUE;
   $handler->display->display_options['filters']['field_subjects_primary_school_tid_1']['type'] = 'select';
   $handler->display->display_options['filters']['field_subjects_primary_school_tid_1']['vocabulary'] = 'subjects_primary_school';
-  /* Filter criterion: Content: Kurset er relevant for pædagoger, der arbejder med læreplanstemaerne (field_educational_goals) */
+  /* Filter criterion: Content: Læreplanstemaer (field_educational_goals) */
   $handler->display->display_options['filters']['field_educational_goals_tid_1']['id'] = 'field_educational_goals_tid_1';
   $handler->display->display_options['filters']['field_educational_goals_tid_1']['table'] = 'field_data_field_educational_goals';
   $handler->display->display_options['filters']['field_educational_goals_tid_1']['field'] = 'field_educational_goals_tid';
@@ -866,7 +867,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  /* Field: Content: Edit link */
+  /* Field: Content: Link to edit content */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
@@ -926,14 +927,14 @@ function ulf_workflow_views_default_views() {
     t('field collection item from field_collection_price'),
     t('forfatter'),
     t('Title'),
-    t('Edit link'),
+    t('Link to edit content'),
     t('Pris'),
     t('Moms'),
     t('Page'),
     t('more'),
     t('Bilag'),
     t('Fag'),
-    t('Kurset er relevant for pædagoger, der arbejder med læreplanstemaerne'),
+    t('Læreplanstemaer'),
     t('Redigér-link'),
     t('Antal'),
     t('Navn'),
@@ -1071,7 +1072,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['relationships']['vid']['id'] = 'vid';
   $handler->display->display_options['relationships']['vid']['table'] = 'node_revision';
   $handler->display->display_options['relationships']['vid']['field'] = 'vid';
-  /* Relationship: Content: Author */
+  /* Relationship: Content: Content author */
   $handler->display->display_options['relationships']['uid']['id'] = 'uid';
   $handler->display->display_options['relationships']['uid']['table'] = 'node';
   $handler->display->display_options['relationships']['uid']['field'] = 'uid';
@@ -1121,7 +1122,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['fields']['timestamp']['label'] = 'Last updated';
   $handler->display->display_options['fields']['timestamp']['date_format'] = 'time ago';
   $handler->display->display_options['fields']['timestamp']['second_date_format'] = 'html5_tools_iso8601';
-  /* Field: Content: Edit link */
+  /* Field: Content: Link to edit content */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
@@ -1160,7 +1161,7 @@ function ulf_workflow_views_default_views() {
     'course_educators' => 'course_educators',
     'course' => 'course',
   );
-  /* Filter criterion: Content: Published */
+  /* Filter criterion: Content: Published status */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
@@ -1270,7 +1271,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['fields']['latest_log_message']['field'] = 'latest_log_message';
   $handler->display->display_options['fields']['latest_log_message']['relationship'] = 'vid';
   $handler->display->display_options['fields']['latest_log_message']['label'] = 'Seneste kommentar';
-  /* Field: Content: Edit link */
+  /* Field: Content: Link to edit content */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
@@ -1307,17 +1308,6 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['filters']['is_current_1']['relationship'] = 'vid';
   $handler->display->display_options['filters']['is_current_1']['value'] = '1';
   $handler->display->display_options['filters']['is_current_1']['group'] = 1;
-  /* Filter criterion: Content: Type */
-  $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'node';
-  $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['relationship'] = 'vid';
-  $handler->display->display_options['filters']['type']['value'] = array(
-    'course_educators' => 'course_educators',
-    'news_course_provider' => 'news_course_provider',
-    'course' => 'course',
-  );
-  $handler->display->display_options['filters']['type']['group'] = 1;
   /* Filter criterion: Global: Combine fields filter */
   $handler->display->display_options['filters']['combine']['id'] = 'combine';
   $handler->display->display_options['filters']['combine']['table'] = 'views';
@@ -1340,7 +1330,7 @@ function ulf_workflow_views_default_views() {
     'title' => 'title',
     'field_profile_name' => 'field_profile_name',
   );
-  /* Filter criterion: Content: Published */
+  /* Filter criterion: Content: Published status */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
@@ -1438,7 +1428,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['fields']['timestamp']['label'] = 'Last updated';
   $handler->display->display_options['fields']['timestamp']['date_format'] = 'time ago';
   $handler->display->display_options['fields']['timestamp']['second_date_format'] = 'html5_tools_iso8601';
-  /* Field: Content: Edit link */
+  /* Field: Content: Link to edit content */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
@@ -1454,17 +1444,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: Content: Type */
-  $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'node';
-  $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['relationship'] = 'vid';
-  $handler->display->display_options['filters']['type']['value'] = array(
-    'course_educators' => 'course_educators',
-    'news_course_provider' => 'news_course_provider',
-    'course' => 'course',
-  );
-  /* Filter criterion: Content: Published */
+  /* Filter criterion: Content: Published status */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
@@ -1587,7 +1567,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['fields']['timestamp']['label'] = 'Last updated';
   $handler->display->display_options['fields']['timestamp']['date_format'] = 'time ago';
   $handler->display->display_options['fields']['timestamp']['second_date_format'] = 'html5_tools_iso8601';
-  /* Field: Content: Edit link */
+  /* Field: Content: Link to edit content */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
@@ -1603,17 +1583,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: Content: Type */
-  $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'node';
-  $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['relationship'] = 'vid';
-  $handler->display->display_options['filters']['type']['value'] = array(
-    'course_educators' => 'course_educators',
-    'news_course_provider' => 'news_course_provider',
-    'course' => 'course',
-  );
-  /* Filter criterion: Content: Published */
+  /* Filter criterion: Content: Published status */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
@@ -1727,7 +1697,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['fields']['latest_log_message']['field'] = 'latest_log_message';
   $handler->display->display_options['fields']['latest_log_message']['relationship'] = 'vid';
   $handler->display->display_options['fields']['latest_log_message']['label'] = 'Seneste kommentar';
-  /* Field: Content: Edit link */
+  /* Field: Content: Link to edit content */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
@@ -1764,17 +1734,6 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['filters']['is_current_1']['relationship'] = 'vid';
   $handler->display->display_options['filters']['is_current_1']['value'] = '1';
   $handler->display->display_options['filters']['is_current_1']['group'] = 1;
-  /* Filter criterion: Content: Type */
-  $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'node';
-  $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['relationship'] = 'vid';
-  $handler->display->display_options['filters']['type']['value'] = array(
-    'course_educators' => 'course_educators',
-    'news_course_provider' => 'news_course_provider',
-    'course' => 'course',
-  );
-  $handler->display->display_options['filters']['type']['group'] = 1;
   /* Filter criterion: Global: Combine fields filter */
   $handler->display->display_options['filters']['combine']['id'] = 'combine';
   $handler->display->display_options['filters']['combine']['table'] = 'views';
@@ -1797,7 +1756,7 @@ function ulf_workflow_views_default_views() {
     'title' => 'title',
     'field_profile_name' => 'field_profile_name',
   );
-  /* Filter criterion: Content: Published */
+  /* Filter criterion: Content: Published status */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
@@ -1979,7 +1938,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['fields']['timestamp']['label'] = 'Last updated';
   $handler->display->display_options['fields']['timestamp']['date_format'] = 'time ago';
   $handler->display->display_options['fields']['timestamp']['second_date_format'] = 'html5_tools_iso8601';
-  /* Field: Content: Edit link */
+  /* Field: Content: Link to edit content */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
@@ -2166,7 +2125,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['fields']['changed']['label'] = 'Senest opdateret';
   $handler->display->display_options['fields']['changed']['date_format'] = 'raw time ago';
   $handler->display->display_options['fields']['changed']['second_date_format'] = 'html5_tools_iso8601';
-  /* Field: Content: Edit link */
+  /* Field: Content: Link to edit content */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
@@ -2316,7 +2275,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['relationships']['vid']['id'] = 'vid';
   $handler->display->display_options['relationships']['vid']['table'] = 'node_revision';
   $handler->display->display_options['relationships']['vid']['field'] = 'vid';
-  /* Relationship: Content: Author */
+  /* Relationship: Content: Content author */
   $handler->display->display_options['relationships']['uid']['id'] = 'uid';
   $handler->display->display_options['relationships']['uid']['table'] = 'node';
   $handler->display->display_options['relationships']['uid']['field'] = 'uid';
@@ -2336,7 +2295,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['arguments']['uid']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: Content: Published */
+  /* Filter criterion: Content: Published status */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
@@ -2479,7 +2438,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['fields']['timestamp']['label'] = 'Last updated';
   $handler->display->display_options['fields']['timestamp']['date_format'] = 'time ago';
   $handler->display->display_options['fields']['timestamp']['second_date_format'] = 'html5_tools_iso8601';
-  /* Field: Content: Edit link */
+  /* Field: Content: Link to edit content */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
@@ -2494,22 +2453,12 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['fields']['clone_node']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: Content: Published */
+  /* Filter criterion: Content: Published status */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['relationship'] = 'vid';
   $handler->display->display_options['filters']['status']['value'] = '1';
-  /* Filter criterion: Content: Type */
-  $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'node';
-  $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['relationship'] = 'vid';
-  $handler->display->display_options['filters']['type']['value'] = array(
-    'course_educators' => 'course_educators',
-    'news_course_provider' => 'news_course_provider',
-    'course' => 'course',
-  );
   /* Filter criterion: Content: Trashed (field_trashed) */
   $handler->display->display_options['filters']['field_trashed_value']['id'] = 'field_trashed_value';
   $handler->display->display_options['filters']['field_trashed_value']['table'] = 'field_data_field_trashed';
@@ -2672,7 +2621,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['fields']['timestamp']['label'] = 'Last updated';
   $handler->display->display_options['fields']['timestamp']['date_format'] = 'time ago';
   $handler->display->display_options['fields']['timestamp']['second_date_format'] = 'html5_tools_iso8601';
-  /* Field: Content: Edit link */
+  /* Field: Content: Link to edit content */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
@@ -2714,7 +2663,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['filters']['publish_on']['relationship'] = 'vid';
   $handler->display->display_options['filters']['publish_on']['operator'] = 'not empty';
   $handler->display->display_options['filters']['publish_on']['group'] = 2;
-  /* Filter criterion: Content: Published */
+  /* Filter criterion: Content: Published status */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
@@ -2803,7 +2752,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['fields']['timestamp']['label'] = 'Last updated';
   $handler->display->display_options['fields']['timestamp']['date_format'] = 'time ago';
   $handler->display->display_options['fields']['timestamp']['second_date_format'] = 'html5_tools_iso8601';
-  /* Field: Content: Edit link */
+  /* Field: Content: Link to edit content */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
@@ -2828,7 +2777,7 @@ function ulf_workflow_views_default_views() {
     'course' => 'course',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: Published */
+  /* Filter criterion: Content: Published status */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
