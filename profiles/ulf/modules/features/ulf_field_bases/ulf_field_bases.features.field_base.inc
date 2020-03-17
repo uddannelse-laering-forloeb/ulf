@@ -1358,17 +1358,18 @@ function ulf_field_bases_field_default_field_bases() {
     'locked' => 0,
     'module' => 'entityreference',
     'settings' => array(
-      'handler' => 'base',
+      'handler' => 'views',
       'handler_settings' => array(
         'behaviors' => array(
           'views-select-list' => array(
             'status' => 0,
           ),
         ),
-        'sort' => array(
-          'type' => 'none',
+        'view' => array(
+          'args' => array(),
+          'display_name' => 'entityreference_2',
+          'view_name' => 'udoglaer_visiting_sites_dropdowns_user',
         ),
-        'target_bundles' => array(),
       ),
       'target_type' => 'user',
     ),
