@@ -1460,6 +1460,7 @@ function ulf_pagebuilder_field_default_field_instances() {
     'required' => 0,
     'settings' => array(
       'allowed_providers' => array(
+        'dreambroker' => 'dreambroker',
         'vimeo' => 'vimeo',
         'youtube' => 'youtube',
       ),

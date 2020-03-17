@@ -20,15 +20,15 @@
     $('.filter-wrapper').hide();
 
     // Hide specific fields only relevant for certain target groups.
-    $('.field-name-field-post-work').hide();
+    // $('.field-name-field-post-work').hide();
     if (typeof Drupal.settings.primary_target_group == 'undefined') {
       $('.field-name-field-educational-goals').hide();
     }
     $('.field-name-field-subjects-primary-school').hide();
     $('.field-name-field-subjects-youth').hide();
-    $('.node-course-form .field-name-field-educational-material').hide();
-    $('.node-course-form .field-name-field-inspirational-material').hide();
-    $('.field-name-field-material-suggestions').hide();
+    // $('.node-course-form .field-name-field-educational-material').hide();
+    // $('.node-course-form .field-name-field-inspirational-material').hide();
+    // $('.field-name-field-material-suggestions').hide();
 
     // Used in field help text.
     $('.is-school').hide();
@@ -121,15 +121,15 @@
     }
     $('.is-preschool').show();
 
-    setLabel('field-background-knowledge', 'Baggrundsviden');
+    setLabel('field-background-knowledge', 'Forberedelse');
 
     clearSubjectsValues('subjects-primary-school');
     clearSubjectsValues('subjects-youth');
 
     if (onChange) {
-      clearCKEditorTextAreaValue('activities');
-      clearCKEditorTextAreaValue('background-knowledge');
-      clearCKEditorTextAreaValue('post-work');
+      // clearCKEditorTextAreaValue('activities');
+      // clearCKEditorTextAreaValue('background-knowledge');
+      // clearCKEditorTextAreaValue('post-work');
     }
   }
 
@@ -155,9 +155,9 @@
     }
 
     if (onChange) {
-      clearCKEditorTextAreaValue('activities');
-      clearCKEditorTextAreaValue('background-knowledge');
-      clearCKEditorTextAreaValue('post-work');
+      // clearCKEditorTextAreaValue('activities');
+      // clearCKEditorTextAreaValue('background-knowledge');
+      // clearCKEditorTextAreaValue('post-work');
     }
   }
 
@@ -183,9 +183,9 @@
     }
 
     if (onChange) {
-      clearCKEditorTextAreaValue('activities');
-      clearCKEditorTextAreaValue('background-knowledge');
-      clearCKEditorTextAreaValue('post-work');
+      // clearCKEditorTextAreaValue('activities');
+      // clearCKEditorTextAreaValue('background-knowledge');
+      // clearCKEditorTextAreaValue('post-work');
     }
   }
 
@@ -219,15 +219,17 @@
     $('.field-name-field-target-group-sub input').parent().hide();
 
     // Hide specific fields only relevant for certain target groups.
-    $('.field-name-field-post-work').hide();
+    // $('.field-name-field-post-work').hide();
+    $('.field-name-field-post-work').show();
+
     if (typeof Drupal.settings.primary_target_group == 'undefined') {
       $('.field-name-field-educational-goals').hide();
     }
     $('.field-name-field-subjects-primary-school').hide();
     $('.field-name-field-subjects-youth').hide();
-    $('.node-course-form .field-name-field-educational-material').hide();
-    $('.node-course-form .field-name-field-inspirational-material').hide();
-    $('.field-name-field-material-suggestions').hide();
+    // $('.node-course-form .field-name-field-educational-material').hide();
+    // $('.node-course-form .field-name-field-inspirational-material').hide();
+    // $('.field-name-field-material-suggestions').hide();
 
     // Used in field help text.
     $('.is-school').hide();

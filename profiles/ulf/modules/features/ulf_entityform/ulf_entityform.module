@@ -55,3 +55,15 @@ function ulf_entityform_form_alter(&$form, &$form_state, $form_id)
     _ulf_entityform_form_alter($form, $form_state, $form_id);
   }
 }
+
+/**
+ * Implements hook_entityform_type_insert().
+ */
+function ulf_entityform_entityform_type_insert($entityform_type) {
+  db_insert('captcha_points')
+    ->fields(array(
+      'form_id' => $entityform_type->type.'_entityform_edit_form',
+      'captcha_type' => 'default',
+    ))
+    ->execute();
+}
