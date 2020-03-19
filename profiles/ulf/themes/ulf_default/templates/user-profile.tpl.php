@@ -97,18 +97,20 @@
         </div>
       </div>
     </div>
-    <div class="layout-element-beta">
-      <div class="layout-element-beta-inner">
-        <?php if (isset($field_profile_name)) :?>
-          <h2 class="layout--element-header"><?php print t('Offers from') . ' ' . $field_profile_name['0']['value'] ;?></h2>
-        <?php endif;?>
-        <?php print $content_by_user_daycare; ?>
-        <?php print $content_by_user_school; ?>
-        <?php print $content_by_user_youth; ?>
-        <?php print $content_by_user_courses; ?>
-        <?php print $content_by_user_news; ?>
+    <?php if (variable_get('ulf_users_admin_show_authored')) : ?>
+      <div class="layout-element-beta">
+        <div class="layout-element-beta-inner">
+          <?php if (isset($field_profile_name)) :?>
+            <h2 class="layout--element-header"><?php print t('Offers from') . ' ' . $field_profile_name['0']['value'] ;?></h2>
+          <?php endif;?>
+          <?php print $content_by_user_daycare; ?>
+          <?php print $content_by_user_school; ?>
+          <?php print $content_by_user_youth; ?>
+          <?php print $content_by_user_courses; ?>
+          <?php print $content_by_user_news; ?>
+        </div>
       </div>
-    </div>
+    <?php endif;?>
   </div>
 </div>
 <?php hide($user_profile['summary']); ?>

@@ -108,6 +108,7 @@ function ulf_workflow_form_node_form_alter(&$form, &$form_state, $form_id) {
     'news_course_provider',
     'internship',
     'education',
+    'exercise',
   );
 
   // Check for workflow enabled.
@@ -252,6 +253,7 @@ function ulf_workflow_node_insert($node) {
     'news_course_provider',
     'internship',
     'education',
+    'exercise'
   );
 
   if (in_array($node->type, $workflow_enabled_types)) {
