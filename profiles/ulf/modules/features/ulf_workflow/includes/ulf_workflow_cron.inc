@@ -15,6 +15,7 @@ function _ulf_workflow_cron_empty_trash() {
     'news_course_provider',
     'internship',
     'education',
+    'exercise'
   );
 
   // Get all relevant nodes that have not been updated recently.

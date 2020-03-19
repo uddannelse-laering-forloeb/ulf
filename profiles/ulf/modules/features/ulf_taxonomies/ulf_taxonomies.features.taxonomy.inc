@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * ulf_taxonomies.features.taxonomy.inc
@@ -9,9 +10,25 @@
  */
 function ulf_taxonomies_taxonomy_default_vocabularies() {
   return array(
+    'activity' => array(
+      'name' => 'Aktivitet',
+      'machine_name' => 'activity',
+      'description' => '',
+      'hierarchy' => 0,
+      'module' => 'taxonomy',
+      'weight' => 0,
+    ),
     'course_relevancy_educators' => array(
       'name' => 'Kursus relevans (undervisere)',
       'machine_name' => 'course_relevancy_educators',
+      'description' => '',
+      'hierarchy' => 0,
+      'module' => 'taxonomy',
+      'weight' => 0,
+    ),
+    'duration' => array(
+      'name' => 'Varighed',
+      'machine_name' => 'duration',
       'description' => '',
       'hierarchy' => 0,
       'module' => 'taxonomy',
@@ -28,6 +45,14 @@ function ulf_taxonomies_taxonomy_default_vocabularies() {
     'offer_type' => array(
       'name' => 'Forløbstype',
       'machine_name' => 'offer_type',
+      'description' => '',
+      'hierarchy' => 0,
+      'module' => 'taxonomy',
+      'weight' => 0,
+    ),
+    'period' => array(
+      'name' => 'Periode',
+      'machine_name' => 'period',
       'description' => '',
       'hierarchy' => 0,
       'module' => 'taxonomy',
