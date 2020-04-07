@@ -1,0 +1,23 @@
+# Danish translation of ulf_pagebilder
+# Copyright (c) 2020 Novicell <php@novicell.dk>
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: 7.x.-1.0\n"
+"POT-Creation-Date: 2020-04-06 12:00+0200\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Language-Team: Danish\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+
+msgid "Add new !title"
+msgstr "Tilføj nyt !title"
+
+msgid "Add another !title"
+msgstr "Tilføj endnu et !title"
+
+msgid "No @title_multiple added yet. Select a @title type and press the button below to add one."
+msgstr "Der er endnu ikke tilføjet nogen @title_multiple. Vælg en @title type, og tryk på knappen nedenfor for at tilføje en."

@@ -101,6 +101,7 @@ function theme_file_download_link($variables) {
   $options = [
     'attributes' => [
       'type' => $file->filemime . '; length=' . $file->filesize,
+      'target' => '_blank',
     ],
   ];
 
@@ -115,4 +116,57 @@ function theme_file_download_link($variables) {
 
   return '<span class="file">' . $icon . ' ' . l($link_text, $url, $options)
     . '</span>';
+}
+
+/**
+ * Implementation of HOOK_form_alter()
+ */
+function ulf_pagebuilder_form_alter(&$form, $form_state, $form_id) {
+
+
+  if ($form_id === 'page_with_blocks_node_form') {
+
+    /**
+     * Copy the action buttons (submit, preview, etc ..)
+     * and place them at the top of the form
+     */
+    if (!empty($form['actions'])) {
+
+      foreach ($form['actions'] as $name => $button) {
+        // SUBMIT BUTTON
+        if ($name === 'submit') {
+          // WE NEED TO USE DOUBLE QUOTATION MARKS
+          // SO PHP CAN SEE AND INTERPRET VARIABLES WITHIN
+          $form["$name-copy"] = $button;
+          $form["$name-copy"]['#weight'] = -1001;
+        }
+
+        // PREVIEW BUTTON
+        if ($name === 'preview') {
+          // WE NEED TO USE DOUBLE QUOTATION MARKS
+          // SO PHP CAN SEE AND INTERPRET VARIABLES WITHIN
+          $form["$name-copy"] = $button;
+          $form["$name-copy"]['#weight'] = -1000;
+        }
+
+        // CHANGES DEPENDS ON DIFF MODULE
+        if ($name === 'preview_changes') {
+          // WE NEED TO USE DOUBLE QUOTATION MARKS
+          // SO PHP CAN SEE AND INTERPRET VARIABLES WITHIN
+          $form["$name-copy"] = $button;
+          $form["$name-copy"]['#weight'] = -999;
+        }
+
+        // DELETE BUTTON
+        if ($name === 'delete') {
+          // WE NEED TO USE DOUBLE QUOTATION MARKS
+          // SO PHP CAN SEE AND INTERPRET VARIABLES WITHIN
+          $form["$name-copy"] = $button;
+          $form["$name-copy"]['#weight'] = -998;
+        }
+
+      } // end foreach
+    }
+  }
+
 }

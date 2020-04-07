@@ -81,7 +81,7 @@
 
 
 .paragraphs-item-hero {
-  height: 400px;
+  height: 800px;
   margin: 0 0 1.3em 0;
   background-repeat: no-repeat;
   background-position: center center;
@@ -256,6 +256,26 @@
         }
       }
     }
+  }
+}
+
+.paragraphs-item-spacer {
+
+  &--hr {
+    height: 1px;
+    background-color: $gray-lightest;
+  }
+
+  &--small {
+    margin: 25px 0;
+  }
+
+  &--medium {
+    margin: 38px 0;
+  }
+  &--large {
+    margin: 50px 0;
+
   }
 }
 
