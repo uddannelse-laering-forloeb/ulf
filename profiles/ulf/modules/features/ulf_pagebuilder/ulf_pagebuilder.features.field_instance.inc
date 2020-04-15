@@ -36,7 +36,7 @@ function ulf_pagebuilder_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_sections',
-    'label' => 'Sektioner',
+    'label' => 'Blokke',
     'required' => 0,
     'settings' => array(
       'add_mode' => 'select',
@@ -47,6 +47,7 @@ function ulf_pagebuilder_field_default_field_instances() {
         'hero' => 'hero',
         'link_list' => -1,
         'one_column' => 'one_column',
+        'spacer' => -1,
         'text_with_image' => -1,
         'text_with_video' => -1,
         'three_columns' => 'three_columns',
@@ -59,14 +60,15 @@ function ulf_pagebuilder_field_default_field_instances() {
         'hero' => 8,
         'link_list' => 9,
         'one_column' => 2,
+        'spacer' => -22,
         'text_with_image' => 20,
         'text_with_video' => -20,
         'three_columns' => 12,
         'two_column' => 3,
       ),
       'default_edit_mode' => 'preview',
-      'title' => 'Afsnit',
-      'title_multiple' => 'Afsnit',
+      'title' => 'Blok',
+      'title_multiple' => 'Blokke',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -93,9 +95,8 @@ function ulf_pagebuilder_field_default_field_instances() {
       ),
       'paragraphs_editor_preview' => array(
         'label' => 'hidden',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 0,
       ),
     ),
@@ -304,9 +305,8 @@ function ulf_pagebuilder_field_default_field_instances() {
       ),
       'paragraphs_editor_preview' => array(
         'label' => 'hidden',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 0,
       ),
     ),
@@ -632,9 +632,8 @@ function ulf_pagebuilder_field_default_field_instances() {
       ),
       'paragraphs_editor_preview' => array(
         'label' => 'hidden',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 0,
       ),
     ),
@@ -809,9 +808,8 @@ function ulf_pagebuilder_field_default_field_instances() {
       ),
       'paragraphs_editor_preview' => array(
         'label' => 'hidden',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 0,
       ),
     ),
@@ -900,7 +898,7 @@ function ulf_pagebuilder_field_default_field_instances() {
         'insert_width' => '',
         'manualcrop_crop_info' => 1,
         'manualcrop_default_crop_area' => 1,
-        'manualcrop_enable' => 0,
+        'manualcrop_enable' => 1,
         'manualcrop_filter_insert' => 0,
         'manualcrop_inline_crop' => 0,
         'manualcrop_instant_crop' => 0,
@@ -1148,9 +1146,8 @@ function ulf_pagebuilder_field_default_field_instances() {
       ),
       'paragraphs_editor_preview' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 0,
       ),
     ),
@@ -1405,9 +1402,8 @@ function ulf_pagebuilder_field_default_field_instances() {
       ),
       'paragraphs_editor_preview' => array(
         'label' => 'hidden',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 0,
       ),
     ),
@@ -1447,9 +1443,8 @@ function ulf_pagebuilder_field_default_field_instances() {
       ),
       'paragraphs_editor_preview' => array(
         'label' => 'above',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 0,
       ),
     ),
@@ -1496,7 +1491,7 @@ function ulf_pagebuilder_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 1,
       ),
     ),
     'entity_type' => 'paragraphs_item',
@@ -1535,7 +1530,7 @@ function ulf_pagebuilder_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 1,
+        'weight' => 2,
       ),
     ),
     'entity_type' => 'paragraphs_item',
@@ -1572,9 +1567,8 @@ function ulf_pagebuilder_field_default_field_instances() {
       ),
       'paragraphs_editor_preview' => array(
         'label' => 'hidden',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 0,
       ),
     ),
@@ -1679,7 +1673,7 @@ function ulf_pagebuilder_field_default_field_instances() {
       'file_extensions' => 'png gif jpg jpeg',
       'max_filesize' => '',
       'max_resolution' => '',
-      'min_resolution' => '',
+      'min_resolution' => '646x972',
       'title_field' => 1,
       'user_register_form' => FALSE,
     ),
@@ -1708,7 +1702,7 @@ function ulf_pagebuilder_field_default_field_instances() {
         'insert_width' => '',
         'manualcrop_crop_info' => 1,
         'manualcrop_default_crop_area' => 1,
-        'manualcrop_enable' => 0,
+        'manualcrop_enable' => 1,
         'manualcrop_filter_insert' => 0,
         'manualcrop_inline_crop' => 0,
         'manualcrop_instant_crop' => 0,
@@ -1786,9 +1780,8 @@ function ulf_pagebuilder_field_default_field_instances() {
       ),
       'paragraphs_editor_preview' => array(
         'label' => 'hidden',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 0,
       ),
     ),
@@ -2033,9 +2026,8 @@ function ulf_pagebuilder_field_default_field_instances() {
       ),
       'paragraphs_editor_preview' => array(
         'label' => 'hidden',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 0,
       ),
     ),
@@ -2278,9 +2270,8 @@ function ulf_pagebuilder_field_default_field_instances() {
       ),
       'paragraphs_editor_preview' => array(
         'label' => 'hidden',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 0,
       ),
     ),
@@ -2379,6 +2370,7 @@ function ulf_pagebuilder_field_default_field_instances() {
   t('Anden kolonne');
   t('Baggrundsbillede');
   t('Billede');
+  t('Blokke');
   t('Brødtekst');
   t('Det er meget vigtigt, at siden kun har en hovedoverskrift. Hvis der bruges flere heroelementer på en side, skal kun en af dem have denne mulighed aktiveret.');
   t('Downloads');
@@ -2389,7 +2381,6 @@ function ulf_pagebuilder_field_default_field_instances() {
   t('Internt navn');
   t('Kolonne');
   t('Links');
-  t('Sektioner');
   t('Sublinje');
   t('Tekstboksfarve');
   t('Titel');

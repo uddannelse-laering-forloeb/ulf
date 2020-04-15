@@ -14,10 +14,25 @@ msgstr ""
 
 
 msgid "Add new !title"
-msgstr "Tilføj nyt !title"
+msgstr "Tilføj ny !title"
 
 msgid "Add another !title"
-msgstr "Tilføj endnu et !title"
+msgstr "Tilføj endnu en !title"
 
 msgid "No @title_multiple added yet. Select a @title type and press the button below to add one."
 msgstr "Der er endnu ikke tilføjet nogen @title_multiple. Vælg en @title type, og tryk på knappen nedenfor for at tilføje en."
+
+msgid "This @title has been removed, press the button below to restore."
+msgstr "@title er fjernet. Tryk på knappen nedenfor for at gendanne."
+
+msgid "Warning: this content must be saved to reflect changes on this paragraph item."
+msgstr "Advarsel: indholdet skal gemmes for at afspejle ændringerne i denne blok."
+
+msgid "Confirm Deletion"
+msgstr "Bekræft sletning"
+
+msgid "Warning: this @title will actually be deleted when you press "!confirm" or "!save"!"
+msgstr "Advarsel: @title slettes, når du trykker på "!confirm" eller "!save"!"
+
+msgid "Internal name: @name (@bundle)"
+msgstr "Internt navn: @name (@bundle)"

@@ -476,10 +476,10 @@ function ulf_default_preprocess_field(&$variables) {
     $element = $variables['element']['#object'];
 
     if (isset($element->field_paragraph_main_headline)) {
-      $variables['is_main'] = $element->field_paragraph_main_headline['und'][0];
+      $variables['is_main'] = $element->field_paragraph_main_headline['und'][0]['value'];
     }
 
-    $variables['tag'] = ($variables['is_main'] === 1) ? 'h1' : 'h2';
+    $variables['tag'] = ($variables['is_main'] === '1') ? 'h1' : 'h2';
   }
 
   // Strip teaser fields.

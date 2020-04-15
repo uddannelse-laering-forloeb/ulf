@@ -53,7 +53,7 @@ function ulf_pagebuilder_node_info() {
       'base' => 'node_content',
       'description' => t('Statisk side med pagebuilder funktionalitet'),
       'has_title' => '1',
-      'title_label' => t('Title'),
+      'title_label' => t('Titel'),
       'help' => '',
     ),
   );

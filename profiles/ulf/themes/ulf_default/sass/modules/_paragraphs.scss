@@ -107,7 +107,7 @@
       font-weight: bold;
     }
 
-    p.subline {
+    .subline {
       color: $white;
       font-size: 2em;
       margin: 0;
@@ -140,7 +140,7 @@
 
       &__white {
         background-color: rgba($white, .7);
-        h1, h2, p.subline {
+        h1, h2, .subline {
           color: $black;
         }
       }
@@ -278,5 +278,3 @@
 
   }
 }
-
-

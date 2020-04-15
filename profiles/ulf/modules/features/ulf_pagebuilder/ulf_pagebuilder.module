@@ -170,3 +170,19 @@ function ulf_pagebuilder_form_alter(&$form, $form_state, $form_id) {
   }
 
 }
+
+function ulf_pagebuilder_field_widget_paragraphs_embed_form_alter(&$element, &$form_state, $context) {
+  foreach (element_children($element) as $key) {
+    if(is_numeric($key) && !empty($element[$key])){
+      $paragraph_item = $element[$key]['#entity'];
+      $bundle_info = paragraphs_bundle_load($paragraph_item->bundle);
+      $internal_name = $paragraph_item->field_internal_name[LANGUAGE_NONE][0]['safe_value'] ?? NULL;
+
+      if($internal_name) {
+        $element[$key]['paragraph_bundle_title']['info']['#markup'] = '<h3>'. t('@name (@bundle)', ['@name'=>$internal_name, '@bundle' => $bundle_info->name]) .'</h3>';
+      } else {
+        $element[$key]['paragraph_bundle_title']['info']['#markup'] = '<h3>'. t('@bundle', ['@bundle' => $bundle_info->name]) .'</h3>';
+      }
+    }
+  }
+}
