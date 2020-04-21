@@ -544,3 +544,16 @@ function ulf_base_update_7103() {
     ->condition('translation', 'Træk tilbage', '=')
     ->execute();
 }
+
+/**
+ * Enable metatag module if it exists.
+ */
+function ulf_base_update_7104(&$sandbox) {
+  $module_enable = array();
+  $metatag_path = drupal_get_path('module', 'metatag');
+  if (file_exists($metatag_path . '/metatag.module')){
+    $module_enable[] = 'metatag';
+  }
+
+  module_enable($module_enable);
+}

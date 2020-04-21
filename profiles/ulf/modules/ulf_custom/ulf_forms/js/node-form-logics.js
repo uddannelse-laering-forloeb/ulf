@@ -26,8 +26,8 @@
     }
     $('.field-name-field-subjects-primary-school').hide();
     $('.field-name-field-subjects-youth').hide();
-    // $('.node-course-form .field-name-field-educational-material').hide();
-    // $('.node-course-form .field-name-field-inspirational-material').hide();
+    $('.node-course-form .field-name-field-educational-material').hide();
+    $('.node-course-form .field-name-field-inspirational-material').hide();
     // $('.field-name-field-material-suggestions').hide();
 
     // Used in field help text.
@@ -121,7 +121,7 @@
     }
     $('.is-preschool').show();
 
-    setLabel('field-background-knowledge', 'Forberedelse');
+    // setLabel('field-background-knowledge', 'Forberedelse');
 
     clearSubjectsValues('subjects-primary-school');
     clearSubjectsValues('subjects-youth');
@@ -147,7 +147,7 @@
     $('.field-name-field-subjects-primary-school').show();
     $('.is-school').show();
 
-    setLabel('field-background-knowledge', 'Forberedelse');
+    // setLabel('field-background-knowledge', 'Forberedelse');
 
     clearSubjectsValues('subjects-youth');
     if (typeof Drupal.settings.primary_target_group == 'undefined') {
@@ -175,7 +175,7 @@
     $('.field-name-field-subjects-youth').show();
     $('.is-school').show();
 
-    setLabel('field-background-knowledge', 'Forberedelse');
+    // setLabel('field-background-knowledge', 'Forberedelse');
 
     clearSubjectsValues('subjects-primary-school');
     if (typeof Drupal.settings.primary_target_group == 'undefined') {
@@ -227,8 +227,8 @@
     }
     $('.field-name-field-subjects-primary-school').hide();
     $('.field-name-field-subjects-youth').hide();
-    // $('.node-course-form .field-name-field-educational-material').hide();
-    // $('.node-course-form .field-name-field-inspirational-material').hide();
+    $('.node-course-form .field-name-field-educational-material').hide();
+    $('.node-course-form .field-name-field-inspirational-material').hide();
     // $('.field-name-field-material-suggestions').hide();
 
     // Used in field help text.

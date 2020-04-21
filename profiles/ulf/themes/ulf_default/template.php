@@ -94,7 +94,7 @@ function ulf_default_preprocess_page(&$variables) {
     $variables['social_media_links']
       = module_invoke('ulf_social_media', 'block_view', 'ulf_social_media');
   }
-  
+
   // Add social media links to header if selected.
   if (variable_get('footer_siteinfo', FALSE) == TRUE) {
     $variables['siteinfo'] = variable_get('footer_siteinfo', FALSE);
@@ -476,10 +476,10 @@ function ulf_default_preprocess_field(&$variables) {
     $element = $variables['element']['#object'];
 
     if (isset($element->field_paragraph_main_headline)) {
-      $variables['is_main'] = $element->field_paragraph_main_headline['und'][0];
+      $variables['is_main'] = $element->field_paragraph_main_headline['und'][0]['value'];
     }
 
-    $variables['tag'] = ($variables['is_main'] === 1) ? 'h1' : 'h2';
+    $variables['tag'] = ($variables['is_main'] === '1') ? 'h1' : 'h2';
   }
 
   // Strip teaser fields.
@@ -941,6 +941,15 @@ function ulf_default_preprocess_entity(&$variables) {
             = 'hero--content--padding__' . $inner_padding;
         }
 
+        break;
+      case 'spacer':
+        $space = $variables['field_paragraph_spacing'][0]['value'];
+        $hr = $variables['field_paragraph_hr'][0]['value'];
+        $variables['classes_array'][] = 'paragraphs-item-spacer--'. $space;
+
+        if($hr){
+          $variables['classes_array'][] = 'paragraphs-item-spacer--hr';
+        }
         break;
     }
   }

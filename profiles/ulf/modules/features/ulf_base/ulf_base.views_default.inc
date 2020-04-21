@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * ulf_base.views_default.inc
@@ -107,7 +108,7 @@ function ulf_base_views_default_views() {
   $handler->display->display_options['fields']['name']['field'] = 'name';
   $handler->display->display_options['fields']['name']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['name']['alter']['ellipsis'] = FALSE;
-  /* Felt: Bruger: Active status */
+  /* Felt: Bruger: Aktuel status */
   $handler->display->display_options['fields']['status']['id'] = 'status';
   $handler->display->display_options['fields']['status']['table'] = 'users';
   $handler->display->display_options['fields']['status']['field'] = 'status';
@@ -132,7 +133,7 @@ function ulf_base_views_default_views() {
   $handler->display->display_options['fields']['access']['empty'] = 'aldrig';
   $handler->display->display_options['fields']['access']['date_format'] = 'time span';
   $handler->display->display_options['fields']['access']['second_date_format'] = 'html5_tools_iso8601';
-  /* Felt: Bruger: Link to edit user */
+  /* Felt: Bruger: Link til at redigere bruger */
   $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
   $handler->display->display_options['fields']['edit_node']['table'] = 'users';
   $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
@@ -157,7 +158,7 @@ function ulf_base_views_default_views() {
     18 => 0,
     19 => 0,
   );
-  /* Filterkriterie: Bruger: Active status */
+  /* Filterkriterie: Bruger: Aktuel status */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'users';
   $handler->display->display_options['filters']['status']['field'] = 'status';
@@ -229,7 +230,7 @@ function ulf_base_views_default_views() {
     t('sidste »'),
     t('<a href="/admin/people/create">+ Tilføj bruger</a>'),
     t('Navn'),
-    t('Active status'),
+    t('Aktuel status'),
     t('Roller'),
     t('Oprettelse'),
     t('Seneste tilgang'),
@@ -292,7 +293,7 @@ function ulf_base_views_default_views() {
   $handler->display->display_options['sorts']['mail']['id'] = 'mail';
   $handler->display->display_options['sorts']['mail']['table'] = 'users';
   $handler->display->display_options['sorts']['mail']['field'] = 'mail';
-  /* Filterkriterie: Bruger: Active status */
+  /* Filterkriterie: Bruger: Aktuel status */
   $handler->display->display_options['filters']['status_1']['id'] = 'status_1';
   $handler->display->display_options['filters']['status_1']['table'] = 'users';
   $handler->display->display_options['filters']['status_1']['field'] = 'status';

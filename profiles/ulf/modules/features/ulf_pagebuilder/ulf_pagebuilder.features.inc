@@ -53,7 +53,7 @@ function ulf_pagebuilder_node_info() {
       'base' => 'node_content',
       'description' => t('Statisk side med pagebuilder funktionalitet'),
       'has_title' => '1',
-      'title_label' => t('Title'),
+      'title_label' => t('Titel'),
       'help' => '',
     ),
   );
@@ -67,17 +67,17 @@ function ulf_pagebuilder_node_info() {
 function ulf_pagebuilder_paragraphs_info() {
   $items = array(
     'appetizer' => array(
-      'name' => 'Appetizer',
+      'name' => 'Appetitvækker',
       'bundle' => 'appetizer',
       'locked' => '1',
     ),
     'download_list' => array(
-      'name' => 'Download list',
+      'name' => 'Liste af downloads',
       'bundle' => 'download_list',
       'locked' => '1',
     ),
     'four_columns' => array(
-      'name' => 'Four columns',
+      'name' => 'Fire kolonner',
       'bundle' => 'four_columns',
       'locked' => '1',
     ),
@@ -87,32 +87,37 @@ function ulf_pagebuilder_paragraphs_info() {
       'locked' => '1',
     ),
     'link_list' => array(
-      'name' => 'Link list',
+      'name' => 'Liste af links',
       'bundle' => 'link_list',
       'locked' => '1',
     ),
     'one_column' => array(
-      'name' => 'One column',
+      'name' => 'En kolonne',
       'bundle' => 'one_column',
       'locked' => '1',
     ),
+    'spacer' => array(
+      'name' => 'Afstand',
+      'bundle' => 'spacer',
+      'locked' => '1',
+    ),
     'text_with_image' => array(
-      'name' => 'Text with image',
+      'name' => 'Tekst med billede',
       'bundle' => 'text_with_image',
       'locked' => '1',
     ),
     'text_with_video' => array(
-      'name' => 'Text with video',
+      'name' => 'Tekst med video',
       'bundle' => 'text_with_video',
       'locked' => '1',
     ),
     'three_columns' => array(
-      'name' => 'Three columns',
+      'name' => 'Tre kolonner',
       'bundle' => 'three_columns',
       'locked' => '1',
     ),
     'two_column' => array(
-      'name' => 'Two column',
+      'name' => 'To kolonner',
       'bundle' => 'two_column',
       'locked' => '1',
     ),

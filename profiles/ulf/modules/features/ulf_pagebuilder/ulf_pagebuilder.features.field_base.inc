@@ -56,6 +56,27 @@ function ulf_pagebuilder_field_default_field_bases() {
     'type' => 'paragraphs',
   );
 
+  // Exported field_base: 'field_internal_name'.
+  $field_bases['field_internal_name'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_internal_name',
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'max_length' => 255,
+    ),
+    'translatable' => 0,
+    'type' => 'text',
+  );
+
   // Exported field_base: 'field_links'.
   $field_bases['field_links'] = array(
     'active' => 1,
@@ -189,6 +210,31 @@ function ulf_pagebuilder_field_default_field_bases() {
     'type' => 'text',
   );
 
+  // Exported field_base: 'field_paragraph_hr'.
+  $field_bases['field_paragraph_hr'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_paragraph_hr',
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => 'Fjern horisontal linje',
+        1 => 'Tilføj horisontal linje',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_boolean',
+  );
+
   // Exported field_base: 'field_paragraph_image'.
   $field_bases['field_paragraph_image'] = array(
     'active' => 1,
@@ -253,13 +299,39 @@ function ulf_pagebuilder_field_default_field_bases() {
     'module' => 'list',
     'settings' => array(
       'allowed_values' => array(
-        0 => 'Is not the main headline',
-        1 => 'Is the main headline',
+        0 => 'Er ikke hovedoverskriften',
+        1 => 'Er hovedoverskriften',
       ),
       'allowed_values_function' => '',
     ),
     'translatable' => 0,
     'type' => 'list_boolean',
+  );
+
+  // Exported field_base: 'field_paragraph_spacing'.
+  $field_bases['field_paragraph_spacing'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_paragraph_spacing',
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'small' => 'Lille',
+        'medium' => ' Medium',
+        'large' => 'Stor',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
   );
 
   // Exported field_base: 'field_paragraph_title'.

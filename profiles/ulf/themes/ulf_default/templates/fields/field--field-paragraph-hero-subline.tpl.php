@@ -44,8 +44,8 @@
  * @ingroup themeable
  */
 ?>
-<p class="subline">
+<div class="subline">
   <?php foreach ($items as $delta => $item): ?>
     <?php print render($item); ?>
   <?php endforeach; ?>
-</p>
+</div>

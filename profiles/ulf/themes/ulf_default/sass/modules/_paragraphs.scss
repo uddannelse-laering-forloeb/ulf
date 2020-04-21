@@ -81,7 +81,7 @@
 
 
 .paragraphs-item-hero {
-  height: 400px;
+  height: 800px;
   margin: 0 0 1.3em 0;
   background-repeat: no-repeat;
   background-position: center center;
@@ -107,7 +107,7 @@
       font-weight: bold;
     }
 
-    p.subline {
+    .subline {
       color: $white;
       font-size: 2em;
       margin: 0;
@@ -140,7 +140,7 @@
 
       &__white {
         background-color: rgba($white, .7);
-        h1, h2, p.subline {
+        h1, h2, .subline {
           color: $black;
         }
       }
@@ -259,4 +259,22 @@
   }
 }
 
+.paragraphs-item-spacer {
 
+  &--hr {
+    height: 1px;
+    background-color: $gray-lightest;
+  }
+
+  &--small {
+    margin: 25px 0;
+  }
+
+  &--medium {
+    margin: 38px 0;
+  }
+  &--large {
+    margin: 50px 0;
+
+  }
+}
