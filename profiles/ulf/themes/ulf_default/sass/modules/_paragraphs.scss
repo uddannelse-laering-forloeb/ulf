@@ -278,3 +278,10 @@
 
   }
 }
+
+
+.entity-paragraphs-item {
+  &:last-child {
+    margin: 0;
+  }
+}

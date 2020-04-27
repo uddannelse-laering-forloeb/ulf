@@ -919,10 +919,8 @@ function ulf_default_preprocess_entity(&$variables) {
   if ($variables['entity_type'] === 'paragraphs_item') {
     switch ($variables['elements']['#bundle']) {
       case 'hero':
-        $url
-          = file_create_url($variables['content']['field_paragraph_background_image'][0]['#item']['uri']);
-        $variables['attributes_array']['style'] = 'background-image: url("'
-          . $url . '")';
+        $url = image_style_url('hero', $variables['content']['field_paragraph_background_image'][0]['#item']['uri']);
+        $variables['attributes_array']['style'] = 'background-image: url("' . $url . '")';
 
         $variables['content_attributes_array']['class'] = [
           'hero--content',
@@ -930,15 +928,13 @@ function ulf_default_preprocess_entity(&$variables) {
 
         if (isset($variables['field_textbox_color'])) {
           $textbox_color = $variables['field_textbox_color'][0]['value'];
-          $variables['content_attributes_array']['class'][]
-            = 'hero--content--theme__' . $textbox_color;
+          $variables['content_attributes_array']['class'][] = 'hero--content--theme__' . $textbox_color;
         }
 
         if (isset($variables['field_paragraph_inner_padding'])) {
           $inner_padding
             = $variables['field_paragraph_inner_padding'][0]['value'];
-          $variables['content_attributes_array']['class'][]
-            = 'hero--content--padding__' . $inner_padding;
+          $variables['content_attributes_array']['class'][] = 'hero--content--padding__' . $inner_padding;
         }
 
         break;
