@@ -139,6 +139,7 @@ function secure_permissions_data_secure_permissions($role) {
       'edit any html_block content',
       'edit any news content',
       'edit any static_page content',
+      'edit meta tags',
       'edit own course content',
       'edit own course_educators content',
       'edit own news_course_provider content',
