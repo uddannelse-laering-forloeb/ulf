@@ -27,15 +27,15 @@ function ulf_pagebuilder_image_default_styles() {
   $styles['pagebuilder'] = array(
     'label' => 'Pagebuilder',
     'effects' => array(
-      2 => array(
+      5 => array(
         'name' => 'image_scale',
         'data' => array(
-          'width' => 972,
+          'width' => 984,
           'height' => '',
           'upscale' => 1,
           '#imageinfo_cache_effect_callback' => 'image_scale_effect',
         ),
-        'weight' => 2,
+        'weight' => 1,
       ),
     ),
   );
@@ -53,7 +53,7 @@ function ulf_pagebuilder_node_info() {
       'base' => 'node_content',
       'description' => t('Statisk side med pagebuilder funktionalitet'),
       'has_title' => '1',
-      'title_label' => t('Titel'),
+      'title_label' => t('Title'),
       'help' => '',
     ),
   );
