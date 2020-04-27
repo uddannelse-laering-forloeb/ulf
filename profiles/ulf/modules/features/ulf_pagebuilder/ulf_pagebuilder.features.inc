@@ -23,6 +23,25 @@ function ulf_pagebuilder_ctools_plugin_api($module = NULL, $api = NULL) {
 function ulf_pagebuilder_image_default_styles() {
   $styles = array();
 
+  // Exported image style: hero.
+  $styles['hero'] = array(
+    'label' => 'Hero',
+    'effects' => array(
+      1 => array(
+        'name' => 'manualcrop_crop',
+        'data' => array(
+          'width' => '',
+          'height' => 800,
+          'keepproportions' => 0,
+          'reuse_crop_style' => '',
+          'style_name' => 'hero',
+          '#imageinfo_cache_effect_callback' => 'manualcrop_crop_effect',
+        ),
+        'weight' => 0,
+      ),
+    ),
+  );
+
   // Exported image style: pagebuilder.
   $styles['pagebuilder'] = array(
     'label' => 'Pagebuilder',
@@ -36,6 +55,25 @@ function ulf_pagebuilder_image_default_styles() {
           '#imageinfo_cache_effect_callback' => 'image_scale_effect',
         ),
         'weight' => 1,
+      ),
+    ),
+  );
+
+  // Exported image style: pagebuilder_image.
+  $styles['pagebuilder_image'] = array(
+    'label' => 'Pagebuilder billede',
+    'effects' => array(
+      4 => array(
+        'name' => 'manualcrop_crop',
+        'data' => array(
+          'width' => 984,
+          'height' => 654,
+          'keepproportions' => 1,
+          'reuse_crop_style' => '',
+          'style_name' => 'pagebuilder_image',
+          '#imageinfo_cache_effect_callback' => 'manualcrop_crop_effect',
+        ),
+        'weight' => 0,
       ),
     ),
   );
