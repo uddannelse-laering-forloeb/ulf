@@ -186,3 +186,21 @@ function ulf_pagebuilder_field_widget_paragraphs_embed_form_alter(&$element, &$f
     }
   }
 }
+
+/**
+ * Implements hook_secure_permissions().
+ */
+function ulf_pagebuilder_secure_permissions($role) {
+  $permissions = array(
+    'editor' => array(
+      'create page_with_blocks content',
+      'edit own page_with_blocks content',
+      'edit any page_with_blocks content',
+      'delete own page_with_blocks content',
+      'delete any page_with_blocks content',
+    ),
+  );
+  if (isset($permissions[$role])) {
+    return $permissions[$role];
+  }
+}
