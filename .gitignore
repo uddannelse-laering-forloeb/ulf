@@ -9,3 +9,4 @@ sites/*/private
 .env
 docker-compose.yml
 tmp
+/sites/sites.local.php
