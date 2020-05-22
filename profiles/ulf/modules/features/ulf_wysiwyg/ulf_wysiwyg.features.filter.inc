@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * ulf_wysiwyg.features.filter.inc
@@ -29,7 +30,7 @@ function ulf_wysiwyg_filter_default_formats() {
         'weight' => -48,
         'status' => 1,
         'settings' => array(
-          'allowed_html' => '<a> <em> <u> <strong> <blockquote> <ul> <ol> <li> <p> <br> <h2> <h3>',
+          'allowed_html' => '<a> <em> <u> <strong> <blockquote> <ul> <ol> <li> <p> <br> <h2> <h3><sub><sup>',
           'filter_html_help' => 1,
           'filter_html_nofollow' => 0,
         ),
