@@ -302,7 +302,8 @@ function ulf_default_preprocess_node(&$variables) {
 
       // Display of duration remove 0's in decimal.
       if (isset($variables['content']['field_duration']['0']['#markup'])) {
-        $variables['stripped_duration'] = rtrim($variables['content']['field_duration']['0']['#markup'], ',.0');
+        $variables['stripped_duration']
+          = rtrim($variables['content']['field_duration']['0']['#markup'], ',.0');
       }
       $variables['group_type'] = $variables['type'];
       break;
@@ -322,8 +323,9 @@ function ulf_default_preprocess_node(&$variables) {
   $variables['author'] = user_load($variables['uid']);
   $author_wrapper = entity_metadata_wrapper('user', $variables['author']);
   $variables['profile_name'] = $author_wrapper->field_profile_name->value();
-  if($author_wrapper->__isset('field_garantipartner')) {
-    $variables['garantipartner'] = $author_wrapper->field_garantipartner->value();
+  if ($author_wrapper->__isset('field_garantipartner')) {
+    $variables['garantipartner']
+      = $author_wrapper->field_garantipartner->value();
   }
 
   // Display author meta data for courses.
@@ -358,7 +360,7 @@ function ulf_default_preprocess_node(&$variables) {
 
   // Set default node teaser template.
   if ($variables['view_mode'] == 'teaser') {
-//    $variables['theme_hook_suggestions'][] = 'node__default_teaser';
+    //    $variables['theme_hook_suggestions'][] = 'node__default_teaser';
 
     // Select first 3 field_relevance_educators values and prepare for print.
     if ($variables['type'] == 'course_educators') {
@@ -467,7 +469,7 @@ function ulf_default_preprocess_field(&$variables) {
       }
     }
 
-    // Override rendering.
+      // Override rendering.
     $variables['items'] = $rendered_items;
 
   }
@@ -476,7 +478,8 @@ function ulf_default_preprocess_field(&$variables) {
     $element = $variables['element']['#object'];
 
     if (isset($element->field_paragraph_main_headline)) {
-      $variables['is_main'] = $element->field_paragraph_main_headline['und'][0]['value'];
+      $variables['is_main']
+        = $element->field_paragraph_main_headline['und'][0]['value'];
     }
 
     $variables['tag'] = ($variables['is_main'] === '1') ? 'h1' : 'h2';
@@ -516,6 +519,12 @@ function ulf_default_preprocess_field(&$variables) {
   ) {
     $variables['theme_hook_suggestions'][]
       = 'field__taxonomy_term_reference__stripped';
+  }
+
+  if ($variables['element']['#field_name'] == 'field_paragraph_button') {
+    foreach($variables['items'] as $key => $item) {
+      $variables['items'][$key]['#element']['attributes']['class'] = 'btn';
+    }
   }
 }
 
@@ -917,10 +926,15 @@ function _ulf_default_create_ranges($arr, $stringEnd, $separator = ' - ') {
  */
 function ulf_default_preprocess_entity(&$variables) {
   if ($variables['entity_type'] === 'paragraphs_item') {
-    switch ($variables['elements']['#bundle']) {
+
+    $bundle = $variables['elements']['#bundle'];
+
+    switch ($bundle) {
       case 'hero':
-        $url = image_style_url('hero', $variables['content']['field_paragraph_background_image'][0]['#item']['uri']);
-        $variables['attributes_array']['style'] = 'background-image: url("' . $url . '")';
+        $url
+          = image_style_url('hero', $variables['content']['field_paragraph_background_image'][0]['#item']['uri']);
+        $variables['attributes_array']['style'] = 'background-image: url("'
+          . $url . '")';
 
         $variables['content_attributes_array']['class'] = [
           'hero--content',
@@ -928,25 +942,71 @@ function ulf_default_preprocess_entity(&$variables) {
 
         if (isset($variables['field_textbox_color'])) {
           $textbox_color = $variables['field_textbox_color'][0]['value'];
-          $variables['content_attributes_array']['class'][] = 'hero--content--theme__' . $textbox_color;
+          $variables['content_attributes_array']['class'][]
+            = 'hero--content--theme__' . $textbox_color;
         }
 
         if (isset($variables['field_paragraph_inner_padding'])) {
           $inner_padding
             = $variables['field_paragraph_inner_padding'][0]['value'];
-          $variables['content_attributes_array']['class'][] = 'hero--content--padding__' . $inner_padding;
+          $variables['content_attributes_array']['class'][]
+            = 'hero--content--padding__' . $inner_padding;
         }
 
         break;
       case 'spacer':
         $space = $variables['field_paragraph_spacing'][0]['value'];
         $hr = $variables['field_paragraph_hr'][0]['value'];
-        $variables['classes_array'][] = 'paragraphs-item-spacer--'. $space;
+        $variables['classes_array'][] = 'paragraphs-item-spacer--' . $space;
 
-        if($hr){
+        if ($hr) {
           $variables['classes_array'][] = 'paragraphs-item-spacer--hr';
         }
+      case 'appetizer':
+      case 'text_with_image':
+        $button = $variables['paragraphs_item']->field_paragraph_button ?? NULL;
+        $variables['show_button'] = (bool) $variables['paragraphs_item']->field_paragraph_show_cta[LANGUAGE_NONE][0]['value'] ?? NULL;
+        if($button) {
+          $link = array(
+            '#theme' => 'link',
+            '#text' => render($variables['content']['field_paragraph_image']),
+            '#path' =>  $button[LANGUAGE_NONE][0]['url'],
+            '#options' => array(
+              'attributes' => $button[LANGUAGE_NONE][0]['attributes'],
+              //REQUIRED:
+              'html' => TRUE,
+            ),
+          );
+          $variables['content']['field_paragraph_image'] = $link;
+        }
         break;
+      case 'text_with_video':
+        $variables['show_button'] = (bool) $variables['paragraphs_item']->field_paragraph_show_cta[LANGUAGE_NONE][0]['value'] ?? NULL;
+        break;
+    }
+
+    if (module_exists('color_field')) {
+      $styles = [];
+      // Add background color if exists
+      $paragraph_bg_color = $variables['paragraphs_item']->field_paragraph_bg_color ?? NULL;
+      $paragraph_border_color = $variables['paragraphs_item']->field_paragraph_border_color ?? NULL;
+      if (!empty($paragraph_bg_color) || !empty($paragraph_border_color)) {
+        $background_color = $paragraph_bg_color[LANGUAGE_NONE][0]['rgb'] ?? NULL;
+        $border_color = $paragraph_border_color[LANGUAGE_NONE][0]['rgb'] ?? NULL;
+        if (!empty($background_color)) {
+          $styles[] = 'background-color:' . $background_color;
+          $variables['classes_array'][] = 'paragraphs-item-' . str_replace('_','-', $bundle) . '--has-background';
+        }
+
+        if (!empty($border_color)) {
+          $styles[] = 'border-color:' . $border_color;
+          $variables['classes_array'][] = 'paragraphs-item-' . str_replace('_','-', $bundle) . '--has-border';
+        }
+      }
+
+      if (!empty($styles)) {
+        $variables['attributes_array']['style'] = implode(';', $styles);
+      }
     }
   }
 }
@@ -956,6 +1016,7 @@ function ulf_default_file_icon($variables) {
   $icon_directory = drupal_get_path('theme', 'ulf_default') . '/icons';
   $mime = check_plain($file->filemime);
   $icon_url = file_icon_url($file, $icon_directory);
-  return '<img class="file-icon" alt="" title="' . $mime . '" src="' . $icon_url  . '" />';
+  return '<img class="file-icon" alt="" title="' . $mime . '" src="' . $icon_url
+    . '" />';
 }
 

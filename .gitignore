@@ -10,3 +10,4 @@ sites/*/private
 docker-compose.yml
 tmp
 /sites/sites.local.php
+/sites/all/modules/devel

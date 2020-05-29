@@ -36,6 +36,11 @@
     <div class="text__content<?php print isset($content['field_paragraph_video']) ? ' text__content--with-visuals' : ''; ?>">
       <?php print render($content['field_paragraph_title']); ?>
       <?php print render($content['field_paragraph_body']); ?>
+      <?php if ($show_button): ?>
+        <div class="text__cta">
+          <?php print render($content['field_paragraph_button']) ?>
+        </div>
+      <?php endif; ?>
     </div>
   <?php } ?>
 </div>
