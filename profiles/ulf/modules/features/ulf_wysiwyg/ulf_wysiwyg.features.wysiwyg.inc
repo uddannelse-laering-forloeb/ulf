@@ -57,7 +57,7 @@ function ulf_wysiwyg_wysiwyg_default_profiles() {
       'pasteFromWordRemoveFontStyles' => 0,
     ),
     'preferences' => array(
-      'default' => 0,
+      'default' => 1,
       'user_choose' => 0,
       'show_toggle' => 0,
       'add_to_summaries' => 0,

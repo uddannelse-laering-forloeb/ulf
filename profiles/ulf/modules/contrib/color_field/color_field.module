@@ -132,9 +132,7 @@ function color_field_field_widget_info() {
   $jquery_dematte_color_picker_enable = TRUE;
   $color_field_library_dematte_color = drupal_get_library('color_field', 'dematte-color-picker');
   foreach ($color_field_library_dematte_color['js'] as $path => $js) {
-      error_log($path);
     if (!file_exists($path)) {
-      error_log('Dematte');
       $jquery_dematte_color_picker_enable = FALSE;
     }
   }
