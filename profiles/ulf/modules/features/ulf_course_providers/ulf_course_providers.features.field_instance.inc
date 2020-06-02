@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * ulf_course_providers.features.field_instance.inc
@@ -109,7 +110,7 @@ function ulf_course_providers_field_default_field_instances() {
       'default_image' => 0,
       'file_directory' => 'provider_images',
       'file_extensions' => 'png gif jpg jpeg',
-      'max_filesize' => '',
+      'max_filesize' => '8 MB',
       'max_resolution' => '',
       'min_resolution' => '1000x550',
       'title_field' => 0,
@@ -120,19 +121,20 @@ function ulf_course_providers_field_default_field_instances() {
       'module' => 'image',
       'settings' => array(
         'insert' => 0,
-        'insert_absolute' => FALSE,
+        'insert_absolute' => 0,
         'insert_class' => '',
-        'insert_default' => array(
-          0 => 'auto',
-        ),
+        'insert_default' => 'image',
         'insert_styles' => array(
-          0 => 'auto',
+          'image' => 0,
+          'image_facebook_open_graph' => 0,
+          'image_node_display' => 0,
+          'image_teaser_display' => 0,
         ),
         'insert_width' => '',
         'manualcrop_crop_info' => 1,
         'manualcrop_default_crop_area' => 1,
         'manualcrop_enable' => 1,
-        'manualcrop_filter_insert' => TRUE,
+        'manualcrop_filter_insert' => 1,
         'manualcrop_inline_crop' => 0,
         'manualcrop_instant_crop' => 0,
         'manualcrop_instant_preview' => 1,
