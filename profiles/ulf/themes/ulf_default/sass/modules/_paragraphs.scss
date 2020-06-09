@@ -263,12 +263,10 @@
 
   &--has-border,
   &--has-background {
-    .text__content {
-      padding: 20px;
+    padding: 20px;
 
-      p:last-child {
-        margin: 0;
-      }
+    p:last-child {
+      margin: 0;
     }
   }
 
