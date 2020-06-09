@@ -990,9 +990,11 @@ function ulf_default_preprocess_entity(&$variables) {
       // Add background color if exists
       $paragraph_bg_color = $variables['paragraphs_item']->field_paragraph_bg_color ?? NULL;
       $paragraph_border_color = $variables['paragraphs_item']->field_paragraph_border_color ?? NULL;
+      $paragraph_text_color = $variables['paragraphs_item']->field_paragraph_text_color ?? NULL;
       if (!empty($paragraph_bg_color) || !empty($paragraph_border_color)) {
         $background_color = $paragraph_bg_color[LANGUAGE_NONE][0]['rgb'] ?? NULL;
         $border_color = $paragraph_border_color[LANGUAGE_NONE][0]['rgb'] ?? NULL;
+        $text_color = $paragraph_text_color[LANGUAGE_NONE][0]['rgb']  ?? NULL;
         if (!empty($background_color)) {
           $styles[] = 'background-color:' . $background_color;
           $variables['classes_array'][] = 'paragraphs-item-' . str_replace('_','-', $bundle) . '--has-background';
@@ -1001,6 +1003,18 @@ function ulf_default_preprocess_entity(&$variables) {
         if (!empty($border_color)) {
           $styles[] = 'border-color:' . $border_color;
           $variables['classes_array'][] = 'paragraphs-item-' . str_replace('_','-', $bundle) . '--has-border';
+        }
+
+        if (!empty($text_color)) {
+          $styles[] = 'color:' . $text_color;
+
+          switch ($text_color) {
+            case '#FFFFFF':
+              $variables['classes_array'][] = 'paragraphs-item--text-color__negative';
+              break;
+          }
+
+          $variables['classes_array'][] = 'paragraphs-item-' . str_replace('_','-', $bundle) . '--has-text-color';
         }
       }
 
@@ -1016,7 +1030,6 @@ function ulf_default_file_icon($variables) {
   $icon_directory = drupal_get_path('theme', 'ulf_default') . '/icons';
   $mime = check_plain($file->filemime);
   $icon_url = file_icon_url($file, $icon_directory);
-  return '<img class="file-icon" alt="" title="' . $mime . '" src="' . $icon_url
-    . '" />';
+  return '<img class="file-icon" alt="" title="' . $mime . '" src="' . $icon_url . '" />';
 }
 
