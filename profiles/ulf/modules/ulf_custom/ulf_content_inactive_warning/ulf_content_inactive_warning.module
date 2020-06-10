@@ -5,6 +5,7 @@
  */
 function ulf_content_inactive_warning_cron() {
   _ulf_content_inactive_mail_cleanup();
+  _ulf_content_inactive_no_warning_cleanup();
   _ulf_content_inactive_mail_send();
 }
 
@@ -44,7 +45,6 @@ function _ulf_content_inactive_mail_send() {
   $workflow_enabled_types = array(
     'course',
     'course_educators',
-    'news_course_provider',
     'internship',
     'education',
   );
@@ -116,6 +116,37 @@ function _ulf_content_inactive_mail_send() {
         }
         break;
     }
+  }
+}
+
+/**
+ * Cleanup content without any warning.
+ */
+function _ulf_content_inactive_no_warning_cleanup() {
+  $now = time();
+  // Inactive warning period.
+  $warning_period = variable_get('ulf_content_inactive_warning_period')*60*60*24;
+
+  $workflow_enabled_types = array(
+    'news_course_provider',
+  );
+
+  $query = db_select('node', 'n');
+  $query->fields('n');
+  $query->condition('n.changed', $now - $warning_period, '<');
+  $query->condition('n.status', 1, '=');
+  $query->condition('n.type', $workflow_enabled_types, 'IN');
+  $result = $query->execute()->fetchAllAssoc('nid');
+
+  // Send different mails depending on the inactivity state.
+  foreach ($result as $item) {
+    // If unpublish period is unset we assume they don't want to unpublish their content.
+    // Remove entry from inactivity flow.
+    $node = node_load($item->nid);
+    // Set publishing state for node to unpublished if unpublish period is not 0.
+    $node->status = 0;
+    // Save the node, thus updating the changed date.
+    node_save($node);
   }
 }
 

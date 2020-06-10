@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * ulf_wysiwyg.features.inc

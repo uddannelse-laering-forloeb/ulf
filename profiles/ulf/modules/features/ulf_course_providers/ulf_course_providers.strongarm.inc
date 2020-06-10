@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * ulf_course_providers.strongarm.inc
@@ -29,22 +30,22 @@ function ulf_course_providers_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'redirect' => array(
-          'weight' => '13',
+          'weight' => '12',
         ),
         'account' => array(
           'weight' => '0',
         ),
         'timezone' => array(
-          'weight' => '14',
+          'weight' => '13',
         ),
         'locale' => array(
-          'weight' => '12',
-        ),
-        'wysiwyg' => array(
           'weight' => '11',
         ),
+        'wysiwyg' => array(
+          'weight' => '10',
+        ),
         'mimemail' => array(
-          'weight' => '9',
+          'weight' => '8',
         ),
         'googleanalytics' => array(
           'weight' => '14',
@@ -53,13 +54,13 @@ function ulf_course_providers_strongarm() {
       'display' => array(
         'summary' => array(
           'default' => array(
-            'weight' => '14',
+            'weight' => '13',
             'visible' => FALSE,
           ),
         ),
         'mimemail' => array(
           'default' => array(
-            'weight' => '9',
+            'weight' => '8',
             'visible' => TRUE,
           ),
         ),

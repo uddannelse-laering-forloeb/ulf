@@ -34,6 +34,11 @@
     <div class="appetizer-content">
       <?php print render($content['field_paragraph_title']); ?>
       <?php print render($content['field_paragraph_body']); ?>
+      <?php if ($show_button): ?>
+        <div class="appetizer-content__cta">
+          <?php print render($content['field_paragraph_button']) ?>
+        </div>
+      <?php endif; ?>
     </div>
   </div>
 </div>
