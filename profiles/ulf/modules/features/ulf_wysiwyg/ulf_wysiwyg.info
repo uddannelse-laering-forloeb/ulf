@@ -6,6 +6,7 @@ dependencies[] = ckeditor_link
 dependencies[] = ctools
 dependencies[] = features
 dependencies[] = filter
+dependencies[] = pasteformat
 dependencies[] = strongarm
 dependencies[] = token_filter
 dependencies[] = ulf_wysiwyg
