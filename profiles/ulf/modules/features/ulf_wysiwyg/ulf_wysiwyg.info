@@ -8,6 +8,7 @@ dependencies[] = features
 dependencies[] = filter
 dependencies[] = strongarm
 dependencies[] = token_filter
+dependencies[] = ulf_wysiwyg
 dependencies[] = wysiwyg
 features[ctools][] = strongarm:strongarm:1
 features[features_api][] = api:2

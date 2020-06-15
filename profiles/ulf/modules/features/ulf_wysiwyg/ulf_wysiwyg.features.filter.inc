@@ -20,14 +20,14 @@ function ulf_wysiwyg_filter_default_formats() {
     'weight' => 0,
     'filters' => array(
       'filter_url' => array(
-        'weight' => -49,
+        'weight' => -50,
         'status' => 1,
         'settings' => array(
           'filter_url_length' => 72,
         ),
       ),
       'filter_html' => array(
-        'weight' => -48,
+        'weight' => -49,
         'status' => 1,
         'settings' => array(
           'allowed_html' => '<a> <em> <u> <strong> <blockquote> <ul> <ol> <li> <p> <br> <h2> <h3><sub><sup>',
@@ -36,12 +36,17 @@ function ulf_wysiwyg_filter_default_formats() {
         ),
       ),
       'filter_autop' => array(
-        'weight' => -46,
+        'weight' => -48,
         'status' => 1,
         'settings' => array(),
       ),
       'filter_htmlcorrector' => array(
-        'weight' => -45,
+        'weight' => -47,
+        'status' => 1,
+        'settings' => array(),
+      ),
+      'strip_emojis' => array(
+        'weight' => -46,
         'status' => 1,
         'settings' => array(),
       ),
