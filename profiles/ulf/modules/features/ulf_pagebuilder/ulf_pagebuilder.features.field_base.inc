@@ -106,6 +106,32 @@ function ulf_pagebuilder_field_default_field_bases() {
     'type' => 'link_field',
   );
 
+  // Exported field_base: 'field_paragraph_alignment'.
+  $field_bases['field_paragraph_alignment'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_paragraph_alignment',
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        'left' => 'Venstre',
+        'center' => 'Center',
+        'right' => 'Right',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_text',
+  );
+
   // Exported field_base: 'field_paragraph_background_image'.
   $field_bases['field_paragraph_background_image'] = array(
     'active' => 1,

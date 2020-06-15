@@ -1027,6 +1027,12 @@ function ulf_default_preprocess_entity(&$variables) {
         $variables['attributes_array']['style'] = implode(';', $styles);
       }
     }
+
+    $paragraph_alignment = $variables['paragraphs_item']->field_paragraph_alignment ?? NULL;
+
+    if ($paragraph_alignment !== NULL && isset($paragraph_alignment[LANGUAGE_NONE])) {
+      $variables['classes_array'][] = 'paragraphs-item--alignment-' . $paragraph_alignment[LANGUAGE_NONE][0]['value'];
+    }
   }
 }
 
