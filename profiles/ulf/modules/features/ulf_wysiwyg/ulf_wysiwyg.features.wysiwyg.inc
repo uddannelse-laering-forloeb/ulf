@@ -35,9 +35,6 @@ function ulf_wysiwyg_wysiwyg_default_profiles() {
           'RemoveFormat' => 1,
           'Format' => 1,
         ),
-        'pasteformat' => array(
-          'pasteformat' => 1,
-        ),
         'drupal_path' => array(
           'Link' => 1,
         ),
@@ -55,9 +52,9 @@ function ulf_wysiwyg_wysiwyg_default_profiles() {
       'css_path' => '',
       'stylesSet' => '',
       'block_formats' => 'h3',
-      'forcePasteAsPlainText' => 1,
+      'forcePasteAsPlainText' => 0,
       'pasteFromWordPromptCleanup' => 0,
-      'pasteFromWordRemoveFontStyles' => 1,
+      'pasteFromWordRemoveFontStyles' => 0,
     ),
     'preferences' => array(
       'default' => 1,
