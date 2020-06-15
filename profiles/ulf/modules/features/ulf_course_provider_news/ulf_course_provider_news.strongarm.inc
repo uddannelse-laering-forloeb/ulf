@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * ulf_course_provider_news.strongarm.inc
@@ -14,7 +15,7 @@ function ulf_course_provider_news_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'additional_settings__active_tab_news_course_provider';
-  $strongarm->value = 'edit-location-settings';
+  $strongarm->value = 'edit-scheduler';
   $export['additional_settings__active_tab_news_course_provider'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -326,7 +327,7 @@ function ulf_course_provider_news_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'scheduler_publish_past_date_news_course_provider';
-  $strongarm->value = 'publish';
+  $strongarm->value = 'error';
   $export['scheduler_publish_past_date_news_course_provider'] = $strongarm;
 
   $strongarm = new stdClass();
