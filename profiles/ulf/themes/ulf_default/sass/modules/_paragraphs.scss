@@ -121,13 +121,13 @@
 
     h1, h2 {
       color: $white;
-      font-size: 3em;
-      font-weight: bold;
+      font-size: 2.2em;
+      font-weight: normal;
     }
 
     .subline {
       color: $white;
-      font-size: 2em;
+      font-size: 1.5em;
       margin: 0;
     }
 
@@ -402,4 +402,17 @@
       }
     }
   }
+
+  &--alignment {
+    &-left {
+      text-align: left;
+    }
+    &-center {
+      text-align: center;
+    }
+    &-right {
+      text-align: right;
+    }
+  }
+
 }

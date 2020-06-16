@@ -128,7 +128,7 @@ function ulf_pretix_form_user_profile_form_validate($form, &$form_state) {
  */
 function ulf_pretix_field_group_build_pre_render_alter(&$element) {
   // ID needed due to https://www.drupal.org/project/field_group/issues/2318197
-  if ($element['#form_id'] == 'user_profile_form') {
+  if (isset($element['#form_id']) && $element['#form_id'] == 'user_profile_form') {
     if (user_access('administer ulf pretix user settings')) {
       $element['group_pretix']['#attributes']['id'] = 'pretix-enable';
       $element['group_pretix']['#id'] = 'pretix-enable';
@@ -139,7 +139,7 @@ function ulf_pretix_field_group_build_pre_render_alter(&$element) {
       );
     }
   }
-  if (in_array($element['#form_id'], ['course_node_form', 'course_educators_node_form', 'internship_node_form', 'education_node_form'])) {
+  if (isset($element['#form_id']) && in_array($element['#form_id'], ['course_node_form', 'course_educators_node_form', 'internship_node_form', 'education_node_form'])) {
     $user_wrapper =  entity_metadata_wrapper('user', $element['#node']->uid);
     $pretix_enabled = $user_wrapper->field_pretix_enable->value();
     if (!$pretix_enabled) {

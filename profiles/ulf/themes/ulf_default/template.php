@@ -965,7 +965,12 @@ function ulf_default_preprocess_entity(&$variables) {
       case 'appetizer':
       case 'text_with_image':
         $button = $variables['paragraphs_item']->field_paragraph_button ?? NULL;
-        $variables['show_button'] = (bool) $variables['paragraphs_item']->field_paragraph_show_cta[LANGUAGE_NONE][0]['value'] ?? NULL;
+        $show_button = $variables['paragraphs_item']->field_paragraph_show_cta ?? NULL;
+
+        if(!$show_button !== NULL) {
+          $variables['show_button'] = (bool) $show_button[LANGUAGE_NONE][0]['value'];
+        }
+
         if($button) {
           $link = array(
             '#theme' => 'link',
@@ -1021,6 +1026,12 @@ function ulf_default_preprocess_entity(&$variables) {
       if (!empty($styles)) {
         $variables['attributes_array']['style'] = implode(';', $styles);
       }
+    }
+
+    $paragraph_alignment = $variables['paragraphs_item']->field_paragraph_alignment ?? NULL;
+
+    if ($paragraph_alignment !== NULL && isset($paragraph_alignment[LANGUAGE_NONE])) {
+      $variables['classes_array'][] = 'paragraphs-item--alignment-' . $paragraph_alignment[LANGUAGE_NONE][0]['value'];
     }
   }
 }

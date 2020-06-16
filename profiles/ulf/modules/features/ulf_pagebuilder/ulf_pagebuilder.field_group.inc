@@ -27,6 +27,7 @@ function ulf_pagebuilder_field_group_info() {
       0 => 'field_paragraph_bg_color',
       1 => 'field_paragraph_border_color',
       2 => 'field_paragraph_text_color',
+      3 => 'field_paragraph_alignment',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -57,6 +58,7 @@ function ulf_pagebuilder_field_group_info() {
       0 => 'field_paragraph_bg_color',
       1 => 'field_paragraph_border_color',
       2 => 'field_paragraph_text_color',
+      3 => 'field_paragraph_alignment',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -115,6 +117,7 @@ function ulf_pagebuilder_field_group_info() {
       0 => 'field_paragraph_bg_color',
       1 => 'field_paragraph_border_color',
       2 => 'field_paragraph_text_color',
+      3 => 'field_paragraph_alignment',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -173,6 +176,7 @@ function ulf_pagebuilder_field_group_info() {
       0 => 'field_paragraph_bg_color',
       1 => 'field_paragraph_border_color',
       2 => 'field_paragraph_text_color',
+      3 => 'field_paragraph_alignment',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -203,6 +207,7 @@ function ulf_pagebuilder_field_group_info() {
       0 => 'field_paragraph_bg_color',
       1 => 'field_paragraph_border_color',
       2 => 'field_paragraph_text_color',
+      3 => 'field_paragraph_alignment',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
