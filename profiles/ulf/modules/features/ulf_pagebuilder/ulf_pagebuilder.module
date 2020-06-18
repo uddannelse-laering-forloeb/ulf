@@ -107,10 +107,10 @@ function theme_file_download_link($variables) {
 
   // Use the description as the link text if available.
   if (empty($file->description)) {
-    $link_text = t('Download @filename', ['@filename' => $file->filename]);
+    $link_text = t('@filename', ['@filename' => $file->filename]);
   }
   else {
-    $link_text = t('Download @filename', ['@filename' => $file->description]);
+    $link_text = t('@filename', ['@filename' => $file->description]);
     $options['attributes']['title'] = check_plain($file->filename);
   }
 
