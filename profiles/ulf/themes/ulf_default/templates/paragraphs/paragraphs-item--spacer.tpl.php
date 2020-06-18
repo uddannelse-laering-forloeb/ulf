@@ -27,4 +27,5 @@
  */
 ?>
 <div class="<?php print $classes; ?>"<?php print $attributes; ?>>
+  <div class="paragraphs-item-spacer--hr"></div>
 </div>
