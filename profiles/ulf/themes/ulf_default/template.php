@@ -469,7 +469,7 @@ function ulf_default_preprocess_field(&$variables) {
       }
     }
 
-      // Override rendering.
+    // Override rendering.
     $variables['items'] = $rendered_items;
 
   }
@@ -522,7 +522,7 @@ function ulf_default_preprocess_field(&$variables) {
   }
 
   if ($variables['element']['#field_name'] == 'field_paragraph_button') {
-    foreach($variables['items'] as $key => $item) {
+    foreach ($variables['items'] as $key => $item) {
       $variables['items'][$key]['#element']['attributes']['class'] = 'btn';
     }
   }
@@ -890,7 +890,7 @@ function _ulf_default_create_ranges($arr, $stringEnd, $separator = ' - ') {
       continue;
     }
 
-    if ($entry - 1 == $current) {
+    if ($entry-1 == $current) {
       $current = $currentEntry;
       continue;
     }
@@ -965,49 +965,60 @@ function ulf_default_preprocess_entity(&$variables) {
       case 'appetizer':
       case 'text_with_image':
         $button = $variables['paragraphs_item']->field_paragraph_button ?? NULL;
-        $show_button = $variables['paragraphs_item']->field_paragraph_show_cta ?? NULL;
+        $show_button = $variables['paragraphs_item']->field_paragraph_show_cta
+          ?? NULL;
 
-        if(!$show_button !== NULL) {
-          $variables['show_button'] = (bool) $show_button[LANGUAGE_NONE][0]['value'];
+        if (!$show_button !== NULL) {
+          $variables['show_button']
+            = (bool) $show_button[LANGUAGE_NONE][0]['value'];
         }
 
-        if($button) {
-          $link = array(
+        if ($button) {
+          $link = [
             '#theme' => 'link',
             '#text' => render($variables['content']['field_paragraph_image']),
-            '#path' =>  $button[LANGUAGE_NONE][0]['url'],
-            '#options' => array(
+            '#path' => $button[LANGUAGE_NONE][0]['url'],
+            '#options' => [
               'attributes' => $button[LANGUAGE_NONE][0]['attributes'],
               //REQUIRED:
               'html' => TRUE,
-            ),
-          );
+            ],
+          ];
           $variables['content']['field_paragraph_image'] = $link;
         }
         break;
       case 'text_with_video':
-        $variables['show_button'] = (bool) $variables['paragraphs_item']->field_paragraph_show_cta[LANGUAGE_NONE][0]['value'] ?? NULL;
+        $variables['show_button']
+          = (bool) $variables['paragraphs_item']->field_paragraph_show_cta[LANGUAGE_NONE][0]['value']
+          ?? NULL;
         break;
     }
 
     if (module_exists('color_field')) {
       $styles = [];
       // Add background color if exists
-      $paragraph_bg_color = $variables['paragraphs_item']->field_paragraph_bg_color ?? NULL;
-      $paragraph_border_color = $variables['paragraphs_item']->field_paragraph_border_color ?? NULL;
-      $paragraph_text_color = $variables['paragraphs_item']->field_paragraph_text_color ?? NULL;
+      $paragraph_bg_color
+        = $variables['paragraphs_item']->field_paragraph_bg_color ?? NULL;
+      $paragraph_border_color
+        = $variables['paragraphs_item']->field_paragraph_border_color ?? NULL;
+      $paragraph_text_color
+        = $variables['paragraphs_item']->field_paragraph_text_color ?? NULL;
       if (!empty($paragraph_bg_color) || !empty($paragraph_border_color)) {
-        $background_color = $paragraph_bg_color[LANGUAGE_NONE][0]['rgb'] ?? NULL;
-        $border_color = $paragraph_border_color[LANGUAGE_NONE][0]['rgb'] ?? NULL;
-        $text_color = $paragraph_text_color[LANGUAGE_NONE][0]['rgb']  ?? NULL;
+        $background_color = $paragraph_bg_color[LANGUAGE_NONE][0]['rgb'] ??
+          NULL;
+        $border_color = $paragraph_border_color[LANGUAGE_NONE][0]['rgb'] ??
+          NULL;
+        $text_color = $paragraph_text_color[LANGUAGE_NONE][0]['rgb'] ?? NULL;
         if (!empty($background_color)) {
           $styles[] = 'background-color:' . $background_color;
-          $variables['classes_array'][] = 'paragraphs-item-' . str_replace('_','-', $bundle) . '--has-background';
+          $variables['classes_array'][] = 'paragraphs-item-'
+            . str_replace('_', '-', $bundle) . '--has-background';
         }
 
         if (!empty($border_color)) {
           $styles[] = 'border-color:' . $border_color;
-          $variables['classes_array'][] = 'paragraphs-item-' . str_replace('_','-', $bundle) . '--has-border';
+          $variables['classes_array'][] = 'paragraphs-item-'
+            . str_replace('_', '-', $bundle) . '--has-border';
         }
 
         if (!empty($text_color)) {
@@ -1015,11 +1026,13 @@ function ulf_default_preprocess_entity(&$variables) {
 
           switch ($text_color) {
             case '#FFFFFF':
-              $variables['classes_array'][] = 'paragraphs-item--text-color__negative';
+              $variables['classes_array'][]
+                = 'paragraphs-item--text-color__negative';
               break;
           }
 
-          $variables['classes_array'][] = 'paragraphs-item-' . str_replace('_','-', $bundle) . '--has-text-color';
+          $variables['classes_array'][] = 'paragraphs-item-'
+            . str_replace('_', '-', $bundle) . '--has-text-color';
         }
       }
 
@@ -1028,10 +1041,14 @@ function ulf_default_preprocess_entity(&$variables) {
       }
     }
 
-    $paragraph_alignment = $variables['paragraphs_item']->field_paragraph_alignment ?? NULL;
+    $paragraph_alignment
+      = $variables['paragraphs_item']->field_paragraph_alignment ?? NULL;
 
-    if ($paragraph_alignment !== NULL && isset($paragraph_alignment[LANGUAGE_NONE])) {
-      $variables['classes_array'][] = 'paragraphs-item--alignment-' . $paragraph_alignment[LANGUAGE_NONE][0]['value'];
+    if ($paragraph_alignment !== NULL
+      && isset($paragraph_alignment[LANGUAGE_NONE])
+    ) {
+      $variables['classes_array'][] = 'paragraphs-item--alignment-'
+        . $paragraph_alignment[LANGUAGE_NONE][0]['value'];
     }
   }
 }
@@ -1041,6 +1058,7 @@ function ulf_default_file_icon($variables) {
   $icon_directory = drupal_get_path('theme', 'ulf_default') . '/icons';
   $mime = check_plain($file->filemime);
   $icon_url = file_icon_url($file, $icon_directory);
-  return '<img class="file-icon" alt="" title="' . $mime . '" src="' . $icon_url . '" />';
+  return '<img class="file-icon" alt="" title="' . $mime . '" src="' . $icon_url
+    . '" />';
 }
 
