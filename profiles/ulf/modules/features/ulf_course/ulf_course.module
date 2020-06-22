@@ -5,3 +5,16 @@
  */
 
 include_once 'ulf_course.features.inc';
+
+
+/**
+ * Remove unpublish date when cloning
+ *
+ * @param $data
+ * @param $context
+ */
+function ulf_course_clone_node_alter(&$data, $context) {
+  if($context['original_node']->type === 'course' || $context['original_node']->type === 'course-educators') {
+    $data->unpublish_on = 0;
+  }
+}
