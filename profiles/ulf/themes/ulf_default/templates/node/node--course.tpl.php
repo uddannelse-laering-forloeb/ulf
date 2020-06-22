@@ -193,9 +193,9 @@
               </div>
             <?php endif;?>
           <?php endif;?>
-          <div class="block--pdf">
-            <a class="block--pdf-link" target="_blank" href="/printpdf/<?php print $node->nid; ?>"><?php print t('Save this offer as pdf'); ?></a>
-          </div>
+<!--          <div class="block--pdf">-->
+<!--            <a class="block--pdf-link" target="_blank" href="/printpdf/--><?php //print $node->nid; ?><!--">--><?php //print t('Save this offer as pdf'); ?><!--</a>-->
+<!--          </div>-->
         </div>
         <div class="content--meta">
           <div class="block--light">
