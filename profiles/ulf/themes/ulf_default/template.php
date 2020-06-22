@@ -965,12 +965,10 @@ function ulf_default_preprocess_entity(&$variables) {
       case 'appetizer':
       case 'text_with_image':
         $button = $variables['paragraphs_item']->field_paragraph_button ?? NULL;
-        $show_button = $variables['paragraphs_item']->field_paragraph_show_cta
-          ?? NULL;
+        $show_button = $variables['paragraphs_item']->field_paragraph_show_cta ?? NULL;
 
         if (!$show_button !== NULL) {
-          $variables['show_button']
-            = (bool) $show_button[LANGUAGE_NONE][0]['value'];
+          $variables['show_button'] = (bool) ($show_button[LANGUAGE_NONE][0]['value'] ?? NULL);
         }
 
         if ($button) {
@@ -989,8 +987,8 @@ function ulf_default_preprocess_entity(&$variables) {
         break;
       case 'text_with_video':
         $variables['show_button']
-          = (bool) $variables['paragraphs_item']->field_paragraph_show_cta[LANGUAGE_NONE][0]['value']
-          ?? NULL;
+          = (bool) ($variables['paragraphs_item']->field_paragraph_show_cta[LANGUAGE_NONE][0]['value']
+          ?? NULL);
         break;
     }
 
