@@ -25,6 +25,7 @@ function video_embed_field_video_embed_handler_info() {
     'domains' => array(
       'youtube.com',
       'youtu.be',
+      'youtube-nocookie.com',
     ),
     'defaults' => array(
       'width' => 640,
@@ -39,6 +40,7 @@ function video_embed_field_video_embed_handler_info() {
       'theme' => 'dark',
       'iv_load_policy' => 1,
       'class' => '',
+      'privacy' => 0,
     ),
   );
 
@@ -197,7 +199,12 @@ function video_embed_field_handle_youtube($url, $settings) {
   $settings['wmode'] = 'opaque';
   $settings_str = urlencode(_video_embed_code_get_settings_str($settings));
 
-  $output['#markup'] = '<iframe class="' . check_plain($class) . '" width="' . check_plain($settings['width']) . '" height="' . check_plain($settings['height']) . '" src="//www.youtube.com/embed/' . $id . '?' . $settings_str . '" frameborder="0" allowfullscreen></iframe>';
+  // Check if privacy mode is enabled.
+  if($settings['privacy'] == 1) {
+    $output['#markup'] = '<iframe class="' . check_plain($class) . '" width="' . check_plain($settings['width']) . '" height="' . check_plain($settings['height']) . '" src="//www.youtube-nocookie.com/embed/' . $id . '?' . $settings_str . '" frameborder="0" allowfullscreen></iframe>';
+  } else {
+    $output['#markup'] = '<iframe class="' . check_plain($class) . '" width="' . check_plain($settings['width']) . '" height="' . check_plain($settings['height']) . '" src="//www.youtube.com/embed/' . $id . '?' . $settings_str . '" frameborder="0" allowfullscreen></iframe>';
+  }
 
   return $output;
 }
@@ -425,6 +432,13 @@ function video_embed_field_handler_youtube_form($defaults) {
     '#title' => t('Player CSS class'),
     '#description' => t('CSS class to add to the player'),
     '#default_value' => $defaults['class'],
+  );
+
+  $form['privacy'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Privacy-enhanced mode'),
+    '#description' => t('Enable privacy enhanced mode so YouTube won\'t set cookies until after a video is started.'),
+    '#default_value' => $defaults['privacy'],
   );
 
   return $form;
