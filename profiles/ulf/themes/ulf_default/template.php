@@ -829,7 +829,7 @@ function ulf_default_views_post_render(&$view, &$output, &$cache) {
           = $result->_entity_properties['field_target_group_sub_tid:entity object']->name;
 
         if (preg_match('/.{1,2} år/', $name)) {
-          $years[] = str_replace('. år', '', $name);
+          $years[] = str_replace(' år', '', $name);
         }
         else {
           if (preg_match('/.{1,2}\. klasse/', $name)) {
