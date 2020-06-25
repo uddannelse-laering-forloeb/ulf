@@ -27,5 +27,7 @@
  */
 ?>
 <div class="<?php print $classes; ?>"<?php print $attributes; ?>>
-  <div class="paragraphs-item-spacer--hr"></div>
+  <?php if ($field_paragraph_hr[0]['value']) : ?>
+    <div class="paragraphs-item-spacer--hr"></div>
+  <?php endif; ?>
 </div>

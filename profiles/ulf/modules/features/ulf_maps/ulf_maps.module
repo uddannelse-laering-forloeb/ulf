@@ -41,7 +41,7 @@ function ulf_maps_form_alter(&$form, &$form_state, $form_id) {
       $form['#attached']['js'][] = drupal_get_path('module', 'ulf_maps') . '/js/ulf_maps.admin.js';
       $form['#attached']['css'][] = drupal_get_path('module', 'ulf_maps') . '/css/ulf_maps.admin.css';
 
-      // Load provider information and save it in Drupal settings, so it's
+      // Load provider information and save it in Drupal settings, so
       // available for JS during form editing.
       if (!empty($form['uid']['#value'])) {
         $author = user_load($form['uid']['#value']);
