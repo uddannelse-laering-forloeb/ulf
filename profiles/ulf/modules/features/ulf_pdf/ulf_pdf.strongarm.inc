@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * ulf_pdf.strongarm.inc
@@ -237,6 +238,20 @@ function ulf_pdf_strongarm() {
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
+  $strongarm->name = 'print_pdf_dompdf_font_subsetting';
+  $strongarm->value = 1;
+  $export['print_pdf_dompdf_font_subsetting'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'print_pdf_dompdf_unicode';
+  $strongarm->value = 1;
+  $export['print_pdf_dompdf_unicode'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
   $strongarm->name = 'print_pdf_filename';
   $strongarm->value = '[site:name] - [node:title] - [node:changed:custom:Y-m-d]';
   $export['print_pdf_filename'] = $strongarm;
@@ -294,7 +309,7 @@ function ulf_pdf_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'print_pdf_pdf_tool';
-  $strongarm->value = 'print_pdf_wkhtmltopdf|profiles/ulf/modules/contrib/print/lib/wkhtmltopdf';
+  $strongarm->value = 'print_pdf_dompdf|profiles/ulf/libraries/dompdf/src/Dompdf.php';
   $export['print_pdf_pdf_tool'] = $strongarm;
 
   $strongarm = new stdClass();
