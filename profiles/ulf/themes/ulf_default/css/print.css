@@ -107,15 +107,13 @@ a {
 }
 
 .content--main {
-    float: left;
     position: relative;
-    width: 50%;
+    width: 100%;
 }
 
 .content--meta {
-    float: right;
     position: relative;
-    width: 45%;
+    width: 100%;
 }
 
 
@@ -135,6 +133,7 @@ a {
     display: block;
     margin-bottom: 10px;
     padding: 20px;
+    page-break-inside: avoid;
 }
 
 .block--dark {
@@ -143,6 +142,7 @@ a {
     display: block;
     margin-bottom: 20px;
     padding: 20px;
+    page-break-inside: avoid;
 }
 
 .block--dark .is-full-width {
@@ -174,13 +174,11 @@ a {
 }
 
 .is-inline .block--field-label {
-    float: left;
-    width: 50%;
+    width: 100%;
 }
 
 .is-inline .block--field-text {
-    float: left;
-    width: 50%;
+    width: 100%;
 }
 
 .block--field-text {

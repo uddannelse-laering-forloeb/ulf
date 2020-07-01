@@ -103,7 +103,7 @@ function print_pdf_dompdf_print_pdf_generate($html, $meta, $paper_size = NULL, $
 
   $protocol = $url_array['scheme'] . '://';
   $host = $url_array['host'];
-  $path = dirname($url_array['path']) . '/';
+  $path = realpath('./');
 
   $dompdf->set_base_path($path);
   $dompdf->set_host($host);
