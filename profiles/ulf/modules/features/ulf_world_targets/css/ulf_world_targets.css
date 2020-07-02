@@ -1,0 +1,14 @@
+.world-targets {
+  display: flex;
+  padding: 0 11px 8px 11px;
+  justify-content: left;
+}
+
+.world-target {
+  max-width: 22%;
+  margin: 0 5px;
+}
+
+.world-target a:hover {
+  opacity: .6;
+}

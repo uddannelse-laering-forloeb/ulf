@@ -267,6 +267,13 @@
                 </div>
               <?php endif; ?>
             </div>
+
+            <?php if (module_exists('ulf_world_targets') && isset($world_targets)) : ?>
+              <div class="block--field-wrapper">
+                <?php print $world_targets; ?>
+              </div>
+            <?php endif;?>
+
           </div>
           <?php if (module_exists('transportpulje_form') && $group_type != 'ungdomsuddannelse') : ?>
             <?php if (!empty($field_tpf_exclude)) : ?>

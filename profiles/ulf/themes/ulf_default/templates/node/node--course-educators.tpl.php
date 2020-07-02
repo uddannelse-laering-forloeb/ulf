@@ -258,6 +258,11 @@
                 </div>
               <?php endif;?>
             </div>
+              <?php if (module_exists('ulf_world_targets') && isset($world_targets)) : ?>
+                <div class="block--field-wrapper">
+                  <?php print $world_targets; ?>
+                </div>
+              <?php endif;?>
           </div>
           <div class="block--dark">
             <h2 class="block--header">

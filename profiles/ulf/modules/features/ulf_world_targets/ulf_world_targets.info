@@ -1,0 +1,17 @@
+name = Ulf World targets
+description = Adding ability to add UN Worlds targets to courses and courses for educators
+core = 7.x
+package = Ulf Addons
+version = 7.x-1.0
+dependencies[] = features
+dependencies[] = field_group
+dependencies[] = list
+dependencies[] = options
+dependencies[] = ulf_course
+dependencies[] = ulf_course_educators
+features[features_api][] = api:2
+features[field_base][] = field_world_targets
+features[field_group][] = group_world_targets|node|course_educators|form
+features[field_group][] = group_world_targets|node|course|form
+features[field_instance][] = node-course-field_world_targets
+features[field_instance][] = node-course_educators-field_world_targets
