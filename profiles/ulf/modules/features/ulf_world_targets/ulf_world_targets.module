@@ -2,8 +2,10 @@
 
 /**
  * @file
- * Drupal needs this blank file.
+ * Code for the Ulf World targets feature.
  */
+
+include_once 'ulf_world_targets.features.inc';
 
 function ulf_world_targets_theme($existing, $type, $theme, $path) {
   $module_path = drupal_get_path('module', 'ulf_world_targets');
