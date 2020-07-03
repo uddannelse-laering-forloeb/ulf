@@ -62,7 +62,8 @@ a {
 .print-hr,
 .print-site_name,
 .print-breadcrumb,
-.block--pdf {
+.block--pdf,
+.pretix-widget-wrapper {
     display: none;
 }
 
@@ -79,25 +80,25 @@ a {
     width: 100%;
 }
 
-.field--image img{
-    border-bottom: 5px solid #17858c;
-}
+/*.field--image img{*/
+/*    border-bottom: 0;*/
+/*}*/
 
-.is-dagtilbud  .field--image img{
-    border-bottom: 5px solid #a4da20;
-}
+/*.is-dagtilbud  .field--image img{*/
+/*    border-bottom: 5px solid #a4da20;*/
+/*}*/
 
-.is-grundskole .field--image img {
-    border-bottom: 5px solid #901d7c;
-}
+/*.is-grundskole .field--image img {*/
+/*    border-bottom: 5px solid #901d7c;*/
+/*}*/
 
-.is-ungdomsuddannelse .field--image img {
-    border-bottom: 5px solid #ff6800;
-}
+/*.is-ungdomsuddannelse .field--image img {*/
+/*    border-bottom: 5px solid #ff6800;*/
+/*}*/
 
-.is-course .field--image img {
-    border-bottom: 5px solid #edd71c;
-}
+/*.is-course .field--image img {*/
+/*    border-bottom: 5px solid #edd71c;*/
+/*}*/
 
 
 .field--title {
@@ -224,4 +225,30 @@ a {
 
 .field--collection-description {
     font-weight: bold;
+}
+
+/**
+ * World targets
+ */
+
+
+.world-targets {
+  display: block;
+  padding: 0;
+
+}
+
+.world-target {
+  display: inline-block;
+  width: 25px;
+  height: auto;
+  background-color: red;
+}
+
+.world-target a {
+  display: none;
+}
+
+.block--wrapper {
+  page-break-inside: avoid;
 }
