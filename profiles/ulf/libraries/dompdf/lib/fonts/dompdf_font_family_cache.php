@@ -78,7 +78,7 @@
     'normal' => $fontDir . '/DejaVuSerif',
   ),
   'asap' => array(
-    'normal' => $fontDir . '/asap-normal_c6e746e19d6863b7cdd59572ed47915c',
+    'normal' => $fontDir . '/asap-normal_1819de67dd529d50806339cd4d150a50',
     'bold' => $fontDir . '/asap-bold_f092b7de663081255447adf60b6c4bff',
     'italic' => $fontDir . '/asap-italic_1fea536deeda6f3dc6306cf7c3b73a2a',
   ),

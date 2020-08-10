@@ -3,6 +3,7 @@ description = Enabled  pagebuilder
 core = 7.x
 package = Ulf Addons
 version = 7.x-1.0
+dependencies[] = advanced_link
 dependencies[] = color_field
 dependencies[] = ctools
 dependencies[] = features

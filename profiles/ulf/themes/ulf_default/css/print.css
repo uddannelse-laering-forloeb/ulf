@@ -231,7 +231,6 @@ a {
  * World targets
  */
 
-
 .world-targets {
   display: block;
   padding: 0;
@@ -246,8 +245,4 @@ a {
 
 .world-target a {
   display: none;
-}
-
-.block--wrapper {
-  page-break-inside: avoid;
 }
