@@ -203,7 +203,7 @@ function ulf_pretix_form_alter(&$form, &$form_state, $form_id) {
         ':input[name="field_pretix_enable['.LANGUAGE_NONE.']"]' => ['checked' => FALSE],
       ],
     ];
-    $fields = ['field_pretix_show_widget_from'];
+    $fields = ['field_pretix_show_widget_from', 'field_pretix_event_url'];
     foreach ($fields as $field) {
       $form[$field]['#states'] = $not_visible_if_pretix_enabled;
     }
