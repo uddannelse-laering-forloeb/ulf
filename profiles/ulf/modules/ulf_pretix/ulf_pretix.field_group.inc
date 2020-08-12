@@ -60,10 +60,11 @@ function ulf_pretix_field_group_info() {
     'children' => array(
       0 => 'field_pretix_date',
       1 => 'field_pretix_email_recipient',
-      2 => 'field_pretix_synchronize',
+      2 => 'field_pretix_enable',
       3 => 'field_pretix_show_widget_from',
-      4 => 'field_pretix_enable',
+      4 => 'field_pretix_synchronize',
       5 => 'field_pretix_widget',
+      6 => 'field_pretix_event_url',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
