@@ -46,8 +46,8 @@ function advanced_link_autocomplete_access() {
 }
 
 /**
- * Menu callback for autocomplete. 
- * 
+ * Menu callback for autocomplete.
+ *
  * Example: start/string/that/we/search/for.
  */
 function advanced_link_autocomplete() {
@@ -66,7 +66,7 @@ function advanced_link_autocomplete() {
 /**
  * Filtering pathes and aliases before fetching.
  */
-function advanced_link_autocomplete_url_filter_conditions($urls_filter, $query, $collumn) {
+function advanced_link_autocomplete_url_filter_conditions($urls_filter, $urls_excluded, $query, $collumn) {
 
   if ($urls_filter) {
     $urls_filter = str_replace("*", "%", $urls_filter);
@@ -78,13 +78,21 @@ function advanced_link_autocomplete_url_filter_conditions($urls_filter, $query, 
       $or->condition($collumn, $filter, 'LIKE');
     }
     $query->condition($or);
-
-    return $query;
   }
 
-  else {
-    return $query;
+  if ($urls_excluded) {
+    $urls_excluded = str_replace("*", "%", $urls_excluded);
+    $excludes = explode("\n", $urls_excluded);
+    foreach ($excludes as $exclude) {
+      $exclude = trim($exclude);
+      $query->condition($collumn, $exclude, 'NOT LIKE');
+    }
   }
+
+  // Also exclude wildcard path definitions.
+  $query->condition($collumn, "%\\%%", 'NOT LIKE');
+
+  return $query;
 }
 
 /**
@@ -96,6 +104,7 @@ function advanced_link_url_load($field_name, $bundle, $string = NULL) {
   $instance = field_read_instances(array('field_name' => $field_name, 'bundle' => $bundle), array());
   $search_type = $instance[0]['widget']['settings']['urls_search'];
   $urls_filter = (isset($instance[0]['widget']['settings']['urls_filter'])) ? trim($instance[0]['widget']['settings']['urls_filter']) : NULL;
+  $urls_excluded = (isset($instance[0]['widget']['settings']['urls_excluded'])) ? trim($instance[0]['widget']['settings']['urls_excluded']) : NULL;
 
   if ($search_type == ADVANCED_LINK_SEARCH_CONTAINS) {
     // Search for urls that contain our string.
@@ -128,7 +137,7 @@ function advanced_link_url_load($field_name, $bundle, $string = NULL) {
       ->range(0, 20)
       ->orderBy('mr.path', 'ASC');
 
-    $query = advanced_link_autocomplete_url_filter_conditions($urls_filter, $query, 'mr.path');
+    $query = advanced_link_autocomplete_url_filter_conditions($urls_filter, $urls_excluded, $query, 'mr.path');
 
     $result = $query->execute()->fetchAll();
 
@@ -142,14 +151,14 @@ function advanced_link_url_load($field_name, $bundle, $string = NULL) {
       ->range(0, 20 - count($urls_list))
       ->orderBy('ua.alias', 'ASC');
 
-    $query = advanced_link_autocomplete_url_filter_conditions($urls_filter, $query, 'ua.alias');
+    $query = advanced_link_autocomplete_url_filter_conditions($urls_filter, $urls_excluded, $query, 'ua.alias');
 
     $result = $query->execute()->fetchAll();
 
     foreach ($result as $record) {
       $urls_list_menu[$record->alias] = $record->alias;
     }
-    
+
     return $urls_list + $urls_list_menu;
   }
   else {
@@ -196,6 +205,14 @@ function advanced_link_field_widget_settings_form($field, $instance) {
     '#default_value' => isset($settings['urls_filter']) ? $settings['urls_filter'] : '',
     '#description' => t('Enter the list of allowed urls separated by new line.<br />Leave empty to allow user input any urls.<br />The "*" character is a wildcard.<br />Example paths: blog for the <em>blog</em> page, blog/* for every personal blog, facebook.com/* for any page on Facebook site.'),
   );
+  $admin_paths = path_get_admin_paths();
+  $form['urls_excluded'] = array(
+    "#weight" => -9,
+    '#type' => 'textarea',
+    '#title' => t('URLs to exclude'),
+    '#default_value' => isset($settings['urls_excluded']) ? $settings['urls_excluded'] : $admin_paths['admin'],
+    '#description' => t('Enter the list of excluded urls separated by new line.<br />Leave empty to allow user input any urls.<br />The "*" character is a wildcard.<br />Example paths: blog for the <em>blog</em> page, blog/* for every personal blog, facebook.com/* for any page on Facebook site.'),
+  );
   $form['default_titles'] = array(
     "#weight" => -9,
     '#type' => 'textarea',
@@ -228,6 +245,7 @@ function advanced_link_field_widget_form(&$form, &$form_state, $field, $instance
         'settings' => array(
           'urls_allowed' => isset($instance['widget']['settings']['urls_allowed']) ? $instance['widget']['settings']['urls_allowed'] : ADVANCED_LINK_BOTH,
           'urls_filter' => isset($instance['widget']['settings']['urls_filter']) ? $instance['widget']['settings']['urls_filter'] : '',
+          'urls_excluded' => isset($instance['widget']['settings']['urls_excluded']) ? $instance['widget']['settings']['urls_excluded'] : '',
           'default_titles' => isset($instance['widget']['settings']['default_titles']) ? $instance['widget']['settings']['default_titles'] : '',
           'urls_search' => isset($instance['widget']['settings']['urls_search']) ? $instance['widget']['settings']['urls_search'] : ADVANCED_LINK_SEARCH_START,
         ),
@@ -272,6 +290,7 @@ function advanced_link_field_process($element, $form_state, $complete_form) {
   $element['url']['#element_validate'] = array('advanced_link_widget_url_validate');
   $element['url']['#field']['widget']['urls_allowed'] = $urls_allowed;
   $element['url']['#field']['widget']['urls_filter'] = $element['#field']['widget']['settings']['urls_filter'];
+  $element['url']['#field']['widget']['urls_excluded'] = $element['#field']['widget']['settings']['urls_excluded'];
 
   return $element;
 }
@@ -294,6 +313,7 @@ function advanced_link_extract_allowed_values($values) {
 function advanced_link_widget_url_validate($element, &$form_state) {
   $urls_allowed = (isset($element['#field']['widget']['urls_allowed'])) ? $element['#field']['widget']['urls_allowed'] : ADVANCED_LINK_BOTH;
   $urls_filter = (isset($element['#field']['widget']['urls_filter'])) ? trim($element['#field']['widget']['urls_filter']) : NULL;
+  $urls_excluded = (isset($element['#field']['widget']['urls_excluded'])) ? trim($element['#field']['widget']['urls_excluded']) : NULL;
   $url = $element['#value'];
 
   if ($url) {
@@ -308,6 +328,13 @@ function advanced_link_widget_url_validate($element, &$form_state) {
     if ($urls_filter) {
       $match = drupal_match_path($url, $urls_filter);
       if (!$match) {
+        form_set_error(implode('][', $element['#parents']), t("You can't use such URLs."));
+      }
+    }
+    // Check URL exclusion patterns.
+    if ($urls_excluded) {
+      $excluded = drupal_match_path($url, $urls_excluded);
+      if ($excluded) {
         form_set_error(implode('][', $element['#parents']), t("You can't use such URLs."));
       }
     }
