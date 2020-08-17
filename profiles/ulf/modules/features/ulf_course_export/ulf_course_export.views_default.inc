@@ -310,6 +310,8 @@ function ulf_course_export_views_default_views() {
   $handler->display->display_options['fields']['field_collection_price']['id'] = 'field_collection_price';
   $handler->display->display_options['fields']['field_collection_price']['table'] = 'field_data_field_collection_price';
   $handler->display->display_options['fields']['field_collection_price']['field'] = 'field_collection_price';
+  $handler->display->display_options['fields']['field_collection_price']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_collection_price']['alter']['text'] = '<?php';
   $handler->display->display_options['fields']['field_collection_price']['type'] = 'field_collection_fields';
   $handler->display->display_options['fields']['field_collection_price']['settings'] = array(
     'view_mode' => 'full',
@@ -401,7 +403,8 @@ function ulf_course_export_views_default_views() {
 
   /* Display: Data export */
   $handler = $view->new_display('views_data_export', 'Data export', 'views_data_export_1');
-  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'views_data_export_csv';
   $handler->display->display_options['style_options']['provide_file'] = 0;
   $handler->display->display_options['style_options']['parent_sort'] = 0;
@@ -454,6 +457,7 @@ function ulf_course_export_views_default_views() {
     t('Beskrivelse til varighed'),
     t('[field_duration_unit] '),
     t('Pris'),
+    t('<?php'),
     t('Beskrivelse til pris'),
     t('Hele året'),
     t('Periode start'),
