@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * ulf_news.strongarm.inc
@@ -89,6 +90,20 @@ function ulf_news_strongarm() {
   $strongarm->name = 'language_content_type_news';
   $strongarm->value = '0';
   $export['language_content_type_news'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'maxlength_js_label_news';
+  $strongarm->value = 'Content limited to @limit characters, remaining: <strong>@remaining</strong>';
+  $export['maxlength_js_label_news'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'maxlength_js_news';
+  $strongarm->value = '45';
+  $export['maxlength_js_news'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */

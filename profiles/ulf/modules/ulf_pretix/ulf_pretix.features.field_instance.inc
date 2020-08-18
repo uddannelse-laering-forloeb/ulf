@@ -178,6 +178,7 @@ function ulf_pretix_field_default_field_instances() {
         'label' => 'hidden',
         'module' => 'date',
         'settings' => array(
+          'custom_date_format' => '',
           'format_type' => 'long',
           'fromto' => 'both',
           'multiple_from' => '',
@@ -232,16 +233,8 @@ function ulf_pretix_field_default_field_instances() {
       ),
       'full' => array(
         'label' => 'above',
-        'module' => 'field_collection',
-        'settings' => array(
-          'add' => 'Tilføj',
-          'delete' => 'Slet',
-          'description' => TRUE,
-          'edit' => 'Redigér',
-          'translate' => 'Oversæt',
-          'view_mode' => 'full',
-        ),
-        'type' => 'field_collection_view',
+        'settings' => array(),
+        'type' => 'hidden',
         'weight' => 37,
       ),
       'teaser' => array(
@@ -263,7 +256,7 @@ function ulf_pretix_field_default_field_instances() {
       'module' => 'field_collection',
       'settings' => array(),
       'type' => 'field_collection_embed',
-      'weight' => 62,
+      'weight' => 63,
     ),
   );
 
@@ -284,7 +277,7 @@ function ulf_pretix_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 39,
+        'weight' => 42,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -306,7 +299,7 @@ function ulf_pretix_field_default_field_instances() {
       'module' => 'html5_tools',
       'settings' => array(),
       'type' => 'emailwidget',
-      'weight' => 63,
+      'weight' => 64,
     ),
   );
 
@@ -331,7 +324,7 @@ function ulf_pretix_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 41,
+        'weight' => 44,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -358,6 +351,50 @@ function ulf_pretix_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-course-field_pretix_event_url'.
+  $field_instances['node-course-field_pretix_event_url'] = array(
+    'bundle' => 'course',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 45,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_pretix_event_url',
+    'label' => 'Pretix event url',
+    'required' => 0,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'html5_tools',
+      'settings' => array(),
+      'type' => 'urlwidget',
+      'weight' => 62,
+    ),
+  );
+
   // Exported field_instance: 'node-course-field_pretix_show_widget_from'.
   $field_instances['node-course-field_pretix_show_widget_from'] = array(
     'bundle' => 'course',
@@ -375,7 +412,7 @@ function ulf_pretix_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 42,
+        'weight' => 45,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -425,7 +462,7 @@ function ulf_pretix_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 40,
+        'weight' => 43,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -473,7 +510,7 @@ function ulf_pretix_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 39,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -496,7 +533,7 @@ function ulf_pretix_field_default_field_instances() {
         'apply_chosen' => '',
       ),
       'type' => 'options_select',
-      'weight' => 64,
+      'weight' => 65,
     ),
   );
 
@@ -943,6 +980,7 @@ function ulf_pretix_field_default_field_instances() {
   t('Organizer short form');
   t('Pladser');
   t('Pretix Widget');
+  t('Pretix event url');
   t('Pris');
   t('Show pretix widget from another course.');
   t('Show widget from');

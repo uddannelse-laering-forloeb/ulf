@@ -335,9 +335,9 @@ function ulf_pagebuilder_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 0,
-      'module' => 'link',
+      'module' => 'advanced_link',
       'settings' => array(),
-      'type' => 'link_field',
+      'type' => 'advanced_link',
       'weight' => 5,
     ),
   );
@@ -1749,9 +1749,9 @@ function ulf_pagebuilder_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 0,
-      'module' => 'link',
+      'module' => 'advanced_link',
       'settings' => array(),
-      'type' => 'link_field',
+      'type' => 'advanced_link',
       'weight' => 4,
     ),
   );
@@ -1969,9 +1969,9 @@ function ulf_pagebuilder_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 0,
-      'module' => 'link',
+      'module' => 'advanced_link',
       'settings' => array(),
-      'type' => 'link_field',
+      'type' => 'advanced_link',
       'weight' => 5,
     ),
   );
@@ -2584,9 +2584,9 @@ function ulf_pagebuilder_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 0,
-      'module' => 'link',
+      'module' => 'advanced_link',
       'settings' => array(),
-      'type' => 'link_field',
+      'type' => 'advanced_link',
       'weight' => 5,
     ),
   );
@@ -3058,9 +3058,9 @@ function ulf_pagebuilder_field_default_field_instances() {
     ),
     'widget' => array(
       'active' => 0,
-      'module' => 'link',
+      'module' => 'advanced_link',
       'settings' => array(),
-      'type' => 'link_field',
+      'type' => 'advanced_link',
       'weight' => 5,
     ),
   );
@@ -3101,7 +3101,7 @@ function ulf_pagebuilder_field_default_field_instances() {
       'active' => 1,
       'module' => 'options',
       'settings' => array(
-        'display_label' => 0,
+        'display_label' => 1,
       ),
       'type' => 'options_onoff',
       'weight' => 6,

@@ -975,7 +975,7 @@ function ulf_default_preprocess_entity(&$variables) {
           $link = [
             '#theme' => 'link',
             '#text' => render($variables['content']['field_paragraph_image']),
-            '#path' => $button[LANGUAGE_NONE][0]['url'],
+            '#path' => $button[LANGUAGE_NONE][0]['url'] ?? NULL,
             '#options' => [
               'attributes' => $button[LANGUAGE_NONE][0]['attributes'],
               //REQUIRED:

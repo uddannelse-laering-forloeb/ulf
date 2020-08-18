@@ -62,7 +62,8 @@ a {
 .print-hr,
 .print-site_name,
 .print-breadcrumb,
-.block--pdf {
+.block--pdf,
+.pretix-widget-wrapper {
     display: none;
 }
 
@@ -79,25 +80,25 @@ a {
     width: 100%;
 }
 
-.field--image img{
-    border-bottom: 5px solid #17858c;
-}
+/*.field--image img{*/
+/*    border-bottom: 0;*/
+/*}*/
 
-.is-dagtilbud  .field--image img{
-    border-bottom: 5px solid #a4da20;
-}
+/*.is-dagtilbud  .field--image img{*/
+/*    border-bottom: 5px solid #a4da20;*/
+/*}*/
 
-.is-grundskole .field--image img {
-    border-bottom: 5px solid #901d7c;
-}
+/*.is-grundskole .field--image img {*/
+/*    border-bottom: 5px solid #901d7c;*/
+/*}*/
 
-.is-ungdomsuddannelse .field--image img {
-    border-bottom: 5px solid #ff6800;
-}
+/*.is-ungdomsuddannelse .field--image img {*/
+/*    border-bottom: 5px solid #ff6800;*/
+/*}*/
 
-.is-course .field--image img {
-    border-bottom: 5px solid #edd71c;
-}
+/*.is-course .field--image img {*/
+/*    border-bottom: 5px solid #edd71c;*/
+/*}*/
 
 
 .field--title {
@@ -107,15 +108,13 @@ a {
 }
 
 .content--main {
-    float: left;
     position: relative;
-    width: 50%;
+    width: 100%;
 }
 
 .content--meta {
-    float: right;
     position: relative;
-    width: 45%;
+    width: 100%;
 }
 
 
@@ -135,6 +134,7 @@ a {
     display: block;
     margin-bottom: 10px;
     padding: 20px;
+    page-break-inside: avoid;
 }
 
 .block--dark {
@@ -143,6 +143,7 @@ a {
     display: block;
     margin-bottom: 20px;
     padding: 20px;
+    page-break-inside: avoid;
 }
 
 .block--dark .is-full-width {
@@ -174,13 +175,11 @@ a {
 }
 
 .is-inline .block--field-label {
-    float: left;
-    width: 50%;
+    width: 100%;
 }
 
 .is-inline .block--field-text {
-    float: left;
-    width: 50%;
+    width: 100%;
 }
 
 .block--field-text {
@@ -226,4 +225,24 @@ a {
 
 .field--collection-description {
     font-weight: bold;
+}
+
+/**
+ * World targets
+ */
+
+.world-targets {
+  display: block;
+  padding: 0;
+
+}
+
+.world-target {
+  display: inline-block;
+  width: 25px;
+  height: auto;
+}
+
+.world-target a {
+  display: none;
 }

@@ -54,9 +54,9 @@
             <?php print render($user_profile['field_profile_entry']); ?>
             <?php print render($user_profile['field_video']); ?>
             <?php print render($user_profile['field_profile_contact']); ?>
-<!--            <div class="block--pdf">-->
-<!--              <a class="block--pdf-link" target="_blank" href="/printpdf/user/--><?php //print $elements['#account']->uid; ?><!--">--><?php //print t('Print this offer as pdf')?><!--</a>-->
-<!--            </div>-->
+            <div class="block--pdf">
+              <a class="block--pdf-link" target="_blank" href="/printpdf/user/<?php print $elements['#account']->uid; ?>"><?php print t('Print this offer as pdf')?></a>
+            </div>
           </div>
           <div class="content--meta">
             <?php if (isset($user_profile['field_profile_logo'])) :?>

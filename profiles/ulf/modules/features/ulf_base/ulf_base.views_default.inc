@@ -298,6 +298,7 @@ function ulf_base_views_default_views() {
   $handler->display->display_options['filters']['status_1']['table'] = 'users';
   $handler->display->display_options['filters']['status_1']['field'] = 'status';
   $handler->display->display_options['filters']['status_1']['value'] = 'All';
+  $handler->display->display_options['filters']['status_1']['group'] = 1;
   $handler->display->display_options['filters']['status_1']['exposed'] = TRUE;
   $handler->display->display_options['filters']['status_1']['expose']['operator_id'] = '';
   $handler->display->display_options['filters']['status_1']['expose']['label'] = 'Aktiv bruger?';
@@ -310,12 +311,26 @@ function ulf_base_views_default_views() {
     18 => 0,
     19 => 0,
   );
+  /* Filterkriterie: Bruger: Roller */
+  $handler->display->display_options['filters']['rid']['id'] = 'rid';
+  $handler->display->display_options['filters']['rid']['table'] = 'users_roles';
+  $handler->display->display_options['filters']['rid']['field'] = 'rid';
+  $handler->display->display_options['filters']['rid']['group'] = 1;
+  $handler->display->display_options['filters']['rid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['rid']['expose']['operator_id'] = 'rid_op';
+  $handler->display->display_options['filters']['rid']['expose']['label'] = 'Rolle';
+  $handler->display->display_options['filters']['rid']['expose']['operator'] = 'rid_op';
+  $handler->display->display_options['filters']['rid']['expose']['identifier'] = 'rid';
+  $handler->display->display_options['filters']['rid']['expose']['remember_roles'] = array(
+    2 => '2',
+  );
   /* Filterkriterie: Bruger: Bruger ID */
   $handler->display->display_options['filters']['uid_raw']['id'] = 'uid_raw';
   $handler->display->display_options['filters']['uid_raw']['table'] = 'users';
   $handler->display->display_options['filters']['uid_raw']['field'] = 'uid_raw';
   $handler->display->display_options['filters']['uid_raw']['operator'] = '!=';
   $handler->display->display_options['filters']['uid_raw']['value']['value'] = '0';
+  $handler->display->display_options['filters']['uid_raw']['group'] = 1;
 
   /* Display: User email list */
   $handler = $view->new_display('page', 'User email list', 'page');
@@ -361,6 +376,7 @@ function ulf_base_views_default_views() {
     t('E-mail'),
     t('Aktiv bruger?'),
     t('Er brugeren aktiv eller blokeret?'),
+    t('Rolle'),
     t('User email list'),
     t('User email export'),
   );

@@ -1,0 +1,38 @@
+<?php
+
+/**
+ * @file
+ * Code for the Ulf course export feature.
+ */
+
+include_once 'ulf_course_export.features.inc';
+
+
+function ulf_course_export_views_post_execute(&$view) {
+  if ($view->name == 'courses') {
+    foreach ($view->result as $result) {
+      // Replace all empty fields with the dash '-' character.
+      if (!empty($result->field_field_free)) {
+        if ($result->field_field_free[0]['rendered']['#markup'] == 1) {
+          $result->field_field_free[0]['rendered']['#markup'] = t('Yes');
+        }
+        else {
+          $result->field_field_free[0]['rendered']['#markup'] = t('No');
+        }
+      }
+
+      if (!empty($result->field_field_period_full_year)) {
+
+        if ($result->field_field_period_full_year[0]['rendered']['#markup'] === 'Hele året') {
+          $result->field_field_period_full_year[0]['rendered']['#markup'] = t('Yes');
+
+          $result->field_field_period[0]['rendered']['#markup'] = '';
+          $result->field_field_period_1[0]['rendered']['#markup'] = '';
+        }
+        else {
+          $result->field_field_period_full_year[0]['rendered']['#markup'] = t('No');
+        }
+      }
+    }
+  }
+}
