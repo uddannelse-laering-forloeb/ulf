@@ -16,7 +16,7 @@ function ulf_world_targets_field_default_field_instances() {
     'bundle' => 'course',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Du kan vælge 4 verdensmål.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -91,6 +91,7 @@ function ulf_world_targets_field_default_field_instances() {
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Du kan vælge 4 verdensmål.');
   t('Verdensmål');
 
   return $field_instances;
