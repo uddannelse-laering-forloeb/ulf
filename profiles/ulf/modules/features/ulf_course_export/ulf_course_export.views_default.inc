@@ -224,10 +224,8 @@ function ulf_course_export_views_default_views() {
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['alter']['trim_whitespace'] = TRUE;
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
-  $handler->display->display_options['fields']['title']['alter']['strip_tags'] = TRUE;
   /* Felt: Bruger: Navn */
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'users';
@@ -247,8 +245,7 @@ function ulf_course_export_views_default_views() {
   $handler->display->display_options['fields']['field_count_description']['id'] = 'field_count_description';
   $handler->display->display_options['fields']['field_count_description']['table'] = 'field_data_field_count_description';
   $handler->display->display_options['fields']['field_count_description']['field'] = 'field_count_description';
-  $handler->display->display_options['fields']['field_count_description']['alter']['trim_whitespace'] = TRUE;
-  $handler->display->display_options['fields']['field_count_description']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_count_description']['type'] = 'text_plain';
   /* Felt: Indhold: Emneområde */
   $handler->display->display_options['fields']['field_subject']['id'] = 'field_subject';
   $handler->display->display_options['fields']['field_subject']['table'] = 'field_data_field_subject';
@@ -277,7 +274,7 @@ function ulf_course_export_views_default_views() {
   $handler->display->display_options['fields']['field_subjects_youth']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_subjects_youth']['empty'] = '[field_subjects_primary_school] ';
   $handler->display->display_options['fields']['field_subjects_youth']['delta_offset'] = '0';
-  /* Felt: Indhold: Læreplanstemaer */
+  /* Felt: Indhold: Kurset er relevant for pædagoger, der arbejder med læreplanstemaerne */
   $handler->display->display_options['fields']['field_educational_goals']['id'] = 'field_educational_goals';
   $handler->display->display_options['fields']['field_educational_goals']['table'] = 'field_data_field_educational_goals';
   $handler->display->display_options['fields']['field_educational_goals']['field'] = 'field_educational_goals';
@@ -311,8 +308,10 @@ function ulf_course_export_views_default_views() {
   $handler->display->display_options['fields']['field_duration_description']['table'] = 'field_data_field_duration_description';
   $handler->display->display_options['fields']['field_duration_description']['field'] = 'field_duration_description';
   $handler->display->display_options['fields']['field_duration_description']['alter']['text'] = '[field_duration_unit] ';
-  $handler->display->display_options['fields']['field_duration_description']['alter']['trim_whitespace'] = TRUE;
-  $handler->display->display_options['fields']['field_duration_description']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_duration_description']['type'] = 'text_plain';
+  $handler->display->display_options['fields']['field_duration_description']['settings'] = array(
+    'trim_length' => '600',
+  );
   /* Felt: Indhold: Pris */
   $handler->display->display_options['fields']['field_collection_price']['id'] = 'field_collection_price';
   $handler->display->display_options['fields']['field_collection_price']['table'] = 'field_data_field_collection_price';
@@ -328,8 +327,7 @@ function ulf_course_export_views_default_views() {
   $handler->display->display_options['fields']['field_price_description']['id'] = 'field_price_description';
   $handler->display->display_options['fields']['field_price_description']['table'] = 'field_data_field_price_description';
   $handler->display->display_options['fields']['field_price_description']['field'] = 'field_price_description';
-  $handler->display->display_options['fields']['field_price_description']['alter']['trim_whitespace'] = TRUE;
-  $handler->display->display_options['fields']['field_price_description']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_price_description']['type'] = 'text_plain';
   /* Felt: Indhold: Hele året */
   $handler->display->display_options['fields']['field_period_full_year']['id'] = 'field_period_full_year';
   $handler->display->display_options['fields']['field_period_full_year']['table'] = 'field_data_field_period_full_year';
@@ -366,8 +364,7 @@ function ulf_course_export_views_default_views() {
   $handler->display->display_options['fields']['field_period_info']['id'] = 'field_period_info';
   $handler->display->display_options['fields']['field_period_info']['table'] = 'field_data_field_period_info';
   $handler->display->display_options['fields']['field_period_info']['field'] = 'field_period_info';
-  $handler->display->display_options['fields']['field_period_info']['alter']['trim_whitespace'] = TRUE;
-  $handler->display->display_options['fields']['field_period_info']['alter']['strip_tags'] = TRUE;
+  $handler->display->display_options['fields']['field_period_info']['type'] = 'text_plain';
   /* Felt: Felt: Video */
   $handler->display->display_options['fields']['field_video']['id'] = 'field_video';
   $handler->display->display_options['fields']['field_video']['table'] = 'field_data_field_video';
