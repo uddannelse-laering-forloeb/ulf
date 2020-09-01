@@ -955,8 +955,8 @@ function ulf_default_preprocess_entity(&$variables) {
 
         break;
       case 'spacer':
-        $space = $variables['field_paragraph_spacing'][0]['value'];
-        $hr = $variables['field_paragraph_hr'][0]['value'];
+        $space = $variables['field_paragraph_spacing'][0]['value'] ?? 'medium';
+        $hr = $variables['field_paragraph_hr'][0]['value'] ?? FALSE;
         $variables['classes_array'][] = 'paragraphs-item-spacer--' . $space;
 
         if ($hr) {
