@@ -30,3 +30,7 @@
 #autosave-status #operations a{
   color: #0074BD;
 }
+
+.feed-icon a {
+  margin-right: 5px;
+}
