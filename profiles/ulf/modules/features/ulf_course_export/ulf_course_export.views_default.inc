@@ -322,12 +322,11 @@ function ulf_course_export_views_default_views() {
   $handler->display->display_options['fields']['field_collection_price']['id'] = 'field_collection_price';
   $handler->display->display_options['fields']['field_collection_price']['table'] = 'field_data_field_collection_price';
   $handler->display->display_options['fields']['field_collection_price']['field'] = 'field_collection_price';
-  $handler->display->display_options['fields']['field_collection_price']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_collection_price']['alter']['text'] = '<?php';
   $handler->display->display_options['fields']['field_collection_price']['type'] = 'field_collection_fields';
   $handler->display->display_options['fields']['field_collection_price']['settings'] = array(
     'view_mode' => 'full',
   );
+  $handler->display->display_options['fields']['field_collection_price']['group_rows'] = FALSE;
   $handler->display->display_options['fields']['field_collection_price']['delta_offset'] = '0';
   /* Felt: Indhold: Beskrivelse til pris */
   $handler->display->display_options['fields']['field_price_description']['id'] = 'field_price_description';
@@ -526,8 +525,6 @@ function ulf_course_export_views_default_views() {
   $handler->display->display_options['fields']['field_collection_price']['id'] = 'field_collection_price';
   $handler->display->display_options['fields']['field_collection_price']['table'] = 'field_data_field_collection_price';
   $handler->display->display_options['fields']['field_collection_price']['field'] = 'field_collection_price';
-  $handler->display->display_options['fields']['field_collection_price']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_collection_price']['alter']['text'] = '<?php';
   $handler->display->display_options['fields']['field_collection_price']['type'] = 'field_collection_fields';
   $handler->display->display_options['fields']['field_collection_price']['settings'] = array(
     'view_mode' => 'full',
@@ -714,8 +711,6 @@ function ulf_course_export_views_default_views() {
   $handler->display->display_options['fields']['field_collection_price']['id'] = 'field_collection_price';
   $handler->display->display_options['fields']['field_collection_price']['table'] = 'field_data_field_collection_price';
   $handler->display->display_options['fields']['field_collection_price']['field'] = 'field_collection_price';
-  $handler->display->display_options['fields']['field_collection_price']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_collection_price']['alter']['text'] = '<?php';
   $handler->display->display_options['fields']['field_collection_price']['type'] = 'field_collection_fields';
   $handler->display->display_options['fields']['field_collection_price']['settings'] = array(
     'view_mode' => 'full',
@@ -821,7 +816,6 @@ function ulf_course_export_views_default_views() {
     t('Beskrivelse til varighed'),
     t('[field_duration_unit] '),
     t('Pris'),
-    t('<?php'),
     t('Beskrivelse til pris'),
     t('Hele året'),
     t('Periode start'),
