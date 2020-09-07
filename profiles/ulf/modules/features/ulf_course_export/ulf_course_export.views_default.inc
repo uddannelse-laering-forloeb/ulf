@@ -250,22 +250,26 @@ function ulf_course_export_views_default_views() {
   $handler->display->display_options['fields']['field_subject']['id'] = 'field_subject';
   $handler->display->display_options['fields']['field_subject']['table'] = 'field_data_field_subject';
   $handler->display->display_options['fields']['field_subject']['field'] = 'field_subject';
+  $handler->display->display_options['fields']['field_subject']['group_rows'] = FALSE;
   $handler->display->display_options['fields']['field_subject']['delta_offset'] = '0';
   /* Felt: Indhold: Forløbstype */
   $handler->display->display_options['fields']['field_offer_type']['id'] = 'field_offer_type';
   $handler->display->display_options['fields']['field_offer_type']['table'] = 'field_data_field_offer_type';
   $handler->display->display_options['fields']['field_offer_type']['field'] = 'field_offer_type';
+  $handler->display->display_options['fields']['field_offer_type']['group_rows'] = FALSE;
   $handler->display->display_options['fields']['field_offer_type']['delta_offset'] = '0';
   /* Felt: Indhold: Målgruppe */
   $handler->display->display_options['fields']['field_target_group_sub']['id'] = 'field_target_group_sub';
   $handler->display->display_options['fields']['field_target_group_sub']['table'] = 'field_data_field_target_group_sub';
   $handler->display->display_options['fields']['field_target_group_sub']['field'] = 'field_target_group_sub';
+  $handler->display->display_options['fields']['field_target_group_sub']['group_rows'] = FALSE;
   $handler->display->display_options['fields']['field_target_group_sub']['delta_offset'] = '0';
   /* Felt: Indhold: Fag */
   $handler->display->display_options['fields']['field_subjects_primary_school']['id'] = 'field_subjects_primary_school';
   $handler->display->display_options['fields']['field_subjects_primary_school']['table'] = 'field_data_field_subjects_primary_school';
   $handler->display->display_options['fields']['field_subjects_primary_school']['field'] = 'field_subjects_primary_school';
   $handler->display->display_options['fields']['field_subjects_primary_school']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_subjects_primary_school']['group_rows'] = FALSE;
   $handler->display->display_options['fields']['field_subjects_primary_school']['delta_offset'] = '0';
   /* Felt: Indhold: Fag */
   $handler->display->display_options['fields']['field_subjects_youth']['id'] = 'field_subjects_youth';
@@ -273,6 +277,7 @@ function ulf_course_export_views_default_views() {
   $handler->display->display_options['fields']['field_subjects_youth']['field'] = 'field_subjects_youth';
   $handler->display->display_options['fields']['field_subjects_youth']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_subjects_youth']['empty'] = '[field_subjects_primary_school] ';
+  $handler->display->display_options['fields']['field_subjects_youth']['group_rows'] = FALSE;
   $handler->display->display_options['fields']['field_subjects_youth']['delta_offset'] = '0';
   /* Felt: Indhold: Kurset er relevant for pædagoger, der arbejder med læreplanstemaerne */
   $handler->display->display_options['fields']['field_educational_goals']['id'] = 'field_educational_goals';
@@ -280,6 +285,7 @@ function ulf_course_export_views_default_views() {
   $handler->display->display_options['fields']['field_educational_goals']['field'] = 'field_educational_goals';
   $handler->display->display_options['fields']['field_educational_goals']['label'] = 'Læreplanstemaer/fag';
   $handler->display->display_options['fields']['field_educational_goals']['empty'] = '[field_subjects_youth]';
+  $handler->display->display_options['fields']['field_educational_goals']['group_rows'] = FALSE;
   $handler->display->display_options['fields']['field_educational_goals']['delta_offset'] = '0';
   /* Felt: Indhold: Gratis */
   $handler->display->display_options['fields']['field_free']['id'] = 'field_free';
@@ -316,12 +322,11 @@ function ulf_course_export_views_default_views() {
   $handler->display->display_options['fields']['field_collection_price']['id'] = 'field_collection_price';
   $handler->display->display_options['fields']['field_collection_price']['table'] = 'field_data_field_collection_price';
   $handler->display->display_options['fields']['field_collection_price']['field'] = 'field_collection_price';
-  $handler->display->display_options['fields']['field_collection_price']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_collection_price']['alter']['text'] = '<?php';
   $handler->display->display_options['fields']['field_collection_price']['type'] = 'field_collection_fields';
   $handler->display->display_options['fields']['field_collection_price']['settings'] = array(
     'view_mode' => 'full',
   );
+  $handler->display->display_options['fields']['field_collection_price']['group_rows'] = FALSE;
   $handler->display->display_options['fields']['field_collection_price']['delta_offset'] = '0';
   /* Felt: Indhold: Beskrivelse til pris */
   $handler->display->display_options['fields']['field_price_description']['id'] = 'field_price_description';
@@ -409,8 +414,8 @@ function ulf_course_export_views_default_views() {
   $handler->display->display_options['menu']['context'] = 0;
   $handler->display->display_options['menu']['context_only_inline'] = 0;
 
-  /* Display: Data export */
-  $handler = $view->new_display('views_data_export', 'Data export', 'views_data_export_1');
+  /* Display: Grouped data export */
+  $handler = $view->new_display('views_data_export', 'Grouped data export', 'views_data_export_1');
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'views_data_export_csv';
@@ -423,6 +428,352 @@ function ulf_course_export_views_default_views() {
   $handler->display->display_options['style_options']['newline_token'] = '1';
   $handler->display->display_options['style_options']['header'] = 1;
   $handler->display->display_options['style_options']['keep_html'] = 0;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Felt: Indhold: Titel */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Felt: Bruger: Navn */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'users';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['relationship'] = 'uid';
+  $handler->display->display_options['fields']['name']['label'] = 'Udbyder';
+  $handler->display->display_options['fields']['name']['link_to_user'] = FALSE;
+  /* Felt: Indhold: Overordnet målgruppe */
+  $handler->display->display_options['fields']['field_target_group']['id'] = 'field_target_group';
+  $handler->display->display_options['fields']['field_target_group']['table'] = 'field_data_field_target_group';
+  $handler->display->display_options['fields']['field_target_group']['field'] = 'field_target_group';
+  /* Felt: Indhold: Antal */
+  $handler->display->display_options['fields']['field_count']['id'] = 'field_count';
+  $handler->display->display_options['fields']['field_count']['table'] = 'field_data_field_count';
+  $handler->display->display_options['fields']['field_count']['field'] = 'field_count';
+  /* Felt: Indhold: Beskrivelse til antal */
+  $handler->display->display_options['fields']['field_count_description']['id'] = 'field_count_description';
+  $handler->display->display_options['fields']['field_count_description']['table'] = 'field_data_field_count_description';
+  $handler->display->display_options['fields']['field_count_description']['field'] = 'field_count_description';
+  $handler->display->display_options['fields']['field_count_description']['type'] = 'text_plain';
+  /* Felt: Indhold: Emneområde */
+  $handler->display->display_options['fields']['field_subject']['id'] = 'field_subject';
+  $handler->display->display_options['fields']['field_subject']['table'] = 'field_data_field_subject';
+  $handler->display->display_options['fields']['field_subject']['field'] = 'field_subject';
+  $handler->display->display_options['fields']['field_subject']['delta_offset'] = '0';
+  /* Felt: Indhold: Forløbstype */
+  $handler->display->display_options['fields']['field_offer_type']['id'] = 'field_offer_type';
+  $handler->display->display_options['fields']['field_offer_type']['table'] = 'field_data_field_offer_type';
+  $handler->display->display_options['fields']['field_offer_type']['field'] = 'field_offer_type';
+  $handler->display->display_options['fields']['field_offer_type']['delta_offset'] = '0';
+  /* Felt: Indhold: Målgruppe */
+  $handler->display->display_options['fields']['field_target_group_sub']['id'] = 'field_target_group_sub';
+  $handler->display->display_options['fields']['field_target_group_sub']['table'] = 'field_data_field_target_group_sub';
+  $handler->display->display_options['fields']['field_target_group_sub']['field'] = 'field_target_group_sub';
+  $handler->display->display_options['fields']['field_target_group_sub']['delta_offset'] = '0';
+  /* Felt: Indhold: Fag */
+  $handler->display->display_options['fields']['field_subjects_primary_school']['id'] = 'field_subjects_primary_school';
+  $handler->display->display_options['fields']['field_subjects_primary_school']['table'] = 'field_data_field_subjects_primary_school';
+  $handler->display->display_options['fields']['field_subjects_primary_school']['field'] = 'field_subjects_primary_school';
+  $handler->display->display_options['fields']['field_subjects_primary_school']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_subjects_primary_school']['delta_offset'] = '0';
+  /* Felt: Indhold: Fag */
+  $handler->display->display_options['fields']['field_subjects_youth']['id'] = 'field_subjects_youth';
+  $handler->display->display_options['fields']['field_subjects_youth']['table'] = 'field_data_field_subjects_youth';
+  $handler->display->display_options['fields']['field_subjects_youth']['field'] = 'field_subjects_youth';
+  $handler->display->display_options['fields']['field_subjects_youth']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_subjects_youth']['empty'] = '[field_subjects_primary_school] ';
+  $handler->display->display_options['fields']['field_subjects_youth']['delta_offset'] = '0';
+  /* Felt: Indhold: Kurset er relevant for pædagoger, der arbejder med læreplanstemaerne */
+  $handler->display->display_options['fields']['field_educational_goals']['id'] = 'field_educational_goals';
+  $handler->display->display_options['fields']['field_educational_goals']['table'] = 'field_data_field_educational_goals';
+  $handler->display->display_options['fields']['field_educational_goals']['field'] = 'field_educational_goals';
+  $handler->display->display_options['fields']['field_educational_goals']['label'] = 'Læreplanstemaer/fag';
+  $handler->display->display_options['fields']['field_educational_goals']['empty'] = '[field_subjects_youth]';
+  $handler->display->display_options['fields']['field_educational_goals']['delta_offset'] = '0';
+  /* Felt: Indhold: Gratis */
+  $handler->display->display_options['fields']['field_free']['id'] = 'field_free';
+  $handler->display->display_options['fields']['field_free']['table'] = 'field_data_field_free';
+  $handler->display->display_options['fields']['field_free']['field'] = 'field_free';
+  $handler->display->display_options['fields']['field_free']['type'] = 'list_key';
+  /* Felt: Indhold: Vælg enhed */
+  $handler->display->display_options['fields']['field_duration_unit']['id'] = 'field_duration_unit';
+  $handler->display->display_options['fields']['field_duration_unit']['table'] = 'field_data_field_duration_unit';
+  $handler->display->display_options['fields']['field_duration_unit']['field'] = 'field_duration_unit';
+  $handler->display->display_options['fields']['field_duration_unit']['exclude'] = TRUE;
+  /* Felt: Indhold: Varighed */
+  $handler->display->display_options['fields']['field_duration']['id'] = 'field_duration';
+  $handler->display->display_options['fields']['field_duration']['table'] = 'field_data_field_duration';
+  $handler->display->display_options['fields']['field_duration']['field'] = 'field_duration';
+  $handler->display->display_options['fields']['field_duration']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_duration']['alter']['text'] = '[field_duration] [field_duration_unit] ';
+  $handler->display->display_options['fields']['field_duration']['settings'] = array(
+    'thousand_separator' => '',
+    'decimal_separator' => '.',
+    'scale' => '0',
+    'prefix_suffix' => 0,
+  );
+  /* Felt: Indhold: Beskrivelse til varighed */
+  $handler->display->display_options['fields']['field_duration_description']['id'] = 'field_duration_description';
+  $handler->display->display_options['fields']['field_duration_description']['table'] = 'field_data_field_duration_description';
+  $handler->display->display_options['fields']['field_duration_description']['field'] = 'field_duration_description';
+  $handler->display->display_options['fields']['field_duration_description']['alter']['text'] = '[field_duration_unit] ';
+  $handler->display->display_options['fields']['field_duration_description']['type'] = 'text_plain';
+  $handler->display->display_options['fields']['field_duration_description']['settings'] = array(
+    'trim_length' => '600',
+  );
+  /* Felt: Indhold: Pris */
+  $handler->display->display_options['fields']['field_collection_price']['id'] = 'field_collection_price';
+  $handler->display->display_options['fields']['field_collection_price']['table'] = 'field_data_field_collection_price';
+  $handler->display->display_options['fields']['field_collection_price']['field'] = 'field_collection_price';
+  $handler->display->display_options['fields']['field_collection_price']['type'] = 'field_collection_fields';
+  $handler->display->display_options['fields']['field_collection_price']['settings'] = array(
+    'view_mode' => 'full',
+  );
+  $handler->display->display_options['fields']['field_collection_price']['delta_offset'] = '0';
+  /* Felt: Indhold: Beskrivelse til pris */
+  $handler->display->display_options['fields']['field_price_description']['id'] = 'field_price_description';
+  $handler->display->display_options['fields']['field_price_description']['table'] = 'field_data_field_price_description';
+  $handler->display->display_options['fields']['field_price_description']['field'] = 'field_price_description';
+  $handler->display->display_options['fields']['field_price_description']['type'] = 'text_plain';
+  /* Felt: Indhold: Hele året */
+  $handler->display->display_options['fields']['field_period_full_year']['id'] = 'field_period_full_year';
+  $handler->display->display_options['fields']['field_period_full_year']['table'] = 'field_data_field_period_full_year';
+  $handler->display->display_options['fields']['field_period_full_year']['field'] = 'field_period_full_year';
+  /* Felt: Indhold: Periode */
+  $handler->display->display_options['fields']['field_period']['id'] = 'field_period';
+  $handler->display->display_options['fields']['field_period']['table'] = 'field_data_field_period';
+  $handler->display->display_options['fields']['field_period']['field'] = 'field_period';
+  $handler->display->display_options['fields']['field_period']['label'] = 'Periode start';
+  $handler->display->display_options['fields']['field_period']['settings'] = array(
+    'format_type' => 'long',
+    'custom_date_format' => '',
+    'fromto' => 'value',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  /* Felt: Indhold: Periode */
+  $handler->display->display_options['fields']['field_period_1']['id'] = 'field_period_1';
+  $handler->display->display_options['fields']['field_period_1']['table'] = 'field_data_field_period';
+  $handler->display->display_options['fields']['field_period_1']['field'] = 'field_period';
+  $handler->display->display_options['fields']['field_period_1']['label'] = 'Periode slut';
+  $handler->display->display_options['fields']['field_period_1']['settings'] = array(
+    'format_type' => 'long',
+    'custom_date_format' => '',
+    'fromto' => 'value2',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  /* Felt: Indhold: Yderligere oplysninger til periode */
+  $handler->display->display_options['fields']['field_period_info']['id'] = 'field_period_info';
+  $handler->display->display_options['fields']['field_period_info']['table'] = 'field_data_field_period_info';
+  $handler->display->display_options['fields']['field_period_info']['field'] = 'field_period_info';
+  $handler->display->display_options['fields']['field_period_info']['type'] = 'text_plain';
+  /* Felt: Felt: Video */
+  $handler->display->display_options['fields']['field_video']['id'] = 'field_video';
+  $handler->display->display_options['fields']['field_video']['table'] = 'field_data_field_video';
+  $handler->display->display_options['fields']['field_video']['field'] = 'field_video';
+  $handler->display->display_options['fields']['field_video']['label'] = 'Video-URL';
+  $handler->display->display_options['fields']['field_video']['click_sort_column'] = 'video_url';
+  $handler->display->display_options['fields']['field_video']['type'] = 'video_embed_field_url';
+  $handler->display->display_options['fields']['field_video']['settings'] = array(
+    'video_style' => 'normal',
+  );
+  /* Felt: Indhold: Visning på kort */
+  $handler->display->display_options['fields']['field_map_placement']['id'] = 'field_map_placement';
+  $handler->display->display_options['fields']['field_map_placement']['table'] = 'field_data_field_map_placement';
+  $handler->display->display_options['fields']['field_map_placement']['field'] = 'field_map_placement';
+  $handler->display->display_options['fields']['field_map_placement']['label'] = 'Lokation';
+  $handler->display->display_options['path'] = 'admin/settings/custom/couse-export/grouped.csv';
+  $handler->display->display_options['displays'] = array(
+    'page_1' => 'page_1',
+    'default' => 0,
+  );
+  $handler->display->display_options['sitename_title'] = 0;
+
+  /* Display: Data export */
+  $handler = $view->new_display('views_data_export', 'Data export', 'views_data_export_2');
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'views_data_export_csv';
+  $handler->display->display_options['style_options']['provide_file'] = 0;
+  $handler->display->display_options['style_options']['parent_sort'] = 0;
+  $handler->display->display_options['style_options']['separator'] = ';';
+  $handler->display->display_options['style_options']['quote'] = 1;
+  $handler->display->display_options['style_options']['trim'] = 1;
+  $handler->display->display_options['style_options']['replace_newlines'] = 0;
+  $handler->display->display_options['style_options']['newline_token'] = '1';
+  $handler->display->display_options['style_options']['header'] = 1;
+  $handler->display->display_options['style_options']['keep_html'] = 0;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Felt: Indhold: Titel */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Felt: Bruger: Navn */
+  $handler->display->display_options['fields']['name']['id'] = 'name';
+  $handler->display->display_options['fields']['name']['table'] = 'users';
+  $handler->display->display_options['fields']['name']['field'] = 'name';
+  $handler->display->display_options['fields']['name']['relationship'] = 'uid';
+  $handler->display->display_options['fields']['name']['label'] = 'Udbyder';
+  $handler->display->display_options['fields']['name']['link_to_user'] = FALSE;
+  /* Felt: Indhold: Overordnet målgruppe */
+  $handler->display->display_options['fields']['field_target_group']['id'] = 'field_target_group';
+  $handler->display->display_options['fields']['field_target_group']['table'] = 'field_data_field_target_group';
+  $handler->display->display_options['fields']['field_target_group']['field'] = 'field_target_group';
+  /* Felt: Indhold: Antal */
+  $handler->display->display_options['fields']['field_count']['id'] = 'field_count';
+  $handler->display->display_options['fields']['field_count']['table'] = 'field_data_field_count';
+  $handler->display->display_options['fields']['field_count']['field'] = 'field_count';
+  /* Felt: Indhold: Beskrivelse til antal */
+  $handler->display->display_options['fields']['field_count_description']['id'] = 'field_count_description';
+  $handler->display->display_options['fields']['field_count_description']['table'] = 'field_data_field_count_description';
+  $handler->display->display_options['fields']['field_count_description']['field'] = 'field_count_description';
+  $handler->display->display_options['fields']['field_count_description']['type'] = 'text_plain';
+  /* Felt: Indhold: Emneområde */
+  $handler->display->display_options['fields']['field_subject']['id'] = 'field_subject';
+  $handler->display->display_options['fields']['field_subject']['table'] = 'field_data_field_subject';
+  $handler->display->display_options['fields']['field_subject']['field'] = 'field_subject';
+  $handler->display->display_options['fields']['field_subject']['group_rows'] = FALSE;
+  $handler->display->display_options['fields']['field_subject']['delta_offset'] = '0';
+  /* Felt: Indhold: Forløbstype */
+  $handler->display->display_options['fields']['field_offer_type']['id'] = 'field_offer_type';
+  $handler->display->display_options['fields']['field_offer_type']['table'] = 'field_data_field_offer_type';
+  $handler->display->display_options['fields']['field_offer_type']['field'] = 'field_offer_type';
+  $handler->display->display_options['fields']['field_offer_type']['group_rows'] = FALSE;
+  $handler->display->display_options['fields']['field_offer_type']['delta_offset'] = '0';
+  /* Felt: Indhold: Målgruppe */
+  $handler->display->display_options['fields']['field_target_group_sub']['id'] = 'field_target_group_sub';
+  $handler->display->display_options['fields']['field_target_group_sub']['table'] = 'field_data_field_target_group_sub';
+  $handler->display->display_options['fields']['field_target_group_sub']['field'] = 'field_target_group_sub';
+  $handler->display->display_options['fields']['field_target_group_sub']['group_rows'] = FALSE;
+  $handler->display->display_options['fields']['field_target_group_sub']['delta_offset'] = '0';
+  /* Felt: Indhold: Fag */
+  $handler->display->display_options['fields']['field_subjects_primary_school']['id'] = 'field_subjects_primary_school';
+  $handler->display->display_options['fields']['field_subjects_primary_school']['table'] = 'field_data_field_subjects_primary_school';
+  $handler->display->display_options['fields']['field_subjects_primary_school']['field'] = 'field_subjects_primary_school';
+  $handler->display->display_options['fields']['field_subjects_primary_school']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_subjects_primary_school']['group_rows'] = FALSE;
+  $handler->display->display_options['fields']['field_subjects_primary_school']['delta_offset'] = '0';
+  /* Felt: Indhold: Fag */
+  $handler->display->display_options['fields']['field_subjects_youth']['id'] = 'field_subjects_youth';
+  $handler->display->display_options['fields']['field_subjects_youth']['table'] = 'field_data_field_subjects_youth';
+  $handler->display->display_options['fields']['field_subjects_youth']['field'] = 'field_subjects_youth';
+  $handler->display->display_options['fields']['field_subjects_youth']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_subjects_youth']['empty'] = '[field_subjects_primary_school] ';
+  $handler->display->display_options['fields']['field_subjects_youth']['group_rows'] = FALSE;
+  $handler->display->display_options['fields']['field_subjects_youth']['delta_offset'] = '0';
+  /* Felt: Indhold: Kurset er relevant for pædagoger, der arbejder med læreplanstemaerne */
+  $handler->display->display_options['fields']['field_educational_goals']['id'] = 'field_educational_goals';
+  $handler->display->display_options['fields']['field_educational_goals']['table'] = 'field_data_field_educational_goals';
+  $handler->display->display_options['fields']['field_educational_goals']['field'] = 'field_educational_goals';
+  $handler->display->display_options['fields']['field_educational_goals']['label'] = 'Læreplanstemaer/fag';
+  $handler->display->display_options['fields']['field_educational_goals']['empty'] = '[field_subjects_youth]';
+  $handler->display->display_options['fields']['field_educational_goals']['group_rows'] = FALSE;
+  $handler->display->display_options['fields']['field_educational_goals']['delta_offset'] = '0';
+  /* Felt: Indhold: Gratis */
+  $handler->display->display_options['fields']['field_free']['id'] = 'field_free';
+  $handler->display->display_options['fields']['field_free']['table'] = 'field_data_field_free';
+  $handler->display->display_options['fields']['field_free']['field'] = 'field_free';
+  $handler->display->display_options['fields']['field_free']['type'] = 'list_key';
+  /* Felt: Indhold: Vælg enhed */
+  $handler->display->display_options['fields']['field_duration_unit']['id'] = 'field_duration_unit';
+  $handler->display->display_options['fields']['field_duration_unit']['table'] = 'field_data_field_duration_unit';
+  $handler->display->display_options['fields']['field_duration_unit']['field'] = 'field_duration_unit';
+  $handler->display->display_options['fields']['field_duration_unit']['exclude'] = TRUE;
+  /* Felt: Indhold: Varighed */
+  $handler->display->display_options['fields']['field_duration']['id'] = 'field_duration';
+  $handler->display->display_options['fields']['field_duration']['table'] = 'field_data_field_duration';
+  $handler->display->display_options['fields']['field_duration']['field'] = 'field_duration';
+  $handler->display->display_options['fields']['field_duration']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_duration']['alter']['text'] = '[field_duration] [field_duration_unit] ';
+  $handler->display->display_options['fields']['field_duration']['settings'] = array(
+    'thousand_separator' => '',
+    'decimal_separator' => '.',
+    'scale' => '0',
+    'prefix_suffix' => 0,
+  );
+  /* Felt: Indhold: Beskrivelse til varighed */
+  $handler->display->display_options['fields']['field_duration_description']['id'] = 'field_duration_description';
+  $handler->display->display_options['fields']['field_duration_description']['table'] = 'field_data_field_duration_description';
+  $handler->display->display_options['fields']['field_duration_description']['field'] = 'field_duration_description';
+  $handler->display->display_options['fields']['field_duration_description']['alter']['text'] = '[field_duration_unit] ';
+  $handler->display->display_options['fields']['field_duration_description']['type'] = 'text_plain';
+  $handler->display->display_options['fields']['field_duration_description']['settings'] = array(
+    'trim_length' => '600',
+  );
+  /* Felt: Indhold: Pris */
+  $handler->display->display_options['fields']['field_collection_price']['id'] = 'field_collection_price';
+  $handler->display->display_options['fields']['field_collection_price']['table'] = 'field_data_field_collection_price';
+  $handler->display->display_options['fields']['field_collection_price']['field'] = 'field_collection_price';
+  $handler->display->display_options['fields']['field_collection_price']['type'] = 'field_collection_fields';
+  $handler->display->display_options['fields']['field_collection_price']['settings'] = array(
+    'view_mode' => 'full',
+  );
+  $handler->display->display_options['fields']['field_collection_price']['group_rows'] = FALSE;
+  $handler->display->display_options['fields']['field_collection_price']['delta_offset'] = '0';
+  /* Felt: Indhold: Beskrivelse til pris */
+  $handler->display->display_options['fields']['field_price_description']['id'] = 'field_price_description';
+  $handler->display->display_options['fields']['field_price_description']['table'] = 'field_data_field_price_description';
+  $handler->display->display_options['fields']['field_price_description']['field'] = 'field_price_description';
+  $handler->display->display_options['fields']['field_price_description']['type'] = 'text_plain';
+  /* Felt: Indhold: Hele året */
+  $handler->display->display_options['fields']['field_period_full_year']['id'] = 'field_period_full_year';
+  $handler->display->display_options['fields']['field_period_full_year']['table'] = 'field_data_field_period_full_year';
+  $handler->display->display_options['fields']['field_period_full_year']['field'] = 'field_period_full_year';
+  /* Felt: Indhold: Periode */
+  $handler->display->display_options['fields']['field_period']['id'] = 'field_period';
+  $handler->display->display_options['fields']['field_period']['table'] = 'field_data_field_period';
+  $handler->display->display_options['fields']['field_period']['field'] = 'field_period';
+  $handler->display->display_options['fields']['field_period']['label'] = 'Periode start';
+  $handler->display->display_options['fields']['field_period']['settings'] = array(
+    'format_type' => 'long',
+    'custom_date_format' => '',
+    'fromto' => 'value',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  /* Felt: Indhold: Periode */
+  $handler->display->display_options['fields']['field_period_1']['id'] = 'field_period_1';
+  $handler->display->display_options['fields']['field_period_1']['table'] = 'field_data_field_period';
+  $handler->display->display_options['fields']['field_period_1']['field'] = 'field_period';
+  $handler->display->display_options['fields']['field_period_1']['label'] = 'Periode slut';
+  $handler->display->display_options['fields']['field_period_1']['settings'] = array(
+    'format_type' => 'long',
+    'custom_date_format' => '',
+    'fromto' => 'value2',
+    'multiple_number' => '',
+    'multiple_from' => '',
+    'multiple_to' => '',
+    'show_remaining_days' => 0,
+  );
+  /* Felt: Indhold: Yderligere oplysninger til periode */
+  $handler->display->display_options['fields']['field_period_info']['id'] = 'field_period_info';
+  $handler->display->display_options['fields']['field_period_info']['table'] = 'field_data_field_period_info';
+  $handler->display->display_options['fields']['field_period_info']['field'] = 'field_period_info';
+  $handler->display->display_options['fields']['field_period_info']['type'] = 'text_plain';
+  /* Felt: Felt: Video */
+  $handler->display->display_options['fields']['field_video']['id'] = 'field_video';
+  $handler->display->display_options['fields']['field_video']['table'] = 'field_data_field_video';
+  $handler->display->display_options['fields']['field_video']['field'] = 'field_video';
+  $handler->display->display_options['fields']['field_video']['label'] = 'Video-URL';
+  $handler->display->display_options['fields']['field_video']['click_sort_column'] = 'video_url';
+  $handler->display->display_options['fields']['field_video']['type'] = 'video_embed_field_url';
+  $handler->display->display_options['fields']['field_video']['settings'] = array(
+    'video_style' => 'normal',
+  );
+  /* Felt: Indhold: Visning på kort */
+  $handler->display->display_options['fields']['field_map_placement']['id'] = 'field_map_placement';
+  $handler->display->display_options['fields']['field_map_placement']['table'] = 'field_data_field_map_placement';
+  $handler->display->display_options['fields']['field_map_placement']['field'] = 'field_map_placement';
+  $handler->display->display_options['fields']['field_map_placement']['label'] = 'Lokation';
   $handler->display->display_options['path'] = 'admin/settings/custom/couse-export/csv.csv';
   $handler->display->display_options['displays'] = array(
     'page_1' => 'page_1',
@@ -465,7 +816,6 @@ function ulf_course_export_views_default_views() {
     t('Beskrivelse til varighed'),
     t('[field_duration_unit] '),
     t('Pris'),
-    t('<?php'),
     t('Beskrivelse til pris'),
     t('Hele året'),
     t('Periode start'),
@@ -474,6 +824,7 @@ function ulf_course_export_views_default_views() {
     t('Video-URL'),
     t('Lokation'),
     t('Side'),
+    t('Grouped data export'),
     t('Data export'),
   );
   $export['courses'] = $view;

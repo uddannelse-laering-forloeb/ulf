@@ -22,10 +22,10 @@ function ulf_course_providers_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Editor settings',
-    'weight' => '15',
+    'weight' => '16',
     'children' => array(
-      0 => 'field_bypass_workflow',
-      1 => 'field_editor_info',
+      0 => 'field_editor_info',
+      1 => 'field_bypass_workflow',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -55,8 +55,9 @@ function ulf_course_providers_field_group_info() {
     'children' => array(
       0 => 'field_profile_home_page',
       1 => 'field_profile_logo',
-      2 => 'field_profile_mail',
-      3 => 'field_profile_phone',
+      2 => 'field_profile_phone',
+      3 => 'field_profile_mail',
+      4 => 'field_profile_cvr',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -82,7 +83,7 @@ function ulf_course_providers_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Lokation',
-    'weight' => '10',
+    'weight' => '12',
     'children' => array(
       0 => 'field_profile_map_placement',
     ),

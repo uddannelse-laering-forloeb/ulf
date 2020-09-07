@@ -188,6 +188,46 @@ function ulf_course_providers_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'user-user-field_profile_cvr'.
+  $field_instances['user-user-field_profile_cvr'] = array(
+    'bundle' => 'user',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'number',
+        'settings' => array(
+          'decimal_separator' => '.',
+          'prefix_suffix' => TRUE,
+          'scale' => 0,
+          'thousand_separator' => '',
+        ),
+        'type' => 'number_integer',
+        'weight' => 17,
+      ),
+    ),
+    'entity_type' => 'user',
+    'field_name' => 'field_profile_cvr',
+    'label' => 'CVR',
+    'required' => 0,
+    'settings' => array(
+      'max' => '',
+      'min' => '',
+      'prefix' => '',
+      'suffix' => '',
+      'user_register_form' => 0,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'number',
+      'settings' => array(),
+      'type' => 'number',
+      'weight' => 11,
+    ),
+  );
+
   // Exported field_instance: 'user-user-field_profile_description'.
   $field_instances['user-user-field_profile_description'] = array(
     'bundle' => 'user',
@@ -347,7 +387,7 @@ function ulf_course_providers_field_default_field_instances() {
       'module' => 'html5_tools',
       'settings' => array(),
       'type' => 'urlwidget',
-      'weight' => 12,
+      'weight' => 9,
     ),
   );
 
@@ -446,7 +486,7 @@ function ulf_course_providers_field_default_field_instances() {
       'module' => 'html5_tools',
       'settings' => array(),
       'type' => 'emailwidget',
-      'weight' => 13,
+      'weight' => 10,
     ),
   );
 
@@ -548,7 +588,7 @@ function ulf_course_providers_field_default_field_instances() {
       'module' => 'html5_tools',
       'settings' => array(),
       'type' => 'telwidget',
-      'weight' => 11,
+      'weight' => 8,
     ),
   );
 
@@ -597,6 +637,7 @@ function ulf_course_providers_field_default_field_instances() {
   // Included for use with string extractors like potx.
   t('Angiv URLen på en Youtube eller Vimeo video');
   t('Bypass workflow');
+  t('CVR');
   t('Entré');
   t('Henvendelser via kontaktformularen på forløbene sendes til denne adresse.');
   t('Hjemmeside');

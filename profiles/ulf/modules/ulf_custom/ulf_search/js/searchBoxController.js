@@ -159,7 +159,7 @@ angular.module('searchBoxApp').controller('UlfBoxController', ['CONFIG', 'commun
       $scope.filters = state.filters;
 
       // Set template to use.
-      $scope.template = CONFIG.templates.box;
+      $scope.template = "/" + CONFIG.templates.box;
 
       // Init the query object.
       $scope.query = {

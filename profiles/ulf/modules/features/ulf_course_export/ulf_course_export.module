@@ -36,3 +36,9 @@ function ulf_course_export_views_post_execute(&$view) {
     }
   }
 }
+
+function ulf_course_preprocess_views_data_export_feed_icon(&$variables) {
+  if (strpos($variables['url'], 'grouped.csv') == TRUE) {
+    $variables['image_path'] = drupal_get_path('module', 'ulf_course_export') . '/images/grouped-csv.png';
+  }
+}
