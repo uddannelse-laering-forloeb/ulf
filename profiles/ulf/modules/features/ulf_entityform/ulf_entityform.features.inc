@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * ulf_entityform.features.inc
@@ -11,13 +12,6 @@ function ulf_entityform_ctools_plugin_api($module = NULL, $api = NULL) {
   if ($module == "strongarm" && $api == "strongarm") {
     return array("version" => "1");
   }
-}
-
-/**
- * Implements hook_views_api().
- */
-function ulf_entityform_views_api($module = NULL, $api = NULL) {
-  return array("api" => "3.0");
 }
 
 /**
@@ -49,7 +43,7 @@ function ulf_entityform_default_entityform_type() {
       "submissions_view" : "default",
       "user_submissions_view" : "default",
       "form_status" : "ENTITYFORM_OPEN",
-      "roles" : { "1" : "1", "2" : "2", "18" : 0, "19" : 0 },
+      "roles" : { "1" : "1", "2" : "2", "18" : 0, "19" : 0, "20" : 0 },
       "resubmit_action" : "new",
       "redirect_path" : "",
       "instruction_pre" : { "value" : "", "format" : "plain_text" }
