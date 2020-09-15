@@ -385,6 +385,15 @@ function ulf_course_export_views_default_views() {
   $handler->display->display_options['fields']['field_map_placement']['table'] = 'field_data_field_map_placement';
   $handler->display->display_options['fields']['field_map_placement']['field'] = 'field_map_placement';
   $handler->display->display_options['fields']['field_map_placement']['label'] = 'Lokation';
+  /* Felt: Bruger: CVR */
+  $handler->display->display_options['fields']['field_profile_cvr']['id'] = 'field_profile_cvr';
+  $handler->display->display_options['fields']['field_profile_cvr']['table'] = 'field_data_field_profile_cvr';
+  $handler->display->display_options['fields']['field_profile_cvr']['field'] = 'field_profile_cvr';
+  $handler->display->display_options['fields']['field_profile_cvr']['relationship'] = 'uid';
+  $handler->display->display_options['fields']['field_profile_cvr']['settings'] = array(
+    'thousand_separator' => '',
+    'prefix_suffix' => 1,
+  );
   /* Sorteringskriterie: Indhold: Oprettelsesdato */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
@@ -593,6 +602,8 @@ function ulf_course_export_views_default_views() {
     'default' => 0,
   );
   $handler->display->display_options['sitename_title'] = 0;
+  $handler->display->display_options['use_batch'] = 'batch';
+  $handler->display->display_options['segment_size'] = '100';
 
   /* Display: Data export */
   $handler = $view->new_display('views_data_export', 'Data export', 'views_data_export_2');
@@ -780,6 +791,8 @@ function ulf_course_export_views_default_views() {
     'default' => 0,
   );
   $handler->display->display_options['sitename_title'] = 0;
+  $handler->display->display_options['use_batch'] = 'batch';
+  $handler->display->display_options['segment_size'] = '100';
   $translatables['courses'] = array(
     t('Master'),
     t('Course export'),
@@ -823,6 +836,7 @@ function ulf_course_export_views_default_views() {
     t('Yderligere oplysninger til periode'),
     t('Video-URL'),
     t('Lokation'),
+    t('CVR'),
     t('Side'),
     t('Grouped data export'),
     t('Data export'),

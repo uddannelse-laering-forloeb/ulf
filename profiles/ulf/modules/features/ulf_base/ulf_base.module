@@ -106,3 +106,13 @@ function ulf_base_form_better_field_descriptions_sort($a, $b) {
 function ulf_base_theme_registry_alter(&$theme_registry) {
   $theme_registry['autosave_restore_popup']['path'] = 'profiles/ulf/themes/ulf_admin/templates/autosave';
 }
+
+/**
+ * Utility function to reverse the mail encryption done by SpamSpan
+ * @param $mail
+ *
+ * @return string|string[]
+ */
+function _reverseMailEncrypt($mail) {
+  return str_replace([' [at] ', ' [dot] '], ['@', '.'], $mail);
+}
