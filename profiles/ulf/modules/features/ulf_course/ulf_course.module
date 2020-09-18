@@ -29,7 +29,7 @@ function ulf_course_preprocess_node(&$variables) {
     return;
   }
 
-  if (isset($variables['field_banner'])) {
+  if (isset($variables['field_banner'][LANGUAGE_NONE])) {
     $term_id = $variables['field_banner'][LANGUAGE_NONE][0]['tid'];
     if ($term_id !== NULL) {
       $term = taxonomy_term_load($term_id);
