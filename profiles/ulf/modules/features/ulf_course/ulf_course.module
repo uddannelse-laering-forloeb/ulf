@@ -25,7 +25,11 @@ function ulf_course_clone_node_alter(&$data, $context) {
  */
 function ulf_course_preprocess_node(&$variables) {
 
-  if (!empty($variables['field_banner'])) {
+  if ($variables['type'] !== 'course') {
+    return;
+  }
+
+  if (isset($variables['field_banner'])) {
     $term_id = $variables['field_banner'][LANGUAGE_NONE][0]['tid'];
     if ($term_id !== NULL) {
       $term = taxonomy_term_load($term_id);

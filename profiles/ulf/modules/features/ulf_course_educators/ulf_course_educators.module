@@ -5,3 +5,21 @@
  */
 
 include_once 'ulf_course_educators.features.inc';
+
+/**
+ * Add custom banner to couses
+ */
+function ulf_course_educators_preprocess_node(&$variables) {
+
+  if ($variables['type'] !== 'course_educators') {
+    return;
+  }
+
+  if (isset($variables['field_banner'])) {
+    $term = $variables['field_banner'][0]['taxonomy_term'];
+    if ($term !== NULL) {
+        $variables['ribbon_message'] = $term->name;
+        $variables['ribbon_class_names'] = ['warning'];
+    }
+  }
+}
