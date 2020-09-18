@@ -239,11 +239,12 @@
 .block--buttons {
   a {
     margin-bottom: 8px;
+    width: 100%;
+    box-sizing: border-box;
     @include strip-link-styles($white);
 
     &:last-child {
       margin: 0;
     }
   }
-
 }
