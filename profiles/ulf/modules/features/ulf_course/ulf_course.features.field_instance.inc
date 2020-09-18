@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * ulf_course.features.field_instance.inc
@@ -109,6 +110,51 @@ function ulf_course_field_default_field_instances() {
       ),
       'type' => 'text_textarea',
       'weight' => 9,
+    ),
+  );
+
+  // Exported field_instance: 'node-course-field_banner'.
+  $field_instances['node-course-field_banner'] = array(
+    'bundle' => 'course',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 47,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_banner',
+    'label' => 'Banner',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => 5,
     ),
   );
 
@@ -865,6 +911,7 @@ function ulf_course_field_default_field_instances() {
         'label' => 'above',
         'module' => 'date',
         'settings' => array(
+          'custom_date_format' => '',
           'format_type' => 'ulf_default_date_format',
           'fromto' => 'both',
           'multiple_from' => '',
@@ -879,6 +926,7 @@ function ulf_course_field_default_field_instances() {
         'label' => 'above',
         'module' => 'date',
         'settings' => array(
+          'custom_date_format' => '',
           'format_type' => 'ulf_default_date_format',
           'fromto' => 'both',
           'multiple_from' => '',
@@ -941,7 +989,7 @@ function ulf_course_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 38,
+        'weight' => 41,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -963,57 +1011,6 @@ function ulf_course_field_default_field_instances() {
       'settings' => array(),
       'type' => 'options_buttons',
       'weight' => 14,
-    ),
-  );
-
-  // Exported field_instance: 'node-course-field_material_suggestions'.
-  $field_instances['node-course-field_material_suggestions'] = array(
-    'bundle' => 'course',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 13,
-      ),
-      'full' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 6,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 15,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_material_suggestions',
-    'label' => 'Forslag til forberedelse og/eller efterbehandling i daginstitutionen',
-    'required' => 0,
-    'settings' => array(
-      'text_processing' => 1,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'maxlength_js' => '',
-        'maxlength_js_enforce' => 0,
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'maxlength_js_truncate_html' => 0,
-        'rows' => 5,
-      ),
-      'type' => 'text_textarea',
-      'weight' => 12,
     ),
   );
 
@@ -1144,7 +1141,7 @@ function ulf_course_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 38,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -1181,6 +1178,7 @@ function ulf_course_field_default_field_instances() {
         'label' => 'above',
         'module' => 'date',
         'settings' => array(
+          'custom_date_format' => '',
           'format_type' => 'dmy',
           'fromto' => 'both',
           'multiple_from' => '',
@@ -1195,6 +1193,7 @@ function ulf_course_field_default_field_instances() {
         'label' => 'above',
         'module' => 'date',
         'settings' => array(
+          'custom_date_format' => '',
           'format_type' => 'dmy',
           'fromto' => 'both',
           'multiple_from' => '',
@@ -1209,6 +1208,7 @@ function ulf_course_field_default_field_instances() {
         'label' => 'above',
         'module' => 'date',
         'settings' => array(
+          'custom_date_format' => '',
           'format_type' => 'simple_date',
           'fromto' => 'both',
           'multiple_from' => '',
@@ -1560,7 +1560,7 @@ At opnå kendskab til...
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 5,
+      'weight' => 4,
     ),
   );
 
@@ -1611,7 +1611,7 @@ At opnå kendskab til...
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 42,
+      'weight' => 43,
     ),
   );
 
@@ -1656,7 +1656,7 @@ At opnå kendskab til...
       'module' => 'html5_tools',
       'settings' => array(),
       'type' => 'emailwidget',
-      'weight' => 44,
+      'weight' => 45,
     ),
   );
 
@@ -1670,14 +1670,18 @@ At opnå kendskab til...
       'default' => array(
         'label' => 'above',
         'module' => 'link',
-        'settings' => array(),
+        'settings' => array(
+          'custom_title' => '',
+        ),
         'type' => 'link_default',
         'weight' => 31,
       ),
       'full' => array(
         'label' => 'above',
         'module' => 'link',
-        'settings' => array(),
+        'settings' => array(
+          'custom_title' => '',
+        ),
         'type' => 'link_default',
         'weight' => 33,
       ),
@@ -1720,7 +1724,7 @@ At opnå kendskab til...
       'module' => 'link',
       'settings' => array(),
       'type' => 'link_field',
-      'weight' => 43,
+      'weight' => 44,
     ),
   );
 
@@ -1765,7 +1769,7 @@ At opnå kendskab til...
       'module' => 'html5_tools',
       'settings' => array(),
       'type' => 'telwidget',
-      'weight' => 45,
+      'weight' => 47,
     ),
   );
 
@@ -2013,7 +2017,7 @@ At opnå kendskab til...
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 37,
+        'weight' => 40,
       ),
       'teaser' => array(
         'label' => 'above',
@@ -2124,6 +2128,7 @@ At opnå kendskab til...
   t('Angiv enhed');
   t('Angiv max. antal deltagere');
   t('Antal');
+  t('Banner');
   t('Beskriv hvordan man tilmelder sig og andre instruktioner i forbindelse med tilmelding.');
   t('Beskrivelse');
   t('Beskrivelse af tilmeldingsprocedure');
@@ -2143,20 +2148,17 @@ At opnå kendskab til...
   t('Forberedelse');
   t('Forløbstype');
   t('Formål');
-  t('Forslag til forberedelse og/eller efterbehandling i daginstitutionen');
   t('Gratis');
   t('Hele året');
   t('Hvilke faciliteter kan I tilbyde?');
   t('Inspirationsmateriale');
   t('Læreplanstemaer');
-  t('Manchet');
   t('Message form');
   t('Målgruppe');
   t('Overordnet målgruppe');
   t('Passed review');
   t('Periode');
   t('Pris');
-  t('Skriv en kort og præcis beskrivelse. Denne bruges til visning på f.eks. Facebook, så undlad information om praktiske forhold.');
   t('Skriv ikke jeres faste fysiske adresse her, den har vi allerede. Anvend dette felt til ekstraoplysninger om forløbets sted: Eks. \'Store Sal\', \'Brug højre indgang - ring på dørklokken\' eller en alternativ adresse end jeres faste fysiske adresse.');
   t('Sted (ekstraoplysninger): Eks. \'Store Sal\', \'Brug højre indgang - ring på dørklokken\' ');
   t('Sæt kryds i alle de aldre, som besøget/forløbet er relevant for.');

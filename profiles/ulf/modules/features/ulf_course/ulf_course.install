@@ -82,3 +82,9 @@ function ulf_course_update_7100() {
     }
   }
 }
+/**
+ * Update module weight.
+ */
+function ulf_course_update_7101() {
+  db_query("UPDATE {system} SET weight = 100 WHERE type = 'module' AND name = 'ulf_course'");
+}
