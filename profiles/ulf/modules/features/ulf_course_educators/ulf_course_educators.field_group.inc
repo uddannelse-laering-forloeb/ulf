@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * ulf_course_educators.field_group.inc
@@ -113,13 +114,12 @@ function ulf_course_educators_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Kurset',
-    'weight' => '1',
+    'weight' => '0',
     'children' => array(
       0 => 'field_full_description',
       1 => 'field_relevance_educators',
-      2 => 'field_teaser',
-      3 => 'field_course_target_group',
-      4 => 'title',
+      2 => 'title',
+      3 => 'field_banner',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -145,7 +145,7 @@ function ulf_course_educators_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Praktisk information',
-    'weight' => '2',
+    'weight' => '1',
     'children' => array(
       0 => 'field_course_contact_mail',
       1 => 'field_course_contact_name',

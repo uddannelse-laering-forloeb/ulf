@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * ulf_course.field_group.inc
@@ -54,8 +55,7 @@ function ulf_course_field_group_info() {
     'children' => array(
       0 => 'field_activities',
       1 => 'field_background_knowledge',
-      2 => 'field_material_suggestions',
-      3 => 'field_post_work',
+      2 => 'field_post_work',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -87,7 +87,7 @@ function ulf_course_field_group_info() {
       0 => 'field_full_description',
       1 => 'field_purpose',
       2 => 'field_target_group',
-      3 => 'field_teaser',
+      3 => 'field_banner',
       4 => 'title',
     ),
     'format_type' => 'div',
@@ -309,6 +309,7 @@ function ulf_course_field_group_info() {
       5 => 'field_subjects_youth',
       6 => 'field_target_group_sub',
       7 => 'field_count_description',
+      8 => 'field_practical_info_buttons',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

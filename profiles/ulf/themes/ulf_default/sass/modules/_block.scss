@@ -219,7 +219,6 @@
   }
 }
 
-
 .block--workflow {
   box-sizing: border-box;
   margin: 0 auto;
@@ -234,5 +233,18 @@
 
   & .button {
     font-size: .8em;
+  }
+}
+
+.block--buttons {
+  a {
+    margin-bottom: 8px;
+    width: 100%;
+    box-sizing: border-box;
+    @include strip-link-styles($white);
+
+    &:last-child {
+      margin: 0;
+    }
   }
 }

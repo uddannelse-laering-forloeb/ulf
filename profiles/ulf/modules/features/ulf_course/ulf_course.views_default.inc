@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * ulf_course.views_default.inc
@@ -40,11 +41,11 @@ function ulf_course_views_default_views() {
   $handler->display->display_options['style_options']['row_class_special'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
-  /* Relationship: Content: Målgruppe (field_target_group_sub) */
+  /* Forbindelse: Indhold: Målgruppe (field_target_group_sub) */
   $handler->display->display_options['relationships']['field_target_group_sub_tid']['id'] = 'field_target_group_sub_tid';
   $handler->display->display_options['relationships']['field_target_group_sub_tid']['table'] = 'field_data_field_target_group_sub';
   $handler->display->display_options['relationships']['field_target_group_sub_tid']['field'] = 'field_target_group_sub_tid';
-  /* Field: Taxonomy term: Rendered Taxonomy term */
+  /* Felt: Ord i ordforråd: Rendered Ord i ordforråd */
   $handler->display->display_options['fields']['rendered_entity']['id'] = 'rendered_entity';
   $handler->display->display_options['fields']['rendered_entity']['table'] = 'views_entity_taxonomy_term';
   $handler->display->display_options['fields']['rendered_entity']['field'] = 'rendered_entity';
@@ -59,17 +60,17 @@ function ulf_course_views_default_views() {
   $handler->display->display_options['fields']['rendered_entity']['link_to_entity'] = 0;
   $handler->display->display_options['fields']['rendered_entity']['view_mode'] = 'full';
   $handler->display->display_options['fields']['rendered_entity']['bypass_access'] = 0;
-  /* Sort criterion: Content: Post date */
+  /* Sorteringskriterie: Indhold: Oprettelsesdato */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Sort criterion: Taxonomy term: Weight */
+  /* Sorteringskriterie: Ord i ordforråd: Vægt */
   $handler->display->display_options['sorts']['weight']['id'] = 'weight';
   $handler->display->display_options['sorts']['weight']['table'] = 'taxonomy_term_data';
   $handler->display->display_options['sorts']['weight']['field'] = 'weight';
   $handler->display->display_options['sorts']['weight']['relationship'] = 'field_target_group_sub_tid';
-  /* Contextual filter: Content: Nid */
+  /* Kontekstuelt filter: Indhold: Nid */
   $handler->display->display_options['arguments']['nid']['id'] = 'nid';
   $handler->display->display_options['arguments']['nid']['table'] = 'node';
   $handler->display->display_options['arguments']['nid']['field'] = 'nid';
@@ -91,11 +92,10 @@ function ulf_course_views_default_views() {
     t('Sortér efter'),
     t('Stigende'),
     t('Faldende'),
-    t('term from field_target_group_sub'),
+    t('term fra field_target_group_sub'),
     t('[rendered_entity]<br>'),
     t('Alle'),
     t('Blok'),
-    t('more'),
   );
   $export['ulf_course_target_groups'] = $view;
 
@@ -132,12 +132,12 @@ function ulf_course_views_default_views() {
   $handler->display->display_options['pager']['options']['tags']['last'] = 'sidste »';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Relationship: Content: Author */
+  /* Forbindelse: Indhold: Content author */
   $handler->display->display_options['relationships']['uid']['id'] = 'uid';
   $handler->display->display_options['relationships']['uid']['table'] = 'node';
   $handler->display->display_options['relationships']['uid']['field'] = 'uid';
   $handler->display->display_options['relationships']['uid']['required'] = TRUE;
-  /* Field: User: Navn */
+  /* Felt: Bruger: Navn */
   $handler->display->display_options['fields']['field_profile_name']['id'] = 'field_profile_name';
   $handler->display->display_options['fields']['field_profile_name']['table'] = 'field_data_field_profile_name';
   $handler->display->display_options['fields']['field_profile_name']['field'] = 'field_profile_name';
@@ -145,21 +145,21 @@ function ulf_course_views_default_views() {
   $handler->display->display_options['fields']['field_profile_name']['label'] = '';
   $handler->display->display_options['fields']['field_profile_name']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_profile_name']['element_label_colon'] = FALSE;
-  /* Field: User: Hjemmeside */
+  /* Felt: Bruger: Hjemmeside */
   $handler->display->display_options['fields']['field_profile_home_page']['id'] = 'field_profile_home_page';
   $handler->display->display_options['fields']['field_profile_home_page']['table'] = 'field_data_field_profile_home_page';
   $handler->display->display_options['fields']['field_profile_home_page']['field'] = 'field_profile_home_page';
   $handler->display->display_options['fields']['field_profile_home_page']['relationship'] = 'uid';
   $handler->display->display_options['fields']['field_profile_home_page']['exclude'] = TRUE;
   $handler->display->display_options['fields']['field_profile_home_page']['click_sort_column'] = 'url';
-  /* Field: User: Telefonnr. */
+  /* Felt: Bruger: Telefonnr. */
   $handler->display->display_options['fields']['field_profile_phone']['id'] = 'field_profile_phone';
   $handler->display->display_options['fields']['field_profile_phone']['table'] = 'field_data_field_profile_phone';
   $handler->display->display_options['fields']['field_profile_phone']['field'] = 'field_profile_phone';
   $handler->display->display_options['fields']['field_profile_phone']['relationship'] = 'uid';
   $handler->display->display_options['fields']['field_profile_phone']['label'] = 'Telefon';
   $handler->display->display_options['fields']['field_profile_phone']['exclude'] = TRUE;
-  /* Field: User: Uid */
+  /* Felt: Bruger: Uid */
   $handler->display->display_options['fields']['uid']['id'] = 'uid';
   $handler->display->display_options['fields']['uid']['table'] = 'users';
   $handler->display->display_options['fields']['uid']['field'] = 'uid';
@@ -168,7 +168,7 @@ function ulf_course_views_default_views() {
   $handler->display->display_options['fields']['uid']['exclude'] = TRUE;
   $handler->display->display_options['fields']['uid']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['uid']['link_to_user'] = FALSE;
-  /* Field: Global: Custom text */
+  /* Felt: Global: Tilpasset tekst */
   $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
   $handler->display->display_options['fields']['nothing']['table'] = 'views';
   $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
@@ -190,12 +190,12 @@ function ulf_course_views_default_views() {
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['nothing']['element_wrapper_type'] = '0';
   $handler->display->display_options['fields']['nothing']['element_default_classes'] = FALSE;
-  /* Sort criterion: Content: Post date */
+  /* Sorteringskriterie: Indhold: Oprettelsesdato */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Contextual filter: Content: Nid */
+  /* Kontekstuelt filter: Indhold: Nid */
   $handler->display->display_options['arguments']['nid']['id'] = 'nid';
   $handler->display->display_options['arguments']['nid']['table'] = 'node';
   $handler->display->display_options['arguments']['nid']['field'] = 'nid';
@@ -205,7 +205,7 @@ function ulf_course_views_default_views() {
   $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
-  /* Filter criterion: Content: Published */
+  /* Filterkriterie: Indhold: Published status */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
@@ -239,7 +239,7 @@ function ulf_course_views_default_views() {
     t('‹ forrige'),
     t('næste ›'),
     t('sidste »'),
-    t('author'),
+    t('forfatter'),
     t('Hjemmeside'),
     t('Telefon'),
     t('<div class="block-module--content">
@@ -256,7 +256,6 @@ function ulf_course_views_default_views() {
 '),
     t('Alle'),
     t('Content pane'),
-    t('more'),
     t('View panes'),
   );
   $export['ulf_node_contact'] = $view;
@@ -307,7 +306,7 @@ function ulf_course_views_default_views() {
   );
   $handler->display->display_options['row_options']['hide_empty'] = TRUE;
   $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
-  /* Field: Content: Faciliteter */
+  /* Felt: Indhold: Faciliteter */
   $handler->display->display_options['fields']['field_facilities']['id'] = 'field_facilities';
   $handler->display->display_options['fields']['field_facilities']['table'] = 'field_data_field_facilities';
   $handler->display->display_options['fields']['field_facilities']['field'] = 'field_facilities';
@@ -319,7 +318,7 @@ function ulf_course_views_default_views() {
   $handler->display->display_options['fields']['field_facilities']['group_column'] = 'entity_id';
   $handler->display->display_options['fields']['field_facilities']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_facilities']['field_api_classes'] = TRUE;
-  /* Field: Content: Gratis */
+  /* Felt: Indhold: Gratis */
   $handler->display->display_options['fields']['field_free']['id'] = 'field_free';
   $handler->display->display_options['fields']['field_free']['table'] = 'field_data_field_free';
   $handler->display->display_options['fields']['field_free']['field'] = 'field_free';
@@ -332,7 +331,7 @@ function ulf_course_views_default_views() {
   $handler->display->display_options['fields']['field_free']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['field_free']['empty_zero'] = TRUE;
   $handler->display->display_options['fields']['field_free']['type'] = 'list_key';
-  /* Field: Content: Hele året */
+  /* Felt: Indhold: Hele året */
   $handler->display->display_options['fields']['field_period_full_year']['id'] = 'field_period_full_year';
   $handler->display->display_options['fields']['field_period_full_year']['table'] = 'field_data_field_period_full_year';
   $handler->display->display_options['fields']['field_period_full_year']['field'] = 'field_period_full_year';
@@ -345,12 +344,12 @@ function ulf_course_views_default_views() {
   $handler->display->display_options['fields']['field_period_full_year']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['field_period_full_year']['empty_zero'] = TRUE;
   $handler->display->display_options['fields']['field_period_full_year']['type'] = 'list_key';
-  /* Sort criterion: Content: Post date */
+  /* Sorteringskriterie: Indhold: Oprettelsesdato */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Contextual filter: Content revision: Nid */
+  /* Kontekstuelt filter: Indholdsversion: Nid */
   $handler->display->display_options['arguments']['nid']['id'] = 'nid';
   $handler->display->display_options['arguments']['nid']['table'] = 'node_revision';
   $handler->display->display_options['arguments']['nid']['field'] = 'nid';
@@ -360,7 +359,7 @@ function ulf_course_views_default_views() {
   $handler->display->display_options['arguments']['nid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['nid']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['nid']['summary_options']['items_per_page'] = '25';
-  /* Filter criterion: Content: Published */
+  /* Filterkriterie: Indhold: Published status */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
   $handler->display->display_options['filters']['status']['field'] = 'status';
@@ -409,7 +408,6 @@ function ulf_course_views_default_views() {
     t('<li class="block--list-item">Tilgængeligt hele året</li>'),
     t('Alle'),
     t('Ulf useful information'),
-    t('more'),
     t('View panes'),
   );
   $export['ulf_useful_info'] = $view;
@@ -454,11 +452,11 @@ function ulf_course_views_default_views() {
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['row_options']['hide_empty'] = TRUE;
   $handler->display->display_options['row_options']['default_field_elements'] = FALSE;
-  /* Relationship: Content revision: Content */
+  /* Forbindelse: Indholdsversion: Indhold */
   $handler->display->display_options['relationships']['vid']['id'] = 'vid';
   $handler->display->display_options['relationships']['vid']['table'] = 'node_revision';
   $handler->display->display_options['relationships']['vid']['field'] = 'vid';
-  /* Field: Content (historical data): Faciliteter */
+  /* Felt: Indhold (historiske data): Faciliteter */
   $handler->display->display_options['fields']['field_facilities-revision_id']['id'] = 'field_facilities-revision_id';
   $handler->display->display_options['fields']['field_facilities-revision_id']['table'] = 'field_revision_field_facilities';
   $handler->display->display_options['fields']['field_facilities-revision_id']['field'] = 'field_facilities-revision_id';
@@ -469,7 +467,7 @@ function ulf_course_views_default_views() {
   $handler->display->display_options['fields']['field_facilities-revision_id']['empty_zero'] = TRUE;
   $handler->display->display_options['fields']['field_facilities-revision_id']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_facilities-revision_id']['field_api_classes'] = TRUE;
-  /* Field: Content (historical data): Gratis */
+  /* Felt: Indhold (historiske data): Gratis */
   $handler->display->display_options['fields']['field_free-revision_id']['id'] = 'field_free-revision_id';
   $handler->display->display_options['fields']['field_free-revision_id']['table'] = 'field_revision_field_free';
   $handler->display->display_options['fields']['field_free-revision_id']['field'] = 'field_free-revision_id';
@@ -481,7 +479,7 @@ function ulf_course_views_default_views() {
   $handler->display->display_options['fields']['field_free-revision_id']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['field_free-revision_id']['empty_zero'] = TRUE;
   $handler->display->display_options['fields']['field_free-revision_id']['type'] = 'list_key';
-  /* Field: Content (historical data): Hele året */
+  /* Felt: Indhold (historiske data): Hele året */
   $handler->display->display_options['fields']['field_period_full_year-revision_id']['id'] = 'field_period_full_year-revision_id';
   $handler->display->display_options['fields']['field_period_full_year-revision_id']['table'] = 'field_revision_field_period_full_year';
   $handler->display->display_options['fields']['field_period_full_year-revision_id']['field'] = 'field_period_full_year-revision_id';
@@ -493,7 +491,7 @@ function ulf_course_views_default_views() {
   $handler->display->display_options['fields']['field_period_full_year-revision_id']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['field_period_full_year-revision_id']['empty_zero'] = TRUE;
   $handler->display->display_options['fields']['field_period_full_year-revision_id']['type'] = 'list_key';
-  /* Contextual filter: Content revision: Vid */
+  /* Kontekstuelt filter: Indholdsversion: Vid */
   $handler->display->display_options['arguments']['vid']['id'] = 'vid';
   $handler->display->display_options['arguments']['vid']['table'] = 'node_revision';
   $handler->display->display_options['arguments']['vid']['field'] = 'vid';
@@ -541,12 +539,11 @@ function ulf_course_views_default_views() {
     t('‹ forrige'),
     t('næste ›'),
     t('sidste »'),
-    t('Get the actual content from a content revision.'),
+    t('Hent indholdet fra en indholdsversion.'),
     t('<li class="block--list-item">Gratis</li>'),
     t('<li class="block--list-item">Hele året</li>'),
     t('Alle'),
     t('Content pane'),
-    t('more'),
     t('View panes'),
   );
   $export['ulf_useful_info_moderation'] = $view;

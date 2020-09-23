@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * ulf_entityform.rules_defaults.inc

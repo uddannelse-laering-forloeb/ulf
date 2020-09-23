@@ -18,3 +18,65 @@ function ulf_course_clone_node_alter(&$data, $context) {
     $data->unpublish_on = 0;
   }
 }
+
+
+/**
+ * Add custom banner to couses
+ */
+function ulf_course_preprocess_node(&$variables) {
+
+  if ($variables['type'] !== 'course') {
+    return;
+  }
+
+  if (isset($variables['field_banner'][LANGUAGE_NONE])) {
+    $term_id = $variables['field_banner'][LANGUAGE_NONE][0]['tid'];
+    if ($term_id !== NULL) {
+      $term = taxonomy_term_load($term_id);
+      if ($term !== NULL) {
+        $variables['ribbon_message'] = $term->name;
+        $variables['ribbon_class_names'] = ['warning'];
+      }
+    }
+  }
+}
+
+/**
+ * Add custom banner to search result items.
+ * Implements hook_search_node_filtered_item_alter().
+ */
+function ulf_course_search_node_filtered_item_alter(&$filteredItem) {
+  if (isset($filteredItem['nid'])) {
+    $node = node_load($filteredItem['nid']);
+
+    if (isset($node->field_banner)) {
+      $term_id = $node->field_banner[LANGUAGE_NONE][0]['tid'];
+      if ($term_id !== NULL) {
+        $term = taxonomy_term_load($term_id);
+        if ($term !== NULL) {
+          $filteredItem['ribbon_message'] = $term->name;
+          $filteredItem['ribbon_class_names'] = ['warning'];
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function ulf_course_form_taxonomy_form_term_alter(&$form, &$form_state) {
+  if ($form['#vocabulary']->machine_name === 'banner') {
+    $length = 21;
+    $form['name']['#description'] = t('The name must be a maximum of @length characters', ['@length' => $length]);
+    $form['#validate'][] = 'taxonomy_form_term_validate_title_length';
+  }
+}
+
+function taxonomy_form_term_validate_title_length($form, $form_state) {
+  $title = $form_state['values']['name'];
+  $length = 21;
+  if (strlen($title) >= $length) {
+    form_set_error('title',t('The name must be less then or equal @length characters', ['@length' => $length]));
+  }
+}

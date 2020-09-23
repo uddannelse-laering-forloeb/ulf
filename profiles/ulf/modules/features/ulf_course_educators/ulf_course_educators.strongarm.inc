@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * ulf_course_educators.strongarm.inc
@@ -75,10 +76,13 @@ function ulf_course_educators_strongarm() {
           'weight' => '11',
         ),
         'locations' => array(
-          'weight' => '63',
+          'weight' => '94',
         ),
         'scheduler_settings' => array(
           'weight' => '55',
+        ),
+        'metatags' => array(
+          'weight' => '16',
         ),
       ),
       'display' => array(),
@@ -156,7 +160,7 @@ function ulf_course_educators_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'scheduler_publish_past_date_course_educators';
-  $strongarm->value = 'publish';
+  $strongarm->value = 'error';
   $export['scheduler_publish_past_date_course_educators'] = $strongarm;
 
   $strongarm = new stdClass();

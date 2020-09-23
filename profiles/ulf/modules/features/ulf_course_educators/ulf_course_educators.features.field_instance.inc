@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * ulf_course_educators.features.field_instance.inc
@@ -9,6 +10,45 @@
  */
 function ulf_course_educators_field_default_field_instances() {
   $field_instances = array();
+
+  // Exported field_instance: 'node-course_educators-field_banner'.
+  $field_instances['node-course_educators-field_banner'] = array(
+    'bundle' => 'course_educators',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'taxonomy',
+        'settings' => array(),
+        'type' => 'taxonomy_term_reference_link',
+        'weight' => 41,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_banner',
+    'label' => 'Banner',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
+      'type' => 'options_select',
+      'weight' => 4,
+    ),
+  );
 
   // Exported field_instance: 'node-course_educators-field_catering'.
   $field_instances['node-course_educators-field_catering'] = array(
@@ -585,7 +625,7 @@ function ulf_course_educators_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 5,
+      'weight' => 3,
     ),
   );
 
@@ -682,6 +722,7 @@ function ulf_course_educators_field_default_field_instances() {
         'label' => 'above',
         'module' => 'date',
         'settings' => array(
+          'custom_date_format' => '',
           'format_type' => 'ulf_default_date_format',
           'fromto' => 'both',
           'multiple_from' => '',
@@ -759,7 +800,7 @@ function ulf_course_educators_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 62,
+      'weight' => 93,
     ),
   );
 
@@ -862,6 +903,7 @@ function ulf_course_educators_field_default_field_instances() {
         'label' => 'above',
         'module' => 'date',
         'settings' => array(
+          'custom_date_format' => '',
           'format_type' => 'simple_date',
           'fromto' => 'both',
           'multiple_from' => '',
@@ -1034,7 +1076,7 @@ function ulf_course_educators_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 64,
+      'weight' => 95,
     ),
   );
 
@@ -1205,7 +1247,7 @@ function ulf_course_educators_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 3,
+      'weight' => 2,
     ),
   );
 
@@ -1379,7 +1421,9 @@ function ulf_course_educators_field_default_field_instances() {
       'default' => array(
         'label' => 'above',
         'module' => 'link',
-        'settings' => array(),
+        'settings' => array(
+          'custom_title' => '',
+        ),
         'type' => 'link_default',
         'weight' => 23,
       ),
@@ -1603,6 +1647,7 @@ function ulf_course_educators_field_default_field_instances() {
   t('Angiv tidspunkt for kursets afvikling.');
   t('Angiv url til mail eller link til side.');
   t('Antal');
+  t('Banner');
   t('Beskriv hvordan man tilmelder sig og andre instruktioner i forbindelse med tilmelding.');
   t('Beskrivelse');
   t('Beskrivelse af tilmeldingsprocedure');
@@ -1620,7 +1665,6 @@ function ulf_course_educators_field_default_field_instances() {
   t('Kurset er relevant for lærere, der underviser i fagene');
   t('Kurset er relevant for pædagoger, der arbejder med læreplanstemaerne');
   t('Kurset er relevant for undervisere i fagene');
-  t('Manchet');
   t('Materialer');
   t('Message form');
   t('Målgruppe');
@@ -1629,7 +1673,6 @@ function ulf_course_educators_field_default_field_instances() {
   t('Periode');
   t('Pris');
   t('Skriv en beskrivelse af kursets indhold');
-  t('Skriv en kort og præcis beskrivelse. Denne bruges til visning på f.eks. Facebook, så undlad information om praktiske forhold.');
   t('Skriv ikke jeres faste fysiske adresse her, den har vi allerede. Anvend dette felt til ekstraoplysninger om forløbets sted: Eks. \'Store Sal\', \'Brug højre indgang - ring på dørklokken\' eller en alternativ adresse end jeres faste fysiske adresse.');
   t('Sted (ekstraoplysninger): Eks. \'Store Sal\', \'Brug højre indgang - ring på dørklokken\' ');
   t('Telefonnummer');
