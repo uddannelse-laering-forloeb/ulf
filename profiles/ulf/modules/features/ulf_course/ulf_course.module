@@ -67,7 +67,7 @@ function ulf_course_search_node_filtered_item_alter(&$filteredItem) {
  */
 function ulf_course_form_taxonomy_form_term_alter(&$form, &$form_state) {
   if ($form['#vocabulary']->machine_name === 'banner') {
-    $length = 21;
+    $length = 13;
     $form['name']['#description'] = t('The name must be a maximum of @length characters', ['@length' => $length]);
     $form['#validate'][] = 'taxonomy_form_term_validate_title_length';
   }
@@ -75,8 +75,8 @@ function ulf_course_form_taxonomy_form_term_alter(&$form, &$form_state) {
 
 function taxonomy_form_term_validate_title_length($form, $form_state) {
   $title = $form_state['values']['name'];
-  $length = 21;
-  if (strlen($title) >= $length) {
+  $length = 13;
+  if (strlen($title) > $length) {
     form_set_error('title',t('The name must be less then or equal @length characters', ['@length' => $length]));
   }
 }
