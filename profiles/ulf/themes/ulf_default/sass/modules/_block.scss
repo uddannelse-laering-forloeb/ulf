@@ -242,7 +242,8 @@
 
 
   a {
-    margin-bottom: 10px;
+    padding: 1em;
+    margin-bottom: 25px;
     width: 100%;
     box-sizing: border-box;
     @include strip-link-styles($white);
