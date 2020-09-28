@@ -14,7 +14,7 @@ function ulf_workflow_filter_default_formats() {
   // Exported format: email.
   $formats['email'] = array(
     'format' => 'email',
-    'name' => 'email',
+    'name' => 'E-mail',
     'cache' => 1,
     'status' => 1,
     'weight' => 0,
