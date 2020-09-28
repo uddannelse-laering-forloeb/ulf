@@ -107,6 +107,16 @@ function ulf_base_theme_registry_alter(&$theme_registry) {
   $theme_registry['autosave_restore_popup']['path'] = 'profiles/ulf/themes/ulf_admin/templates/autosave';
 }
 
+
+/**
+ * Implements hook_mail_alter().
+ */
+function ulf_base_mail_alter(&$message) {
+  $message['body'] = _reverseMailEncrypt($message['body']);
+  error_log('Mail alter');
+}
+
+
 /**
  * Utility function to reverse the mail encryption done by SpamSpan
  * @param $mail
