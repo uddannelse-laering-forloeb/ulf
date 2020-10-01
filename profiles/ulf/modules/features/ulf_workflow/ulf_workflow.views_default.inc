@@ -210,7 +210,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['fields']['type']['id'] = 'type';
   $handler->display->display_options['fields']['type']['table'] = 'node';
   $handler->display->display_options['fields']['type']['field'] = 'type';
-  /* Felt: Node: Overordnet målgruppe */
+  /* Felt: Indhold: Overordnet målgruppe */
   $handler->display->display_options['fields']['field_target_group']['id'] = 'field_target_group';
   $handler->display->display_options['fields']['field_target_group']['table'] = 'field_data_field_target_group';
   $handler->display->display_options['fields']['field_target_group']['field'] = 'field_target_group';
@@ -324,7 +324,7 @@ function ulf_workflow_views_default_views() {
     'title' => 'title',
     'name' => 'name',
   );
-  /* Filterkriterie: Node: Trashed (field_trashed) */
+  /* Filterkriterie: Indhold: Trashed (field_trashed) */
   $handler->display->display_options['filters']['field_trashed_value']['id'] = 'field_trashed_value';
   $handler->display->display_options['filters']['field_trashed_value']['table'] = 'field_data_field_trashed';
   $handler->display->display_options['filters']['field_trashed_value']['field'] = 'field_trashed_value';
@@ -359,7 +359,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['fields']['type']['id'] = 'type';
   $handler->display->display_options['fields']['type']['table'] = 'node';
   $handler->display->display_options['fields']['type']['field'] = 'type';
-  /* Felt: Node: Overordnet målgruppe */
+  /* Felt: Indhold: Overordnet målgruppe */
   $handler->display->display_options['fields']['field_target_group']['id'] = 'field_target_group';
   $handler->display->display_options['fields']['field_target_group']['table'] = 'field_data_field_target_group';
   $handler->display->display_options['fields']['field_target_group']['field'] = 'field_target_group';
@@ -456,7 +456,7 @@ function ulf_workflow_views_default_views() {
     'title' => 'title',
     'name' => 'name',
   );
-  /* Filterkriterie: Node: Trashed (field_trashed) */
+  /* Filterkriterie: Indhold: Trashed (field_trashed) */
   $handler->display->display_options['filters']['field_trashed_value']['id'] = 'field_trashed_value';
   $handler->display->display_options['filters']['field_trashed_value']['table'] = 'field_data_field_trashed';
   $handler->display->display_options['filters']['field_trashed_value']['field'] = 'field_trashed_value';
@@ -492,7 +492,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['fields']['type']['id'] = 'type';
   $handler->display->display_options['fields']['type']['table'] = 'node';
   $handler->display->display_options['fields']['type']['field'] = 'type';
-  /* Felt: Node: Overordnet målgruppe */
+  /* Felt: Indhold: Overordnet målgruppe */
   $handler->display->display_options['fields']['field_target_group']['id'] = 'field_target_group';
   $handler->display->display_options['fields']['field_target_group']['table'] = 'field_data_field_target_group';
   $handler->display->display_options['fields']['field_target_group']['field'] = 'field_target_group';
@@ -530,7 +530,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['fields']['nothing']['alter']['text'] = '[edit_node]';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filterkriterie: Node: Trashed (field_trashed) */
+  /* Filterkriterie: Indhold: Trashed (field_trashed) */
   $handler->display->display_options['filters']['field_trashed_value']['id'] = 'field_trashed_value';
   $handler->display->display_options['filters']['field_trashed_value']['table'] = 'field_data_field_trashed';
   $handler->display->display_options['filters']['field_trashed_value']['field'] = 'field_trashed_value';
@@ -757,7 +757,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['fields']['type']['relationship'] = 'vid';
   $handler->display->display_options['fields']['type']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['type']['alter']['ellipsis'] = FALSE;
-  /* Felt: Node: Overordnet målgruppe */
+  /* Felt: Indhold: Overordnet målgruppe */
   $handler->display->display_options['fields']['field_target_group']['id'] = 'field_target_group';
   $handler->display->display_options['fields']['field_target_group']['table'] = 'field_data_field_target_group';
   $handler->display->display_options['fields']['field_target_group']['field'] = 'field_target_group';
@@ -883,7 +883,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['fields']['title']['relationship'] = 'vid';
   $handler->display->display_options['fields']['title']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['title']['alter']['path'] = '/node/[nid]/current-revision';
-  /* Felt: User: Navn */
+  /* Felt: Bruger: Navn */
   $handler->display->display_options['fields']['field_profile_name']['id'] = 'field_profile_name';
   $handler->display->display_options['fields']['field_profile_name']['table'] = 'field_data_field_profile_name';
   $handler->display->display_options['fields']['field_profile_name']['field'] = 'field_profile_name';
@@ -898,7 +898,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['fields']['type']['relationship'] = 'vid';
   $handler->display->display_options['fields']['type']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['type']['alter']['ellipsis'] = FALSE;
-  /* Felt: Node: Overordnet målgruppe */
+  /* Felt: Indhold: Overordnet målgruppe */
   $handler->display->display_options['fields']['field_target_group']['id'] = 'field_target_group';
   $handler->display->display_options['fields']['field_target_group']['table'] = 'field_data_field_target_group';
   $handler->display->display_options['fields']['field_target_group']['field'] = 'field_target_group';
@@ -983,7 +983,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['relationship'] = 'vid';
   $handler->display->display_options['filters']['status']['value'] = '0';
-  /* Filterkriterie: Node: Trashed (field_trashed) */
+  /* Filterkriterie: Indhold: Trashed (field_trashed) */
   $handler->display->display_options['filters']['field_trashed_value']['id'] = 'field_trashed_value';
   $handler->display->display_options['filters']['field_trashed_value']['table'] = 'field_data_field_trashed';
   $handler->display->display_options['filters']['field_trashed_value']['field'] = 'field_trashed_value';
@@ -992,7 +992,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['filters']['field_trashed_value']['value'] = array(
     1 => '1',
   );
-  /* Filterkriterie: Node: Passed review (field_passed_review) */
+  /* Filterkriterie: Indhold: Passed review (field_passed_review) */
   $handler->display->display_options['filters']['field_passed_review_value']['id'] = 'field_passed_review_value';
   $handler->display->display_options['filters']['field_passed_review_value']['table'] = 'field_data_field_passed_review';
   $handler->display->display_options['filters']['field_passed_review_value']['field'] = 'field_passed_review_value';
@@ -1046,7 +1046,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['relationship'] = 'vid';
   $handler->display->display_options['fields']['title']['link_to_node'] = TRUE;
-  /* Felt: User: Navn */
+  /* Felt: Bruger: Navn */
   $handler->display->display_options['fields']['field_profile_name']['id'] = 'field_profile_name';
   $handler->display->display_options['fields']['field_profile_name']['table'] = 'field_data_field_profile_name';
   $handler->display->display_options['fields']['field_profile_name']['field'] = 'field_profile_name';
@@ -1061,7 +1061,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['fields']['type']['relationship'] = 'vid';
   $handler->display->display_options['fields']['type']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['type']['alter']['ellipsis'] = FALSE;
-  /* Felt: Node: Overordnet målgruppe */
+  /* Felt: Indhold: Overordnet målgruppe */
   $handler->display->display_options['fields']['field_target_group']['id'] = 'field_target_group';
   $handler->display->display_options['fields']['field_target_group']['table'] = 'field_data_field_target_group';
   $handler->display->display_options['fields']['field_target_group']['field'] = 'field_target_group';
@@ -1131,7 +1131,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['filters']['state']['value'] = array(
     'draft' => 'draft',
   );
-  /* Filterkriterie: Node: Trashed (field_trashed) */
+  /* Filterkriterie: Indhold: Trashed (field_trashed) */
   $handler->display->display_options['filters']['field_trashed_value']['id'] = 'field_trashed_value';
   $handler->display->display_options['filters']['field_trashed_value']['table'] = 'field_data_field_trashed';
   $handler->display->display_options['filters']['field_trashed_value']['field'] = 'field_trashed_value';
@@ -1185,7 +1185,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['relationship'] = 'vid';
   $handler->display->display_options['fields']['title']['link_to_node'] = TRUE;
-  /* Felt: User: Navn */
+  /* Felt: Bruger: Navn */
   $handler->display->display_options['fields']['field_profile_name']['id'] = 'field_profile_name';
   $handler->display->display_options['fields']['field_profile_name']['table'] = 'field_data_field_profile_name';
   $handler->display->display_options['fields']['field_profile_name']['field'] = 'field_profile_name';
@@ -1200,7 +1200,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['fields']['type']['relationship'] = 'vid';
   $handler->display->display_options['fields']['type']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['type']['alter']['ellipsis'] = FALSE;
-  /* Felt: Node: Overordnet målgruppe */
+  /* Felt: Indhold: Overordnet målgruppe */
   $handler->display->display_options['fields']['field_target_group']['id'] = 'field_target_group';
   $handler->display->display_options['fields']['field_target_group']['table'] = 'field_data_field_target_group';
   $handler->display->display_options['fields']['field_target_group']['field'] = 'field_target_group';
@@ -1258,7 +1258,7 @@ function ulf_workflow_views_default_views() {
     'title' => 'title',
     'field_profile_name' => 'field_profile_name',
   );
-  /* Filterkriterie: Node: Trashed (field_trashed) */
+  /* Filterkriterie: Indhold: Trashed (field_trashed) */
   $handler->display->display_options['filters']['field_trashed_value']['id'] = 'field_trashed_value';
   $handler->display->display_options['filters']['field_trashed_value']['table'] = 'field_data_field_trashed';
   $handler->display->display_options['filters']['field_trashed_value']['field'] = 'field_trashed_value';
@@ -1308,7 +1308,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['fields']['title']['relationship'] = 'vid';
   $handler->display->display_options['fields']['title']['alter']['make_link'] = TRUE;
   $handler->display->display_options['fields']['title']['alter']['path'] = '/node/[nid]/current-revision';
-  /* Felt: User: Navn */
+  /* Felt: Bruger: Navn */
   $handler->display->display_options['fields']['field_profile_name']['id'] = 'field_profile_name';
   $handler->display->display_options['fields']['field_profile_name']['table'] = 'field_data_field_profile_name';
   $handler->display->display_options['fields']['field_profile_name']['field'] = 'field_profile_name';
@@ -1323,7 +1323,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['fields']['type']['relationship'] = 'vid';
   $handler->display->display_options['fields']['type']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['type']['alter']['ellipsis'] = FALSE;
-  /* Felt: Node: Overordnet målgruppe */
+  /* Felt: Indhold: Overordnet målgruppe */
   $handler->display->display_options['fields']['field_target_group']['id'] = 'field_target_group';
   $handler->display->display_options['fields']['field_target_group']['table'] = 'field_data_field_target_group';
   $handler->display->display_options['fields']['field_target_group']['field'] = 'field_target_group';
@@ -1408,7 +1408,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['relationship'] = 'vid';
   $handler->display->display_options['filters']['status']['value'] = '1';
-  /* Filterkriterie: Node: Trashed (field_trashed) */
+  /* Filterkriterie: Indhold: Trashed (field_trashed) */
   $handler->display->display_options['filters']['field_trashed_value']['id'] = 'field_trashed_value';
   $handler->display->display_options['filters']['field_trashed_value']['table'] = 'field_data_field_trashed';
   $handler->display->display_options['filters']['field_trashed_value']['field'] = 'field_trashed_value';
@@ -1554,7 +1554,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['fields']['type']['relationship'] = 'vid';
   $handler->display->display_options['fields']['type']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['type']['alter']['ellipsis'] = FALSE;
-  /* Felt: Node: Overordnet målgruppe */
+  /* Felt: Indhold: Overordnet målgruppe */
   $handler->display->display_options['fields']['field_target_group']['id'] = 'field_target_group';
   $handler->display->display_options['fields']['field_target_group']['table'] = 'field_data_field_target_group';
   $handler->display->display_options['fields']['field_target_group']['field'] = 'field_target_group';
@@ -1622,7 +1622,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['filters']['unpublish_on_1']['relationship'] = 'vid';
   $handler->display->display_options['filters']['unpublish_on_1']['operator'] = '!=';
   $handler->display->display_options['filters']['unpublish_on_1']['value']['value'] = '2030-01-01 23:59:59';
-  /* Filterkriterie: Node: Trashed (field_trashed) */
+  /* Filterkriterie: Indhold: Trashed (field_trashed) */
   $handler->display->display_options['filters']['field_trashed_value']['id'] = 'field_trashed_value';
   $handler->display->display_options['filters']['field_trashed_value']['table'] = 'field_data_field_trashed';
   $handler->display->display_options['filters']['field_trashed_value']['field'] = 'field_trashed_value';
@@ -1746,7 +1746,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['fields']['type']['table'] = 'node';
   $handler->display->display_options['fields']['type']['field'] = 'type';
   $handler->display->display_options['fields']['type']['relationship'] = 'nid';
-  /* Felt: Node: Overordnet målgruppe */
+  /* Felt: Indhold: Overordnet målgruppe */
   $handler->display->display_options['fields']['field_target_group']['id'] = 'field_target_group';
   $handler->display->display_options['fields']['field_target_group']['table'] = 'field_data_field_target_group';
   $handler->display->display_options['fields']['field_target_group']['field'] = 'field_target_group';
@@ -1810,7 +1810,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['filters']['state']['value'] = array(
     'needs_review' => 'needs_review',
   );
-  /* Filterkriterie: Node: Trashed (field_trashed) */
+  /* Filterkriterie: Indhold: Trashed (field_trashed) */
   $handler->display->display_options['filters']['field_trashed_value']['id'] = 'field_trashed_value';
   $handler->display->display_options['filters']['field_trashed_value']['table'] = 'field_data_field_trashed';
   $handler->display->display_options['filters']['field_trashed_value']['field'] = 'field_trashed_value';
@@ -1819,7 +1819,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['filters']['field_trashed_value']['value'] = array(
     1 => '1',
   );
-  /* Filterkriterie: Node: Passed review (field_passed_review) */
+  /* Filterkriterie: Indhold: Passed review (field_passed_review) */
   $handler->display->display_options['filters']['field_passed_review_value']['id'] = 'field_passed_review_value';
   $handler->display->display_options['filters']['field_passed_review_value']['table'] = 'field_data_field_passed_review';
   $handler->display->display_options['filters']['field_passed_review_value']['field'] = 'field_passed_review_value';
@@ -1941,7 +1941,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['relationship'] = 'vid';
   $handler->display->display_options['filters']['status']['value'] = '0';
-  /* Filterkriterie: Node: Trashed (field_trashed) */
+  /* Filterkriterie: Indhold: Trashed (field_trashed) */
   $handler->display->display_options['filters']['field_trashed_value']['id'] = 'field_trashed_value';
   $handler->display->display_options['filters']['field_trashed_value']['table'] = 'field_data_field_trashed';
   $handler->display->display_options['filters']['field_trashed_value']['field'] = 'field_trashed_value';
@@ -1958,7 +1958,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['filters']['state']['value'] = array(
     'needs_review' => 'needs_review',
   );
-  /* Filterkriterie: Node: Passed review (field_passed_review) */
+  /* Filterkriterie: Indhold: Passed review (field_passed_review) */
   $handler->display->display_options['filters']['field_passed_review_value']['id'] = 'field_passed_review_value';
   $handler->display->display_options['filters']['field_passed_review_value']['table'] = 'field_data_field_passed_review';
   $handler->display->display_options['filters']['field_passed_review_value']['field'] = 'field_passed_review_value';
@@ -2063,7 +2063,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['fields']['type']['relationship'] = 'vid';
   $handler->display->display_options['fields']['type']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['type']['alter']['ellipsis'] = FALSE;
-  /* Felt: Node: Overordnet målgruppe */
+  /* Felt: Indhold: Overordnet målgruppe */
   $handler->display->display_options['fields']['field_target_group']['id'] = 'field_target_group';
   $handler->display->display_options['fields']['field_target_group']['table'] = 'field_data_field_target_group';
   $handler->display->display_options['fields']['field_target_group']['field'] = 'field_target_group';
@@ -2098,7 +2098,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['filters']['status']['field'] = 'status';
   $handler->display->display_options['filters']['status']['relationship'] = 'vid';
   $handler->display->display_options['filters']['status']['value'] = '1';
-  /* Filterkriterie: Node: Trashed (field_trashed) */
+  /* Filterkriterie: Indhold: Trashed (field_trashed) */
   $handler->display->display_options['filters']['field_trashed_value']['id'] = 'field_trashed_value';
   $handler->display->display_options['filters']['field_trashed_value']['table'] = 'field_data_field_trashed';
   $handler->display->display_options['filters']['field_trashed_value']['field'] = 'field_trashed_value';
@@ -2230,7 +2230,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['fields']['type']['relationship'] = 'vid';
   $handler->display->display_options['fields']['type']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['type']['alter']['ellipsis'] = FALSE;
-  /* Felt: Node: Overordnet målgruppe */
+  /* Felt: Indhold: Overordnet målgruppe */
   $handler->display->display_options['fields']['field_target_group']['id'] = 'field_target_group';
   $handler->display->display_options['fields']['field_target_group']['table'] = 'field_data_field_target_group';
   $handler->display->display_options['fields']['field_target_group']['field'] = 'field_target_group';
@@ -2306,7 +2306,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['filters']['status']['relationship'] = 'vid';
   $handler->display->display_options['filters']['status']['value'] = '1';
   $handler->display->display_options['filters']['status']['group'] = 3;
-  /* Filterkriterie: Node: Passed review (field_passed_review) */
+  /* Filterkriterie: Indhold: Passed review (field_passed_review) */
   $handler->display->display_options['filters']['field_passed_review_value']['id'] = 'field_passed_review_value';
   $handler->display->display_options['filters']['field_passed_review_value']['table'] = 'field_data_field_passed_review';
   $handler->display->display_options['filters']['field_passed_review_value']['field'] = 'field_passed_review_value';
@@ -2315,7 +2315,7 @@ function ulf_workflow_views_default_views() {
     1 => '1',
   );
   $handler->display->display_options['filters']['field_passed_review_value']['group'] = 3;
-  /* Filterkriterie: Node: Trashed (field_trashed) */
+  /* Filterkriterie: Indhold: Trashed (field_trashed) */
   $handler->display->display_options['filters']['field_trashed_value']['id'] = 'field_trashed_value';
   $handler->display->display_options['filters']['field_trashed_value']['table'] = 'field_data_field_trashed';
   $handler->display->display_options['filters']['field_trashed_value']['field'] = 'field_trashed_value';
@@ -2366,7 +2366,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['fields']['type']['relationship'] = 'vid';
   $handler->display->display_options['fields']['type']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['type']['alter']['ellipsis'] = FALSE;
-  /* Felt: Node: Overordnet målgruppe */
+  /* Felt: Indhold: Overordnet målgruppe */
   $handler->display->display_options['fields']['field_target_group']['id'] = 'field_target_group';
   $handler->display->display_options['fields']['field_target_group']['table'] = 'field_data_field_target_group';
   $handler->display->display_options['fields']['field_target_group']['field'] = 'field_target_group';
@@ -2425,7 +2425,7 @@ function ulf_workflow_views_default_views() {
   $handler->display->display_options['filters']['publish_on']['relationship'] = 'vid';
   $handler->display->display_options['filters']['publish_on']['operator'] = 'not empty';
   $handler->display->display_options['filters']['publish_on']['group'] = 1;
-  /* Filterkriterie: Node: Passed review (field_passed_review) */
+  /* Filterkriterie: Indhold: Passed review (field_passed_review) */
   $handler->display->display_options['filters']['field_passed_review_value']['id'] = 'field_passed_review_value';
   $handler->display->display_options['filters']['field_passed_review_value']['table'] = 'field_data_field_passed_review';
   $handler->display->display_options['filters']['field_passed_review_value']['field'] = 'field_passed_review_value';

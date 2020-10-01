@@ -15,7 +15,7 @@ function ulf_course_educators_preprocess_node(&$variables) {
     return;
   }
 
-  if (isset($variables['field_banner'])) {
+  if (isset($variables['field_banner'][0])) {
     $term = $variables['field_banner'][0]['taxonomy_term'];
     if ($term !== NULL) {
         $variables['ribbon_message'] = $term->name;

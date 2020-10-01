@@ -83,7 +83,7 @@ function ulf_course_providers_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Lokation',
-    'weight' => '12',
+    'weight' => '11',
     'children' => array(
       0 => 'field_profile_map_placement',
     ),

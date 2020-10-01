@@ -39,13 +39,13 @@ function ulf_course_providers_strongarm() {
           'weight' => '15',
         ),
         'locale' => array(
-          'weight' => '13',
+          'weight' => '12',
         ),
         'wysiwyg' => array(
-          'weight' => '11',
+          'weight' => '10',
         ),
         'mimemail' => array(
-          'weight' => '10',
+          'weight' => '9',
         ),
         'googleanalytics' => array(
           'weight' => '14',

@@ -197,14 +197,9 @@ function ulf_course_providers_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'number',
-        'settings' => array(
-          'decimal_separator' => '.',
-          'prefix_suffix' => TRUE,
-          'scale' => 0,
-          'thousand_separator' => '',
-        ),
-        'type' => 'number_integer',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
         'weight' => 17,
       ),
     ),
@@ -213,17 +208,18 @@ function ulf_course_providers_field_default_field_instances() {
     'label' => 'CVR',
     'required' => 0,
     'settings' => array(
-      'max' => '',
-      'min' => '',
-      'prefix' => '',
-      'suffix' => '',
+      'text_processing' => 0,
       'user_register_form' => 0,
     ),
     'widget' => array(
-      'active' => 0,
-      'module' => 'number',
-      'settings' => array(),
-      'type' => 'number',
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'maxlength_js' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'size' => 15,
+      ),
+      'type' => 'text_textfield',
       'weight' => 11,
     ),
   );

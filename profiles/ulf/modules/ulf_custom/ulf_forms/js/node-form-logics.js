@@ -28,6 +28,8 @@
     $('.field-name-field-subjects-youth').hide();
     $('.node-course-form .field-name-field-educational-material').hide();
     $('.node-course-form .field-name-field-inspirational-material').hide();
+    $('.field-name-field-practical-info-buttons').hide();
+
     // $('.field-name-field-material-suggestions').hide();
 
     // Used in field help text.
@@ -119,6 +121,7 @@
     if (typeof Drupal.settings.primary_target_group == 'undefined') {
       $('.field-name-field-educational-goals').show();
     }
+    $('.field-name-field-practical-info-buttons').show();
     $('.is-preschool').show();
 
     // setLabel('field-background-knowledge', 'Forberedelse');
@@ -145,6 +148,7 @@
     $('.field-name-field-post-work').show();
     $('.field-name-field-educational-material').show();
     $('.field-name-field-subjects-primary-school').show();
+    $('.field-name-field-practical-info-buttons').show();
     $('.is-school').show();
 
     // setLabel('field-background-knowledge', 'Forberedelse');
@@ -175,11 +179,13 @@
     $('.field-name-field-subjects-youth').show();
     $('.is-school').show();
 
+
     // setLabel('field-background-knowledge', 'Forberedelse');
 
     clearSubjectsValues('subjects-primary-school');
     if (typeof Drupal.settings.primary_target_group == 'undefined') {
       clearSubjectsValues('educational-goals');
+      clearSubjectsValues('practical-info-buttons');
     }
 
     if (onChange) {
@@ -229,6 +235,7 @@
     $('.field-name-field-subjects-youth').hide();
     $('.node-course-form .field-name-field-educational-material').hide();
     $('.node-course-form .field-name-field-inspirational-material').hide();
+    $('.field-name-field-practical-info-buttons').hide();
     // $('.field-name-field-material-suggestions').hide();
 
     // Used in field help text.

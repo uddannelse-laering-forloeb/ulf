@@ -620,7 +620,7 @@ class EventHelper extends AbstractHelper {
           if (NULL !== $index) {
 
             $events = $this->getSharedEvents($node->nid);
-            $events[] = $node->id;
+            $events[] = $node->nid;
 
             search_api_track_item_change('node', $events);
 //            search_api_index_items($index);

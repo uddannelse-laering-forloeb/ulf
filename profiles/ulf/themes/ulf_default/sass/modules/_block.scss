@@ -237,11 +237,17 @@
 }
 
 .block--buttons {
+  padding: 14px 0 30px 0;
+  margin-bottom: 0;
+
+
   a {
-    margin-bottom: 8px;
+    padding: 1em;
+    margin-bottom: 25px;
     width: 100%;
     box-sizing: border-box;
     @include strip-link-styles($white);
+    @include border-radius(0);
 
     &:last-child {
       margin: 0;
