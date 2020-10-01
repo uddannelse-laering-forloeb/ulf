@@ -475,4 +475,36 @@ abstract class AbstractHelper {
     return NULL;
   }
 
+  /**
+   * Get all subevents that are still active.
+   *
+   * The only thing we can filter on is the starting date.
+   *
+   * @param object $node
+   *   The node.
+   * @param bool $reset
+   *   If set, data will be reset (from database).
+   *
+   * @return $subevents
+   *   Array of subevents keyed bu subevent id.
+   */
+  public function getActivePretixSubEventsInfo($node, $reset = FALSE) {
+    $wrapper = entity_metadata_wrapper('node', $node);
+    $items = $wrapper->field_pretix_date->value();
+    $now = time();
+
+    $subevents = [];
+    foreach($items as $item) {
+      $sub_event = $this->loadPretixSubEventInfo($item, $reset);
+
+      $dateFrom = strtotime($sub_event['data']['subevent']['date_from']);
+      $active = $sub_event['data']['subevent']['active'];
+
+      if($active === TRUE && $dateFrom > $now ) {
+        $subevents[$sub_event['data']['subevent']['id']] = $sub_event['data']['subevent'];
+      }
+    }
+
+    return $subevents;
+  }
 }
