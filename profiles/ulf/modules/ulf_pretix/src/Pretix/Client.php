@@ -256,13 +256,16 @@ class Client {
    * @param object|string $event
    *   The event or event slug.
    *
+   * @param array $options
+   *   Array of options to send to the API.
+   *
    * @return object
    *   The result.
    */
-  public function getSubEvents($event) {
+  public function getSubEvents($event, array $options = []) {
     $eventSlug = $this->getSlug($event);
 
-    return $this->get('organizers/' . $this->organizerSlug . '/events/' . $eventSlug . '/subevents/');
+    return $this->get('organizers/' . $this->organizerSlug . '/events/' . $eventSlug . '/subevents/', $options);
   }
 
   /**
