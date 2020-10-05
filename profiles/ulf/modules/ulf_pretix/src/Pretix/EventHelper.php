@@ -358,7 +358,7 @@ class EventHelper extends AbstractHelper {
 
     // Update availability on event node.
     $this->updateEventAvailability($node);
-    
+
     return [
       'status' => $isNewEvent ? 'created' : 'updated',
       'info' => $info,
