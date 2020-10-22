@@ -2,6 +2,8 @@
 
 namespace Drupal\ulf_pretix\Pretix;
 
+use EntityMetadataWrapper;
+
 /**
  * Pretix helper.
  */
@@ -354,6 +356,9 @@ class EventHelper extends AbstractHelper {
       $event = $result->data;
     }
 
+    // Update availability on event node.
+    $this->updateEventAvailability($node);
+
     return [
       'status' => $isNewEvent ? 'created' : 'updated',
       'info' => $info,
@@ -599,11 +604,15 @@ class EventHelper extends AbstractHelper {
    * @throws \InvalidMergeQueryException
    */
   private function setEventAvailability($node, $event) {
-    $info = $this->loadPretixEventInfo($node, TRUE);
+    $info = $this->loadPretixEventInfo($node);
+    $active_subevents = $this->getActivePretixSubEventsInfo($node, TRUE);
+
     if (isset($info['data']['quotas'])) {
       $available = FALSE;
+      $has_subevents = $info['data']['event']['has_subevents'];
       foreach ($info['data']['quotas'] as $quota) {
-        if (isset($quota['availability']['available']) && TRUE === $quota['availability']['available']) {
+        $is_active = ($has_subevents && isset($active_subevents[$quota['subevent']])) ? TRUE : !$has_subevents;
+        if ($is_active === TRUE && isset($quota['availability']['available']) && TRUE === $quota['availability']['available']) {
           $available = TRUE;
           break;
         }
@@ -623,7 +632,6 @@ class EventHelper extends AbstractHelper {
             $events[] = $node->nid;
 
             search_api_track_item_change('node', $events);
-//            search_api_index_items($index);
           }
         }
       }
@@ -869,4 +877,5 @@ class EventHelper extends AbstractHelper {
     $result = $query->fetchAllKeyed(0,0);
     return array_values($result);
   }
+
 }
