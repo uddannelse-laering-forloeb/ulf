@@ -115,7 +115,7 @@ function ulf_search_search_node_filtered_item_alter(&$filteredItem) {
   }
 
   if (isset($filteredItem['field_period_full_year']) && $filteredItem['field_period_full_year'] == TRUE) {
-    $filteredItem['field_period:value2'] = 1893456000; // 01/01/2030
+    $filteredItem['field_period:value2'] = "1893456000"; // 01/01/2030
   }
 }
 
