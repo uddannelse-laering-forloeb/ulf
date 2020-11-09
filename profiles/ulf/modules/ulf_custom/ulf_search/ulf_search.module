@@ -113,6 +113,10 @@ function ulf_search_search_node_filtered_item_alter(&$filteredItem) {
       $filteredItem['field_image:file']['url'] = image_style_url('teaser_display', $file->uri);
     }
   }
+
+  if (isset($filteredItem['field_period_full_year']) && $filteredItem['field_period_full_year'] == TRUE) {
+    $filteredItem['field_period:value2'] = "1893456000"; // 01/01/2030
+  }
 }
 
 /**
