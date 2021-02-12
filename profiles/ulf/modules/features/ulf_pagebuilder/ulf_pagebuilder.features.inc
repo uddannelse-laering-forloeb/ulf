@@ -127,6 +127,11 @@ function ulf_pagebuilder_paragraphs_info() {
       'bundle' => 'hero',
       'locked' => '1',
     ),
+    'image_with_link' => array(
+      'name' => 'Billedeblok med link',
+      'bundle' => 'image_with_link',
+      'locked' => '1',
+    ),
     'link_list' => array(
       'name' => 'Liste af links',
       'bundle' => 'link_list',

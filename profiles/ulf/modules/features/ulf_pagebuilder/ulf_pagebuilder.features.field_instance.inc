@@ -157,7 +157,9 @@ function ulf_pagebuilder_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
       'type' => 'options_select',
       'weight' => 9,
     ),
@@ -632,7 +634,9 @@ function ulf_pagebuilder_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
       'type' => 'options_select',
       'weight' => 8,
     ),
@@ -1654,6 +1658,269 @@ function ulf_pagebuilder_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance:
+  // 'paragraphs_item-image_with_link-field_paragraph_bg_color'.
+  $field_instances['paragraphs_item-image_with_link-field_paragraph_bg_color'] = array(
+    'bundle' => 'image_with_link',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'color_field',
+        'settings' => array(),
+        'type' => 'color_field_default_formatter',
+        'weight' => 3,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'field_name' => 'field_paragraph_bg_color',
+    'label' => 'Baggrundsfarve',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 0,
+      'module' => 'color_field',
+      'settings' => array(),
+      'type' => 'color_field_spectrum_widget',
+      'weight' => 8,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'paragraphs_item-image_with_link-field_paragraph_button'.
+  $field_instances['paragraphs_item-image_with_link-field_paragraph_button'] = array(
+    'bundle' => 'image_with_link',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'link',
+        'settings' => array(
+          'custom_title' => '',
+        ),
+        'type' => 'link_default',
+        'weight' => 2,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'field_name' => 'field_paragraph_button',
+    'label' => 'Link',
+    'required' => 0,
+    'settings' => array(
+      'absolute_url' => 1,
+      'attributes' => array(
+        'class' => '',
+        'configurable_class' => 0,
+        'configurable_title' => 0,
+        'rel' => '',
+        'target' => 'default',
+        'title' => '',
+      ),
+      'display' => array(
+        'url_cutoff' => 80,
+      ),
+      'enable_tokens' => 1,
+      'rel_remove' => 'default',
+      'title' => 'none',
+      'title_allowed_values' => '',
+      'title_label_use_field_label' => 0,
+      'title_maxlength' => 128,
+      'title_value' => '',
+      'url' => 0,
+      'user_register_form' => FALSE,
+      'validate_url' => 1,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'advanced_link',
+      'settings' => array(
+        'default_titles' => '',
+        'urls_allowed' => 'both',
+        'urls_excluded' => 'node/*/clone/*
+field-collection/*/*/edit
+field-collection/*/*/delete
+field-collection/*/add/*/*
+user/*/linkchecker
+linkchecker/*/edit
+node/*/edit
+node/*/delete
+node/*/revisions
+node/*/revisions/*/revert
+node/*/revisions/*/delete
+node/add
+node/add/*
+node/*/nodequeue
+user/*/shortcuts
+admin
+admin/*
+batch
+taxonomy/term/*/edit
+user/*/cancel
+user/*/edit
+user/*/edit/*
+node/*/moderation
+node/*/moderation/*/unpublish
+node/*/moderation/*/change-state/*
+node/*/moderation/view
+node/*/moderation/diff
+node/*/moderation/diff/list
+node/*/moderation/diff/view
+node/*/moderation/diff/view/*/*
+node/*/revisions/view/*/*',
+        'urls_filter' => '',
+        'urls_search' => 'start',
+      ),
+      'type' => 'advanced_link',
+      'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'paragraphs_item-image_with_link-field_paragraph_image'.
+  $field_instances['paragraphs_item-image_with_link-field_paragraph_image'] = array(
+    'bundle' => 'image_with_link',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => '',
+        ),
+        'type' => 'image',
+        'weight' => 1,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'field_name' => 'field_paragraph_image',
+    'label' => 'Billede',
+    'required' => 0,
+    'settings' => array(
+      'alt_field' => 0,
+      'default_image' => 0,
+      'file_directory' => '',
+      'file_extensions' => 'png gif jpg jpeg',
+      'max_filesize' => '',
+      'max_resolution' => '',
+      'min_resolution' => '',
+      'title_field' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'image',
+      'settings' => array(
+        'insert' => 0,
+        'insert_absolute' => 0,
+        'insert_class' => '',
+        'insert_default' => 'auto',
+        'insert_styles' => array(
+          'auto' => 'auto',
+          'icon_link' => 0,
+          'image' => 0,
+          'image_facebook_open_graph' => 0,
+          'image_hero' => 0,
+          'image_large' => 0,
+          'image_logo' => 0,
+          'image_medium' => 0,
+          'image_node_display' => 0,
+          'image_pagebuilder' => 0,
+          'image_pagebuilder_image' => 0,
+          'image_teaser_display' => 0,
+          'image_thumbnail' => 0,
+          'link' => 0,
+        ),
+        'insert_width' => '',
+        'manualcrop_crop_info' => 1,
+        'manualcrop_default_crop_area' => 1,
+        'manualcrop_enable' => 0,
+        'manualcrop_filter_insert' => 0,
+        'manualcrop_inline_crop' => 0,
+        'manualcrop_instant_crop' => 0,
+        'manualcrop_instant_preview' => 1,
+        'manualcrop_keyboard' => 1,
+        'manualcrop_maximize_default_crop_area' => 0,
+        'manualcrop_require_cropping' => array(),
+        'manualcrop_styles_list' => array(),
+        'manualcrop_styles_mode' => 'include',
+        'manualcrop_thumblist' => 0,
+        'preview_image_style' => 'medium',
+        'progress_indicator' => 'throbber',
+      ),
+      'type' => 'image_image',
+      'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'paragraphs_item-image_with_link-field_paragraph_title'.
+  $field_instances['paragraphs_item-image_with_link-field_paragraph_title'] = array(
+    'bundle' => 'image_with_link',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 0,
+      ),
+      'paragraphs_editor_preview' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'paragraphs_item',
+    'field_name' => 'field_paragraph_title',
+    'label' => 'Titel',
+    'required' => 1,
+    'settings' => array(
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'maxlength_js' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'size' => 100,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 2,
+    ),
+  );
+
   // Exported field_instance: 'paragraphs_item-link_list-field_internal_name'.
   $field_instances['paragraphs_item-link_list-field_internal_name'] = array(
     'bundle' => 'link_list',
@@ -1791,7 +2058,9 @@ function ulf_pagebuilder_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
       'type' => 'options_select',
       'weight' => 8,
     ),
@@ -2089,6 +2358,7 @@ function ulf_pagebuilder_field_default_field_instances() {
         'download_list' => 'download_list',
         'four_columns' => -1,
         'hero' => -1,
+        'image_with_link' => 'image_with_link',
         'link_list' => 'link_list',
         'one_column' => -1,
         'spacer' => 'spacer',
@@ -2102,6 +2372,7 @@ function ulf_pagebuilder_field_default_field_instances() {
         'download_list' => 5,
         'four_columns' => 6,
         'hero' => 7,
+        'image_with_link' => 26,
         'link_list' => 8,
         'one_column' => 2,
         'spacer' => -22,
@@ -2405,7 +2676,9 @@ function ulf_pagebuilder_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
       'type' => 'options_select',
       'weight' => 8,
     ),
@@ -2879,7 +3152,9 @@ function ulf_pagebuilder_field_default_field_instances() {
     'widget' => array(
       'active' => 1,
       'module' => 'options',
-      'settings' => array(),
+      'settings' => array(
+        'apply_chosen' => '',
+      ),
       'type' => 'options_select',
       'weight' => 8,
     ),
@@ -3271,8 +3546,10 @@ function ulf_pagebuilder_field_default_field_instances() {
         'download_list' => 'download_list',
         'four_columns' => -1,
         'hero' => -1,
+        'image_with_link' => 'image_with_link',
         'link_list' => 'link_list',
         'one_column' => -1,
+        'spacer' => -1,
         'text_with_image' => 'text_with_image',
         'text_with_video' => -1,
         'three_columns' => -1,
@@ -3283,8 +3560,10 @@ function ulf_pagebuilder_field_default_field_instances() {
         'download_list' => 8,
         'four_columns' => 2,
         'hero' => 10,
+        'image_with_link' => 26,
         'link_list' => 11,
         'one_column' => 3,
+        'spacer' => 29,
         'text_with_image' => 19,
         'text_with_video' => 20,
         'three_columns' => 4,
@@ -3419,8 +3698,10 @@ function ulf_pagebuilder_field_default_field_instances() {
         'download_list' => 'download_list',
         'four_columns' => -1,
         'hero' => -1,
+        'image_with_link' => 'image_with_link',
         'link_list' => 'link_list',
         'one_column' => -1,
+        'spacer' => -1,
         'text_with_image' => 'text_with_image',
         'text_with_video' => -1,
         'three_columns' => -1,
@@ -3431,8 +3712,10 @@ function ulf_pagebuilder_field_default_field_instances() {
         'download_list' => 8,
         'four_columns' => 2,
         'hero' => 10,
+        'image_with_link' => 26,
         'link_list' => 11,
         'one_column' => 3,
+        'spacer' => 29,
         'text_with_image' => 19,
         'text_with_video' => 20,
         'three_columns' => 4,
@@ -3487,8 +3770,10 @@ function ulf_pagebuilder_field_default_field_instances() {
         'download_list' => 'download_list',
         'four_columns' => -1,
         'hero' => -1,
+        'image_with_link' => 'image_with_link',
         'link_list' => 'link_list',
         'one_column' => -1,
+        'spacer' => -1,
         'text_with_image' => 'text_with_image',
         'text_with_video' => -1,
         'three_columns' => -1,
@@ -3499,8 +3784,10 @@ function ulf_pagebuilder_field_default_field_instances() {
         'download_list' => 8,
         'four_columns' => 2,
         'hero' => 10,
+        'image_with_link' => 26,
         'link_list' => 11,
         'one_column' => 3,
+        'spacer' => 29,
         'text_with_image' => 19,
         'text_with_video' => 20,
         'three_columns' => 4,
@@ -3554,8 +3841,10 @@ function ulf_pagebuilder_field_default_field_instances() {
         'download_list' => 'download_list',
         'four_columns' => -1,
         'hero' => -1,
+        'image_with_link' => 'image_with_link',
         'link_list' => 'link_list',
         'one_column' => -1,
+        'spacer' => -1,
         'text_with_image' => 'text_with_image',
         'text_with_video' => 'text_with_video',
         'three_columns' => -1,
@@ -3566,8 +3855,10 @@ function ulf_pagebuilder_field_default_field_instances() {
         'download_list' => 6,
         'four_columns' => 7,
         'hero' => 8,
+        'image_with_link' => 26,
         'link_list' => 9,
         'one_column' => 2,
+        'spacer' => 29,
         'text_with_image' => 20,
         'text_with_video' => -20,
         'three_columns' => 12,
@@ -3700,8 +3991,10 @@ function ulf_pagebuilder_field_default_field_instances() {
         'download_list' => 'download_list',
         'four_columns' => -1,
         'hero' => -1,
+        'image_with_link' => 'image_with_link',
         'link_list' => 'link_list',
         'one_column' => -1,
+        'spacer' => -1,
         'text_with_image' => 'text_with_image',
         'text_with_video' => 'text_with_video',
         'three_columns' => -1,
@@ -3712,8 +4005,10 @@ function ulf_pagebuilder_field_default_field_instances() {
         'download_list' => 6,
         'four_columns' => 7,
         'hero' => 8,
+        'image_with_link' => 26,
         'link_list' => 9,
         'one_column' => 2,
+        'spacer' => 29,
         'text_with_image' => 20,
         'text_with_video' => -20,
         'three_columns' => 12,
@@ -3754,6 +4049,7 @@ function ulf_pagebuilder_field_default_field_instances() {
   t('Justering');
   t('Knap');
   t('Kolonne');
+  t('Link');
   t('Links');
   t('Rammefarve');
   t('Sublinje');
