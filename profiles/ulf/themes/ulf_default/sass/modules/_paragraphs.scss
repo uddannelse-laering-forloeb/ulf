@@ -364,6 +364,30 @@
   }
 }
 
+.paragraphs-item-image-with-link {
+  .image-with-link__image {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+  }
+  .image-with-link__content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    h2 {
+      margin: 10px 15px;
+      color: #ffffff;
+    }
+    img {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      -webkit-transform: translateY(-50%) translateX(-50%);
+    }
+  }
+}
+
 .paragraphs-item-text-with-image,
 .paragraphs-item-text-with-video,
 .paragraphs-item-link-list,
