@@ -365,10 +365,13 @@
 }
 
 .paragraphs-item-image-with-link {
-  .image-with-link__image {
+  .image-with-link__wrapper {
     position: relative;
-    height: 300px;
-    overflow: hidden;
+
+    img {
+      object-fit: cover;
+      height: 300px;
+    }
   }
   .image-with-link__content {
     position: absolute;
@@ -378,12 +381,6 @@
     h2 {
       margin: 10px 15px;
       color: #ffffff;
-    }
-    img {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      -webkit-transform: translateY(-50%) translateX(-50%);
     }
   }
 }

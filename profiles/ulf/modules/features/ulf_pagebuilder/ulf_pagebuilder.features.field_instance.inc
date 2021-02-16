@@ -1803,7 +1803,7 @@ node/*/revisions/view/*/*',
         'module' => 'image',
         'settings' => array(
           'image_link' => '',
-          'image_style' => 'pagebuilder_image',
+          'image_style' => 'pagebuilder',
         ),
         'type' => 'image',
         'weight' => 1,

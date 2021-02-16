@@ -32,9 +32,11 @@
   <a href="<?php print $content['paragraph_link'] ?>">
   <?php endif; ?>
 
-    <div class="image-with-link__image">
+    <div class="image-with-link__wrapper">
       <?php if (isset($content['field_paragraph_image'])): ?>
-        <?php print render($content['field_paragraph_image']); ?>
+        <div class="image-with-link__image">
+          <?php print render($content['field_paragraph_image']); ?>
+        </div>
       <?php endif; ?>
 
       <?php if (isset($content['field_paragraph_title'])): ?>
