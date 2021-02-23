@@ -413,6 +413,11 @@
     @extend %button;
     @include strip-link-styles($white);
   }
+  @media(max-width: 720px) {
+    &.paragraphs-item-image-with-link {
+      margin: 10px 0;
+    }
+  }
 }
 
 .paragraphs-item {
