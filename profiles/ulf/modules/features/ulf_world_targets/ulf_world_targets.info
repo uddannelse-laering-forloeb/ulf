@@ -15,5 +15,7 @@ features[features_api][] = api:2
 features[field_base][] = field_world_targets
 features[field_group][] = group_world_targets|node|course_educators|form
 features[field_group][] = group_world_targets|node|course|form
+features[field_group][] = group_world_targets|node|exercise|form
 features[field_instance][] = node-course-field_world_targets
 features[field_instance][] = node-course_educators-field_world_targets
+features[field_instance][] = node-exercise-field_world_targets
