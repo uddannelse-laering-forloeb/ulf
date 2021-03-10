@@ -1000,7 +1000,7 @@ function ulf_default_preprocess_entity(&$variables) {
           $background_color = "rgba({$r},{$g},{$b}, 0.7)";
         }
         $paragraph_link_field = $variables['paragraphs_item']->field_paragraph_button ?? NULL;
-        $paragraph_link = $paragraph_link_field[LANGUAGE_NONE][0]['title'];
+        $paragraph_link = $paragraph_link_field[LANGUAGE_NONE][0]['url'];
         $variables['content']['paragraph_link'] = $paragraph_link;
         break;
     }
