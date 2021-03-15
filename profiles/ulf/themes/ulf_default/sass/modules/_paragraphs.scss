@@ -35,9 +35,16 @@
     .paragraphs-items {
       display: block;
       box-sizing: border-box;
-      padding: 0 1.3em;
+      padding: 0 1.3em 1.3em;
       @include breakpoint(45em) {
+        padding: 0 1.3em;
         flex: 1;
+      }
+      .block--field-text {
+        height: 100%;
+        .entity-paragraphs-item {
+          height: 100%;
+        }
       }
     }
   }
@@ -193,6 +200,7 @@
   @include flex-wrap(wrap);
   @include flex-direction(row);
   background-color: $gray-lightest;
+  height: 100%;
 
   .appetizer-column {
     width: 100%;
