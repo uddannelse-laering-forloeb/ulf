@@ -17,7 +17,7 @@ function ulf_wysiwyg_filter_default_formats() {
     'name' => 'Editor',
     'cache' => 1,
     'status' => 1,
-    'weight' => 0,
+    'weight' => -10,
     'filters' => array(
       'filter_url' => array(
         'weight' => -50,
@@ -30,7 +30,7 @@ function ulf_wysiwyg_filter_default_formats() {
         'weight' => -49,
         'status' => 1,
         'settings' => array(
-          'allowed_html' => '<a> <em> <u> <strong> <blockquote> <ul> <ol> <li> <p> <br> <h2> <h3><sub><sup>',
+          'allowed_html' => '<a> <em> <u> <strong> <blockquote> <ul> <ol> <li> <p class="text-align-left text-align-center text-align-right text-align-justify"> <br> <h2 class="text-align-left text-align-center text-align-right text-align-justify"> <h3 class="text-align-left text-align-center text-align-right text-align-justify"><sub><sup> ',
           'filter_html_help' => 1,
           'filter_html_nofollow' => 0,
         ),
@@ -73,7 +73,7 @@ function ulf_wysiwyg_filter_default_formats() {
     'name' => 'Full html',
     'cache' => 0,
     'status' => 1,
-    'weight' => 0,
+    'weight' => -9,
     'filters' => array(
       'spamspan' => array(
         'weight' => 0,
@@ -103,7 +103,7 @@ function ulf_wysiwyg_filter_default_formats() {
     'name' => 'Plain text',
     'cache' => 1,
     'status' => 1,
-    'weight' => 10,
+    'weight' => -8,
     'filters' => array(
       'filter_html_escape' => array(
         'weight' => 0,
