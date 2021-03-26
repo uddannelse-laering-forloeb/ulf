@@ -26,15 +26,6 @@ function ulf_wysiwyg_filter_default_formats() {
           'filter_url_length' => 72,
         ),
       ),
-      'filter_html' => array(
-        'weight' => -49,
-        'status' => 1,
-        'settings' => array(
-          'allowed_html' => '<a> <em> <u> <strong> <blockquote> <ul> <ol> <li> <p class="text-align-left text-align-center text-align-right text-align-justify"> <br> <h2 class="text-align-left text-align-center text-align-right text-align-justify"> <h3 class="text-align-left text-align-center text-align-right text-align-justify"><sub><sup> ',
-          'filter_html_help' => 1,
-          'filter_html_nofollow' => 0,
-        ),
-      ),
       'filter_autop' => array(
         'weight' => -48,
         'status' => 1,
