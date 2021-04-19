@@ -3,6 +3,10 @@
   padding: 0 11px 8px 11px;
   justify-content: left;
 }
+.world-targets-description {
+  padding: 0 15px 10px 15px;
+  font-size: 12px;
+}
 
 .world-target {
   max-width: 22%;
@@ -11,4 +15,13 @@
 
 .world-target a:hover {
   opacity: .6;
+}
+.content--main .world-targets {
+  padding: 0 0 10px;
+}
+.content--main .world-targets-description {
+  padding: 0 5px 10px;
+}
+.content--main .world-targets img {
+  max-width: 70px;
 }
