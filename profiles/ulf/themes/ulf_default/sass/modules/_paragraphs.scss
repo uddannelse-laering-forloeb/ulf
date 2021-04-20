@@ -20,7 +20,6 @@
     position: relative;
     width: 100%;
 
-
     .row {
       @include flexbox;
       @include flex-wrap(wrap);
@@ -44,6 +43,11 @@
         height: 100%;
         .entity-paragraphs-item {
           height: 100%;
+        }
+      }
+      .paragraphs-item-text-with-video {
+        .block--field-text {
+          height: auto;
         }
       }
     }
